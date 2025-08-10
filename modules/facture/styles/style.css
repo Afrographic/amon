@@ -1,0 +1,554 @@
+.CharteGraphique{
+    position: fixed;
+    top: 139px;
+    right: 31px;
+    border-radius: 8px;
+    z-index: 15;
+}
+
+.CharteGraphique input{
+    opacity: 0;
+    width: 0;
+}
+
+.colorPreview{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: red;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: 0.25s;
+}
+
+.colorPreview:hover{
+    opacity: 0.7;
+}
+
+.colorPreview:active{
+    transform: scale(1.2);
+}
+
+.colorPreview:before{
+    /* position: absolute;
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #dadada;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.primary{
+    background-color: #eeb500;
+}
+
+.secondary{
+    background-color: red;
+}
+
+.factureNumeroDeSerie{
+    font-size: 11px;
+    color: grey;
+    border-bottom: 1px dashed #aaa;
+    padding-bottom: 8px;
+}
+
+.mesClientsView{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 420px;
+    height: 100vh;
+    border-left: 1px solid #cfcfcf;
+    background-color: #fff;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    transition:0.5s;
+}
+
+.mesClientsViewInactive{
+    opacity: 0;
+    transform: translateY(-45px);
+    pointer-events: none;
+}
+
+.mesArticlesView{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 420px;
+    height: 100vh;
+    border-left: 1px solid #cfcfcf;
+    background-color: #fff;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    transition:0.5s;
+}
+
+.mesArticlesViewInactive{
+    opacity: 0;
+    transform: translateY(-45px);
+    pointer-events: none;
+}
+
+
+.historiqueView{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 420px;
+    height: 100vh;
+    border-left: 1px solid #cfcfcf;
+    background-color: #fff;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    transition:0.5s;
+}
+
+.historiqueViewInactive{
+    opacity: 0;
+    transform: translateY(-45px);
+    pointer-events: none;
+}
+
+.historyContainer{
+    flex:1;
+    overflow: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.clients{
+    flex:1;
+    overflow: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.clientName{
+    border-radius: 8px;
+    background-color: #e7e7e75e;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
+.clientName img{
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.clientName img:active{
+    transform: scale(1.1);
+}
+
+.button{
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.button:hover{
+    opacity: 0.7;
+}
+
+.button:active{
+    transform: scale(1.1);
+}
+
+.headerCLient{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 20px;
+}
+
+.headerCLient img{
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.headerCLient img:hover{
+    opacity: 0.25s;
+}
+
+.headerCLient img:active{
+    transform: scale(1.1);
+}
+
+hr{
+    opacity: 0.7;
+    margin: 0;
+    padding: 0;
+}
+
+#clientListView{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.empty{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    padding: 64px;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+.empty div{
+    text-align: center;
+    line-height: 1.3em;
+}
+
+tr{
+    position: relative;
+}
+
+.pr{
+    position: relative;
+}
+
+.nomsClients{
+    position: absolute;
+    opacity: 1;
+    top: -25vh;
+    box-shadow: 2px 2px 13px rgb(133 133 133 / 38%);
+    background-color: #fff;
+    z-index: 8;
+    width: 100%;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow: auto;
+    transition: 0.25s;
+}
+
+.nomsClients .name{
+    padding: 16px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.nomsClients .name:hover{
+    background-color: #eaeaea66;
+}
+
+.nomsClientsInactive{
+    opacity: 0;
+    top: -25px;
+    pointer-events: none;
+}
+
+.nomsClientsActive{
+    pointer-events: auto;
+}
+
+.p16{
+    padding: 16px;
+}
+
+.jcsb{
+    justify-content: space-between;
+}
+
+hr{
+    opacity: 0.5;
+}
+
+.historyContainer{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.facturesClients{
+    padding: 16px;
+    background-color: #f6f6f6;
+    border-radius: 8px;
+}
+
+.clientHistory{
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap:16px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.historyItem .date{
+    opacity: 0.7;
+    padding-bottom: 16px;
+}
+
+.clientHistory{
+    cursor: pointer;
+    transition: 0.25s;
+    border-radius: 8px;
+}
+
+.clientHistory:hover{
+    background-color: #1b489240;
+}
+
+.configKamto{
+    transition: 0.25s;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+}
+
+.configKamto .formItem {
+    width: 355px;
+}
+
+.formItem{
+    position: relative;
+}
+
+.configKamtoInactive{
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-25px);
+}
+
+.signature{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #aaaaaa45;
+    color: rgba(128, 128, 128, 0.582);
+}
+
+/* StartUp */
+.startUp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 45;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.25s;
+}
+
+.startUpInactive{
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+.kamtoLogoName{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:16px;
+}
+
+.kamtoLogoName div{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.startUpAfro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:8px;
+    padding: 16px;
+    opacity: 0.6;
+}
+
+.mesClientsInput2{
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.mesClientsContainer{
+    padding: 16px;
+    flex: 1;
+    overflow: auto;
+}
+
+.addArticle{
+    display: flex;
+    flex-direction: column;
+    gap:8px;   
+}
+
+.MesArticlesList{
+    display: flex;
+    flex-direction: column;
+    margin-top:8px;
+}
+
+.mesArticlesItem{
+    display: flex;
+    align-items: center;
+    gap:16px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    transition: 0.25s;
+    cursor: pointer;
+    position: relative;
+}
+
+.mesArticlesItem:hover{
+    background-color: #f1f1f1;
+}
+
+.mesArticlesItem:active{
+    transform: scale(1.1);
+}
+
+.mesArticlesItem .price{
+    font-size: 14px;
+    color: grey;
+    padding-top:4px ;
+}
+
+.editDeleteBtn{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 8px;
+    transition: 0.25s;
+    opacity: 0;
+    pointer-events: none;
+    background-color: #f1f1f1;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.editDeleteBtn img{
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.editDeleteBtn img:active{
+    transform: scale(1.1);
+}
+
+.editDeleteBtn img:hover{
+    opacity: 0.7;
+}
+
+.parentArticleItem{
+    position: relative;
+}
+
+.parentArticleItem:hover .editDeleteBtn{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.savedArticles{
+    position: absolute;
+    left: 0;
+    top: -30vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    width: 100%;
+    z-index: 15;
+    box-shadow: 2px 2px 13px rgb(133 133 133 / 38%);
+    max-height: 30vh;
+    overflow: auto;
+    transition: 0.25s;
+}
+
+.savedArticlesInactive{
+    top: 0px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.headerSavedArticle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:16px;
+    padding-bottom: 16px;
+}
+
+.titleSavedArticle{
+    margin: 0;
+    padding: 0;
+}
+
+.articleItem{
+    display: flex;
+    align-items: center;
+    gap:16px;
+    cursor: pointer;
+    transition: 0.25s;
+    padding: 16px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.articleItem:hover{
+    background-color: #f1f1f1;
+}
+
+#factureLogo img{
+    width: 100%;
+}
+
+.addBtnClient{
+    width:  48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.AddNewClient{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #bfbfbf;
+    border-radius: 8px;
+}
+
+.AddNewClient .formItem{
+    border: none;
+    flex: 1;
+}

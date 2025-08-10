@@ -1,0 +1,332 @@
+.history {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 400px;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #fff;
+    border-bottom-left-radius: 0px;
+    border: 1px solid #d5d5d5;
+    border-right: none;
+    border-top: none;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+}
+
+.history h2 {
+    margin: 0;
+}
+
+.history hr {
+    margin: 0;
+}
+
+.history .content {
+    flex: 1;
+    overflow: auto;
+    padding-top: 0px;
+}
+
+
+.history .title {
+    padding-top: 20px;
+}
+
+.historyTitle {
+    font-size: 14px;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.historyListing {
+    border-radius: 8px;
+    border: 1px solid #cdcdcd;
+    margin-top: 16px;
+}
+
+.listingItem {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #cdcdcd;
+    align-items: center;
+}
+
+.listingItem div:last-child {
+    font-size: 12px;
+    color: grey;
+    font-weight: bold;
+}
+
+.historyListing .listingItem:last-child {
+    border: none;
+}
+
+.p16_32 {
+    padding: 16px;
+}
+
+.iconButton {
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.iconButton:hover {
+    opacity: 0.8;
+}
+
+.iconButton:active {
+    transform: scale(1.1);
+}
+
+.tac {
+    text-align: center;
+}
+
+.p16 {
+    padding: 16px;
+}
+
+.kycBloc {
+    display: flex;
+    gap: 16px;
+}
+
+.kycItem {
+    flex: 1;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e9e9e9;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.kycItem .title {
+    opacity: 0.7;
+}
+
+.kycItem .amount {
+    font-weight: bold;
+    font-size: 20px;
+    color: #2cad61;
+}
+
+.nouveauStock {
+    position: fixed;
+    width: 100vw;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 4;
+}
+
+.nouvelleVente {
+    position: fixed;
+    width: 100vw;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 4;
+}
+
+.totalSellStat {
+    font-size: 12px;
+    color: rgb(215, 215, 215);
+}
+
+.configContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+input {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+/* Search area */
+.searchBox {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.searchBox img {
+    width: 24px;
+}
+
+.searchBox .formItem {
+    border: none !important;
+    flex: 1;
+}
+
+.f1 {
+    flex: 1;
+}
+
+.mobileIcons {
+    display: none;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileIcons img {
+    width: 20px;
+}
+
+.productItemClass {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 32px;
+    background-color: rgb(21 175 97 / 67%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.25s;
+
+    /* Inactive */
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.1);
+}
+
+.productItem:hover .productItemClass {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto !important;
+}
+
+
+.productItemClass button {
+    width: 100%;
+}
+
+.productItem {
+    overflow: hidden;
+}
+
+td {
+    padding: 16px;
+}
+
+.productItemTitle {
+    padding-left: 16px;
+}
+
+.empty {
+    margin-top: 8px;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
+
+.searchProduct {
+    position: fixed;
+    left: 32px;
+    top: 32px;
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+    padding: 32px;
+    width: 260px;
+    background-color: #fff;
+    overflow: auto;
+}
+
+.searchProduct button {
+    width: 100%;
+}
+
+.empty p{
+    text-align: center;
+}
+
+
+
+/* StartUp */
+.startUp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 45;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.25s;
+}
+
+.startUpInactive{
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+body{
+    margin:0;
+    padding: 0;
+}
+
+.startUpAfro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:8px;
+    padding: 16px;
+    opacity: 0.6;
+}
+
+.amonLogoStart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.StartGraphix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.StartGraphix img{
+    width: 30vw;
+}
+
+#resetBlock{
+    padding:16px;
+}
+

@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amon</title>
+    <script src="libs/jsstore.js"></script>
+    <script src="libs/jsstore.worker.js"></script>
+    <script src="libs/afro.js"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+    <link rel="stylesheet" href="styles/buttons.css" />
+    <link rel="stylesheet" href="styles/ankh_notif.css" />
+    <link rel="icon" href="icons/icon-512.png">
+    <style>
+      * {
+        font-family: arial;
+        transition: 0.25s;
+        overflow-x: hidden;
+        scrollbar-width: 1px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 64px;
+      }
+
+      .addProduct.inactive {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(1.1);
+      }
+
+      .addProduct.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+      }
+
+      .Hinactive {
+        pointer-events: none;
+        opacity: 0;
+        height: 0px;
+        overflow: hidden;
+        position: fixed;
+      }
+
+      .active {
+        opacity: 1;
+      }
+
+      .addProduct {
+        position: fixed;
+        top: 32px;
+        right: 32px;
+        border-radius: 8px;
+        border: 1px solid #dbdbdb;
+        padding: 32px;
+        transition: 0.25s;
+        background-color: #fff;
+      }
+
+      .editProduct {
+        position: fixed;
+        top: 32px;
+        right: 32px;
+        border-radius: 8px;
+        border: 1px solid #dbdbdb;
+        padding: 32px;
+        transition: 0.25s;
+        background-color: #fff;
+      }
+
+      .formItem .label {
+        font-size: 12px;
+      }
+
+      .formItem {
+        border: 1px solid #d1d1d1;
+        border-radius: 4px;
+        padding: 8px;
+      }
+
+      .formItem input {
+        outline: none;
+        border: none;
+        width: 100%;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .buttonsToAdd {
+        margin-top: 16px;
+        width: 100%;
+        display: flex;
+        gap: 8px;
+      }
+
+      .buttonsToAdd button {
+        flex: 1;
+      }
+
+      .addProduitButton {
+        position: fixed;
+        top: 32px;
+        right: 32px;
+        transition: 0.25s;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .products {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 8px;
+        padding-bottom: 32px;
+      }
+
+      .productItem {
+        border: 1px solid #dbdbdb;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      tr:nth-child(odd) {
+        background-color: #f6f6f6;
+      }
+
+      td {
+        padding: 16px;
+      }
+
+      tr td:last-child {
+        /* color: orange; */
+      }
+
+      .desc {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 16px;
+      }
+
+      .desc div:last-child {
+        font-weight: bold;
+      }
+
+      .copyRight {
+        font-size: 12px;
+        color: #aaa;
+      }
+
+      .productItemClass div {
+        display: flex;
+        gap: 8px;
+      }
+
+      .productItemClass div button {
+        flex: 1;
+      }
+
+      .empty {
+        border: 1px solid #d4d4d4;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 64px;
+      }
+
+      .empty img {
+        width: 64px;
+        opacity: 0.7;
+      }
+
+      .searchResult {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+        overflow: auto;
+      }
+
+      .searchResult .container {
+        padding-bottom: 16px;
+      }
+
+      .close {
+        position: fixed;
+        top: 32px;
+        right: 32px;
+        transition: 0.25s;
+        cursor: pointer;
+      }
+
+      .close:active {
+        transform: scale(1.1);
+      }
+
+      .grey {
+        opacity: 0.7;
+      }
+
+      #renderSearchResult {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .export {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        align-items: center;
+      }
+
+      .ExportWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        /* height: 100vh; */
+        background-color: #fff;
+        z-index: 40;
+        transition: 0.25s;
+        /* overflow: scroll; */
+        /* overflow-x: hidden; */
+      }
+
+      .containerExport {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 16px;
+      }
+
+      #exportProducts {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .ExportrRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 16px;
+      }
+
+      .closeExport {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+      }
+
+      p {
+        line-height: 1.4em;
+      }
+
+      .welcome {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        min-height: 100vh;
+        background-color: #fff;
+        z-index: 40;
+        transition: 0.5s;
+      }
+
+      .inactive {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 0px !important;
+        opacity: 0 !important;
+        pointer-events: none;
+      }
+
+      .resetApp {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        min-height: 100vh;
+        background-color: #fff;
+        z-index: 4;
+        transition: 0.5s;
+      }
+      .row {
+        display: flex;
+      }
+      .g16 {
+        gap: 16px;
+      }
+      .aic {
+        align-items: center;
+      }
+      .jcc {
+        justify-content: center;
+      }
+      .jcsb {
+        justify-content: space-between;
+      }
+    </style>
+    <script src="libs/jsstore.js"></script>
+    <script></script>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00AB62" />
+  </head>
+
+  <body>
+    <!-- Error box -->
+    <div
+      class="info negative"
+      id="negative"
+      style="
+        border-left: 10px solid #f70808;
+        box-shadow: -1px 8px 20px 6px #5252521c;
+        width: 80vw;
+        max-width: 500px;
+      "
+      onclick="this.classList.remove('info_visible')"
+    >
+      <img src="images/error_msg.svg" alt="" width="25px" />
+      <div class="column f1">
+        <div class="tal" id="content" style="color: grey; font-size: 12px">
+          Message
+        </div>
+      </div>
+    </div>
+    <!-- End error box -->
+    <!-- StartUp -->
+    <div class="startUp">
+      <div class="startUpAfro">
+        <img src="images/afro_svg.svg" alt="" width="24px" />
+        <div>Afrographix Studio</div>
+      </div>
+      <div class="amonLogoStart">
+        <img src="images/amon.svg" alt="" width="48px" />
+        <h1>Amon</h1>
+      </div>
+      <div class="StartGraphix">
+        <img src="images/startup.svg" width="60vw" alt="" />
+      </div>
+    </div>
+    <!-- End Startup -->
+    <!-- Reinitialiser l'application -->
+    <div class="resetApp inactive" id="resetBlock">
+      <div class="container">
+        <img src="images/amon.svg" alt="" width="48px" />
+        <h1>Reinitialiser Amon</h1>
+        <p>
+          Attention vous allez perdre tous les donnee et tout l'historique
+          enregistrer jusqu'a ce jour.
+        </p>
+
+        <div class="row g16" style="margin-top: 16px">
+          <button onclick="resetApp()" class="primary_btn">
+            Reinitialiser
+          </button>
+          <button onclick="cancelResetApp()" class="secondary_btn">
+            Annuler
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- End reset app -->
+    <!-- Nouveau stock view -->
+    <div class="nouveauStock inactive">
+      <div class="container">
+        <img src="images/amon.svg" width="48px" alt="" />
+        <h1>Nouveau stock</h1>
+        <p id="titleNouveauStock">
+          Veuillez renseigner le nombre de pieces pour le Iphone XR que vous
+          venez de recevoir
+        </p>
+        <div class="formItem">
+          <div class="label">Nombre de pieces</div>
+          <input
+            type="number"
+            placeholder="Nombre de pieces"
+            id="nombrePiecesStock"
+            value="1"
+          />
+        </div>
+
+        <div class="row g16" style="margin-top: 16px">
+          <button onclick="addNewStock()" class="primary_btn">Ajouter</button>
+          <button onclick="hideNouveauStockView()" class="secondary_btn">
+            Annuler
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- End nouveau stock view -->
+    <!-- Nouvelle vente view -->
+    <div class="nouvelleVente inactive">
+      <div class="container">
+        <img src="images/amon.svg" width="48px" alt="" />
+        <h1>Nouvelle vente</h1>
+        <p id="titleNouveauVente">
+          Veuillez renseigner le nombre de pieces du produit Iphone XR que vous
+          avez vendu
+        </p>
+        <div class="formItem">
+          <div class="label">Nombre de pieces</div>
+          <input
+            type="number"
+            placeholder="Nombre de pieces"
+            id="nombrePiecesVente"
+            value="1"
+          />
+        </div>
+
+        <div class="row g16" style="margin-top: 16px">
+          <button onclick="addNewVente()" class="primary_btn">
+            Enregistrer
+          </button>
+          <button onclick="hideNouvelleVenteView()" class="secondary_btn">
+            Annuler
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- End Nouvelle Vente view -->
+    <!-- Nom de la boutique et mot de bienvenue -->
+    <div class="welcome">
+      <div class="container">
+        <img src="images/amon.svg" width="48px" alt="" />
+        <h1>Bienvenue sur Amon</h1>
+        <p>
+          Gerez le stock de votre boutique aisement avec un suivi permanent des
+          entrees et des sorties
+        </p>
+
+        <div class="configContent">
+          <div class="formItem">
+            <div class="label">Nom de votre boutique</div>
+            <input
+              type="text"
+              placeholder="Nom de votre boutique"
+              id="nomBoutique"
+            />
+          </div>
+          <div class="formItem">
+            <div class="label">Votre devise</div>
+            <input
+              type="text"
+              placeholder="Votre devise (FCFA,Euro,Dollar...etc)"
+              id="devise"
+            />
+          </div>
+        </div>
+
+        <button class="primary_btn" style="margin-top: 16px" onclick="start()">
+          Enregistrer
+        </button>
+      </div>
+    </div>
+    <!-- End nom de la boutique -->
+    <div class="container mainViewContainer">
+      <div class="appHeader">
+        <img
+          src="images/menu.svg"
+          width="22px"
+          alt=""
+          onclick="showMenu()"
+          class="mobileMenuIcon"
+        />
+        <h1>Amon</h1>
+        <div class="f1"></div>
+        <div class="mobileIcons">
+          <img
+            src="images/history_vente.svg"
+            alt=""
+            onclick="showHistoryRetrait()"
+          />
+        </div>
+      </div>
+
+      <div class="appContent">
+        <div class="kycBloc">
+          <div class="kycItem">
+            <div class="title">Aujourdhui</div>
+            <div class="amount" id="TodayMoney">0 F</div>
+            <div class="totalSellStat" id="todayTotalProduct">0 Produits</div>
+          </div>
+          <div class="kycItem">
+            <div class="title">Cette semaine</div>
+            <div class="amount" id="weekMoney">0 F</div>
+            <div class="totalSellStat" id="weekProducts">0 Produits</div>
+          </div>
+          <div class="kycItem">
+            <div class="title">Ce mois</div>
+            <div class="amount" id="monthMoney">0 F</div>
+            <div class="totalSellStat" id="totalMonthProduct">0 Produits</div>
+          </div>
+        </div>
+        <div class="row aic jcsb totalProductAddProduct">
+          <h2 id="totalProduct">0 produits</h2>
+          <div
+            class="c_main"
+            id="totalMoneyToEarn"
+            style="font-size: 11px; color: #00ab62"
+          >
+            1890000
+          </div>
+          <button onclick="addProduct()" class="primary_btn mobileAddProduct">
+            Ajouter un produit
+          </button>
+        </div>
+
+        <div class="export">
+          <div>Parcourer la liste de vos produits</div>
+          <button onclick="launchExport()" class="secondary_btn">
+            Exporter en PDF
+          </button>
+        </div>
+
+        <div class="searchBox">
+          <div class="formItem">
+            <input
+              type="text"
+              placeholder="Nom du Produit"
+              id="nomProduitSearch"
+            />
+          </div>
+          <img src="images/search.svg" alt="" width="18px" onclick="search()" />
+        </div>
+
+        <div class="empty">
+          <img src="images/empty.svg" alt="" />
+          <p>Aucun produit pour l'instant</p>
+        </div>
+
+        <!-- Listes des produits -->
+        <div class="products" id="productsContainer"></div>
+      </div>
+
+      <!-- Web Menu Options -->
+      <div class="addProduitButton">
+        <!-- <button onclick="showHistoryAjout()">Historique de stock</button>
+        <button onclick="showHistoryRetrait()">Historique de vente</button>
+        <button onclick="showWelcomeScreen()">Configurer</button>
+        <button onclick="initResetApp()">Reinitialiser</button> -->
+      </div>
+
+      <!-- Exporter en PDF -->
+      <div class="ExportWrapper inactive">
+        <img
+          src="images/close.svg"
+          alt=""
+          width="24px"
+          class="close"
+          id="closeExport"
+          onclick="closeLaunchExport()"
+        />
+        <div class="containerExport">
+          <h1 id="nameStoreExport">Amon</h1>
+          <div class="ExportrRow">
+            <div id="exportWrapperDate">Rapport du 12 Janvier 2024 a 14h37</div>
+            <button
+              onclick="launchPrint()"
+              class="primary_btn"
+              id="exportPDFButton"
+            >
+              Exporter
+            </button>
+          </div>
+          <h3 id="exportTotalProduct"></h3>
+          <div id="exportProducts"></div>
+        </div>
+      </div>
+
+      <!-- Ajouter un produit -->
+      <div class="addProduct inactive" id="addProduct">
+        <img src="images/add.svg" width="36px" alt="" />
+        <h2>Ajouter un produit</h2>
+        <p>Veuillez remplir le formulaire ci-dessous</p>
+        <div class="form">
+          <div class="formItem">
+            <div class="label">Nom</div>
+            <input type="text" placeholder="Nom du produit" id="nomInput" />
+          </div>
+          <div class="formItem">
+            <div class="label">Prix</div>
+            <input type="number" placeholder="Prix" id="prixInput" />
+          </div>
+          <div class="formItem">
+            <div class="label">Fournisseur</div>
+            <input
+              type="text"
+              placeholder="Fournisseur"
+              id="fournisseurInput"
+            />
+          </div>
+          <div class="formItem">
+            <div class="label">Marque</div>
+            <input type="text" placeholder="Marque" id="marqueInput" />
+          </div>
+          <div class="formItem">
+            <div class="label">Quantite</div>
+            <input type="number" placeholder="Quantite" id="quantiteInput" />
+          </div>
+        </div>
+
+        <button
+          style="width: 100%; margin-top: 16px"
+          onclick="addProductToDatabase()"
+          class="primary_btn"
+        >
+          Ajouter
+        </button>
+        <button
+          style="width: 100%; margin-top: 8px"
+          onclick="closeAddProduct()"
+          class="secondary_btn"
+        >
+          Annuler
+        </button>
+      </div>
+
+      <!-- Editer le produit -->
+      <div class="editProduct inactive" id="EditProduct">
+        <img src="images/edit.svg" alt="" width="48px" />
+        <h2>Editer le produit</h2>
+        <p>Veuillez renseigner les nouvelles informations</p>
+        <div class="form">
+          <div class="formItem">
+            <div class="label">Nom</div>
+            <input type="text" placeholder="Nom du produit" id="nomEditInput" />
+          </div>
+          <div class="formItem">
+            <div class="label">Prix</div>
+            <input type="number" placeholder="Prix" id="prixEditInput" />
+          </div>
+          <div class="formItem">
+            <div class="label">Fournisseur</div>
+            <input
+              type="text"
+              placeholder="Fournisseur"
+              id="fournisseurEditInput"
+            />
+          </div>
+          <div class="formItem">
+            <div class="label">Marque</div>
+            <input
+              type="text"
+              placeholder="Fournisseur"
+              id="fournisseurMarqueEdit"
+            />
+          </div>
+        </div>
+
+        <button
+          style="width: 100%; margin-top: 16px"
+          onclick="editProductSave()"
+          class="primary_btn"
+        >
+          Enregistrer
+        </button>
+        <button
+          style="width: 100%; margin-top: 8px"
+          onclick="closeEditProduct()"
+          class="secondary_btn"
+        >
+          Annuler
+        </button>
+      </div>
+
+      <!-- Recherche un produit -->
+      <div class="searchProduct searchProductInactive">
+        <img
+          src="images/close.svg"
+          class="closeBtnMobileSideBar"
+          alt=""
+          width="24px"
+          onclick="hideMenu()"
+        />
+        <img src="images/amon.svg" width="48px" alt="" />
+        <h1>Amon</h1>
+        <h3 id="nameStore2">Kamite Store</h3>
+
+        <p>Veuillez profiter des options ci dessous</p>
+        <div class="buttons">
+          <a href="modules/facture/kamto.html">
+            <button class="tertiaryBtn2">
+              <img src="images/facture.svg" width="15px" alt="" />
+              Creer une facture
+            </button>
+          </a>
+          <button class="tertiaryBtn2" onclick="showHistoryAjout()">
+            <img src="images/stock.svg" width="15px" alt="" />
+            Historique de stock
+          </button>
+          <button class="tertiaryBtn2" onclick="showHistoryRetrait()">
+            <img src="images/vente.svg" width="15px" alt="" />
+            Historique de vente
+          </button>
+          <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+            <img src="images/settings.svg" width="15px" alt="" />
+            Configurer
+          </button>
+          <button class="tertiaryBtn2" onclick="initResetApp()">
+            <img src="images/reset.svg" width="15px" alt="" />
+            Reinitialiser
+          </button>
+          <button class="tertiaryBtn2" onclick="exportAsJSON()">
+            <img src="images/export.svg" width="15px" alt="" />
+            Exporter la BD
+          </button>
+          <button class="tertiaryBtn2" onclick="TriggerImportJSON()">
+            <img src="images/import.svg" width="15px" alt="" />
+            Importer la BD
+          </button>
+          <input
+            type="file"
+            hidden
+            id="importFile"
+            onchange="getImportedFile(event)"
+            accept=".json"
+          />
+        </div>
+        <p>
+          Financer le developpement par Orange Money via le numero ci-dessous
+        </p>
+        <div><strong>Tesse Brunel</strong> - 697830071</div>
+
+        <p class="copyRight">
+          Designed and Developed by <br />
+          Afrographix Studio 2025 &copy;
+        </p>
+        <img src="images/afro_svg.svg" width="20px" alt="" />
+      </div>
+
+      <!-- Resultat de recherche -->
+      <div class="searchResult inactive">
+        <img
+          src="images/close.svg"
+          alt=""
+          width="24px"
+          class="close"
+          id="closeSearchResult"
+          onclick="closeSearch()"
+        />
+        <div class="container searchContainer">
+          <img src="images/amon.svg" alt="" width="48px" />
+          <h2 id="nameStore">Amon</h2>
+          <h1>Resultat de recherche</h1>
+          <p class="grey" id="totalSearchResult">0 Produit</p>
+          <div class="empty inactive" id="renderEmptyResult">
+            <img src="images/empty.svg" alt="" />
+            <p>Aucun produit ne correspond a votre recherche</p>
+          </div>
+          <div id="renderSearchResult"></div>
+        </div>
+      </div>
+
+      <!-- Historique d'ajout -->
+      <div class="historyAjout inactive history">
+        <div class="row aic jcsb p16_32 title">
+          <h2>Historique de stock</h2>
+          <img
+            src="images/close.svg"
+            width="20px"
+            alt=""
+            class="iconButton"
+            id="closeHistoryAjout"
+            onclick="closeHistoryAjout()"
+          />
+        </div>
+
+        <hr style="opacity: 0.4" />
+
+        <!-- Day items -->
+        <div class="p16_32 content" id="historyAjoutListingView">
+          <div>
+            <div class="historyTitle">
+              <div>12 Janvier 2024</div>
+              <div>3</div>
+            </div>
+            <div class="historyListing">
+              <div class="listingItem">
+                <div>Scie a moteur</div>
+                <div>a 17h30</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="historyTitle">
+              <div>11 Janvier 2024</div>
+              <div>2</div>
+            </div>
+            <div class="historyListing">
+              <div class="p16 tac">Aucun stock</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin historique d'ajout -->
+
+      <!-- Historique de retrait -->
+      <div class="historyRetrait inactive history">
+        <div class="row aic jcsb p16_32 title">
+          <h2>Historique de vente</h2>
+          <img
+            src="images/close.svg"
+            width="20px"
+            alt=""
+            class="iconButton"
+            id="closeHistoryAjout"
+            onclick="closeHistoryRetrait()"
+          />
+        </div>
+
+        <hr style="opacity: 0.4" />
+
+        <!-- Day items -->
+        <div class="p16_32 content" id="historyRetraitListingView">
+          <div>
+            <div class="historyTitle">
+              <div>12 Janvier 2024</div>
+              <div>3</div>
+            </div>
+            <div class="historyListing">
+              <div class="listingItem">
+                <div>Scie a moteur</div>
+                <div>a 17h30</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="historyTitle">
+              <div>11 Janvier 2024</div>
+              <div>2</div>
+            </div>
+            <div class="historyListing">
+              <div class="p16 tac">Aucun stock</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fin historique de retrait -->
+      <button id="installBtn" class="primary_btn" style="display: none">
+        Installer l'application
+      </button>
+    </div>
+
+    <script>
+      // Register service worker
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(() => console.log("Service Worker Registered"))
+          .catch((err) => console.error("SW registration failed", err));
+      }
+      //Detect if the is already installed
+      let deferredPrompt;
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+        // Prevent the mini-infobar from appearing
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Show your custom install UI (button, modal, banner)
+        const installBtn = document.getElementById("installBtn");
+        installBtn.style.display = "flex";
+
+        installBtn.addEventListener("click", () => {
+          installBtn.style.display = "none";
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choice) => {
+            if (choice.outcome === "accepted") {
+              console.log("User accepted the install prompt");
+            } else {
+              console.log("User dismissed the install prompt");
+            }
+            deferredPrompt = null;
+          });
+        });
+      });
+
+      //End Detect
+      //Reset App
+      function initResetApp() {
+        let resetAppView = document.querySelector(".resetApp");
+        resetAppView.classList.remove("inactive");
+      }
+      function resetApp() {
+        //Delete DB
+        indexedDB.deleteDatabase("amonDB");
+        window.location.reload();
+      }
+      function cancelResetApp() {
+        let resetAppView = document.querySelector(".resetApp");
+        resetAppView.classList.add("inactive");
+      }
+      //Init nom de la boutique
+      let nomBoutiqueStatic = "";
+      function initNomBoutique() {
+        let nomBoutiqueLocale = localStorage.getItem("nomBoutique");
+        if (nomBoutiqueLocale == null) {
+          //Show add nom boutique screen
+          showWelcomeScreen();
+        } else {
+          let nomBoutique = document.querySelector("#nomBoutique");
+          nomBoutiqueStatic = nomBoutiqueLocale;
+          nomBoutique.value = nomBoutiqueStatic;
+          //hide welcome screen
+          hideWelcomeScreen();
+          setNameStore();
+        }
+      }
+      initNomBoutique();
+
+      function start() {
+        let devise = document.querySelector("#devise");
+        let nomBoutique = document.querySelector("#nomBoutique");
+        if (nomBoutique.value.trim().length == 0) {
+          Afro.show_negative_message("Nom de la boutique invalide!");
+          return;
+        }
+
+        if (devise.value.trim().length == 0) {
+          Afro.show_negative_message("Devise invalide!");
+          return;
+        }
+        localStorage.setItem("nomBoutique", nomBoutique.value);
+        localStorage.setItem("amonDevise", devise.value);
+        nomBoutiqueStatic = nomBoutique.value;
+        setNameStore();
+        hideWelcomeScreen();
+      }
+
+      function hideWelcomeScreen() {
+        let welcome = document.querySelector(".welcome");
+        welcome.classList.add("inactive");
+      }
+
+      function showWelcomeScreen() {
+        let welcome = document.querySelector(".welcome");
+        welcome.classList.remove("inactive");
+      }
+
+      function setNameStore() {
+        let nomBoutiqueLocale = localStorage.getItem("nomBoutique");
+        let nameStore = document.querySelector("#nameStore");
+        let nameStore2 = document.querySelector("#nameStore2");
+        let nameStoreExport = document.querySelector("#nameStoreExport");
+        nameStore.innerHTML = nomBoutiqueLocale;
+        nameStore2.innerHTML = nomBoutiqueLocale;
+        nameStoreExport.innerHTML = nomBoutiqueLocale;
+      }
+
+      // Start of DB Block
+      let con = new JsStore.Connection();
+      async function init_DB() {
+        await con.initDb(this.get_db_schema());
+        this.init_data();
+      }
+
+      function get_db_schema() {
+        var data = {
+          name: "data",
+          columns: {
+            id: {
+              notNull: true,
+              dataType: "string",
+            },
+            products: {
+              notNull: true,
+              dataType: "string",
+            },
+            historyRetrait: {
+              notNull: true,
+              dataType: "string",
+            },
+            historyAjout: {
+              notNull: true,
+              dataType: "string",
+            },
+            inited: {
+              notNull: true,
+              dataType: "string",
+            },
+          },
+        };
+        var db = {
+          name: "amonDB",
+          tables: [data],
+        };
+        return db;
+      }
+
+      async function init_data() {
+        let data = await con.select({
+          from: "data",
+        });
+
+        if (data.length == 0) {
+          let value = {
+            id: "1",
+            products: "[]",
+            historyRetrait: "[]",
+            historyAjout: "[]",
+            inited: "false",
+          };
+          await con.insert({
+            into: "data",
+            values: [value],
+          });
+        } else {
+          products = JSON.parse(data[0].products);
+          saveLightProductToLocalStorageForFacture();
+          renderProduct();
+        }
+      }
+
+      async function saveToDB() {
+        await con.update({
+          in: "data",
+          where: {
+            id: "1",
+          },
+          set: {
+            products: JSON.stringify(products),
+          },
+        });
+      }
+
+      async function saveHistoryAjoutToDB() {
+        await con.update({
+          in: "data",
+          where: {
+            id: "1",
+          },
+          set: {
+            historyAjout: JSON.stringify(historyAjout),
+          },
+        });
+      }
+
+      async function saveHistoryRetraitToDB() {
+        await con.update({
+          in: "data",
+          where: {
+            id: "1",
+          },
+          set: {
+            historyRetrait: JSON.stringify(historyRetrait),
+          },
+        });
+      }
+
+      async function getProducts() {
+        var datas = await con.select({
+          from: "data",
+          where: {
+            id: "1",
+          },
+        });
+        products = JSON.parse(datas[0].products);
+      }
+
+      async function getHistory() {
+        var datas = await con.select({
+          from: "data",
+          where: {
+            id: "1",
+          },
+        });
+        historyRetrait = JSON.parse(datas[0].historyRetrait);
+        historyAjout = JSON.parse(datas[0].historyAjout);
+      }
+
+      getHistory();
+
+      async function initAllData() {
+        await init_DB();
+        // await getProducts();
+      }
+
+      initAllData();
+
+      // End of DB BLock
+
+      let products = [
+        // {
+        //     nom: "Iphone XR",
+        //     prix: "210 000 XAF",
+        //     fournisseur: "AfriCom",
+        //     marque: "Apple",
+        //     quantite: 15,
+        //     addAt: "13 Fevrier 2025 a 13h24",
+        //     modifiedAt: "13 Octobre 2025 a 17h00",
+        //     id: 15866454884545,
+        // },
+        // {
+        //     nom: "Mac Book Pro",
+        //     prix: "300 000 XAF",
+        //     fournisseur: "Kenedy",
+        //     marque: "Apple",
+        //     quantite: 15,
+        //     addAt: "13 Fevrier 2025 a 13h24",
+        //     modifiedAt: "13 Octobre 2025 a 17h00",
+        //     id: 4585520021,
+        // },
+      ];
+      let historyRetrait = [];
+      let historyAjout = [];
+
+      function TriggerImportJSON() {
+        let importFile = document.querySelector("#importFile");
+        importFile.click();
+      }
+
+      function getImportedFile(e) {
+        let file = e.target.files[0];
+        let url = URL.createObjectURL(file);
+        fetch(url)
+          .then((response) => response.json())
+          .then((json) => processImportedDate(json));
+      }
+
+      function processImportedDate(json) {
+        products = products.concat(json);
+        saveToDB();
+        renderProduct();
+      }
+
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      async function launchPrint() {
+        await sleep(350);
+        hidePrint();
+        window.print();
+        showPrint();
+      }
+
+      function showPrint() {
+        let exportPDFButton = document.getElementById("exportPDFButton");
+        let closeExport = document.getElementById("closeExport");
+        let exportProducts = document.getElementById("exportProducts");
+        let searchProduct = document.querySelector(".searchProduct");
+
+        exportPDFButton.classList.remove("inactive");
+        closeExport.classList.remove("inactive");
+        exportProducts.style.overflow = "auto";
+        searchProduct.classList.remove("inactive");
+      }
+
+      function hidePrint() {
+        let exportPDFButton = document.getElementById("exportPDFButton");
+        let closeExport = document.getElementById("closeExport");
+        let exportProducts = document.getElementById("exportProducts");
+        let searchProduct = document.querySelector(".searchProduct");
+        exportPDFButton.classList.add("inactive");
+        closeExport.classList.add("inactive");
+        searchProduct.classList.add("inactive");
+        exportProducts.style.overflow = "hidden";
+      }
+
+      function launchExport() {
+        let ExportWrapper = document.querySelector(".ExportWrapper");
+        let productsContainer = document.querySelector("#productsContainer");
+
+        ExportWrapper.classList.remove("inactive");
+        productsContainer.classList.add("inactive");
+      }
+
+      function closeLaunchExport() {
+        let ExportWrapper = document.querySelector(".ExportWrapper");
+        let productsContainer = document.querySelector("#productsContainer");
+
+        ExportWrapper.classList.add("inactive");
+        productsContainer.classList.remove("inactive");
+      }
+
+      // Search of a product
+
+      let nomProduitSearch = document.getElementById("nomProduitSearch");
+      let searchView = document.querySelector(".searchResult");
+      let totalSearchResult = document.querySelector("#totalSearchResult");
+      function search() {
+        searchView.classList.remove("inactive");
+        let val = nomProduitSearch.value.trim();
+        let searchedProducts = [];
+        if (val.length == 0) {
+          Afro.show_negative_message("Nom du produit invalide");
+          return;
+        }
+        for (let i = 0; i <= products.length - 1; i++) {
+          if (products[i].nom.toLowerCase().includes(val.toLowerCase())) {
+            searchedProducts.push(products[i]);
+          }
+        }
+
+        //Display empty
+        let renderEmptyResult = document.querySelector("#renderEmptyResult");
+
+        if (searchedProducts.length == 0) {
+          renderEmptyResult.classList.remove("inactive");
+        }
+
+        totalSearchResult.innerHTML = `${searchedProducts.length} Produits`;
+
+        // Render products
+        let renderSearchResult = document.querySelector("#renderSearchResult");
+        renderSearchResult.innerHTML = "";
+
+        let devise = localStorage.getItem("amonDevise");
+        for (let i = 0; i <= searchedProducts.length - 1; i++) {
+          renderSearchResult.innerHTML += `
+                    <div class="productItem">
+
+                      <div class="productItemClass">
+                                
+                                <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${searchedProducts[i].id}">Nouveau Stock</button>
+                                <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${searchedProducts[i].id}">Nouvelle Vente</button>
+                          
+                                <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${searchedProducts[i].id}">Editer</button>
+                                <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${searchedProducts[i].id}">Supprimer</button>
+                      
+                              </div>
+
+                        <div class="productItemTitle">
+                            <h3>${searchedProducts[i].nom}</h3>
+                            <div class="clickArea">
+                              <img src="images/option.svg" />
+                            </div>    
+                         </div>
+                        
+                        <table>
+                            <tr>
+                                <td>Prix</td>
+                                <td>${searchedProducts[i].prix} ${devise}</td>
+                            </tr>
+                            <tr>
+                                <td>Fournisseur</td>
+                                <td>${searchedProducts[i].fournisseur}</td>
+                            </tr>
+                            <tr>
+                                <td>Marque</td>
+                                <td>${searchedProducts[i].marque}</td>
+                            </tr>
+                            <tr>
+                                <td>Quantite</td>
+                                <td>${searchedProducts[i].quantite}</td>
+                            </tr>
+                            <tr>
+                                <td>Ajouter le</td>
+                                <td>${searchedProducts[i].addAt}</td>
+                            </tr>
+                            <tr>
+                                <td>Modifier le</td>
+                                <td>${searchedProducts[i].modifiedAt}</td>
+                            </tr>
+                        </table>
+
+                        
+                    </div>
+                    `;
+        }
+      }
+
+      function closeSearch() {
+        searchView.classList.add("inactive");
+      }
+
+      let addProductElement = document.getElementById("addProduct");
+      let addProduitButton = document.querySelector(".addProduitButton");
+      let empty = document.querySelector(".empty");
+
+      function addProduct() {
+        let nomInput = document.getElementById("nomInput");
+        nomInput.focus();
+        addProductElement.classList.remove("inactive");
+        addProductElement.classList.add("active");
+        addProduitButton.classList.add("inactive");
+      }
+
+      function closeAddProduct() {
+        addProductElement.classList.add("inactive");
+        addProductElement.classList.remove("active");
+        addProduitButton.classList.remove("inactive");
+      }
+
+      let exportWrapperDate = document.getElementById("exportWrapperDate");
+      let exportDate = new Date();
+      let dateString = formatDate(exportDate);
+      exportWrapperDate.innerHTML = `Rapport du ${dateString}`;
+
+      function formatDate(date) {
+        let render = date.toLocaleString("fr-FR", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+        return render;
+      }
+
+      function saveLightProductToLocalStorageForFacture() {
+        let productsToLocal = [];
+        for (let i = 0; i <= products.length - 1; i++) {
+          productsToLocal.push({
+            article: products[i].nom,
+            prix: products[i].prix,
+          });
+        }
+        localStorage.setItem("productsLight", JSON.stringify(productsToLocal));
+      }
+
+      async function addProductToDatabase() {
+        let nomInput = document.getElementById("nomInput");
+        let prixInput = document.getElementById("prixInput");
+        let fournisseurInput = document.getElementById("fournisseurInput");
+        let marqueInput = document.getElementById("marqueInput");
+        let quantiteInput = document.getElementById("quantiteInput");
+
+        let product = {
+          nom: "nom",
+          prix: "prix",
+          fournisseur: "fournisseur",
+          marque: "Marque",
+          quantite: 0,
+          addAt: "addAt",
+          modifiedAt: "modifiedAt",
+          id: 1450554555,
+        };
+
+        let addAt = new Date();
+        let modifiedAt = new Date();
+
+        if (nomInput.value.trim().length == 0) {
+          Afro.show_negative_message("Nom invalide");
+          return;
+        }
+        if (prixInput.value.trim().length == 0) {
+          Afro.show_negative_message("Prix invalide");
+          return;
+        }
+        if (fournisseurInput.value.trim().length == 0) {
+          Afro.show_negative_message("Fournisseur invalide");
+          return;
+        }
+        if (marqueInput.value.trim().length == 0) {
+          Afro.show_negative_message("Marque invalide");
+          return;
+        }
+        if (quantiteInput.value.trim().length == 0) {
+          Afro.show_negative_message("Quantite invalide");
+          return;
+        }
+
+        product.nom = nomInput.value.trim();
+        product.prix = prixInput.value.trim();
+        product.fournisseur = fournisseurInput.value.trim();
+        product.marque = marqueInput.value.trim();
+        product.quantite = quantiteInput.value.trim();
+        product.addAt = formatDate(addAt);
+        product.modifiedAt = formatDate(modifiedAt);
+        product.id = crypto.randomUUID();
+
+        products.unshift(product);
+        renderProduct();
+
+        nomInput.value = "";
+        prixInput.value = "";
+        fournisseurInput.value = "";
+        marqueInput.value = "";
+        quantiteInput.value = "";
+        closeAddProduct();
+        // alert("Produit ajouter avec succes!");
+        saveToDB();
+        saveLightProductToLocalStorageForFacture();
+
+        //Update stock for history
+        //Save history ajout to DB
+        var datas = await con.select({
+          from: "data",
+          where: {
+            id: "1",
+          },
+        });
+        historyAjout = JSON.parse(datas[0].historyAjout);
+
+        //Add to history ajout
+        let produit = product;
+        for (let i = 1; i <= produit.quantite; i++) {
+          let date = new Date();
+          let today = getToday();
+          let fullDate = formatDate(date);
+          produit.at = today;
+          produit.fullDate = fullDate;
+          historyAjout.unshift(produit);
+        }
+
+        await con.update({
+          in: "data",
+          where: {
+            id: "1",
+          },
+          set: {
+            historyAjout: JSON.stringify(historyAjout),
+          },
+        });
+      }
+
+      function renderProduct() {
+        let exportWrapperDate = document.getElementById("exportWrapperDate");
+        let exportDate = new Date();
+        let dateString = formatDate(exportDate);
+        exportWrapperDate.innerHTML = `Rapport du ${dateString}`;
+
+        if (products.length > 0) {
+          empty.classList.add("Hinactive");
+        } else {
+          empty.classList.remove("Hinactive");
+        }
+
+        let exportProducts = document.getElementById("exportProducts");
+        let productsContainer = document.getElementById("productsContainer");
+
+        let totalProduct = document.getElementById("totalProduct");
+        let exportTotalProduct = document.getElementById("exportTotalProduct");
+
+        productsContainer.innerHTML = "";
+        exportProducts.innerHTML = "";
+
+        totalProduct.innerHTML = `${products.length} Produits`;
+        exportTotalProduct.innerHTML = `${products.length} Produits`;
+
+        let devise = localStorage.getItem("amonDevise");
+
+        for (let i = 0; i <= products.length - 1; i++) {
+          productsContainer.innerHTML += `
+          
+                    <div class="productItem">
+
+                      <div class="productItemClass">
+                          
+                          <button class="tertiaryBtn" onclick="incrementProduct(event);showNouveauStockView()" id="${products[i].id}">Nouveau stock</button>
+                          <button class="tertiaryBtn" onclick="decrementProduct(event);showNouvelleVenteView()" id="${products[i].id}">Nouvelle vente</button>
+                    
+                          <button onclick="editProduct(event)" class="tertiaryBtn" id="${products[i].id}">Editer</button>
+                          <button onclick="deleteProduct(event)" class="tertiaryBtn" id="${products[i].id}">Supprimer</button>
+              
+                       </div>
+
+
+                         <div class="productItemTitle">
+                            <h3>${products[i].nom}</h3>
+                            <div class="clickArea">
+                              <img src="images/option.svg" />
+                            </div>    
+                         </div>
+                        <table>
+                            <tr>
+                                <td>Prix</td>
+                                <td>${products[i].prix} ${devise}</td>
+                            </tr>
+                            <tr>
+                                <td>Fournisseur</td>
+                                <td>${products[i].fournisseur}</td>
+                            </tr>
+                            <tr>
+                                <td>Marque</td>
+                                <td>${products[i].marque}</td>
+                            </tr>
+                            <tr>
+                                <td>Quantite</td>
+                                <td>${products[i].quantite}</td>
+                            </tr>
+                            <tr>
+                                <td>Ajouter le</td>
+                                <td>${products[i].addAt}</td>
+                            </tr>
+                            <tr>
+                                <td>Modifier le</td>
+                                <td>${products[i].modifiedAt}</td>
+                            </tr>
+                        </table>
+
+                       
+                    </div>
+                    `;
+
+          exportProducts.innerHTML += `
+                    <div class="productItem">
+                        <h3>${products[i].nom}</h3>
+                        <table>
+                            <tr>
+                                <td>Prix</td>
+                                <td>${products[i].prix} ${devise}</td>
+                            </tr>
+                            <tr>
+                                <td>Fournisseur</td>
+                                <td>${products[i].fournisseur}</td>
+                            </tr>
+                            <tr>
+                                <td>Marque</td>
+                                <td>${products[i].marque}</td>
+                            </tr>
+                            <tr>
+                                <td>Quantite</td>
+                                <td>${products[i].quantite}</td>
+                            </tr>
+                            <tr>
+                                <td>Ajouter le</td>
+                                <td>${products[i].addAt}</td>
+                            </tr>
+                            <tr>
+                                <td>Modifier le</td>
+                                <td>${products[i].modifiedAt}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    `;
+        }
+      }
+
+      renderProduct();
+      let EditProductElement = document.querySelector("#EditProduct");
+      let nomEditInput = document.querySelector("#nomEditInput");
+      let prixEditInput = document.querySelector("#prixEditInput");
+      let fournisseurEditInput = document.querySelector(
+        "#fournisseurEditInput"
+      );
+      let fournisseurMarqueEdit = document.querySelector(
+        "#fournisseurMarqueEdit"
+      );
+      let productIdToEdit = 0;
+
+      function editProduct(event) {
+        let id = event.target.id;
+        productIdToEdit = id;
+        EditProductElement.classList.remove("inactive");
+        for (let i = 0; i <= products.length - 1; i++) {
+          if (products[i].id == id) {
+            nomEditInput.value = products[i].nom;
+            prixEditInput.value = products[i].prix;
+            fournisseurEditInput.value = products[i].fournisseur;
+            fournisseurMarqueEdit.value = products[i].marque;
+          }
+        }
+
+        renderProduct();
+      }
+
+      function deleteProduct(event) {
+        if (confirm("Voulez vous vraiment supprimer le produit ?")) {
+          let id = event.target.id;
+          let index = 0;
+          for (let i = 0; i <= products.length - 1; i++) {
+            if (products[i].id == id) {
+              index = i;
+            }
+          }
+          products.splice(index, 1);
+          saveToDB();
+          renderProduct();
+        }
+      }
+
+      function editProductSave() {
+        let id = productIdToEdit;
+
+        if (nomEditInput.value.trim().length == 0) {
+          Afro.show_negative_message("Nom invalide");
+          return;
+        }
+        if (prixEditInput <= 0) {
+          Afro.show_negative_message("Prix invalide!");
+          return;
+        }
+        if (fournisseurEditInput.value.trim().length == 0) {
+          Afro.show_negative_message("Fournisseur invalide!");
+          return;
+        }
+        for (let i = 0; i <= products.length - 1; i++) {
+          if (products[i].id == id) {
+            products[i].nom = nomEditInput.value.trim();
+            products[i].prix = prixEditInput.value.trim();
+            products[i].marque = fournisseurMarqueEdit.value.trim();
+            products[i].fournisseur = fournisseurEditInput.value.trim();
+            let date = new Date();
+            products[i].modifiedAt = formatDate(date);
+          }
+        }
+        renderProduct();
+        closeEditProduct();
+        saveToDB();
+      }
+
+      function closeEditProduct() {
+        EditProductElement.classList.add("inactive");
+      }
+
+      function incrementProduct(event) {
+        let id = event.target.id;
+        let index = -1;
+        for (let i = 0; i <= products.length - 1; i++) {
+          if (products[i].id == id) {
+            index = i;
+            products[i].quantite++;
+            localStorage.setItem("currentProductIndex", `${i}`);
+          }
+        }
+        // saveToDB();
+        // renderProduct();
+        // addToHistoryAjout(products[index]);
+      }
+
+      function decrementProduct(event) {
+        let id = event.target.id;
+        let index = -1;
+        for (let i = 0; i <= products.length - 1; i++) {
+          if (products[i].id == id) {
+            index = i;
+            localStorage.setItem("currentProductIndex", `${i}`);
+            if (products[i].quantite == 0) {
+              break;
+            }
+            products[i].quantite--;
+          }
+        }
+        // saveToDB();
+        // renderProduct();
+        // addToHistoryRetrait(products[index]);
+      }
+
+      function addToHistoryAjout(produit) {
+        let date = new Date();
+        let today = getToday();
+        let fullDate = formatDate(date);
+        produit.at = today;
+        produit.fullDate = fullDate;
+        historyAjout.unshift(produit);
+        saveHistoryAjoutToDB();
+      }
+
+      function addToHistoryRetrait(produit) {
+        let date = new Date();
+        let today = getToday();
+        let fullDate = formatDate(date);
+        produit.at = today;
+        produit.fullDate = fullDate;
+        historyRetrait.unshift(produit);
+        saveHistoryRetraitToDB();
+      }
+
+      function getToday() {
+        let date = new Date();
+        let render = date.toLocaleString("fr-FR", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+        return render;
+      }
+
+      function exportAsJSON() {
+        let date = new Date();
+        let dateStr = formatDate(date);
+        let arr = dateStr.split(" ");
+        dateStr = arr.join("_");
+        var dataStr =
+          "data:text/json;charset=utf-8," +
+          encodeURIComponent(JSON.stringify(products));
+        var aNode = document.createElement("a");
+        aNode.setAttribute("href", dataStr);
+        aNode.setAttribute("download", "Amon" + dateStr + ".json");
+        document.body.appendChild(aNode);
+        aNode.click();
+        aNode.remove();
+      }
+    </script>
+    <script src="scripts/history.js"></script>
+    <script src="scripts/productStock.js"></script>
+    <script src="scripts/productVente.js"></script>
+    <script src="scripts/stat.js"></script>
+    <script src="scripts/bienvenue.js"></script>
+    <script src="scripts/mobileMenu.js"></script>
+    <script src="scripts/startUp.js"></script>
+    <script src="scripts/totalMoneyToEarn.js"></script>
+  </body>
+</html>

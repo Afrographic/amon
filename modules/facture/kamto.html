@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kamto</title>
+    <script src="assets/libs/jsstore.js"></script>
+    <script src="assets/libs/jsstore.worker.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="assets/libs/jspdf.umd.min.js"></script>
+    <script src="assets/libs/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+    <link rel="stylesheet" href="styles/buttons.css" />
+    <link rel="stylesheet" href="styles/ankh_notif.css" />
+    <link rel="icon" href="assets/images/logo_symbol.svg" />
+    <style>
+      * {
+        font-family: arial;
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 400px;
+        padding: 32px;
+        margin-left: auto;
+        margin-right: auto;
+        transition: 0.25s;
+      }
+
+      .container_add {
+        max-width: 700px;
+        padding: 32px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .formItem .label {
+        font-size: 12px;
+      }
+
+      .formItem {
+        border: 1px solid #d1d1d1;
+        border-radius: 4px;
+        padding: 8px;
+        position: relative;
+      }
+
+      .formItem input {
+        outline: none;
+        border: none;
+        width: 100%;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex-direction: column;
+        margin-bottom: 16px;
+      }
+
+      #actualLogo {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background-color: grey;
+        background-position: center;
+        background-size: cover;
+      }
+
+      #factureLogo {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: grey;
+        background-position: center;
+        background-size: cover;
+      }
+
+      #SupportLogo {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background-color: grey;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .inactive {
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        height: 0;
+        overflow: hidden;
+      }
+
+      .registerData {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 16px;
+      }
+
+      td {
+        padding: 16px;
+      }
+
+      table tr:first-child {
+      }
+
+      table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+      }
+
+      .inputValues {
+        display: flex;
+        gap: 8px;
+      }
+
+      .addItem {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .config {
+        position: fixed;
+        top: 32px;
+        right: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .config button {
+        width: 100%;
+      }
+
+      .factureModele1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        color: #dbdbdb;
+        font-size: 12px;
+        transition: 0.5s;
+        z-index: 5;
+      }
+
+      .containerFacture {
+        max-width: 800px;
+        padding: 16px;
+        margin-left: auto;
+        margin-right: auto;
+
+        max-height: 100vh;
+        overflow: auto;
+      }
+
+      .header {
+        background-color: #2a2a2a;
+        padding: 32px 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+      }
+
+      .column {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .g16 {
+        gap: 16px;
+      }
+
+      .g8 {
+        gap: 8px;
+      }
+
+      .invoice {
+        font-size: 24px;
+        font-weight: bold;
+        padding: 16px;
+        border-top-right-radius: 16px;
+        border-top-left-radius: 16px;
+      }
+
+      .gradient {
+        background-image: linear-gradient(45deg, #eeb500, red);
+        transition: 0.25s;
+      }
+
+      .contentFacture {
+        padding: 32px 64px;
+        background-color: #fff;
+        color: #626262;
+      }
+
+      .factureTable {
+        margin-top: 32px;
+        margin-bottom: 32px;
+      }
+
+      .footerGraphix {
+        height: 18px;
+        width: 100%;
+      }
+
+      .firstPart {
+        background-color: #262626;
+        flex: 2;
+        height: 100%;
+      }
+
+      .lastPart {
+        flex: 1;
+        height: 100%;
+      }
+
+      textarea {
+        border: none;
+        outline: none;
+        width: 100%;
+        min-height: 100px;
+        resize: none;
+        line-height: 1.5em;
+        margin-top: 8px;
+      }
+
+      tbody tr td:nth-child(4) {
+        text-align: center;
+      }
+
+      .supportDev {
+        position: fixed;
+        top: 32px;
+        left: 32px;
+        width: 350px;
+        border-radius: 16px;
+        border: 1px solid #d4d4d4;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.4em;
+        background-color: #fff;
+        align-items: center;
+        transition: 0.25s;
+        z-index: 8;
+      }
+
+      .printFactureBtns {
+        position: fixed;
+        top: 32px;
+        right: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 400;
+      }
+
+      .tac {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Error box -->
+    <div
+      class="info negative"
+      id="negative"
+      style="
+        border-left: 10px solid #f70808;
+        box-shadow: -1px 8px 20px 6px #5252521c;
+        width: 80vw;
+        max-width: 500px;
+      "
+      onclick="this.classList.remove('info_visible')"
+    >
+      <img src="assets/images/error_msg.svg" alt="" width="25px" />
+      <div class="column f1">
+        <div class="tal" id="content" style="color: grey; font-size: 12px">
+          Message
+        </div>
+      </div>
+    </div>
+    <!-- End error box -->
+    <!-- StartUp -->
+    <div class="startUp">
+      <div></div>
+      <div class="kamtoLogoName">
+        <img src="assets/images/kamto.svg" alt="" width="48px" />
+        <div>Kamto</div>
+      </div>
+      <div class="startUpAfro">
+        <img src="assets/images/logo.svg" alt="" width="24px" />
+        <div style="font-size: 14px">Afrographix studio</div>
+      </div>
+    </div>
+    <!-- End Startup -->
+    <!-- Historique view -->
+    <div class="historiqueView historiqueViewInactive">
+      <div class="headerCLient">
+        <h3 style="margin: 0; padding: 0">Historique</h3>
+        <img
+          src="assets/images/close.svg"
+          alt=""
+          width="20px"
+          onclick="hideHistory()"
+        />
+      </div>
+      <hr />
+      <div class="historyContainer">
+        <!-- <div class="historyItem">
+          <div class="date">13 Janvier 2025</div>
+          <div class="facturesClients">
+            <div class="clientHistory">
+              <img src="assets/images/invoice.svg" alt="" width="15px" />
+              <div>Nanfack Moise</div>
+            </div>
+            <div class="clientHistory">
+              <img src="assets/images/invoice.svg" alt="" width="15px" />
+              <div>Nanfack Moise</div>
+            </div>
+            <div class="clientHistory">
+              <img src="assets/images/invoice.svg" alt="" width="15px" />
+              <div>Nanfack Moise</div>
+            </div>
+          </div>
+        </div>
+        <div class="historyItem">
+          <div class="date">12 Janvier 2025</div>
+          <div class="facturesClients">
+            <div class="clientHistory">
+              <img src="assets/images/invoice.svg" alt="" width="15px" />
+              <div>Nanfack Moise</div>
+            </div>
+            <div class="clientHistory">
+              <img src="assets/images/invoice.svg" alt="" width="15px" />
+              <div>Nanfack Moise</div>
+            </div>
+            <div class="clientHistory">
+              <img src="assets/images/invoice.svg" alt="" width="15px" />
+              <div>Nanfack Moise</div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <!-- End historique view -->
+    <!-- Mes articles view -->
+    <div class="mesArticlesView mesArticlesViewInactive">
+      <div class="headerCLient">
+        <h3 style="margin: 0; padding: 0">Mes articles</h3>
+        <img
+          src="assets/images/close.svg"
+          alt=""
+          width="20px"
+          onclick="hideArticleView()"
+        />
+      </div>
+      <hr />
+      <div class="mesClientsContainer">
+        <div class="addArticle">
+          <div class="formItem">
+            <div class="label">Nom de l'article</div>
+            <input
+              type="text"
+              placeholder="Nom de l'article"
+              id="nomArticleAdd"
+            />
+          </div>
+          <div class="formItem">
+            <div class="label">Prix minimale</div>
+            <input
+              type="number"
+              onkeyup="addWithEnterArticle(event)"
+              placeholder="Prix minimale"
+              id="prixMinimaleAdd"
+            />
+          </div>
+          <button class="secondary_btn" onclick="addArticle()">
+            Ajouter l'article
+          </button>
+        </div>
+        <div id="ArticlesListViewEmpty" class="inactive">
+          <div class="empty">
+            <img src="assets/images/empty.svg" alt="" width="64px" />
+            <div>Aucun article enregistrer pour l'instant</div>
+          </div>
+        </div>
+        <div class="MesArticlesList">
+          <div class="parentArticleItem">
+            <div class="mesArticlesItem">
+              <img src="assets/images/articles.svg" alt="" width="24px" />
+              <div>
+                <div>Design de logo</div>
+                <div class="price">250 000 XAF</div>
+              </div>
+            </div>
+            <div class="editDeleteBtn">
+              <img src="assets/images/edit.svg" alt="" width="20px" />
+              <img src="assets/images/delete.svg" alt="" width="15px" />
+            </div>
+          </div>
+          <div class="parentArticleItem">
+            <div class="mesArticlesItem">
+              <img src="assets/images/articles.svg" alt="" width="24px" />
+              <div>
+                <div>Flyer reseaux sociaux</div>
+                <div class="price">25 000 XAF</div>
+              </div>
+            </div>
+            <div class="editDeleteBtn">
+              <img src="assets/images/edit.svg" alt="" width="20px" />
+              <img src="assets/images/delete.svg" alt="" width="15px" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin mes articles view -->
+    <!-- Mes clients view -->
+    <div class="mesClientsView mesClientsViewInactive">
+      <div class="headerCLient">
+        <h3 style="margin: 0; padding: 0">Mes clients</h3>
+        <img
+          src="assets/images/close.svg"
+          alt=""
+          width="20px"
+          onclick="hideClientView()"
+        />
+      </div>
+      <hr />
+      <div class="clients">
+        <div class="AddNewClient">
+          <div class="formItem">
+            <div class="label">Nom du client</div>
+            <input
+              type="text"
+              placeholder="Nom du client"
+              id="nomClientListeInput"
+              onkeyup="enterAddNewClient(event)"
+            />
+          </div>
+          <div class="addBtnClient" onclick="addNewClient()">
+            <img
+              src="assets/images/add.svg"
+              alt=""
+              width="14px"
+              class="button"
+            />
+          </div>
+        </div>
+
+        <div id="clientListView">
+          <div class="empty">
+            <img src="assets/images/empty.svg" alt="" width="64px" />
+            <div>Aucun clients enregistrer pour l'instant</div>
+          </div>
+          <div class="clientName">
+            <div>Sonfack Moise</div>
+            <img src="assets/images/delete.svg" alt="" width="15px" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin mes clients view -->
+    <!-- Configuration -->
+    <div class="configKamto configKamtoInactive" id="addUserValues">
+      <div class="marginTop32Px">
+        <div class="row g16 aic">
+          <img src="assets/images/kamto.svg" alt="" width="60px" />
+          <h1 style="margin: 0; padding: 0">Kamto</h1>
+        </div>
+
+        <p style="margin: 0; padding: 0; margin-top: 13px">
+          Genere les factures/Devis de tes clients sans aucun stress
+        </p>
+        <h3>Configuration</h3>
+      </div>
+
+      <div class="form">
+        <div class="logo" style="margin-top: 32px">
+          <img
+            src="assets/images/tempLogo.svg"
+            alt=""
+            width="64px"
+            id="tempLogo"
+          />
+          <div id="actualLogo" class="inactive"></div>
+          <button onclick="import_logo()" class="secondary_btn">
+            <img src="assets/images/img.svg" width="20px" alt="" />
+            Importer votre logo
+          </button>
+          <input
+            type="file"
+            hidden
+            onchange="get_logo(event)"
+            accept="image/*"
+            id="getLogoInput"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Nom de votre entreprise</div>
+          <input
+            type="text"
+            placeholder="Nom de votre entreprise"
+            id="nomEntreprise"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Votre nom complet</div>
+          <input type="text" placeholder="Votre nom complet" id="nomComplet" />
+        </div>
+        <div class="formItem">
+          <div class="label">Votre poste</div>
+          <input type="text" placeholder="Votre poste" id="votrePoste" />
+        </div>
+        <div class="formItem">
+          <div class="label">Numero de telephone</div>
+          <input
+            type="text"
+            placeholder="Numero de telephone"
+            id="numeroTelephone"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Email</div>
+          <input type="text" placeholder="Email" id="email" />
+        </div>
+        <div class="formItem">
+          <div class="label">Adresse</div>
+          <input type="text" placeholder="Adresse" id="adresse" />
+        </div>
+        <div class="formItem">
+          <div class="label">Monnaie</div>
+          <input type="text" placeholder="Ex:FCFA,$,euro..." id="monnaie" />
+        </div>
+        <div style="margin-top: 16px">
+          <button
+            onclick="saveConfig()"
+            class="primary_btn"
+            style="width: 100%"
+          >
+            Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Fin de la configuration -->
+    <!-- Ajouter une nouvelle facture -->
+    <div class="container_add inactive" id="addNewInvoice">
+      <!-- Supporter le develloppement -->
+      <div class="supportDev supportDevMobileInactive">
+        <img
+          src="assets/images/logo_symbol.svg"
+          width="64px"
+          alt=""
+          style="margin-bottom: 20px; width: 24px"
+        />
+        <div id="SupportLogo" style="margin-bottom: 16px">
+          <img
+            src="assets/images/tempLogo.svg"
+            alt=""
+            width="64px"
+            id="tempLogo"
+          />
+        </div>
+        <div class="tac" id="initCompanyName">Afrographix Studio</div>
+        <hr style="width: 100%; opacity: 0.3; margin-top: 12px" />
+        <p class="tac" style="color: grey" id="totalFactures">
+          456 Factures generees
+        </p>
+
+        <button
+          style="width: 100%"
+          class="tertiaryBtn stockBtn"
+          onclick="backToGestionStock()"
+        >
+          <img src="../../images/amon.svg" alt="" width="15px" />
+          Gestion de stock
+        </button>
+
+        <div class="MobileMenu">
+          <button
+            onclick="showArticleView();hideMobileMenu()"
+            class="tertiaryBtn"
+          >
+            <img src="assets/images/articles.svg" alt="" width="15px" />
+            Mes articles
+          </button>
+          <button
+            onclick="showClientView();hideMobileMenu()"
+            class="tertiaryBtn"
+          >
+            <img src="assets/images/clients.svg" alt="" width="15px" />
+            Mes clients
+          </button>
+          <button onclick="showHistory();hideMobileMenu()" class="tertiaryBtn">
+            <img src="assets/images/history.svg" alt="" width="15px" />
+            Historique
+          </button>
+          <button onclick="showConfig();hideMobileMenu()" class="tertiaryBtn">
+            <img src="assets/images/settings.svg" alt="" width="15px" />
+            Configuration
+          </button>
+          <button class="tertiaryBtn" onclick="hideMobileMenu()">
+            <img src="assets/images/close.svg" alt="" width="15px" />
+            Fermer
+          </button>
+        </div>
+        <p class="tac">
+          Supporte le develloppement par Orange money -
+          <strong>697830071</strong> - <strong>Tesse brunel</strong>
+        </p>
+        <hr />
+        <p class="tac" style="font-size: 11px; color: rgb(212, 212, 212)">
+          Afrographix Studio &copy; 2025
+        </p>
+      </div>
+      <!-- End suppport -->
+      <!-- App Config -->
+      <div class="config">
+        <button
+          onclick="showArticleView();hideMobileMenu()"
+          class="tertiaryBtn"
+        >
+          <img src="assets/images/articles.svg" alt="" width="15px" />
+          Mes articles
+        </button>
+        <button onclick="showClientView();" class="tertiaryBtn">
+          <img src="assets/images/clients.svg" alt="" width="15px" />
+          Mes clients
+        </button>
+        <button onclick="showHistory();" class="tertiaryBtn">
+          <img src="assets/images/history.svg" alt="" width="15px" />
+          Historique
+        </button>
+        <button onclick="showConfig();" class="tertiaryBtn">
+          <img src="assets/images/settings.svg" alt="" width="15px" />
+          Configuration
+        </button>
+      </div>
+      <!-- End App Config -->
+
+      <!-- Print facture -->
+      <div class="printFactureBtns inactive">
+        <button onclick="printFacture()" class="primary_btn">Exporter</button>
+        <button onclick="closePreviewFacture()" class="secondary_btn">
+          Fermer
+        </button>
+      </div>
+      <!-- End print facture -->
+      <img
+        src="assets/images/kamto.png"
+        alt=""
+        width="100%"
+        style="border-top-left-radius: 16px; border-top-right-radius: 16px"
+        class="ndop"
+      />
+      <div class="newFactureContentMobile">
+        <div class="headerMobile">
+          <img
+            src="assets/images/menu.svg"
+            alt=""
+            width="20px"
+            onclick="toggleMobileMenu()"
+          />
+          <img src="assets/images/logo_symbol.svg" alt="" width="20px" />
+          <img
+            src="assets/images/history.svg"
+            alt=""
+            width="20px"
+            onclick="showHistory()"
+          />
+        </div>
+        <h1>Kamto</h1>
+        <h2>Generer une nouvelle facture/Devis</h2>
+        <p>Veuillez renseigner les informations ci-dessous</p>
+        <div class="pr">
+          <div
+            class="formItem"
+            style="flex: 1; margin-bottom: 16px"
+            onclick="showEasyClientPicker()"
+          >
+            <div class="label">Nom du client</div>
+            <input
+              type="text"
+              placeholder="Nom du client"
+              id="nomClient"
+              onblur="hideEasyClientPicker()"
+              onkeyup="searchClients(event)"
+            />
+          </div>
+          <!-- Noms des clients sauvegarder-->
+          <div class="nomsClients nomsClientsInactive">
+            <div class="mesClientsInput2">
+              <h3 style="margin: 0; padding: 0">Mes clients</h3>
+              <div>
+                <button onclick="showClientView()" class="secondary_btn">
+                  Ajouter un nouveau client
+                </button>
+              </div>
+            </div>
+            <hr />
+            <div class="nomClientsList">
+              <div class="name">Tesse brunel</div>
+              <div class="name">Ndonga Isept Dannielle</div>
+              <div class="name">Nguemo Yves</div>
+            </div>
+          </div>
+        </div>
+
+        <table id="renderProducts" style="font-size: 13px" class="noMobile">
+          <tr style="color: #e9e9e9; background-color: #262626">
+            <td>#</td>
+            <td>Article</td>
+            <td>Prix</td>
+            <td>Quantite</td>
+            <td>Total</td>
+            <td>Options</td>
+          </tr>
+          <tbody id="renderrrrrrr"></tbody>
+        </table>
+        <!-- Mobile products preview -->
+        <div class="mobileProductsPreview">
+          <!-- <div class="mobileProductItem">
+            <div>Modelisation 3D</div>
+            <table>
+              <tr>
+                <td>Prix</td>
+                <td>6500 XAF</td>
+              </tr>
+              <tr>
+                <td>Quantite</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>13000 XAF</td>
+              </tr>
+            </table>
+            <div class="row g16">
+              <button style="flex:1;justify-content: center;" class="tertiaryBtn">
+                <img src="assets/images/edit.svg" alt="" width="20px">
+                Editer
+              </button>
+              <button style="flex:1;justify-content: center;" class="tertiaryBtn">
+                <img src="assets/images/delete.svg" alt="" width="12px">
+                Supprimer
+              </button>
+            </div>
+          </div> -->
+        </div>
+        <!-- End Mobile products preview -->
+        <div class="registerData">
+          <div class="inputValues">
+            <div class="formItem" style="flex: 1">
+              <div class="label">Article</div>
+              <input
+                type="text"
+                placeholder="Article"
+                id="tache"
+                onclick="showSavedArticles()"
+                onblur="hideSavedArticles()"
+                onkeyup="filterSavedArticle(event)"
+              />
+
+              <!-- Articles sauvegardes -->
+              <div class="savedArticles savedArticlesInactive">
+                <div class="headerSavedArticle">
+                  <button
+                    style="width: 100%"
+                    class="secondary_btn"
+                    onclick="showArticleView()"
+                  >
+                    Ajouter un article predefini
+                  </button>
+                </div>
+                <div id="savedArticles">
+                  <div class="articleItem">
+                    <img src="assets/images/articles.svg" width="15px" alt="" />
+                    <div>Modelisation 3D</div>
+                  </div>
+                  <div class="articleItem">
+                    <img src="assets/images/articles.svg" width="15px" alt="" />
+                    <div>Motion Design 15s</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="formItem">
+              <div class="label">Prix</div>
+              <input type="number" placeholder="Prix" id="prix" />
+            </div>
+            <div class="formItem" style="width: 106px">
+              <div class="label">Quantite</div>
+              <input
+                type="number"
+                placeholder="Quantite"
+                id="quantite"
+                value="1"
+                onkeyup="addByEnter(event)"
+              />
+            </div>
+          </div>
+
+          <div class="addItem">
+            <button onclick="add()" class="secondary_btn">
+              <img src="assets/images/add_1.svg" alt="" width="20px" />
+              Ajouter
+            </button>
+          </div>
+        </div>
+        <div class="formItem" style="flex: 1; margin-top: 16px">
+          <div class="label">Note</div>
+          <textarea
+            name=""
+            id="note"
+            placeholder="Note a l'avis de votre client"
+            id="NoteForClient"
+          ></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end">
+          <button
+            onclick="genererFacture()"
+            style="margin-top: 16px"
+            class="primary_btn genererFacture"
+          >
+            <img src="assets/images/invoice_white.svg" alt="" width="20px" />
+            Generer la facture
+          </button>
+        </div>
+        <p
+          class="tac mobileSignature"
+          style="font-size: 11px; color: rgb(212, 212, 212)"
+        >
+          Afrographix Studio &copy; 2025
+        </p>
+      </div>
+    </div>
+
+    <!-- Facture modele 1 -->
+    <div class="factureModele1 inactive" id="FactureModele">
+      <div class="containerFacture">
+        <img
+          src="assets/images/kamto.png"
+          alt=""
+          width="100%"
+          class="ndopFacturePreview"
+          style="
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            position: relative;
+            bottom: -5px;
+          "
+        />
+        <div 
+          class="row g16 companyFactureForPrint"
+          style="background-color: #eaeaea; padding: 0 16px"
+        >
+          <div id="factureLogo">
+            <img src="assets/images/tempLogo.svg" alt="">
+          </div>
+          <h2 id="nameCompanyFacture" style="color: #262626">
+            Afrographix Studio
+          </h2>
+        </div>
+
+        <div class="header">
+          <div>
+            <div class="invoice gradient">Facture</div>
+          </div>
+          <div style="font-size: 19px; opacity: 0.4" id="dateFacture">
+            16 Janvier 2025
+          </div>
+          <div class="column g8">
+            <div class="row g16 iconsFacture">
+              <svg width="16px" viewBox="0 0 14.29 18.08">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: url(#Dégradé_sans_nom_18);
+                    }
+                  </style>
+                  <linearGradient
+                    id="Dégradé_sans_nom_18"
+                    y1="9.04"
+                    x2="14.29"
+                    y2="9.04"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop offset="0" stop-color="#e9ca00" />
+                    <stop offset="1" stop-color="#ff6f00" />
+                  </linearGradient>
+                </defs>
+                <title>location</title>
+                <g id="Calque_2" data-name="Calque 2">
+                  <g id="Calque_1-2" data-name="Calque 1">
+                    <path
+                      class="cls-1"
+                      d="M2.54,1.64A9.05,9.05,0,0,1,6.63,0h.82a6.78,6.78,0,0,1,3.88,1.42,7.66,7.66,0,0,1,3,5.83,11,11,0,0,1-1.12,4.18q-3.51,6-6,6.65A5.68,5.68,0,0,1,5.1,16.85Q0,11.2,0,7.77V7Q0,4.4,2.54,1.64ZM6.23,3.06a2.71,2.71,0,0,1,.7,1.33V4.7c0,.76-.51,1.27-1.52,1.53H5c-.56,0-1-.41-1.43-1.23C3.3,5,3,5.75,2.74,7.25l.32,1.54q1.61,2.64,3.57,2.64H7.75a3.92,3.92,0,0,0,.92-.2q2.76-1.44,2.76-3.88a7.85,7.85,0,0,0-.1-1.12C10.51,4,9.14,2.86,7.25,2.86A3.3,3.3,0,0,0,6.23,3.06Z"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <!-- <img src="assets/images/location.svg" alt="" width="16px"> -->
+              <div id="factureAdresse">Fongo - Tongo Menah</div>
+            </div>
+            <div class="row g16 iconsFacture">
+              <svg width="16px" viewBox="0 0 21.56 14.74">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: url(#Dégradé_sans_nom_18);
+                    }
+                  </style>
+                  <linearGradient
+                    id="Dégradé_sans_nom_18"
+                    y1="7.37"
+                    x2="21.56"
+                    y2="7.37"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop offset="0" stop-color="#e9ca00" />
+                    <stop offset="1" stop-color="#ff6f00" />
+                  </linearGradient>
+                </defs>
+                <title>email</title>
+                <g id="Calque_2" data-name="Calque 2">
+                  <g id="Calque_1-2" data-name="Calque 1">
+                    <path
+                      class="cls-1"
+                      d="M.68,0h20.2a1.41,1.41,0,0,1,.68,1.18v12.4c0,.66-.38,1.05-1.16,1.16H1.16C.49,14.74.1,14.35,0,13.58V1A1.23,1.23,0,0,1,.68,0ZM6.84,6.61,1,13.47v.23q3.32-3,6.5-6.39l3.25,3q3-2.8,3-3.13h.12l6.49,6.38v-.24L14.72,6.61c2-2.05,3.66-3.71,5.11-5l-.13-.22q-4,3.39-8.91,7.4C10,8.22,9.15,7.57,8.34,6.86Q2.49,1.91,1.39,1.18H1.27C4.38,4.09,6.23,5.9,6.84,6.61Z"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <div id="factureEmail">bruneltesse@gmail.com</div>
+            </div>
+            <div class="row g16 iconsFacture">
+              <svg width="16px" viewBox="0 0 15.94 17.31">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: url(#Dégradé_sans_nom_18);
+                    }
+                  </style>
+                  <linearGradient
+                    id="Dégradé_sans_nom_18"
+                    y1="8.65"
+                    x2="15.94"
+                    y2="8.65"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop offset="0" stop-color="#e9ca00" />
+                    <stop offset="1" stop-color="#ff6f00" />
+                  </linearGradient>
+                </defs>
+                <title>phone</title>
+                <g id="Calque_2" data-name="Calque 2">
+                  <g id="Calque_1-2" data-name="Calque 1">
+                    <path
+                      class="cls-1"
+                      d="M.25,2.89Q2.89,0,3.7,0h.46q.42.29,2.07,4.5c0,.4-.49,1-1.48,1.84L5.09,7.5c2.08,3.16,3.66,4.73,4.73,4.73A9.55,9.55,0,0,1,11.66,11a3.71,3.71,0,0,1,1.73,1c1.7,1,2.55,1.72,2.55,2.18q-.48,1.13-3.34,3.12h-.71q-3.48,0-8.53-5.65A16.49,16.49,0,0,1,0,4.27a.77.77,0,0,1,.13-.34L0,3.7Z"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <div id="facturePhone">+237697830071</div>
+            </div>
+          </div>
+        </div>
+        <div class="contentFacture">
+          <p class="factureNumeroDeSerie">#1256</p>
+          <h2 id="factureNomClient">Cher Armelle Mbeing</h2>
+          <p class="veuillez">Veuillez consulter le tableau ci-dessous</p>
+          <table id="renderProducts" class="factureTable">
+            <tr style="color: #e9e9e9; background-color: #262626">
+              <td>#</td>
+              <td>Article</td>
+              <td>Prix</td>
+              <td>Quantite</td>
+              <td>Total</td>
+            </tr>
+            <tbody id="factureTableauRender">
+              <tr>
+                <td>1</td>
+                <td>Modelisation de logo 3D</td>
+                <td>3000 F</td>
+                <td>3</td>
+                <td>9000 F</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Design de flyer</td>
+                <td>15 000 F</td>
+                <td>3</td>
+                <td>45 000 F</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Motion design 2D</td>
+                <td>250 000 F</td>
+                <td>1</td>
+                <td>250 000 F</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Developpement d'un logiciel de gestion</td>
+                <td>800 000 F</td>
+                <td>1</td>
+                <td>800 000 F</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div
+            style="
+              display: flex;
+              align-items: flex-start;
+              color: white;
+              margin-top: 32px;
+            "
+            class="totalFacturePrinter"
+          >
+            <div class="invoice gradient">
+              <div style="font-size: 12px">Total</div>
+              <div id="FactureTotal">850 000 XAF</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 32px" class="ceoInvoice">
+            <h3 style="margin: 0" id="FactureOwner">Tesse Brunel</h3>
+            <p
+              style="padding: 0; margin: 0; margin-top: 16px"
+              id="facturePoseEntreprise"
+            >
+              CEO - CTO Afrographix studio
+            </p>
+          </div>
+
+          <div class="row jcsb" style="align-items: flex-end">
+            <div style="margin-top: 32px" class="NoteBLockFacture">
+              <h3 style="margin: 0">Note</h3>
+              <p style="width: 110%; line-height: 1.6em" id="FactureNote">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum,
+                optio voluptatibus. Natus error omnis laudantium molestiae iusto
+                illo ab nobis, quo est, voluptatem laboriosam excepturi?
+                Dignissimos itaque facere nisi sapiente, quod architecto, quas
+                similique animi voluptate cupiditate doloribus. Vero nesciunt
+                dolor consectetur et! Recusandae, necessitatibus neque
+                voluptatem iusto aliquid minus, libero eum reprehenderit, minima
+                magnam aperiam. Error eos accusantium minus, eveniet repudiandae
+                laudantium pariatur necessitatibus, eligendi quia dolores
+                voluptatem dicta earum illo asperiores praesentium distinctio
+                aliquam? Non consequatur ducimus et a molestias, exercitationem
+                ex. Eveniet voluptatem quo quae ducimus aut nostrum, soluta est
+                nulla accusamus consequuntur.
+              </p>
+            </div>
+            <!-- <div class="row aic g16">
+              <div class="signature">Nous</div>
+              <div class="signature">Vous</div>
+            </div> -->
+          </div>
+        </div>
+        <div class="footerGraphix row">
+          <div class="firstPart"></div>
+          <div class="lastPart gradient"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Facture modele 1 -->
+
+    <!-- Editer la charte graphique -->
+    <div class="CharteGraphique inactive">
+      <div class="row">
+        <div class="colorPreview primary" onclick="openPrimaryPicker()"></div>
+        <input
+          type="color"
+          onchange="getPrimaryColor(event)"
+          id="primaryPicker"
+        />
+        <div
+          class="colorPreview secondary"
+          onclick="openSecondaryPicker()"
+        ></div>
+        <input
+          type="color"
+          onchange="getSecondaryColor(event)"
+          id="secondaryPicker"
+        />
+      </div>
+    </div>
+    <!-- Fin edition de la charte graphique -->
+    <!-- Afrographix Signature -->
+
+    <script>
+      function backToGestionStock() {
+        window.history.back();
+      }
+      //Generer la facture
+      function genererFacture() {
+        let nomClient = document.querySelector("#nomClient");
+        let NoteForClient = document.querySelector("#NoteForClient");
+        //Show numero de serie
+        let factureNumeroDeSerie = document.querySelector(
+          ".factureNumeroDeSerie"
+        );
+        factureNumeroDeSerie.innerHTML = `# ${factures.length + 1}`;
+        localStorage.setItem("numeroSerie", `${factures.length + 1}`);
+
+        if (nomClient.value.trim().length == 0) {
+          HelperFunction.show_negative_message("Nom du client invalide!");
+          return;
+        }
+
+        if (produits.length == 0) {
+          HelperFunction.show_negative_message("Taches invalide!");
+          return;
+        }
+
+        //show charte graphique
+        let CharteGraphique = document.querySelector(".CharteGraphique");
+        CharteGraphique.classList.remove("inactive");
+
+        //show facture
+        let factureModele1 = document.querySelector(".factureModele1");
+        factureModele1.classList.remove("inactive");
+
+        if (userInfo.logo != undefined) {
+          //Set Logo on facture
+          let factureLogo = document.querySelector("#factureLogo");
+          factureLogo.innerHTML = "";
+          let logoURL = URL.createObjectURL(userInfo.logo);
+          factureLogo.style.backgroundImage = `url(${logoURL})`;
+        }
+
+        //create img logo element
+        // factureLogo.innerHTML ="";
+        // let logo = document.createElement("img");
+        // logo.src = logoURL;
+        // factureLogo.appendChild(logo);
+
+        //Set name of company
+        let nameCompanyFacture = document.querySelector("#nameCompanyFacture");
+        nameCompanyFacture.innerHTML = `${userInfo.nomEntreprise}`;
+
+        //Set date of facture
+        let dateFacture = document.querySelector("#dateFacture");
+        let date = new Date();
+        let dateFormated = date.toLocaleString("fr-FR", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+        dateFacture.innerHTML = dateFormated;
+
+        //Set facture adresss,email and phone
+        let factureAdresse = document.querySelector("#factureAdresse");
+        let factureEmail = document.querySelector("#factureEmail");
+        let facturePhone = document.querySelector("#facturePhone");
+        factureAdresse.innerHTML = `${userInfo.adresse}`;
+        factureEmail.innerHTML = `${userInfo.email}`;
+        facturePhone.innerHTML = `${userInfo.numeroTelephone}`;
+
+        //set Nom client
+        let factureNomClient = document.querySelector("#factureNomClient");
+        factureNomClient.innerHTML = `Cher ${nomClient.value}`;
+        localStorage.setItem("client", nomClient.value);
+
+        //Set tableau des factures
+        let factureTableauRender = document.querySelector(
+          "#factureTableauRender"
+        );
+        factureTableauRender.innerHTML = "";
+        let total = 0;
+        for (let i = 0; i <= produits.length - 1; i++) {
+          factureTableauRender.innerHTML += `
+                    <tr>
+                         <td>${i + 1}</td>
+                         <td>${produits[i].tache}</td>
+                         <td>${produits[i].prix} ${userInfo.monnaie}</td>
+                         <td>${produits[i].quantite}</td>
+                         <td>${produits[i].prix * produits[i].quantite} ${
+            userInfo.monnaie
+          }</td>
+                    </tr>
+                `;
+          total += produits[i].prix * produits[i].quantite;
+        }
+
+        //Set total
+        let FactureTotal = document.querySelector("#FactureTotal");
+        FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(total)} ${userInfo.monnaie}`;
+
+        //Set proprietaire et poste
+        let FactureOwner = document.querySelector("#FactureOwner");
+        let facturePoseEntreprise = document.querySelector(
+          "#facturePoseEntreprise"
+        );
+        FactureOwner.innerHTML = `${userInfo.nomComplet}`;
+        facturePoseEntreprise.innerHTML = `${userInfo.votrePoste} ${userInfo.nomEntreprise}`;
+
+        //Set note
+        let FactureNote = document.querySelector("#FactureNote");
+        let note = document.querySelector("#note");
+        FactureNote.innerText = note.value;
+
+        //Hide useless elements
+        let supportDev = document.querySelector(".supportDev");
+        let config = document.querySelector(".config");
+        let printFactureBtns = document.querySelector(".printFactureBtns");
+
+        supportDev.classList.add("inactive");
+        config.classList.add("inactive");
+        printFactureBtns.classList.remove("inactive");
+
+        //save facture to history
+        saveFacture({
+          produits: produits,
+          monnaie: userInfo.monnaie,
+          total: total,
+          note: note.value,
+          client: nomClient.value,
+          at: dateFormated,
+          id: factures.length + 1,
+        });
+
+        //update note value
+        localStorage.setItem("note", note.value);
+
+        // Reset fields
+        let mobileProductsPreview = document.querySelector(
+          ".mobileProductsPreview"
+        );
+        let renderProducts = document.querySelector("#renderrrrrrr");
+        nomClient.value = "";
+        renderProducts.innerHTML = "";
+        mobileProductsPreview.innerHTML = "";
+        produits = [];
+
+        //reload History
+        getFactures();
+        let historiqueView = document.querySelector(".historiqueView");
+        historiqueView.classList.add("historiqueViewInactive");
+
+        //hide form to generate facture
+        let container_add = document.querySelector(".newFactureContentMobile");
+        container_add.classList.add("inactive");
+      }
+
+      async function printFacture() {
+        await sleep(350);
+        hidePrinter();
+        printJS();
+        closePreviewFacture();
+      }
+
+      function printJS() {
+        //window.print();
+        //HelperFunction.printWebPage("Loader");
+        HelperFunction.exportImage();
+      }
+
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      function hidePrinter() {
+        let printFactureBtns = document.querySelector(".printFactureBtns");
+        printFactureBtns.classList.add("inactive");
+
+        //hide charte graphique
+        let CharteGraphique = document.querySelector(".CharteGraphique");
+        CharteGraphique.classList.add("inactive");
+
+        //hide form to generate facture
+        let container_add = document.querySelector(".newFactureContentMobile");
+        container_add.classList.remove("inactive");
+      }
+
+      function closePreviewFacture() {
+        let factureModele1 = document.querySelector(".factureModele1");
+        let supportDev = document.querySelector(".supportDev");
+        let config = document.querySelector(".config");
+        let printFactureBtns = document.querySelector(".printFactureBtns");
+        supportDev.classList.remove("inactive");
+        config.classList.remove("inactive");
+        factureModele1.classList.add("inactive");
+        printFactureBtns.classList.add("inactive");
+
+        //hide charte graphique
+        let CharteGraphique = document.querySelector(".CharteGraphique");
+        CharteGraphique.classList.add("inactive");
+
+        //hide form to generate facture
+        let container_add = document.querySelector(".newFactureContentMobile");
+        container_add.classList.remove("inactive");
+      }
+
+      function formatDate(date) {
+        let render = date.toLocaleString("fr-FR", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+        return render;
+      }
+
+      // Init DB
+      let userInfo;
+      let con = new JsStore.Connection();
+      async function init_DB() {
+        await con.initDb(this.get_db_schema());
+        init_data();
+      }
+
+      function get_db_schema() {
+        var data = {
+          name: "KamtoData",
+          columns: {
+            id: {
+              notNull: true,
+              dataType: "string",
+            },
+            userValues: {
+              notNull: true,
+              dataType: "object",
+            },
+            clients: {
+              notNull: true,
+              dataType: "string",
+            },
+            factures: {
+              notNull: true,
+              dataType: "string",
+            },
+          },
+        };
+        var db = {
+          name: "KamtoDB",
+          tables: [data],
+        };
+        return db;
+      }
+
+      async function init_data() {
+        let data = await con.select({
+          from: "KamtoData",
+        });
+
+        if (data.length == 0) {
+          let value = {
+            id: "1",
+            userValues: {},
+            clients: "[]",
+            factures: "[]",
+          };
+          await con.insert({
+            into: "KamtoData",
+            values: [value],
+          });
+
+          addUserValues.classList.remove("configKamtoInactive");
+        } else {
+          //console.log(data[0].userValues.nomComplet);
+          // products = JSON.parse(data[0].products);
+          // renderProduct();
+          userInfo = data[0].userValues;
+          if (data[0].userValues.nomComplet == undefined) {
+            // Add company values
+            addUserValues.classList.remove("configKamtoInactive");
+          } else {
+            // Generer une nouvelles facture
+            let addUserValues = document.querySelector("#addUserValues");
+            let addNewInvoice = document.querySelector("#addNewInvoice");
+            addUserValues.classList.add("configKamtoInactive");
+            addNewInvoice.classList.remove("inactive");
+
+            if (userInfo.logo != undefined) {
+              //init company logo and company name
+              let SupportLogo = document.querySelector("#SupportLogo");
+              let initCompanyName = document.querySelector("#initCompanyName");
+              let url = URL.createObjectURL(userInfo.logo);
+              SupportLogo.style.backgroundImage = `url(${url})`;
+              //Hide oll temp logos
+              const images = document.querySelectorAll("img");
+              const tempLogoImages = Array.from(images).filter(img=>img.src.includes('tempLogo'));
+              for(const item of tempLogoImages){
+                item.style.display = "none";
+              }
+            }
+
+            initCompanyName.innerHTML = `${userInfo.nomEntreprise}`;
+          }
+        }
+      }
+
+      async function saveUserInfoToDB() {
+        await con.update({
+          in: "KamtoData",
+          where: {
+            id: "1",
+          },
+          set: {
+            userValues: userInfo,
+          },
+        });
+      }
+
+      async function getUserInfo() {
+        var datas = await con.select({
+          from: "KamtoData",
+          where: {
+            id: "1",
+          },
+        });
+        console.log(datas);
+      }
+
+      async function initAllData() {
+        await init_DB();
+        // await getProducts();
+      }
+
+      initAllData();
+
+      // End init DB
+
+      let logo = undefined;
+      function import_logo() {
+        let getLogoInput = document.querySelector("#getLogoInput");
+        getLogoInput.click();
+      }
+
+      function get_logo(e) {
+        let actualLogo = document.querySelector("#actualLogo");
+        let tempLogo = document.querySelector("#tempLogo");
+        let SupportLogo = document.querySelector("#SupportLogo");
+
+        let imageFile = e.target.files[0];
+        logo = imageFile;
+        let url = URL.createObjectURL(imageFile);
+        actualLogo.style.backgroundImage = `url(${url})`;
+        SupportLogo.style.backgroundImage = `url(${url})`;
+        actualLogo.classList.remove("inactive");
+        tempLogo.classList.add("inactive");
+      }
+
+      function initConfigBasic() {
+        let amonBoutique = localStorage.getItem("nomBoutique");
+        let amonDevise = localStorage.getItem("amonDevise");
+        let monnaie = document.querySelector("#monnaie");
+        let nomEntreprise = document.querySelector("#nomEntreprise");
+        monnaie.value = amonDevise;
+        nomEntreprise.value = amonBoutique;
+      }
+
+      initConfigBasic();
+
+      function saveConfig() {
+        let adresse = document.querySelector("#adresse");
+        let email = document.querySelector("#email");
+        let numeroTelephone = document.querySelector("#numeroTelephone");
+        let votrePoste = document.querySelector("#votrePoste");
+        let nomComplet = document.querySelector("#nomComplet");
+        let nomEntreprise = document.querySelector("#nomEntreprise");
+        let monnaie = document.querySelector("#monnaie");
+
+        if (nomEntreprise.value.trim().length == 0) {
+          HelperFunction.show_negative_message("Nom de l'entreprise invalide!");
+          return;
+        }
+        if (nomComplet.value.trim().length == 0) {
+          HelperFunction.show_negative_message("Nom invalide!");
+          return;
+        }
+
+        if (votrePoste.value.trim().length == 0) {
+          HelperFunction.show_negative_message("Poste invalide!");
+          return;
+        }
+
+        if (numeroTelephone.value.trim().length == 0) {
+          HelperFunction.show_negative_message("Numero de telephone invalide!");
+          return;
+        }
+
+        if (email.value.trim().length == 0) {
+          HelperFunction.show_negative_message("Email invalide!");
+          return;
+        }
+
+        if (adresse.value.trim().length == 0) {
+          HelperFunction.show_negative_message("Adresse invalide!");
+          return;
+        }
+
+        if (monnaie.value.trim().length == 0) {
+          HelperFunction.show_negative_message(
+            "Monnaie invalide, Ex:FCFA,euro,$"
+          );
+          return;
+        }
+
+        userInfo = {
+          logo: logo,
+          adresse: adresse.value,
+          email: email.value,
+          numeroTelephone: numeroTelephone.value,
+          votrePoste: votrePoste.value,
+          nomComplet: nomComplet.value,
+          nomEntreprise: nomEntreprise.value,
+          monnaie: monnaie.value,
+        };
+
+        saveUserInfoToDB();
+
+        let addUserValues = document.querySelector("#addUserValues");
+        let addNewInvoice = document.querySelector("#addNewInvoice");
+        addUserValues.classList.add("configKamtoInactive");
+        addNewInvoice.classList.remove("inactive");
+
+        let initCompanyName = document.querySelector("#initCompanyName");
+        initCompanyName.innerHTML = nomEntreprise.value;
+      }
+
+      function showConfig() {
+        if (userInfo.logo != undefined) {
+          // Load logo
+          let actualLogo = document.querySelector("#actualLogo");
+          let tempLogo = document.querySelector("#tempLogo");
+          logo = userInfo.logo;
+          let url = URL.createObjectURL(logo);
+          actualLogo.style.backgroundImage = `url(${url})`;
+          actualLogo.classList.remove("inactive");
+          tempLogo.classList.add("inactive");
+          // End load logo
+        }
+
+        let adresse = document.querySelector("#adresse");
+        let email = document.querySelector("#email");
+        let numeroTelephone = document.querySelector("#numeroTelephone");
+        let votrePoste = document.querySelector("#votrePoste");
+        let nomComplet = document.querySelector("#nomComplet");
+        let nomEntreprise = document.querySelector("#nomEntreprise");
+        let monnaie = document.querySelector("#monnaie");
+
+        adresse.value = userInfo.adresse;
+        email.value = userInfo.email;
+        numeroTelephone.value = userInfo.numeroTelephone;
+        votrePoste.value = userInfo.votrePoste;
+        nomComplet.value = userInfo.nomComplet;
+        nomEntreprise.value = userInfo.nomEntreprise;
+        monnaie.value = userInfo.monnaie;
+
+        let addUserValues = document.querySelector("#addUserValues");
+        let addNewInvoice = document.querySelector("#addNewInvoice");
+        addUserValues.classList.remove("configKamtoInactive");
+        addNewInvoice.classList.add("inactive");
+      }
+
+      //Produits a utiliser pour generer la facture
+      let produits = [];
+
+      function addByEnter(e) {
+        if (e.keyCode == 13) {
+          add();
+        }
+      }
+
+      function add() {
+        let tache = document.querySelector("#tache");
+        let prix = document.querySelector("#prix");
+        let quantite = document.querySelector("#quantite");
+
+        if (tache.value.trim().length == 0) {
+          HelperFunction.show_negative_message("Tache invalide!");
+          return;
+        }
+
+        if (prix.value <= 0) {
+          HelperFunction.show_negative_message("Prix invalide!");
+          return;
+        }
+
+        if (quantite.value <= 0) {
+          HelperFunction.show_negative_message("Quantite invalide!");
+          return;
+        }
+
+        produits.push({
+          tache: tache.value.trim(),
+          prix: prix.value,
+          quantite: quantite.value,
+        });
+
+        tache.value = "";
+        prix.value = "";
+        quantite.value = "1";
+        tache.focus();
+
+        renderProduits();
+      }
+
+      function renderProduits() {
+        let mobileProductsPreview = document.querySelector(
+          ".mobileProductsPreview"
+        );
+        let renderProducts = document.querySelector("#renderrrrrrr");
+        renderProducts.innerHTML = "";
+        mobileProductsPreview.innerHTML = "";
+
+        for (let i = 0; i <= produits.length - 1; i++) {
+          // Web preview
+          renderProducts.innerHTML += `
+                    <tr>
+                         <td>${i + 1}</td>
+                         <td>${produits[i].tache}</td>
+                         <td>${produits[i].prix} ${userInfo.monnaie}</td>
+                         <td>${produits[i].quantite}</td>
+                         <td>${produits[i].prix * produits[i].quantite} ${
+            userInfo.monnaie
+          }</td>
+                         <td>
+                            <img src="assets/images/edit.svg" width="25px" class="button" onclick="editProductOnAdd(${i})">
+                            <img src="assets/images/delete.svg" width="15px" class="button" onclick="deleteProductOnAdd(${i})" style="position:relative;left:7px;">
+                         </td>
+                    </tr>
+          `;
+          // Mobile preview
+          mobileProductsPreview.innerHTML += `
+              <div class="mobileProductItem">
+                <div class="row jcsb">
+                  <div> ${produits[i].tache}</div>
+                  <div class="row g16 aic jcc">
+                    <img src="assets/images/edit.svg" alt="" width="15px" onclick="editProductOnAdd(${i})">
+                    <img src="assets/images/delete.svg" alt="" width="10px" onclick="deleteProductOnAdd(${i})">
+                  </div>
+                </div>
+                <table>
+                  <tr>
+                    <td>Prix</td>
+                    <td>${produits[i].prix} ${userInfo.monnaie}</td>
+                  </tr>
+                  <tr>
+                    <td>Quantite</td>
+                    <td>${produits[i].quantite}</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>${produits[i].prix * produits[i].quantite} ${
+            userInfo.monnaie
+          }</td>
+                  </tr>
+                </table>
+        
+              </div>      
+          `;
+        }
+      }
+
+      function editProductOnAdd(index) {
+        let produit = produits[index];
+
+        let tache = document.querySelector("#tache");
+        let prix = document.querySelector("#prix");
+        let quantite = document.querySelector("#quantite");
+
+        tache.value = produit.tache;
+        prix.value = produit.prix;
+        quantite.value = produit.quantite;
+
+        produits.splice(index, 1);
+        renderProduits();
+      }
+
+      function deleteProductOnAdd(index) {
+        produits.splice(index, 1);
+        renderProduits();
+      }
+    </script>
+    <script src="scripts/color.js"></script>
+    <script src="scripts/clients.js"></script>
+    <script src="scripts/factures.js"></script>
+    <script src="scripts/note.js"></script>
+    <script src="scripts/mobile.js"></script>
+    <script src="scripts/startUp.js"></script>
+    <script src="scripts/articles.js"></script>
+  </body>
+</html>

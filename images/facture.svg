@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 94.72 119.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0" y1="59.75" x2="94.72" y2="59.75" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#97cb58"/>
+      <stop offset="1" stop-color="#00ab62"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="49.43" y1="25.18" x2="91.7" y2="25.18" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="17.15" y1="77.55" x2="74.79" y2="77.55" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="17.15" y1="97.31" x2="74.79" y2="97.31" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <g>
+      <g id="Layer_1-2">
+        <g>
+          <path class="cls-4" d="M76.27,119.5H18.45c-10.18,0-18.45-8.28-18.45-18.45V18.45C0,8.28,8.28,0,18.45,0h23.75c1.64,0,2.97,1.33,2.97,2.97v36.13c0,5.76,4.69,10.45,10.45,10.45h36.13c1.64,0,2.97,1.33,2.97,2.97v48.52c0,10.18-8.28,18.45-18.45,18.45ZM18.45,3.87c-8.04,0-14.58,6.54-14.58,14.58v82.59c0,8.04,6.54,14.58,14.58,14.58h57.81c8.04,0,14.58-6.54,14.58-14.58v-47.62h-35.23c-7.9,0-14.32-6.43-14.32-14.32V3.87h-22.84Z"/>
+          <path class="cls-3" d="M91.55,47.33l-2.07-2.06c-.12.02-.24.03-.36.03h-33.5c-3.42,0-6.19-2.78-6.19-6.19V5.6c0-.68.28-1.34.76-1.82,1.02-1,2.65-1,3.65,0l33.59,33.59h0s3.52,3.52,3.52,3.52c.49.49.75,1.13.75,1.82,0,.3-.05.6-.15.88v3.74ZM53.56,9.34v29.76c0,1.14.93,2.06,2.06,2.06h29.76l-31.83-31.83Z"/>
+        </g>
+      </g>
+      <rect class="cls-2" x="17.15" y="73.36" width="57.63" height="8.38" rx="4.19" ry="4.19"/>
+      <rect class="cls-1" x="17.15" y="93.12" width="57.63" height="8.38" rx="4.19" ry="4.19"/>
+    </g>
+  </g>
+</svg>

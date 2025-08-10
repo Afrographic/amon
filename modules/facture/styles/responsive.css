@@ -1,0 +1,388 @@
+/* Mobile responsive */
+@media screen and (max-width:1200px) {
+
+    /* Config responsive */
+    .configKamto {
+        padding: 16px;
+        width: 100vw;
+    }
+
+    .configKamto .formItem {
+        width: 100%;
+    }
+
+    .configKamto p {
+        line-height: 1.6em;
+    }
+
+    .configKamto .form {
+        width: 100%;
+    }
+
+    /* Container add */
+    .container_add {
+        margin: 0;
+        padding: 0 !important;
+        width: 100vw;
+        padding-top: 44px !important;
+    }
+
+    .ndop {
+        border: none;
+        border-radius: 0px !important;
+    }
+
+    .newFactureContentMobile {
+        padding: 24px;
+        padding-top: 0px;
+    }
+
+    .genererFacture {
+        width: 100%;
+    }
+
+    /* insert facture inputs */
+    .inputValues {
+        flex-direction: column;
+    }
+
+    .inputValues .formItem:last-child {
+        width: 100% !important;
+    }
+
+    .registerData .addItem {
+        width: 100%;
+    }
+
+    .registerData .addItem button {
+        width: 100%;
+    }
+
+    .mobileSignature {
+        opacity: 1 !important;
+    }
+
+    /* Support and Company Information */
+    .supportDev {
+        width: 100vw !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 500;
+        border-radius: 0px !important;
+        height: 100vh;
+    }
+
+    /* Mobile menu */
+    .MobileMenu {
+        display: flex !important;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        opacity: 1 !important;
+    }
+
+    .MobileMenu button {
+        width: 100%;
+    }
+
+    .supportDevMobileInactive {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-25px)
+    }
+
+    .marginTop32Px {
+        margin-top: 0px !important
+    }
+
+    .config {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .headerMobile {
+        position: fixed;
+        width: 100vw;
+        top: 0px;
+        left: 0;
+        background-color: white;
+        padding: 16px;
+        display: flex !important;
+        justify-content: space-between;
+        border-bottom: 1px solid #e3e3e3;
+        padding-bottom: 12px;
+        z-index: 5;
+    }
+
+    .historiqueView {
+        width: 100vw !important;
+    }
+
+    .mesClientsView {
+        width: 100vw !important;
+    }
+
+    .mesArticlesView {
+        width: 100vw !important;
+    }
+
+    .noMobile {
+        position: fixed;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .mobileGestionStock{
+        margin-bottom: 8px;
+    }
+
+    /* Mobile product preivew */
+    .mobileProductsPreview {
+        display: flex !important;
+        flex-direction: column;
+        gap: 8px;
+        padding-bottom: 8px;
+    }
+
+    .mobileProductItem {
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+        border: 1px solid #d7d7d7;
+    }
+
+    .mobileProductItem table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    .mobileProductItem table tr:nth-child(odd) {
+        background-color: #5eb83b1c !important;
+    }
+
+    .mobileProductItem div {
+        font-size: 14px;
+        font-weight: bold;
+        display: flex;
+        padding: 8px;
+    }
+
+    .mobileProductItem div button {
+        width: 100%;
+    }
+
+    .mobileProductItem td{
+        padding: 8px 12px;
+    }
+
+    .mesClientsInput2 {
+        flex-direction: column;
+    }
+
+    .mesClientsInput2 div {
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    .mesClientsInput2 div button {
+        width: 100%;
+    }
+
+    .mesClientsInput2 h3 {
+        display: none;
+    }
+
+
+    /* Facture preview responsive Design */
+    .containerFacture {
+        width: 100vw !important;
+        padding: 0;
+        font-size: 0.5rem;
+    }
+
+    #factureNomClient{
+        padding-top:8px;
+    }
+
+    .veuillez{
+        padding-top:4px !important;
+    }
+    .factureTable{
+        margin-top: 12px !important;
+        margin-bottom: 0px !important;
+    }
+
+    .factureTable td{
+        padding: 8px;
+    }
+
+    .totalFacturePrinter{
+        margin-top: 16px !important;
+    }
+
+    .totalFacturePrinter .invoice div:first-child{
+        opacity: 0.6;
+        font-size: 13px;
+    }
+
+    .factureNumeroDeSerie{
+        padding-bottom: 4px !important;
+    }
+
+    .ceoInvoice{
+        margin-top: 14px !important;
+    }
+
+    #facturePoseEntreprise{
+        margin-top: 4px !important;
+    }
+
+    #FactureNote{
+        padding-top: 4px;
+    }
+
+    .NoteBLockFacture{
+        margin-top: 21px !important;
+    }
+
+    .totalFacturePrinter .invoice div:last-child{
+       font-size: 14px;
+    }
+
+    .factureModele1 {
+        top: -5px !important;
+        height: 100vh;
+        background-color: white;
+    }
+
+    .companyFactureForPrint{
+        padding: 4px 16px !important;
+    }
+
+    #factureLogo {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .containerFacture .header {
+        padding: 16px 14px !important;
+    }
+
+    .containerFacture .invoice {
+        font-size: 11px;
+        font-weight: bold;
+        padding: 9px 12px;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    }
+
+    #dateFacture {
+        font-size: 12px !important;
+    }
+
+    .containerFacture svg {
+        width: 8px;
+    }
+
+    .g8 {
+        gap: 4px !important;
+    }
+
+    .contentFacture {
+        padding: 16px 42px !important;
+    }
+
+    .contentFacture h2, .contentFacture p{
+        margin:0;
+        padding:0;
+    }
+
+    .iconsFacture{
+        gap: 8px !important;
+    }
+
+    .stockBtn{
+        margin-bottom: 8px !important;
+    }
+
+    .signature {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #aaaaaa45;
+        color: rgba(128, 128, 128, 0.582);
+        font-size: 6px;
+    }
+
+    .CharteGraphique {
+        position: fixed;
+        transform: translate(-50%, -50%);
+        top: 88%;
+        right: -34px;
+        border-radius: 8px;
+        z-index: 10;
+    }
+
+    .printFactureBtns {
+        position: fixed;
+        top: inherit !important;
+        bottom: 0px;
+        left: 0px;
+        width: 100vw;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 8px;
+        z-index: 400;
+        padding: 16px;
+    }
+
+    .printFactureBtns button {
+        flex: 1;
+    }
+
+    .containerFacture {
+        height: auto !important;
+        max-height: auto !important;
+    }
+
+}
+
+
+
+.mobileProductsPreview {
+    display: none;
+}
+
+.headerMobile {
+    display: none;
+}
+
+.marginTop32Px {
+    margin-top: 32px
+}
+
+.MobileMenu {
+    display: none;
+}
+
+.mobileSignature {
+    opacity: 0;
+}
+
+
+/* Ipad Responsive */
+
+@media screen and (min-width:600px) and (max-width:1300px) {
+    .supportDev {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .containerFacture {
+        padding: 84px 147px !important;
+    }
+}
