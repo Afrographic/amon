@@ -1,4 +1,4 @@
-const CACHE_NAME = "amonV2";
+const CACHE_NAME = "amon";
 const ASSETS_TO_CACHE  = [
     "/",
     '/index.html',
@@ -115,10 +115,26 @@ self.addEventListener('activate', event => {
   );
 });
 
+
 self.addEventListener('fetch', event => {
+  // Handle top-level navigation requests (like clicking <a href>)
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      caches.match(event.request).then(cachedResponse => {
+        // If cached, return it
+        return cachedResponse || fetch(event.request).catch(() => caches.match('/index.html'));
+      })
+    );
+    return;
+  }
+
+  // For other requests (CSS, JS, images), do cache-first
   event.respondWith(
-    caches.match(event.request)
-      .then(cached => cached || fetch(event.request))
+    caches.match(event.request).then(cached => cached || fetch(event.request))
   );
 });
+
+
+
+
 
