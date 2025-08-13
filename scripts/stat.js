@@ -6,6 +6,9 @@ let devise = localStorage.getItem("amonDevise");
 let ventes = [];
 
 async function getVentesStats() {
+
+  devise = localStorage.getItem("amonDevise");
+
   var datas = await con.select({
     from: "data",
     where: {
@@ -14,6 +17,7 @@ async function getVentesStats() {
   });
 
   let historyRetrait = JSON.parse(datas[0].historyRetrait);
+  console.log(historyRetrait);
 
 
   let listToRender = [];

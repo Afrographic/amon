@@ -403,6 +403,8 @@
               onkeyup="addWithEnterArticle(event)"
               placeholder="Prix minimale"
               id="prixMinimaleAdd"
+              inputmode="numeric"
+              pattern="[0-9]*"
             />
           </div>
           <button class="secondary_btn" onclick="addArticle()">
@@ -731,9 +733,9 @@
             </div>
             <hr />
             <div class="nomClientsList">
-              <div class="name">Tesse brunel</div>
+              <!-- <div class="name">Tesse brunel</div>
               <div class="name">Ndonga Isept Dannielle</div>
-              <div class="name">Nguemo Yves</div>
+              <div class="name">Nguemo Yves</div> -->
             </div>
           </div>
         </div>
@@ -818,7 +820,8 @@
             </div>
             <div class="formItem">
               <div class="label">Prix</div>
-              <input type="number" placeholder="Prix" id="prix" />
+              <input type="number" placeholder="Prix" id="prix"  inputmode="numeric"
+              pattern="[0-9]*"/>
             </div>
             <div class="formItem" style="width: 106px">
               <div class="label">Quantite</div>
@@ -828,6 +831,8 @@
                 id="quantite"
                 value="1"
                 onkeyup="addByEnter(event)"
+                inputmode="numeric"
+                pattern="[0-9]*"
               />
             </div>
           </div>

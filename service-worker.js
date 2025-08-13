@@ -2,6 +2,7 @@ const CACHE_NAME = "amon-v1";
 const ASSETS = [
     "/",
     '/index.html',
+    '/manifest.json',
     "/icons/icon-192.png",
     "/icons/icon-512.png",
     "/images/add.svg",
@@ -30,13 +31,13 @@ const ASSETS = [
     "/libs/jsstore.worker.js",
 
     "/scripts/bienvenue.js",
-    "/libs/hsitory.js",
-    "/libs/mobileMenu.js",
-    "/libs/productStock.js",
-    "/libs/productVente.js",
-    "/libs/startUp.js",
-    "/libs/stat.js",
-    "/libs/totalMoneyToEarn.js",
+    "/scripts/history.js",
+    "/scripts/mobileMenu.js",
+    "/scripts/productStock.js",
+    "/scripts/productVente.js",
+    "/scripts/startUp.js",
+    "/scripts/stat.js",
+    "/scripts/totalMoneyToEarn.js",
 
     "/styles/ankh_notif.css",
     "/styles/buttons.css",
@@ -44,22 +45,8 @@ const ASSETS = [
     "/styles/style.css",
 
     // Kamto Assets
+
     "/modules/facture/kamto.html",
-
-    "/modules/facture/styles/ankh_notif.css",
-    "/modules/facture/styles/buttons.css",
-    "/modules/facture/styles/responsive.css",
-    "/modules/facture/styles/style.css",
-
-    "/modules/facture/scripts/articles.js",
-    "/modules/facture/scripts/clients.js",
-    "/modules/facture/scripts/color.js",
-    "/modules/facture/scripts/factures.js",
-    "/modules/facture/scripts/mobile.js",
-    "/modules/facture/scripts/note.js",
-    "/modules/facture/scripts/startUp.js",
-    "/modules/facture/scripts/utils.js",
-
     "/modules/facture/assets/images/add_1.svg",
     "/modules/facture/assets/images/add.svg",
     "/modules/facture/assets/images/articles.svg",
@@ -75,6 +62,7 @@ const ASSETS = [
     "/modules/facture/assets/images/invoice_white.svg",
     "/modules/facture/assets/images/invoice.svg",
     "/modules/facture/assets/images/kamto.svg",
+    "/modules/facture/assets/images/kamto.png",
     "/modules/facture/assets/images/location.svg",
     "/modules/facture/assets/images/logo_symbol.svg",
     "/modules/facture/assets/images/logo.svg",
@@ -87,7 +75,22 @@ const ASSETS = [
     "/modules/facture/assets/libs/html2canvas.min.js",
     "/modules/facture/assets/libs/jspdf.umd.min.js",
     "/modules/facture/assets/libs/jsstore.js",
-    "/modules/facture/assets/libs/jsstore.worker.js"
+    "/modules/facture/assets/libs/jsstore.worker.js",
+
+    "/modules/facture/scripts/articles.js",
+    "/modules/facture/scripts/clients.js",
+    "/modules/facture/scripts/color.js",
+    "/modules/facture/scripts/factures.js",
+    "/modules/facture/scripts/mobile.js",
+    "/modules/facture/scripts/note.js",
+    "/modules/facture/scripts/startUp.js",
+    "/modules/facture/scripts/utils.js",
+
+    "/modules/facture/styles/ankh_notif.css",
+    "/modules/facture/styles/buttons.css",
+    "/modules/facture/styles/responsive.css",
+    "/modules/facture/styles/style.css",
+
 ]
 
 self.addEventListener("install",

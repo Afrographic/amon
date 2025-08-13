@@ -14,16 +14,47 @@ function hideArticleView() {
   mesArticlesView.classList.add("mesArticlesViewInactive");
 }
 
+function getDataFromAmonDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open("amonDB", 1);
+
+    request.onsuccess = (event) => {
+      const db = event.target.result;
+
+      if (!db.objectStoreNames.contains("data")) {
+        reject("Object store 'data' does not exist.");
+        return;
+      }
+
+      const tx = db.transaction("data", "readonly");
+      const store = tx.objectStore("data");
+      const getRequest = store.getAll();
+
+      getRequest.onsuccess = () => resolve(getRequest.result);
+      getRequest.onerror = (e) => reject(e.target.error);
+    };
+
+    request.onerror = (event) => {
+      reject(`IndexedDB error: ${event.target.error}`);
+    };
+  });
+}
+
 async function getArticles() {
-  await initUserInfo();
-  let articlesSaved = localStorage.getItem("articles");
-  if (articlesSaved != null) {
-    articles = JSON.parse(articlesSaved);
-    // Add articles from Amon
-    let productsFromAmon = localStorage.getItem("productsLight");
-    articles = articles.concat(JSON.parse(productsFromAmon));
-  }
-  reloadArticleView();
+  getDataFromAmonDB()
+    .then(async (records) => {
+      console.log("Records from 'data' store:", records);
+      await initUserInfo();
+      let productsFromAmon = JSON.parse(records[0].products)
+      for(let i = 0 ; i<=productsFromAmon.length - 1; i++){
+        productsFromAmon[i].article = productsFromAmon[i].nom;
+        productsFromAmon[i].prix = productsFromAmon[i].prix;
+        productsFromAmon[i].quantite = productsFromAmon[i].quantite;
+      }
+      articles = articles.concat(productsFromAmon);
+      reloadArticleView();
+    })
+    .catch((err) => console.error("Error getting data:", err));
 }
 
 getArticles();
@@ -32,7 +63,7 @@ async function initUserInfo() {
   let data = await con.select({
     from: "KamtoData",
   });
-  if(data[0] == undefined) return;
+  if (data[0] == undefined) return;
   monnaie = data[0].userValues.monnaie;
 }
 
@@ -70,7 +101,7 @@ function reloadArticleView() {
         </div>
         `;
       // Articles to pick
-      let param = articles[i].article.replaceAll("'",'gg');
+      let param = articles[i].article.replaceAll("'", "gg");
       savedArticles.innerHTML += `
         <div class="articleItem" onclick='autoLoadArticle("${param.trim()}")'>
             <img src="assets/images/articles.svg" width="15px" alt="">
@@ -83,10 +114,10 @@ function reloadArticleView() {
 
 function autoLoadArticle(i) {
   console.log(i);
-  i = i.replaceAll("gg","'");
-  let article ;
-  for(let k = 0 ; k<=articles.length-1;k++){
-    if(articles[k].article == i){
+  i = i.replaceAll("gg", "'");
+  let article;
+  for (let k = 0; k <= articles.length - 1; k++) {
+    if (articles[k].article == i) {
       article = articles[k];
     }
   }
@@ -153,7 +184,7 @@ function filterSavedArticle(event) {
   let token = event.target.value;
   if (token.trim().length == 0) {
     for (let i = 0; i <= articles.length - 1; i++) {
-      let param = articles[i].article.replaceAll("'",'gg');
+      let param = articles[i].article.replaceAll("'", "gg");
       // Articles to pick
       savedArticles.innerHTML += `
         <div class="articleItem" onclick="autoLoadArticle('${param}','${articles[i].prix}')">
@@ -165,11 +196,9 @@ function filterSavedArticle(event) {
     return;
   }
 
-  
-
   for (let i = 0; i <= articles.length - 1; i++) {
     if (articles[i].article.toLowerCase().includes(token.toLowerCase())) {
-      let param = articles[i].article.replaceAll("'",'gg');
+      let param = articles[i].article.replaceAll("'", "gg");
       // Articles to pick
       savedArticles.innerHTML += `
       <div class="articleItem" onclick="autoLoadArticle('${param}','${articles[i].prix}')">

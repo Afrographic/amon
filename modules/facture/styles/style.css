@@ -240,6 +240,11 @@ tr{
     transition: 0.25s;
 }
 
+input{
+    font-size: 16px;
+    
+}
+
 .nomsClients .name{
     padding: 16px;
     cursor: pointer;
@@ -326,6 +331,14 @@ hr{
 
 .formItem{
     position: relative;
+}
+
+.formItem .label{
+    margin-bottom:6px;
+}
+
+textarea{
+    font-size: 16px;
 }
 
 .configKamtoInactive{

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles/responsive.css" />
     <link rel="stylesheet" href="styles/buttons.css" />
     <link rel="stylesheet" href="styles/ankh_notif.css" />
-    <link rel="icon" href="icons/icon-512.png">
+    <link rel="icon" href="icons/icon-512.png" />
     <style>
       * {
         font-family: arial;
@@ -397,6 +397,8 @@
             placeholder="Nombre de pieces"
             id="nombrePiecesStock"
             value="1"
+            inputmode="numeric"
+            pattern="[0-9]*"
           />
         </div>
 
@@ -425,6 +427,8 @@
             placeholder="Nombre de pieces"
             id="nombrePiecesVente"
             value="1"
+            inputmode="numeric"
+            pattern="[0-9]*"
           />
         </div>
 
@@ -551,6 +555,17 @@
 
         <!-- Listes des produits -->
         <div class="products" id="productsContainer"></div>
+
+        <!-- Install Button -->
+        <div style="display: flex">
+          <button
+            id="installBtn"
+            class="primary_btn"
+            style="display: none; width: 100%"
+          >
+            Installer l'application
+          </button>
+        </div>
       </div>
 
       <!-- Web Menu Options -->
@@ -600,7 +615,8 @@
           </div>
           <div class="formItem">
             <div class="label">Prix</div>
-            <input type="number" placeholder="Prix" id="prixInput" />
+            <input type="number" placeholder="Prix" id="prixInput"  inputmode="numeric"
+            pattern="[0-9]*"/>
           </div>
           <div class="formItem">
             <div class="label">Fournisseur</div>
@@ -616,7 +632,8 @@
           </div>
           <div class="formItem">
             <div class="label">Quantite</div>
-            <input type="number" placeholder="Quantite" id="quantiteInput" />
+            <input type="number" placeholder="Quantite" id="quantiteInput"  inputmode="numeric"
+            pattern="[0-9]*"/>
           </div>
         </div>
 
@@ -648,7 +665,8 @@
           </div>
           <div class="formItem">
             <div class="label">Prix</div>
-            <input type="number" placeholder="Prix" id="prixEditInput" />
+            <input type="number" placeholder="Prix" id="prixEditInput"  inputmode="numeric"
+            pattern="[0-9]*" />
           </div>
           <div class="formItem">
             <div class="label">Fournisseur</div>
@@ -858,11 +876,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Fin historique de retrait -->
-      <button id="installBtn" class="primary_btn" style="display: none">
-        Installer l'application
-      </button>
     </div>
 
     <script>
@@ -949,6 +962,8 @@
         nomBoutiqueStatic = nomBoutique.value;
         setNameStore();
         hideWelcomeScreen();
+        getVentesStats();
+        computeTotalMoney();
       }
 
       function hideWelcomeScreen() {

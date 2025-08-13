@@ -173,6 +173,9 @@ input {
     border: none !important;
     flex: 1;
 }
+.formItem .label{
+    margin-bottom: 6px;
+}
 
 .f1 {
     flex: 1;
@@ -330,3 +333,7 @@ body{
     padding:16px;
 }
 
+input{
+    font-size: 16px;
+  
+}
