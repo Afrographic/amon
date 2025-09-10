@@ -1158,7 +1158,8 @@
 
     <!-- Editer la charte graphique -->
     <div class="CharteGraphique inactive">
-      <div class="row">
+      <div>Personnaliser les couleurs</div>
+      <div class="row g16">
         <div class="colorPreview primary" onclick="openPrimaryPicker()">
           <input
             class="jscolor"
@@ -1167,7 +1168,6 @@
             onchange="getPrimaryColor(event)"
           />
         </div>
-        <input type="color" onchange="getPrimaryColor(event)" />
         <div class="colorPreview secondary" onclick="openSecondaryPicker()">
           <input
             class="jscolor"
@@ -1176,7 +1176,6 @@
             onchange="getSecondaryColor(event)"
           />
         </div>
-        <input type="color" onchange="getSecondaryColor(event)" />
       </div>
     </div>
     <!-- Fin edition de la charte graphique -->

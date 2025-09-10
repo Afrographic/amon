@@ -320,11 +320,14 @@
 
     .CharteGraphique {
         position: fixed;
-        transform: translate(-50%, -50%);
-        top: 88%;
-        right: -34px;
+        top: 84%;
+        left: 0px;
         border-radius: 8px;
         z-index: 10;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 
     .printFactureBtns {

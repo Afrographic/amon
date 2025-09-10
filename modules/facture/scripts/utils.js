@@ -133,21 +133,21 @@ class HelperFunction {
       windowHeight: facture.scrollHeight,
     }).then((canvas) => {
       const imgData = canvas.toDataURL("image/jpeg");
-      // const link = document.createElement("a");
-      // document.body.appendChild(link);
-      // link.href = imgData;
-      // link.download = `#${numeroSerie} - Facture - ${client}.png`;
-      // link.click();
+      const link = document.createElement("a");
+      document.body.appendChild(link);
+      link.href = imgData;
+      link.download = `#${numeroSerie} - Facture - ${client}.jpeg`;
+      link.click();
 
       //JSPDF test
-      const {jsPDF} = window.jspdf;
-      const pdf = new jsPDF({
-        orientation :"p",
-        unit : "px",
-        format :"a4"
-      })
-      pdf.addImage(imgData,"PNG",20,20,400,530);
-      pdf.save(`#${numeroSerie} - Facture - ${client}.pdf`)
+      // const {jsPDF} = window.jspdf;
+      // const pdf = new jsPDF({
+      //   orientation :"p",
+      //   unit : "px",
+      //   format :"a4"
+      // })
+      // pdf.addImage(imgData,"PNG",20,20,400,530);
+      // pdf.save(`#${numeroSerie} - Facture - ${client}.pdf`)
     });
   }
 
