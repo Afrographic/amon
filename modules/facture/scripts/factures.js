@@ -110,6 +110,9 @@ function previewFacture(factureIndex) {
   i = parseInt(factureIndex[0]);
   j = parseInt(factureIndex[1]);
   let facture = history[i].factures[j];
+  if(facture.negociable == undefined){
+    facture.negociable = false;
+  }
   //render facture from history
   //Show numero de serie
   let factureNumeroDeSerie = document.querySelector(".factureNumeroDeSerie");
@@ -160,15 +163,35 @@ function previewFacture(factureIndex) {
               <tr>
                    <td>${i + 1}</td>
                    <td>${facture.produits[i].tache}</td>
-                   <td>${facture.produits[i].prix} ${userInfo.monnaie}</td>
+                   <td>${HelperFunction.formatNumWithWhiteSpace(facture.produits[i].prix)} ${userInfo.monnaie}</td>
                    <td>${facture.produits[i].quantite}</td>
                    <td>${
-                     parseInt(facture.produits[i].prix) *
-                     parseInt(facture.produits[i].quantite)
+                    HelperFunction.formatNumWithWhiteSpace(parseInt(facture.produits[i].prix) *
+                     parseInt(facture.produits[i].quantite))
                    } ${userInfo.monnaie}</td>
               </tr>
           `;
+  } 
+  //Etat de negociation negotiateState
+  let negotiateState = document.querySelector("#negotiateState");
+  if(facture.negociable){
+    negotiateState.innerHTML = "Negotiable"
+  }else{
+    negotiateState.innerHTML = "Non negotiable"
   }
+
+  //Set delai de livraison
+  if(facture.delai != undefined){
+    let delai = document.querySelector(".delai");
+    delai.style.display = "flex";
+    let delaiFactureView = document.querySelector("#factureDelaiLivraison");
+    delaiFactureView.innerHTML = facture.delai;
+  }else{
+    let delai = document.querySelector(".delai");
+    delai.style.display = "none";
+  }
+ 
+
   //Set total
   let FactureTotal = document.querySelector("#FactureTotal");
   FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(facture.total)} ${userInfo.monnaie}`;

@@ -1,5 +1,5 @@
 const CACHE_NAME = "amon";
-const ASSETS_TO_CACHE  = [
+const FILES_TO_CACHE  = [
     "/",
     '/index.html',
     '/manifest.json',
@@ -82,6 +82,7 @@ const ASSETS_TO_CACHE  = [
     "/modules/facture/scripts/color.js",
     "/modules/facture/scripts/factures.js",
     "/modules/facture/scripts/mobile.js",
+    "/modules/facture/scripts/negociability.js",
     "/modules/facture/scripts/note.js",
     "/modules/facture/scripts/startUp.js",
     "/modules/facture/scripts/utils.js",
@@ -96,45 +97,39 @@ const ASSETS_TO_CACHE  = [
 // sw.js
 
 
+// Install event: cache all files initially
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
   );
+  self.skipWaiting(); // activate new service worker immediately
 });
 
+// Activate event: clean up old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(keys
-        .filter(key => key !== CACHE_NAME)
-        .map(key => caches.delete(key))
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+      )
+    )
   );
+  self.clients.claim(); // take control of all pages immediately
 });
 
-
+// Fetch event: network-first strategy
 self.addEventListener('fetch', event => {
-  // Handle top-level navigation requests (like clicking <a href>)
-  if (event.request.mode === 'navigate') {
-    event.respondWith(
-      caches.match(event.request).then(cachedResponse => {
-        // If cached, return it
-        return cachedResponse || fetch(event.request).catch(() => caches.match('/index.html'));
-      })
-    );
-    return;
-  }
-
-  // For other requests (CSS, JS, images), do cache-first
   event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request))
+    fetch(event.request)
+      .then(response => {
+        // Successful response – update cache
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+        return response;
+      })
+      .catch(() => {
+        // If network fails, try cache
+        return caches.match(event.request);
+      })
   );
 });
-
-
-
-
-

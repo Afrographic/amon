@@ -9,6 +9,7 @@
     <script src="scripts/utils.js"></script>
     <script src="assets/libs/jspdf.umd.min.js"></script>
     <script src="assets/libs/html2canvas.min.js"></script>
+    <script src="assets/libs/picker.js"></script>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/responsive.css" />
     <link rel="stylesheet" href="styles/buttons.css" />
@@ -820,8 +821,13 @@
             </div>
             <div class="formItem">
               <div class="label">Prix</div>
-              <input type="number" placeholder="Prix" id="prix"  inputmode="numeric"
-              pattern="[0-9]*"/>
+              <input
+                type="number"
+                placeholder="Prix"
+                id="prix"
+                inputmode="numeric"
+                pattern="[0-9]*"
+              />
             </div>
             <div class="formItem" style="width: 106px">
               <div class="label">Quantite</div>
@@ -844,14 +850,44 @@
             </button>
           </div>
         </div>
+        <div
+            class="formItem"
+            style="flex: 1; margin-bottom: 16px;margin-top:8px;"
+            
+          >
+            <div class="label">Delai de livraison</div>
+            <input
+              type="text"
+              placeholder="Delai de livraison"
+              id="delaiLivraison"
+            />
+          </div>
         <div class="formItem" style="flex: 1; margin-top: 16px">
-          <div class="label">Note</div>
+          <div class="label">Note a l'avis de votre client</div>
           <textarea
             name=""
             id="note"
             placeholder="Note a l'avis de votre client"
             id="NoteForClient"
           ></textarea>
+        </div>
+        <div class="notesOptions">
+          <div class="tertiaryBtn" onclick="saveNote()">
+            Enregistrer la note pour une utilisation futur (facultatif)
+          </div>
+        </div>
+        <div class="negociationState">
+          <h3>Negociabilite</h3>
+          <div>
+            <div class="negoItem" onclick="setNegociable(this)">
+              <div class="state"></div>
+              <div>Negociable</div>
+            </div>
+            <div class="negoItem" onclick="setNonNegociable(this)">
+              <div class="state active"></div>
+              <div>Non negociable</div>
+            </div>
+          </div>
         </div>
         <div style="display: flex; justify-content: flex-end">
           <button
@@ -862,6 +898,13 @@
             <img src="assets/images/invoice_white.svg" alt="" width="20px" />
             Generer la facture
           </button>
+        </div>
+        <!-- Notes pre-enregistrer -->
+        <div class="savedNotesView">
+          <h3>Notes pre-enregistre</h3>
+          <div class="notes">
+            <div class="note_item">Merci pour votre commande</div>
+          </div>
         </div>
         <p
           class="tac mobileSignature"
@@ -887,12 +930,12 @@
             bottom: -5px;
           "
         />
-        <div 
+        <div
           class="row g16 companyFactureForPrint"
           style="background-color: #eaeaea; padding: 0 16px"
         >
           <div id="factureLogo">
-            <img src="assets/images/tempLogo.svg" alt="">
+            <img src="assets/images/tempLogo.svg" alt="" />
           </div>
           <h2 id="nameCompanyFacture" style="color: #262626">
             Afrographix Studio
@@ -1047,10 +1090,16 @@
             </tbody>
           </table>
 
+          <div class="delai">
+            <div>Delai de livraison</div>
+            <h2 id="factureDelaiLivraison">4 Jours</h2>
+          </div>
+
           <div
             style="
               display: flex;
-              align-items: flex-start;
+              align-items: center;
+              justify-content: space-between;
               color: white;
               margin-top: 32px;
             "
@@ -1060,6 +1109,7 @@
               <div style="font-size: 12px">Total</div>
               <div id="FactureTotal">850 000 XAF</div>
             </div>
+            <h2 style="color:black;" id="negotiateState">Non negociable</h2>
           </div>
 
           <div style="margin-top: 32px" class="ceoInvoice">
@@ -1213,19 +1263,35 @@
                     <tr>
                          <td>${i + 1}</td>
                          <td>${produits[i].tache}</td>
-                         <td>${produits[i].prix} ${userInfo.monnaie}</td>
+                         <td>${HelperFunction.formatNumWithWhiteSpace(
+                           produits[i].prix
+                         )} ${userInfo.monnaie}</td>
                          <td>${produits[i].quantite}</td>
-                         <td>${produits[i].prix * produits[i].quantite} ${
-            userInfo.monnaie
-          }</td>
+                         <td>${HelperFunction.formatNumWithWhiteSpace(
+                           produits[i].prix * produits[i].quantite
+                         )} ${userInfo.monnaie}</td>
                     </tr>
                 `;
           total += produits[i].prix * produits[i].quantite;
         }
 
+        let negotiateState = document.querySelector("#negotiateState");
+        if(negociable){
+          negotiateState.innerHTML = "Negotiable"
+        }else{
+          negotiateState.innerHTML = "Non negotiable"
+        }
+
+        //Set delai de livraison
+        let delaiInput = document.querySelector("#delaiLivraison");
+        let delaiFactureView = document.querySelector("#factureDelaiLivraison");
+        delaiFactureView.innerHTML = delaiInput.value;
+
         //Set total
         let FactureTotal = document.querySelector("#FactureTotal");
-        FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(total)} ${userInfo.monnaie}`;
+        FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
+          total
+        )} ${userInfo.monnaie}`;
 
         //Set proprietaire et poste
         let FactureOwner = document.querySelector("#FactureOwner");
@@ -1258,6 +1324,8 @@
           client: nomClient.value,
           at: dateFormated,
           id: factures.length + 1,
+          negociable : negociable,
+          delai:delaiInput.value
         });
 
         //update note value
@@ -1422,8 +1490,10 @@
               SupportLogo.style.backgroundImage = `url(${url})`;
               //Hide oll temp logos
               const images = document.querySelectorAll("img");
-              const tempLogoImages = Array.from(images).filter(img=>img.src.includes('tempLogo'));
-              for(const item of tempLogoImages){
+              const tempLogoImages = Array.from(images).filter((img) =>
+                img.src.includes("tempLogo")
+              );
+              for (const item of tempLogoImages) {
                 item.style.display = "none";
               }
             }
@@ -1654,11 +1724,13 @@
                     <tr>
                          <td>${i + 1}</td>
                          <td>${produits[i].tache}</td>
-                         <td>${produits[i].prix} ${userInfo.monnaie}</td>
+                         <td>${HelperFunction.formatNumWithWhiteSpace(
+                           produits[i].prix
+                         )} ${userInfo.monnaie}</td>
                          <td>${produits[i].quantite}</td>
-                         <td>${produits[i].prix * produits[i].quantite} ${
-            userInfo.monnaie
-          }</td>
+                         <td>${HelperFunction.formatNumWithWhiteSpace(
+                           produits[i].prix * produits[i].quantite
+                         )} ${userInfo.monnaie}</td>
                          <td>
                             <img src="assets/images/edit.svg" width="25px" class="button" onclick="editProductOnAdd(${i})">
                             <img src="assets/images/delete.svg" width="15px" class="button" onclick="deleteProductOnAdd(${i})" style="position:relative;left:7px;">
@@ -1678,7 +1750,9 @@
                 <table>
                   <tr>
                     <td>Prix</td>
-                    <td>${produits[i].prix} ${userInfo.monnaie}</td>
+                    <td>${HelperFunction.formatNumWithWhiteSpace(
+                      produits[i].prix
+                    )} ${userInfo.monnaie}</td>
                   </tr>
                   <tr>
                     <td>Quantite</td>
@@ -1686,9 +1760,9 @@
                   </tr>
                   <tr>
                     <td>Total</td>
-                    <td>${produits[i].prix * produits[i].quantite} ${
-            userInfo.monnaie
-          }</td>
+                    <td>${HelperFunction.formatNumWithWhiteSpace(
+                      produits[i].prix * produits[i].quantite
+                    )} ${userInfo.monnaie}</td>
                   </tr>
                 </table>
         
@@ -1724,5 +1798,6 @@
     <script src="scripts/mobile.js"></script>
     <script src="scripts/startUp.js"></script>
     <script src="scripts/articles.js"></script>
+    <script src="scripts/negociability.js"></script>
   </body>
 </html>

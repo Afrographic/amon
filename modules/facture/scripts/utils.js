@@ -126,18 +126,28 @@ class HelperFunction {
     html2canvas(facture, {
       useCors: true,
       allowTaint: false,
-      scale: 2,
+      scale: 8,
       width:facture.offsetWidth,
       height:facture.scrollHeight,
       windowWidth: document.documentElement.scrollWidth,
       windowHeight: facture.scrollHeight,
     }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      document.body.appendChild(link);
-      link.href = imgData;
-      link.download = `#${numeroSerie} - Facture - ${client}.png`;
-      link.click();
+      const imgData = canvas.toDataURL("image/jpeg");
+      // const link = document.createElement("a");
+      // document.body.appendChild(link);
+      // link.href = imgData;
+      // link.download = `#${numeroSerie} - Facture - ${client}.png`;
+      // link.click();
+
+      //JSPDF test
+      const {jsPDF} = window.jspdf;
+      const pdf = new jsPDF({
+        orientation :"p",
+        unit : "px",
+        format :"a4"
+      })
+      pdf.addImage(imgData,"PNG",20,20,400,500);
+      pdf.save(`#${numeroSerie} - Facture - ${client}.pdf`)
     });
   }
 
