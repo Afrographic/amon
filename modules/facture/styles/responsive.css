@@ -196,7 +196,7 @@
     /* Facture preview responsive Design */
     .containerFacture {
         width: 100vw !important;
-        padding: 0;
+        padding: 16px;
         font-size: 0.5rem;
     }
 

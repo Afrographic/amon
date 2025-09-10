@@ -473,6 +473,7 @@
               onkeyup="enterAddNewClient(event)"
             />
           </div>
+         
           <div class="addBtnClient" onclick="addNewClient()">
             <img
               src="assets/images/add.svg"
@@ -540,6 +541,14 @@
           />
         </div>
         <div class="formItem">
+          <div class="label">Secteur d'activite</div>
+          <input
+            type="text"
+            placeholder="Secteur d'activite"
+            id="secteur"
+          />
+        </div>
+        <div class="formItem">
           <div class="label">Votre nom complet</div>
           <input type="text" placeholder="Votre nom complet" id="nomComplet" />
         </div>
@@ -600,7 +609,7 @@
         <div class="tac" id="initCompanyName">Afrographix Studio</div>
         <hr style="width: 100%; opacity: 0.3; margin-top: 12px" />
         <p class="tac" style="color: grey" id="totalFactures">
-          456 Factures generees
+          0 Factures generees
         </p>
 
         <button
@@ -709,6 +718,7 @@
         <h2>Generer une nouvelle facture/Devis</h2>
         <p>Veuillez renseigner les informations ci-dessous</p>
         <div class="pr">
+        
           <div
             class="formItem"
             style="flex: 1; margin-bottom: 16px"
@@ -721,6 +731,14 @@
               id="nomClient"
               onblur="hideEasyClientPicker()"
               onkeyup="searchClients(event)"
+            />
+          </div>
+          <div class="formItem">
+            <div class="label">Numero du client</div>
+            <input
+              type="text"
+              placeholder="Numero du client"
+              id="numeroClient"
             />
           </div>
           <!-- Noms des clients sauvegarder-->
@@ -931,6 +949,7 @@
             bottom: -5px;
           "
         />
+
         <div
           class="row g16 companyFactureForPrint"
           style="background-color: #eaeaea; padding: 0 16px"
@@ -941,6 +960,7 @@
           <h2 id="nameCompanyFacture" style="color: #262626">
             Afrographix Studio
           </h2>
+          <div id="secteurFacture" style="color:grey;">Motion design | Developpement de logiciels et d'applications</div>
         </div>
 
         <div class="header">
@@ -1230,6 +1250,9 @@
         // logo.src = logoURL;
         // factureLogo.appendChild(logo);
 
+        //Set Numero client
+        
+
         //Set name of company
         let nameCompanyFacture = document.querySelector("#nameCompanyFacture");
         nameCompanyFacture.innerHTML = `${userInfo.nomEntreprise}`;
@@ -1252,9 +1275,14 @@
         factureEmail.innerHTML = `${userInfo.email}`;
         facturePhone.innerHTML = `${userInfo.numeroTelephone}`;
 
+        //Secteur company secteur
+        let secteurFacture = document.querySelector("#secteurFacture");
+        secteurFacture.innerHTML = `${userInfo.secteur}`;
+
         //set Nom client
+        let numeroClient = document.querySelector("#numeroClient");
         let factureNomClient = document.querySelector("#factureNomClient");
-        factureNomClient.innerHTML = `Cher ${nomClient.value}`;
+        factureNomClient.innerHTML = `Cher ${nomClient.value}(${numeroClient.value}) `;
         localStorage.setItem("client", nomClient.value);
 
         //Set tableau des factures
@@ -1330,7 +1358,8 @@
           at: dateFormated,
           id: factures.length + 1,
           negociable : negociable,
-          delai:delaiInput.value
+          delai:delaiInput.value,
+          numeroClient:numeroClient.value
         });
 
         //update note value
@@ -1342,6 +1371,7 @@
         );
         let renderProducts = document.querySelector("#renderrrrrrr");
         nomClient.value = "";
+        numeroClient.value = "";
         renderProducts.innerHTML = "";
         mobileProductsPreview.innerHTML = "";
         produits = [];
@@ -1571,6 +1601,7 @@
       initConfigBasic();
 
       function saveConfig() {
+        let secteur = document.querySelector("#secteur");
         let adresse = document.querySelector("#adresse");
         let email = document.querySelector("#email");
         let numeroTelephone = document.querySelector("#numeroTelephone");
@@ -1578,11 +1609,18 @@
         let nomComplet = document.querySelector("#nomComplet");
         let nomEntreprise = document.querySelector("#nomEntreprise");
         let monnaie = document.querySelector("#monnaie");
+ 
 
         if (nomEntreprise.value.trim().length == 0) {
           HelperFunction.show_negative_message("Nom de l'entreprise invalide!");
           return;
         }
+
+        if(secteur.value.trim().length == 0){
+          HelperFunction.show_negative_message("Secteur d'activite invalide invalide!");
+          return;
+        }
+
         if (nomComplet.value.trim().length == 0) {
           HelperFunction.show_negative_message("Nom invalide!");
           return;
@@ -1624,6 +1662,7 @@
           nomComplet: nomComplet.value,
           nomEntreprise: nomEntreprise.value,
           monnaie: monnaie.value,
+          secteur:secteur.value
         };
 
         saveUserInfoToDB();
@@ -1657,6 +1696,7 @@
         let nomComplet = document.querySelector("#nomComplet");
         let nomEntreprise = document.querySelector("#nomEntreprise");
         let monnaie = document.querySelector("#monnaie");
+        let secteur = document.querySelector("#secteur");
 
         adresse.value = userInfo.adresse;
         email.value = userInfo.email;
@@ -1665,6 +1705,7 @@
         nomComplet.value = userInfo.nomComplet;
         nomEntreprise.value = userInfo.nomEntreprise;
         monnaie.value = userInfo.monnaie;
+        secteur.value = userInfo.secteur;
 
         let addUserValues = document.querySelector("#addUserValues");
         let addNewInvoice = document.querySelector("#addNewInvoice");

@@ -151,9 +151,12 @@ function previewFacture(factureIndex) {
   factureAdresse.innerHTML = `${userInfo.adresse}`;
   factureEmail.innerHTML = `${userInfo.email}`;
   facturePhone.innerHTML = `${userInfo.numeroTelephone}`;
+  //Secteur company secteur
+  let secteurFacture = document.querySelector("#secteurFacture");
+  secteurFacture.innerHTML = `${userInfo.secteur}`;
   //set Nom client
   let factureNomClient = document.querySelector("#factureNomClient");
-  factureNomClient.innerHTML = `Cher ${facture.client}`;
+  factureNomClient.innerHTML = `Cher ${facture.client}(${facture.numeroClient})`;
   localStorage.setItem("client", facture.client);
   //Set tableau des factures
   let factureTableauRender = document.querySelector("#factureTableauRender");

@@ -47,12 +47,14 @@ function getSecondaryColor(e){
 
 function openPrimaryPicker(){
     let primaryPicker = document.querySelector("#primaryPicker");
-    primaryPicker.click()
+    primaryPicker.click();
+    primaryPicker.blur();
 }
 
 function openSecondaryPicker(){
     let secondaryPicker = document.querySelector("#secondaryPicker");
     secondaryPicker.click();
+    secondaryPicker.blur();
 }
 
 function editBgGradients(){
