@@ -72,6 +72,7 @@ const FILES_TO_CACHE  = [
     "/modules/facture/assets/images/tempLogo.svg",
 
     "/modules/facture/assets/libs/chart.js",
+    "/modules/facture/assets/libs/jscolor.js",
     "/modules/facture/assets/libs/html2canvas.min.js",
     "/modules/facture/assets/libs/jspdf.umd.min.js",
     "/modules/facture/assets/libs/jsstore.js",

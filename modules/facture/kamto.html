@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kamto</title>
     <script src="assets/libs/jsstore.js"></script>
-    <script src="assets/libs/jsstore.worker.js"></script>
-    <script src="scripts/utils.js"></script>
+    <script src="assets/libs/jsstore.worker.js"></script> 
     <script src="assets/libs/jspdf.umd.min.js"></script>
     <script src="assets/libs/html2canvas.min.js"></script>
+    <script src="assets/libs/jscolor.js"></script>
+
+    <script src="scripts/utils.js"></script>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/responsive.css" />
     <link rel="stylesheet" href="styles/buttons.css" />
@@ -1157,21 +1159,24 @@
     <!-- Editer la charte graphique -->
     <div class="CharteGraphique inactive">
       <div class="row">
-        <div class="colorPreview primary" onclick="openPrimaryPicker()"></div>
-        <input
-          type="color"
-          onchange="getPrimaryColor(event)"
-          id="primaryPicker"
-        />
-        <div
-          class="colorPreview secondary"
-          onclick="openSecondaryPicker()"
-        ></div>
-        <input
-          type="color"
-          onchange="getSecondaryColor(event)"
-          id="secondaryPicker"
-        />
+        <div class="colorPreview primary" onclick="openPrimaryPicker()">
+          <input
+            class="jscolor"
+            value="ab2567"
+            id="primaryPicker"
+            onchange="getPrimaryColor(event)"
+          />
+        </div>
+        <input type="color" onchange="getPrimaryColor(event)" />
+        <div class="colorPreview secondary" onclick="openSecondaryPicker()">
+          <input
+            class="jscolor"
+            value="ab2567"
+            id="secondaryPicker"
+            onchange="getSecondaryColor(event)"
+          />
+        </div>
+        <input type="color" onchange="getSecondaryColor(event)" />
       </div>
     </div>
     <!-- Fin edition de la charte graphique -->
