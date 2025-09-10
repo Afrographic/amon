@@ -146,7 +146,7 @@ class HelperFunction {
         unit : "px",
         format :"a4"
       })
-      pdf.addImage(imgData,"PNG",20,20,400,500);
+      pdf.addImage(imgData,"PNG",20,20,400,530);
       pdf.save(`#${numeroSerie} - Facture - ${client}.pdf`)
     });
   }
