@@ -1446,7 +1446,7 @@
             historyAjout: JSON.stringify(historyAjout),
           },
         });
-        
+
         computeTotalMoney();
       }
 
@@ -1603,6 +1603,7 @@
           products.splice(index, 1);
           saveToDB();
           renderProduct();
+          computeTotalMoney();
         }
       }
 
@@ -1634,6 +1635,7 @@
         renderProduct();
         closeEditProduct();
         saveToDB();
+        computeTotalMoney();
       }
 
       function closeEditProduct() {
