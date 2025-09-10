@@ -51,7 +51,7 @@ async function getVentesStats() {
   for (let i = 0; i <= listToRender[0].products.length - 1; i++) {
     total += parseInt(listToRender[0].products[i].prix);
   }
-  TodayMoney.innerHTML = `${total} ${devise}`;
+  TodayMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(total)} ${devise}`;
 
   //set month stat
   let monthMoney = document.querySelector("#monthMoney");
@@ -65,7 +65,7 @@ async function getVentesStats() {
     }
     totalMonthProductVariable += listToRender[i].products.length;
   }
-  monthMoney.innerHTML = `${totalMoneyMonth} ${devise}`;
+  monthMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(totalMoneyMonth)} ${devise}`;
   totalMonthProduct.innerHTML = `${totalMonthProductVariable} Produits`;
 
   //Set week Stat
@@ -76,7 +76,7 @@ async function getVentesStats() {
   let totalRecord = listToRender.length;
 
   if (totalRecord < 7) {
-    weekMoney.innerHTML = `${totalMoneyMonth} ${devise}`;
+    weekMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(totalMoneyMonth)} ${devise}`;
     weekProducts.innerHTML = `${totalMonthProductVariable} Produits`;
   } else {
     for (let i = 0; i <= 7; i++) {
@@ -86,7 +86,7 @@ async function getVentesStats() {
       }
       totalProductsValue += listToRender[i].products.length;
     }
-    weekMoney.innerHTML = `${totalWeekMoneyValue} ${devise}`;
+    weekMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(totalWeekMoneyValue)} ${devise}`;
     weekProducts.innerHTML = `${totalProductsValue} Produits`;
   }
 }
