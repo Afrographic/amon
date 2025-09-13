@@ -954,9 +954,7 @@
           class="row g16 companyFactureForPrint"
           style="background-color: #eaeaea; padding: 0 16px"
         >
-          <div id="factureLogo">
-            <img src="assets/images/tempLogo.svg" alt="" />
-          </div>
+          <img src="" alt="" id="factureLogo2" width="25px">
           <h2 id="nameCompanyFacture" style="color: #262626">
             Afrographix Studio
           </h2>
@@ -1145,7 +1143,10 @@
 
           <div class="row jcsb" style="align-items: flex-end">
             <div style="margin-top: 32px" class="NoteBLockFacture">
-              <h3 style="margin: 0">Note</h3>
+              <div>
+                <img src="assets/images/info@900x.png" alt="" width="16px">
+              </div>
+              
               <p style="width: 110%; line-height: 1.6em" id="FactureNote">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum,
                 optio voluptatibus. Natus error omnis laudantium molestiae iusto
@@ -1238,10 +1239,9 @@
 
         if (userInfo.logo != undefined) {
           //Set Logo on facture
-          let factureLogo = document.querySelector("#factureLogo");
-          factureLogo.innerHTML = "";
           let logoURL = URL.createObjectURL(userInfo.logo);
-          factureLogo.style.backgroundImage = `url(${logoURL})`;
+          let factureLogo2 = document.querySelector("#factureLogo2");
+          factureLogo2.src = logoURL;
         }
 
         //create img logo element

@@ -630,7 +630,25 @@ textarea{
 }
  
 
+.mobileProductsPreview{
+    margin-top:8px;
+}
+
 
 .delai h2{
     margin:0;
+}
+
+.NoteBLockFacture{
+    background-color: #181818;
+    color: #eeeeee;
+    width: 100%;
+    padding:16px;
+    border-radius: 8px;
+    display: flex;
+    gap:8px;
+}
+
+#factureLogo2{
+    clip-path: circle();
 }

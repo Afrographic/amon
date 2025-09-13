@@ -120,24 +120,27 @@ class HelperFunction {
 
   static exportImage() {
     let numeroSerie = localStorage.getItem("numeroSerie");
-    let client = localStorage.getItem("client")
+    let client = localStorage.getItem("client");
     const { jsPDF } = window.jspdf;
     let facture = document.querySelector(".containerFacture");
     html2canvas(facture, {
       useCors: true,
       allowTaint: false,
       scale: 8,
-      width:facture.offsetWidth,
-      height:facture.scrollHeight,
+      width: facture.offsetWidth,
+      height: facture.scrollHeight,
       windowWidth: document.documentElement.scrollWidth,
       windowHeight: facture.scrollHeight,
     }).then((canvas) => {
       const imgData = canvas.toDataURL("image/jpeg");
-      const link = document.createElement("a");
-      document.body.appendChild(link);
-      link.href = imgData;
-      link.download = `#${numeroSerie} - Facture - ${client}.jpeg`;
-      link.click();
+      // const link = document.createElement("a");
+      // document.body.appendChild(link);
+      // link.href = imgData;
+      // link.download = `#${numeroSerie} - Facture - ${client}.jpeg`;
+      // link.click();
+
+      let fileName = `#${numeroSerie} - Facture - ${client}`;
+      this.dataURLToPDF(imgData,fileName);
 
       //JSPDF test
       // const {jsPDF} = window.jspdf;
@@ -151,10 +154,65 @@ class HelperFunction {
     });
   }
 
+  static async dataURLToPDF(dataURL,fileName) {
+    const { jsPDF } = window.jspdf;
+
+    // Create PDF (A4 portrait, mm units)
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    // Set margins (same left/right)
+    const marginX = 12; // mm (you can change)
+    const usableWidth = pageWidth - marginX * 2;
+
+    // Load the image
+    const img = new Image();
+    img.src = dataURL;
+    await img.decode();
+
+    const imgWidthPx = img.width;
+    const imgHeightPx = img.height;
+
+    // Scale image keeping aspect ratio
+    const ratio = imgHeightPx / imgWidthPx;
+    const imgWidthMm = usableWidth;
+    const imgHeightMm = imgWidthMm * ratio;
+
+    // Draw image across multiple pages if necessary
+    let remainingHeight = imgHeightMm;
+    let positionY = 0;
+
+    while (remainingHeight > 0) {
+      const renderHeight = Math.min(remainingHeight, pageHeight);
+
+      pdf.addImage(
+        dataURL,
+        "PNG",
+        marginX,
+        0,
+        imgWidthMm,
+        imgHeightMm,
+        undefined,
+        "FAST",
+        0,
+        positionY // crop Y offset (from full image)
+      );
+
+      remainingHeight -= pageHeight;
+      positionY += pageHeight;
+
+      if (remainingHeight > 0) {
+        pdf.addPage();
+      }
+    }
+
+    pdf.save(fileName+".pdf");
+  }
+
   static sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
-
 
   static async show_negative_message(message) {
     let info = document.querySelector("#negative");
@@ -165,13 +223,10 @@ class HelperFunction {
     info.classList.remove("info_visible");
   }
 
-  static  formatNumWithWhiteSpace(n){
+  static formatNumWithWhiteSpace(n) {
     const s = String(n);
-    const [intPart,fracPart] = s.split(".");
-    const intWithSpace = intPart.replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+    const [intPart, fracPart] = s.split(".");
+    const intWithSpace = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     return fracPart ? `${intWithSpace}.${fracPart}` : intWithSpace;
   }
-
-
-
 }

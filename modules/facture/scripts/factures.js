@@ -126,10 +126,9 @@ function previewFacture(factureIndex) {
   factureModele1.classList.remove("inactive");
   //Set Logo on facture
   if (userInfo.logo != undefined) {
-    let factureLogo = document.querySelector("#factureLogo");
-    factureLogo.innerHTML ="";
     let logoURL = URL.createObjectURL(userInfo.logo);
-    factureLogo.style.backgroundImage = `url(${logoURL})`;
+    let factureLogo2 = document.querySelector("#factureLogo2");
+    factureLogo2.src = logoURL;
   }
 
   //create img logo element
