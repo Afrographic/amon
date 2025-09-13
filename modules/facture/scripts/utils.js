@@ -202,9 +202,7 @@ class HelperFunction {
       remainingHeight -= pageHeight;
       positionY += pageHeight;
 
-      if (remainingHeight > 0) {
-        pdf.addPage();
-      }
+      
     }
 
     pdf.save(fileName+".pdf");
