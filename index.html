@@ -16,8 +16,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
     <style>
+
       * {
-        font-family: arial;
         transition: 0.25s;
         overflow-x: hidden;
         scrollbar-width: 1px;
@@ -514,7 +514,11 @@
 
       <div class="appContent">
 
+        <a href="modules/collection/collection.html">
+          <img src="images/cat.svg" width="60px" alt=""  onclick="addProduct()" class="category">
+        </a>
         <img src="images/add_2.svg" width="70px" alt=""  onclick="addProduct()" class="mobileAddProduct">
+       
 
         <h3 class="kpi">Ventes <span id="totalVente" style="color:grey;font-size: 12px;">0 XAF</span></h3>
         <div class="kycBloc">
@@ -662,6 +666,22 @@
             <input type="number" placeholder="Quantite" id="quantiteInput"  inputmode="numeric"
             pattern="[0-9]*"/>
           </div>
+          <div class="formItem">
+            <div class="label">Categorie</div>
+            <select name="" id="createCategories" >
+              <option value="dsd">Electronique</option>
+              <option value="dsd">Menage</option>
+              <option value="dsd">Plomberie</option>
+            </select>
+          </div>
+          <a href="modules/collection/collection.html">
+            <div class="cat">
+              <img src="images/cat.svg" alt="" width="34px">
+              <div>Ajouter une categorie</div>
+            </div>
+          </a>
+         
+
         </div>
 
         <button
@@ -710,6 +730,14 @@
               placeholder="Fournisseur"
               id="fournisseurMarqueEdit"
             />
+          </div>
+          <div class="formItem">
+            <div class="label">Categorie</div>
+            <select name="" id="EditCategories" >
+              <option value="dsd">Electronique</option>
+              <option value="dsd">Menage</option>
+              <option value="dsd">Plomberie</option>
+            </select>
           </div>
         </div>
 
@@ -1377,11 +1405,14 @@
       }
 
       async function addProductToDatabase() {
+        let createCategories = document.querySelector("#createCategories");
+
         let nomInput = document.getElementById("nomInput");
         let prixInput = document.getElementById("prixInput");
         let fournisseurInput = document.getElementById("fournisseurInput");
         let marqueInput = document.getElementById("marqueInput");
         let quantiteInput = document.getElementById("quantiteInput");
+        let catId = createCategories.value;
 
         let product = {
           nom: "nom",
@@ -1392,6 +1423,7 @@
           addAt: "addAt",
           modifiedAt: "modifiedAt",
           id: 1450554555,
+          catId:catId
         };
 
         let addAt = new Date();
@@ -1426,6 +1458,8 @@
         product.addAt = formatDate(addAt);
         product.modifiedAt = formatDate(modifiedAt);
         product.id = crypto.randomUUID();
+        product.catId = catId;
+       
 
         products.unshift(product);
         renderProduct();
@@ -1603,15 +1637,21 @@
         let id = event.target.id;
         productIdToEdit = id;
         EditProductElement.classList.remove("inactive");
+
         for (let i = 0; i <= products.length - 1; i++) {
           if (products[i].id == id) {
             nomEditInput.value = products[i].nom;
             prixEditInput.value = products[i].prix;
             fournisseurEditInput.value = products[i].fournisseur;
             fournisseurMarqueEdit.value = products[i].marque;
+
+             //Prefill selected categorie
+            let EditCategories = document.querySelector("#EditCategories");
+            EditCategories.value =  products[i].catId;
           }
         }
 
+      
         renderProduct();
       }
 
@@ -1634,6 +1674,9 @@
       function editProductSave() {
         let id = productIdToEdit;
 
+        let EditCategories = document.querySelector("#EditCategories");
+        let catId =    EditCategories.value ;
+
         if (nomEditInput.value.trim().length == 0) {
           Afro.show_negative_message("Nom invalide");
           return;
@@ -1654,6 +1697,7 @@
             products[i].fournisseur = fournisseurEditInput.value.trim();
             let date = new Date();
             products[i].modifiedAt = formatDate(date);
+            products[i].catId = catId;
           }
         }
         renderProduct();
@@ -1753,5 +1797,6 @@
     <script src="scripts/mobileMenu.js"></script>
     <script src="scripts/startUp.js"></script>
     <script src="scripts/totalMoneyToEarn.js"></script>
+    <script src="scripts/fillCategorieSelect.js"></script>
   </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection</title>
+    <link rel="stylesheet" href="collection.css">
+    <script src="../../libs/afro.js"></script>
+</head>
+<body class="collections">
+    <div class="header">
+        <a href="../../index.html">
+            <img src="../../images/back.svg" alt="" width="24px">
+        </a>
+        <h3>Categories</h3>
+    </div>
+    <hr>
+
+    <div class="empty">
+        <img src="../../images/empty.svg" alt="" width="80px">
+        <div>Aucune categorie pour l'instant</div>
+    </div>
+
+    <div class="catitems">
+        <div class="catItem">
+            <div> Electronique</div>
+            <div>
+                <img src="../../images/edit.svg" alt="" width="34px">
+                <img src="../../images/delete.svg" alt="" width="34px">
+            </div>
+        </div>
+    </div>
+
+    <div style="padding:16px;display:flex;flex-direction: column;gap:8px;">
+        <button class="add" onclick="addCollection()">Ajouter une categorie</button>
+    </div>
+   
+   <script src="collection.js"></script>
+</body>
+</html>
