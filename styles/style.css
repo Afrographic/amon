@@ -353,3 +353,9 @@ input{
     align-items: center;
     justify-content: center;
 }
+
+.kpi{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

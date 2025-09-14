@@ -18,6 +18,22 @@ async function getVentesStats() {
 
   let historyRetrait = JSON.parse(datas[0].historyRetrait);
   console.log(historyRetrait);
+  // Compute total benef et prix vente
+  let totalVente = 0;
+  let totalBenef = 0;
+  for(let i = 0; i <= historyRetrait.length -1 ;i++){
+    if(historyRetrait[i].prixVente == undefined){
+      historyRetrait[i].prixVente = historyRetrait[i].prix
+    }
+    totalVente += parseInt(historyRetrait[i].prix);
+    totalBenef +=  historyRetrait[i].prixVente -  historyRetrait[i].prix;
+
+    let totalVenteView = document.querySelector("#totalVente");
+    let totalBenefView = document.querySelector("#totalBenef");
+    totalVenteView.innerHTML = `${Afro.formatNumWithWhiteSpace(totalVente)} ${devise}`
+    totalBenefView.innerHTML = `${Afro.formatNumWithWhiteSpace(totalBenef)} ${devise}`
+  }
+
 
   let listToRender = [];
   let currentMonth = getCurrentMonth();
@@ -35,6 +51,7 @@ async function getVentesStats() {
           historyRetrait[i].prixVente = historyRetrait[i].prix
         }
         products.push(historyRetrait[i]);
+       
       }
     }
 
