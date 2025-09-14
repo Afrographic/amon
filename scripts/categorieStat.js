@@ -62,12 +62,12 @@ async function computeCategorieStat() {
         cats.innerHTML += `
         <div class="catItem">
             <div>
-            <div>${categoriesAmon[i].categoryName}</div>
-            <div class="totalProduct">${categoriesAmon[i].products.length} Produits</div>
+                <div>${categoriesAmon[i].categoryName}</div>
+                <div class="totalProduct">${categoriesAmon[i].products.length} Produits</div>
             </div>
-            <div>
-            <div>Benefice</div>
-            <div class="benef">${categoriesAmon[i].benefice} ${devise}</div>
+            <div class="benefBlock">
+                <div>Benefice</div>
+                <div class="benef">${categoriesAmon[i].benefice} ${devise}</div>
             </div>
         </div>
         `

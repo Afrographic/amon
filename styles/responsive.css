@@ -73,14 +73,12 @@
         gap: 4px !important;;
         border-radius: 4px !important;;
     }
-    .kycItem .title{
-        font-size: 10px !important;;
-    }
+
     .kycItem .amount{
-        font-size: 12px !important;;
+       
     }
     .kycItem .totalSellStat{
-        font-size: 9px !important;;
+        font-size: 14px !important;;
     }
     .totalProductAddProduct{
         flex-direction: column;

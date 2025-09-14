@@ -135,7 +135,7 @@ hr{
 
 .kycItem .amount {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     color: #2cad61;
 }
 
@@ -427,4 +427,10 @@ a{
 .totalProduct{
     font-size: 12px;
     color:grey;
+}
+
+.benefBlock{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
 }
