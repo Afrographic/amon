@@ -25,7 +25,7 @@ async function getVentesStats() {
     if(historyRetrait[i].prixVente == undefined){
       historyRetrait[i].prixVente = historyRetrait[i].prix
     }
-    totalVente += parseInt(historyRetrait[i].prix);
+    totalVente += parseInt(historyRetrait[i].prixVente);
     totalBenef +=  historyRetrait[i].prixVente -  historyRetrait[i].prix;
 
     let totalVenteView = document.querySelector("#totalVente");
@@ -69,7 +69,7 @@ async function getVentesStats() {
   let total = 0;
   let benefDay = 0;
   for (let i = 0; i <= listToRender[0].products.length - 1; i++) {
-    total += parseInt(listToRender[0].products[i].prix);
+    total += parseInt(listToRender[0].products[i].prixVente);
     benefDay += listToRender[0].products[i].prixVente - listToRender[0].products[i].prix;
   }
   TodayMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(total)} ${devise}`;
@@ -84,7 +84,7 @@ async function getVentesStats() {
   let benefMonthMoney = 0;
   for (let i = 0; i <= listToRender.length - 1; i++) {
     for (let j = 0; j <= listToRender[i].products.length - 1; j++) {
-      totalMoneyMonth += parseInt(listToRender[i].products[j].prix);
+      totalMoneyMonth += parseInt(listToRender[i].products[j].prixVente);
       benefMonthMoney += listToRender[i].products[j].prixVente - listToRender[i].products[j].prix;
     }
     totalMonthProductVariable += listToRender[i].products.length;
