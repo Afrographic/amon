@@ -63,6 +63,7 @@
         padding: 32px;
         transition: 0.25s;
         background-color: #fff;
+        z-index: 2;
       }
 
       .editProduct {
@@ -434,6 +435,16 @@
             pattern="[0-9]*"
           />
         </div>
+        <div class="formItem" style="margin-top:8px;">
+          <div class="label">Prix de vente</div>
+          <input
+            type="number"
+            placeholder="Prix de vente"
+            id="prixVente"
+            inputmode="numeric"
+            pattern="[0-9]*"
+          />
+        </div>
 
         <div class="row g16" style="margin-top: 16px">
           <button onclick="addNewVente()" class="primary_btn">
@@ -502,36 +513,49 @@
       </div>
 
       <div class="appContent">
+
+        <img src="images/add_2.svg" width="70px" alt=""  onclick="addProduct()" class="mobileAddProduct">
+
+        <h3>Ventes</h3>
         <div class="kycBloc">
           <div class="kycItem">
             <div class="title">Aujourdhui</div>
             <div class="amount" id="TodayMoney">0 F</div>
             <div class="totalSellStat" id="todayTotalProduct">0 Produits</div>
           </div>
-          <div class="kycItem">
-            <div class="title">Cette semaine</div>
-            <div class="amount" id="weekMoney">0 F</div>
-            <div class="totalSellStat" id="weekProducts">0 Produits</div>
-          </div>
+        
           <div class="kycItem">
             <div class="title">Ce mois</div>
             <div class="amount" id="monthMoney">0 F</div>
             <div class="totalSellStat" id="totalMonthProduct">0 Produits</div>
           </div>
         </div>
-        <div class="row aic jcsb totalProductAddProduct">
+       
+        <h3>Benefices</h3>
+        <div class="kycBloc">
+          <div class="kycItem">
+            <div class="title">Aujourdhui</div>
+            <div class="amount" id="benefTodayMoney">0 F</div>   
+          </div>
+          <div class="kycItem">
+            <div class="title">Ce mois</div>
+            <div class="amount" id="benefMonthMoney">0 F</div>
+          </div>
+        </div>
+       
+       
+        <div class="totalProductBox">
           <h2 id="totalProduct">0 produits</h2>
           <div
             class="c_main"
             id="totalMoneyToEarn"
-            style="font-size: 11px; color: #00ab62"
+            style="color: #ffffff95"
           >
             1890000
           </div>
-          <button onclick="addProduct()" class="primary_btn mobileAddProduct">
-            Ajouter un produit
-          </button>
+         
         </div>
+
 
         <div class="export">
           <div>Parcourer la liste de vos produits</div>
@@ -617,8 +641,8 @@
             <input type="text" placeholder="Nom du produit" id="nomInput" />
           </div>
           <div class="formItem">
-            <div class="label">Prix</div>
-            <input type="number" placeholder="Prix" id="prixInput"  inputmode="numeric"
+            <div class="label">Prix d'achat</div>
+            <input type="number" placeholder="Prix d'achat" id="prixInput"  inputmode="numeric"
             pattern="[0-9]*"/>
           </div>
           <div class="formItem">
@@ -1063,7 +1087,7 @@
             products: JSON.stringify(products),
           },
         });
-      }
+      } 
 
       async function saveHistoryAjoutToDB() {
         await con.update({

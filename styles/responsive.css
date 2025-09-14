@@ -140,7 +140,10 @@
     }
 
     .mobileAddProduct{
-        display: flex !important;
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        z-index: 1;
     }
 
     .addProduct{
@@ -165,9 +168,7 @@
         width: 70vw !important;
     }
 
-    .mobileAddProduct{
-        width: 100%;
-    }
+
 
     .welcome .container{
         padding: 16px;

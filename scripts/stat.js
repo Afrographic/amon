@@ -19,7 +19,6 @@ async function getVentesStats() {
   let historyRetrait = JSON.parse(datas[0].historyRetrait);
   console.log(historyRetrait);
 
-
   let listToRender = [];
   let currentMonth = getCurrentMonth();
   let currentYear = getCurrentYear();
@@ -32,6 +31,9 @@ async function getVentesStats() {
     //Fetch corresponding products
     for (let i = 0; i <= historyRetrait.length - 1; i++) {
       if (historyRetrait[i].at == day) {
+        if(historyRetrait[i].prixVente == undefined){
+          historyRetrait[i].prixVente = historyRetrait[i].prix
+        }
         products.push(historyRetrait[i]);
       }
     }
@@ -48,47 +50,34 @@ async function getVentesStats() {
   let todayTotalProduct = document.querySelector("#todayTotalProduct");
   todayTotalProduct.innerHTML = `${listToRender[0].products.length} Produits`;
   let total = 0;
+  let benefDay = 0;
   for (let i = 0; i <= listToRender[0].products.length - 1; i++) {
     total += parseInt(listToRender[0].products[i].prix);
+    benefDay += listToRender[0].products[i].prixVente - listToRender[0].products[i].prix;
   }
   TodayMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(total)} ${devise}`;
+  let benefTodayMoney = document.querySelector("#benefTodayMoney");
+  benefTodayMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(benefDay)} ${devise}`;
 
   //set month stat
   let monthMoney = document.querySelector("#monthMoney");
   let totalMonthProduct = document.querySelector("#totalMonthProduct");
   let totalMoneyMonth = 0;
   let totalMonthProductVariable = 0;
+  let benefMonthMoney = 0;
   for (let i = 0; i <= listToRender.length - 1; i++) {
     for (let j = 0; j <= listToRender[i].products.length - 1; j++) {
       totalMoneyMonth += parseInt(listToRender[i].products[j].prix);
-      
+      benefMonthMoney += listToRender[i].products[j].prixVente - listToRender[i].products[j].prix;
     }
     totalMonthProductVariable += listToRender[i].products.length;
   }
   monthMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(totalMoneyMonth)} ${devise}`;
   totalMonthProduct.innerHTML = `${totalMonthProductVariable} Produits`;
+  let benefMonthMoneyView = document.querySelector("#benefMonthMoney");
+  benefMonthMoneyView.innerHTML = `${Afro.formatNumWithWhiteSpace(benefMonthMoney)} ${devise}`;
 
-  //Set week Stat
-  let weekMoney = document.querySelector("#weekMoney");
-  let weekProducts = document.querySelector("#weekProducts");
-  let totalWeekMoneyValue = 0;
-  let totalProductsValue = 0;
-  let totalRecord = listToRender.length;
 
-  if (totalRecord < 7) {
-    weekMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(totalMoneyMonth)} ${devise}`;
-    weekProducts.innerHTML = `${totalMonthProductVariable} Produits`;
-  } else {
-    for (let i = 0; i <= 7; i++) {
-      for (let j = 0; j <= listToRender[i].products.length - 1; j++) {
-        totalWeekMoneyValue += parseInt(listToRender[i].products[j].prix);
-        
-      }
-      totalProductsValue += listToRender[i].products.length;
-    }
-    weekMoney.innerHTML = `${Afro.formatNumWithWhiteSpace(totalWeekMoneyValue)} ${devise}`;
-    weekProducts.innerHTML = `${totalProductsValue} Produits`;
-  }
 }
 
 getVentesStats();

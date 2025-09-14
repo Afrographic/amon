@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 130.6 130.6">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <filter id="drop-shadow-1">
+      <feOffset dx="-1" dy="11"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#97cb57" flood-opacity=".53"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="17.5" y1="66.7" x2="113.1" y2="66.7" gradientTransform="translate(0 132) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#97cb57"/>
+      <stop offset="1" stop-color="#00ab61"/>
+    </linearGradient>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_2">
+      <g id="Layer_1-2" class="cls-1">
+        <g>
+          <circle class="cls-2" cx="65.3" cy="65.3" r="47.8"/>
+          <path class="cls-3" d="M80,62.6v5.3h-11.8v12.8h-6v-12.8h-11.8v-5.3h11.8v-12.8h6v12.8h11.8Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -18,9 +18,15 @@ async function showNouvelleVenteView() {
   
   async function addNewVente() {
     let nombrePiecesVente = document.querySelector("#nombrePiecesVente");
+    let prixVente = document.querySelector("#prixVente")
     let nbr = parseInt(nombrePiecesVente.value);
+    prixVente = parseInt(prixVente.value);
     if (isNaN(nbr)) {
       alert("Nombre de piece invalide");
+      return;
+    }
+    if(isNaN(prixVente)){
+      alert("Veuillez inserer le prix de vente")
       return;
     }
     let currentIndex = getCurrentProductIndex();
@@ -57,6 +63,7 @@ async function showNouvelleVenteView() {
       let fullDate = formatDate(date);
       produit.at = today;
       produit.fullDate = fullDate;
+      produit.prixVente = prixVente;
       historyRetrait.unshift(produit);
     }
   
@@ -69,6 +76,8 @@ async function showNouvelleVenteView() {
         historyRetrait: JSON.stringify(historyRetrait),
       },
     });
+
+    console.log(historyRetrait);
     //Close view
     hideNouvelleVenteView();
     renderProduct();
