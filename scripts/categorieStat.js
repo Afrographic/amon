@@ -67,7 +67,7 @@ async function computeCategorieStat() {
             </div>
             <div class="benefBlock">
                 <div>Benefice</div>
-                <div class="benef">${categoriesAmon[i].benefice} ${devise}</div>
+                <div class="benef">${Afro.formatNumWithWhiteSpace(categoriesAmon[i].benefice)} ${devise}</div>
             </div>
         </div>
         `

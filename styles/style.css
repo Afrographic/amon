@@ -181,7 +181,6 @@ input {
 .searchBox {
     display: flex;
     align-items: center;
-    margin-top: 16px;
     background-color: #f6f6f6;
     border-radius: 8px;
     padding: 8px;
