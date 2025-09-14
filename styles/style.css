@@ -403,3 +403,28 @@ select{
 a{
     color:black;
 }
+
+.cats{
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+    margin-top:8px;
+}
+
+.catItem{
+    display: flex;
+    justify-content: space-between;
+    border:1px solid #e1e1e1;
+    padding:16px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.benef{
+    color:#00AB62;
+}
+
+.totalProduct{
+    font-size: 12px;
+    color:grey;
+}
