@@ -406,17 +406,20 @@ a{
 .cats{
     display: flex;
     flex-direction: column;
-    gap:4px;
+    gap:16px;
     margin-top:8px;
 }
 
 .catItem{
-    display: flex;
-    justify-content: space-between;
+   
     border:1px solid #e1e1e1;
     padding:16px;
     border-radius: 8px;
-    align-items: center;
+}
+
+.catItem .header{
+    display: flex;
+    justify-content: space-between;
 }
 
 .benef{
@@ -432,4 +435,12 @@ a{
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+}
+
+
+.productsLists{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    margin-top:8px;
 }

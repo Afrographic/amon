@@ -9,6 +9,8 @@ async function showNouvelleVenteView() {
     let title = `Veuillez renseigner le nombre de pieces du produit ${product.nom} que vous avez vendu`;
     let titleNouveauVente = document.querySelector("#titleNouveauVente");
     titleNouveauVente.innerHTML = `${title}`;
+    let prixVente = document.querySelector("#prixVente");
+    prixVente.value = product.prixVente ?? product.prix;
   }
   
   function hideNouvelleVenteView() {
