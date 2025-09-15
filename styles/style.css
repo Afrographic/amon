@@ -444,3 +444,22 @@ a{
     gap:8px;
     margin-top:8px;
 }
+
+.ruptureBlock{
+    margin:16px 0px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.RuptureList{
+    display: flex;
+   flex-wrap: wrap;
+   gap:8px;
+}
+
+.ruptureItem{
+    border-radius: 16px;
+    padding:16px;
+    border:1px solid #aaa;
+}

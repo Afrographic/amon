@@ -70,6 +70,7 @@ async function addNewStock() {
   hideNouveauStockView();
   renderProduct();
   computeTotalMoney();
+  computeCategorieStat();
 }
 
 async function getHistory() {

@@ -86,6 +86,7 @@ async function showNouvelleVenteView() {
     // recompute stats
     getVentesStats();
     computeTotalMoney();
+    computeCategorieStat();
   }
   
   async function getHistory() {

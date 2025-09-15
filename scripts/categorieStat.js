@@ -129,6 +129,8 @@ async function computeCategorieStat() {
         `
     }
   }
+
+  computeRuptureStock();
  
   
 }
