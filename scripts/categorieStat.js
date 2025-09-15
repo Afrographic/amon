@@ -1,12 +1,18 @@
-async function computeCategorieStat() {
 
+async function computeCategorieStat() {
 
   //Get Categories
   let categoriesAmon = localStorage.getItem("AmonCategories");
-  if(categoriesAmon == null) return;
-
-  categoriesAmon = JSON.parse(categoriesAmon);
-
+  if(categoriesAmon != null) {
+    categoriesAmon = JSON.parse(categoriesAmon);
+  }else{
+    categoriesAmon =[];
+  }
+  
+  categoriesAmon.push({
+    catId:"",
+    categoryName : "Non Classe"
+  })
 
   //Get products
   var datas = await con.select({
