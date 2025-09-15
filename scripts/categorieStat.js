@@ -1,4 +1,7 @@
 async function computeCategorieStat() {
+  let catssss = document.querySelector(".cats");
+  catssss.innerHTML = "";
+
   //Get Categories
   let categoriesAmon = localStorage.getItem("AmonCategories");
   categoriesAmon = JSON.parse(categoriesAmon);
