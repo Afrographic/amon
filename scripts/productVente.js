@@ -120,6 +120,7 @@ async function showNouvelleVenteView() {
         id: "1",
       },
     });
+    if(datas.length == 0) return;
     products = JSON.parse(datas[0].products);
     return products;
   }

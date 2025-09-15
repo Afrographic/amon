@@ -16,6 +16,8 @@ async function getVentesStats() {
     },
   });
 
+  if(datas.length == 0) return;
+
   let historyRetrait = JSON.parse(datas[0].historyRetrait);
 
   // Compute total benef et prix vente

@@ -2,6 +2,7 @@ let totalMoneyToEarn = document.querySelector("#totalMoneyToEarn");
 
 async function computeTotalMoney(){
     let products = await getProductsStock();
+    if(products == undefined) return;
     let total = 0;
     for(let i = 0 ;i<=products.length-1;i++){
         let price = parseInt(products[i].prix);

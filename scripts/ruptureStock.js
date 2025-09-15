@@ -1,4 +1,5 @@
 async function computeRuptureStock() {
+  let ruptureBlock = document.querySelector(".ruptureBlock");
   //Get products
   var datas = await con.select({
     from: "data",
@@ -6,6 +7,10 @@ async function computeRuptureStock() {
       id: "1",
     },
   });
+  if(datas.length == 0) {
+    ruptureBlock.style.display = "none";
+    return;
+  }
   let products = JSON.parse(datas[0].products);
   let productsEnRupture = [];
   for(let i = 0 ; i<=products.length-1;i++){
@@ -14,7 +19,6 @@ async function computeRuptureStock() {
     }
   }
 
-  let ruptureBlock = document.querySelector(".ruptureBlock");
   let RuptureList = document.querySelector(".RuptureList");
   RuptureList.innerHTML = "";
   if(productsEnRupture.length == 0){
