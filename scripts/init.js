@@ -490,7 +490,7 @@ async function addProductToDatabase() {
     modifiedAt: "modifiedAt",
     id: 1450554555,
     catId:catId,
-    prixVente:sdds
+    prixVente:""
   };
 
   let addAt = new Date();
@@ -521,6 +521,8 @@ async function addProductToDatabase() {
     return;
   }
 
+  let productId = crypto.randomUUID();
+
   product.nom = Afro.Ucase(nomInput.value.trim());
   product.prix = prixInput.value.trim();
   product.fournisseur =  Afro.Ucase(fournisseurInput.value.trim());
@@ -528,9 +530,12 @@ async function addProductToDatabase() {
   product.quantite = quantiteInput.value.trim();
   product.addAt = formatDate(addAt);
   product.modifiedAt = formatDate(modifiedAt);
-  product.id = crypto.randomUUID();
+  product.id = productId;
   product.catId = catId;
-  product.prixVente = prixVenteInput.value.trim()
+  product.prixVente = prixVenteInput.value.trim();
+
+  //Save product Image
+  ProductImageService.saveProductImage(productId);
  
 
   products.unshift(product);

@@ -463,3 +463,17 @@ a{
     padding:16px;
     border:1px solid #aaa;
 }
+
+.importImage{
+    width: 100%;
+    aspect-ratio: 16/9;
+    border:1px dashed #aaa;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+    background-size: cover;
+    background-position: center;
+}
