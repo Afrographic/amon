@@ -1,6 +1,5 @@
 async function computeCategorieStat() {
-  let catssss = document.querySelector(".cats");
-  catssss.innerHTML = "";
+
 
   //Get Categories
   let categoriesAmon = localStorage.getItem("AmonCategories");
@@ -142,7 +141,6 @@ async function computeCategorieStat() {
 
   computeRuptureStock();
  
-  
 }
 
 computeCategorieStat();
