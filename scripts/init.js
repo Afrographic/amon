@@ -223,6 +223,7 @@ async function getHistory() {
       id: "1",
     },
   });
+  if(datas.length == 0) return;
   historyRetrait = JSON.parse(datas[0].historyRetrait);
   historyAjout = JSON.parse(datas[0].historyAjout);
 }

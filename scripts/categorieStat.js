@@ -3,7 +3,11 @@ async function computeCategorieStat() {
 
   //Get Categories
   let categoriesAmon = localStorage.getItem("AmonCategories");
+  if(categoriesAmon == null) return;
+  
   categoriesAmon = JSON.parse(categoriesAmon);
+
+  
 
   //Get products
   var datas = await con.select({

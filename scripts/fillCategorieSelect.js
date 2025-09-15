@@ -1,5 +1,8 @@
 function fillCategoriesSelect(){
     let collectionsAmon = localStorage.getItem("AmonCategories");
+    if(collectionsAmon ==null) return;
+    if(collectionsAmon ==undefined) return;
+    
     collectionsAmon = JSON.parse(collectionsAmon);
 
     //Fill select when creating categories
