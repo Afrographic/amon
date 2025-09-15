@@ -1,5 +1,4 @@
 let totalMoneyToEarn = document.querySelector("#totalMoneyToEarn");
-console.log(Afro.formatNumWithWhiteSpace(totalMoneyToEarn.innerHTML.trim()));
 
 async function computeTotalMoney(){
     let products = await getProductsStock();

@@ -13,7 +13,7 @@ async function computeRuptureStock() {
         productsEnRupture.push(products[i]);
     }
   }
-  console.log(productsEnRupture);
+
   let ruptureBlock = document.querySelector(".ruptureBlock");
   let RuptureList = document.querySelector(".RuptureList");
   RuptureList.innerHTML = "";

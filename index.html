@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles/ankh_notif.css" />
     <link rel="icon" href="icons/icon-512.png" />
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
     <style>
@@ -762,6 +763,11 @@
         <h2>Editer le produit</h2>
         <p>Veuillez renseigner les nouvelles informations</p>
         <div class="form">
+          <input type="file" hidden onchange="getImageEdit(event)" id="productImageEditFileInput">
+          <div class="importImageEdit" onclick="triggerFileSelectEdit()">
+            <img src="images/addImage.svg" alt="" width="24px">
+            <div>Importer une image</div>
+          </div>
           <div class="formItem">
             <div class="label">Nom</div>
             <input type="text" placeholder="Nom du produit" id="nomEditInput" />

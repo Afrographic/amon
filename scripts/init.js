@@ -429,10 +429,18 @@ let empty = document.querySelector(".empty");
 
 function addProduct() {
   let nomInput = document.getElementById("nomInput");
-  nomInput.focus();
+
   addProductElement.classList.remove("inactive");
   addProductElement.classList.add("active");
   addProduitButton.classList.add("inactive");
+
+  //Empty adding image block
+  let importImage = document.querySelector(".importImage");
+  importImage.style.backgroundImage = ``;
+  importImage.innerHTML = `
+  <img src="images/addImage.svg" alt="" width="24px">
+  <div>Importer une image</div>
+  `
 }
 
 function closeAddProduct() {
@@ -535,7 +543,9 @@ async function addProductToDatabase() {
   product.prixVente = prixVenteInput.value.trim();
 
   //Save product Image
-  ProductImageService.saveProductImage(productId);
+  let imageId = await ProductImageService.saveProductImage(productId);
+  product.imageId = imageId;
+  console.log(imageId);
  
 
   products.unshift(product);
@@ -721,7 +731,7 @@ let fournisseurMarqueEdit = document.querySelector(
 );
 let productIdToEdit = 0;
 
-function editProduct(event) {
+async function editProduct(event) {
   let id = event.target.id;
   productIdToEdit = id;
   EditProductElement.classList.remove("inactive");
@@ -737,6 +747,25 @@ function editProduct(event) {
        //Prefill selected categorie
       let EditCategories = document.querySelector("#EditCategories");
       EditCategories.value =  products[i].catId;
+
+      //Prefill product image
+      let importImage = document.querySelector(".importImageEdit");
+      if(products[i].imageId != undefined){
+        let imageFile = await ProductImageService.getImageFile( products[i].imageId);
+        
+        let url = URL.createObjectURL(imageFile);
+        importImage.style.backgroundImage = `url(${url})`;
+        importImage.innerHTML = "";
+        imageProductFile = imageFile;
+      }else{
+        
+        importImage.style.backgroundImage = ``;
+        importImage.innerHTML = `
+        <img src="images/addImage.svg" alt="" width="24px">
+        <div>Importer une image</div>
+        `
+      }
+      
     }
   }
 
@@ -761,7 +790,9 @@ function deleteProduct(event) {
   }
 }
 
-function editProductSave() {
+async function editProductSave() {
+  
+
   let id = productIdToEdit;
 
   let EditCategories = document.querySelector("#EditCategories");
@@ -785,6 +816,8 @@ function editProductSave() {
   }
   for (let i = 0; i <= products.length - 1; i++) {
     if (products[i].id == id) {
+      let imageId = await ProductImageService.editProductImage(products[i].id ,products[i].imageId);
+
       products[i].nom = nomEditInput.value.trim();
       products[i].prix = prixEditInput.value.trim();
       products[i].marque = fournisseurMarqueEdit.value.trim();
@@ -793,8 +826,14 @@ function editProductSave() {
       products[i].modifiedAt = formatDate(date);
       products[i].catId = catId;
       products[i].prixVente = prixVenteEditInput.value;
+
+      if(imageId != -1){
+        products[i].imageId = imageId;
+      }
+      
     }
   }
+ 
   renderProduct();
   closeEditProduct();
   saveToDB();

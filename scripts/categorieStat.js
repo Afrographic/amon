@@ -23,10 +23,15 @@ async function computeCategorieStat() {
     for (let j = 0; j <= products.length - 1; j++) {
       if (products[j].catId == categoriesAmon[i].catId) {
         products_add.push(products[j]);
+        let imagURl = await ProductImageService.getImageURL(products[j].imageId ?? -1);
+        let imageTemplate ="";
+        if(imagURl.length > 0){
+          imageTemplate = `<div class="productImage" style="background-image:url(${imagURl})"></div>`;
+        }
         productsTemplate += `
         <div class="productItem">
 
-        <div class="productItemClass">
+              <div class="productItemClass">
                   
                   <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${products[j].id}">Nouveau Stock</button>
                   <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${products[j].id}">Nouvelle Vente</button>
@@ -36,6 +41,8 @@ async function computeCategorieStat() {
         
                 </div>
 
+          ${imageTemplate}
+          
           <div class="productItemTitle">
               <h3>${Afro.Ucase(products[j].nom)}</h3>
               <div class="clickArea">
@@ -97,7 +104,7 @@ async function computeCategorieStat() {
     categoriesAmon[i].benefice = benefice;
   }
 
-  console.log(categoriesAmon);
+
 
   //render view
 
