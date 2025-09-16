@@ -33,13 +33,22 @@ async function computeCategorieStat() {
     let products_add = [];
     let productsTemplate = "";
     for (let j = 0; j <= products.length - 1; j++) {
+      
+      // Caracteristiques des produits
+      if(products[j].cars == undefined){
+        products[j].cars = [];
+      }
       if (products[j].catId == categoriesAmon[i].catId) {
         products_add.push(products[j]);
+        // Building image template
         let imagURl = await ProductImageService.getImageURL(products[j].imageId ?? -1);
         let imageTemplate ="";
         if(imagURl.length > 0){
           imageTemplate = `<div class="productImage" style="background-image:url(${imagURl})"></div>`;
         }
+
+        //Build More info component
+        let moreInfoTemplate = Product.generateMoreInfoTemplate(products[j]);
         productsTemplate += `
         <div class="productItem">
 
@@ -57,9 +66,13 @@ async function computeCategorieStat() {
           
           <div class="productItemTitle">
               <h3>${Afro.Ucase(products[j].nom)}</h3>
-              <div class="clickArea" onclick="showMenu(this)">
-                <img src="images/option.svg" />
-              </div>    
+              <div class="row aic g16">
+                  <img src="images/info.svg" width="24px"/>
+                  <div class="clickArea" onclick="showMenu(this)">
+                     <img src="images/option.svg" />
+                  </div>  
+              </div>
+                
            </div>
           
           <table>
@@ -138,8 +151,7 @@ async function computeCategorieStat() {
 
 
 function showMenu(el){
-  console.log(el.parentNode.parentNode.firstElementChild);
-  el.parentNode.parentNode.firstElementChild.classList.remove("productItemClassInactive")
+  el.parentNode.parentNode.parentNode.firstElementChild.classList.remove("productItemClassInactive")
 }
 
 function hideMenu(el){

@@ -370,7 +370,7 @@ function search() {
     renderSearchResult.innerHTML += `
               <div class="productItem">
 
-                <div class="productItemClass">
+                <div class="productItemClass productItemClassInactive" onclick="hideMenu(this)">
                           
                           <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${searchedProducts[i].id}">Nouveau Stock</button>
                           <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${searchedProducts[i].id}">Nouvelle Vente</button>
@@ -378,13 +378,16 @@ function search() {
                           <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${searchedProducts[i].id}">Editer</button>
                           <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${searchedProducts[i].id}">Supprimer</button>
                 
-                        </div>
+                  </div>
 
                   <div class="productItemTitle">
                       <h3>${ Afro.Ucase(searchedProducts[i].nom)}</h3>
-                      <div class="clickArea">
-                        <img src="images/option.svg" />
-                      </div>    
+                      <div class="row aic">
+                          <img src="images/info.svg" width="24px"/>
+                          <div class="clickArea" onclick="showMenu(this)">
+                            <img src="images/option.svg" />
+                          </div>  
+                      </div>  
                    </div>
                   
                   <table>
