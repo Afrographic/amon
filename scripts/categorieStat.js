@@ -21,6 +21,7 @@ async function computeCategorieStat() {
       id: "1",
     },
   });
+  if(datas.length == 0) return;
   let products = JSON.parse(datas[0].products);
 
   //Get sell history
@@ -96,7 +97,7 @@ async function computeCategorieStat() {
 
     //Calcul du benefice
     for(let k = 0 ; k<= products_add.length-1;k++){
-      categoriesAmon[i].benefice += parseInt(products_add[i].prixVente) - parseInt(products_add[i].prix);
+      categoriesAmon[i].benefice += parseInt(products_add[k].prixVente) - parseInt(products_add[k].prix);
     }
   }
 

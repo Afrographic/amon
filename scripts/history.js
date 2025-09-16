@@ -173,20 +173,23 @@ async function showHistoryRetrait() {
 
     //Compute total money made
     let totalMoney = 0;
+    let benefice = 0;
     for(k = 0 ; k<=listToRender[i].productCount.length - 1;k++){
       totalMoney += listToRender[i].products[k].prixVente * listToRender[i].productCount[k].products.length;
+      benefice += (listToRender[i].products[k].prixVente - listToRender[i].products[k].prix)* listToRender[i].productCount[k].products.length;
     }
     render.innerHTML += `<div>`;
     render.innerHTML += `
     <div class="historyTitle">
       <div>${listToRender[i].date}</div>
-      <div class="green">${Afro.formatNumWithWhiteSpace(totalMoney)} ${devise}</div>
+      <div >${Afro.formatNumWithWhiteSpace(totalMoney)} ${devise}</div>
     </div>
     `;
     if (listToRender[i].products.length == 0) {
       render.innerHTML += `
       <div class="historyListing">
         <div class="p16 tac">Aucune vente</div>
+        <p style="text-align:center" class="green">Benefice : 0 ${devise} </p>
       </div>
       `;
     } else {
@@ -204,6 +207,7 @@ async function showHistoryRetrait() {
       render.innerHTML += `
       <div class="historyListing">
          ${items}
+         <p style="text-align:center" class="green">Benefice : ${benefice} ${devise} </p>
       </div>
       `;
     }
