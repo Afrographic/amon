@@ -51,6 +51,7 @@ async function computeCategorieStat() {
         let moreInfoTemplate = Product.generateMoreInfoTemplate(products[j]);
         productsTemplate += `
         <div class="productItem">
+        
 
               <div class="productItemClass productItemClassInactive" onclick="hideMenu(this)">
                   
@@ -67,7 +68,7 @@ async function computeCategorieStat() {
           <div class="productItemTitle">
               <h3>${Afro.Ucase(products[j].nom)}</h3>
               <div class="row aic g16">
-                  <img src="images/info.svg" width="24px"/>
+                  <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>
                   <div class="clickArea" onclick="showMenu(this)">
                      <img src="images/option.svg" />
                   </div>  
@@ -85,6 +86,8 @@ async function computeCategorieStat() {
                   <td>${products[j].quantite}</td>
               </tr>
           </table>
+
+          ${moreInfoTemplate}
 
           
       </div>
@@ -152,6 +155,10 @@ async function computeCategorieStat() {
 
 function showMenu(el){
   el.parentNode.parentNode.parentNode.firstElementChild.classList.remove("productItemClassInactive")
+}
+
+function showMoreInfo(el){
+  el.parentNode.parentNode.parentNode.lastElementChild.classList.remove("productInfoInactive")
 }
 
 function hideMenu(el){

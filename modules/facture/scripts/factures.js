@@ -192,7 +192,10 @@ function previewFacture(factureIndex) {
     let delai = document.querySelector(".delai");
     delai.style.display = "none";
   }
- 
+  if(facture.delai.trim().length == 0){
+    let delai = document.querySelector(".delai");
+    delai.style.display = "none";
+  }
 
   //Set total
   let FactureTotal = document.querySelector("#FactureTotal");
@@ -204,7 +207,13 @@ function previewFacture(factureIndex) {
   facturePoseEntreprise.innerHTML = `${userInfo.votrePoste} ${userInfo.nomEntreprise}`;
   //Set note
   let FactureNote = document.querySelector("#FactureNote");
-  FactureNote.innerText = facture.note;
+  if(facture.note.trim().length == 0){
+    FactureNote.parentNode.parentNode.style.display = "none";
+  }else{
+    FactureNote.parentNode.parentNode.style.display = "flex";
+    FactureNote.innerText = facture.note;
+  }
+ 
   //Hide useless elements
   let supportDev = document.querySelector(".supportDev");
   let config = document.querySelector(".config");

@@ -535,3 +535,30 @@ a{
     flex-direction: column;
     gap:4px;
 }
+
+.productInfo{
+    padding:16px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    z-index: 2;
+    box-shadow: 1px -3px 12px #00000038;
+    transition: 0.25s;
+}
+
+.productInfoInactive{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-45px);
+}
+
+.productInfo h3{
+    border-bottom: 1px solid #e1e1e1;
+}

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kamto</title>
     <script src="assets/libs/jsstore.js"></script>
-    <script src="assets/libs/jsstore.worker.js"></script> 
+    <script src="assets/libs/jsstore.worker.js"></script>
     <script src="assets/libs/jspdf.umd.min.js"></script>
     <script src="assets/libs/html2canvas.min.js"></script>
     <script src="assets/libs/jscolor.js"></script>
@@ -473,7 +473,7 @@
               onkeyup="enterAddNewClient(event)"
             />
           </div>
-         
+
           <div class="addBtnClient" onclick="addNewClient()">
             <img
               src="assets/images/add.svg"
@@ -542,11 +542,7 @@
         </div>
         <div class="formItem">
           <div class="label">Secteur d'activite</div>
-          <input
-            type="text"
-            placeholder="Secteur d'activite"
-            id="secteur"
-          />
+          <input type="text" placeholder="Secteur d'activite" id="secteur" />
         </div>
         <div class="formItem">
           <div class="label">Votre nom complet</div>
@@ -612,16 +608,12 @@
           0 Factures generees
         </p>
 
-        <a href="../../index.html" style="width: 100%;">
-          <button
-          style="width: 100%"
-          class="tertiaryBtn stockBtn"          
-        >
-          <img src="../../images/amon.svg" alt="" width="15px" />
-          Gestion de stock
-        </button>
+        <a href="../../index.html" style="width: 100%">
+          <button style="width: 100%" class="tertiaryBtn stockBtn">
+            <img src="../../images/amon.svg" alt="" width="15px" />
+            Gestion de stock
+          </button>
         </a>
-       
 
         <div class="MobileMenu">
           <button
@@ -720,7 +712,6 @@
         <h2>Generer une nouvelle facture/Devis</h2>
         <p>Veuillez renseigner les informations ci-dessous</p>
         <div class="pr">
-        
           <div
             class="formItem"
             style="flex: 1; margin-bottom: 16px"
@@ -872,17 +863,16 @@
           </div>
         </div>
         <div
-            class="formItem"
-            style="flex: 1; margin-bottom: 16px;margin-top:8px;"
-            
-          >
-            <div class="label">Delai de livraison</div>
-            <input
-              type="text"
-              placeholder="Delai de livraison"
-              id="delaiLivraison"
-            />
-          </div>
+          class="formItem"
+          style="flex: 1; margin-bottom: 16px; margin-top: 8px"
+        >
+          <div class="label">Delai de livraison</div>
+          <input
+            type="text"
+            placeholder="Delai de livraison"
+            id="delaiLivraison"
+          />
+        </div>
         <div class="formItem" style="flex: 1; margin-top: 16px">
           <div class="label">Note a l'avis de votre client</div>
           <textarea
@@ -956,11 +946,13 @@
           class="row g16 companyFactureForPrint"
           style="background-color: #eaeaea; padding: 0 16px"
         >
-          <img src="" alt="" id="factureLogo2" width="25px">
+          <img src="" alt="" id="factureLogo2" width="25px" />
           <h2 id="nameCompanyFacture" style="color: #262626">
             Afrographix Studio
           </h2>
-          <div id="secteurFacture" style="color:grey;">Motion design | Developpement de logiciels et d'applications</div>
+          <div id="secteurFacture" style="color: grey">
+            Motion design | Developpement de logiciels et d'applications
+          </div>
         </div>
 
         <div class="header">
@@ -1130,7 +1122,7 @@
               <div style="font-size: 12px">Total</div>
               <div id="FactureTotal">850 000 XAF</div>
             </div>
-            <h2 style="color:black;" id="negotiateState">Non negociable</h2>
+            <h2 style="color: black" id="negotiateState">Non negociable</h2>
           </div>
 
           <div style="margin-top: 32px" class="ceoInvoice">
@@ -1146,9 +1138,9 @@
           <div class="row jcsb" style="align-items: flex-end">
             <div style="margin-top: 8px" class="NoteBLockFacture">
               <div>
-                <img src="assets/images/info@900x.png" alt="" width="16px">
+                <img src="assets/images/info@900x.png" alt="" width="16px" />
               </div>
-              
+
               <p style="width: 110%; line-height: 1.6em" id="FactureNote">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum,
                 optio voluptatibus. Natus error omnis laudantium molestiae iusto
@@ -1205,8 +1197,6 @@
     <!-- Afrographix Signature -->
 
     <script>
-
-
       function backToGestionStock() {
         window.history.back();
       }
@@ -1253,7 +1243,6 @@
         // factureLogo.appendChild(logo);
 
         //Set Numero client
-        
 
         //Set name of company
         let nameCompanyFacture = document.querySelector("#nameCompanyFacture");
@@ -1311,16 +1300,21 @@
         }
 
         let negotiateState = document.querySelector("#negotiateState");
-        if(negociable){
-          negotiateState.innerHTML = "Negociable"
-        }else{
-          negotiateState.innerHTML = "Non negociable"
+        if (negociable) {
+          negotiateState.innerHTML = "Negociable";
+        } else {
+          negotiateState.innerHTML = "Non negociable";
         }
 
         //Set delai de livraison
         let delaiInput = document.querySelector("#delaiLivraison");
         let delaiFactureView = document.querySelector("#factureDelaiLivraison");
         delaiFactureView.innerHTML = delaiInput.value;
+
+        if (delaiInput.value.trim().length == 0) {
+          let delai = document.querySelector(".delai");
+          delai.style.display = "none";
+        }
 
         //Set total
         let FactureTotal = document.querySelector("#FactureTotal");
@@ -1340,6 +1334,12 @@
         let FactureNote = document.querySelector("#FactureNote");
         let note = document.querySelector("#note");
         FactureNote.innerText = note.value;
+        if (note.value.trim().length == 0) {
+          FactureNote.parentNode.parentNode.style.display = "none";
+        } else {
+          FactureNote.parentNode.parentNode.style.display = "flex";
+          FactureNote.innerText = note.value;
+        }
 
         //Hide useless elements
         let supportDev = document.querySelector(".supportDev");
@@ -1359,9 +1359,9 @@
           client: nomClient.value,
           at: dateFormated,
           id: factures.length + 1,
-          negociable : negociable,
-          delai:delaiInput.value,
-          numeroClient:numeroClient.value
+          negociable: negociable,
+          delai: delaiInput.value,
+          numeroClient: numeroClient.value,
         });
 
         //update note value
@@ -1611,15 +1611,16 @@
         let nomComplet = document.querySelector("#nomComplet");
         let nomEntreprise = document.querySelector("#nomEntreprise");
         let monnaie = document.querySelector("#monnaie");
- 
 
         if (nomEntreprise.value.trim().length == 0) {
           HelperFunction.show_negative_message("Nom de l'entreprise invalide!");
           return;
         }
 
-        if(secteur.value.trim().length == 0){
-          HelperFunction.show_negative_message("Secteur d'activite invalide invalide!");
+        if (secteur.value.trim().length == 0) {
+          HelperFunction.show_negative_message(
+            "Secteur d'activite invalide invalide!"
+          );
           return;
         }
 
@@ -1664,7 +1665,7 @@
           nomComplet: nomComplet.value,
           nomEntreprise: nomEntreprise.value,
           monnaie: monnaie.value,
-          secteur:secteur.value
+          secteur: secteur.value,
         };
 
         saveUserInfoToDB();
@@ -1758,24 +1759,26 @@
         renderProduits();
       }
 
-      function autoLoadProducts(){
+      function autoLoadProducts() {
         let commandes = localStorage.getItem("currentVente");
-        if(commandes == null) return;
+        if (commandes == null) return;
         commandes = JSON.parse(commandes);
-        for(let i = 0 ; i<= commandes.length - 1;i++){
+        for (let i = 0; i <= commandes.length - 1; i++) {
           produits.push({
-            tache : commandes[i].nom,
-            prix : commandes[i].prixVente,
-            quantite : commandes[i].qteToBuy,
-          })
+            tache: commandes[i].nom,
+            prix: commandes[i].prixVente,
+            quantite: commandes[i].qteToBuy,
+          });
         }
         renderProduits();
-        localStorage.removeItem("currentVente")
+        localStorage.removeItem("currentVente");
+        let registerData = document.querySelector(".registerData");
+        registerData.style.display = "none";
       }
-      autoLoadProducts()
+      autoLoadProducts();
 
       function renderProduits() {
-        let devise = localStorage.getItem('amonDevise');
+        let devise = localStorage.getItem("amonDevise");
         let mobileProductsPreview = document.querySelector(
           ".mobileProductsPreview"
         );
