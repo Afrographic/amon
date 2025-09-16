@@ -68,8 +68,29 @@ body{
 
 .quantity{
     display: flex;
-    gap:8px;
+    gap:8px; 
 }
+
+.fadeIn{
+    animation: come 1s ease 1;
+}
+
+.inactive{
+   display: none;
+}
+
+@keyframes come {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.inactive{
+    opacity: 0;
+ }
 
 .quantity *{
     flex :1;
@@ -93,5 +114,34 @@ body{
 
 .productName div:last-child{
     flex:1;
+}
+
+
+.nextBTN{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding:16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(45deg, #97CB58, #00AB62);
+    color:white;
+}
+
+.searchBox{
+    display: flex;
+    gap:8px;
+    padding:16px;
+    border:1px solid #e3e3e3;
+    border-radius: 8px;
+    margin-top:8px;
+}
+
+.searchBox input{
+    flex:1;
+    border:none;
+    outline: none;
 }
 

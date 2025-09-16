@@ -1,36 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nouvelle vente</title>
-    <link rel="stylesheet" href="vente.css">
+    <link rel="stylesheet" href="vente.css" />
     <script src="../../libs/afro.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <a href="../../index.html">
-            <img src="../../images/back.svg" alt="" width="24px">
-        </a>
-        <h3>Nouvelle vente</h3>
+      <a href="../../index.html">
+        <img src="../../images/back.svg" alt="" width="24px" />
+      </a>
+      <h3>Nouvelle vente</h3>
     </div>
-    <hr>
+    <hr />
     <div class="body">
-        <div>Veuillez selectionner les produits</div>
-        <div class="productsList">
-            <div class="productItem">
-                <div class="productName">
-                    <div class="selector "></div>
-                    <div>Iphone XR</div>
-                </div>
-                <div class="quantity">
-                    <button>-</button>
-                    <div class="qteValue">1</div>
-                    <button>+</button>
-                </div>
-            </div>
+      <div>Veuillez selectionner les produits</div>
+
+      <div class="searchBox">
+       
+          <input
+            type="text"
+            placeholder="Nom du Produit"
+            id="searchToken"
+            onkeyup="NouvelleVente.searchProduct()"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+            autocapitalize="off"
+            inputmode="text"
+          />
+      
+        <img src="../../images/search.svg" alt="" width="18px"  id="searchButton" />
+        <img src="../../images/close.svg" alt="" width="18px" id="closeSearch" class="inactive" onclick="NouvelleVente.closeSearchView()">
+      </div>
+
+      <div class="productsList">
+        <div class="productItem">
+          <div class="productName">
+            <div class="selector"></div>
+            <div>Iphone XR</div>
+          </div>
+          <div class="quantity">
+            <button>-</button>
+            <div class="qteValue">1</div>
+            <button>+</button>
+          </div>
         </div>
+      </div>
     </div>
+
+    <div class="nextBTN">Continuer</div>
+
     <script src="vente.js"></script>
-</body>
+  </body>
 </html>
