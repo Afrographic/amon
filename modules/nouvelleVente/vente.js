@@ -1,39 +1,58 @@
-let products = [
-  {
-    name: "Iphone XR",
-    prixVente: 900,
-    quantite: 2,
-    selected: false,
-  },
-  {
-    name: "Samsung S25",
-    prixVente: 2500,
-    quantite: 1,
-    selected: false,
-  },
-  {
-    name: "Pantalon Super Sans",
-    prixVente: 9000,
-    quantite: 4,
-    selected: false,
-  },
-];
 
 class NouvelleVente {
   static productsList = document.querySelector(".productsList");
+  static devise = localStorage.getItem("amonDevise");
   static products = [];
 
   static async init() {
-    this.productsList.innerHTML = "";
     this.getDataFromAmonDB()
     .then(async (records) => {
-      let productsFromAmon = JSON.parse(records[0].products)
-      NouvelleVente.products = records[0].products;
+      NouvelleVente.formatProducts(JSON.parse(records[0].products))
     })
     .catch((err) => console.error("Error getting data:", err));
   }
 
-  static renderProduct() {}
+  static formatProducts(products){
+    for(let i = 0 ; i<=products.length-1;i++){
+        products[i].selected = false;
+        products[i].qteToBuy = 0;
+    }
+    NouvelleVente.products = products;
+    NouvelleVente.renderProduct();
+    console.log( NouvelleVente.products);
+  }
+
+  static renderProduct() {
+    this.productsList.innerHTML = "";
+    for(let i = 0 ; i<= NouvelleVente.products.length-1;i++){
+        let id = NouvelleVente.products[i].id;
+        let selected = NouvelleVente.products[i].selected ? "active" :"";
+        this.productsList.innerHTML += `
+        <div class="productItem">
+            <div class="productName" onclick="NouvelleVente.selectProduct('${id}')">
+                <div class="selector ${selected}"></div>
+                <div>${NouvelleVente.products[i].nom} (${Afro.formatNumWithWhiteSpace(NouvelleVente.products[i].prixVente)} ${this.devise})</div>
+            </div>
+            <div class="quantity">
+                <button>-</button>
+                <div class="qteValue">0</div>
+                <button>+</button>
+            </div>
+        </div>
+        `
+    }
+  }
+
+  static selectProduct(id){
+    console.log(id);
+    
+    for(let i = 0 ;i <= NouvelleVente.products.length - 1; i++){
+        if(NouvelleVente.products[i].id == id){
+            NouvelleVente.products[i].selected = !NouvelleVente.products[i].selected;
+        }
+    }
+    NouvelleVente.renderProduct();
+  }
 
   static getDataFromAmonDB() {
     return new Promise((resolve, reject) => {

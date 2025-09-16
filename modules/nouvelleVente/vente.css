@@ -51,10 +51,12 @@ body{
     height: 25px;
     border-radius: 8px;
     background-color: #e6e6e6;
+    transition: 0.25s;
 }
 
 .selector.active{
-    background-color: #00AB62 !important;
+    background-image: url(../../images/check.png);
+    background-size: cover;
 }
 
 .productsList{
