@@ -9,6 +9,7 @@ class NouvelleVente {
   static products = [];
   static searchedProducts = [];
   static searching = false;
+  static factureProducts = [];
 
   static async init() {
     this.getDataFromAmonDB()
@@ -30,6 +31,7 @@ class NouvelleVente {
 
   static renderProduct() {
     this.productsList.innerHTML = "";
+    NouvelleVente.products.sort((a,b) => (b.selected ? 1 :0 ) - (a.selected ?1 : 0));
     for (let i = 0; i <= NouvelleVente.products.length - 1; i++) {
       this.productsList.innerHTML += NouvelleVente.buildTemplate(
         NouvelleVente.products[i]
@@ -62,8 +64,9 @@ class NouvelleVente {
     for (let i = 0; i <= NouvelleVente.products.length - 1; i++) {
       if (NouvelleVente.products[i].id == id) {
         NouvelleVente.products[i].qteToBuy--;
-        if (NouvelleVente.products[i].qteToBuy < 0) {
+        if (NouvelleVente.products[i].qteToBuy <= 0) {
           NouvelleVente.products[i].qteToBuy = 0;
+          NouvelleVente.products[i].selected = false;
         }
       }
     }
