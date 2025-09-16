@@ -93,13 +93,12 @@ async function computeCategorieStat() {
     }
     categoriesAmon[i].sellProducts = products_add;
     categoriesAmon[i].benefice = benefice;
-    console.log(products_add);
+
     //Calcul du benefice
     for(let k = 0 ; k<= products_add.length-1;k++){
       categoriesAmon[i].benefice += parseInt(products_add[i].prixVente) - parseInt(products_add[i].prix);
     }
   }
-
 
   //render view
 

@@ -174,13 +174,13 @@ async function showHistoryRetrait() {
     //Compute total money made
     let totalMoney = 0;
     for(k = 0 ; k<=listToRender[i].productCount.length - 1;k++){
-      totalMoney += listToRender[i].products[k].prix * listToRender[i].productCount[k].products.length;
+      totalMoney += listToRender[i].products[k].prixVente * listToRender[i].productCount[k].products.length;
     }
     render.innerHTML += `<div>`;
     render.innerHTML += `
     <div class="historyTitle">
       <div>${listToRender[i].date}</div>
-      <div class="green">${totalMoney} ${devise}</div>
+      <div class="green">${Afro.formatNumWithWhiteSpace(totalMoney)} ${devise}</div>
     </div>
     `;
     if (listToRender[i].products.length == 0) {
@@ -195,8 +195,8 @@ async function showHistoryRetrait() {
         items += `
          <div class="listingItem">
                 <div>${listToRender[i].productCount[j].products.length} ${listToRender[i].productCount[j].nom}</div>
-                <div>${
-                  listToRender[i].products[j].prix * listToRender[i].productCount[j].products.length
+                <div>${Afro.formatNumWithWhiteSpace(
+                  listToRender[i].products[j].prixVente * listToRender[i].productCount[j].products.length)
                 } ${devise}</div>
          </div>`;
       }
