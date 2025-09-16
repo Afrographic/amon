@@ -612,14 +612,16 @@
           0 Factures generees
         </p>
 
-        <button
+        <a href="../../index.html" style="width: 100%;">
+          <button
           style="width: 100%"
-          class="tertiaryBtn stockBtn"
-          onclick="backToGestionStock()"
+          class="tertiaryBtn stockBtn"          
         >
           <img src="../../images/amon.svg" alt="" width="15px" />
           Gestion de stock
         </button>
+        </a>
+       
 
         <div class="MobileMenu">
           <button
@@ -1768,6 +1770,7 @@
           })
         }
         renderProduits();
+        localStorage.removeItem("currentVente")
       }
       autoLoadProducts()
 

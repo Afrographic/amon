@@ -36,15 +36,13 @@ function renderView(){
 renderCollection();
 
 function addCollection(){
-    let nomCat = prompt("Nom de la categorie")
-    if(nomCat == null){
+    let nomCategorieInput = document.querySelector("#nomCategorie")
+
+    if(nomCategorieInput.value.trim().length == 0){
         Afro.show_negative_message("Nom invalide!");
         return;
     }
-    if(nomCat.trim().length == 0){
-        Afro.show_negative_message("Nom invalide!");
-        return;
-    }
+    let nomCat = nomCategorieInput.value;
     let catId = Afro.generate_unique_id_from_time();
     let name = Afro.Ucase(nomCat);
     collectionsAmon.unshift({
@@ -53,6 +51,7 @@ function addCollection(){
     });
     localStorage.setItem("AmonCategories",JSON.stringify(collectionsAmon));
     renderCollection();
+    nomCategorieInput.value = "";
 }
 
 function editCat(catId){
