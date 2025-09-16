@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="vente.css" />
     <link rel="stylesheet" href="../../styles/ankh_notif.css">
     <script src="../../libs/afro.js"></script>
+    <script src="../../libs/jsstore.js"></script>
+    <script src="../../libs/jsstore.worker.js"></script>
   </head>
   <body>
      <!-- Error box -->
@@ -73,7 +75,10 @@
       </div>
     </div>
 
-    <div class="nextBTN" onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture()">Continuer</div>
+    <div class="nextBTN" onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture()">
+      <img src="../../images/facture_2.svg" alt="" width="24px">
+      Valider et generer la facture
+    </div>
 
     <script src="vente.js"></script>
   </body>

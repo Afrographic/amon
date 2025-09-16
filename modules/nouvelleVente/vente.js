@@ -5,6 +5,7 @@ class NouvelleVente {
   static closeSearch = document.querySelector("#closeSearch");
 
   static devise = localStorage.getItem("amonDevise");
+  static con;
 
   static products = [];
   static searchedProducts = [];
@@ -19,6 +20,44 @@ class NouvelleVente {
       .catch((err) => console.error("Error getting data:", err));
   }
 
+  static async initAmonDB() {
+    this.con = new JsStore.Connection();
+    await this.con.initDb(NouvelleVente.get_db_schema());
+  }
+
+  static get_db_schema() {
+    var data = {
+      name: "data",
+      columns: {
+        id: {
+          notNull: true,
+          dataType: "string",
+        },
+        products: {
+          notNull: true,
+          dataType: "string",
+        },
+        historyRetrait: {
+          notNull: true,
+          dataType: "string",
+        },
+        historyAjout: {
+          notNull: true,
+          dataType: "string",
+        },
+        inited: {
+          notNull: true,
+          dataType: "string",
+        },
+      },
+    };
+    var db = {
+      name: "amonDB",
+      tables: [data],
+    };
+    return db;
+  }
+
   static formatProducts(products) {
     for (let i = 0; i <= products.length - 1; i++) {
       products[i].selected = false;
@@ -31,7 +70,9 @@ class NouvelleVente {
 
   static renderProduct() {
     this.productsList.innerHTML = "";
-    NouvelleVente.products.sort((a,b) => (b.selected ? 1 :0 ) - (a.selected ?1 : 0));
+    NouvelleVente.products.sort(
+      (a, b) => (b.selected ? 1 : 0) - (a.selected ? 1 : 0)
+    );
     for (let i = 0; i <= NouvelleVente.products.length - 1; i++) {
       this.productsList.innerHTML += NouvelleVente.buildTemplate(
         NouvelleVente.products[i]
@@ -42,7 +83,7 @@ class NouvelleVente {
   static buildTemplate(product) {
     let id = product.id;
     let selected = product.selected ? "active" : "";
-    let inactive = product.qteToBuy == 0 ? "inactive" :"";
+    let inactive = product.qteToBuy == 0 ? "inactive" : "";
     return `
         <div class="productItem">
             <div class="productName" onclick="NouvelleVente.selectProduct('${id}')">
@@ -95,13 +136,13 @@ class NouvelleVente {
         NouvelleVente.products[i].qteToBuy = 0;
         NouvelleVente.products[i].selected =
           !NouvelleVente.products[i].selected;
-          if( NouvelleVente.products[i].selected){
-            NouvelleVente.products[i].qteToBuy++;
-          }
+        if (NouvelleVente.products[i].selected) {
+          NouvelleVente.products[i].qteToBuy++;
+        }
       }
     }
     NouvelleVente.renderProduct();
-    NouvelleVente.closeSearchView()
+    NouvelleVente.closeSearchView();
   }
 
   static getDataFromAmonDB() {
@@ -149,7 +190,7 @@ class NouvelleVente {
     NouvelleVente.renderSearchTemplate();
   }
 
-  static renderSearchTemplate(){
+  static renderSearchTemplate() {
     this.productsList.innerHTML = `<p>${NouvelleVente.searchedProducts.length} Resultat(s)</p>`;
     for (let i = 0; i <= NouvelleVente.searchedProducts.length - 1; i++) {
       this.productsList.innerHTML += NouvelleVente.buildTemplate(
@@ -165,21 +206,103 @@ class NouvelleVente {
     this.renderProduct();
   }
 
-  static saveCurrentVenteAndRedirectToFacture(){
-      
-      let commandes = [];
-      for(let i = 0 ; i<=this.products.length-1;i++){
-        if(this.products[i].selected){
-          commandes.push(this.products[i])
-        }
+  static async saveCurrentVenteAndRedirectToFacture() {
+    let commandes = [];
+    for (let i = 0; i <= this.products.length - 1; i++) {
+      if (this.products[i].selected) {
+        commandes.push(this.products[i]);
       }
-      if(commandes.length == 0){
-        Afro.show_negative_message("Aucun produit selectionne!");
-        return;
+    }
+    if (commandes.length == 0) {
+      Afro.show_negative_message("Aucun produit selectionne!");
+      return;
+    }
+
+    await  NouvelleVente.updateProductStockAndHistoryVente(commandes);
+    localStorage.setItem("currentVente", JSON.stringify(commandes));
+    window.location.href = "../facture/kamto.html";
+
+  }
+
+  static getCommandeIndex(product){
+    for(let i = 0 ; i<=this.products.length-1;i++){
+      if(this.products[i].id == product.id){
+        return i;
       }
-      localStorage.setItem("currentVente",JSON.stringify(commandes));
-      window.location.href = "../facture/kamto.html";
-      console.log(commandes);
+    }
+    return -1;
+  }
+
+  static async updateProductStockAndHistoryVente(commandes) {
+    await this.initAmonDB();
+    for (let i = 0; i <= commandes.length - 1; i++) {
+      let currentIndex = NouvelleVente.getCommandeIndex(commandes[i]);
+      let nbr = commandes[i].qteToBuy;
+      let products = NouvelleVente.products;
+      products[currentIndex].quantite -= nbr;
+      //Save products to DB
+      await this.con.update({
+        in: "data",
+        where: {
+          id: "1",
+        },
+        set: {
+          products: JSON.stringify(products),
+        },
+      });
+      //Save history ajout to DB
+      var datas = await this.con.select({
+        from: "data",
+        where: {
+          id: "1",
+        },
+      });
+      let historyRetrait = JSON.parse(datas[0].historyRetrait);
+
+      //Add to history ajout
+      let produit = products[currentIndex];
+      for (let i = 1; i <= nbr; i++) {
+        let date = new Date();
+        let today = NouvelleVente.getToday();
+        let fullDate = NouvelleVente.formatDate(date);
+        produit.at = today;
+        produit.fullDate = fullDate;
+        produit.prixVente = produit.prixVente;
+        historyRetrait.unshift(produit);
+      }
+
+      await this.con.update({
+        in: "data",
+        where: {
+          id: "1",
+        },
+        set: {
+          historyRetrait: JSON.stringify(historyRetrait),
+        },
+      });
+    }
+  }
+
+  static  getToday() {
+    let date = new Date();
+    let render = date.toLocaleString("fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    return render;
+  }
+
+  static  formatDate(date) {
+    let render = date.toLocaleString("fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    return render;
   }
 }
 

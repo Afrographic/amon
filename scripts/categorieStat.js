@@ -88,15 +88,11 @@ async function computeCategorieStat() {
     for (let j = 0; j <= sellHistory.length - 1; j++) {
       if (sellHistory[j].catId == categoriesAmon[i].catId) {
         products_add.push(sellHistory[j]);
-        //Compute benefice
-        if (sellHistory[j].prixVente == undefined) {
-          sellHistory[j].prixVente = historyRetrait[i].prix;
-        }
-        benefice += sellHistory[j].prixVente - historyRetrait[i].prix;
       }
     }
     categoriesAmon[i].sellProducts = products_add;
     categoriesAmon[i].benefice = benefice;
+    console.log(products_add);
   }
 
 

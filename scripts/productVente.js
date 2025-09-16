@@ -79,7 +79,7 @@ async function showNouvelleVenteView() {
       },
     });
 
-    console.log(historyRetrait);
+
     //Close view
     hideNouvelleVenteView();
     renderProduct();
