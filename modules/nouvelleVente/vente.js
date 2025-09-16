@@ -44,8 +44,6 @@ class NouvelleVente {
   }
 
   static selectProduct(id){
-    console.log(id);
-    
     for(let i = 0 ;i <= NouvelleVente.products.length - 1; i++){
         if(NouvelleVente.products[i].id == id){
             NouvelleVente.products[i].selected = !NouvelleVente.products[i].selected;

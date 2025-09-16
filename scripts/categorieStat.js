@@ -63,28 +63,12 @@ async function computeCategorieStat() {
           
           <table>
               <tr>
-                  <td>Prix d'achat</td>
-                  <td>${Afro.formatNumWithWhiteSpace(products[j].prix)} ${devise}</td>
-              </tr>
-              <tr>
-                  <td>Fournisseur</td>
-                  <td>${ Afro.Ucase(products[j].fournisseur)}</td>
-              </tr>
-              <tr>
-                  <td>Marque</td>
-                  <td>${ Afro.Ucase(products[j].marque)}</td>
+                  <td>Prix de vente</td>
+                  <td>${Afro.formatNumWithWhiteSpace(products[j].prixVente)} ${devise}</td>
               </tr>
               <tr>
                   <td>Quantite</td>
                   <td>${products[j].quantite}</td>
-              </tr>
-              <tr>
-                  <td>Ajouter le</td>
-                  <td>${products[j].addAt}</td>
-              </tr>
-              <tr>
-                  <td>Modifier le</td>
-                  <td>${products[j].modifiedAt}</td>
               </tr>
           </table>
 

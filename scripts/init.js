@@ -547,7 +547,7 @@ async function addProductToDatabase() {
   //Save product Image
   let imageId = await ProductImageService.saveProductImage(productId);
   product.imageId = imageId;
-  console.log(imageId);
+
  
 
   products.unshift(product);
