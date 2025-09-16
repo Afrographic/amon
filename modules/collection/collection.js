@@ -37,8 +37,12 @@ renderCollection();
 
 function addCollection(){
     let nomCat = prompt("Nom de la categorie")
+    if(nomCat == null){
+        Afro.show_negative_message("Nom invalide!");
+        return;
+    }
     if(nomCat.trim().length == 0){
-        alert("Nom Invalide!")
+        Afro.show_negative_message("Nom invalide!");
         return;
     }
     let catId = Afro.generate_unique_id_from_time();
@@ -54,8 +58,12 @@ function addCollection(){
 function editCat(catId){
     let catData = getCatNameAndIndex(catId);
     let name = prompt("Nouveau nom",catData.categoryName);
+    if(name == null){
+        Afro.show_negative_message("Nom invalide!");
+        return;
+    }
     if(name.trim().length == 0){
-        alert("Nom invalide!");
+        Afro.show_negative_message("Nom invalide!");
         return;
     }
     collectionsAmon[catData.index].categoryName = name;

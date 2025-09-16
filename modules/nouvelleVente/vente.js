@@ -164,6 +164,23 @@ class NouvelleVente {
     this.searchTokenInput.value = "";
     this.renderProduct();
   }
+
+  static saveCurrentVenteAndRedirectToFacture(){
+      
+      let commandes = [];
+      for(let i = 0 ; i<=this.products.length-1;i++){
+        if(this.products[i].selected){
+          commandes.push(this.products[i])
+        }
+      }
+      if(commandes.length == 0){
+        Afro.show_negative_message("Aucun produit selectionne!");
+        return;
+      }
+      localStorage.setItem("currentVente",JSON.stringify(commandes));
+      window.location.href = "../facture/kamto.html";
+      console.log(commandes);
+  }
 }
 
 NouvelleVente.init();

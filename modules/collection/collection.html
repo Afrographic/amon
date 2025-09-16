@@ -6,8 +6,30 @@
     <title>Collection</title>
     <link rel="stylesheet" href="collection.css">
     <script src="../../libs/afro.js"></script>
+    <link rel="stylesheet" href="../../styles/ankh_notif.css">
 </head>
 <body class="collections">
+        <!-- Error box -->
+        <div
+        class="info negative"
+        id="negative"
+        style="
+        border-left: 10px solid #f70808;
+        box-shadow: -1px 8px 20px 6px #5252521c;
+        width: 80vw;
+        max-width: 500px;
+        "
+        onclick="this.classList.remove('info_visible')"
+    >
+        <img src="../../images/error_msg.svg" alt="" width="25px" />
+        <div class="column f1">
+        <div class="tal" id="content" style="color: grey; font-size: 12px">
+            Message
+        </div>
+        </div>
+    </div>
+    <!-- End error box -->
+    
     <div class="header">
         <a href="../../index.html">
             <img src="../../images/back.svg" alt="" width="24px">

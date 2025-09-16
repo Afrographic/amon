@@ -1756,13 +1756,29 @@
         renderProduits();
       }
 
+      function autoLoadProducts(){
+        let commandes = localStorage.getItem("currentVente");
+        if(commandes == null) return;
+        commandes = JSON.parse(commandes);
+        for(let i = 0 ; i<= commandes.length - 1;i++){
+          produits.push({
+            tache : commandes[i].nom,
+            prix : commandes[i].prixVente,
+            quantite : commandes[i].qteToBuy,
+          })
+        }
+        renderProduits();
+      }
+      autoLoadProducts()
+
       function renderProduits() {
+        let devise = localStorage.getItem('amonDevise');
         let mobileProductsPreview = document.querySelector(
           ".mobileProductsPreview"
         );
         let renderProducts = document.querySelector("#renderrrrrrr");
-        renderProducts.innerHTML = "";
-        mobileProductsPreview.innerHTML = "";
+        renderProducts.innerHTML = `<p style="text-align:center">${produits.length} Produits</p>`;
+        mobileProductsPreview.innerHTML = `<p style="text-align:center">${produits.length} Produits</p>`;
 
         for (let i = 0; i <= produits.length - 1; i++) {
           // Web preview
@@ -1772,11 +1788,11 @@
                          <td>${produits[i].tache}</td>
                          <td>${HelperFunction.formatNumWithWhiteSpace(
                            produits[i].prix
-                         )} ${userInfo.monnaie}</td>
+                         )} ${devise}</td>
                          <td>${produits[i].quantite}</td>
                          <td>${HelperFunction.formatNumWithWhiteSpace(
                            produits[i].prix * produits[i].quantite
-                         )} ${userInfo.monnaie}</td>
+                         )} ${devise}</td>
                          <td>
                             <img src="assets/images/edit.svg" width="25px" class="button" onclick="editProductOnAdd(${i})">
                             <img src="assets/images/delete.svg" width="15px" class="button" onclick="deleteProductOnAdd(${i})" style="position:relative;left:7px;">
@@ -1798,7 +1814,7 @@
                     <td>Prix</td>
                     <td>${HelperFunction.formatNumWithWhiteSpace(
                       produits[i].prix
-                    )} ${userInfo.monnaie}</td>
+                    )} ${devise}</td>
                   </tr>
                   <tr>
                     <td>Quantite</td>
@@ -1808,7 +1824,7 @@
                     <td>Total</td>
                     <td>${HelperFunction.formatNumWithWhiteSpace(
                       produits[i].prix * produits[i].quantite
-                    )} ${userInfo.monnaie}</td>
+                    )} ${devise}</td>
                   </tr>
                 </table>
         
