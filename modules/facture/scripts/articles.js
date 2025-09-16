@@ -43,7 +43,7 @@ function getDataFromAmonDB() {
 async function getArticles() {
   getDataFromAmonDB()
     .then(async (records) => {
-      console.log("Records from 'data' store:", records);
+      
       await initUserInfo();
       let productsFromAmon = JSON.parse(records[0].products)
       for(let i = 0 ; i<=productsFromAmon.length - 1; i++){

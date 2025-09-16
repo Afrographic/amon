@@ -1,0 +1,95 @@
+@font-face{
+    font-family: "ralewayRegular";
+    src :url(../../fonts/Raleway-Regular.ttf)
+}
+
+@font-face{
+    font-family: "ralewayBlack";
+    src :url(../../fonts/Raleway-Black.ttf)
+}
+
+h2,h3,h1{
+    font-family: "ralewayBlack";
+}
+
+*{
+    box-sizing: border-box;
+    font-family: "ralewayRegular";
+}
+
+.header{
+    padding:0px 16px;
+    padding-top: 16px;
+}
+
+body{
+    margin: 0;
+    padding:0;
+}
+
+.body{
+    padding:32px;
+}
+
+.productItem{
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+    padding:16px;
+    border:1px solid #e7e7e7;
+    border-radius: 8px;
+}
+
+.productItem .productName{
+    display: flex;
+    gap:8px;
+    align-items: center;
+}
+
+.productItem .productName .selector{
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
+    background-color: #e6e6e6;
+}
+
+.selector.active{
+    background-color: #00AB62 !important;
+}
+
+.productsList{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    margin-top:16px;
+}
+
+.quantity{
+    display: flex;
+    gap:8px;
+}
+
+.quantity *{
+    flex :1;
+}
+
+.quantity  button{
+    padding:16px;
+    font-size:24px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    border:none;
+}
+
+.qteValue{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#00AB62;
+    font-family: "ralewayBlack";
+}
+
+.productName div:last-child{
+    flex:1;
+}
+

@@ -375,6 +375,7 @@ input{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 16px 0px;
 }
 
 .category{
@@ -505,4 +506,12 @@ a{
     background-size: cover;
     background-position: center;
     background-color: #b6b6b6;
+}
+
+.add_product{
+    padding:16px;
+    align-items: center;
+    border:1px solid #e5e5e5;
+    border-radius: 8px;
+    margin-top:8px;
 }

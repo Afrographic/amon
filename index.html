@@ -543,13 +543,13 @@
           <img src="images/search.svg" alt="" width="18px" onclick="search()" />
         </div>
 
-        <a href="modules/collection/collection.html">
-          <img src="images/cat.svg" width="60px" alt=""  onclick="addProduct()" class="category">
+
+        <a href="modules/nouvelleVente/vente.html">
+          <img src="images/add_2.svg" width="70px" alt=""   class="mobileAddProduct">
         </a>
-        <img src="images/add_2.svg" width="70px" alt=""  onclick="addProduct()" class="mobileAddProduct">
        
 
-        <h3 class="kpi">Ventes <span id="totalVente" style="color:grey;font-size: 12px;">0 XAF</span></h3>
+        <div class="kpi">Ventes <span id="totalVente" style="color:grey;font-size: 12px;">0 XAF</span></div>
         <div class="kycBloc">
           <div class="kycItem">
             <div class="title">Aujourdhui</div>
@@ -564,7 +564,7 @@
           </div>
         </div>
        
-        <h3 class="kpi">Benefices  <span id="totalBenef"  style="color:grey; font-size: 12px;">0 XAF</h3>
+        <div class="kpi">Benefices  <span id="totalBenef"  style="color:grey; font-size: 12px;">0 XAF</div>
         <div class="kycBloc">
           <div class="kycItem">
             <div class="title">Aujourdhui</div>
@@ -588,6 +588,18 @@
           </div>
          
         </div>
+
+        <div class="row aic g16 add_product" onclick="addProduct()">
+          <img src="images/add.svg" alt="" width="24px">
+          <div>Ajouter un produit</div>
+        </div>
+        <a href="modules/collection/collection.html">
+          <div class="row aic g16 add_product" >
+            <img src="images/cat.svg" alt="" width="30px">
+            <div>Gerer les categories</div>
+          </div>
+        </a>
+       
 
         <div class="cats">
           <!-- <div class="catItem">
