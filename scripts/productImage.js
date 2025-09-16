@@ -100,6 +100,7 @@ class ProductImageService {
 
     if(images.length > 0){
        let file =  images[0].images.imageFile;
+       if(file == undefined) return "";
        return URL.createObjectURL(file);
     }else{
         return "";

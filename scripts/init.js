@@ -543,6 +543,7 @@ async function addProductToDatabase() {
   product.id = productId;
   product.catId = catId;
   product.prixVente = prixVenteInput.value.trim();
+  product.cars = ProductCaracteristique.carsToSave;
 
   //Save product Image
   let imageId = await ProductImageService.saveProductImage(productId);
@@ -560,6 +561,7 @@ async function addProductToDatabase() {
   marqueInput.value = "";
   quantiteInput.value = "";
   closeAddProduct();
+ 
   // alert("Produit ajouter avec succes!");
   saveToDB();
   saveLightProductToLocalStorageForFacture();
@@ -754,7 +756,14 @@ async function editProduct(event) {
       let importImage = document.querySelector(".importImageEdit");
       if(products[i].imageId != undefined){
         let imageFile = await ProductImageService.getImageFile( products[i].imageId);
-        
+        if(imageFile == undefined){
+          importImage.style.backgroundImage = ``;
+          importImage.innerHTML = `
+          <img src="images/addImage.svg" alt="" width="24px">
+          <div>Importer une image</div>
+          `
+          return;
+        }
         let url = URL.createObjectURL(imageFile);
         importImage.style.backgroundImage = `url(${url})`;
         importImage.innerHTML = "";

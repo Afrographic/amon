@@ -226,22 +226,21 @@ input {
     background-color: rgb(21 175 97 / 67%);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 8px;
     transition: 0.25s;
-
-    /* Inactive */
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(1.1);
 }
 
-.productItem:hover .productItemClass {
+.productItemClassInactive{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-25px);
+}
+
+/* .productItem:hover .productItemClass {
     transform: scale(1);
     opacity: 1;
     pointer-events: auto !important;
-}
+} */
 
 
 .productItemClass button {
@@ -514,4 +513,25 @@ a{
     border:1px solid #e5e5e5;
     border-radius: 8px;
     margin-top:8px;
+}
+
+.addCat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:16px;
+    padding:16px;
+}
+
+.caracItem{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+
+}
+
+#productsCategories{
+    display: flex;
+    flex-direction: column;
+    gap:4px;
 }

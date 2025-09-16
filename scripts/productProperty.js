@@ -1,0 +1,56 @@
+class ProductCaracteristique {
+  static productsCategories = document.querySelector("#productsCategories");
+  static cars = [
+    {
+      prop: "",
+      val: "",
+    },
+  ];
+
+  static carsToSave = [];
+
+  static renderCar() {
+    productsCategories.innerHTML = "";
+    for (let i = 0; i <= this.cars.length - 1; i++) {
+        productsCategories.innerHTML += `
+        <div class="formItem caracItem">
+            <div class="label">Caracteristique ${i+1}</div>
+            <input value="${this.cars[i].prop}" type="text" placeholder="Inserez la Propriete" id="marqueInput" onkeyup="ProductCaracteristique.addNewProp(${i},this)" />
+            <input value="${this.cars[i].val}" type="text" placeholder="Inserez la valeur" id="marqueInput" onkeyup="ProductCaracteristique.addNewVal(${i},this)"/>
+         </div>
+        `
+    }
+  }
+
+  static addNewCar() {
+    this.cars.push({
+      prop: "",
+      val: "",
+    });
+    this.renderCar();
+    this.computeCarsToSave();
+  }
+
+  static addNewProp(i,el){
+    this.cars[i].prop = el.value;
+    this.computeCarsToSave()
+  }
+  static addNewVal(i,el){
+    this.cars[i].val = el.value;
+    this.computeCarsToSave()
+  }
+
+  static computeCarsToSave(){
+    this.carsToSave = [];
+    for(let i  = 0 ; i <= this.cars.length-1;i++){
+        if(this.cars[i].prop.trim().length > 0 ){
+            if(this.cars[i].val.trim().length >0){
+                this.carsToSave.push(this.cars[i])
+            }
+        }
+    }
+  }
+}
+
+ProductCaracteristique.renderCar();
+

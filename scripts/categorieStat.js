@@ -43,7 +43,7 @@ async function computeCategorieStat() {
         productsTemplate += `
         <div class="productItem">
 
-              <div class="productItemClass">
+              <div class="productItemClass productItemClassInactive" onclick="hideMenu(this)">
                   
                   <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${products[j].id}">Nouveau Stock</button>
                   <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${products[j].id}">Nouvelle Vente</button>
@@ -51,13 +51,13 @@ async function computeCategorieStat() {
                   <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${products[j].id}">Editer</button>
                   <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${products[j].id}">Supprimer</button>
         
-                </div>
+              </div>
 
           ${imageTemplate}
           
           <div class="productItemTitle">
               <h3>${Afro.Ucase(products[j].nom)}</h3>
-              <div class="clickArea">
+              <div class="clickArea" onclick="showMenu(this)">
                 <img src="images/option.svg" />
               </div>    
            </div>
@@ -134,6 +134,16 @@ async function computeCategorieStat() {
 
   computeRuptureStock();
  
+}
+
+
+function showMenu(el){
+  console.log(el.parentNode.parentNode.firstElementChild);
+  el.parentNode.parentNode.firstElementChild.classList.remove("productItemClassInactive")
+}
+
+function hideMenu(el){
+  el.classList.add("productItemClassInactive")
 }
 
 computeCategorieStat();
