@@ -83,6 +83,7 @@ async function computeCategorieStat() {
 
   //Compute vente per categories
   for (let i = 0; i <= categoriesAmon.length - 1; i++) {
+    //Collecte des produits vendus par categorie
     let products_add = [];
     let benefice = 0;
     for (let j = 0; j <= sellHistory.length - 1; j++) {
@@ -93,8 +94,11 @@ async function computeCategorieStat() {
     categoriesAmon[i].sellProducts = products_add;
     categoriesAmon[i].benefice = benefice;
     console.log(products_add);
+    //Calcul du benefice
+    for(let k = 0 ; k<= products_add.length-1;k++){
+      categoriesAmon[i].benefice += parseInt(products_add[i].prixVente) - parseInt(products_add[i].prix);
+    }
   }
-
 
 
   //render view

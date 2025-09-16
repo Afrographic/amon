@@ -23,9 +23,9 @@ window.addEventListener("beforeinstallprompt", (e) => {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choice) => {
       if (choice.outcome === "accepted") {
-        console.log("User accepted the install prompt");
+
       } else {
-        console.log("User dismissed the install prompt");
+
       }
       deferredPrompt = null;
     });
@@ -488,7 +488,7 @@ async function addProductToDatabase() {
   let marqueInput = document.getElementById("marqueInput");
   let quantiteInput = document.getElementById("quantiteInput");
   let catId = createCategories.value;
-  console.log(catId);
+
 
   let product = {
     nom: "nom",
@@ -624,8 +624,6 @@ function renderProduct() {
   exportTotalProduct.innerHTML = `${products.length} Produits`;
 
   let devise = localStorage.getItem("amonDevise");
-
-  console.log(products);
 
   for (let i = 0; i <= products.length - 1; i++) {
 
