@@ -265,7 +265,7 @@
     }
 
     .containerFacture .header {
-        padding: 16px 14px !important;
+        padding: 16px 45px !important;
     }
 
     .containerFacture .invoice {
@@ -319,9 +319,6 @@
     }
 
     .CharteGraphique {
-        position: fixed;
-        top: 84%;
-        left: 0px;
         border-radius: 8px;
         z-index: 10;
         width: 100vw;
@@ -331,7 +328,7 @@
     }
 
     .printFactureBtns {
-        position: fixed;
+       
         top: inherit !important;
         bottom: 0px;
         left: 0px;

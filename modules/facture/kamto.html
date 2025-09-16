@@ -277,7 +277,6 @@
       }
 
       .printFactureBtns {
-        position: fixed;
         top: 32px;
         right: 32px;
         display: flex;
@@ -677,14 +676,6 @@
       </div>
       <!-- End App Config -->
 
-      <!-- Print facture -->
-      <div class="printFactureBtns inactive">
-        <button onclick="printFacture()" class="primary_btn">Exporter</button>
-        <button onclick="closePreviewFacture()" class="secondary_btn">
-          Fermer
-        </button>
-      </div>
-      <!-- End print facture -->
       <img
         src="assets/images/kamto.png"
         alt=""
@@ -956,12 +947,6 @@
         </div>
 
         <div class="header">
-          <div>
-            <div class="invoice gradient">Facture</div>
-          </div>
-          <div style="font-size: 19px; opacity: 0.4" id="dateFacture">
-            16 Janvier 2025
-          </div>
           <div class="column g8">
             <div class="row g16 iconsFacture">
               <svg width="16px" viewBox="0 0 14.29 18.08">
@@ -1058,9 +1043,19 @@
               <div id="facturePhone">+237697830071</div>
             </div>
           </div>
+
+          <div>
+            <div class="invoice gradient">Facture</div>
+          </div>
         </div>
         <div class="contentFacture">
           <p class="factureNumeroDeSerie">#1256</p>
+          <div
+            style="font-size: 16px; opacity: 0.4; margin-top: 8px"
+            id="dateFacture"
+          >
+            16 Janvier 2025
+          </div>
           <h2 id="factureNomClient">Cher Armelle Mbeing</h2>
           <p class="veuillez">Veuillez consulter le tableau ci-dessous</p>
           <table id="renderProducts" class="factureTable">
@@ -1168,32 +1163,44 @@
           <div class="lastPart gradient"></div>
         </div>
       </div>
+
+      <div>
+        <!-- Print facture -->
+        <div class="printFactureBtns inactive">
+          <button onclick="printFacture()" class="primary_btn">Exporter</button>
+          <button onclick="closePreviewFacture()" class="secondary_btn">
+            Fermer
+          </button>
+        </div>
+        <!-- End print facture -->
+
+        <!-- Editer la charte graphique -->
+        <div class="CharteGraphique inactive">
+          <div style="font-size: 16px;color: black;margin-top:8px;">Personnaliser les couleurs</div>
+          <div class="row g16">
+            <div class="colorPreview primary" onclick="openPrimaryPicker()">
+              <input
+                class="jscolor"
+                value="ab2567"
+                id="primaryPicker"
+                onchange="getPrimaryColor(event)"
+              />
+            </div>
+            <div class="colorPreview secondary" onclick="openSecondaryPicker()">
+              <input
+                class="jscolor"
+                value="ab2567"
+                id="secondaryPicker"
+                onchange="getSecondaryColor(event)"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Fin edition de la charte graphique -->
+      </div>
     </div>
     <!-- Fin Facture modele 1 -->
 
-    <!-- Editer la charte graphique -->
-    <div class="CharteGraphique inactive">
-      <div>Personnaliser les couleurs</div>
-      <div class="row g16">
-        <div class="colorPreview primary" onclick="openPrimaryPicker()">
-          <input
-            class="jscolor"
-            value="ab2567"
-            id="primaryPicker"
-            onchange="getPrimaryColor(event)"
-          />
-        </div>
-        <div class="colorPreview secondary" onclick="openSecondaryPicker()">
-          <input
-            class="jscolor"
-            value="ab2567"
-            id="secondaryPicker"
-            onchange="getSecondaryColor(event)"
-          />
-        </div>
-      </div>
-    </div>
-    <!-- Fin edition de la charte graphique -->
     <!-- Afrographix Signature -->
 
     <script>
