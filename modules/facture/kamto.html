@@ -1326,7 +1326,13 @@
         //set Nom client
         let numeroClient = document.querySelector("#numeroClient");
         let factureNomClient = document.querySelector("#factureNomClient");
-        factureNomClient.innerHTML = `Cher ${nomClient.value} | ${numeroClient.value} `;
+        let numClient = numeroClient.value;
+        if(numClient.trim().length == 0){
+          numClient = "";
+        }else{
+          numClient = " | "+ numClient;
+        }
+        factureNomClient.innerHTML = `Cher ${nomClient.value}  ${numClient} `;
         localStorage.setItem("client", nomClient.value);
 
         //Set tableau des factures
@@ -1375,10 +1381,11 @@
         let frais = 0;
         if(fraisLivraisonFactureInput.value.trim().length == 0){
           frais = 0;
-        }else{
-          frais = parseInt(fraisLivraisonFactureInput.value)
+         
         }
-        fraisLivraisonFactureView.innerHTML = `${frais} ${userInfo.monnaie}`
+        frais = parseInt(fraisLivraisonFactureInput.value);
+        fraisLivraisonFactureView.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(frais)} ${userInfo.monnaie}`;
+
 
         //Set TVA
        
@@ -1388,10 +1395,11 @@
         let tvaValue = 0;
         if(tvaInput.value.trim().length == 0){
           tvaValue = 0;
-        }else{
-          tvaValue = parseInt(tvaInput.value);
+         
         }
-        tva.innerHTML = `${tvaValue} % (${HelperFunction.formatNumWithWhiteSpace(total * tvaValue/100)} ${userInfo.monnaie})`
+        tvaValue = parseInt(tvaInput.value);
+          tva.innerHTML = `${tvaValue} % (${HelperFunction.formatNumWithWhiteSpace(total * tvaValue/100)} ${userInfo.monnaie})`
+       
 
          //Set Total Produit
         let FraisTotal = document.querySelector("#FraisTotal");

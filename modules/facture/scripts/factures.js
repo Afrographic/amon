@@ -154,8 +154,13 @@ function previewFacture(factureIndex) {
   let secteurFacture = document.querySelector("#secteurFacture");
   secteurFacture.innerHTML = `${userInfo.secteur}`;
   //set Nom client
+  if(facture.numeroClient == undefined) {
+    facture.numeroClient = ""
+  }else{
+    facture.numeroClient = " | " +  facture.numeroClient ;
+  }
   let factureNomClient = document.querySelector("#factureNomClient");
-  factureNomClient.innerHTML = `Cher ${facture.client} | ${facture.numeroClient}`;
+  factureNomClient.innerHTML = `Cher ${facture.client}  ${facture.numeroClient}`;
   localStorage.setItem("client", facture.client);
   //Set tableau des factures
   let factureTableauRender = document.querySelector("#factureTableauRender");
@@ -205,7 +210,7 @@ function previewFacture(factureIndex) {
     facture.fraisLivraison = 0;
   }else{
     let fraisLivraisonFactureView = document.querySelector("#fraisLivraisonFacture");
-    fraisLivraisonFactureView.innerHTML = `${facture.fraisLivraison} ${userInfo.monnaie}`
+    fraisLivraisonFactureView.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(facture.fraisLivraison)} ${userInfo.monnaie}`
   }
   //Set TVA
   console.log(facture.tva);

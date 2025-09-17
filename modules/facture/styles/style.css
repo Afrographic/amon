@@ -662,5 +662,10 @@ textarea{
 }
 
 .moreOptions td{
+    border-bottom: 1px solid #d9d9d9;
+    text-align: left !important;
+}
+
+.moreOptions td{
     padding:8px;
 }
