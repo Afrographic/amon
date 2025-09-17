@@ -130,7 +130,8 @@ hr{
 }
 
 .kycItem .title {
-    opacity: 0.7;
+    opacity: 0.5;
+    font-size: 12px;
 }
 
 .kycItem .amount {
