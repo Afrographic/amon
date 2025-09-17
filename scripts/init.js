@@ -432,6 +432,8 @@ let addProduitButton = document.querySelector(".addProduitButton");
 let empty = document.querySelector(".empty");
 
 function addProduct() {
+  ProductCaracteristique.initCreateCars();
+  
   let nomInput = document.getElementById("nomInput");
 
   addProductElement.classList.remove("inactive");
@@ -756,6 +758,16 @@ async function editProduct(event) {
        //Prefill selected categorie
       let EditCategories = document.querySelector("#EditCategories");
       EditCategories.value =  products[i].catId;
+
+      //Prefill product color
+      if(products[i].color != undefined){
+        let colorEdit = document.querySelector("#colorEdit");
+        colorEdit.value = products[i].color;
+      }
+
+      //Prefill product caracteristiques
+      ProductCaracteristique.cars = products[i].cars;
+      ProductCaracteristique.initEdit();
 
       //Prefill product image
       let importImage = document.querySelector(".importImageEdit");

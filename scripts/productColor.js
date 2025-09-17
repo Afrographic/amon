@@ -4,7 +4,7 @@ class ProductColor{
     static pickColor = document.querySelector("#pickColor");
     static colorsValues = ["#40E0D0","#E2725B","#800020","#50C878","#000000","#FFFFFF"];
     static colors = [];
-    static selectedColor = "";
+    static selectedColor = undefined;
 
 
     static initColors(){

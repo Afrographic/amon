@@ -58,7 +58,6 @@ async function computeCategorieStat() {
         productsTemplate += `
         <div class="productItem">
         
-
               <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
                   
                   <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${products[j].id}">Nouveau Stock</button>

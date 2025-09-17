@@ -806,6 +806,19 @@
             <input type="text" placeholder="Nom du produit" id="nomEditInput" />
           </div>
           <div class="formItem">
+            <div class="label">Couleur</div>
+            <div class="moreColor" style="margin-top:8px;" >
+              Choisir une autre
+              <input
+                 class="jscolor"
+                 value="#00AB62"
+                 id="colorEdit"
+                 onclick="this.blur()"
+                 onchange="ProductColor.pickCustomColor(event)"
+               />
+         </div>
+          </div>
+          <div class="formItem">
             <div class="label">Prix d'achat</div>
             <input type="number" placeholder="Prix d'achat" id="prixEditInput"  inputmode="numeric"
             pattern="[0-9]*" />
@@ -838,6 +851,19 @@
               <option value="dsd">Menage</option>
               <option value="dsd">Plomberie</option> -->
             </select>
+          </div>
+          <p>Caracteristiques</p>
+          <div id="productsCategoriesEdit">
+            <div class="formItem caracItem">
+              <div class="label">Caracteristique 1</div>
+              <input type="text" placeholder="Inserez la Propriete" id="marqueInput" />
+              <input type="text" placeholder="Inserez la valeur" id="marqueInput" />
+            </div>
+          </div>
+
+          <div class="addCat" onclick="ProductCaracteristique.addNewCar()">
+            <img src="images/add_cat.svg" alt="" width="24px">
+            <div> Ajouter une autre</div>
           </div>
         </div>
 
