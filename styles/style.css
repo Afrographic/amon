@@ -178,6 +178,12 @@ hr{
     overflow: visible;
 }
 
+#productsCategoriesEdit{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
 .colorItem{
     width: 25px;
     height: 25px;

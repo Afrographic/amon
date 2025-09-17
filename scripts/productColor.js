@@ -5,6 +5,7 @@ class ProductColor{
     static colorsValues = ["#40E0D0","#E2725B","#800020","#50C878","#000000","#FFFFFF"];
     static colors = [];
     static selectedColor = undefined;
+    static editColor = "";
 
 
     static initColors(){
@@ -42,6 +43,7 @@ class ProductColor{
             selected:true
         });
         this.selectColor(this.colors.length-1);
+        this.editColor = e.target.value;
     }
 }
 

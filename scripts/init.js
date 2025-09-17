@@ -6,7 +6,7 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("Service Worker Registered"))
     .catch((err) => console.error("SW registration failed", err));
 }
-//Detect if the is already installed
+//Detect if the app is already installed
 let deferredPrompt;
 
 window.addEventListener("beforeinstallprompt", (e) => {
@@ -433,7 +433,7 @@ let empty = document.querySelector(".empty");
 
 function addProduct() {
   ProductCaracteristique.initCreateCars();
-  
+
   let nomInput = document.getElementById("nomInput");
 
   addProductElement.classList.remove("inactive");
@@ -764,6 +764,7 @@ async function editProduct(event) {
         let colorEdit = document.querySelector("#colorEdit");
         colorEdit.value = products[i].color;
       }
+      ProductColor.editColor = products[i].color;
 
       //Prefill product caracteristiques
       ProductCaracteristique.cars = products[i].cars;
@@ -819,7 +820,6 @@ function deleteProduct(event) {
 }
 
 async function editProductSave() {
-  
 
   let id = productIdToEdit;
 
@@ -854,6 +854,8 @@ async function editProductSave() {
       products[i].modifiedAt = formatDate(date);
       products[i].catId = catId;
       products[i].prixVente = prixVenteEditInput.value;
+      products[i].color = ProductColor.editColor;
+      products[i].cars = ProductCaracteristique.carsToSave;
 
       if(imageId != -1){
         products[i].imageId = imageId;
