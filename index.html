@@ -7,6 +7,7 @@
     <script src="libs/jsstore.js"></script>
     <script src="libs/jsstore.worker.js"></script>
     <script src="libs/afro.js"></script>
+    <script src="modules/facture/assets/libs/jscolor.js"></script>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/responsive.css" />
     <link rel="stylesheet" href="styles/buttons.css" />
@@ -16,6 +17,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
+    
     <style>
 
       * {
@@ -697,12 +699,22 @@
             <input type="text" placeholder="Nom du produit" id="nomInput" />
           </div>
           <div class="formItem">
-            <div class="label">Couleurs</div>
+            <div class="label">Chosisir la couleur</div>
             <div class="colorsView">
               <div class="colorItem selected"></div>
               <div class="colorItem"></div>
               <div class="colorItem"></div>
             </div>
+            <div class="moreColor" style="margin-top:8px;" >
+              Autre
+              <input
+                 class="jscolor"
+                 value="ab2567"
+                 id="pickColor"
+                 onclick="this.blur()"
+                 onchange="ProductColor.pickCustomColor(event)"
+               />
+         </div>
           </div>
           <div class="formItem">
             <div class="label">Prix d'achat</div>

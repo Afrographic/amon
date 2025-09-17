@@ -47,6 +47,12 @@ async function computeCategorieStat() {
           imageTemplate = `<div class="productImage" style="background-image:url(${imagURl})"></div>`;
         }
 
+        //Color template
+        let colorTemplate = "";
+        if(products[j].color != undefined){
+          colorTemplate = `<div  class="colorItem " style="background-color:${products[j].color}"></div>`
+        }
+
         //Build More info component
         let moreInfoTemplate = Product.generateMoreInfoTemplate(products[j]);
         productsTemplate += `
@@ -68,6 +74,7 @@ async function computeCategorieStat() {
           <div class="productItemTitle">
               <h3>${Afro.Ucase(products[j].nom)}</h3>
               <div class="row aic g16">
+                  ${colorTemplate}
                   <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>
                   <div class="clickArea" onclick="showMenuProduct(this)">
                      <img src="images/option.svg" />

@@ -547,6 +547,8 @@ async function addProductToDatabase() {
   product.catId = catId;
   product.prixVente = prixVenteInput.value.trim();
   product.cars = ProductCaracteristique.carsToSave;
+  ProductCaracteristique.cars = [];
+  product.color = ProductColor.selectedColor;
 
   //Save product Image
   let imageId = await ProductImageService.saveProductImage(productId);

@@ -198,6 +198,17 @@ input {
     background: transparent;
 }
 
+.moreColor{
+    border-radius: 8px;
+    font-size: 12px;
+    border: 1px solid #dadada;
+    padding: 16px;
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
 
 
 /* Search area */
