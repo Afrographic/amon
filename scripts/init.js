@@ -338,7 +338,7 @@ function closeLaunchExport() {
 let nomProduitSearch = document.getElementById("nomProduitSearch");
 let searchView = document.querySelector(".searchResult");
 let totalSearchResult = document.querySelector("#totalSearchResult");
-function search() {
+async function search() {
   searchView.classList.remove("inactive");
   let val = nomProduitSearch.value.trim();
   let searchedProducts = [];
@@ -367,10 +367,26 @@ function search() {
 
   let devise = localStorage.getItem("amonDevise");
   for (let i = 0; i <= searchedProducts.length - 1; i++) {
+    // Building image template
+    let imagURl = await ProductImageService.getImageURL(searchedProducts[i].imageId ?? -1);
+    let imageTemplate ="";
+    if(imagURl.length > 0){
+      imageTemplate = `<div class="productImage" style="background-image:url(${imagURl})"></div>`;
+    }
+
+    //Color template
+    let colorTemplate = "";
+    if(searchedProducts[i].color != undefined){
+      colorTemplate = `<div  class="colorItem " style="background-color:${searchedProducts[i].color}"></div>`
+    }
+
+    //Build More info component
+    let moreInfoTemplate = Product.generateMoreInfoTemplate(searchedProducts[i]);
+
     renderSearchResult.innerHTML += `
               <div class="productItem">
 
-                <div class="productItemClass productItemClassInactive" onclick="hideMenu(this)">
+              <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
                           
                           <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${searchedProducts[i].id}">Nouveau Stock</button>
                           <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${searchedProducts[i].id}">Nouvelle Vente</button>
@@ -380,42 +396,32 @@ function search() {
                 
                   </div>
 
+                  ${imageTemplate}
+          
                   <div class="productItemTitle">
-                      <h3>${ Afro.Ucase(searchedProducts[i].nom)}</h3>
-                      <div class="row aic">
-                          <img src="images/info.svg" width="24px"/>
-                          <div class="clickArea" onclick="showMenu(this)">
+                      <h3>${Afro.Ucase(searchedProducts[i].nom)}</h3>
+                      <div class="row aic g16">
+                          ${colorTemplate}
+                          <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>
+                          <div class="clickArea" onclick="showMenuProduct(this)">
                             <img src="images/option.svg" />
                           </div>  
-                      </div>  
-                   </div>
+                      </div>
+                        
+                  </div>
                   
                   <table>
                       <tr>
-                          <td>Prix d'achat</td>
-                          <td>${Afro.formatNumWithWhiteSpace(searchedProducts[i].prix)} ${devise}</td>
-                      </tr>
-                      <tr>
-                          <td>Fournisseur</td>
-                          <td>${ Afro.Ucase(searchedProducts[i].fournisseur)}</td>
-                      </tr>
-                      <tr>
-                          <td>Marque</td>
-                          <td>${ Afro.Ucase(searchedProducts[i].marque)}</td>
+                          <td>Prix de vente</td>
+                          <td>${Afro.formatNumWithWhiteSpace(searchedProducts[i].prixVente)} ${devise}</td>
                       </tr>
                       <tr>
                           <td>Quantite</td>
                           <td>${searchedProducts[i].quantite}</td>
                       </tr>
-                      <tr>
-                          <td>Ajouter le</td>
-                          <td>${searchedProducts[i].addAt}</td>
-                      </tr>
-                      <tr>
-                          <td>Modifier le</td>
-                          <td>${searchedProducts[i].modifiedAt}</td>
-                      </tr>
                   </table>
+
+                  ${moreInfoTemplate}
 
                   
               </div>
@@ -643,7 +649,7 @@ function renderProduct() {
     
               <div class="productItem">
 
-                <div class="productItemClass">
+                <div class="productItemClass productItemClassInactive" onclick="hideMenu(this)">
                     
                     <button class="tertiaryBtn" onclick="incrementProduct(event);showNouveauStockView()" id="${products[i].id}">Nouveau stock</button>
                     <button class="tertiaryBtn" onclick="decrementProduct(event);showNouvelleVenteView()" id="${products[i].id}">Nouvelle vente</button>
