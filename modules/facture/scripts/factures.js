@@ -155,7 +155,7 @@ function previewFacture(factureIndex) {
   secteurFacture.innerHTML = `${userInfo.secteur}`;
   //set Nom client
   let factureNomClient = document.querySelector("#factureNomClient");
-  factureNomClient.innerHTML = `Cher ${facture.client}(${facture.numeroClient})`;
+  factureNomClient.innerHTML = `Cher ${facture.client} | ${facture.numeroClient}`;
   localStorage.setItem("client", facture.client);
   //Set tableau des factures
   let factureTableauRender = document.querySelector("#factureTableauRender");
@@ -197,9 +197,34 @@ function previewFacture(factureIndex) {
     delai.style.display = "none";
   }
 
-  //Set total
+  //Set Frais livraison
+  console.log(facture.fraisLivraison);
+  let fraisLivraisonFacture = document.querySelector("#fraisLivraisonFacture");
+  if(facture.fraisLivraison == undefined){
+    fraisLivraisonFacture.parentNode.style.display = "none";
+    facture.fraisLivraison = 0;
+  }else{
+    let fraisLivraisonFactureView = document.querySelector("#fraisLivraisonFacture");
+    fraisLivraisonFactureView.innerHTML = `${facture.fraisLivraison} ${userInfo.monnaie}`
+  }
+  //Set TVA
+  console.log(facture.tva);
+  let tva = document.querySelector("#tva");
+  if(facture.tva == undefined){
+    tva.innerHTML = "0 %";
+    facture.tva = 0;
+  }else{
+    let tva = document.querySelector("#tva");
+    tva.innerHTML = `${facture.tva} % (${HelperFunction.formatNumWithWhiteSpace(facture.total * facture.tva/100)} ${userInfo.monnaie})`
+  }
+
+  //Set Total Produit
+  let FraisTotal = document.querySelector("#FraisTotal");
+  FraisTotal.innerHTML =  `${HelperFunction.formatNumWithWhiteSpace(facture.total)} ${userInfo.monnaie}`;
+
+  //Set total To pay
   let FactureTotal = document.querySelector("#FactureTotal");
-  FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(facture.total)} ${userInfo.monnaie}`;
+  FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(facture.total +  facture.fraisLivraison + facture.total * facture.tva/100)} ${userInfo.monnaie}`;
   //Set proprietaire et poste
   let FactureOwner = document.querySelector("#FactureOwner");
   let facturePoseEntreprise = document.querySelector("#facturePoseEntreprise");

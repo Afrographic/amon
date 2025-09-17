@@ -855,7 +855,7 @@
         </div>
         <div
           class="formItem"
-          style="flex: 1; margin-bottom: 16px; margin-top: 8px"
+          style="flex: 1; margin-bottom: 8px; margin-top: 16px"
         >
           <div class="label">Delai de livraison</div>
           <input
@@ -863,6 +863,26 @@
             placeholder="Delai de livraison"
             id="delaiLivraison"
           />
+        </div>
+        <div class="formItem" style="flex: 1; margin-top: 8px">
+          <div class="label">Frais de livraison</div>
+          <input
+            type="number"
+            placeholder="Frais de livraison"
+            id="fraisLivraisonInput"
+            inputmode="numeric"
+            pattern="[0-9]*"
+          />
+        </div>
+        <div
+          class="formItem"
+          style="flex: 1; margin-bottom: 8px; margin-top: 8px"
+        >
+          <div class="label">TVA (Taxe)</div>
+          <div class="row g16">
+            <input type="text" placeholder="TVA (Taxe)" id="tvaInput" />
+            <div>%</div>
+          </div>
         </div>
         <div class="formItem" style="flex: 1; margin-top: 16px">
           <div class="label">Note a l'avis de votre client</div>
@@ -1097,6 +1117,21 @@
               </tr>
             </tbody>
           </table>
+          <div style="height:16px;"></div>
+          <table class="moreOptions">
+            <tr>
+              <td>Frais total</td>
+              <td id="FraisTotal">89 000 XAF</td>
+            </tr>
+            <tr>
+              <td>Frais de livraison</td>
+              <td id="fraisLivraisonFacture">2 000 XAF</td>
+            </tr>
+            <tr>
+              <td>TVA (Taxe)</td>
+              <td id="tva">12 000 XAF (5%)</td>
+            </tr>
+          </table>
 
           <div class="delai">
             <div>Delai de livraison</div>
@@ -1114,7 +1149,7 @@
             class="totalFacturePrinter"
           >
             <div class="invoice gradient">
-              <div style="font-size: 12px">Total</div>
+              <div style="font-size: 12px">Total TTX</div>
               <div id="FactureTotal">850 000 XAF</div>
             </div>
             <h2 style="color: black" id="negotiateState">Non negociable</h2>
@@ -1176,7 +1211,9 @@
 
         <!-- Editer la charte graphique -->
         <div class="CharteGraphique inactive">
-          <div style="font-size: 16px;color: black;margin-top:8px;">Personnaliser les couleurs</div>
+          <div style="font-size: 16px; color: black; margin-top: 8px">
+            Personnaliser les couleurs
+          </div>
           <div class="row g16">
             <div class="colorPreview primary" onclick="openPrimaryPicker()">
               <input
@@ -1251,6 +1288,9 @@
 
         //Set Numero client
 
+       
+        
+
         //Set name of company
         let nameCompanyFacture = document.querySelector("#nameCompanyFacture");
         nameCompanyFacture.innerHTML = `${userInfo.nomEntreprise}`;
@@ -1280,7 +1320,7 @@
         //set Nom client
         let numeroClient = document.querySelector("#numeroClient");
         let factureNomClient = document.querySelector("#factureNomClient");
-        factureNomClient.innerHTML = `Cher ${nomClient.value}(${numeroClient.value}) `;
+        factureNomClient.innerHTML = `Cher ${nomClient.value} | ${numeroClient.value} `;
         localStorage.setItem("client", nomClient.value);
 
         //Set tableau des factures
@@ -1323,10 +1363,38 @@
           delai.style.display = "none";
         }
 
-        //Set total
+         //Set Frais livraison
+         let fraisLivraisonFactureInput = document.querySelector("#fraisLivraisonInput");
+        let fraisLivraisonFactureView = document.querySelector("#fraisLivraisonFacture");
+        let frais = 0;
+        if(fraisLivraisonFactureInput.value.trim().length == 0){
+          frais = 0;
+        }else{
+          frais = parseInt(fraisLivraisonFactureInput.value)
+        }
+        fraisLivraisonFactureView.innerHTML = `${frais} ${userInfo.monnaie}`
+
+        //Set TVA
+       
+        let tvaInput = document.querySelector("#tvaInput");
+        console.log(tvaInput.value);
+        let tva = document.querySelector("#tva");
+        let tvaValue = 0;
+        if(tvaInput.value.trim().length == 0){
+          tvaValue = 0;
+        }else{
+          tvaValue = parseInt(tvaInput.value);
+        }
+        tva.innerHTML = `${tvaValue} % (${HelperFunction.formatNumWithWhiteSpace(total * tvaValue/100)} ${userInfo.monnaie})`
+
+         //Set Total Produit
+        let FraisTotal = document.querySelector("#FraisTotal");
+        FraisTotal.innerHTML =  `${HelperFunction.formatNumWithWhiteSpace(total)} ${userInfo.monnaie}`;
+
+        //Set total TTX
         let FactureTotal = document.querySelector("#FactureTotal");
         FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
-          total
+          total + total * tvaValue/100 + frais
         )} ${userInfo.monnaie}`;
 
         //Set proprietaire et poste
@@ -1368,7 +1436,9 @@
           id: factures.length + 1,
           negociable: negociable,
           delai: delaiInput.value,
-          numeroClient: numeroClient.value,
+          numeroClient: numeroClient.value ?? "",
+          tva : tvaValue,
+          fraisLivraison: frais
         });
 
         //update note value

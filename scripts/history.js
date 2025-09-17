@@ -207,7 +207,7 @@ async function showHistoryRetrait() {
       render.innerHTML += `
       <div class="historyListing">
          ${items}
-         <p style="text-align:center" class="green">Benefice : ${benefice} ${devise} </p>
+         <p style="text-align:center" class="green">Benefice : ${Afro.formatNumWithWhiteSpace(benefice)} ${devise} </p>
       </div>
       `;
     }

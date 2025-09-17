@@ -656,3 +656,11 @@ textarea{
     background-color: #e3e3e3;
     border-radius: 50%;
 }
+
+.moreOptions{
+    border-collapse: inherit !important;
+}
+
+.moreOptions td{
+    padding:8px;
+}

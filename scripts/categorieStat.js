@@ -53,7 +53,7 @@ async function computeCategorieStat() {
         <div class="productItem">
         
 
-              <div class="productItemClass productItemClassInactive" onclick="hideMenu(this)">
+              <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
                   
                   <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${products[j].id}">Nouveau Stock</button>
                   <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${products[j].id}">Nouvelle Vente</button>
@@ -69,7 +69,7 @@ async function computeCategorieStat() {
               <h3>${Afro.Ucase(products[j].nom)}</h3>
               <div class="row aic g16">
                   <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>
-                  <div class="clickArea" onclick="showMenu(this)">
+                  <div class="clickArea" onclick="showMenuProduct(this)">
                      <img src="images/option.svg" />
                   </div>  
               </div>
@@ -153,7 +153,7 @@ async function computeCategorieStat() {
 }
 
 
-function showMenu(el){
+function showMenuProduct(el){
   el.parentNode.parentNode.parentNode.firstElementChild.classList.remove("productItemClassInactive")
 }
 
@@ -161,7 +161,7 @@ function showMoreInfo(el){
   el.parentNode.parentNode.parentNode.lastElementChild.classList.remove("productInfoInactive")
 }
 
-function hideMenu(el){
+function hideMenuProduct(el){
   el.classList.add("productItemClassInactive")
 }
 
