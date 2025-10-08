@@ -36,11 +36,10 @@ class RenderModele2{
         }
 
         //render product prix
-        this.m1_prix.innerHTML = `${flyer.prix} ${DB.config.devise}`;
+        this.m1_prix.innerHTML = `${Tools.formatNumWithWhiteSpace(flyer.prix)} ${DB.config.devise}`;
 
         //Render product image
         let image_product_url = URL.createObjectURL(flyer.image_file);
-        console.log(image_product_url);
         this.m1_image_product.src = image_product_url;
 
         //Render caracteristique

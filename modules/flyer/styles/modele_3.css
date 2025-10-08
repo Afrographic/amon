@@ -1,0 +1,146 @@
+.modele_3{
+    margin-top:16px;
+}
+
+.m3_container{
+    background-image: url(../images/bg_m3.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    background-color: #fff;
+}
+
+.m3_content{
+    width: 52vw;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding:32px;
+    padding-bottom: 0px;
+   
+}
+
+.m3_logo_container{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.m3_commandez{
+    padding: 4px 8px;
+    font-size: 8px;
+    background-color: darkblue;
+    color:white;
+}
+
+.m3_prix_promo_text{
+    padding: 4px 8px;
+    font-size: 8px;
+    background-color: darkblue;
+    color:white;
+}
+
+.stroke{
+    text-decoration: line-through;
+    color:red;
+}
+
+.price{
+    display: flex;
+    align-items: center;
+    gap:16px;
+}
+
+.promo_price{
+    font-size: 10px;
+}
+
+.m3_car_item{
+    display: flex;
+    gap:4px;
+    font-size: 6px;
+    align-items: center;
+}
+
+.m3_car_item img{
+    width: 6px;
+}
+
+.m3_cars{
+    display: flex;
+    flex-wrap: wrap;
+    gap:4px;
+}
+
+.m3_footer{
+    padding:16px 32px;
+    background-color: darkblue;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap:16px;
+    font-size: 9px;
+    align-items: center;
+}
+
+.m3_reseau{
+    display: flex;
+    gap:4px;
+    color:white;
+   
+}
+
+.img_blocs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:4px;
+}
+
+.m3_reseau img{
+    width: 10px;
+}
+
+.reseau_bloc{
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+}
+
+.m3_address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background-color: #fff;
+    gap:4px;
+    border-radius: 8px;
+    width: 39vw;
+}
+
+.m3_address img{
+    width: 10px;
+}
+
+.m3_product_image_bloc{
+    position: absolute;
+    top:114px;
+    right:32px;
+}
+
+.m3_product_image_bloc img{
+    width: 30vw;
+    border-radius: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.circle{
+    width: 23vw;
+    right: -13px;
+    aspect-ratio: 1 / 1;
+    background-color: darkblue;
+    border-radius: 50%;
+    position: absolute;
+    top: -49px;
+}

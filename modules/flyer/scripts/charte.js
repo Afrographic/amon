@@ -47,6 +47,21 @@ class Charte{
         for(let item of dots){
             item.style.backgroundColor = secondary_saved;
         }
+
+        //Recolor flyer modele 3
+        let m3_circle = document.querySelector("#m3_circle");
+        let m3_prix = document.querySelector("#m3_prix");
+        let m3_prix_promo = document.querySelector("#m3_prix_promo");
+        let m3_footer = document.querySelector(".m3_footer");
+        let m3_commandez = document.querySelector(".m3_commandez");
+        let m3_prix_promo_text = document.querySelector(".m3_prix_promo_text");
+
+        m3_prix.style.color = primary_saved;
+        m3_prix_promo.style.color = secondary_saved;
+        m3_circle.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
+        m3_footer.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
+        m3_commandez.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
+        m3_prix_promo_text.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
     }
 
 

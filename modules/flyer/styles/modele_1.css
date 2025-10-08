@@ -72,6 +72,7 @@
     font-size: 2vw;
     margin-top:16px;
     z-index: 1;
+    width: 53vw;
 }
 
 .contactsLocalisation img{
@@ -80,7 +81,7 @@
 
 .contacts{
     display: flex;
-    gap:32px;
+    gap:16px;
 }
 
 .contact{

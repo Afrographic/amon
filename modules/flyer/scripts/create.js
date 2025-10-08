@@ -38,7 +38,7 @@ class Create{
     }
 
     static getPrix(input){
-        this.flyer.prix = Tools.formatNumWithWhiteSpace(input.value);
+        this.flyer.prix = input.value;
     }
 
     static getDesc(input){
@@ -71,6 +71,8 @@ class Create{
         
         RenderModele1.render(flyer_to_render);
         RenderModele2.render(flyer_to_render);
+        RenderModele3.render(flyer_to_render);
+        document.body.scrollTop = 0;
     }
 
     static get_caracteristiques_to_save(){

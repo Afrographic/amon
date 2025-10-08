@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="flyer.css" />
     <link rel="stylesheet" href="styles/modele_1.css" />
     <link rel="stylesheet" href="styles/modele_2.css" />
+    <link rel="stylesheet" href="styles/modele_3.css" />
+
     <script src="../facture/assets/libs/html2canvas.min.js"></script>
     <script src="../facture/assets/libs/jsstore.js"></script>
     <script src="../facture/assets/libs/jsstore.worker.js"></script>
@@ -169,7 +171,7 @@
         <div class="m2_cars" id="m2_cars">
           <div class="m2_carItem">
             <div class="dot"></div>
-            <div> dkfkdkf dkfkdkfdfd</div>
+            <div>dkfkdkf dkfkdkfdfd</div>
           </div>
         </div>
         <!-- Contacts -->
@@ -204,6 +206,95 @@
       </button>
 
       <div class="donation">
+        <img src="images/love.svg" width="20px" alt="" />
+        <div>
+          Participer au developpement en fesant un don au numero Orange Money
+          +237 697 830 071 (Tesse Brunel)
+        </div>
+      </div>
+
+      <!-- Modele 3 -->
+      <div class="modele modele_3" id="model3_to_render">
+        <!-- Signature -->
+        <img src="images/afroSign.png" alt="" class="sign" />
+        <!-- Container -->
+        <div class="m3_container">
+          <div class="m3_content">
+            <div class="m3_logo_container">
+              <img src="images/afro.svg" alt="" width="25px" id="m3_logo" />
+              <div id="m3_nom_business">HiteCom</div>
+            </div>
+            <div style="display: flex;">
+              <div class="m3_commandez">COMMANDEZ VOS</div>
+            </div>
+
+            <h1 style="margin:0px;" id="m3_nom_produit">Ecouteur Sans Fil Airpods Pro2</h1>
+            <div style="font-size: 8px;" id="m3_desc">Qualite sonore sterio sans perte HD binaural, ideale pour de la pire musique avec chargeur type C</div>
+
+            <!-- caracteristiques -->
+            <div class="m3_cars" id="m3_cars">
+              <div class="m3_car_item">
+                <img src="images/feature_3.svg" alt="">
+                <div>Wireless earphone HD Sound</div>
+              </div>
+              <div class="m3_car_item">
+                <img src="images/feature_3.svg" alt="">
+                <div>Bluetooth 5.0</div>
+              </div>
+              <div class="m3_car_item">
+                <img src="images/feature_3.svg" alt="">
+                <div>Touch control</div>
+              </div>
+            </div>
+
+            <div style="display: flex;">
+              <div class="m3_prix_promo_text">PRIX PROMO</div>
+            </div>
+            <div class="price">
+              <h1 style="margin:0;font-size: 3vw;color:orange" id="m3_prix">10 000 FCFA</h1>
+              <div class="stroke promo_price" id="m3_prix_promo">15 500 FCFA</div>
+            </div>
+
+            <!-- ProductImage -->
+            <div class="m3_product_image_bloc">
+              <div class="circle" id="m3_circle">
+
+              </div>
+              <img src="images/pharaon.png" alt="" id="m3_image_product">
+            </div>
+          
+          </div>
+          <div class="m3_footer">
+            <div class="reseau_bloc">
+              <div class="m3_reseau">
+                <div class="img_blocs">
+                  <img src="images/facebook_white.png" alt="">
+                  <img src="images/instagram_white.png" alt="">
+                  <img src="images/x_white.png" alt="">
+                </div>
+                <div id="m3_reseau_sociaux">HiteCom Business</div>
+              </div>
+              <div class="m3_reseau">
+                <div class="img_blocs">
+                  <img src="images/watsapp_white.png" alt="">
+                </div>
+                <div id="m3_whasapp">+237 697 830 071</div>
+              </div>
+            </div>
+            <div class="m3_address">
+              <img src="images/location.png" alt="">
+              <div id="m3_addresse">Pharmacie EMIA (Polytecnique Yaounde)</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <button class="share" onclick="RenderModele3.export()">
+        <img src="images/share.svg" width="18px" alt="" />
+        Partager sur les reseaux
+      </button>
+
+      <div class="donation" style="margin-bottom: 16px">
         <img src="images/love.svg" width="20px" alt="" />
         <div>
           Participer au developpement en fesant un don au numero Orange Money
@@ -337,7 +428,12 @@
         </div>
         <div class="formItem">
           <div class="label">Breve description</div>
-          <textarea name="" id="descArea" placeholder="Breve description" onchange="Create.getDesc(this)"></textarea>
+          <textarea
+            name=""
+            id="descArea"
+            placeholder="Breve description"
+            onchange="Create.getDesc(this)"
+          ></textarea>
         </div>
         <div class="formItem">
           <div class="label">Prix</div>
@@ -388,6 +484,7 @@
     <script src="scripts/ui.js"></script>
     <script src="scripts/modele_1_render.js"></script>
     <script src="scripts/modele_2_render.js"></script>
+    <script src="scripts/modele_3_render.js"></script>
 
     <script src="scripts/db.js"></script>
     <script src="scripts/tools.js"></script>

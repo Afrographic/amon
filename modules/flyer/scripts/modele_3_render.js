@@ -1,16 +1,18 @@
-class RenderModele1{
-    static modele1 = document.querySelector("#model_to_render");
+class RenderModele3{
+    static modele = document.querySelector("#model3_to_render");
 
-    static m1_logo = document.querySelector("#m1_logo");
-    static m1_nom_business = document.querySelector("#m1_nom_business");
-    static m1_nom_produit = document.querySelector("#m1_nom_produit");
-    static m1_caracterisque = document.querySelector("#m1_caracterisque");
-    static m1_prix = document.querySelector("#m1_prix");
-    static m1_image_product = document.querySelector("#m1_image_product");
-    static m1_reseau_sociaux = document.querySelector("#m1_reseau_sociaux");
-    static m1_whasapp = document.querySelector("#m1_whasapp");
-    static m1_addresse = document.querySelector("#m1_addresse");
-    static m1_desc = document.querySelector("#m1_desc");
+    static m1_logo = document.querySelector("#m3_logo");
+    static m1_nom_business = document.querySelector("#m3_nom_business");
+    static m1_nom_produit = document.querySelector("#m3_nom_produit");
+    static m1_caracterisque = document.querySelector("#m3_cars");
+    static m1_prix = document.querySelector("#m3_prix");
+    static m1_promo = document.querySelector("#m3_prix_promo");
+
+    static m1_image_product = document.querySelector("#m3_image_product");
+    static m1_reseau_sociaux = document.querySelector("#m3_reseau_sociaux");
+    static m1_whasapp = document.querySelector("#m3_whasapp");
+    static m1_addresse = document.querySelector("#m3_addresse");
+    static m1_desc = document.querySelector("#m3_desc");
 
     static render(flyer){
         //Show renderer flyer
@@ -37,19 +39,22 @@ class RenderModele1{
 
         //render product prix
         this.m1_prix.innerHTML = `${Tools.formatNumWithWhiteSpace(flyer.prix)} ${DB.config.devise}`;
+        let prixBarre = parseInt(flyer.prix) + ( parseInt(flyer.prix) * 55 / 100)
+        this.m1_promo.innerHTML = `${Tools.formatNumWithWhiteSpace(prixBarre.toString())} ${DB.config.devise}`
 
         //Render product image
         let image_product_url = URL.createObjectURL(flyer.image_file);
         this.m1_image_product.src = image_product_url;
 
         //Render caracteristique
+        let dark_primary = Tools.darkenColor(Charte.default_primary,50);
         this.m1_caracterisque.innerHTML ="";
         for(let i = 0 ; i<=flyer.caracteristiques.length-1;i++){
             this.m1_caracterisque.innerHTML += `
-            <div class="carItem">
-                <img src="images/feature.png" alt="" />
+            <div class="m3_car_item">
+                <img src="images/feature_3.svg" alt="">
                 <div>${flyer.caracteristiques[i]}</div>
-            </div>
+             </div>
             `
         }
 
@@ -70,6 +75,6 @@ class RenderModele1{
 
 
     static export(){
-        Tools.exportImage(this.modele1,Create.flyer.nom);
+        Tools.exportImage(this.modele,Create.flyer.nom);
     }
 }
