@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Djehouty</title>
+    <link rel="stylesheet" href="flyer.css" />
+    <link rel="stylesheet" href="styles/modele_1.css" />
+    <link rel="stylesheet" href="styles/modele_2.css" />
+    <script src="../facture/assets/libs/html2canvas.min.js"></script>
+    <script src="../facture/assets/libs/jsstore.js"></script>
+    <script src="../facture/assets/libs/jsstore.worker.js"></script>
+    <script src="../facture/assets/libs/jscolor.js"></script>
+
+    <link rel="icon" href="images/djehouty_icon.svg" />
+  </head>
+  <body>
+    <!-- Modeles -->
+    <div class="Modele_1_wrapper hidden" id="modele1">
+      <img
+        src="images/back.svg"
+        alt=""
+        width="24px"
+        style="margin-bottom: 16px"
+        onclick="RenderModele1.back_to_edit_details()"
+      />
+
+      <!-- Editer la charte graphique -->
+      <div class="CharteGraphique inactive">
+        <div class="row g16 aic">
+          <img src="images/djehouty_icon.svg" alt="" width="20px" />
+          <div>Djehouty</div>
+        </div>
+
+        <div class="persoColor">Personnaliser les couleurs</div>
+        <div class="row g16">
+          <div
+            class="colorPreview primary"
+            onclick="Charte.openPrimaryPicker()"
+            id="primary"
+          >
+            <input
+              class="jscolor"
+              value="#2b76ff"
+              id="primaryPicker"
+              onchange="Charte.getPrimaryColor(event)"
+            />
+          </div>
+          <div
+            class="colorPreview secondary"
+            onclick="Charte.openSecondaryPicker()"
+            id="secondary"
+          >
+            <input
+              class="jscolor"
+              value="#d5a100"
+              id="secondaryPicker"
+              onchange="Charte.getSecondaryColor(event)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modele 1 -->
+      <div class="modele modele_1" id="model_to_render">
+        <!-- Signature -->
+        <img src="images/afroSign.png" alt="" class="sign" />
+        <!-- Logo -->
+        <div class="logo">
+          <img src="images/afro.svg" alt="" width="25px" id="m1_logo" />
+          <div id="m1_nom_business">HiteCom</div>
+        </div>
+        <div class="container" id="m1_container">
+          <!-- Nom du produit -->
+          <h1 class="productName" id="m1_nom_produit">HP EliteBook 745 G6</h1>
+          <!-- Breve description -->
+          <div id="m1_desc">Imprimante couleur multi-fonction</div>
+          <!-- Caracteristiques -->
+          <div class="cars" id="m1_caracterisque">
+            <div class="carItem">
+              <img src="images/feature.svg" alt="" />
+              <div>256 Go SSD</div>
+            </div>
+            <div class="carItem">
+              <img src="images/feature.svg" alt="" />
+              <div>AMD Ryzen 5 PRO Core i7, 2.1Ghz (8 CPUs)</div>
+            </div>
+            <div class="carItem">
+              <img src="images/feature.svg" alt="" />
+              <div>16 Go RAM Extensible</div>
+            </div>
+            <div class="carItem">
+              <img src="images/feature.svg" alt="" />
+              <div>AMD Radeon 1200 Mhz, 2Go Dedie</div>
+            </div>
+            <div class="carItem">
+              <img src="images/feature.svg" alt="" />
+              <div>Autonomie 8H</div>
+            </div>
+            <div class="carItem">
+              <img src="images/feature.svg" alt="" />
+              <div>Webcam, Bluetooth, USB 3.0 Type C, HDMI</div>
+            </div>
+          </div>
+          <!-- Prix -->
+          <div class="prix" id="m1_prix">300 000 XAF</div>
+          <!-- Product Image -->
+          <img
+            src="images/pharaon.png"
+            alt=""
+            class="productImage"
+            id="m1_image_product"
+          />
+        </div>
+        <!-- Contacts + Localisation  -->
+        <div class="contactsLocalisation">
+          <!-- Contacts -->
+          <div class="contacts">
+            <div class="contact">
+              <div style="display: flex; gap: 8px">
+                <img src="images/facebook.png" alt="" />
+                <img src="images/instagram.png" alt="" />
+                <img src="images/x.png" alt="" />
+              </div>
+              <div id="m1_reseau_sociaux">hitecom business</div>
+            </div>
+            <div class="contact">
+              <img src="images/whatsapp.png" alt="" />
+              <div id="m1_whasapp">+237 697 830 071</div>
+            </div>
+          </div>
+          <!-- Localisation -->
+          <div class="adresse">
+            <img src="images/location.png" alt="" width="15px" />
+            <div id="m1_addresse">Pharmacie EMIA (Polytechnique Yaounde)</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="share" onclick="RenderModele1.export()">
+        <img src="images/share.svg" width="18px" alt="" />
+        Partager sur les reseaux
+      </button>
+
+      <div class="donation">
+        <img src="images/love.svg" width="20px" alt="" />
+        <div>
+          Participer au developpement en fesant un don au numero Orange Money
+          +237 697 830 071 (Tesse Brunel)
+        </div>
+      </div>
+
+      <!-- Modele 2 -->
+      <div class="modele modele_2" id="model2_to_render">
+        <!-- Signature -->
+        <img src="images/afroSign.png" alt="" class="sign" />
+        <div id="m2_logo_wrapper">
+          <img src="images/afro.svg" alt="" width="25px" id="m2_logo" />
+          <div id="m2_nom_business">HiteCom</div>
+        </div>
+        <div>
+          <h1 class="tac" id="m2_nom_produit">JBL Quantun 610</h1>
+          <div class="tac" id="m2_desc">jBL casque pure BASS sans fil</div>
+        </div>
+        <div class="m2_image_container">
+          <img src="images/pharaon.png" alt="" id="m2_product_image" />
+          <div id="m2_prix">45 000 FCFA</div>
+        </div>
+        <div class="m2_cars" id="m2_cars">
+          <div class="m2_carItem">
+            <div class="dot"></div>
+            <div> dkfkdkf dkfkdkfdfd</div>
+          </div>
+        </div>
+        <!-- Contacts -->
+        <!-- Contacts + Localisation  -->
+        <div class="contactsLocalisation m2_contacts_loca">
+          <!-- Contacts -->
+          <div class="contacts">
+            <div class="contact">
+              <div style="display: flex; gap: 8px">
+                <img src="images/facebook.png" alt="" />
+                <img src="images/instagram.png" alt="" />
+                <img src="images/x.png" alt="" />
+              </div>
+              <div id="m2_reseau_sociaux">hitecom business</div>
+            </div>
+            <div class="contact">
+              <img src="images/whatsapp.png" alt="" />
+              <div id="m2_whasapp">+237 697 830 071</div>
+            </div>
+          </div>
+          <!-- Localisation -->
+          <div class="adresse">
+            <img src="images/location.png" alt="" width="15px" />
+            <div id="m2_addresse">Pharmacie EMIA (Polytechnique Yaounde)</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="share" onclick="RenderModele2.export()">
+        <img src="images/share.svg" width="18px" alt="" />
+        Partager sur les reseaux
+      </button>
+
+      <div class="donation">
+        <img src="images/love.svg" width="20px" alt="" />
+        <div>
+          Participer au developpement en fesant un don au numero Orange Money
+          +237 697 830 071 (Tesse Brunel)
+        </div>
+      </div>
+    </div>
+    <!-- Splash Screen -->
+    <div class="splash" id="splash">
+      <img src="images/djehouty_icon.svg" alt="" width="24px" />
+      <div>Djehouty</div>
+      <img
+        src="images/afroSign.svg"
+        alt=""
+        width="12px"
+        style="
+          width: 65px;
+          /* margin-top: 64px; */
+          position: absolute;
+          bottom: 64px;
+        "
+      />
+    </div>
+    <!-- Configuration -->
+    <div class="config hidden" id="config">
+      <h1 class="tac">Configuration</h1>
+      <div class="logoComp">
+        <input
+          type="file"
+          hidden
+          id="logoPicker"
+          accept="image/*"
+          onchange="Config.renderLogo(event)"
+        />
+        <div class="logoPlaceHolder"></div>
+        <img
+          src="images/image.svg"
+          alt=""
+          class="configLogo inactive"
+          id="configLogo"
+        />
+        <div class="b_secondary" onclick="Config.triggerFilePick()">
+          <img src="images/image.svg" alt="" width="16px" />
+          Importer un logo
+        </div>
+      </div>
+      <div class="form">
+        <div class="formItem">
+          <div class="label">Nom de votre business</div>
+          <input
+            type="text"
+            placeholder="Nom de votre business"
+            id="nomBusiness"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Numero Whatsapp</div>
+          <input
+            type="text"
+            placeholder="Numero Whatsapp"
+            id="numeroWhatsapp"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Devise</div>
+          <input
+            type="text"
+            placeholder="Ex: XAF, Euro, $"
+            id="devise"
+            value="XAF"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">
+            Nom de votre page Facebook ou Instagram ou Twitter
+          </div>
+          <input
+            type="text"
+            placeholder="Nom de votre page Facebook ou Instagram"
+            id="nomFacebook"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Adresse physique de votre boutique</div>
+          <input
+            type="text"
+            placeholder="Adresse physique de votre boutique"
+            id="adresse"
+          />
+        </div>
+      </div>
+      <div class="b_primary" onclick="Config.saveInfo()">
+        <img src="images/save.svg" width="15px" alt="" />
+        Enregistrer
+      </div>
+    </div>
+    <!-- Creation du flyer -->
+    <div class="flyerInfo hidden" id="flyerInfo">
+      <div class="nameApp">
+        <img src="images/djehouty_icon.svg" alt="" width="24px" />
+        <div>Djehouty</div>
+      </div>
+      <h2>Informations du produit</h2>
+      <p>Veuillez renseigner les informations du produit ci-dessous</p>
+      <input
+        type="file"
+        accept="image/*"
+        hidden
+        id="product_image_import_input"
+        onchange="Create.process_product_image(event)"
+      />
+      <div
+        class="imageArea"
+        id="previewImageArea"
+        onclick="Create.trigger_product_image_import()"
+      >
+        <div class="indic">
+          <img src="images/image.svg" alt="" width="24px" />
+          <div>Importer une image</div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="formItem">
+          <div class="label">Nom du produit</div>
+          <input
+            type="text"
+            placeholder="Nom du produit"
+            id="nomProduit"
+            onchange="Create.getName(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Breve description</div>
+          <textarea name="" id="descArea" placeholder="Breve description" onchange="Create.getDesc(this)"></textarea>
+        </div>
+        <div class="formItem">
+          <div class="label">Prix</div>
+          <input
+            type="number"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            placeholder="Prix"
+            id="prix"
+            onchange="Create.getPrix(this)"
+          />
+        </div>
+        <div id="caracteristiques_container">
+          <div class="formItem">
+            <div class="label">Caracteristique 1</div>
+            <input type="text" placeholder="Caracteristique 1" id="caract1" />
+          </div>
+          <div class="formItem">
+            <div class="label">Caracteristique 2</div>
+            <input type="text" placeholder="Caracteristique 2" id="caract2" />
+          </div>
+        </div>
+        <div class="b_secondary" onclick="Create.add_new_caracteristique()">
+          <img src="images/add.svg" alt="" width="16px" />
+          Ajouter une autre Caracteristique
+        </div>
+      </div>
+      <div
+        class="b_primary"
+        onclick="Create.generateFlyer()"
+        style="margin-top: 16px"
+      >
+        <img src="images/settings.svg" width="15px" alt="" />
+        Generer le flyer
+      </div>
+      <div
+        class="b_secondary"
+        onclick="Create.edit_info()"
+        style="margin-top: 8px"
+      >
+        <img src="images/edit.svg" width="15px" alt="" />
+        Modifier vos informations
+      </div>
+    </div>
+
+    <script src="scripts/create.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/modele_1_render.js"></script>
+    <script src="scripts/modele_2_render.js"></script>
+
+    <script src="scripts/db.js"></script>
+    <script src="scripts/tools.js"></script>
+    <script src="scripts/splash.js"></script>
+    <script src="scripts/charte.js"></script>
+  </body>
+</html>

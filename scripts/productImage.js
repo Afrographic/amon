@@ -79,7 +79,7 @@ class ProductImageService {
         return -1;
     }
   }
-
+ 
   static async getImageFile(imageId){
     let images = await this.con2.select({
         from: "AmonProductImages",

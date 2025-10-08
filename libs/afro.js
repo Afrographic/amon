@@ -130,7 +130,7 @@ class Afro {
       windowWidth: document.documentElement.scrollWidth,
       windowHeight: facture.scrollHeight,
     }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
+      const imgData = canvas.toDataURL("image/jpeg");
       const link = document.createElement("a");
       document.body.appendChild(link);
       link.href = imgData;

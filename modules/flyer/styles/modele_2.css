@@ -1,0 +1,91 @@
+.modele_2 {
+    position: relative;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1faff;
+    overflow: hidden;
+    margin-top: 16px;
+    gap: 16px;
+}
+
+#m2_logo_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modele_2 h1 {
+    margin: 0;
+}
+
+#m2_desc{
+    line-height: 15px;
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+.tac {
+    text-align: center;
+}
+
+.dot{
+    background-color: rgb(255, 162, 0);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+#m2_product_image {
+    border-radius: 8px;
+    width: 60vw;
+}
+
+.m2_image_container {
+    position: relative;
+}
+
+#m2_prix {
+    position: absolute;
+    background-color: rgb(255, 124, 20);
+    color: white;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    padding: 10px;
+    left: 50%;
+    bottom: -21px;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+    width: 38vw;
+    text-align: center;
+}
+
+.m2_cars {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 4px;
+    justify-content: center;
+}
+
+.m2_carItem {
+    font-size: 10px;
+    padding: 8px 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap:8px;
+    border-radius: 32px;
+    background-image: linear-gradient(rgb(38, 178, 255), rgb(0, 57, 88));
+}
+
+.m2_contacts_loca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

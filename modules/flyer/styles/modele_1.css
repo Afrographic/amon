@@ -1,0 +1,140 @@
+.modele_1{
+    padding:16px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f1faff;
+    overflow: hidden;
+}
+
+.modele_1 .container{
+    padding:16px;
+    background-image: linear-gradient(180deg, #2b76ff, #00124c);
+    border-radius: 16px;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 171px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#m1_nom_business{
+    font-size: 3vw;
+}
+
+.cars{
+    display: flex;
+    flex-direction: column;
+    gap:1.4vw;
+    width: 50%;
+}
+
+#m1_desc{
+    font-size: 2vw;
+    color: white;
+    width: 41vw;
+    margin-bottom: 16px;
+}
+
+.carItem{
+    display: flex;
+    align-items: center;
+    gap:8px;
+    font-size: 2vw;
+    color: rgba(255, 255, 255, 0.765);
+}
+
+.carItem img{
+    width: 13px;
+    opacity: 0.7;
+}
+
+.prix{
+    padding: 11px;
+    background-color: #d5a100;
+    color: white;
+    font-size: 3vw;
+    font-family: 'ralewayBlack';
+    border-radius: 6px;
+    margin-top: 12px;
+}
+
+.productImage{
+    position: absolute;
+    width: 41vw;
+    border-radius: 23px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    top: 4vh;
+    right: 0px;
+}
+
+.contactsLocalisation{
+    font-size: 2vw;
+    margin-top:16px;
+    z-index: 1;
+}
+
+.contactsLocalisation img{
+    width: 10px;
+}
+
+.contacts{
+    display: flex;
+    gap:32px;
+}
+
+.contact{
+    display: flex;
+    align-items: center;
+    gap:8px;
+}
+
+.adresse{
+    display: flex;
+    gap:8px;
+    align-items: center;
+    margin-top:8px;
+}
+
+.bg{
+    position: absolute;
+    transform: scale(2);
+    opacity: 0.4;
+}
+
+.invert{
+    filter: invert(1);
+}
+
+.productName{
+    margin-top: 0px;
+    color: white;
+    width: 40vw;
+}
+
+.logo{
+    padding:16px 0px;
+    display: flex;
+    gap:8px;
+    z-index: 1;
+    align-items: center;
+}
+
+.share{
+    margin:16px 0px;
+    padding:16px; 
+    color:white;
+    background-color: #333;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    gap:16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modele_1{
+    background-image: url(../images/bg.png);
+    background-size: 200%;
+    background-position: center;
+}
