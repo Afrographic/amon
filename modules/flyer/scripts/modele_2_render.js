@@ -40,7 +40,8 @@ class RenderModele2{
 
         //Render product image
         let image_product_url = URL.createObjectURL(flyer.image_file);
-        m1_image_product.src = image_product_url;
+        console.log(image_product_url);
+        this.m1_image_product.src = image_product_url;
 
         //Render caracteristique
         let dark_primary = Tools.darkenColor(Charte.default_primary,50);

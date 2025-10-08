@@ -40,7 +40,7 @@ class RenderModele1{
 
         //Render product image
         let image_product_url = URL.createObjectURL(flyer.image_file);
-        m1_image_product.src = image_product_url;
+        this.m1_image_product.src = image_product_url;
 
         //Render caracteristique
         this.m1_caracterisque.innerHTML ="";
