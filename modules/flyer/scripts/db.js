@@ -1,6 +1,7 @@
 class DB {
   static con = new JsStore.Connection();
   static config;
+  static firstTime = false;
 
   static async init() {
     var data = {
@@ -43,13 +44,14 @@ class DB {
     } else {
       // Show Config Screen
       UI.show_config_screen();
+      this.firstTime = true;
     }
   }
 
   static async saveConfig(config) {
    
     this.config = config;
-    if (this.config == undefined) {
+    if (this.firstTime) {
       await this.con.insert({
         into: "config",
         values: [
@@ -59,6 +61,7 @@ class DB {
         ],
         return: true,
       });
+      this.firstTime = false;
     } else {
        await this.con.update({
         in: "config",
