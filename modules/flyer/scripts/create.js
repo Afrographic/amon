@@ -6,6 +6,7 @@ class Flyer{
         this.desc = "";
         this.caracteristiques =[""];
         this.image_file = undefined;
+        this.crop_image="";
     }
 }
 
@@ -68,11 +69,20 @@ class Create{
         // Render Flyer
         let flyer_to_render = this.flyer;
         flyer_to_render.caracteristiques = caracteristiques;
+
+        //Crop image
+        let image_product_url = URL.createObjectURL(flyer_to_render.image_file);
+        // Crop image
+        let img = new Image();
+        img.src = image_product_url;
         
-        RenderModele1.render(flyer_to_render);
-        RenderModele2.render(flyer_to_render);
-        RenderModele3.render(flyer_to_render);
-        document.body.scrollTop = 0;
+        img.onload = () =>{
+            flyer_to_render.crop_image = Tools.cropImageToSquare(img);
+            RenderModele1.render(flyer_to_render);
+            RenderModele2.render(flyer_to_render);
+            RenderModele3.render(flyer_to_render);
+        }
+       
     }
 
     static get_caracteristiques_to_save(){

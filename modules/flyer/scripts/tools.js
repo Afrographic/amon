@@ -155,6 +155,33 @@ class Tools {
       });
     }
   }
+
+  static cropImageToSquare(img) {
+    // Create a canvas
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+  
+    // Determine the square size (based on width)
+    const size = img.width;
+  
+    // Set canvas to square
+    canvas.width = size;
+    canvas.height = size;
+  
+    // Find cropping coordinates (center crop)
+    const offsetX = 0; // we want to preserve full width
+    const offsetY = (img.height - img.width) / 2;
+  
+    // Draw the cropped image
+    ctx.drawImage(
+      img,
+      offsetX, offsetY, size, size, // source rectangle
+      0, 0, size, size              // destination rectangle
+    );
+  
+    // Return cropped image as data URL (or blob)
+    return canvas.toDataURL("image/png");
+  }
 }
 
 

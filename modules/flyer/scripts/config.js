@@ -62,16 +62,15 @@ class Config {
       alert("Devise invalide");
       return;
     }
-    if (nomFacebookValue.trim().length == 0) {
-      alert("Nom facebook Invalide!");
-      return;
-    }
+   
     if (adresseValue.trim().length == 0) {
       alert("Adresse  Invalide!");
       return;
     }
    
-
+    if(nomFacebookValue.trim().length == 0){
+      nomFacebookValue = nomBusinessValue;
+    }
     // Loading default Logo in case of no logo
 
     Tools.generateLogo(nomBusinessValue.trim()[0]);

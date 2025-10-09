@@ -39,7 +39,7 @@ class RenderModele1{
         this.m1_prix.innerHTML = `${Tools.formatNumWithWhiteSpace(flyer.prix)} ${DB.config.devise}`;
 
         //Render product image
-        let image_product_url = URL.createObjectURL(flyer.image_file);
+        let image_product_url = flyer.crop_image;
         this.m1_image_product.src = image_product_url;
 
         //Render caracteristique

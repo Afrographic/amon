@@ -43,7 +43,7 @@ class RenderModele3{
         this.m1_promo.innerHTML = `${Tools.formatNumWithWhiteSpace(prixBarre.toString())} ${DB.config.devise}`
 
         //Render product image
-        let image_product_url = URL.createObjectURL(flyer.image_file);
+        let image_product_url = flyer.crop_image;
         this.m1_image_product.src = image_product_url;
 
         //Render caracteristique
