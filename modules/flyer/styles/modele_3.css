@@ -124,7 +124,7 @@
 
 .m3_product_image_bloc{
     position: absolute;
-    top:64px;
+    top:52px;
     right:32px;
 }
 
@@ -143,4 +143,12 @@
     border-radius: 50%;
     position: absolute;
     top: -49px;
+}
+
+
+.modele_3 .qr_code{
+    position: absolute;
+    bottom: 91px;
+    right: 32px;
+    z-index: 4;
 }

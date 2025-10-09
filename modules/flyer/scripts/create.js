@@ -7,6 +7,7 @@ class Flyer{
         this.caracteristiques =[""];
         this.image_file = undefined;
         this.crop_image="";
+        this.link ="https://gregarious-shortbread-ebb235.netlify.app/modules/flyer/flyer.html";
     }
 }
 
@@ -46,6 +47,12 @@ class Create{
         this.flyer.desc = Tools.Ucase(input.value);
     }
 
+    static getlink(input){
+        if(input.value.trim().length > 0){
+            this.flyer.link = input.value;
+        }
+    }
+
     static generateFlyer(){
 
         if(this.flyer.image_file == undefined){
@@ -66,6 +73,8 @@ class Create{
             alert("Veuillez renseigner au moins une caracteristique!");
             return;
         }
+        //Generate QRCOde
+        QR_code_generator.generate(this.flyer.link);
         // Render Flyer
         let flyer_to_render = this.flyer;
         flyer_to_render.caracteristiques = caracteristiques;

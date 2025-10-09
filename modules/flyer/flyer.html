@@ -13,6 +13,7 @@
     <script src="libs/jsstore.js"></script>
     <script src="libs/jsstore.worker.js"></script>
     <script src="libs/jscolor.js"></script>
+    <script src="libs/qr_code.js"></script>
 
     <link rel="icon" href="images/djehouty_icon.svg" />
   </head>
@@ -65,6 +66,8 @@
 
       <!-- Modele 1 -->
       <div class="modele modele_1" id="model_to_render">
+        <!-- QR Code -->
+        <div class="qr_code"></div>
         <!-- Signature -->
         <img src="images/afroSign.png" alt="" class="sign" />
         <!-- Logo -->
@@ -154,6 +157,8 @@
 
       <!-- Modele 2 -->
       <div class="modele modele_2" id="model2_to_render">
+        <!-- QR Code -->
+        <div class="qr_code"></div>
         <!-- Signature -->
         <img src="images/afroSign.png" alt="" class="sign" />
         <div id="m2_logo_wrapper">
@@ -215,6 +220,8 @@
 
       <!-- Modele 3 -->
       <div class="modele modele_3" id="model3_to_render">
+        <!-- QR Code -->
+        <div class="qr_code"></div>
         <!-- Signature -->
         <img src="images/afroSign.png" alt="" class="sign" />
         <!-- Container -->
@@ -224,69 +231,74 @@
               <img src="images/afro.svg" alt="" width="25px" id="m3_logo" />
               <div id="m3_nom_business">HiteCom</div>
             </div>
-            <div style="display: flex;">
+            <div style="display: flex">
               <div class="m3_commandez">COMMANDEZ VOS</div>
             </div>
 
-            <h1 style="margin:0px;" id="m3_nom_produit">Ecouteur Sans Fil Airpods Pro2</h1>
-            <div style="font-size: 8px;" id="m3_desc">Qualite sonore sterio sans perte HD binaural, ideale pour de la pire musique avec chargeur type C</div>
+            <h1 style="margin: 0px" id="m3_nom_produit">
+              Ecouteur Sans Fil Airpods Pro2
+            </h1>
+            <div style="font-size: 8px" id="m3_desc">
+              Qualite sonore sterio sans perte HD binaural, ideale pour de la
+              pire musique avec chargeur type C
+            </div>
 
             <!-- caracteristiques -->
             <div class="m3_cars" id="m3_cars">
               <div class="m3_car_item">
-                <img src="images/feature_3.svg" alt="">
+                <img src="images/feature_3.svg" alt="" />
                 <div>Wireless earphone HD Sound</div>
               </div>
               <div class="m3_car_item">
-                <img src="images/feature_3.svg" alt="">
+                <img src="images/feature_3.svg" alt="" />
                 <div>Bluetooth 5.0</div>
               </div>
               <div class="m3_car_item">
-                <img src="images/feature_3.svg" alt="">
+                <img src="images/feature_3.svg" alt="" />
                 <div>Touch control</div>
               </div>
             </div>
 
-            <div style="display: flex;">
+            <div style="display: flex">
               <div class="m3_prix_promo_text">PRIX PROMO</div>
             </div>
             <div class="price">
-              <h1 style="margin:0;font-size: 3vw;color:orange" id="m3_prix">10 000 FCFA</h1>
-              <div class="stroke promo_price" id="m3_prix_promo">15 500 FCFA</div>
+              <h1 style="margin: 0; font-size: 3vw; color: orange" id="m3_prix">
+                10 000 FCFA
+              </h1>
+              <div class="stroke promo_price" id="m3_prix_promo">
+                15 500 FCFA
+              </div>
             </div>
 
             <!-- ProductImage -->
             <div class="m3_product_image_bloc">
-              <div class="circle" id="m3_circle">
-
-              </div>
-              <img src="images/pharaon.png" alt="" id="m3_image_product">
+              <div class="circle" id="m3_circle"></div>
+              <img src="images/pharaon.png" alt="" id="m3_image_product" />
             </div>
-          
           </div>
           <div class="m3_footer">
             <div class="reseau_bloc">
               <div class="m3_reseau">
                 <div class="img_blocs">
-                  <img src="images/facebook_white.png" alt="">
-                  <img src="images/instagram_white.png" alt="">
-                  <img src="images/x_white.png" alt="">
+                  <img src="images/facebook_white.png" alt="" />
+                  <img src="images/instagram_white.png" alt="" />
+                  <img src="images/x_white.png" alt="" />
                 </div>
                 <div id="m3_reseau_sociaux">HiteCom Business</div>
               </div>
               <div class="m3_reseau">
                 <div class="img_blocs">
-                  <img src="images/watsapp_white.png" alt="">
+                  <img src="images/watsapp_white.png" alt="" />
                 </div>
                 <div id="m3_whasapp">+237 697 830 071</div>
               </div>
             </div>
             <div class="m3_address">
-              <img src="images/location.png" alt="">
+              <img src="images/location.png" alt="" />
               <div id="m3_addresse">Pharmacie EMIA (Polytecnique Yaounde)</div>
             </div>
           </div>
-          
         </div>
       </div>
       <button class="share" onclick="RenderModele3.export()">
@@ -321,10 +333,10 @@
     <!-- Configuration -->
     <div class="config hidden" id="config">
       <div class="config_logo">
-        <img src="images/djehouty_icon.svg" alt="" width="24px">
+        <img src="images/djehouty_icon.svg" alt="" width="24px" />
         <div>Djehouty</div>
       </div>
-     
+
       <h1 class="tac">Configuration</h1>
       <div class="logoComp">
         <input
@@ -403,7 +415,10 @@
         <div>Djehouty</div>
       </div>
       <h2 class="tac">Informations du produit</h2>
-      <p class="tac">Veuillez renseigner les informations du produit ci-dessous</p>
+      <p class="tac">
+        Veuillez renseigner les informations du produit ci-dessous
+      </p>
+
       <input
         type="file"
         accept="image/*"
@@ -451,6 +466,7 @@
             onchange="Create.getPrix(this)"
           />
         </div>
+       
         <div id="caracteristiques_container">
           <div class="formItem">
             <div class="label">Caracteristique 1</div>
@@ -464,6 +480,14 @@
         <div class="b_secondary" onclick="Create.add_new_caracteristique()">
           <img src="images/add.svg" alt="" width="16px" />
           Ajouter une autre Caracteristique
+        </div>
+        <div class="formItem">
+          <div class="label">Lien de la page de presentation (Whatsapp ou Facebook ou site web) - Facultatif</div>
+          <input
+            type="text"
+            placeholder="Lien du site ou de la page"
+            onchange="Create.getlink(this)"
+          />
         </div>
       </div>
       <div
@@ -495,5 +519,6 @@
     <script src="scripts/tools.js"></script>
     <script src="scripts/splash.js"></script>
     <script src="scripts/charte.js"></script>
+    <script src="scripts/qr_code_generator.js"></script>
   </body>
 </html>

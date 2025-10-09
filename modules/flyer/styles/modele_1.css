@@ -139,3 +139,10 @@
     background-size: 200%;
     background-position: center;
 }
+
+.modele_1 .qr_code{
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 5;
+}
