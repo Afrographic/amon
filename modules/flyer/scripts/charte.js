@@ -58,7 +58,7 @@ class Charte{
 
         m3_prix.style.color = primary_saved;
         m3_prix_promo.style.color = secondary_saved;
-        m3_circle.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
+        m3_circle.style.backgroundColor = secondary_saved;
         m3_footer.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
         m3_commandez.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
         m3_prix_promo_text.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
