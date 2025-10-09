@@ -21,7 +21,7 @@ class DB {
     var db = {
       name: "djehoutyDB",
       tables: [data],
-    };
+    }; 
 
     await this.con.initDb(db);
   }
