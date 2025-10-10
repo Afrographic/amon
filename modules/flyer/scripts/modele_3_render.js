@@ -52,12 +52,12 @@ class RenderModele3{
         for(let i = 0 ; i<=flyer.caracteristiques.length-1;i++){
             this.m1_caracterisque.innerHTML += `
             <div class="m3_car_item">
-                <img src="images/feature_3.svg" alt="">
+                <div class="m3_square"></div>
                 <div>${flyer.caracteristiques[i]}</div>
              </div>
             `
         }
-
+ 
         //Render media sociaux
         this.m1_reseau_sociaux.innerHTML = DB.config.nomFacebook;
 
