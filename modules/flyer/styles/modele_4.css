@@ -1,0 +1,121 @@
+.modele_4 .logo_4{
+    padding:16px;
+    background-color: #fff;
+    display: flex;
+    gap:16px;
+    align-items: center;
+}
+
+.modele_4 h1,.modele_4 h2{
+    margin: 0;
+}
+
+.modele_4 h1{
+    font-size: 18px;
+}
+
+.modele_4 h2{
+    font-size: 15px;
+}
+
+.m4_container{
+    display: flex;
+    gap:16px;
+    padding:32px;
+    background-color: #fffeee;
+    align-items: flex-start;
+}
+
+.m4_image_name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+    flex: 1;
+    position: relative;
+}
+
+.m4_productImage{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.m4_cars{
+    display: flex;
+    flex-wrap: wrap;
+    gap:4px;
+}
+
+.m4_cartItem{
+    padding:4px 8px;
+    font-size: 8px;
+    background-color: #e8e8e8;
+    border-radius: 8px;
+}
+
+.m4_details{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.m4_desc{
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.m4_prix_barre{
+    font-size: 11px;
+    text-decoration: line-through;
+    color:#d6c927;
+}
+
+.m4_prix{
+    border-left: 6px solid #002a72;
+    padding: 8px;
+    color: white;
+    background-color: #2362d1;
+    border-top-right-radius: 8px;
+    font-size: 16px;
+}
+
+.m4_footer{
+    background-color: #1e1e1e;
+    padding:16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+}
+
+.m4_footer *{
+    opacity: 0.8;
+}
+
+.m4_adresse{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+    font-size: 12px;
+    padding: 12px 16px;
+    background-color: #d6c927;
+}
+
+.m4_footer img{
+    width: 12px;
+}
+
+.m4_footer{
+    font-size: 11px;
+}
+
+
+.modele_4 .qr_code {
+    position: absolute;
+    bottom: -21px;
+    left: 16px;
+    z-index: 5;
+}

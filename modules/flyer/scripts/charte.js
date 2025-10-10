@@ -62,6 +62,17 @@ class Charte{
         m3_footer.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
         m3_commandez.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`;
         m3_prix_promo_text.style.backgroundColor = secondary_saved;
+
+        //Recolor flyer modele 4
+        let m4_address_container = document.querySelector("#m4_address_container");
+        let m4_prix_barre = document.querySelector("#m4_prix_barre");
+        let m4_prix = document.querySelector("#m4_prix");
+        let m4_container = document.querySelector(".m4_container");
+
+        m4_address_container.style.backgroundColor =  secondary_saved;
+        m4_prix_barre.style.color =  secondary_saved;
+        m4_prix.style.borderLeft =`6px solid ${dark_primary}`
+        m4_prix.style.backgroundColor = primary_saved;
     }
 
 

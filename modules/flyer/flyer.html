@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/modele_1.css" />
     <link rel="stylesheet" href="styles/modele_2.css" />
     <link rel="stylesheet" href="styles/modele_3.css" />
+    <link rel="stylesheet" href="styles/modele_4.css" />
 
     <script src="libs/html2canvas.min.js"></script>
     <script src="libs/jsstore.js"></script>
@@ -61,6 +62,79 @@
               onchange="Charte.getSecondaryColor(event)"
             />
           </div>
+        </div>
+      </div> 
+
+      <!-- Modele 4 -->
+      <div class="modele modele_4" id="model_4_to_render">
+        <!-- Signature -->
+        <img src="images/afroSign.png" alt="" class="sign" />
+        <!-- Logo -->
+        <div class="logo_4">
+          <img src="images/afro.svg" alt="" width="25px" id="m4_logo" />
+          <div id="m4_nom_business">HiteCom</div>
+        </div>
+        <!-- Container -->
+        <div class="m4_container" >
+          <div class="m4_image_name">
+            <img
+              src="images/pharaon.png"
+              alt=""
+              class="m4_productImage"
+              id="m4_image_product"
+            />
+            <!-- QR Code -->
+            <div class="qr_code"></div>
+          </div>
+          <div class="m4_details">
+            <h1 id="m4_nom_produit">Kit Starlink V2</h1>
+            <div>
+              <h2 class="m4_prix" id="m4_prix">45 000 FCFA</h2>
+              <div class="m4_prix_barre" id="m4_prix_barre">75 000 FCFA</div>
+            </div>
+            <div class="m4_desc" id="m4_desc">Kit ideale pour une connexion illimite</div>
+            <!-- Caracterisitques -->
+            <div class="m4_cars" id="m4_cars">
+              <div class="m4_cartItem">Impression</div>
+              <div class="m4_cartItem">Scan</div>
+              <div class="m4_cartItem">Wifi</div>
+              <div class="m4_cartItem">Recharge gratuite</div>
+            </div>
+          </div>
+        </div>
+        <!-- Localisation -->
+        <div class="m4_adresse" id="m4_address_container">
+          <img src="images/location.png" alt="" width="12px" />
+          <div id="m4_addresse">Pharmacie EMIA (Polytechnique Yaounde)</div>
+        </div>
+        <div class="m4_footer">
+          <!-- Contacts -->
+          <div class="contact">
+            <img src="images/watsapp_white.png" alt="" />
+            <div id="m4_whasapp">+237 697 830 071</div>
+          </div>
+
+          <div class="contact">
+            <div style="display: flex; gap: 8px">
+              <img src="images/facebook_white.png" alt="" />
+              <img src="images/instagram_white.png" alt="" />
+              <img src="images/x_white.png" alt="" />
+            </div>
+            <div id="m4_reseau_sociaux">hitecom business</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="share" onclick="RenderModele4.export()">
+        <img src="images/share.svg" width="18px" alt="" />
+        Partager sur les reseaux
+      </button>
+
+      <div class="donation" style="margin-bottom: 12px">
+        <img src="images/love.svg" width="20px" alt="" />
+        <div>
+          Participer au developpement en fesant un don au numero Orange Money
+          +237 697 830 071 (Tesse Brunel)
         </div>
       </div>
 
@@ -466,7 +540,7 @@
             onchange="Create.getPrix(this)"
           />
         </div>
-       
+
         <div id="caracteristiques_container">
           <div class="formItem">
             <div class="label">Caracteristique 1</div>
@@ -482,7 +556,10 @@
           Ajouter une autre Caracteristique
         </div>
         <div class="formItem">
-          <div class="label">Lien de la page de presentation (Whatsapp ou Facebook ou site web) - Facultatif</div>
+          <div class="label">
+            Lien de la page de presentation (Whatsapp ou Facebook ou site web) -
+            Facultatif
+          </div>
           <input
             type="text"
             placeholder="Lien du site ou de la page"
@@ -514,6 +591,7 @@
     <script src="scripts/modele_1_render.js"></script>
     <script src="scripts/modele_2_render.js"></script>
     <script src="scripts/modele_3_render.js"></script>
+    <script src="scripts/modele_4_render.js"></script>
 
     <script src="scripts/db.js"></script>
     <script src="scripts/tools.js"></script>
