@@ -1,17 +1,18 @@
-class RenderModele4{
-    static modele1 = document.querySelector("#model_4_to_render");
+class RenderModele5{
+    static modele1 = document.querySelector("#model_5_to_render");
 
-    static m1_logo = document.querySelector("#m4_logo");
-    static m1_nom_business = document.querySelector("#m4_nom_business");
-    static m1_nom_produit = document.querySelector("#m4_nom_produit");
-    static m1_caracterisque = document.querySelector("#m4_cars");
-    static m1_prix = document.querySelector("#m4_prix");
-    static m1_prix_barre = document.querySelector("#m4_prix_barre");
-    static m1_image_product = document.querySelector("#m4_image_product");
-    static m1_reseau_sociaux = document.querySelector("#m4_reseau_sociaux");
-    static m1_whasapp = document.querySelector("#m4_whasapp");
-    static m1_addresse = document.querySelector("#m4_addresse");
-    static m1_desc = document.querySelector("#m4_desc");
+    static m1_logo = document.querySelector("#m5_logo");
+    static m1_nom_business = document.querySelector("#m5_nom_business");
+    static m1_nom_produit = document.querySelector("#m5_title");
+    static m1_caracterisque = document.querySelector("#m5_cars");
+    static m1_prix = document.querySelector("#m5_prix");
+    static m1_prix_barre = document.querySelector("#m5_prix_barre");
+    static m1_image_product = document.querySelector("#m5_product_image");
+    static m1_reseau_sociaux = document.querySelector("#m5_reseau_sociaux");
+    static m1_whasapp = document.querySelector("#m5_whasapp");
+    static m1_addresse = document.querySelector("#m5_localisation");
+    static m1_desc = document.querySelector("#m5_desc");
+    static m5_bg = document.querySelector("#m5_bg");
 
     static render(flyer){
         //Show renderer flyer
@@ -37,7 +38,10 @@ class RenderModele4{
         }
 
         //render product prix
-        this.m1_prix.innerHTML = `${Tools.formatNumWithWhiteSpace(flyer.prix)} ${DB.config.devise}`;
+        this.m1_prix.innerHTML = `
+            <h1 style="color:${Charte.default_secondary}">${Tools.formatNumWithWhiteSpace(flyer.prix)}</h1>
+            <span> ${DB.config.devise}</span>
+        `;
 
         let prixBarre = parseInt(flyer.prix) + ( parseInt(flyer.prix) * 55 / 100)
         this.m1_prix_barre.innerHTML = `${Tools.formatNumWithWhiteSpace(prixBarre.toString())} ${DB.config.devise}`
@@ -46,11 +50,15 @@ class RenderModele4{
         let image_product_url = flyer.crop_image;
         this.m1_image_product.src = image_product_url;
 
+        //Render BG Image
+        this.m5_bg.style.backgroundImage = `url(${image_product_url})`
+
         //Render caracteristique
         this.m1_caracterisque.innerHTML ="";
+        let light_secondary = Tools.lightenHex(Charte.default_secondary);
         for(let i = 0 ; i<=flyer.caracteristiques.length-1;i++){
             this.m1_caracterisque.innerHTML += `
-            <div class="m4_cartItem">${flyer.caracteristiques[i]}</div>
+            <div class="m5_car_item" style="background-color:${light_secondary};">${flyer.caracteristiques[i]}</div>
             `
         }
 

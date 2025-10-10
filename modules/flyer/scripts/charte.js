@@ -75,6 +75,35 @@ class Charte{
         m4_prix.style.borderLeft =`6px solid ${dark_primary}`
         m4_prix.style.backgroundColor = primary_saved;
         m4_container.style.backgroundColor = light_secondary;
+
+        //Recolor flyer modele 5
+        let m5_details = document.querySelector("#m5_details");
+        let m5_prix = document.querySelector("#m5_prix h1");
+        let m5_prix_barre = document.querySelector("#m5_prix_barre");
+        let m5_product_image = document.querySelector("#m5_product_image");
+        let m5_deco_square = document.querySelector(".m5_deco_square defs");
+        let m5_deco_circle = document.querySelector(".m5_deco_circle defs");
+
+        m5_details.style.backgroundColor = primary_saved;
+        m5_prix.style.color = secondary_saved;
+        m5_prix_barre.style.color = primary_saved;
+        m5_product_image.style.borderTop = `4px solid ${dark_primary}`;
+
+        m5_deco_circle.innerHTML = `
+        <style>
+                .cls-1 {
+                    fill:  ${secondary_saved};
+                }
+         </style>
+        `
+
+        m5_deco_square.innerHTML = `
+        <style>
+                .cls-1 {
+                    fill: ${secondary_saved};
+                }
+         </style>
+        `
     }
 
 

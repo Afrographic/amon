@@ -91,6 +91,7 @@ class Create{
             RenderModele2.render(flyer_to_render);
             RenderModele3.render(flyer_to_render);
             RenderModele4.render(flyer_to_render);
+            RenderModele5.render(flyer_to_render);
         }
        
     }

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/modele_2.css" />
     <link rel="stylesheet" href="styles/modele_3.css" />
     <link rel="stylesheet" href="styles/modele_4.css" />
+    <link rel="stylesheet" href="styles/modele_5.css" />
 
     <script src="libs/html2canvas.min.js"></script>
     <script src="libs/jsstore.js"></script>
@@ -63,7 +64,133 @@
             />
           </div>
         </div>
-      </div> 
+      </div>
+
+      <!-- Modele 5 -->
+      <div class="modele modele_5" id="model_5_to_render">
+        <!-- Dots decoration -->
+        <img src="images/m4_deco_dots.png" class="m5_dot dot_left" alt="">
+        <img src="images/m4_deco_dots.png" class="m5_dot dot_right" alt="">
+        <!-- half_background -->
+        <div id="m5_bg">
+          <div class="overlay" id="m5_overlay"></div>
+        </div>
+        <!-- Signature -->
+        <img src="images/afroSign.png" alt="" class="sign" />
+        <div class="m5_header">
+          <!-- Logo -->
+          <div class="logo_5">
+            <img src="images/afro.svg" alt="" width="20px" id="m5_logo" />
+            <div id="m5_nom_business">K'Seidou Building</div>
+          </div>
+          <!-- Localisation -->
+          <div id="m5_localisation">
+            Entree gare routiere, face nelex pro au virage avant general voyage
+          </div>
+        </div>
+        <div id="m5_details">
+          <h1 id="m5_title">Table basse moderne avec structure noir</h1>
+          <div id="m5_desc">
+            Table ideale pour vos soirees pyjama et en famille
+          </div>
+          <!-- Caracteristiques -->
+          <div id="m5_cars">
+            <div class="m5_car_item">Plateau en marbre</div>
+            <div class="m5_car_item">2 Etages</div>
+            <div class="m5_car_item">Made in africa</div>
+          </div>
+        </div>
+        <!-- Image bloc -->
+        <div id="img_bloc">
+          <img src="images/pharaon.png" alt="" id="m5_product_image" />
+          <!-- Decoration 1-->
+          <?xml version="1.0" encoding="UTF-8"?>
+          <svg
+            class="deco m5_deco_circle"
+            id="Layer_2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 131.59 131.59"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #f6921e;
+                }
+              </style>
+            </defs>
+            <g id="Layer_1-2" data-name="Layer_1">
+              <circle class="cls-1" cx="65.79" cy="65.79" r="65.79" />
+            </g>
+          </svg>
+          <!-- Decoration 2-->
+          <?xml version="1.0" encoding="UTF-8"?>
+          <svg
+            class="deco m5_deco_square"
+            id="Layer_2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 167.73 167.12"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #f6921e;
+                }
+              </style>
+            </defs>
+            <g id="Layer_1-2" data-name="Layer_1">
+              <polygon
+                class="cls-1"
+                points="147.65 127.12 40 127.12 40 19.92 40 0 0 0 0 167.12 167.73 167.12 167.73 127.12 147.65 127.12"
+              />
+            </g>
+          </svg>
+        </div>
+        <!-- Prix -->
+        <div class="m5_prix_bloc">
+          <div id="m5_prix">
+            <h1>74 142</h1>
+            <span>FCFA</span>
+          </div>
+          <div id="m5_prix_barre">88 970 FCFA</div>
+        </div>
+        <div class="m5_footer">
+          <!-- QR Code -->
+          <div class="qr_code"></div>
+          <!-- Contacts -->
+          <div class="m5_contacts">
+            <div class="contact">
+              <div style="display: flex; gap: 8px">
+                <img src="images/facebook.png" alt="" width="10px"/>
+                <img src="images/instagram.png" alt="" width="10px"/>
+                <img src="images/x.png" alt="" width="10px"/>
+              </div>
+              <div id="m5_reseau_sociaux">hitecom business</div>
+            </div>
+            <div class="contact">
+              <img src="images/whatsapp.png" alt="" width="10px" />
+              <div id="m5_whasapp">+237 697 830 071</div>
+            </div>
+          </div>
+          <!-- Plateforme -->
+          <div class="m5_platform">
+            <img src="images/google_play.png" alt="">
+            <img src="images/app_store.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <button class="share" onclick="RenderModele5.export()">
+        <img src="images/share.svg" width="18px" alt="" />
+        Partager sur les reseaux
+      </button>
+
+      <div class="donation" style="margin-bottom: 16px">
+        <img src="images/love.svg" width="20px" alt="" />
+        <div>
+          Participer au developpement en fesant un don au numero Orange Money
+          +237 697 830 071 (Tesse Brunel)
+        </div>
+      </div>
 
       <!-- Modele 4 -->
       <div class="modele modele_4" id="model_4_to_render">
@@ -75,7 +202,7 @@
           <div id="m4_nom_business">HiteCom</div>
         </div>
         <!-- Container -->
-        <div class="m4_container" >
+        <div class="m4_container">
           <div class="m4_image_name">
             <img
               src="images/pharaon.png"
@@ -88,17 +215,21 @@
           </div>
           <div class="m4_details">
             <h1 id="m4_nom_produit">Kit Starlink V2</h1>
-            <div>
-              <h2 class="m4_prix" id="m4_prix">45 000 FCFA</h2>
-              <div class="m4_prix_barre" id="m4_prix_barre">75 000 FCFA</div>
+
+            <div class="m4_desc" id="m4_desc">
+              Kit ideale pour une connexion illimite
             </div>
-            <div class="m4_desc" id="m4_desc">Kit ideale pour une connexion illimite</div>
             <!-- Caracterisitques -->
             <div class="m4_cars" id="m4_cars">
               <div class="m4_cartItem">Impression</div>
               <div class="m4_cartItem">Scan</div>
               <div class="m4_cartItem">Wifi</div>
               <div class="m4_cartItem">Recharge gratuite</div>
+            </div>
+            <!-- Prix -->
+            <div>
+              <h2 class="m4_prix" id="m4_prix">45 000 FCFA</h2>
+              <div class="m4_prix_barre" id="m4_prix_barre">75 000 FCFA</div>
             </div>
           </div>
         </div>
@@ -130,7 +261,7 @@
         Partager sur les reseaux
       </button>
 
-      <div class="donation" style="margin-bottom: 12px">
+      <div class="donation" style="margin-bottom: 16px">
         <img src="images/love.svg" width="20px" alt="" />
         <div>
           Participer au developpement en fesant un don au numero Orange Money
@@ -592,6 +723,7 @@
     <script src="scripts/modele_2_render.js"></script>
     <script src="scripts/modele_3_render.js"></script>
     <script src="scripts/modele_4_render.js"></script>
+    <script src="scripts/modele_5_render.js"></script>
 
     <script src="scripts/db.js"></script>
     <script src="scripts/tools.js"></script>

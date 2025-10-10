@@ -189,7 +189,7 @@ class Tools {
     return canvas.toDataURL("image/png");
   }
 
-  static lightenHex(hex, percent = 95) {
+  static lightenHex(hex, percent = 90) {
     hex = hex.replace(/^#/, "");
     if (hex.length === 3) {
       hex = hex
@@ -211,6 +211,43 @@ class Tools {
     b = adjust(b);
 
     return "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
+  }
+
+  // Expand shorthand (#abc) to full (#aabbcc)
+  static expandHex(hex) {
+    hex = hex.replace(/^#/, "");
+    if (hex.length === 3) {
+      return hex
+        .split("")
+        .map((ch) => ch + ch)
+        .join("");
+    }
+    return hex;
+  }
+
+  // 1) hex -> "rgba(r,g,b,a)"
+  static hexToRgba(hex, alpha = 0.05) {
+    if (typeof hex !== "string") throw new TypeError("hex must be a string");
+    const h = this.expandHex(hex.replace(/\s+/g, ""));
+    if (!/^[0-9a-fA-F]{6}$/.test(h)) throw new Error("Invalid hex color");
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    // clamp alpha between 0 and 1
+    const a = Math.max(0, Math.min(1, Number(alpha)));
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+  }
+
+  // 2) hex -> "#RRGGBBAA" where AA is opacity in hex
+  static hexWithOpacity(hex, opacityPercent = 5) {
+    if (typeof hex !== "string") throw new TypeError("hex must be a string");
+    const h = this.expandHex(hex.replace(/\s+/g, ""));
+    if (!/^[0-9a-fA-F]{6}$/.test(h)) throw new Error("Invalid hex color");
+    const a = Math.round(
+      (Math.max(0, Math.min(100, Number(opacityPercent))) / 100) * 255
+    );
+    const alphaHex = a.toString(16).padStart(2, "0");
+    return `#${h.toLowerCase()}${alphaHex}`;
   }
 }
 
