@@ -33,6 +33,7 @@ class Charte{
 
         //Recolor flyer Modele 1
         let dark_primary = Tools.darkenColor(primary_saved,50);
+        let light_secondary = Tools.lightenHex(secondary_saved);
         this.m1_prix.style.backgroundColor = secondary_saved;
         this.m1_container.style.backgroundImage = `linear-gradient(180deg, ${primary_saved}, ${dark_primary})`
 
@@ -73,6 +74,7 @@ class Charte{
         m4_prix_barre.style.color =  secondary_saved;
         m4_prix.style.borderLeft =`6px solid ${dark_primary}`
         m4_prix.style.backgroundColor = primary_saved;
+        m4_container.style.backgroundColor = light_secondary;
     }
 
 

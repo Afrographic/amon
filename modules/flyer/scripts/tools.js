@@ -22,7 +22,7 @@ class Tools {
     return `${year}${month}${day}${hours}${minutes}${seconds}${milliseconds}`;
   }
 
-  static exportImage(canvas,name) {
+  static exportImage(canvas, name) {
     name = `Djehouty - ${name}`;
     html2canvas(canvas, {
       useCors: true,
@@ -113,7 +113,7 @@ class Tools {
     Config.canvas = document.createElement("canvas");
     Config.canvas.width = 120;
     Config.canvas.height = 120;
-    const ctx =  Config.canvas.getContext("2d");
+    const ctx = Config.canvas.getContext("2d");
 
     // Helper to get a random dark color
     function randomDarkColor() {
@@ -160,29 +160,58 @@ class Tools {
     // Create a canvas
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
-  
+
     // Determine the square size (based on width)
     const size = img.width;
-  
+
     // Set canvas to square
     canvas.width = size;
     canvas.height = size;
-  
+
     // Find cropping coordinates (center crop)
     const offsetX = 0; // we want to preserve full width
     const offsetY = (img.height - img.width) / 2;
-  
+
     // Draw the cropped image
     ctx.drawImage(
       img,
-      offsetX, offsetY, size, size, // source rectangle
-      0, 0, size, size              // destination rectangle
+      offsetX,
+      offsetY,
+      size,
+      size, // source rectangle
+      0,
+      0,
+      size,
+      size // destination rectangle
     );
-  
+
     // Return cropped image as data URL (or blob)
     return canvas.toDataURL("image/png");
   }
-}
 
+  static lightenHex(hex, percent = 95) {
+    hex = hex.replace(/^#/, "");
+    if (hex.length === 3) {
+      hex = hex
+        .split("")
+        .map((ch) => ch + ch)
+        .join("");
+    }
+
+    const num = parseInt(hex, 16);
+    let r = (num >> 16) & 255;
+    let g = (num >> 8) & 255;
+    let b = num & 255;
+
+    const adjust = (channel) =>
+      Math.min(255, Math.round(channel + (255 - channel) * (percent / 100)));
+
+    r = adjust(r);
+    g = adjust(g);
+    b = adjust(b);
+
+    return "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
+  }
+}
 
 Tools.set_text_area_auto_grow();
