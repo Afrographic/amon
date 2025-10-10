@@ -92,6 +92,7 @@ class Create{
             RenderModele3.render(flyer_to_render);
             RenderModele4.render(flyer_to_render);
             RenderModele5.render(flyer_to_render);
+            Charte.color_flyer();
         }
        
     }

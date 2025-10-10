@@ -54,6 +54,7 @@
     font-size: 12px;
     text-align: center;
     opacity: 0.8;
+    line-height: 16px;
 }
 
 #m5_cars {
@@ -149,7 +150,7 @@
 .m5_footer .qr_code{
     position: absolute;
     right: 16px;
-    bottom: 76px;
+    bottom: 65px;
 }
 
 .m5_contacts{

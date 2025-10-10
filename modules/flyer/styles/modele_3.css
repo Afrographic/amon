@@ -58,7 +58,7 @@
 .m3_car_item{
     display: flex;
     gap:4px;
-    font-size: 6px;
+    font-size: 10px;
     align-items: center;
 }
 
@@ -151,4 +151,15 @@
     bottom: 85px;
     right: 45px;
     z-index: 4;
+}
+
+#m3_desc{
+    font-size: 11.5px;
+    opacity: 0.6;
+}
+
+.m3_square{
+    width: 6px;
+    height: 6px;
+    background-color: #151515;
 }

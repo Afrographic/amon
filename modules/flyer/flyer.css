@@ -299,3 +299,7 @@ textarea{
     border-bottom: 1px solid #e3e3e3;
 }
 
+.qr_code{
+    padding: 6px;
+    background-color: #ffffff;
+}

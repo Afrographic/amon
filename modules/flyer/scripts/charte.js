@@ -56,6 +56,11 @@ class Charte{
         let m3_footer = document.querySelector(".m3_footer");
         let m3_commandez = document.querySelector(".m3_commandez");
         let m3_prix_promo_text = document.querySelector(".m3_prix_promo_text");
+        let squares = document.querySelectorAll("#m3_cars .m3_square");
+
+        for(let item of squares){
+            item.style.backgroundColor = secondary_saved;
+        }
 
         m3_prix.style.color = primary_saved;
         m3_prix_promo.style.color = secondary_saved;
@@ -81,8 +86,6 @@ class Charte{
         let m5_prix = document.querySelector("#m5_prix h1");
         let m5_prix_barre = document.querySelector("#m5_prix_barre");
         let m5_product_image = document.querySelector("#m5_product_image");
-        let m5_deco_square = document.querySelector(".m5_deco_square defs");
-        let m5_deco_circle = document.querySelector(".m5_deco_circle defs");
         let m5_overlay = document.querySelector("#m5_overlay");
 
         m5_details.style.backgroundColor = primary_saved;
@@ -90,22 +93,6 @@ class Charte{
         m5_prix_barre.style.color = primary_saved;
         m5_product_image.style.borderTop = `4px solid ${dark_primary}`;
         m5_overlay.style.backgroundColor = `${Tools.hexToRgba(Tools.rgb_to_hex(dark_primary),0.7)}`
-
-        m5_deco_circle.innerHTML = `
-        <style>
-                .cls-1 {
-                    fill:  ${secondary_saved};
-                }
-         </style>
-        `
-
-        m5_deco_square.innerHTML = `
-        <style>
-                .cls-1 {
-                    fill: ${secondary_saved};
-                }
-         </style>
-        `
     }
 
 

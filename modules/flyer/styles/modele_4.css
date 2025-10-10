@@ -62,8 +62,9 @@
 }
 
 .m4_desc{
-    font-size: 12px;
+    font-size: 10px;
     opacity: 0.8;
+    line-height: 14px;
 }
 
 .m4_prix_barre{
@@ -83,7 +84,7 @@
 
 .m4_footer{
     background-color: #1e1e1e;
-    padding:16px 32px;
+    padding: 10px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -98,9 +99,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:8px;
-    font-size: 12px;
-    padding: 12px 16px;
+    gap: 8px;
+    font-size: 10px;
+    padding: 8px 16px;
     background-color: #d6c927;
 }
 
@@ -115,7 +116,21 @@
 
 .modele_4 .qr_code {
     position: absolute;
-    bottom: -21px;
-    left: 16px;
+    right: 32px;
+    top: 10px;
     z-index: 5;
 }
+
+.logo_4{
+    position: relative;
+}
+
+
+.m4_deco{
+    position: absolute;
+    top: 67px;
+    left: 16px;
+    width: 52px;
+    z-index: 2;
+}
+
