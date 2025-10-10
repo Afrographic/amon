@@ -83,11 +83,13 @@ class Charte{
         let m5_product_image = document.querySelector("#m5_product_image");
         let m5_deco_square = document.querySelector(".m5_deco_square defs");
         let m5_deco_circle = document.querySelector(".m5_deco_circle defs");
+        let m5_overlay = document.querySelector("#m5_overlay");
 
         m5_details.style.backgroundColor = primary_saved;
         m5_prix.style.color = secondary_saved;
         m5_prix_barre.style.color = primary_saved;
         m5_product_image.style.borderTop = `4px solid ${dark_primary}`;
+        m5_overlay.style.backgroundColor = `${Tools.hexToRgba(Tools.rgb_to_hex(dark_primary),0.7)}`
 
         m5_deco_circle.innerHTML = `
         <style>

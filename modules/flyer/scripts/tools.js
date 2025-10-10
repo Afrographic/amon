@@ -108,6 +108,17 @@ class Tools {
     return `rgb(${R}, ${G}, ${B})`;
   }
 
+  static rgb_to_hex(rgb_color){
+    const [r,g,b] = rgb_color.match(/\d+/g).map(Number);
+    return (
+      "#" +
+      [r,g,b].map(x =>{
+        const hex = x.toString(16);
+        return hex.padStart(2,"0")
+      }).join("").toUpperCase()
+    );
+  }
+
   static generateLogo(character) {
     // Create a 100x100 canvas
     Config.canvas = document.createElement("canvas");
