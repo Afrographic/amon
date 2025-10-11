@@ -147,7 +147,7 @@ p{
 }
 
 .imageArea{
-    aspect-ratio: 16/9;
+    aspect-ratio: 1/1;
     width: 100%;
     border-radius: 16px;
     border:1px dashed #aaa;
