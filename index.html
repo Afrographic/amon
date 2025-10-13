@@ -67,6 +67,8 @@
         transition: 0.25s;
         background-color: #fff;
         z-index: 2;
+
+      
       }
 
       .editProduct {
@@ -544,6 +546,13 @@
           <img src="images/search.svg" alt="" width="18px" onclick="search()" />
         </div>
 
+        <div class="export" style="margin-top:16px;">
+          <div>Parcourer la liste de vos produits</div>
+          <button onclick="launchExport()" class="secondary_btn">
+            Exporter en PDF
+          </button>
+        </div>
+
 
         <a href="modules/nouvelleVente/vente.html">
           <img src="images/cart.png" width="50px" alt=""   class="mobileAddProduct">
@@ -623,12 +632,7 @@
         </div>
 
 
-        <div class="export">
-          <div>Parcourer la liste de vos produits</div>
-          <button onclick="launchExport()" class="secondary_btn">
-            Exporter en PDF
-          </button>
-        </div>
+        
 
         
 

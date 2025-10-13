@@ -355,6 +355,27 @@
 
 }
 
+@media screen and (min-width:1200px){
+    .exportBLoc{
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        gap:8px;
+    }
+
+    .exportBLoc .CharteGraphique{
+        display: flex;
+        flex-direction: column;
+        gap:16px;
+        margin-bottom: 16px;
+    }
+}
+
+
+
+
 
 
 .mobileProductsPreview {

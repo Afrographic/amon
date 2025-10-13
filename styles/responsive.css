@@ -137,12 +137,7 @@
         padding: 16px;
     }
 
-    .mobileAddProduct{
-        position: fixed;
-        bottom: 32px;
-        right: 32px;
-        z-index: 1;
-    }
+   
 
     .addProduct{
         width: 100vw;
@@ -177,6 +172,14 @@
         margin-bottom: 8px !important;
     }
 
+}
+
+@media screen and (min-width:1200px) {
+    .addProduct{
+        width: 350px;
+        height: 80%;
+        overflow: auto;
+    }
 }
 
 

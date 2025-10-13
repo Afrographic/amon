@@ -16,6 +16,13 @@ h2,h3,h1{
     font-family: "ralewayRegular";
 }
 
+.mobileAddProduct{
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 1;
+}
+
 .history {
     position: fixed;
     top: 0px;
@@ -505,7 +512,7 @@ a{
 }
 
 .importImage{
-    width: 100%;
+    width: 99%;
     aspect-ratio: 16/9;
     border:1px dashed #aaa;
     border-radius: 8px;
