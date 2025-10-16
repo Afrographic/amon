@@ -41,8 +41,8 @@ h1 {
 }
 
 .cv1_desc {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 8px;
+    line-height: 10px;
     position: relative;
 }
 
@@ -52,11 +52,11 @@ h1 {
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap:12px;
 }
 
 #cv_1_image {
-    width: 90%;
+    width: 60%;
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -67,7 +67,7 @@ h1 {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid #dddddd;
-    gap: 16px;
+    gap: 8px;
 }
 
 .cv1_nom_poste {
@@ -83,12 +83,12 @@ h1 {
 }
 
 #cv1_nom {
-    font-size: 15px;
+    font-size: 10px;
     font-family: 'ralewayBlack';
 }
 
 #cv1_poste {
-    font-size: 11px;
+    font-size: 9px;
 }
 
 .cv1_contact_item {
@@ -101,10 +101,10 @@ h1 {
 .cv_1_competences,
 .cv1_langue,
 .cv1_loiris {
-    padding: 11px 16px;
+    padding: 4px 16px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 }
 
 .cv1_contact_item_label {
@@ -123,13 +123,12 @@ h1 {
 }
 
 .f10 {
-    font-size: 10px;
-    line-height: 13px;
+    font-size: 8px;
+    line-height: 10px;
 }
 
 .f5 {
     font-size: 5px;
-    color: grey;
 }
 
 .f8 {
@@ -167,7 +166,11 @@ h1 {
 .progress_state {
     height: 100%;
     width: 60%;
-    background-color: blue;
+    background-color: #008bff;
+}
+
+.blue{
+    color:#008bff;
 }
 
 .langue_nom,
@@ -211,7 +214,7 @@ h1 {
 }
 
 .cv1_company {
-    color: blue;
+    color: #008bff;
 }
 
 .cv1_item {

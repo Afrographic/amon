@@ -16,15 +16,49 @@
     <script src="libs/jspdf.umd.min.js"></script>
   </head>
   <body>
+    <!-- Splash Screen -->
+    <div class="splash" id="splash">
+      <img src="images/djehouty_icon.svg" alt="" width="24px" />
+      <div>Djehouty</div>
+      <img
+        src="images/afroSign.svg"
+        alt=""
+        width="12px"
+        style="
+          width: 65px;
+          /* margin-top: 64px; */
+          position: absolute;
+          bottom: 64px;
+        "
+      />
+    </div>
     <!-- Template renderer -->
     <div id="templates" class="hidden">
       <div class="back" onclick="UI.hide_templates();UI.show_create_cv()">
-        <img src="images/back.svg" alt="" class="">
+        <img src="images/back.svg" alt="" class="" />
       </div>
+      <div style="display: flex;align-items: center;justify-content:center;padding-bottom: 16px;">
+        <img src="images/djehouty_icon.svg" alt="" width="24px" />
+      </div>
+
       <div id="template_render"></div>
-      <div class="share_btn" onclick="CV1_renderer.export()" style="margin:16px;">
-        <img src="images/share.svg" width="18px" alt="" />
-        Partager
+      <div class="render_extra">
+        <div class="donation">
+          <img src="images/love.svg" width="20px" alt="" />
+          <div>
+            Participer au developpement en fesant un don au numero Orange Money
+            +237 697 830 071 (Tesse Brunel)
+          </div>
+        </div>
+        <div
+          class="share_btn"
+          style="align-items: center"
+          onclick="CV1_renderer.export()"
+        >
+          <img src="images/share.svg" width="18px" alt="" />
+          Partager votre cv
+        </div>
+        <img src="images/afroSign.svg" class="render_sign" alt="" />
       </div>
     </div>
 
@@ -58,6 +92,7 @@
           <input
             type="text"
             placeholder="Nom Complet"
+            id="c_fullName"
             oninput="Create.get_full_name(this)"
           />
         </div>
@@ -65,6 +100,7 @@
           <div class="label">Poste souhaite</div>
           <input
             type="text"
+            id="c_poste"
             placeholder="Ex: Agent, Designer, Developpeur ... etc"
             oninput="Create.get_poste(this)"
           />
@@ -73,6 +109,7 @@
           <div class="label">Numero de telephone</div>
           <input
             type="text"
+            id="c_phone"
             placeholder="Numero de telephone"
             oninput="Create.get_phone(this)"
           />
@@ -81,6 +118,7 @@
           <div class="label">Adresse email</div>
           <input
             type="text"
+            id="c_email"
             placeholder="Adresse email"
             oninput="Create.get_email(this)"
           />
@@ -89,6 +127,7 @@
           <div class="label">Localisation</div>
           <input
             type="text"
+            id="c_localisation"
             placeholder="Localisation"
             oninput="Create.get_localisation(this)"
           />
@@ -135,7 +174,7 @@
         <div id="logiciels_container"></div>
         <div class="b_secondary" onclick="Logiciel.add_new_entry()">
           <img src="images/add.svg" alt="" width="16px" />
-          Ajouter un logiciel
+          Ajouter une competence
         </div>
 
         <!-- Loisirs -->
@@ -176,5 +215,8 @@
     <script src="scripts/qualite_engine.js"></script>
     <script src="scripts/cv1_renderer.js"></script>
     <script src="scripts/ui.js"></script>
+    <script src="scripts/prefill_data.js"></script>
+    <script src="scripts/db.js"></script>
+    <script src="scripts/splash.js"></script>
   </body>
 </html>

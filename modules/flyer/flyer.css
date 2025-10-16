@@ -178,11 +178,10 @@ p{
     padding:16px;
     border-radius: 8px;
     background-color: #e7e7e7;
-}
-
-.donation{
     font-size: 12px;
 }
+
+
 
 .nameApp{
     display: flex;

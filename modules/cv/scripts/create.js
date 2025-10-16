@@ -88,6 +88,8 @@ class Create {
     img.onload = () => {
       Create.cv.crop_image = Tools.cropImageToSquare(img);
       CV1_renderer.render(this.cv);
+      //Saved backend
+      DB.save_recent_cv(Create.cv);
     };
   }
 }

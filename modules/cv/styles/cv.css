@@ -149,8 +149,18 @@ textarea {
     background-size: 6px;
     z-index: 1;
     background-color: #fff;
-    margin: 0px 16px;
 }
+
+.donation{
+    display: flex;
+    gap:16px;
+    align-items: center;
+    padding:16px;
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    font-size: 12px;
+}
+
 
 .hidden {
     height: 0px;
@@ -158,6 +168,13 @@ textarea {
     padding: 0px;
     opacity: 0;
     pointer-events: none;
+}
+
+.render_extra{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    padding:16px;
 }
 
 .back {
@@ -168,14 +185,43 @@ textarea {
     width: 24px;
 }
 
+.splash{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    flex-direction: column;
+    gap:16px;
+}
+.render_logo{
+    margin-left: auto;
+    margin-right: auto;
+    width: 48px;
+}
+
+.render_sign{
+    margin-left: auto;
+    margin-right: auto;
+    width: 97px;
+    padding-top: 32px;
+    opacity: 0.5;
+}
+
 .share_btn {
     display: flex;
     align-items: center;
     padding: 16px;
-    background-color: #111111;
+    background-color: #3a3a3a;
     color: white;
     border-radius: 8px;
     gap: 16px;
-    margin-top: 32px;
+    justify-content: center;
 }
 
