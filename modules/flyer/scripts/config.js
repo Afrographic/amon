@@ -73,7 +73,7 @@ class Config {
     }
     // Loading default Logo in case of no logo
 
-    Tools.generateLogo(nomBusinessValue.trim()[0]);
+    Tools.generateLogo(nomBusinessValue.trim()[0].toUpperCase());
 
     this.canvas.toBlob(async (blob) => {
       // Creating config object

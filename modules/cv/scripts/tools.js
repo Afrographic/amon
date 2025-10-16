@@ -22,8 +22,8 @@ class Tools {
     return `${year}${month}${day}${hours}${minutes}${seconds}${milliseconds}`;
   }
 
-  static exportImage(canvas, name) {
-    name = `Djehouty - ${name}`;
+  static export_pdf(canvas, name) {
+    name = `CV - ${name}`;
     html2canvas(canvas, {
       useCors: true,
       allowTaint: false,
@@ -34,11 +34,7 @@ class Tools {
       windowHeight: canvas.scrollHeight,
     }).then((canvas) => {
       const imgData = canvas.toDataURL("image/jpeg");
-      const link = document.createElement("a");
-      document.body.appendChild(link);
-      link.href = imgData;
-      link.download = `${name}.jpeg`;
-      link.click();
+      Tools.dataURLToPDF(imgData,name);
     });
   }
 
@@ -108,14 +104,17 @@ class Tools {
     return `rgb(${R}, ${G}, ${B})`;
   }
 
-  static rgb_to_hex(rgb_color){
-    const [r,g,b] = rgb_color.match(/\d+/g).map(Number);
+  static rgb_to_hex(rgb_color) {
+    const [r, g, b] = rgb_color.match(/\d+/g).map(Number);
     return (
       "#" +
-      [r,g,b].map(x =>{
-        const hex = x.toString(16);
-        return hex.padStart(2,"0")
-      }).join("").toUpperCase()
+      [r, g, b]
+        .map((x) => {
+          const hex = x.toString(16);
+          return hex.padStart(2, "0");
+        })
+        .join("")
+        .toUpperCase()
     );
   }
 
@@ -155,15 +154,14 @@ class Tools {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  static async set_text_area_auto_grow() {
-    await this.sleep(200);
-    let el = document.querySelector("#descArea");
-    if (el != null) {
-      el.addEventListener("input", () => {
-        el.style.height = "auto";
-        el.style.height = el.scrollHeight + "px";
-      });
-    }
+  static  set_text_area_auto_grow(el) {
+    if(el == undefined) return;
+    el.style.height = "auto";
+    el.style.height = el.scrollHeight + "px";
+    el.addEventListener("input", () => {
+      el.style.height = "auto";
+      el.style.height = el.scrollHeight + "px";
+    });
   }
 
   static cropImageToSquare(img) {
@@ -259,6 +257,73 @@ class Tools {
     const alphaHex = a.toString(16).padStart(2, "0");
     return `#${h.toLowerCase()}${alphaHex}`;
   }
+
+  static format_cv_date(date){
+    console.log(date);
+    return date;
+  }
+
+  static async dataURLToPDF(dataURL,fileName) {
+    const { jsPDF } = window.jspdf;
+
+    // Create PDF (A4 portrait, mm units)
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    // Set margins (same left/right)
+    const marginX = 0; // mm (you can change)
+    const usableWidth = pageWidth - marginX * 2;
+
+    // Load the image
+    const img = new Image();
+    img.src = dataURL;
+    await img.decode();
+
+    const imgWidthPx = img.width;
+    const imgHeightPx = img.height;
+
+    // Scale image keeping aspect ratio
+    const ratio = imgHeightPx / imgWidthPx;
+    const imgWidthMm = usableWidth;
+    const imgHeightMm = imgWidthMm * ratio;
+
+    // Draw image across multiple pages if necessary
+    let remainingHeight = imgHeightMm;
+    let positionY = 0;
+
+    while (remainingHeight > 0) {
+      const renderHeight = Math.min(remainingHeight, pageHeight);
+
+      pdf.addImage(
+        dataURL,
+        "PNG",
+        marginX,
+        0,
+        imgWidthMm,
+        imgHeightMm,
+        undefined,
+        "FAST",
+        0,
+        positionY // crop Y offset (from full image)
+      );
+
+      remainingHeight -= pageHeight;
+      positionY += pageHeight;
+
+      
+    }
+
+    pdf.save(fileName+".pdf");
+  }
+
+  static format_date(date){
+    // 2025-10-10
+    let months = ["","Jan","Fev","Mars","Avril","Mai","Juin","Juillet","Aout","Sept","Oct","Nov","Dec"];
+    let year = date.split("-")[0];
+    let month = months[parseInt(date.split("-")[1])];
+    return `${month} ${year}`;
+  }
 }
 
-Tools.set_text_area_auto_grow();
+Tools.set_text_area_auto_grow(document.querySelector("#user_bio"));

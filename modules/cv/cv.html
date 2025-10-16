@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Djehouty - CV</title>
+    <link rel="stylesheet" href="styles/cv.css" />
+    <link rel="icon" href="images/djehouty_icon.svg" />
+    <link rel="stylesheet" href="templates/cv_1.css" />
+    <!-- Libs -->
+    <script src="libs/html2canvas.min.js"></script>
+    <script src="libs/jscolor.js"></script>
+    <script src="libs/jsstore.js"></script>
+    <script src="libs/jsstore.worker.js"></script>
+    <script src="libs/qr_code.js"></script>
+    <script src="libs/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <!-- Template renderer -->
+    <div id="templates" class="hidden">
+      <div class="back" onclick="UI.hide_templates();UI.show_create_cv()">
+        <img src="images/back.svg" alt="" class="">
+      </div>
+      <div id="template_render"></div>
+      <div class="share_btn" onclick="CV1_renderer.export()" style="margin:16px;">
+        <img src="images/share.svg" width="18px" alt="" />
+        Partager
+      </div>
+    </div>
+
+    <!-- Create CV Form -->
+    <div class="createCV">
+      <div class="nameApp">
+        <img src="images/djehouty_icon.svg" alt="" width="24px" />
+        <div>Djehouty</div>
+      </div>
+      <h1>Creation de CV</h1>
+      <p class="base">Veuillez renseigner vos informations personnelles</p>
+      <div class="createForm">
+        <input
+          type="file"
+          id="get_user_image_input"
+          accept="image/*"
+          hidden
+          onchange="Create.getImage(event)"
+        />
+        <div
+          id="avatar_preview"
+          class="avatar"
+          onclick="Create.trigger_profile_select()"
+        >
+          <img src="images/image.svg" width="18px" alt="" />
+          <div>Importer votre photo</div>
+        </div>
+        <!-- Informations de base -->
+        <div class="formItem">
+          <div class="label">Nom Complet</div>
+          <input
+            type="text"
+            placeholder="Nom Complet"
+            oninput="Create.get_full_name(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Poste souhaite</div>
+          <input
+            type="text"
+            placeholder="Ex: Agent, Designer, Developpeur ... etc"
+            oninput="Create.get_poste(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Numero de telephone</div>
+          <input
+            type="text"
+            placeholder="Numero de telephone"
+            oninput="Create.get_phone(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Adresse email</div>
+          <input
+            type="text"
+            placeholder="Adresse email"
+            oninput="Create.get_email(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Localisation</div>
+          <input
+            type="text"
+            placeholder="Localisation"
+            oninput="Create.get_localisation(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Votre Presentation</div>
+          <textarea
+            name=""
+            oninput="Create.get_bio(this)"
+            id="user_bio"
+            placeholder="Presentez vous en quelques mots"
+          ></textarea>
+        </div>
+        <!-- Education -->
+        <h3>Education</h3>
+        <div id="education_container"></div>
+
+        <div class="b_secondary" onclick="Education.add_new_eductation_entry()">
+          <img src="images/add.svg" alt="" width="16px" />
+          Ajouter une formation
+        </div>
+
+        <!-- Experience Pro -->
+        <h3>Experience professionnels</h3>
+        <div id="experience_container"></div>
+        <div
+          class="b_secondary"
+          onclick="Experience.add_new_experience_entry()"
+        >
+          <img src="images/add.svg" alt="" width="16px" />
+          Ajouter une experience
+        </div>
+
+        <!-- Langues -->
+        <h3>Langues</h3>
+        <div id="langue_container"></div>
+        <div class="b_secondary" onclick="Langue.add_new_entry()">
+          <img src="images/add.svg" alt="" width="16px" />
+          Ajouter une langue
+        </div>
+
+        <!-- Vos logiciels -->
+        <h3>Competences</h3>
+        <div id="logiciels_container"></div>
+        <div class="b_secondary" onclick="Logiciel.add_new_entry()">
+          <img src="images/add.svg" alt="" width="16px" />
+          Ajouter un logiciel
+        </div>
+
+        <!-- Loisirs -->
+        <h3>Qualite</h3>
+        <div id="qualites"></div>
+        <div class="b_secondary" onclick="Qualite.add_new_entry()">
+          <img src="images/add.svg" alt="" width="16px" />
+          Ajouter une qualite
+        </div>
+
+        <!-- Loisirs -->
+        <h3>Loisirs</h3>
+        <div id="loisirs"></div>
+        <div class="b_secondary" onclick="Loisir.add_new_entry()">
+          <img src="images/add.svg" alt="" width="16px" />
+          Ajouter un loisir
+        </div>
+      </div>
+      <!-- Generer CV Button -->
+      <div
+        class="b_primary"
+        onclick="Create.execute()"
+        style="margin-top: 16px"
+      >
+        <img src="images/settings.svg" width="15px" alt="" />
+        Generer le CV
+      </div>
+    </div>
+    <script src="scripts/tools.js"></script>
+    <script src="scripts/cv_model.js"></script>
+    <script src="scripts/create.js"></script>
+    <script src="scripts/education_engine.js"></script>
+    <script src="scripts/experience_engine.js"></script>
+    <script src="scripts/langue_engine.js"></script>
+    <script src="scripts/logiciel_engine.js"></script>
+    <script src="scripts/language_engine.js"></script>
+    <script src="scripts/loisir_engine.js"></script>
+    <script src="scripts/qualite_engine.js"></script>
+    <script src="scripts/cv1_renderer.js"></script>
+    <script src="scripts/ui.js"></script>
+  </body>
+</html>

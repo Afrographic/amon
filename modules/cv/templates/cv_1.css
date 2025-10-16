@@ -1,0 +1,240 @@
+@font-face {
+    font-family: "ralewayRegular";
+    src: url(../fonts/Raleway-Regular.ttf)
+}
+
+@font-face {
+    font-family: "ralewayBold";
+    src: url(../fonts/Raleway-Bold.ttf)
+}
+
+@font-face {
+    font-family: "ralewayBlack";
+    src: url(../fonts/Raleway-Black.ttf)
+}
+
+
+
+h2,
+h3,
+h1 {
+    font-family: "ralewayBlack";
+}
+
+.bold{
+    font-family: "ralewayBold";
+}
+
+* {
+    font-family: "ralewayRegular";
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#cv_1 {
+    width: 100%;
+    aspect-ratio: 7200/10000;
+    overflow: hidden;
+    display: flex;
+}
+
+.cv1_desc {
+    font-size: 10px;
+    line-height: 13px;
+    position: relative;
+}
+
+.sideBar {
+    width: 34%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#cv_1_image {
+    width: 90%;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cv_1_avatar_name {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #dddddd;
+    gap: 16px;
+}
+
+.cv1_nom_poste {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.cv1_nom_poste div {
+    text-align: center;
+}
+
+#cv1_nom {
+    font-size: 15px;
+    font-family: 'ralewayBlack';
+}
+
+#cv1_poste {
+    font-size: 11px;
+}
+
+.cv1_contact_item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv_1_contacts,
+.cv_1_competences,
+.cv1_langue,
+.cv1_loiris {
+    padding: 11px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cv1_contact_item_label {
+    font-size: 5px;
+}
+
+
+.cv1_item .dates {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cv1_contact_label {
+    font-size: 10px;
+}
+
+.f10 {
+    font-size: 10px;
+    line-height: 13px;
+}
+
+.f5 {
+    font-size: 5px;
+    color: grey;
+}
+
+.f8 {
+    font-size: 8px;
+    position: relative;
+    line-height: 11.3px;
+}
+
+.cv1_competence_item {
+    display: flex;
+    flex-direction: column;
+}
+
+.grey{
+    color:grey;
+}
+
+.cv1_competence_item .domaine {
+    font-size: 5px;
+    color: grey;
+}
+
+.cv1_competence_item .title {
+    display: flex;
+    flex-direction: column;
+}
+
+.progress {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(170, 170, 170, 0.613);
+    margin-top: 4px;
+}
+
+.progress_state {
+    height: 100%;
+    width: 60%;
+    background-color: blue;
+}
+
+.langue_nom,
+.loisirItem,
+.cv1_contact_item_value,
+.cv1_competence_item .name {
+    font-size: 8px;
+}
+
+.cv1_body {
+    padding: 32px;
+    background-color: #f7f7f7;
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cv1_quote {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+.cv1_education {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cv1_experience {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.cv1_company {
+    color: blue;
+}
+
+.cv1_item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cv1_header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#cv1_exp_container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cv1_company_poste{
+    border-left: 1px solid #c8c8c8;
+    padding-left: 5px;
+    display: flex;
+    flex-direction: column;
+}
