@@ -40,8 +40,8 @@ h1 {
 }
 
 .cv1_desc {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 2.3vw;
+    line-height:3vw;
     position: relative;
 }
 
@@ -51,11 +51,11 @@ h1 {
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    gap:12px;
+    gap:3.7vw;
 }
 
 #cv_1_image {
-    width: 60%;
+    width: 14vw;
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -82,18 +82,22 @@ h1 {
 }
 
 #cv1_nom {
-    font-size: 10px;
+    font-size: 2.5vw;
     font-family: 'ralewayBlack';
 }
 
 #cv1_poste {
-    font-size: 9px;
+    font-size: 2vw;
 }
 
 .cv1_contact_item {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.cv1_contact_item  img{
+    width: 3vw;
 }
 
 .cv_1_contacts,
@@ -103,11 +107,11 @@ h1 {
     padding: 4px 16px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2vw;
 }
 
 .cv1_contact_item_label {
-    font-size: 5px;
+    font-size: 1.4vw;
 }
 
 
@@ -122,18 +126,18 @@ h1 {
 }
 
 .f10 {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 2vw;
+    line-height: 2.8vw;
 }
 
 .f5 {
-    font-size: 5px;
+    font-size: 1.4vw;
 }
 
 .f8 {
-    font-size: 8px;
+    font-size: 2vw;
     position: relative;
-    line-height: 11.3px;
+    line-height: 2.8vw;
 }
 
 .cv1_competence_item {
@@ -157,7 +161,7 @@ h1 {
 
 .progress {
     width: 100%;
-    height: 4px;
+    height: 1vw;
     background-color: rgba(170, 170, 170, 0.613);
     margin-top: 4px;
 }
@@ -176,7 +180,11 @@ h1 {
 .loisirItem,
 .cv1_contact_item_value,
 .cv1_competence_item .name {
-    font-size: 8px;
+    font-size: 2vw;
+}
+
+.cv1_title{
+    font-size: 2.8vw !important;
 }
 
 .cv1_body {
@@ -186,7 +194,7 @@ h1 {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 4vw;
 }
 
 .cv1_quote {
@@ -241,8 +249,3 @@ h1 {
     flex-direction: column;
 }
 
-@media screen and (max-width:344px) {
-    .langue_nom, .loisirItem, .cv1_contact_item_value, .cv1_competence_item .name {
-        font-size: 7px !important;
-    }
-}
