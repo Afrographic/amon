@@ -24,6 +24,7 @@ h1 {
 
 .createCV {
     padding: 32px;
+    transition: 0.5s;
 }
 
 .base {
@@ -163,11 +164,11 @@ textarea {
 
 
 .hidden {
-    height: 0px;
+    height: 0;
     overflow: hidden;
-    padding: 0px;
     opacity: 0;
     pointer-events: none;
+    transform:scale(0.8);
 }
 
 .render_extra{
@@ -185,6 +186,10 @@ textarea {
     width: 24px;
 }
 
+#templates{
+    transition: 0.5s;
+}
+
 .splash{
     position: fixed;
     top: 0;
@@ -199,6 +204,7 @@ textarea {
     z-index: 2;
     flex-direction: column;
     gap:16px;
+    transition: 0.5s;
 }
 .render_logo{
     margin-left: auto;

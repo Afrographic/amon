@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soutenance | Djehouty</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modeles/visuel_1/visuel_1.css" />
+    <link rel="icon" href="assets/images/djehouty_icon.svg" />
+    <script src="libs/html2canvas.min.js"></script>
+    <script src="libs/jscolor.js"></script>
+  </head>
+  <body>
+    <!-- Splash Screen -->
+    <div class="splash" id="splash">
+      <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
+      <div>Djehouty</div>
+      <img
+        src="assets/images/afroSign.svg"
+        alt=""
+        width="12px"
+        style="
+          width: 65px;
+          /* margin-top: 64px; */
+          position: absolute;
+          bottom: 64px;
+        "
+      />
+    </div>
+    <!-- Visuels -->
+    <div class="renderer hidden" id="renderer">
+      <img
+        src="assets/images/back.svg"
+        width="24px"
+        alt=""
+        onclick="UI.hide_render();UI.show_create();"
+      />
+      <!-- Editer la charte graphique -->
+      <div class="CharteGraphique">
+        <div class="row g16 aic">
+          <img src="assets/images/djehouty_icon.svg" alt="" width="20px" />
+          <div>Djehouty</div>
+        </div>
+
+        <div class="persoColor">Personnaliser les couleurs</div>
+        <div class="row g16">
+          <div
+            class="colorPreview primary"
+            onclick="Charte.openPrimaryPicker()"
+            id="primaryColorPrev2"
+          >
+            <input
+              class="jscolor"
+              value="#2b76ff"
+              id="primaryPicker"
+              onchange="Charte.getPrimaryColor(event)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Visuel 1 -->
+      <div id="v1_render"></div>
+      <div class="render_extra">
+        <div
+          class="share_btn"
+          style="align-items: center"
+          onclick="Visuel1.export()"
+        >
+          <img src="assets/images/share.svg" width="18px" alt="" />
+          Partager votre visuel
+        </div>
+
+        <div class="donation">
+          <img src="assets/images/love.svg" width="20px" alt="" />
+          <div>
+            Participer au developpement en fesant un don au numero Orange Money
+            +237 697 830 071 (Tesse Brunel)
+          </div>
+        </div>
+
+        <img src="assets/images/afroSign.svg" class="render_sign" alt="" />
+      </div>
+    </div>
+    <!-- Formulaire de creation -->
+    <div class="create" id="create">
+      <div class="nameApp">
+        <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
+        <div>Djehouty</div>
+      </div>
+      <h1>Creer un visuel de soutenance</h1>
+      <p>Veuillez renseigner les informations ci dessous</p>
+      <div class="form">
+        <input
+          type="file"
+          accept="image/*"
+          hidden
+          id="school_logo_picker_input"
+          onchange="Create.get_school_logo(event)"
+        />
+        <div
+          class="logo_ecole"
+          id="logo_ecole"
+          onclick="Create.trigger_school_logo_pick(this)"
+        >
+          <img src="assets/images/image.svg" width="20px" alt="" />
+          <div>Logo de l'ecole</div>
+        </div>
+        <div class="formItem">
+          <div class="label">Nom de l'ecole</div>
+          <input
+            type="text"
+            placeholder="Nom de l'ecole"
+            oninput="Create.get_nom_ecole(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Filiere</div>
+          <input
+            type="text"
+            placeholder="Filiere"
+            oninput="Create.get_filiere(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Titre</div>
+          <textarea
+            type="text"
+            placeholder="Exemple : Bienvenue aux Soutenances de la 10e Promo..."
+            id="cv_titre"
+            oninput="Create.get_titre(this)"
+          ></textarea>
+        </div>
+        <div class="formItem">
+          <div class="label">Theme</div>
+          <textarea
+            type="text"
+            placeholder="Theme"
+            oninput="Create.get_theme(this)"
+            id="cv_theme"
+          ></textarea>
+        </div>
+
+        <p>Position et horodatage</p>
+        <div class="formItem">
+          <div class="label">Date</div>
+          <input
+            type="date"
+            placeholder="Date"
+            oninput="Create.get_date(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Heure de debut</div>
+          <input
+            type="text"
+            placeholder="Heure de debut"
+            oninput="Create.get_heure_debut(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Heure de fin</div>
+          <input
+            type="text"
+            placeholder="Heure de fin"
+            oninput="Create.get_heure_fin(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Lieu</div>
+          <input
+            type="text"
+            placeholder="Lieu"
+            oninput="Create.get_lieu(this)"
+          />
+        </div>
+        <p>Information sur le candidat</p>
+        <input
+          type="file"
+          accept="image/*"
+          hidden
+          id="image_candidat_picker_input"
+          onchange="Create.get_image_candidat(event)"
+        />
+        <div
+          class="photo_candidat"
+          id="photo_candidat"
+          onclick="Create.trigger_image_candidat(this)"
+        >
+          <img src="assets/images/image.svg" width="20px" alt="" />
+          <div>Photo du candidat</div>
+        </div>
+        <div class="formItem">
+          <div class="label">Nom du candidat</div>
+          <input
+            type="text"
+            placeholder="Nom du candidat"
+            oninput="Create.get_nom_candidat(this)"
+          />
+        </div>
+        <p>Responsable Academique</p>
+        <div class="formItem">
+          <div class="label">President du jury</div>
+          <input
+            type="text"
+            placeholder="President"
+            oninput="Create.get_president(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Rapporteur</div>
+          <input
+            type="text"
+            placeholder="Rapporteur"
+            oninput="Create.get_rapporteur(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Examinateur</div>
+          <input
+            type="text"
+            placeholder="Examinateur"
+            oninput="Create.get_examinateur(this)"
+          />
+        </div>
+      </div>
+      <!-- Generer Visuel Button -->
+      <div
+        class="b_primary"
+        onclick="Create.execute()"
+        style="margin-top: 16px"
+      >
+        <img src="assets/images/settings.svg" width="15px" alt="" />
+        Generer le visuel
+      </div>
+    </div>
+
+    <script src="scripts/tools.js"></script>
+    <script src="scripts/visuel_model.js"></script>
+    <script src="scripts/create.js"></script>
+    <script src="scripts/visuel_1_render.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/splash.js"></script>
+    <script src="scripts/charte.js"></script>
+  </body>
+</html>
+ 

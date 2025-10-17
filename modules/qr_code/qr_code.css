@@ -140,14 +140,19 @@ p {
 
 
 .hidden {
-    height: 0px;
+    height: 0;
     overflow: hidden;
-    padding: 0px;
     opacity: 0;
     pointer-events: none;
+    transform:scale(0.8);
+}
+
+#create_qr_code,.resultHolder{
+    transition: 0.5s;
 }
 
 .splash{
+    transition: 0.5s;
     position: fixed;
     top: 0;
     left: 0;

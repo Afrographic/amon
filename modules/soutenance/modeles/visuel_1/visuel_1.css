@@ -1,0 +1,201 @@
+@font-face {
+    font-family: "ralewayRegular";
+    src: url(../../assets/fonts/Raleway-Regular.ttf)
+}
+
+@font-face {
+    font-family: "ralewayBold";
+    src: url(../../assets/fonts/Raleway-Bold.ttf)
+}
+
+@font-face {
+    font-family: "ralewayBlack";
+    src: url(../../assets/fonts/Raleway-Black.ttf)
+}
+
+
+h2,
+h3,
+h1 {
+    font-family: "ralewayBlack";
+}
+
+.bold {
+    font-family: "ralewayBold";
+}
+
+* {
+    font-family: "ralewayRegular";
+    box-sizing: border-box;
+}
+
+#v1_titre {
+    font-family: "ralewayBlack";
+    text-align: center;
+    font-size: 4.3vw;
+    line-height: 3.4vw;
+    margin-bottom: 3vw;
+}
+
+.nomEcole_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+    width: 45vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#visuel_1 {
+    padding: 24px;
+    background-color: rgb(243 243 243);
+
+}
+
+.v1_container {
+    border-radius: 12px;
+    background-color: #fff;
+    width: 100%;
+    padding: 4vw;
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+}
+
+#v1_logo_ecole {
+    width: 6.5vw;
+}
+
+#v1_nom_ecole {
+    font-size: 1.7vw;
+    color: grey;
+}
+
+.cv1_candidat_theme_jury {
+    display: flex;
+}
+
+.v1_candidat,
+.v1_theme_jury {
+    flex: 1;
+}
+
+.v1_candidat {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    position: relative;
+}
+
+#v1_photo_candidat {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: 2vw;
+}
+
+#v1_nom_candidat {
+    font-size: 2.6vw;
+    font-family: 'ralewayBold';
+}
+
+.v1_option {
+    display: flex;
+    gap: 2vw;
+    align-items: flex-start;
+}
+
+.v1_option_label {
+    padding: 1vw;
+    background-color: rgb(18, 0, 153);
+    color: white;
+    font-size: 2vw;
+}
+
+#v1_filiere {
+    font-size: 2.8vw;
+    color: blue;
+}
+
+.v1_theme {
+    padding: 1vw;
+    background-color: rgb(18, 0, 153);
+    color: white;
+    font-size: 2vw;
+}
+
+#v1_theme_content {
+    font-size: 3vw;
+    background-color: rgb(7, 0, 59);
+    color: white;
+    padding: 2vw;
+    line-height: 3.8vw;
+    border-bottom-right-radius: 12px;
+}
+
+.v1_jury {
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.v1_jury_label {
+    font-size: 2vw;
+    color: grey;
+}
+
+.v1_jury_name {
+    font-size: 2.5vw;
+}
+
+.v1_row {
+    display: flex;
+    gap: 2vw;
+}
+
+.v1_footer_item {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    flex: 1;
+    background-color: #020025;
+    color: white;
+    padding: 1.5vw;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    justify-content: center;
+}
+
+.v1_diplome {
+    position: absolute;
+    top: -16px;
+    left: 12px;
+    width: 34px;
+}
+
+
+.v1_localisation_block {
+    background-color: #0b0b0b;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.v1_footer_icon {
+    width: 2vw;
+}
+
+.v1_footer_content {
+    font-size: 2.5vw;
+}
+
+.v1_small {
+    font-size: 2vw;
+}

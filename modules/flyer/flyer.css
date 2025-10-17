@@ -1,103 +1,106 @@
-@font-face{
+@font-face {
     font-family: "ralewayRegular";
-    src :url(../../fonts/Raleway-Regular.ttf)
+    src: url(../../fonts/Raleway-Regular.ttf)
 }
 
-@font-face{
+@font-face {
     font-family: "ralewayBlack";
-    src :url(../../fonts/Raleway-Black.ttf)
+    src: url(../../fonts/Raleway-Black.ttf)
 }
 
-h2,h3,h1{
+h2,
+h3,
+h1 {
     font-family: "ralewayBlack";
 }
 
-*{
+* {
     box-sizing: border-box;
     font-family: "ralewayRegular";
 }
 
-body{
-    padding:16px;
+body {
+    padding: 16px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.modele{
+.modele {
     width: 100%;
     border-radius: 8px;
     position: relative;
 }
 
-.sign{
+.sign {
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 0px;
     transform: rotate(-90deg);
     width: 35px;
     opacity: 0.4;
 }
 
-h1{
+h1 {
     font-size: 5vw;
 }
 
 
-.config{
-    padding:16px;
+.config {
+    padding: 16px;
 }
 
 /* Logo */
-.logoPlaceHolder{
+.logoPlaceHolder {
     width: 120px;
     height: 120px;
     background-color: #ebebeb;
     border-radius: 50%;
-    border:2px dashed #aaa;
+    border: 2px dashed #aaa;
 }
 
-.configLogo{
-   width: 120px;
+.configLogo {
+    width: 120px;
 }
 
-.configLogo.inactive{
+.configLogo.inactive {
     display: none;
 }
 
-.logoComp{
+.logoComp {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap:16px;
+    gap: 16px;
 }
 
-.tac{
+.tac {
     text-align: center;
 }
 
-.form,#caracteristiques_container{
+.form,
+#caracteristiques_container {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
-.formItem{
-    border:1px solid #dedede;
+.formItem {
+    border: 1px solid #dedede;
     border-radius: 8px;
-    padding:16px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
-.formItem .label{
+.formItem .label {
     font-size: 12px;
 }
 
-.form input{
-    border:none;
+.form input {
+    border: none;
     outline: none;
     width: 100%;
     font-size: 17px;
@@ -106,51 +109,54 @@ h1{
 .config {
     display: flex;
     flex-direction: column;
-    gap:16px;
+    gap: 16px;
 }
 
-.b_primary{
+.b_primary {
     background-color: #103F91;
-    padding:16px 32px;
+    padding: 16px 32px;
     border-radius: 8px;
-    color:white;
-    display: flex; 
-    align-items: center;
-    gap:16px;
-}
-
-.b_secondary{
-    background-color: #fff;
-    padding:16px 32px;
-    border-radius: 8px;
-    color:rgb(22, 22, 22);
-    border:1px solid rgba(22, 22, 22, 0.499);
+    color: white;
     display: flex;
     align-items: center;
-    gap:16px;
+    gap: 16px;
 }
 
-.Modele_1_wrapper{
+.b_secondary {
+    background-color: #fff;
+    padding: 16px 32px;
+    border-radius: 8px;
+    color: rgb(22, 22, 22);
+    border: 1px solid rgba(22, 22, 22, 0.499);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.Modele_1_wrapper,
+.splash,
+.config,
+.flyerInfo {
     transition: 0.5s;
 }
 
-.hidden{
-    height: 0px;
-    padding: 0px;
+.hidden {
+    height: 0;
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
+    transform: scale(0.8);
 }
 
-p{
+p {
     line-height: 24px;
 }
 
-.imageArea{
+.imageArea {
     aspect-ratio: 1/1;
     width: 100%;
     border-radius: 16px;
-    border:1px dashed #aaa;
+    border: 1px dashed #aaa;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,24 +164,24 @@ p{
     margin-bottom: 8px;
 }
 
-.indic{
+.indic {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap:16px;
+    gap: 16px;
 }
 
-.imageArea{
+.imageArea {
     background-position: center;
     background-size: cover;
 }
 
-.donation{
+.donation {
     display: flex;
-    gap:16px;
+    gap: 16px;
     align-items: center;
-    padding:16px;
+    padding: 16px;
     border-radius: 8px;
     background-color: #e7e7e7;
     font-size: 12px;
@@ -183,23 +189,23 @@ p{
 
 
 
-.nameApp{
+.nameApp {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:16px;
+    gap: 16px;
     position: sticky;
-    top:16px;
+    top: 16px;
     background-image: url(images/pattern.svg);
     border-radius: 8px;
-    padding:16px;
+    padding: 16px;
     background-size: 6px;
     z-index: 1;
     background-color: #fff;
     margin: 0px 16px;
 }
 
-.splash{
+.splash {
     position: fixed;
     top: 0;
     left: 0;
@@ -212,31 +218,31 @@ p{
     align-items: center;
     z-index: 2;
     flex-direction: column;
-    gap:16px;
+    gap: 16px;
 }
 
 
 .CharteGraphique {
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin-bottom: 16px;
-        position: sticky;
-        top: 0px;
-        background-color: #fff;
-        padding: 16px;
-        box-shadow: 1px 15px 10px #00000026;
-        border-bottom-left-radius: 16px;
-        border-bottom-right-radius: 16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 16px;
+    position: sticky;
+    top: 0px;
+    background-color: #fff;
+    padding: 16px;
+    box-shadow: 1px 15px 10px #00000026;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
-.CharteGraphique input{
+.CharteGraphique input {
     opacity: 0;
     width: 0;
 }
 
-.colorPreview{
+.colorPreview {
     position: relative;
     width: 35px;
     height: 35px;
@@ -246,27 +252,27 @@ p{
     transition: 0.25s;
 }
 
-.colorPreview:hover{
+.colorPreview:hover {
     opacity: 0.7;
 }
 
-.colorPreview:active{
+.colorPreview:active {
     transform: scale(1.2);
 }
 
-.row{
+.row {
     display: flex;
 }
 
-.g16{
-    gap:16px;
+.g16 {
+    gap: 16px;
 }
 
-.aic{
+.aic {
     align-items: center;
 }
 
-.persoColor{
+.persoColor {
     font-size: 16px;
     color: black;
     margin-top: 8px;
@@ -274,31 +280,31 @@ p{
     padding-top: 9px;
 }
 
-.primary{
+.primary {
     background-color: #2b76ff;
 }
 
-.secondary{
+.secondary {
     background-color: #d5a100;
 }
 
-textarea{
-    border:none;
-    outline:none;
+textarea {
+    border: none;
+    outline: none;
     width: 100%;
     font-size: 17px;
 }
 
-.config_logo{
+.config_logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:8px;
+    gap: 8px;
     padding-bottom: 16px;
     border-bottom: 1px solid #e3e3e3;
 }
 
-.qr_code{
+.qr_code {
     padding: 6px;
     background-color: #ffffff;
 }
