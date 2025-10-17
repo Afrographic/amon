@@ -3,7 +3,7 @@ class Create {
   static text_to_encode = "";
 
   static get_title(e) {
-    this.title = e.value;
+    this.title = Utils.Ucase(e.value);
   }
 
   static get_text_to_encode(e) {

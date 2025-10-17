@@ -69,7 +69,7 @@
 .m3_cars{
     display: flex;
     flex-wrap: wrap;
-    gap:4px;
+    column-gap: 8px;
 }
 
 .m3_footer{
