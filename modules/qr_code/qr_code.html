@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code | Djehouty</title>
+    <link rel="stylesheet" href="qr_code.css" />
+    <script src="libs/qr_code.js"></script>
+    <script src="libs/html2canvas.min.js"></script>
+    <script src="scripts/utils.js"></script>
+    <link rel="icon" href="assets/images/djehouty_icon.svg" />
+  </head>
+  <body>
+    <!-- Splash Screen -->
+    <div class="splash" id="splash">
+      <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
+      <div>Djehouty</div>
+      <img
+        src="assets/images/afroSign.svg"
+        alt=""
+        width="12px"
+        style="
+          width: 65px;
+          /* margin-top: 64px; */
+          position: absolute;
+          bottom: 64px;
+        "
+      />
+    </div>
+    <!-- Create QR Code -->
+    <div id="create_qr_code">
+      <div class="nameApp">
+        <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
+        <div>Djehouty</div>
+      </div>
+      <h1>Generer un QR Code</h1>
+      <p>
+        Veuilez renseigner les informations suivant , le Titre est facultatif
+      </p>
+      <div class="form">
+        <div class="formItem">
+          <div class="label">Titre (Facultatif)</div>
+          <input
+            type="text"
+            placeholder="Titre (Facultatif)"
+            id="c_fullName"
+            oninput="Create.get_title(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Lien ou texte a transformer en code QR</div>
+          <input
+            type="text"
+            id="c_poste"
+            placeholder="Lien ou texte"
+            oninput="Create.get_text_to_encode(this)"
+          />
+        </div>
+      </div>
+
+      <!-- Generer CV Button -->
+      <div
+        class="b_primary"
+        onclick="Create.execute()"
+        style="margin-top: 16px"
+      >
+        <img src="assets/images/settings.svg" width="15px" alt="" />
+        Generer le QR Code
+      </div>
+    </div>
+    <!-- Response holder -->
+    <div class="resultHolder hidden" id="resultHolder">
+      <div>
+        <img
+          src="assets/images/back.svg"
+          width="24px"
+          alt=""
+          onclick="UI.hide_result();UI.show_create_qr()"
+        />
+      </div>
+      <img src="assets/images/djehouty_icon.svg" width="24px" class="export_icon" alt=""/>
+      <div class="result" id="result_to_export">
+        <div id="title_qr_code">QR Code</div>
+        <div id="qr_code"></div>
+        <div class="small">Scan Me</div>
+      </div>
+      <!-- Extras -->
+      <div
+        class="share_btn"
+        style="align-items: center"
+        onclick="Create.export()"
+      >
+        <img src="assets/images/share.svg" width="18px" alt="" />
+        Partager votre QR Code
+      </div>
+      <div class="donation">
+        <img src="assets/images/love.svg" width="20px" alt="" />
+        <div>
+          Participer au developpement en fesant un don au numero Orange Money
+          +237 697 830 071 (Tesse Brunel)
+        </div>
+      </div>
+      <img src="assets/images/afroSign.svg" class="render_sign" alt="" />
+    </div>
+
+    <script src="scripts/qr_code.js"></script>
+    <script src="scripts/create.js"></script>
+    <script src="scripts/splash.js"></script>
+    <script src="scripts/ui.js"></script>
+  </body>
+</html>

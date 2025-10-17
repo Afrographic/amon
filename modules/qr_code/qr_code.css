@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 24px;
+}
+
+@font-face {
+    font-family: "ralewayRegular";
+    src: url(../../fonts/Raleway-Regular.ttf)
+}
+
+@font-face {
+    font-family: "ralewayBlack";
+    src: url(../../fonts/Raleway-Black.ttf)
+}
+
+h2,
+h3,
+h1 {
+    font-family: "ralewayBlack";
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "ralewayRegular";
+}
+
+.nameApp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: sticky;
+    top: 16px;
+    background-image: url(assets/images/pattern.svg);
+    border-radius: 8px;
+    padding: 16px;
+    background-size: 6px;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.formItem {
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.formItem .label {
+    font-size: 12px;
+}
+
+.formItem input,
+textarea {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 17px;
+}
+
+p {
+    line-height: 24px;
+}
+
+.b_primary {
+    background-color: #006838;
+    padding: 16px 32px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0px 9px 19px #a6f59ea6;
+}
+
+.result {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.small{
+    font-size: 12px;
+    color:grey;
+}
+
+.resultHolder {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.donation{
+    display: flex;
+    gap:16px;
+    align-items: center;
+    padding:16px;
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    font-size: 12px;
+}
+
+.share_btn {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: #3a3a3a;
+    color: white;
+    border-radius: 8px;
+    gap: 16px;
+    justify-content: center;
+}
+
+.render_sign{
+    margin-left: auto;
+    margin-right: auto;
+    width: 97px;
+    padding-top: 16px;
+    opacity: 0.5;
+}
+
+
+.hidden {
+    height: 0px;
+    overflow: hidden;
+    padding: 0px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    flex-direction: column;
+    gap:16px;
+}
+
+.export_icon{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+}
