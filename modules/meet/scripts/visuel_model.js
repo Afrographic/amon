@@ -9,6 +9,8 @@ class Visuel{
         this.nom_intervenant="";
         this.poste="";
         this.date="";
+        this.heure_debut="";
+        this.heure_fin="";
         this.plateforme="";
         this.lien="";
     }

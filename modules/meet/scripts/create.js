@@ -75,6 +75,14 @@ class Create {
     this.visuel.lien = Tools.Ucase(el.value);
   }
 
+  static get_heure_debut(el){
+    this.visuel.heure_debut = el.value;
+  }
+
+  static get_heure_fin(el){
+    this.visuel.heure_fin = el.value;
+  }
+
   static execute() {
     if (this.visuel.logo == undefined) {
       alert("Logo invalide!");
@@ -108,12 +116,16 @@ class Create {
       alert("Date invalide!");
       return;
     }
-    if (this.visuel.plateforme.trim().length == 0) {
-      alert("Plateforme invalide!");
+    if(this.visuel.heure_debut.trim().length == 0){
+      alert("Heure de debut invalide!");
       return;
     }
-    if (this.visuel.lien.trim().length == 0) {
-      alert("Lien du meet invalide!");
+    if(this.visuel.heure_fin.trim().length == 0){
+      alert("Heure de debut invalide!");
+      return;
+    }
+    if (this.visuel.plateforme.trim().length == 0) {
+      alert("Plateforme invalide!");
       return;
     }
 

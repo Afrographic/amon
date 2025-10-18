@@ -28,3 +28,126 @@ h1 {
     font-family: "ralewayRegular";
     box-sizing: border-box;
 }
+
+#m1 {
+    background-color: #001f3d;
+    padding: 8vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: 6vw;
+    position: relative;
+}
+
+#m1_background_image{
+    position: absolute;
+    top:0;
+    left:0;
+    background-image: url(images/pharaon.png);
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+#m1_color_overlay{
+     background-color: #000000bb;
+     position: absolute;
+     top:0;
+     left:0;
+     width: 100%;
+     height: 100%;
+     z-index: 2;
+}
+
+#m1_logo_name {
+    display: flex;
+    gap: 2vw;
+    align-items: center;
+
+}
+
+#m1_logo {
+    width: 4vw;
+}
+
+#m1_nom_communaute {
+    font-size: 3vw;
+}
+
+#m1_theme {
+    width: 70vw;
+    font-size: 5vw;
+    text-align: center;
+    font-family: 'ralewayBlack';
+}
+
+#m1_photo_intervenant {
+    width: 30vw;
+    border-radius: 32px;
+    position: relative;
+}
+
+#m1_image_container {
+    border: 2px solid yellow;
+    padding: 2vw;
+    border-radius: 32px;
+}
+
+#m1_intervenant_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+}
+
+#intervenant_info {
+    font-size: 3vw;
+}
+
+#m1_intervenant_label {
+    color: yellow;
+}
+
+#m1_intervenant_name {
+    font-family: "ralewayBold";
+    font-size: 4.5vw;
+}
+
+#m1_poste{
+    opacity: 0.6;
+}
+
+#m1_date_heure img,#m1_lieu img{
+    width: 4vw;
+}
+
+#m1_date_heure{
+    background-color: yellow;
+    color:#090909;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 3vw;
+    display: flex;
+    gap:3vw;
+    align-items: center;
+}
+
+#m1_date,#m1_heure,#m1_lieu{
+    display: flex;
+    align-items: center;
+    gap:2vw;
+}
+
+#m1_lieu_value{
+    font-size: 4vw;
+}
+
+.relative{
+    position: relative;
+    z-index: 3;
+}

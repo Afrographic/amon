@@ -83,19 +83,27 @@
           />
         </div>
         <div class="formItem">
+          <div class="label">Heure de debut</div>
+          <input
+            type="date"
+            placeholder="Heure de debut"
+            oninput="Create.get_heure_debut(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Heure de fin</div>
+          <input
+            type="date"
+            placeholder="Heure de fin"
+            oninput="Create.get_heure_fin(this)"
+          />
+        </div>
+        <div class="formItem">
           <div class="label">Plateforme</div>
           <input
             type="text"
             placeholder="Ex: Google meets, Zoom, Skype etc..."
             oninput="Create.get_plateforme(this)"
-          />
-        </div>
-        <div class="formItem">
-          <div class="label">Lien ou code du meet</div>
-          <input
-            type="text"
-            placeholder="Lien ou code du meet"
-            oninput="Create.get_lien_code(this)"
           />
         </div>
       </div>
