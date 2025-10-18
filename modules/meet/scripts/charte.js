@@ -19,6 +19,10 @@ class Charte {
   }
 
   static color_flyer(color) {
+    //Color overlay
+    let dark_color = Tools.darkenColor(color,70);
+    let m1_color_overlay = document.querySelector("#m1_color_overlay");
+    m1_color_overlay.style.backgroundColor = Tools.hexToRgba(Tools.rgb_to_hex(dark_color),0.80);
     //preview indicator
     let primaryColorPrev2 = document.querySelector("#primaryColorPrev2");
     primaryColorPrev2.style.backgroundColor = color;
