@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/images/djehouty_icon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="libs/html2canvas.min.js"></script>
+    <script src="libs/jscolor.js"></script>
+    <title>Meet | Djehouty</title>
+  </head>
+  <body>
+    <!-- Creation -->
+    <div class="create" id="create">
+      <div class="nameApp">
+        <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
+        <div>Djehouty</div>
+      </div>
+      <h1>Creer un visuel de meet en ligne</h1>
+      <p>Veuillez renseigner les informations ci dessous</p>
+
+      <!-- Formulaire -->
+      <div class="form">
+        <input type="file" hidden id="logo_input" accept="image/*" onchange="Create.get_logo(event)">
+        <div class="logo" id="logo_placeholder" onclick="Create.trigger_import_logo(this)">
+          <img src="assets/images/image.svg" width="20px" alt="" />
+          <div>Votre Logo</div>
+        </div>
+        <div class="formItem">
+          <div class="label">Nom de votre communaute ou entreprise</div>
+          <input
+            type="text"
+            placeholder="Nom de votre communaute ou entreprise"
+            oninput="Create.get_nom_communaute(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Theme du meet</div>
+          <textarea
+            type="text"
+            placeholder="Theme du meet"
+            id="theme_meet"
+            oninput="Create.get_theme(this)"
+          ></textarea>
+        </div>
+        
+        <input type="file" hidden id="image_fond_input" accept="image/*" onchange="Create.get_image_fond(event)">
+        <div class="image_fond" id="image_fond_placeholder" onclick="Create.trigger_image_fond(this)">
+          <img src="assets/images/image.svg" width="20px" alt="" />
+          <div>Image de fond </div>
+        </div>
+
+
+        <p>Intervenant</p>
+        <input type="file" accept="image/*" id="photo_intervenant_input" hidden onchange="Create.get_photo_intervenant(event)">
+        <div class="photo_intervenant" id="photo_intervenant_placeholder" onclick="Create.trigger_photo_intervenant(this)">
+          <img src="assets/images/image.svg" width="20px" alt="" />
+          <div>Photo de l'intervenant</div>
+        </div>
+        <div class="formItem">
+          <div class="label">Nom de l'intervenant</div>
+          <input
+            type="text"
+            placeholder="Nom de l'intervenant"
+            oninput="Create.get_nom_intervenant(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Poste ou Metier</div>
+          <input
+            type="text"
+            placeholder="Poste ou Metier"
+            oninput="Create.get_poste(this)"
+          />
+        </div>
+        <p>Lieu et Horodatage</p>
+        <div class="formItem">
+          <div class="label">Date</div>
+          <input
+            type="date"
+            placeholder="Poste ou Metier"
+            oninput="Create.get_date(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Plateforme</div>
+          <input
+            type="text"
+            placeholder="Ex: Google meets, Zoom, Skype etc..."
+            oninput="Create.get_plateforme(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Lien ou code du meet</div>
+          <input
+            type="text"
+            placeholder="Lien ou code du meet"
+            oninput="Create.get_lien_code(this)"
+          />
+        </div>
+      </div>
+
+      <!-- Generer Visuel Button -->
+      <div
+        class="b_primary"
+        onclick="Create.execute()"
+        style="margin-top: 16px"
+      >
+        <img src="assets/images/settings.svg" width="15px" alt="" />
+        Generer le visuel
+      </div>
+    </div>
+
+    <script src="scripts/visuel_model.js"></script>
+    <script src="scripts/tools.js"></script>
+    <script src="scripts/create.js"></script>
+  </body>
+</html>

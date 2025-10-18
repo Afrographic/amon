@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "ralewayRegular";
+    src: url(../../assets/fonts/Raleway-Regular.ttf)
+}
+
+@font-face {
+    font-family: "ralewayBold";
+    src: url(../../assets/fonts/Raleway-Bold.ttf)
+}
+
+@font-face {
+    font-family: "ralewayBlack";
+    src: url(../../assets/fonts/Raleway-Black.ttf)
+}
+
+
+h2,
+h3,
+h1 {
+    font-family: "ralewayBlack";
+}
+
+.bold {
+    font-family: "ralewayBold";
+}
+
+* {
+    font-family: "ralewayRegular";
+    box-sizing: border-box;
+}
