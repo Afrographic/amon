@@ -134,9 +134,7 @@ class Create {
     img.src = URL.createObjectURL(this.visuel.photo_intervenant);
     img.onload = () => {
       Create.visuel.crop_photo_intervenant = Tools.cropImageToSquare(img);
-    //   Visuel1.render(this.visuel);
-    //   UI.show_render();
-    //   UI.hide_create();
+      Visuel1.render(this.visuel);
     };
   }
 }

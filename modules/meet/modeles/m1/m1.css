@@ -128,13 +128,15 @@ h1 {
 
 #m1_date_heure{
     background-color: yellow;
-    color:#090909;
+    color: #090909;
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 3vw;
     display: flex;
-    gap:3vw;
+    gap: 3vw;
     align-items: center;
+    width: 77vw;
+    justify-content: center;
 }
 
 #m1_date,#m1_heure,#m1_lieu{

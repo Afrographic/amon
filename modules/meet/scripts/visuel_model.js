@@ -2,7 +2,7 @@ class Visuel{
     constructor(){
         this.logo = undefined;
         this.nom_communaute = "";
-        this.theme = "";
+        this.theme = ""; 
         this.image_fond =undefined;
         this.photo_intervenant=undefined;
         this.crop_photo_intervenant="";
@@ -12,6 +12,5 @@ class Visuel{
         this.heure_debut="";
         this.heure_fin="";
         this.plateforme="";
-        this.lien="";
     }
 }

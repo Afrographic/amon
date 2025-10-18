@@ -33,7 +33,7 @@ class Tools {
     );
 
     // Return cropped image as data URL (or blob)
-    return canvas.toDataURL("image/png");
+    return canvas.toDataURL("image/jpeg");
   }
 
   static exportImage(canvas, name) {
