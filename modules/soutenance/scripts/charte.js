@@ -1,14 +1,18 @@
 class Charte {
+
   static getPrimaryColor(e) {
     let primaryColorPrev2 = document.querySelector("#primaryColorPrev2");
     primaryColorPrev2.style.backgroundColor = `${e.target.value}`;
+    
     this.color_flyer(e.target.value);
   }
+
   static openPrimaryPicker() {
     let primaryPicker = document.querySelector("#primaryPicker");
     primaryPicker.click();
     primaryPicker.blur();
   }
+
   static color_flyer(color){
     let darkColor = Tools.darkenColor(color,50)
     // Theme label

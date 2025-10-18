@@ -135,6 +135,8 @@ class Create {
     img.onload = () => {
       Create.visuel.crop_photo_intervenant = Tools.cropImageToSquare(img);
       Visuel1.render(this.visuel);
+      UI.hide_create();
+      UI.show_render();
     };
   }
 }

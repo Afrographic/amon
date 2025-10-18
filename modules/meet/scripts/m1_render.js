@@ -24,7 +24,18 @@ class Visuel1 {
       "images/position.png",
       "modeles/m1/images/position.png"
     );
+    raw_template = raw_template.replace(
+      "images/ag_white.png",
+      "modeles/m1/images/ag_white.png"
+    );
+    raw_template = raw_template.replace(
+      "images/pharaon.png",
+      "modeles/m1/images/pharaon.png"
+    );
     v1_render.innerHTML = raw_template;
+    
+    //Init coloring
+    Charte.init_coloring();
   }
 
   static render(visuel) {
@@ -59,6 +70,11 @@ class Visuel1 {
     //Lieu du meet
     let m1_lieu_value = document.querySelector("#m1_lieu_value");
     m1_lieu_value.innerHTML = visuel.plateforme;
+  }
+
+  static export(){
+    let v1_render = document.querySelector("#v1_render");
+    Tools.exportImage(v1_render,Create.visuel.theme);
   }
 }
 

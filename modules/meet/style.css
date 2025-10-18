@@ -175,7 +175,25 @@ textarea {
     margin-top: 8px;
     transition: 0.25s;;
     background-color: yellow;
-    border: 2px solid #000;
+    border: 2px solid #808080;
+}
+
+
+.splash {
+    transition: 0.5s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .persoColor {

@@ -37,7 +37,7 @@ class Tools {
   }
 
   static exportImage(canvas, name) {
-    name = `Soutenance | ${name} - ${this.generate_unique_id_from_time()}`;
+    name = `${name} - ${this.generate_unique_id_from_time()}`;
     html2canvas(canvas, {
       useCors: true,
       allowTaint: false,
