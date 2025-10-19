@@ -1,19 +1,4 @@
 class Visuel1 {
-  static images = [
-    "1.JPG",
-    "2.WEBP",
-    "3.JPG",
-    "4.WEBP",
-    "5.JPG",
-    "6.JPG",
-    "7.JPG",
-    "8.JPG",
-    "9.JPG",
-    "10.JPG",
-    "11.JPG",
-    "12.JPG",
-  ];
-
   static mount() {
     fetch("modeles/m1/m1.html").then((res) => {
       res.text().then((val) => {
@@ -71,15 +56,11 @@ class Visuel1 {
     m1_localisation.innerHTML = visuel.localisation;
     //Set Background Image
     let m1_content = document.querySelector("#m1_content");
-    m1_content.style.backgroundImage = `url(images/food/${
-      this.images[Tools.rand(0, 11)]
-    })`;
-    //Set images 
+    m1_content.style.backgroundImage = `url(images/food/${Tools.rand(1, 27)}.JPG)`;
+    //Set images
     let m1_imageItem = document.querySelectorAll(".m1_imageItem");
-    for(let item of m1_imageItem){
-      item.style.backgroundImage = `url(images/food/${
-        this.images[Tools.rand(0, 11)]
-      })`;
+    for (let item of m1_imageItem) {
+      item.style.backgroundImage = `url(images/food/${Tools.rand(1, 27)}.JPG)`;
     }
     // Set date
     let m1_date = document.querySelector("#m1_date");
