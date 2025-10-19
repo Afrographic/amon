@@ -30,126 +30,150 @@ h1 {
 }
 
 #m1 {
-    background-color: #001f3d;
-    padding: 8vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    gap: 6vw;
     position: relative;
-}
-
-#m1_background_image{
-    position: absolute;
-    top:0;
-    left:0;
-    background-image: url(images/pharaon.png);
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 1;
-}
-
-#m1_color_overlay{
-     background-color: #000000bb;
-     position: absolute;
-     top:0;
-     left:0;
-     width: 100%;
-     height: 100%;
-     z-index: 2;
-}
-
-#m1_logo_name {
-    display: flex;
-    gap: 2vw;
-    align-items: center;
-
 }
 
 #m1_logo {
-    width: 4vw;
+    width: 8vw;
 }
 
-#m1_nom_communaute {
-    font-size: 3vw;
-}
-
-#m1_theme {
-    width: 70vw;
-    font-size: 5vw;
-    text-align: center;
-    font-family: 'ralewayBlack';
-}
-
-#m1_photo_intervenant {
-    width: 30vw;
-    border-radius: 32px;
-    position: relative;
-}
-
-#m1_image_container {
-    border: 2px solid yellow;
-    padding: 2vw;
-    border-radius: 32px;
-}
-
-#m1_intervenant_block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3vw;
-}
-
-#intervenant_info {
-    font-size: 3vw;
-}
-
-#m1_intervenant_label {
-    color: yellow;
-}
-
-#m1_intervenant_name {
-    font-family: "ralewayBold";
-    font-size: 4.5vw;
-}
-
-#m1_poste{
-    opacity: 0.6;
-}
-
-#m1_date_heure img,#m1_lieu img{
-    width: 4vw;
-}
-
-#m1_date_heure{
-    background-color: yellow;
-    color: #090909;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 3vw;
-    display: flex;
-    gap: 3vw;
-    align-items: center;
-    width: 77vw;
-    justify-content: center;
-}
-
-#m1_date,#m1_heure,#m1_lieu{
-    display: flex;
-    align-items: center;
-    gap:2vw;
-}
-
-#m1_lieu_value{
+#m1_nom_restaurant {
+    color: white;
     font-size: 4vw;
 }
 
-.relative{
+h1 {
+    margin: 0;
+}
+
+#m1_texte_accrocheur {
+    font-size: 6vw;
+    color: white;
+    padding-right: 2vw;
+}
+
+#m1_content {
+    padding: 7vw;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 50vw;
+    padding-right: 20vw;
+    position: relative;
+    overflow: hidden;
+    background-image: url(images/pharaon.png);
+    background-size: cover;
+    background-position: center;
+    min-height: 58vh;
+}
+
+#m1_overlay {
+    background-color: rgb(83 22 0 / 91%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.m1_images {
+    position: absolute;
+    top: -1vw;
+    right: -6vw;
+    width: 30vw;
+    background-color: #fff;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    transform: rotate(5deg);
+}
+
+.m1_imageItem {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: rgb(219, 219, 219);
+}
+
+.m1_content_container {
+    display: flex;
+    flex-direction: column;
+    gap: 5vw;
     position: relative;
     z-index: 3;
+}
+
+#m1_footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4vw;
+    padding: 4vw;
+}
+
+.footer_item {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+#m1_phone,
+#m1_localisation {
+    font-size: 2vw;
+}
+
+.footer_item img {
+    width: 3vw;
+}
+
+#m1_date {
+    text-align: center;
+    font-size: 1.6vw;
+    padding: 8px;
+    background-color: #f3f3f3;
+}
+
+.day_name {
+    color: white;
+    font-family: "ralewayBold";
+    font-size: 4vw;
+}
+
+.menu_item {
+    margin-bottom: 4vw;
+}
+
+td {
+    color: white;
+    opacity: 0.7;
+    font-size: 3vw;
+}
+
+table {
+    width: 75%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+td {
+    border-bottom: 1px solid #ffffff7a;
+    padding: 1.5vw;
+    padding-left: 0px;
+}
+
+tr td:last-child {
+    text-align: right;
+    font-family: "ralewayBold";
+    opacity: 1;
+}
+
+.sign_afro{
+    width: 8vw;
+    position: absolute;
+    right: 0vw;
+    bottom: 27vw;
+    transform: rotate(-90deg);
+    opacity: 0.4;
 }

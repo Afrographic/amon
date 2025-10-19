@@ -25,7 +25,7 @@ class Menu {
                       pattern="[0-9]*"
                       placeholder="Exemple: 3000"
                       value="${Create.visuel.menu[i].plats[j].prix}"
-                      oninput="Menu.get_plat_price(this,${i},${j})"
+                      oninput="Menu.get_plat_prix(this,${i},${j})"
                     />
                   </div>
                 </div>
@@ -37,8 +37,9 @@ class Menu {
               <div class="label">Jour</div>
               <input
                 type="text"
+                value = "${Create.visuel.menu[i].jour}"
                 placeholder="Exemple: Lundi"
-                oninput="Menu.get_jour(this)"
+                oninput="Menu.get_jour(this,${i})"
               />
             </div>
             <div class="plat_container">
@@ -47,15 +48,39 @@ class Menu {
               </div>
               <div
                 class="b_secondary"
-                onclick="Education.add_new_eductation_entry()"
+                onclick="Menu.add_newPlat(${i})"
               >
-                <img src="assets/images/add.svg" alt="" width="16px" />
+                <img  src="assets/images/add.svg" alt="" width="16px" />
                 Ajouter un autre plat
               </div>
             </div>
           </div>
            `;
     }
+  }
+
+  static add_newPlat(menu_index) {
+    Create.visuel.menu[menu_index].plats.push({
+      name: "",
+      prix: "",
+    });
+    this.render();
+  }
+
+  static get_plat_name(input, menu_index, plat_index) {
+    Create.visuel.menu[menu_index].plats[plat_index].name = Tools.Ucase(
+      input.value
+    );
+  }
+
+  static get_plat_prix(input, menu_index, plat_index) {
+    Create.visuel.menu[menu_index].plats[plat_index].prix = Tools.Ucase(
+      input.value
+    );
+  }
+
+  static get_jour(input, menu_index) {
+    Create.visuel.menu[menu_index].jour = Tools.Ucase(input.value);
   }
 
   static add_new_entry() {

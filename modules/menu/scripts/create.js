@@ -55,6 +55,10 @@ class Create {
       alert("Localisation invalide!");
       return;
     }
-    console.log(this.visuel);
+    
+    Visuel1.render(this.visuel);
+    UI.show_render();
+    UI.hide_create();
+    DB.save_recent_menu(this.visuel);
   }
 }

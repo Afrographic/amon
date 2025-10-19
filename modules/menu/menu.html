@@ -10,8 +10,80 @@
     <script src="libs/jscolor.js"></script>
     <script src="libs/jsstore.js"></script>
     <script src="libs/jsstore.worker.js"></script>
+    <link rel="stylesheet" href="modeles/m1/m1.css" />
   </head>
   <body>
+    <!-- Splash Screen -->
+    <div class="splash" id="splash">
+      <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
+      <div>Djehouty</div>
+      <img
+        src="assets/images/afroSign.svg"
+        alt=""
+        width="12px"
+        style="
+          width: 65px;
+          /* margin-top: 64px; */
+          position: absolute;
+          bottom: 64px;
+        "
+      />
+    </div>
+    <!-- Visuels -->
+    <div class="renderer hidden" id="renderer">
+      <img
+        src="assets/images/back.svg"
+        width="24px"
+        alt=""
+        onclick="UI.hide_render();UI.show_create();"
+      />
+      <!-- Editer la charte graphique -->
+      <div class="CharteGraphique">
+        <div class="row g16 aic">
+          <img src="assets/images/djehouty_icon.svg" alt="" width="20px" />
+          <div>Djehouty</div>
+        </div>
+
+        <div class="persoColor">Personnaliser les couleurs</div>
+        <div class="row g16">
+          <div
+            class="colorPreview primary"
+            onclick="Charte.openPrimaryPicker()"
+            id="primaryColorPrev2"
+          >
+            <input
+              class="jscolor"
+              value="#2b76ff"
+              id="primaryPicker"
+              onchange="Charte.getPrimaryColor(event)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Visuel 1 -->
+      <div id="v1_render"></div>
+      <div class="render_extra">
+        <div
+          class="share_btn"
+          style="align-items: center"
+          onclick="Visuel1.export()"
+        >
+          <img src="assets/images/share.svg" width="18px" alt="" />
+          Partager votre visuel
+        </div>
+
+        <div class="donation">
+          <img src="assets/images/love.svg" width="20px" alt="" />
+          <div>
+            Participer au developpement en fesant un don au numero Orange Money
+            +237 697 830 071 (Tesse Brunel)
+          </div>
+        </div>
+
+        <img src="assets/images/afroSign.svg" class="render_sign" alt="" />
+      </div>
+    </div>
     <!-- Creation -->
     <div class="create" id="create">
       <div class="nameApp">
@@ -42,6 +114,7 @@
           <div class="label">Nom de votre restaurant</div>
           <input
             type="text"
+            id="nom_restaurant_input"
             placeholder="Nom de votre restaurant"
             oninput="Create.get_nom_restaurant(this)"
           />
@@ -51,6 +124,7 @@
           <input
             type="text"
             value="FCFA"
+            id="devise_input"
             placeholder="Devise"
             oninput="Create.get_devise(this)"
           />
@@ -58,7 +132,7 @@
         <div class="formItem">
           <div class="label">Texte d'accroche</div>
           <textarea
-           id="text_accroche"
+            id="text_accroche"
             type="text"
             placeholder="Exemple: Savourez l'instant, on s'occupe du reste"
             oninput="Create.get_text_accroche(this)"
@@ -109,7 +183,11 @@
             </div>
           </div>
         </div>
-        <div class="b_secondary" onclick="Menu.add_new_entry()">
+        <div
+          class="b_secondary"
+          onclick="Menu.add_new_entry()"
+          style="margin-top: 16px"
+        >
           <img src="assets/images/add.svg" alt="" width="16px" />
           Ajouter un autre Jour
         </div>
@@ -120,6 +198,7 @@
           <input
             type="text"
             placeholder="Telephone"
+            id="phone_input"
             oninput="Create.get_telephone(this)"
           />
         </div>
@@ -127,6 +206,7 @@
           <div class="label">Ou se situe votre restaurant?</div>
           <input
             type="text"
+            id="localisation_input"
             placeholder="Situe votre restaurant"
             oninput="Create.get_localisation(this)"
           />
@@ -148,6 +228,10 @@
     <script src="scripts/visuel_model.js"></script>
     <script src="scripts/create.js"></script>
     <script src="scripts/menu.js"></script>
-   
+    <script src="scripts/splash.js"></script>
+    <script src="scripts/m1_render.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/prefill_data.js"></script>
+    <script src="scripts/db.js"></script>
   </body>
 </html>

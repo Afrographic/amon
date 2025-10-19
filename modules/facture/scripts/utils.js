@@ -10,7 +10,7 @@ class HelperFunction {
     let milliseconds = date.getMilliseconds();
     return `${year}${month}${day}${hours}${minutes}${seconds}${milliseconds}`;
   }
-
+ 
   static Ucase(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }

@@ -1,4 +1,19 @@
 class Visuel1 {
+  static images = [
+    "1.JPG",
+    "2.WEPG",
+    "3.JPG",
+    "4.WEBP",
+    "5.JPG",
+    "6.JPG",
+    "7.JPG",
+    "8.JPG",
+    "9.JPG",
+    "10.JPG",
+    "11.JPG",
+    "12.JPG",
+  ];
+
   static mount() {
     fetch("modeles/m1/m1.html").then((res) => {
       res.text().then((val) => {
@@ -11,70 +26,72 @@ class Visuel1 {
     raw_template = raw_template.split("<body>")[1];
     raw_template = raw_template.split("<script>")[0];
     let v1_render = document.querySelector("#v1_render");
-    //Reset icons paths
-    raw_template = raw_template.replace(
-      "images/celandar.png",
-      "modeles/m1/images/celandar.png"
-    );
-    raw_template = raw_template.replace(
-      "images/time.png",
-      "modeles/m1/images/time.png"
-    );
-    raw_template = raw_template.replace(
-      "images/position.png",
-      "modeles/m1/images/position.png"
-    );
-    raw_template = raw_template.replace(
-      "images/ag_white.png",
-      "modeles/m1/images/ag_white.png"
-    );
-    raw_template = raw_template.replace(
-      "images/pharaon.png",
-      "modeles/m1/images/pharaon.png"
-    );
     v1_render.innerHTML = raw_template;
-    
+
     //Init coloring
-    Charte.init_coloring();
+    //Charte.init_coloring();
   }
 
   static render(visuel) {
-    // Background Image
-    let m1_background_image = document.querySelector("#m1_background_image");
-    let bg_url = URL.createObjectURL(visuel.image_fond);
-    m1_background_image.style.backgroundImage = `url(${bg_url})`;
-    //Logo
+    // Set Logo
     let m1_logo = document.querySelector("#m1_logo");
     m1_logo.src = `${URL.createObjectURL(visuel.logo)}`;
-    //Nom de la communaute
-    let m1_nom_communaute = document.querySelector("#m1_nom_communaute");
-    m1_nom_communaute.innerHTML = visuel.nom_communaute;
-    //Theme du meet
-    let m1_theme = document.querySelector("#m1_theme");
-    m1_theme.innerHTML = visuel.theme;
-    //Photo Intervenant
-    let m1_photo_intervenant = document.querySelector("#m1_photo_intervenant");
-    m1_photo_intervenant.src = visuel.crop_photo_intervenant;
-    //Intervenant name
-    let m1_intervenant_name = document.querySelector("#m1_intervenant_name");
-    m1_intervenant_name.innerHTML = visuel.nom_intervenant;
-    //Poste ou Metier intervenant
-    let m1_poste = document.querySelector("#m1_poste");
-    m1_poste.innerHTML = visuel.poste;
-    //Date
-    let m1_date_value = document.querySelector("#m1_date_value");
-    m1_date_value.innerHTML = `${Tools.get_week_day(visuel.date)},${Tools.format_date(visuel.date)}`
-    //Time
-    let m1_heure_value = document.querySelector("#m1_heure_value");
-    m1_heure_value.innerHTML = `${visuel.heure_debut} - ${visuel.heure_fin}`;
-    //Lieu du meet
-    let m1_lieu_value = document.querySelector("#m1_lieu_value");
-    m1_lieu_value.innerHTML = visuel.plateforme;
+    // Set Nom restaurant
+    let m1_nom_restaurant = document.querySelector("#m1_nom_restaurant");
+    m1_nom_restaurant.innerHTML = visuel.nom_restaurant;
+    // Set Text accrocheur
+    let m1_texte_accrocheur = document.querySelector("#m1_texte_accrocheur");
+    m1_texte_accrocheur.innerHTML = visuel.texte_accroche;
+    // set Menu
+    let menu_container = document.querySelector("#menu_container");
+    menu_container.innerHTML = "";
+    for (let i = 0; i <= visuel.menu.length - 1; i++) {
+      // Build menu items
+      let menu_items = "<table>";
+      for (let j = 0; j <= visuel.menu[i].plats.length - 1; j++) {
+        menu_items += `
+        <tr>
+          <td>${visuel.menu[i].plats[j].nom}</td>
+          <td>${Tools.format_number(visuel.menu[i].plats[j].prix)} ${
+          visuel.devise
+        }</td>
+        </tr>
+        `;
+      }
+      menu_items += "</table>";
+      menu_container.innerHTML += `
+      <div class="menu_item">
+        <div class="day_name">${visuel.menu[i].jour}</div>
+        ${menu_items}
+      </div>
+      `;
+    }
+    //Set phone
+    let m1_phone = document.querySelector("#m1_phone");
+    m1_phone.innerHTML = visuel.phone;
+    //Set localisation
+    let m1_localisation = document.querySelector("#m1_localisation");
+    m1_localisation.innerHTML = visuel.localisation;
+    //Set Background Image
+    let m1_content = document.querySelector("#m1_content");
+    m1_content.style.backgroundImage = `url(images/food/${
+      this.images[Tools.rand(0, 11)]
+    })`;
+    //Set images 
+    let m1_imageItem = document.querySelectorAll(".m1_imageItem");
+    for(let item of m1_imageItem){
+      item.style.backgroundImage = `url(images/food/${
+        this.images[Tools.rand(0, 11)]
+      })`;
+    }
+    // Set date
+    let m1_date = document.querySelector("#m1_date");
+    m1_date.innerHTML = visuel.date;
   }
 
-  static export(){
+  static export() {
     let v1_render = document.querySelector("#v1_render");
-    Tools.exportImage(v1_render,Create.visuel.theme);
+    Tools.exportImage(v1_render, Create.visuel.theme);
   }
 }
 

@@ -1,51 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modele Meet | Djehouty</title>
+    <title>Modele Menu Restaurant | Djehouty</title>
     <link rel="stylesheet" href="m1.css" />
   </head>
-  <body>
+  <body> 
     <div id="m1">
-      <!-- Background Image --> 
-      <div id="m1_background_image"></div>
-      <div id="m1_color_overlay"></div>
-      <!-- Logo et theme -->
-      <div id="m1_logo_name" class="relative">
-        <img src="images/ag_white.png" id="m1_logo" alt="" />
-        <div id="m1_nom_communaute">JetBrains</div>
-      </div>
-      <div id="m1_theme" class="relative">
-        COMPOSE & KMP - Construire des Apps Modernes et Performantes!
-      </div>
-      <!-- Intervenant -->
-      <div id="m1_intervenant_block" class="relative">
-        <div id="m1_image_container">
-          <img src="images/pharaon.png" alt="" id="m1_photo_intervenant" />
+      <!-- signature -->
+      <img src="images/afroSign.png" class="sign_afro" alt="" />
+      <div id="m1_content">
+        <!-- Overlay -->
+        <div id="m1_overlay"></div>
+        <!-- Images -->
+        <div class="m1_images">
+          <div class="m1_imageItem" id="m1_im1"></div>
+          <div class="m1_imageItem" id="m1_im2"></div>
+          <div class="m1_imageItem" id="m1_im3"></div>
+          <div class="m1_imageItem" id="m1_im4"></div>
+          <div class="m1_imageItem" id="m1_im5"></div>
         </div>
-        <div id="intervenant_info">
-            <div id="m1_intervenant_label">Intervenant</div>
-            <div id="m1_intervenant_name">Ulrich Pouani</div>
-            <div id="m1_poste">Lead Dev at DigitWace</div>
+        <!-- Content -->
+        <div class="m1_content_container">
+          <img src="images/ag_white.png" alt="" id="m1_logo" />
+          <div id="m1_nom_restaurant">Chick'Eden</div>
+          <h1 id="m1_texte_accrocheur">
+            Savourez l'instant, on s'occupe du reste
+          </h1>
+          <div id="menu_container">
+            <div class="menu_item">
+              <div class="day_name">Lundi</div>
+              <table>
+                <tr>
+                  <td>
+                    Mbongo viande de porc + Plantain mur + un pot de salade
+                  </td>
+                  <td>15 000 F</td>
+                </tr>
+                <tr>
+                  <td>Koki</td>
+                  <td>4500 F</td>
+                </tr>
+                <tr>
+                  <td>Ndole</td>
+                  <td>4500 F</td>
+                </tr>
+              </table>
+            </div>
+            <div class="menu_item">
+              <div class="day_name">Mercredi</div>
+              <table>
+                <tr>
+                  <td>Mbongo + Plantain mur</td>
+                  <td>3000 F</td>
+                </tr>
+                <tr>
+                  <td>Okok bassa</td>
+                  <td>4500 F</td>
+                </tr>
+                <tr>
+                  <td>Gomo poulet fume</td>
+                  <td>4500 F</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="menu_item">
+              <div class="day_name">Jeudi</div>
+              <table>
+                <tr>
+                  <td>Tripe saute</td>
+                  <td>3000 F</td>
+                </tr>
+                <tr>
+                  <td>Spaghetti + Plantain mur</td>
+                  <td>4500 F</td>
+                </tr>
+              </table>
+            </div>
+          </div> 
         </div>
       </div>
-      <!-- Lieu et horodatage -->
-      <div id="m1_date_heure" class="relative">
-        <div id="m1_date">
-            <img src="images/celandar.png" alt="">
-            <div id="m1_date_value">Jeudi 25 Octobre 2025</div>
+      <div id="m1_footer">
+        <div class="footer_item">
+          <img src="images/phone.png" alt="" />
+          <div id="m1_phone">(+237) 694 330 937 | 671 647 020</div>
         </div>
-        <div id="m1_heure">
-            <img src="images/time.png" alt="">
-            <div id="m1_heure_value">12h00 - 12h 45</div>
+        <div class="footer_item">
+          <img src="images/location.png" alt="" />
+          <div id="m1_localisation">
+            Yaounde - Hippodrome entre l'OAPI et la Banque Altlantique
+          </div>
         </div>
-      </div>  
-      <!-- Lieu -->
-      <div id="m1_lieu" class="relative">
-        <img src="images/position.png" alt="">
-        <div id="m1_lieu_value">Google Meets</div>
       </div>
+      <div id="m1_date">23 octobre 2025</div>
     </div>
   </body>
 </html>

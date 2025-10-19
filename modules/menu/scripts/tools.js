@@ -229,6 +229,17 @@ class Tools {
     const alphaHex = a.toString(16).padStart(2, "0");
     return `#${h.toLowerCase()}${alphaHex}`;
   }
+
+  static rand(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  static format_number(n) {
+    const s = String(n);
+    const [intPart, fracPart] = s.split(".");
+    const intWithSpace = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    return fracPart ? `${intWithSpace}.${fracPart}` : intWithSpace;
+  }
 }
 
 Tools.set_text_area_auto_grow(document.querySelector("#text_accroche"));
