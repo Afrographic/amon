@@ -1,7 +1,7 @@
 class Visuel1 {
   static images = [
     "1.JPG",
-    "2.WEPG",
+    "2.WEBP",
     "3.JPG",
     "4.WEBP",
     "5.JPG",
@@ -27,9 +27,6 @@ class Visuel1 {
     raw_template = raw_template.split("<script>")[0];
     let v1_render = document.querySelector("#v1_render");
     v1_render.innerHTML = raw_template;
-
-    //Init coloring
-    //Charte.init_coloring();
   }
 
   static render(visuel) {
@@ -51,7 +48,7 @@ class Visuel1 {
       for (let j = 0; j <= visuel.menu[i].plats.length - 1; j++) {
         menu_items += `
         <tr>
-          <td>${visuel.menu[i].plats[j].nom}</td>
+          <td>${visuel.menu[i].plats[j].name}</td>
           <td>${Tools.format_number(visuel.menu[i].plats[j].prix)} ${
           visuel.devise
         }</td>
@@ -68,7 +65,7 @@ class Visuel1 {
     }
     //Set phone
     let m1_phone = document.querySelector("#m1_phone");
-    m1_phone.innerHTML = visuel.phone;
+    m1_phone.innerHTML = Tools.format_number(visuel.phone);
     //Set localisation
     let m1_localisation = document.querySelector("#m1_localisation");
     m1_localisation.innerHTML = visuel.localisation;
@@ -87,11 +84,14 @@ class Visuel1 {
     // Set date
     let m1_date = document.querySelector("#m1_date");
     m1_date.innerHTML = visuel.date;
+
+    //Init coloring
+    Charte.init_coloring();
   }
 
   static export() {
     let v1_render = document.querySelector("#v1_render");
-    Tools.exportImage(v1_render, Create.visuel.theme);
+    Tools.exportImage(v1_render, "Menu");
   }
 }
 

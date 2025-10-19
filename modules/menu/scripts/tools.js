@@ -206,7 +206,7 @@ class Tools {
   }
 
   // 1) hex -> "rgba(r,g,b,a)"
-  static hexToRgba(hex, alpha = 0.05) {
+  static hexToRgba(hex, alpha = 0.91) {
     if (typeof hex !== "string") throw new TypeError("hex must be a string");
     const h = this.expandHex(hex.replace(/\s+/g, ""));
     if (!/^[0-9a-fA-F]{6}$/.test(h)) throw new Error("Invalid hex color");

@@ -117,6 +117,13 @@ h1 {
     display: flex;
     align-items: center;
     gap: 2vw;
+    flex: 1;
+}
+
+#logo_name{
+    display: flex;
+    align-items: center;
+    gap:2vw;
 }
 
 #m1_phone,
