@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Restaurant | Djehouty</title>
+    <link rel="icon" href="assets/images/djehouty_icon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="libs/html2canvas.min.js"></script>
+    <script src="libs/jscolor.js"></script>
+    <script src="libs/jsstore.js"></script>
+    <script src="libs/jsstore.worker.js"></script>
+  </head>
+  <body>
+    <!-- Creation -->
+    <div class="create" id="create">
+      <div class="nameApp">
+        <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
+        <div>Djehouty</div>
+      </div>
+      <h1>Creer le visuel du menu de votre restaurant</h1>
+      <p>Veuillez renseigner les informations ci dessous</p>
+
+      <!-- Formulaire -->
+      <div class="form">
+        <input
+          type="file"
+          hidden
+          id="logo_input"
+          accept="image/*"
+          onchange="Create.get_logo(event)"
+        />
+        <div
+          class="logo"
+          id="logo_placeholder"
+          onclick="Create.trigger_import_logo(this)"
+        >
+          <img src="assets/images/image.svg" width="20px" alt="" />
+          <div>Votre Logo</div>
+        </div>
+        <div class="formItem">
+          <div class="label">Nom de votre restaurant</div>
+          <input
+            type="text"
+            placeholder="Nom de votre restaurant"
+            oninput="Create.get_nom_restaurant(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Devise</div>
+          <input
+            type="text"
+            value="FCFA"
+            placeholder="Devise"
+            oninput="Create.get_devise(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Texte d'accroche</div>
+          <textarea
+           id="text_accroche"
+            type="text"
+            placeholder="Exemple: Savourez l'instant, on s'occupe du reste"
+            oninput="Create.get_text_accroche(this)"
+          ></textarea>
+        </div>
+        <!-- Menu -->
+        <p>Informations du menu</p>
+        <div id="menu">
+          <div class="menu_item">
+            <div class="formItem">
+              <div class="label">Jour</div>
+              <input
+                type="text"
+                placeholder="Exemple: Lundi"
+                oninput="Create.get_nom_communaute(this)"
+              />
+            </div>
+            <div class="plat_container">
+              <div class="plats">
+                <div class="plat_item">
+                  <div class="formItem">
+                    <div class="label">Plat</div>
+                    <input
+                      type="text"
+                      placeholder="Exemple: Pommes sautes"
+                      oninput="Create.get_nom_communaute(this)"
+                    />
+                  </div>
+                  <div class="formItem">
+                    <div class="label">Prix</div>
+                    <input
+                      type="number"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      placeholder="Exemple: 3000"
+                      oninput="Create.get_nom_communaute(this)"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="b_secondary"
+                onclick="Education.add_new_eductation_entry()"
+              >
+                <img src="assets/images/add.svg" alt="" width="16px" />
+                Ajouter un plat
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b_secondary" onclick="Menu.add_new_entry()">
+          <img src="assets/images/add.svg" alt="" width="16px" />
+          Ajouter un autre Jour
+        </div>
+        <!-- Contacts -->
+        <p>Contacts et localisation</p>
+        <div class="formItem">
+          <div class="label">Telephone</div>
+          <input
+            type="text"
+            placeholder="Telephone"
+            oninput="Create.get_telephone(this)"
+          />
+        </div>
+        <div class="formItem">
+          <div class="label">Ou se situe votre restaurant?</div>
+          <input
+            type="text"
+            placeholder="Situe votre restaurant"
+            oninput="Create.get_localisation(this)"
+          />
+        </div>
+      </div>
+
+      <!-- Generer Visuel Button -->
+      <div
+        class="b_primary"
+        onclick="Create.execute()"
+        style="margin-top: 16px"
+      >
+        <img src="assets/images/settings.svg" width="15px" alt="" />
+        Generer le visuel
+      </div>
+    </div>
+
+    <script src="scripts/tools.js"></script>
+    <script src="scripts/visuel_model.js"></script>
+    <script src="scripts/create.js"></script>
+    <script src="scripts/menu.js"></script>
+   
+  </body>
+</html>

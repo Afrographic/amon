@@ -79,7 +79,7 @@ class Visuel1 {
     v1_date.innerHTML = `${day_name} | ${readable_date}`;
     //Heure
     let v1_creneau = document.querySelector("#v1_creneau");
-    v1_creneau.innerHTML = `${visuel.heure_debut} - ${visuel.heure_debut}`;
+    v1_creneau.innerHTML = `${visuel.heure_debut} - ${visuel.heure_fin}`;
     //Localisation
     let v1_localisation = document.querySelector("#v1_localisation");
     v1_localisation.innerHTML = visuel.lieu;
