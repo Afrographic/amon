@@ -8,7 +8,7 @@ class Image_D{
         this.border_bottom_left_radius=4;
         this.border_bottom_right_radius=4;
         this.opacity=1;
-    }
+    } 
  
     render(){
         return `

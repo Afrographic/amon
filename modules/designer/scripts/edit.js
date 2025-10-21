@@ -87,4 +87,37 @@ class Edit {
     let image_edit = document.querySelector("#image_edit");
     image_edit.classList.add("hidden");
   }
+  //Edit image border radius
+  static edit_radius_top_left(el){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_top_left_radius = el.value;
+      }
+    }
+    Create.render();
+  }
+  static edit_radius_top_right(el){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_top_right_radius = el.value;
+      }
+    }
+    Create.render();
+  }
+  static edit_radius_bottom_left(el){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_bottom_left_radius = el.value;
+      }
+    }
+    Create.render();
+  }
+  static edit_radius_bottom_right(el){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_bottom_right_radius = el.value;
+      }
+    }
+    Create.render();
+  }
 }
