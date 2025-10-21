@@ -43,6 +43,8 @@ body{
     display: flex;
     flex-direction: column;
     gap: 3vw;
+    background-size: cover;
+    background-position: center;
 }
 
 .logo{

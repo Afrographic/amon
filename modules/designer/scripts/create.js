@@ -67,6 +67,12 @@ class Create {
     renderer.style.backgroundColor = el.value;
   }
 
+  static set_bg_image(e){
+    if(e.target.files.length == 0) return;
+    let url = URL.createObjectURL(e.target.files[0]);
+    renderer.style.backgroundImage = `url(${url})`;
+  }
+
   // Alignement horizontale
   static setHoriAlignLeft() {
     this.H_align = "flex-start";

@@ -15,7 +15,7 @@ class Utils {
     name = `${name} - ${this.generate_unique_id_from_time()}`;
     html2canvas(canvas, {
       useCors: true,
-      allowTaint: false,
+      allowTaint: true,
       scale: 8,
       width: canvas.offsetWidth,
       height: canvas.scrollHeight,
