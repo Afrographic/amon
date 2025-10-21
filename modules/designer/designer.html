@@ -33,13 +33,30 @@
         onclick="this.blur()"
         onchange="Edit.change_text_color(this)"
       />
-
+      <hr>
+      <div class="secondary" onclick="Edit.delete_text()">Supprimer du design</div>
       <div class="secondary" onclick="Edit.close_text_edit()">Fermer</div>
     </div>
-    <!-- Edit image size -->
+    <!-- Edit image -->
     <div class="b1 p16 hidden edit" id="image_edit">
+      <!-- Size -->
       <p>Editer la taille de l'image</p>
       <input type="range" value="60" min="0" max="100" oninput="Edit.change_image_size(this)">
+      <!-- Arrondis -->
+      <hr>
+      <div>Arrondis haut gauche</div>
+      <input type="range" value="4" min="0" max="128" oninput="Edit.change_image_size(this)">
+      <hr>
+      <div>Arrondis haut droite</div>
+      <input type="range" value="4" min="0" max="128" oninput="Edit.change_image_size(this)">
+      <hr>
+      <div>Arrondis bas gauche</div>
+      <input type="range" value="4" min="0" max="128" oninput="Edit.change_image_size(this)">
+      <hr>
+      <div>Arrondis bas droite</div>
+      <input type="range" value="4" min="0" max="128" oninput="Edit.change_image_size(this)">
+      <hr>
+      <div class="secondary" onclick="Edit.delete_image()">Supprimer du design</div>
       <div class="secondary" onclick="Edit.close_image_edit()">Fermer</div>
     </div>
     <div id="renderer"></div>

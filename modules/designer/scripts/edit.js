@@ -39,6 +39,34 @@ class Edit {
     text_color_editor.classList.add("hidden");
   }
 
+  static delete_text(){
+    if(confirm("Voulez vous vraiment supprimer ce texte de votre design?")){
+      Edit.close_text_edit();
+      let index = -1;
+      for (let i = 0; i <= Create.artboard.length - 1; i++) {
+        if (Create.artboard[i].id == Create.edit_id) {
+          index = i;
+        }
+      }
+      Create.artboard.splice(index,1);
+      Create.render();
+    }
+  }
+
+  static delete_image(){
+    if(confirm("Voulez vous vraiment supprimer cette image de votre design?")){
+      Edit.close_image_edit();
+      let index = -1;
+      for (let i = 0; i <= Create.artboard.length - 1; i++) {
+        if (Create.artboard[i].id == Create.edit_id) {
+          index = i;
+        }
+      }
+      Create.artboard.splice(index,1);
+      Create.render();
+    }
+  }
+
   static edit_image(image_id) {
     this.close_text_edit();
     Create.edit_id = image_id;

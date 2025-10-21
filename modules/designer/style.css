@@ -41,6 +41,10 @@ input,textarea{
     outline: none;
 }
 
+hr{
+    width: 100%;
+}
+
 #renderer{
     width: 100%;
     aspect-ratio: 1/1;
