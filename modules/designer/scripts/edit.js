@@ -1,6 +1,7 @@
 class Edit {
   static edit_text(text_id) {
     this.close_image_edit();
+    this.close_conteneur_edit();
     Create.edit_id = text_id;
     let text_color_editor = document.querySelector("#text_color_editor");
     text_color_editor.classList.remove("hidden");
@@ -10,6 +11,13 @@ class Edit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         text_edit_input.value = Create.artboard[i].value;
+      }
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            text_edit_input.value = Create.artboard[i].children[j].value;
+          }
+        }
       }
     }
   }
@@ -70,6 +78,7 @@ class Edit {
 
   static edit_image(image_id) {
     this.close_text_edit();
+    this.close_conteneur_edit();
     Create.edit_id = image_id;
     let image_edit = document.querySelector("#image_edit");
     image_edit.classList.remove("hidden");
@@ -142,12 +151,14 @@ class Edit {
   }
 
   static edit_conteneur(id) {
+    this.close_image_edit();
+    this.close_text_edit();
     Create.edit_id = id;
     let image_edit = document.querySelector("#conteneur_edit");
     image_edit.classList.remove("hidden");
   }
 
-  static set_conteneur_bg(el){
+  static set_conteneur_bg(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].background_color = el.value;
@@ -155,4 +166,22 @@ class Edit {
     }
     Create.render();
   }
+
+  static add_conteneur_text() {
+    let text = prompt("Inserez le texte");
+    if (text == null) return;
+    if (text.trim().length == 0) return;
+    let new_text = new Text();
+    new_text.value = text;
+    new_text.width = "auto";
+    //Append text to conteur
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].children.push(new_text);
+      }
+    }
+    Create.render();
+  }
+
+  static add_conteneur_image() {}
 }

@@ -8,6 +8,7 @@ class Text {
     this.text_align = "left";
     this.opacity = 1;
     this.line_height= "4.3vw";
+    this.width="70vw";
   }
 
   set_bold() {
@@ -23,7 +24,7 @@ class Text {
     color:${this.color};
     line-height: ${this.line_height};
     text-align:${this.text_align};
-    width: 70vw;
+    width: ${this.width};
     ">
       ${this.value}
     </div>

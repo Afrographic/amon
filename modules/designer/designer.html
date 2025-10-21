@@ -115,12 +115,13 @@
           Centre
         </div>
         <div class="secondary" onclick="Create.setHoriAlignRight()">Droite</div>
+        <div class="secondary" onclick="Create.setHoriAlignRight()">De part et d'autre</div>
       </div>
       <hr />
       <p>Ajouter une image</p>
-      <input type="file" hidden accept="image/*" />
+      <input type="file" onchange="Edit.add_conteneur_image(e)" accept="image/*" />
       <hr />
-      <div class="secondary" onclick="Create.setHoriAlignLeft()">
+      <div class="secondary" onclick="Edit.add_conteneur_text()">
         Ajouter un texte
       </div>
       <hr />
