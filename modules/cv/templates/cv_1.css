@@ -45,8 +45,12 @@ h1 {
     position: relative;
 }
 
+#cv1_email{
+    word-break: break-word;
+}
+
 .sideBar {
-    width: 44%;
+    width: 36%;
     height: 100%;
     background-color: #fff;
     display: flex;
