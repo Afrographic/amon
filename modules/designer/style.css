@@ -91,3 +91,17 @@ button{
 .g8{
     gap:8px;
 }
+
+.artboard_options{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    padding:16px;
+    border:1px solid #aaa;
+}
+
+.artboard_options .item{
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+}

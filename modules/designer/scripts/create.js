@@ -62,6 +62,11 @@ class Create {
     }
   }
 
+  static set_bg(el){
+    let renderer = document.querySelector("#renderer");
+    renderer.style.backgroundColor = el.value;
+  }
+
   // Alignement horizontale
   static setHoriAlignLeft() {
     this.H_align = "flex-start";
