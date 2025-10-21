@@ -1,9 +1,18 @@
 class Edit {
-  static edit_text_color(text_id) {
+  static edit_text(text_id) {
     this.close_image_edit();
     Create.edit_id = text_id;
     let text_color_editor = document.querySelector("#text_color_editor");
     text_color_editor.classList.remove("hidden");
+
+
+    //Prefill text area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        text_edit_input.value = Create.artboard[i].value;
+      }
+    }
   }
 
   static change_text_color(el) {
@@ -11,6 +20,15 @@ class Edit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].color = color;
+      }
+    }
+    Create.render();
+  }
+
+  static edit_text_value(el){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].value = el.value;
       }
     }
     Create.render();

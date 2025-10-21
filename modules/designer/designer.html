@@ -21,6 +21,11 @@
     <!-- Edit text color -->
     <div class="b1 p16 hidden edit" id="text_color_editor">
       <p>Editer le texte</p>
+      <hr>
+      <div>Contenu</div>
+      <textarea name="" id="text_edit_input" oninput="Edit.edit_text_value(this)"></textarea>
+      <hr>
+      <div>Couleur</div>
       <input
         class="jscolor"
         value="#fff"
@@ -28,6 +33,7 @@
         onclick="this.blur()"
         onchange="Edit.change_text_color(this)"
       />
+
       <div class="secondary" onclick="Edit.close_text_edit()">Fermer</div>
     </div>
     <!-- Edit image size -->
@@ -89,6 +95,7 @@
     />
     <div class="options">
       <div class="secondary" onclick="Create.add_image()">Ajouter une image</div>
+      <div class="secondary" onclick="Create.add_titre()">Ajouter un conteneur</div>
       <div class="secondary" onclick="Create.add_titre()">Ajouter un titre</div>
       <div class="secondary" onclick="Create.add_sous_titre()">
         Ajouter sous titre titre
@@ -106,6 +113,7 @@
     <script src="models/texte.js"></script>
     <script src="models/titre.js"></script>
     <script src="models/image.js"></script>
+    <script src="models/conteneur.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
