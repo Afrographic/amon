@@ -12,7 +12,7 @@ class Image_D{
  
     render(){
         return `
-        <img src="${this.url}" onclick="Create.edit_image('${this.id}')" style="
+        <img src="${this.url}" onclick="Edit.edit_image('${this.id}')" style="
         width:${this.width}vw;
         opacity:${this.opacity};
         border-top-left-radius:${this.border_top_left_radius}px;

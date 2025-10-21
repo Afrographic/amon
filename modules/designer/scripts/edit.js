@@ -1,0 +1,44 @@
+class Edit {
+  static edit_text_color(text_id) {
+    this.close_image_edit();
+    Create.edit_id = text_id;
+    let text_color_editor = document.querySelector("#text_color_editor");
+    text_color_editor.classList.remove("hidden");
+  }
+
+  static change_text_color(el) {
+    let color = el.value;
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].color = color;
+      }
+    }
+    Create.render();
+  }
+
+  static close_text_edit() {
+    let text_color_editor = document.querySelector("#text_color_editor");
+    text_color_editor.classList.add("hidden");
+  }
+
+  static edit_image(image_id) {
+    this.close_text_edit();
+    Create.edit_id = image_id;
+    let image_edit = document.querySelector("#image_edit");
+    image_edit.classList.remove("hidden");
+  }
+
+  static change_image_size(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].width = el.value;
+      }
+    }
+    Create.render();
+  }
+
+  static close_image_edit() {
+    let image_edit = document.querySelector("#image_edit");
+    image_edit.classList.add("hidden");
+  }
+}

@@ -129,34 +129,5 @@ class Create {
     }
   }
 
-  static edit_text_color(text_id){
-    this.edit_id = text_id;
-    let text_color_editor = document.querySelector("#text_color_editor");
-    text_color_editor.classList.remove("hidden");
-  }
-
-  static change_text_color(el){
-    let color = el.value;
-    for(let i = 0; i<=this.artboard.length-1;i++){
-      if(this.artboard[i].id == this.edit_id){
-        this.artboard[i].color = color;
-      }
-    }
-    this.render();
-  }
-
-  static edit_image(image_id){
-    this.edit_id = image_id;
-    let image_edit = document.querySelector("#image_edit");
-    image_edit.classList.remove("hidden");
-  }
-
-  static change_image_size(el){
-    for(let i = 0; i<=this.artboard.length-1;i++){
-      if(this.artboard[i].id == this.edit_id){
-        this.artboard[i].width = el.value;
-      }
-    }
-    this.render();
-  }
+ 
 }

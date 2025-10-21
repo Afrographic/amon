@@ -26,15 +26,15 @@
         value="#fff"
         id="primaryPicker"
         onclick="this.blur()"
-        onchange="Create.change_text_color(this)"
+        onchange="Edit.change_text_color(this)"
       />
-      <button onclick="this.parentNode.classList.add('hidden')">Fermer</button>
+      <button onclick="Edit.close_text_edit()">Fermer</button>
     </div>
     <!-- Edit image size -->
     <div class="b1 p16 hidden edit" id="image_edit">
       <p>Editer la taille de l'image</p>
-      <input type="range" value="60" min="0" max="100" oninput="Create.change_image_size(this)">
-      <button onclick="this.parentNode.classList.add('hidden')">Fermer</button>
+      <input type="range" value="60" min="0" max="100" oninput="Edit.change_image_size(this)">
+      <button onclick="Edit.close_image_edit()">Fermer</button>
     </div>
     <div id="renderer"></div>
 
@@ -108,5 +108,6 @@
     <script src="models/image.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
+    <script src="scripts/edit.js"></script>
   </body>
 </html>
