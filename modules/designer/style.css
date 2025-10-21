@@ -107,3 +107,17 @@ button{
     flex-direction: column;
     gap:4px;
 }
+
+.hidden{
+    display: none !important;
+}
+
+.edit input{
+    width: 100%;
+}
+
+.edit {
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+}

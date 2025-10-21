@@ -18,7 +18,26 @@
       <h3>Djehouty Designer</h3>
     </div>
 
+    <!-- Edit text color -->
+    <div class="b1 p16 hidden edit" id="text_color_editor">
+      <p>Editer la couleur du texte</p>
+      <input
+        class="jscolor"
+        value="#fff"
+        id="primaryPicker"
+        onclick="this.blur()"
+        onchange="Create.change_text_color(this)"
+      />
+      <button onclick="this.parentNode.classList.add('hidden')">Fermer</button>
+    </div>
+    <!-- Edit image size -->
+    <div class="b1 p16 hidden edit" id="image_edit">
+      <p>Editer la taille de l'image</p>
+      <input type="range" value="60" min="0" max="100" oninput="Create.change_image_size(this)">
+      <button onclick="this.parentNode.classList.add('hidden')">Fermer</button>
+    </div>
     <div id="renderer"></div>
+
     <p>Cliquez sur element graphique pour editer ses proprietes</p>
     <button onclick="Create.export()" style="margin-top: 16px">
       Exporter le visuel
@@ -53,7 +72,11 @@
       </div>
       <div class="item">
         <div>Image de fond</div>
-        <input type="file" accept="image/*" onchange="Create.set_bg_image(event)" />
+        <input
+          type="file"
+          accept="image/*"
+          onchange="Create.set_bg_image(event)"
+        />
       </div>
     </div>
 

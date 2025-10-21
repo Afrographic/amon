@@ -15,7 +15,7 @@ class MiniTexte {
 
   render() {
     return `
-        <div id="${this.id}" style="
+        <div id="${this.id}" onclick="Create.edit_text_color('${this.id}')" style="
         opacity:${this.opacity};
         font-size:${this.font_size};
         font-family:${this.font};
