@@ -1,0 +1,93 @@
+@font-face {
+    font-family: "ralewayRegular";
+    src: url(assets/fonts/Raleway-Regular.ttf)
+}
+
+@font-face {
+    font-family: "ralewayBlack";
+    src: url(assets/fonts/Raleway-Black.ttf)
+}
+ 
+@font-face {
+    font-family: "ralewayBold";
+    src: url(assets/fonts/Raleway-Bold.ttf)
+}
+
+h1 {
+    font-family: "ralewayBlack";
+}
+
+h2{
+    font-family: "ralewayBold";
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "ralewayRegular";
+}
+
+body{
+    margin:0;
+    padding: 16px;
+    background-color: #dbdbdb;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+#renderer{
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #fff;
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap:16px;
+    justify-content: center;
+}
+
+.options{
+    display: flex;
+    flex-direction: column;
+    gap:2px;
+}
+button{
+    padding: 16px;
+    width: 100%;
+    text-align: left;
+}
+
+.b1{
+    border:1px solid #aaa;
+}
+
+.p16{
+    padding:16px;
+}
+
+.row{
+    display: flex;
+}
+
+.aic{
+    align-items: center;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.g4{
+    gap:4px;
+}
+
+.g8{
+    gap:8px;
+}

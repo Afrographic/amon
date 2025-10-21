@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Designer | Djehouty</title>
+    <link rel="icon" href="assets/images/djehouty_icon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Libs -->
+    <script src="libs/html2canvas.min.js"></script>
+    <script src="libs/jscolor.js"></script>
+    <script src="libs/jsstore.js"></script>
+    <script src="libs/jsstore.worker.js"></script>
+  </head>
+  <body>
+    <div class="logo">
+      <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
+      <h3>Djehouty Designer</h3>
+    </div>
+
+    <div id="renderer"></div>
+    <p>Cliquez sur element graphique pour editer ses proprietes</p>
+    <button onclick="Create.export()" style="margin-top: 16px">
+      Exporter le visuel
+    </button>
+    <button onclick="Create.reset()">Tous effacer</button>
+    <div class="b1 p16 column g4">
+      Alignement de la zone de travail
+      <div class="row aic">
+        <button onclick="Create.setAlignLeft()">Gauche</button>
+        <button onclick="Create.setAlignCenter()">Centre</button>
+        <button onclick="Create.setAlignRight()">Droite</button>
+      </div>
+    </div>
+
+    <input
+      type="file"
+      id="image_input"
+      hidden
+      accept="image/*"
+      onchange="Create.get_image(event)"
+    />
+    <div class="options">
+      <button onclick="Create.add_image()">Ajouter une image</button>
+      <button onclick="Create.add_titre()">Ajouter un titre</button>
+      <button onclick="Create.add_sous_titre()">
+        Ajouter sous titre titre
+      </button>
+      <button onclick="Create.add_text()">Ajouter un texte</button>
+      <button onclick="Create.add_mini_text()">Ajouter un mini texte</button>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Utils -->
+    <script src="libs/utils.js"></script>
+    <!-- Models -->
+    <script src="models/mini_texte.js"></script>
+    <script src="models/sous_titre.js"></script>
+    <script src="models/texte.js"></script>
+    <script src="models/titre.js"></script>
+    <script src="models/image.js"></script>
+    <!-- Engines -->
+    <script src="scripts/create.js"></script>
+  </body>
+</html>
