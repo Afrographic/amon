@@ -91,7 +91,7 @@ class CV1_renderer{
 
         //Render education
         this.cv1_education.innerHTML = `
-        <div class="f10 bold">EDUCATION</div>
+        <div class="bold cv1_title">EDUCATION</div>
         `
         for(let i = 0 ; i<=info.educations.length-1;i++){
             if(info.educations[i].diplome.trim().length== 0) continue;
