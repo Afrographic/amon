@@ -53,6 +53,12 @@ class Create {
     this.render();
   }
 
+  static add_conteneur(){
+    let conteneur = new Conteneur();
+    this.artboard.push(conteneur);
+    this.render();
+  }
+
   static render() {
     let renderer = document.querySelector("#renderer");
     renderer.style.alignItems = this.H_align;

@@ -5,7 +5,6 @@ class Edit {
     let text_color_editor = document.querySelector("#text_color_editor");
     text_color_editor.classList.remove("hidden");
 
-
     //Prefill text area
     let text_edit_input = document.querySelector("#text_edit_input");
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -25,7 +24,7 @@ class Edit {
     Create.render();
   }
 
-  static edit_text_value(el){
+  static edit_text_value(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].value = el.value;
@@ -39,8 +38,8 @@ class Edit {
     text_color_editor.classList.add("hidden");
   }
 
-  static delete_text(){
-    if(confirm("Voulez vous vraiment supprimer ce texte de votre design?")){
+  static delete_text() {
+    if (confirm("Voulez vous vraiment supprimer ce texte de votre design?")) {
       Edit.close_text_edit();
       let index = -1;
       for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -48,13 +47,15 @@ class Edit {
           index = i;
         }
       }
-      Create.artboard.splice(index,1);
+      Create.artboard.splice(index, 1);
       Create.render();
     }
   }
 
-  static delete_image(){
-    if(confirm("Voulez vous vraiment supprimer cette image de votre design?")){
+  static delete_image() {
+    if (
+      confirm("Voulez vous vraiment supprimer cette image de votre design?")
+    ) {
       Edit.close_image_edit();
       let index = -1;
       for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -62,7 +63,7 @@ class Edit {
           index = i;
         }
       }
-      Create.artboard.splice(index,1);
+      Create.artboard.splice(index, 1);
       Create.render();
     }
   }
@@ -88,7 +89,7 @@ class Edit {
     image_edit.classList.add("hidden");
   }
   //Edit image border radius
-  static edit_radius_top_left(el){
+  static edit_radius_top_left(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_top_left_radius = el.value;
@@ -96,7 +97,7 @@ class Edit {
     }
     Create.render();
   }
-  static edit_radius_top_right(el){
+  static edit_radius_top_right(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_top_right_radius = el.value;
@@ -104,7 +105,7 @@ class Edit {
     }
     Create.render();
   }
-  static edit_radius_bottom_left(el){
+  static edit_radius_bottom_left(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_bottom_left_radius = el.value;
@@ -112,10 +113,44 @@ class Edit {
     }
     Create.render();
   }
-  static edit_radius_bottom_right(el){
+  static edit_radius_bottom_right(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_bottom_right_radius = el.value;
+      }
+    }
+    Create.render();
+  }
+
+  // Edit Conteneur
+  static close_conteneur_edit() {
+    let image_edit = document.querySelector("#conteneur_edit");
+    image_edit.classList.add("hidden");
+  }
+
+  static delete_conteneur() {
+    if (confirm("Voulez vous vraiment supprimer le conteneur?")) {
+      let index = -1;
+      for (let i = 0; i <= Create.artboard.length - 1; i++) {
+        if (Create.artboard[i].id == Create.edit_id) {
+          index = i;
+        }
+      }
+      Create.artboard.splice(index, 1);
+      Create.render();
+    }
+  }
+
+  static edit_conteneur(id) {
+    Create.edit_id = id;
+    let image_edit = document.querySelector("#conteneur_edit");
+    image_edit.classList.remove("hidden");
+  }
+
+  static set_conteneur_bg(el){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].background_color = el.value;
       }
     }
     Create.render();
