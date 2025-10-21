@@ -121,3 +121,9 @@ button{
     flex-direction: column;
     gap:4px;
 }
+
+.secondary{
+    padding:16px;
+    text-align: left;
+    border:1px solid #000;
+}

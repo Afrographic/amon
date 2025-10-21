@@ -28,36 +28,36 @@
         onclick="this.blur()"
         onchange="Edit.change_text_color(this)"
       />
-      <button onclick="Edit.close_text_edit()">Fermer</button>
+      <div class="secondary" onclick="Edit.close_text_edit()">Fermer</div>
     </div>
     <!-- Edit image size -->
     <div class="b1 p16 hidden edit" id="image_edit">
       <p>Editer la taille de l'image</p>
       <input type="range" value="60" min="0" max="100" oninput="Edit.change_image_size(this)">
-      <button onclick="Edit.close_image_edit()">Fermer</button>
+      <div class="secondary" onclick="Edit.close_image_edit()">Fermer</div>
     </div>
     <div id="renderer"></div>
 
     <p>Cliquez sur element graphique pour editer ses proprietes</p>
-    <button onclick="Create.export()" style="margin-top: 16px">
+    <div class="secondary" onclick="Create.export()" style="margin-top: 16px">
       Exporter le visuel
-    </button>
-    <button onclick="Create.reset()">Tous effacer</button>
+    </div>
+    <div class="secondary" onclick="Create.reset()">Tous effacer</div>
     <div class="artboard_options">
       <div class="item">
         <div>Alignement horizontale</div>
         <div class="row aic">
-          <button onclick="Create.setHoriAlignLeft()">Gauche</button>
-          <button onclick="Create.setHoriAlignCenter()">Centre</button>
-          <button onclick="Create.setHoriAlignRight()">Droite</button>
+          <div class="secondary" onclick="Create.setHoriAlignLeft()">Gauche</div>
+          <div class="secondary" onclick="Create.setHoriAlignCenter()">Centre</div>
+          <div class="secondary" onclick="Create.setHoriAlignRight()">Droite</div>
         </div>
       </div>
       <div class="item">
         <div>Alignement verticale</div>
         <div class="row aic">
-          <button onclick="Create.setVertAlignTop()">en haut</button>
-          <button onclick="Create.setVertAlignCenter()">Centre</button>
-          <button onclick="Create.setVertAlignBottom()">en bas</button>
+          <div class="secondary" onclick="Create.setVertAlignTop()">en haut</div>
+          <div class="secondary" onclick="Create.setVertAlignCenter()">Centre</div>
+          <div class="secondary" onclick="Create.setVertAlignBottom()">en bas</div>
         </div>
       </div>
       <div class="item">
@@ -88,13 +88,13 @@
       onchange="Create.get_image(event)"
     />
     <div class="options">
-      <button onclick="Create.add_image()">Ajouter une image</button>
-      <button onclick="Create.add_titre()">Ajouter un titre</button>
-      <button onclick="Create.add_sous_titre()">
+      <div class="secondary" onclick="Create.add_image()">Ajouter une image</div>
+      <div class="secondary" onclick="Create.add_titre()">Ajouter un titre</div>
+      <div class="secondary" onclick="Create.add_sous_titre()">
         Ajouter sous titre titre
-      </button>
-      <button onclick="Create.add_text()">Ajouter une description</button>
-      <button onclick="Create.add_mini_text()">Ajouter un mini texte</button>
+      </div>
+      <div class="secondary" onclick="Create.add_text()">Ajouter une description</div>
+      <div class="secondary" onclick="Create.add_mini_text()">Ajouter un mini texte</div>
     </div>
 
     <!-- Scripts -->
