@@ -25,11 +25,17 @@
     </button>
     <button onclick="Create.reset()">Tous effacer</button>
     <div class="b1 p16 column g4">
-      Alignement de la zone de travail
+      <div>Alignement horizontale</div>
       <div class="row aic">
-        <button onclick="Create.setAlignLeft()">Gauche</button>
-        <button onclick="Create.setAlignCenter()">Centre</button>
-        <button onclick="Create.setAlignRight()">Droite</button>
+        <button onclick="Create.setHoriAlignLeft()">Gauche</button>
+        <button onclick="Create.setHoriAlignCenter()">Centre</button>
+        <button onclick="Create.setHoriAlignRight()">Droite</button>
+      </div>
+      <div>Alignement verticale</div>
+      <div class="row aic">
+        <button onclick="Create.setVertAlignTop()">en haut</button>
+        <button onclick="Create.setVertAlignCenter()">Centre</button>
+        <button onclick="Create.setVertAlignBottom()">en bas</button>
       </div>
     </div>
 

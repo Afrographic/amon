@@ -1,5 +1,6 @@
 class Create {
-  static align = "flex-start";
+  static H_align = "flex-start";
+  static V_align = "flex-start";
   static artboard = [];
   static add_titre() {
     let titre = prompt("Inserez le titre");
@@ -53,35 +54,50 @@ class Create {
 
   static render() {
     let renderer = document.querySelector("#renderer");
-    renderer.style.alignItems = this.align;
+    renderer.style.alignItems = this.H_align;
+    renderer.style.justifyContent = this.V_align;
     renderer.innerHTML = "";
     for (let el of this.artboard) {
       renderer.innerHTML += el.render();
     }
   }
 
-  static setAlignLeft() {
-    this.align = "flex-start";
+  // Alignement horizontale
+  static setHoriAlignLeft() {
+    this.H_align = "flex-start";
     //Align text elements
     for (let item of this.artboard) {
       item.text_align = "left";
     }
     this.render();
   }
-  static setAlignRight() {
-    this.align = "flex-end";
+  static setHoriAlignRight() {
+    this.H_align = "flex-end";
     //Align text elements
     for (let item of this.artboard) {
       item.text_align = "right";
     }
     this.render();
   }
-  static setAlignCenter() {
-    this.align = "center";
+  static setHoriAlignCenter() {
+    this.H_align = "center";
     //Align text elements
     for (let item of this.artboard) {
       item.text_align = "center";
     }
+    this.render();
+  }
+  // Alignement verticale
+  static setVertAlignTop() {
+    this.V_align = "flex-start";
+    this.render();
+  }
+  static setVertAlignBottom() {
+    this.V_align = "flex-end";
+    this.render();
+  }
+  static setVertAlignCenter() {
+    this.V_align = "center";
     this.render();
   }
 
