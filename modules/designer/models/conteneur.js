@@ -12,7 +12,10 @@ class Conteneur {
     this.border_top_right_radius = 0;
     this.border_bottom_left_radius = 0;
     this.border_bottom_right_radius = 0;
+    this.direction="row";
     this.width=100;
+    this.vertAlign="center";
+    this.bg_file = undefined;
   }
 
   render() {
@@ -28,7 +31,8 @@ class Conteneur {
         background-image:${this.background_image};
         width:${this.width}%;
         padding:${this.padding_top_bottom} ${this.padding_left_right};
-        align-items:center;
+        align-items:${this.vertAlign};
+        flex-direction:${this.direction};
         justify-content:${this.align};
         border-top-left-radius:${this.border_top_left_radius}px;
         border-top-right-radius:${this.border_top_right_radius}px;

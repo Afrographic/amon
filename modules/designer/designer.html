@@ -93,12 +93,12 @@
         max="128"
         oninput="Edit.edit_radius_bottom_right(this)"
       />
-      <hr>
-      <div class="secondary" >
+      <hr />
+      <div class="secondary">
         Remplacer l'image
-        <input type="file" onchange="ImageEdit.replaceImage(event)">
+        <input type="file" onchange="ImageEdit.replaceImage(event)" />
       </div>
-      <hr>
+      <hr />
       <div class="secondary" onclick="ImageEdit.crop_to_square()">
         Recadrer en taille carre
       </div>
@@ -114,6 +114,30 @@
 
     <!-- Edit conteneur -->
     <div class="b1 p16 hidden edit" id="conteneur_edit">
+      <div>
+        <div>Direction</div>
+        <div class="row">
+          <div class="secondary f1" onclick="ConteneurEdit.set_vertical()">
+            Verticale
+          </div>
+          <div class="secondary f1" onclick="ConteneurEdit.set_horizontal()">
+            Horizontale
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div>
+        <div>Espacement entre les elements</div>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="8"
+          oninput="ConteneurEdit.set_gap(this)"
+        />
+      </div>
+
+      <hr />
       <div>Largeur</div>
       <input
         type="range"
@@ -129,6 +153,9 @@
         onchange="ConteneurEdit.set_bg_image(event)"
         accept="image/*"
       />
+      <div class="secondary" onclick="ConteneurEdit.darken_bg()">
+       Assombrir l'image de fond
+      </div>
       <hr />
       <div class="secondary" onclick="ConteneurEdit.add_title()">
         Ajouter un Titre
@@ -158,7 +185,8 @@
         onclick="this.blur()"
         onchange="Edit.set_conteneur_bg(this)"
       />
-      <p>Alignement</p>
+      <hr />
+      <p>Alignement horizonale</p>
       <div class="row aic">
         <div class="secondary" onclick="ConteneurEdit.set_left()">Gauche</div>
         <div class="secondary" onclick="ConteneurEdit.set_center()">Centre</div>
@@ -166,6 +194,13 @@
         <div class="secondary" onclick="ConteneurEdit.set_space_between()">
           De part et d'autre
         </div>
+      </div> 
+      <hr />
+      <div>Alignement verticale</div>
+      <div class="row aic">
+        <div class="secondary" onclick="ConteneurEdit.set_ver_left()">Gauche</div>
+        <div class="secondary" onclick="ConteneurEdit.set_ver_center()">Centre</div>
+        <div class="secondary" onclick="ConteneurEdit.set_ver_right()">Droite</div>
       </div>
       <hr />
 
@@ -190,7 +225,7 @@
       <div>Arrondis haut gauche</div>
       <input
         type="range"
-        value="4"
+        value="0"
         min="0"
         max="128"
         oninput="ConteneurEdit.edit_radius_top_left(this)"
@@ -199,7 +234,7 @@
       <div>Arrondis haut droite</div>
       <input
         type="range"
-        value="4"
+        value="0"
         min="0"
         max="128"
         oninput="ConteneurEdit.edit_radius_top_right(this)"
@@ -208,7 +243,7 @@
       <div>Arrondis bas gauche</div>
       <input
         type="range"
-        value="4"
+        value="0"
         min="0"
         max="128"
         oninput="ConteneurEdit.edit_radius_bottom_left(this)"
@@ -217,7 +252,7 @@
       <div>Arrondis bas droite</div>
       <input
         type="range"
-        value="4"
+        value="0"
         min="0"
         max="128"
         oninput="ConteneurEdit.edit_radius_bottom_right(this)"
@@ -236,9 +271,13 @@
       Exporter le visuel
     </div>
     <div class="secondary" onclick="Create.reset()">Tous effacer</div>
-    <hr>
-    <div class="secondary" onclick="UI.show_artboard_options()">Options de l'espace de travail</div>
-    <div class="secondary" onclick="UI.show_add_graphix()">Ajouter un element graphique</div>
+    <hr />
+    <div class="secondary" onclick="UI.show_artboard_options()">
+      Options de l'espace de travail
+    </div>
+    <div class="secondary" onclick="UI.show_add_graphix()">
+      Ajouter un element graphique
+    </div>
     <div class="artboard_options hidden edit" id="artboard_options">
       <div class="item">
         <div>Alignement horizontale</div>
@@ -254,7 +293,7 @@
           </div>
         </div>
       </div>
-      <hr>
+      <hr />
       <div class="item">
         <div>Alignement verticale</div>
         <div class="row aic">
@@ -269,7 +308,7 @@
           </div>
         </div>
       </div>
-      <hr>
+      <hr />
       <div class="item">
         <div>Couleur de fond</div>
         <input
@@ -280,7 +319,7 @@
           onchange="Create.set_bg(this)"
         />
       </div>
-      <hr>
+      <hr />
       <div class="item">
         <div>Image de fond</div>
         <input
@@ -289,9 +328,11 @@
           onchange="Create.set_bg_image(event)"
         />
       </div>
-      <hr>
-      <div class="secondary" onclick="Create.darken_bg()">Assombrir l'image de fond</div>
-      <hr>
+      <hr />
+      <div class="secondary" onclick="Create.darken_bg()">
+        Assombrir l'image de fond
+      </div>
+      <hr />
       <div class="secondary" onclick="UI.hide_artboard_options()">Fermer</div>
     </div>
 
@@ -320,7 +361,7 @@
       <div class="secondary" onclick="Create.add_mini_text()">
         Ajouter un mini texte
       </div>
-      <hr>
+      <hr />
       <div class="secondary" onclick="UI.hide_add_graphix()">Fermer</div>
     </div>
 

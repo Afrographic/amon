@@ -68,7 +68,7 @@ class ConteneurEdit {
   static edit_margin_top_bottom(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
-        Create.artboard[i].padding_top_bottom = el.value+"vw";
+        Create.artboard[i].padding_top_bottom = el.value + "vw";
       }
     }
     Create.render();
@@ -77,7 +77,7 @@ class ConteneurEdit {
   static edit_margin_left_right(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
-        Create.artboard[i].padding_left_right = el.value+"vw";
+        Create.artboard[i].padding_left_right = el.value + "vw";
       }
     }
     Create.render();
@@ -156,14 +156,82 @@ class ConteneurEdit {
     Create.render();
   }
 
-  static set_bg_image(e){
-    if(e.target.files.length == 0) return;
+  static set_bg_image(e) {
+    if (e.target.files.length == 0) return;
     let url = URL.createObjectURL(e.target.files[0]);
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].background_image = `url(${url})`;
+        Create.artboard[i].bg_file = e.target.files[0];
       }
     }
     Create.render();
+  }
+
+  static set_vertical() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].direction = `column`;
+      }
+    }
+    Create.render();
+  }
+  static set_horizontal() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].direction = `row`;
+      }
+    }
+    Create.render();
+  }
+
+  static set_gap(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].gap = el.value;
+      }
+    }
+    Create.render();
+  }
+
+  static set_ver_left() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].vertAlign = "flex-start";
+      }
+    }
+    Create.render();
+  }
+  static set_ver_center() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].vertAlign = "center";
+      }
+    }
+    Create.render();
+  }
+  static set_ver_right() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].vertAlign = "flex-end";
+      }
+    }
+    Create.render();
+  }
+
+  static darken_bg() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        if (Create.artboard[i].bg_file == undefined) return;
+        // Crop image
+        let img = new Image();
+        img.src = URL.createObjectURL(Create.artboard[i].bg_file);
+        img.onload = () => {
+          let darken_image_url = Utils.darken_image(img);
+          Create.artboard[i].background_image = `url(${darken_image_url})`;
+          Create.render();
+        };
+      }
+    }
   }
 }

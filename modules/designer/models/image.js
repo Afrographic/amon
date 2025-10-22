@@ -14,7 +14,7 @@ class Image_D{
     render(){
         return `
         <img src="${this.url}" onclick="Edit.edit_image(event,'${this.id}')" style="
-        width:${this.width}vw;
+        width:${this.width}%;
         opacity:${this.opacity};
         border-top-left-radius:${this.border_top_left_radius}px;
         border-top-right-radius:${this.border_top_right_radius}px;
