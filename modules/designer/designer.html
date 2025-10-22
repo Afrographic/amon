@@ -110,12 +110,12 @@
       />
       <p>Alignement</p>
       <div class="row aic">
-        <div class="secondary" onclick="Create.setHoriAlignLeft()">Gauche</div>
-        <div class="secondary" onclick="Create.setHoriAlignCenter()">
+        <div class="secondary" onclick="ConteneurEdit.set_left()">Gauche</div>
+        <div class="secondary" onclick="ConteneurEdit.set_center()">
           Centre
         </div>
-        <div class="secondary" onclick="Create.setHoriAlignRight()">Droite</div>
-        <div class="secondary" onclick="Create.setHoriAlignRight()">De part et d'autre</div>
+        <div class="secondary" onclick="ConteneurEdit.set_right()">Droite</div>
+        <div class="secondary" onclick="ConteneurEdit.set_space_between()">De part et d'autre</div>
       </div>
       <hr />
       <p>Ajouter une image</p>
@@ -226,5 +226,6 @@
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
+    <script src="scripts/conteneur_edit.js"></script>
   </body>
 </html>
