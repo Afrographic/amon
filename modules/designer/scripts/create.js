@@ -38,7 +38,7 @@ class Create {
     this.artboard.push(new_mini_texte);
     this.render();
   }
-
+ 
   static add_image() {
     let image_input = document.querySelector("#image_input");
     image_input.click();

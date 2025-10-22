@@ -47,13 +47,12 @@ class Edit {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].value = el.value;
       }
-
       // Edit  in conteneur children
       if (Create.artboard[i].children != undefined) {
         for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
           if (Create.artboard[i].children[j].id == Create.edit_id) {
             Create.artboard[i].children[j].value = el.value;
-            console.log("Found!");
+            
           }
         }
       }
@@ -96,7 +95,8 @@ class Edit {
     }
   }
 
-  static edit_image(image_id) {
+  static edit_image(event,image_id) {
+    event.stopPropagation();
     this.close_text_edit();
     this.close_conteneur_edit();
     Create.edit_id = image_id;
@@ -108,6 +108,15 @@ class Edit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].width = el.value;
+      }
+
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].width = el.value;
+          }
+        }
       }
     }
     Create.render();
@@ -123,6 +132,15 @@ class Edit {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_top_left_radius = el.value;
       }
+
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].border_top_left_radius = el.value;
+          }
+        }
+      }
     }
     Create.render();
   }
@@ -130,6 +148,14 @@ class Edit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_top_right_radius = el.value;
+      }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].border_top_right_radius = el.value;
+          }
+        }
       }
     }
     Create.render();
@@ -139,13 +165,30 @@ class Edit {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_bottom_left_radius = el.value;
       }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].border_bottom_left_radius = el.value;
+          }
+        }
+      }
     }
     Create.render();
   }
+
   static edit_radius_bottom_right(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_bottom_right_radius = el.value;
+      }
+       // Edit  in conteneur children
+       if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].border_bottom_right_radius = el.value;
+          }
+        }
       }
     }
     Create.render();
@@ -167,6 +210,7 @@ class Edit {
       }
       Create.artboard.splice(index, 1);
       Create.render();
+      this.close_conteneur_edit();
     }
   }
 
@@ -203,5 +247,17 @@ class Edit {
     Create.render();
   }
 
-  static add_conteneur_image() {}
+  static add_conteneur_image(e) {
+    if(e.target.files.length == 0) return;
+    let url = URL.createObjectURL(e.target.files[0]);
+    let image = new Image_D();
+    image.url = url;
+    //Append text to conteur
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].children.push(image);
+      }
+    }
+    Create.render();
+  }
 }

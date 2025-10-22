@@ -5,7 +5,8 @@ class Conteneur {
     this.gap = 4;
     this.align="flex-start";
     this.background_color="#c6c6c6"
-    this.padding="4vw";
+    this.padding_top_bottom="4vw";
+    this.padding_left_right="4vw";
   }
 
   render() {
@@ -20,7 +21,7 @@ class Conteneur {
         flex-wrap:wrap;
         background-color:${this.background_color};
         width:100%;
-        padding:${this.padding};
+        padding:${this.padding_top_bottom} ${this.padding_left_right};
         align-items:center;
         justify-content:${this.align};
         ">
