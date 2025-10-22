@@ -100,6 +100,17 @@
 
     <!-- Edit conteneur -->
     <div class="b1 p16 hidden edit" id="conteneur_edit">
+      <div class="secondary" onclick="Edit.add_conteneur_text()">
+        Ajouter un texte
+      </div>
+      <hr />
+      <p>Ajouter une image</p>
+      <input
+        type="file"
+        onchange="Edit.add_conteneur_image(event)"
+        accept="image/*"
+      />
+      <hr>
       <p>Arriere plan</p>
       <input
         class="jscolor"
@@ -111,19 +122,67 @@
       <p>Alignement</p>
       <div class="row aic">
         <div class="secondary" onclick="ConteneurEdit.set_left()">Gauche</div>
-        <div class="secondary" onclick="ConteneurEdit.set_center()">
-          Centre
-        </div>
+        <div class="secondary" onclick="ConteneurEdit.set_center()">Centre</div>
         <div class="secondary" onclick="ConteneurEdit.set_right()">Droite</div>
-        <div class="secondary" onclick="ConteneurEdit.set_space_between()">De part et d'autre</div>
+        <div class="secondary" onclick="ConteneurEdit.set_space_between()">
+          De part et d'autre
+        </div>
       </div>
       <hr />
-      <p>Ajouter une image</p>
-      <input type="file" onchange="Edit.add_conteneur_image(event)" accept="image/*" />
+      
+      <div>Marge verticale</div>
+      <input
+        type="range"
+        value="4"
+        min="0"
+        max="64"
+        oninput="ConteneurEdit.edit_margin_top_bottom(this)"
+      />
+      <div>Marge horizontale</div>
+      <input
+        type="range"
+        value="4"
+        min="0"
+        max="64"
+        oninput="ConteneurEdit.edit_margin_left_right(this)"
+      />
       <hr />
-      <div class="secondary" onclick="Edit.add_conteneur_text()">
-        Ajouter un texte
-      </div>
+     
+      <div>Arrondis haut gauche</div>
+      <input
+        type="range"
+        value="4"
+        min="0"
+        max="128"
+        oninput="ConteneurEdit.edit_radius_top_left(this)"
+      />
+      <hr />
+      <div>Arrondis haut droite</div>
+      <input
+        type="range"
+        value="4"
+        min="0"
+        max="128"
+        oninput="ConteneurEdit.edit_radius_top_right(this)"
+      />
+      <hr />
+      <div>Arrondis bas gauche</div>
+      <input
+        type="range"
+        value="4"
+        min="0"
+        max="128"
+        oninput="ConteneurEdit.edit_radius_bottom_left(this)"
+      />
+      <hr />
+      <div>Arrondis bas droite</div>
+      <input
+        type="range"
+        value="4"
+        min="0"
+        max="128"
+        oninput="ConteneurEdit.edit_radius_bottom_right(this)"
+      />
       <hr />
       <div class="secondary" onclick="Edit.delete_conteneur()">
         Supprimer du design

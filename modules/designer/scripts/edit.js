@@ -1,7 +1,6 @@
 class Edit {
   static edit_text(event, text_id) {
     event.stopPropagation();
-    console.log(text_id);
     this.close_image_edit();
     this.close_conteneur_edit();
     Create.edit_id = text_id;
@@ -52,7 +51,6 @@ class Edit {
         for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
           if (Create.artboard[i].children[j].id == Create.edit_id) {
             Create.artboard[i].children[j].value = el.value;
-            
           }
         }
       }
@@ -73,9 +71,23 @@ class Edit {
         if (Create.artboard[i].id == Create.edit_id) {
           index = i;
         }
+        let index2 = -1;
+        if (Create.artboard[i].children != undefined) {
+          for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+            if (Create.artboard[i].children[j].id == Create.edit_id) {
+              index2 = j;
+            }
+          }
+        }
+        if (index2 != -1) {
+          Create.artboard[i].children.splice(index2, 1);
+          Create.render();
+        }
       }
-      Create.artboard.splice(index, 1);
-      Create.render();
+      if (index != -1) {
+        Create.artboard.splice(index, 1);
+        Create.render();
+      }
     }
   }
 
@@ -89,13 +101,28 @@ class Edit {
         if (Create.artboard[i].id == Create.edit_id) {
           index = i;
         }
+
+        let index2 = -1;
+        if (Create.artboard[i].children != undefined) {
+          for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+            if (Create.artboard[i].children[j].id == Create.edit_id) {
+              index2 = j;
+            }
+          }
+        }
+        if (index2 != -1) {
+          Create.artboard[i].children.splice(index2, 1);
+          Create.render();
+        }
       }
-      Create.artboard.splice(index, 1);
-      Create.render();
+      if (index != -1) {
+        Create.artboard.splice(index, 1);
+        Create.render();
+      }
     }
   }
 
-  static edit_image(event,image_id) {
+  static edit_image(event, image_id) {
     event.stopPropagation();
     this.close_text_edit();
     this.close_conteneur_edit();
@@ -182,11 +209,12 @@ class Edit {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].border_bottom_right_radius = el.value;
       }
-       // Edit  in conteneur children
-       if (Create.artboard[i].children != undefined) {
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
         for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
           if (Create.artboard[i].children[j].id == Create.edit_id) {
-            Create.artboard[i].children[j].border_bottom_right_radius = el.value;
+            Create.artboard[i].children[j].border_bottom_right_radius =
+              el.value;
           }
         }
       }
@@ -248,7 +276,7 @@ class Edit {
   }
 
   static add_conteneur_image(e) {
-    if(e.target.files.length == 0) return;
+    if (e.target.files.length == 0) return;
     let url = URL.createObjectURL(e.target.files[0]);
     let image = new Image_D();
     image.url = url;
