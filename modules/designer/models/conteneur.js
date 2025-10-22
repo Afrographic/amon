@@ -19,7 +19,7 @@ class Conteneur {
       children_template += item.render();
     }
     return `
-        <div onclick="Edit.edit_conteneur('${this.id}')" style="
+        <div onclick="Edit.edit_conteneur('${this.id}')" class="conteneur" style="
         display:flex;
         gap:${this.gap}vw;
         background-color:${this.background_color};

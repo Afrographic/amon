@@ -137,3 +137,8 @@ button{
     text-align: left;
     border:1px solid #000;
 }
+
+.conteneur{
+    background-size: cover;
+    background-position: center;
+}
