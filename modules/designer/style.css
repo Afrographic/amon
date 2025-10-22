@@ -138,6 +138,7 @@ button{
     max-height: 80vh;
     overflow: auto;
     padding:16px;
+    overflow-x: hidden;
 }
 
 .secondary{

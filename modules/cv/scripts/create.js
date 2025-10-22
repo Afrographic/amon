@@ -80,7 +80,7 @@ class Create {
       alert("Telephone invalide");
       return;
     }
-
+ 
     // Crop image
     let img = new Image();
     img.src = URL.createObjectURL(this.cv.photo);

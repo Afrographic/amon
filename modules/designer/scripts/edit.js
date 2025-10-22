@@ -135,7 +135,7 @@ class Edit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].width = el.value;
-      }
+      } 
 
       // Edit  in conteneur children
       if (Create.artboard[i].children != undefined) {
@@ -281,6 +281,7 @@ class Edit {
     let url = URL.createObjectURL(e.target.files[0]);
     let image = new Image_D();
     image.url = url;
+    image.file = e.target.files[0];
     //Append text to conteur
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {

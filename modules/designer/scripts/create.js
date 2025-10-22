@@ -1,6 +1,7 @@
 class Create {
   static H_align = "flex-start";
   static V_align = "flex-start";
+  static bg_file = undefined;
   static edit_id = "";
   static artboard = [];
   static add_titre() {
@@ -38,7 +39,7 @@ class Create {
     this.artboard.push(new_mini_texte);
     this.render();
   }
- 
+
   static add_image() {
     let image_input = document.querySelector("#image_input");
     image_input.click();
@@ -49,11 +50,14 @@ class Create {
     let url = URL.createObjectURL(e.target.files[0]);
     let image = new Image_D();
     image.url = url;
+    image.file = e.target.files[0];
     this.artboard.push(image);
     this.render();
+    UI.hide_add_graphix();
   }
 
-  static add_conteneur(){
+  static add_conteneur() {
+    UI.hide_add_graphix();
     let conteneur = new Conteneur();
     this.artboard.push(conteneur);
     this.render();
@@ -69,15 +73,16 @@ class Create {
     }
   }
 
-  static set_bg(el){
+  static set_bg(el) {
     let renderer = document.querySelector("#renderer");
     renderer.style.backgroundColor = el.value;
-    renderer.style.backgroundImage ="";
+    renderer.style.backgroundImage = "";
   }
 
-  static set_bg_image(e){
+  static set_bg_image(e) {
     let renderer = document.querySelector("#renderer");
-    if(e.target.files.length == 0) return;
+    if (e.target.files.length == 0) return;
+    this.bg_file = e.target.files[0];
     let url = URL.createObjectURL(e.target.files[0]);
     renderer.style.backgroundImage = `url(${url})`;
   }
@@ -132,10 +137,20 @@ class Create {
       this.artboard = [];
       this.render();
       let renderer = document.querySelector("#renderer");
-      renderer.style.backgroundImage ="";
-      renderer.style.backgroundColor ="#fff";
+      renderer.style.backgroundImage = "";
+      renderer.style.backgroundColor = "#fff";
     }
   }
 
- 
+  static darken_bg() {
+    if (this.bg_file == undefined) return;
+    // Crop image
+    let img = new Image();
+    img.src = URL.createObjectURL(this.bg_file);
+    img.onload = () => {
+      let darken_image_url = Utils.darken_image(img);
+      let renderer = document.querySelector("#renderer");
+      renderer.style.backgroundImage = `url(${darken_image_url})`;
+    };
+  }
 }

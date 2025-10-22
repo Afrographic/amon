@@ -2,6 +2,7 @@ class Image_D{
     constructor(){
         this.id = Utils.generate_unique_id_from_time();
         this.url="";
+        this.file=undefined;
         this.width=60;
         this.border_top_left_radius=4;
         this.border_top_right_radius=4;
