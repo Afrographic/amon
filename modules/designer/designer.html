@@ -12,7 +12,7 @@
     <script src="libs/jsstore.js"></script>
     <script src="libs/jsstore.worker.js"></script>
     <!-- disables automatic phone/email/address detection on iOS Safari -->
-    <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <meta name="format-detection" content="telephone=no,email=no,address=no" />
   </head>
   <body>
     <div class="logo">
@@ -110,14 +110,14 @@
         max="100"
         oninput="ConteneurEdit.set_width(this)"
       />
-      <hr>
+      <hr />
       <p>Image de fond</p>
       <input
         type="file"
         onchange="ConteneurEdit.set_bg_image(event)"
         accept="image/*"
       />
-      <hr>
+      <hr />
       <div class="secondary" onclick="ConteneurEdit.add_title()">
         Ajouter un Titre
       </div>
@@ -137,7 +137,7 @@
         onchange="Edit.add_conteneur_image(event)"
         accept="image/*"
       />
-      <hr>
+      <hr />
       <p>Couleur de fond</p>
       <input
         class="jscolor"
@@ -156,7 +156,7 @@
         </div>
       </div>
       <hr />
-      
+
       <div>Marge verticale</div>
       <input
         type="range"
@@ -174,7 +174,7 @@
         oninput="ConteneurEdit.edit_margin_left_right(this)"
       />
       <hr />
-     
+
       <div>Arrondis haut gauche</div>
       <input
         type="range"
@@ -224,7 +224,10 @@
       Exporter le visuel
     </div>
     <div class="secondary" onclick="Create.reset()">Tous effacer</div>
-    <div class="artboard_options">
+    <hr>
+    <div class="secondary" onclick="UI.show_artboard_options()">Options de l'espace de travail</div>
+    <div class="secondary" onclick="UI.show_add_graphix()">Ajouter un element graphique</div>
+    <div class="artboard_options hidden edit" id="artboard_options">
       <div class="item">
         <div>Alignement horizontale</div>
         <div class="row aic">
@@ -271,21 +274,23 @@
           onchange="Create.set_bg_image(event)"
         />
       </div>
+      <hr>
+      <div class="secondary" onclick="UI.hide_artboard_options()">Fermer</div>
     </div>
 
-    <input
-      type="file"
-      id="image_input"
-      hidden
-      accept="image/*"
-      onchange="Create.get_image(event)"
-    />
-    <div class="options">
+    <div class="options hidden edit" id="add_graphix">
       <div class="secondary" onclick="Create.add_conteneur()">
         Ajouter un conteneur
       </div>
-      <hr>
+      <hr />
       <div class="secondary" onclick="Create.add_image()">
+        <input
+          type="file"
+          id="image_input"
+          hidden
+          accept="image/*"
+          onchange="Create.get_image(event)"
+        />
         Ajouter une image
       </div>
       <div class="secondary" onclick="Create.add_titre()">Ajouter un titre</div>
@@ -298,6 +303,8 @@
       <div class="secondary" onclick="Create.add_mini_text()">
         Ajouter un mini texte
       </div>
+      <hr>
+      <div class="secondary" onclick="UI.hide_add_graphix()">Fermer</div>
     </div>
 
     <!-- Scripts -->
@@ -314,5 +321,6 @@
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
     <script src="scripts/conteneur_edit.js"></script>
+    <script src="scripts/ui.js"></script>
   </body>
 </html>

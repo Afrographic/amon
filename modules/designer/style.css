@@ -137,6 +137,7 @@ button{
     background-color: #ffffff;
     max-height: 80vh;
     overflow: auto;
+    padding:16px;
 }
 
 .secondary{
