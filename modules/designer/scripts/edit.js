@@ -1,5 +1,7 @@
 class Edit {
-  static edit_text(text_id) {
+  static edit_text(event, text_id) {
+    event.stopPropagation();
+    console.log(text_id);
     this.close_image_edit();
     this.close_conteneur_edit();
     Create.edit_id = text_id;
@@ -28,6 +30,14 @@ class Edit {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].color = color;
       }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].color = color;
+          }
+        }
+      }
     }
     Create.render();
   }
@@ -36,6 +46,16 @@ class Edit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].value = el.value;
+      }
+
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].value = el.value;
+            console.log("Found!");
+          }
+        }
       }
     }
     Create.render();

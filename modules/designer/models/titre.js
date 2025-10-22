@@ -13,7 +13,7 @@ class Titre {
 
   render() {
     return `
-        <div id="${this.id}" onclick="Edit.edit_text('${this.id}')" style="
+        <div id="${this.id}" onclick="Edit.edit_text(event,'${this.id}')" style="
         opacity:${this.opacity};
         font-size:${this.font_size};
         font-family:${this.font};
