@@ -254,6 +254,7 @@ class Edit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].background_color = el.value;
+        Create.artboard[i].background_image = "";
       }
     }
     Create.render();

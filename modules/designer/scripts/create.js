@@ -72,9 +72,11 @@ class Create {
   static set_bg(el){
     let renderer = document.querySelector("#renderer");
     renderer.style.backgroundColor = el.value;
+    renderer.style.backgroundImage ="";
   }
 
   static set_bg_image(e){
+    let renderer = document.querySelector("#renderer");
     if(e.target.files.length == 0) return;
     let url = URL.createObjectURL(e.target.files[0]);
     renderer.style.backgroundImage = `url(${url})`;

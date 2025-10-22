@@ -5,12 +5,14 @@ class Conteneur {
     this.gap = 4;
     this.align = "flex-start";
     this.background_color = "#c6c6c6";
+    this.background_image ="";
     this.padding_top_bottom = "4vw";
     this.padding_left_right = "4vw";
     this.border_top_left_radius = 0;
     this.border_top_right_radius = 0;
     this.border_bottom_left_radius = 0;
     this.border_bottom_right_radius = 0;
+    this.width=100;
   }
 
   render() {
@@ -23,7 +25,8 @@ class Conteneur {
         display:flex;
         gap:${this.gap}vw;
         background-color:${this.background_color};
-        width:100%;
+        background-image:${this.background_image};
+        width:${this.width}%;
         padding:${this.padding_top_bottom} ${this.padding_left_right};
         align-items:center;
         justify-content:${this.align};

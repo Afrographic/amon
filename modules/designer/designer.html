@@ -102,8 +102,33 @@
 
     <!-- Edit conteneur -->
     <div class="b1 p16 hidden edit" id="conteneur_edit">
+      <div>Largeur</div>
+      <input
+        type="range"
+        value="100"
+        min="0"
+        max="100"
+        oninput="ConteneurEdit.set_width(this)"
+      />
+      <hr>
+      <p>Image de fond</p>
+      <input
+        type="file"
+        onchange="ConteneurEdit.set_bg_image(event)"
+        accept="image/*"
+      />
+      <hr>
+      <div class="secondary" onclick="ConteneurEdit.add_title()">
+        Ajouter un Titre
+      </div>
+      <div class="secondary" onclick="ConteneurEdit.add_sub_title()">
+        Ajouter un sous titre
+      </div>
       <div class="secondary" onclick="Edit.add_conteneur_text()">
-        Ajouter un texte
+        Ajouter une description
+      </div>
+      <div class="secondary" onclick="ConteneurEdit.add_mini_text()">
+        Ajouter un mini texte
       </div>
       <hr />
       <p>Ajouter une image</p>
@@ -113,7 +138,7 @@
         accept="image/*"
       />
       <hr>
-      <p>Arriere plan</p>
+      <p>Couleur de fond</p>
       <input
         class="jscolor"
         value="#fff"
@@ -256,11 +281,12 @@
       onchange="Create.get_image(event)"
     />
     <div class="options">
-      <div class="secondary" onclick="Create.add_image()">
-        Ajouter une image
-      </div>
       <div class="secondary" onclick="Create.add_conteneur()">
         Ajouter un conteneur
+      </div>
+      <hr>
+      <div class="secondary" onclick="Create.add_image()">
+        Ajouter une image
       </div>
       <div class="secondary" onclick="Create.add_titre()">Ajouter un titre</div>
       <div class="secondary" onclick="Create.add_sous_titre()">
