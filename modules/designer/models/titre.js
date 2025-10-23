@@ -15,7 +15,7 @@ class Titre {
     this.margin_left = 0;
     this.margin_right = 0;
     this.type = "titre";
-  }
+  } 
 
   render() {
     return `

@@ -1,8 +1,7 @@
 class Edit {
   static edit_text(event, text_id) {
     event.stopPropagation();
-    this.close_image_edit();
-    this.close_conteneur_edit();
+    UI.hide_all();
     Create.edit_id = text_id;
     let text_color_editor = document.querySelector("#text_color_editor");
     text_color_editor.classList.remove("hidden");
@@ -137,7 +136,7 @@ class Edit {
             Create.artboard[i].children[j].value = el.value;
           }
         }
-      }
+      } 
     }
     Create.render();
   }
@@ -208,8 +207,7 @@ class Edit {
 
   static edit_image(event, image_id) {
     event.stopPropagation();
-    this.close_text_edit();
-    this.close_conteneur_edit();
+    UI.hide_all();
     Create.edit_id = image_id;
     let image_edit = document.querySelector("#image_edit");
     image_edit.classList.remove("hidden");
@@ -327,8 +325,7 @@ class Edit {
   }
 
   static edit_conteneur(id) {
-    this.close_image_edit();
-    this.close_text_edit();
+    UI.hide_all();
     Create.edit_id = id;
     let image_edit = document.querySelector("#conteneur_edit");
     image_edit.classList.remove("hidden");

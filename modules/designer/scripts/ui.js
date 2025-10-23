@@ -23,4 +23,14 @@ class UI{
         let projects  = document.querySelector("#projects");
         projects.classList.add("hidden");
     }
+
+    static hide_all(){
+        this.hide_projects()
+        this.hide_add_graphix()
+        this.hide_artboard_options()
+
+        Edit.close_text_edit();
+        Edit.close_conteneur_edit();
+        Edit.close_image_edit();
+    }
 }
