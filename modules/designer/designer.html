@@ -56,13 +56,13 @@
       </div>
       <hr>
       <div>
-        <p>Largeur</p>
+        <p>Largeur du texte</p>
         <input
           type="range"
           value="50"
           min="0"
           max="100"
-          oninput="ImageEdit.setPosX(this)"
+          oninput="Edit.edit_text_width(this)"
         />
       </div>
       <hr />
@@ -573,7 +573,7 @@
       <hr />
       <div class="item">
         <div>Alignement verticale</div>
-        <div class="row aic">
+        <div class="row aic" style="gap:8px;flex-wrap: wrap;">
           <div class="secondary" onclick="Create.setVertAlignTop()">
             en haut
           </div>
@@ -582,6 +582,9 @@
           </div>
           <div class="secondary" onclick="Create.setVertAlignBottom()">
             en bas
+          </div>
+          <div class="secondary" onclick="Create.setSpaceBetween()">
+            De part et d'autre
           </div>
         </div>
       </div>

@@ -161,6 +161,10 @@ class Create {
     this.V_align = "center";
     this.render();
   }
+  static setSpaceBetween() {
+    this.V_align = "space-between";
+    this.render();
+  }
 
   static export() {
     let renderer = document.querySelector("#renderer");

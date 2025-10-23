@@ -141,6 +141,23 @@ class Edit {
     Create.render();
   }
 
+  static edit_text_width(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].width = el.value+"%";
+      }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].width = el.value+"%";
+          }
+        }
+      } 
+    }
+    Create.render();
+  }
+
   static close_text_edit() {
     let text_color_editor = document.querySelector("#text_color_editor");
     text_color_editor.classList.add("hidden");
