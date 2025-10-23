@@ -1,8 +1,12 @@
 class Create {
+  static renderer =  document.querySelector("#renderer");
   static H_align = "flex-start";
   static V_align = "flex-start";
   static bg_file = undefined;
   static edit_id = "";
+  static gap = 3;
+  static V_padding = 5;
+  static H_padding = 5;
   static artboard = [];
   static add_titre() {
     let titre = prompt("Inserez le titre");
@@ -11,6 +15,7 @@ class Create {
     new_titre.value = titre;
     this.artboard.push(new_titre);
     this.render();
+    UI.hide_add_graphix();
   }
 
   static add_sous_titre() {
@@ -20,6 +25,7 @@ class Create {
     new_sous_titre.value = sous_titre;
     this.artboard.push(new_sous_titre);
     this.render();
+    UI.hide_add_graphix();
   }
 
   static add_text() {
@@ -29,6 +35,7 @@ class Create {
     new_texte.value = texte;
     this.artboard.push(new_texte);
     this.render();
+    UI.hide_add_graphix();
   }
 
   static add_mini_text() {
@@ -38,6 +45,7 @@ class Create {
     new_mini_texte.value = mini_texte;
     this.artboard.push(new_mini_texte);
     this.render();
+    UI.hide_add_graphix();
   }
 
   static add_image() {
@@ -67,10 +75,27 @@ class Create {
     let renderer = document.querySelector("#renderer");
     renderer.style.alignItems = this.H_align;
     renderer.style.justifyContent = this.V_align;
+    renderer.style.gap = this.gap+"vw";
+    renderer.style.padding = `${this.V_padding}vw ${this.H_padding}vw`;
     renderer.innerHTML = "";
     for (let el of this.artboard) {
       renderer.innerHTML += el.render();
     }
+  }
+
+  static set_gap(el){
+    this.gap = el.value;
+    this.render();
+  }
+
+  static setVPadding(el){
+    this.V_padding = el.value;
+    this.render();
+  }
+
+  static setHPadding(el){
+    this.H_padding = el.value;
+    this.render();
   }
 
   static set_bg(el) {

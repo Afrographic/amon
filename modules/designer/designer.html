@@ -20,16 +20,29 @@
       <h3>Djehouty Designer</h3>
     </div>
 
-    <!-- Edit text color -->
+    <!-- Edit text -->
     <div class="b1 p16 hidden edit" id="text_color_editor">
       <p>Editer le texte</p>
       <hr />
-      <div>Contenu</div>
-      <textarea
-        name=""
-        id="text_edit_input"
-        oninput="Edit.edit_text_value(this)"
-      ></textarea>
+      <div>
+        <div>Contenu</div>
+        <textarea
+          name=""
+          id="text_edit_input"
+          oninput="Edit.edit_text_value(this)"
+        ></textarea>
+      </div>
+      <hr />
+      <div>
+        <div>Opacite</div>
+        <input
+          type="range"
+          value="100"
+          min="0"
+          max="100"
+          oninput="Edit.set_opacity(this)"
+        />
+      </div>
       <hr />
       <div>Couleur</div>
       <input
@@ -40,6 +53,47 @@
         onchange="Edit.change_text_color(this)"
       />
       <hr />
+      <div>
+        <div>Marge du haut</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="45"
+          oninput="Edit.set_margin_top(this)"
+        />
+      </div>
+      <div>
+        <div>Marge du bas</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="45"
+          oninput="Edit.set_margin_bottom(this)"
+        />
+      </div>
+      <div>
+        <div>Marge de gauche</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="45"
+          oninput="Edit.set_margin_left(this)"
+        />
+      </div>
+      <div>
+        <div>Marge de droite</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="45"
+          oninput="Edit.set_margin_right(this)"
+        />
+      </div>
+      <hr>
       <div class="secondary" onclick="Edit.delete_text()">
         Supprimer du design
       </div>
@@ -154,7 +208,7 @@
         accept="image/*"
       />
       <div class="secondary" onclick="ConteneurEdit.darken_bg()">
-       Assombrir l'image de fond
+        Assombrir l'image de fond
       </div>
       <hr />
       <div class="secondary" onclick="ConteneurEdit.add_title()">
@@ -194,17 +248,23 @@
         <div class="secondary" onclick="ConteneurEdit.set_space_between()">
           De part et d'autre
         </div>
-      </div> 
+      </div>
       <hr />
       <div>Alignement verticale</div>
       <div class="row aic">
-        <div class="secondary" onclick="ConteneurEdit.set_ver_left()">Gauche</div>
-        <div class="secondary" onclick="ConteneurEdit.set_ver_center()">Centre</div>
-        <div class="secondary" onclick="ConteneurEdit.set_ver_right()">Droite</div>
+        <div class="secondary" onclick="ConteneurEdit.set_ver_left()">
+          Gauche
+        </div>
+        <div class="secondary" onclick="ConteneurEdit.set_ver_center()">
+          Centre
+        </div>
+        <div class="secondary" onclick="ConteneurEdit.set_ver_right()">
+          Droite
+        </div>
       </div>
       <hr />
 
-      <div>Marge verticale</div>
+      <div>Marge interne verticale</div>
       <input
         type="range"
         value="4"
@@ -212,7 +272,7 @@
         max="64"
         oninput="ConteneurEdit.edit_margin_top_bottom(this)"
       />
-      <div>Marge horizontale</div>
+      <div>Marge interne horizontale</div>
       <input
         type="range"
         value="4"
@@ -280,6 +340,36 @@
     </div>
     <!-- Editer l'espace de travail -->
     <div class="artboard_options hidden edit" id="artboard_options">
+      <div>
+        <div>Espacement entre les elements</div>
+        <input
+          type="range"
+          value="3"
+          min="0"
+          max="10"
+          oninput="Create.set_gap(this)"
+        />
+      </div>
+      <hr />
+
+      <div>Marge interne verticale</div>
+      <input
+        type="range"
+        value="5"
+        min="0"
+        max="64"
+        oninput="Create.setVPadding(this)"
+      />
+      <hr />
+      <div>Marge interne horizontale</div>
+      <input
+        type="range"
+        value="5"
+        min="0"
+        max="64"
+        oninput="Create.setHPadding(this)"
+      />
+      <hr />
       <div class="item">
         <div>Alignement horizontale</div>
         <div class="row aic">

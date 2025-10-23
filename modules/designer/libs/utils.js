@@ -18,7 +18,7 @@ class Utils {
       allowTaint: false,
       scale: 8,
       width: canvas.offsetWidth,
-      height: canvas.scrollHeight,
+      height: canvas.scrollHeight-10,
       windowWidth: document.documentElement.scrollWidth,
       windowHeight: canvas.scrollHeight,
     }).then((canvas) => {
@@ -132,4 +132,5 @@ class Utils {
 
     return canvas.toDataURL("image/jpeg");
   }
+
 }

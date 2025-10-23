@@ -7,8 +7,13 @@ class Text {
     this.font = "ralewayRegular";
     this.text_align = "left";
     this.opacity = 1;
-    this.line_height= "4.3vw";
-    this.width="70vw";
+    this.line_height = "4.3vw";
+    this.width = "70vw";
+    // Marges
+    this.margin_top = 0;
+    this.margin_bottom = 0;
+    this.margin_left = 0;
+    this.margin_right = 0;
   }
 
   set_bold() {
@@ -25,6 +30,10 @@ class Text {
     line-height: ${this.line_height};
     text-align:${this.text_align};
     width: ${this.width};
+    margin-top:${this.margin_top}vw;
+    margin-bottom:${this.margin_bottom}vw;
+    margin-left:${this.margin_left}vw;
+    margin-right:${this.margin_right}vw;
     ">
       ${this.value}
     </div>
