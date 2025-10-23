@@ -133,4 +133,13 @@ class Utils {
     return canvas.toDataURL("image/jpeg");
   }
 
+  static reverse_array(arr){
+    for(let i = 0 ; i<=(arr.length-1)/2;i++){
+      let temp = arr[arr.length-1-i];
+      arr[arr.length-1-i] = arr[i];
+      arr[i] = temp;
+    }
+    return arr;
+  }
+
 }

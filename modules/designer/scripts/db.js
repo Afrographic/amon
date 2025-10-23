@@ -32,11 +32,12 @@ class DB {
       from: "projects",
     });
     this.projects = projectsSaved;
+    this.projects = Utils.reverse_array(this.projects);
     Project.render_projects();
   }
 
   static async save_project(project) {
-    let project_new = await this.con.insert({
+    await this.con.insert({
       into: "projects",
       values: [
         {
@@ -45,10 +46,9 @@ class DB {
       ],
       return: true,
     });
-    DB.projects.push(project_new);
-    Project.render_projects();
+    DB.getProjects();
   }
- 
+
   static async update_project(project) {
     await this.con.update({
       in: "projects",

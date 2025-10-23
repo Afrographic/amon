@@ -14,6 +14,7 @@ class Image_D {
     this.margin_bottom = 0;
     this.margin_left = 0;
     this.margin_right = 0;
+    this.type = "image";
   }
 
   render() {
@@ -31,5 +32,23 @@ class Image_D {
         margin-right:${this.margin_right}vw;
         "/>
         `;
+  }
+
+  from_json(json) {
+    this.id = json.id;
+    this.url = URL.createObjectURL(json.file);
+    this.file = json.file;
+    this.width = json.width;
+    this.border_top_left_radius = json.border_top_left_radius;
+    this.border_top_right_radius = json.border_top_right_radius;
+    this.border_bottom_left_radius = json.border_bottom_left_radius;
+    this.border_bottom_right_radius = json.border_bottom_right_radius;
+    this.opacity = json.opacity;
+    // Marges
+    this.margin_top = json.margin_top;
+    this.margin_bottom = json.margin_bottom;
+    this.margin_left = json.margin_left;
+    this.margin_right = json.margin_right;
+    this.type = json.type;
   }
 }

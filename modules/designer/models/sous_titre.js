@@ -13,6 +13,7 @@ class SousTitre {
      this.margin_bottom=0;
      this.margin_left=0;
      this.margin_right=0;
+     this.type="sous_titre";
   }
 
   render() {
@@ -32,5 +33,23 @@ class SousTitre {
           ${this.value}
         </div>
         `;
+  }
+
+  from_json(json) {
+    this.id = json.id;
+    this.value = json.value;
+    this.font_size = json.font_size;
+    this.color = json.color;
+    this.font = json.font;
+    this.width = json.width;
+    this.text_align = json.text_align;
+    this.opacity = json.opacity;
+    this.line_height = json.line_height;
+    // Marges
+    this.margin_top = json.margin_top;
+    this.margin_bottom = json.margin_bottom;
+    this.margin_left = json.margin_left;
+    this.margin_right = json.margin_right;
+    this.type = json.type;
   }
 }

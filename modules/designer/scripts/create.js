@@ -6,6 +6,7 @@ class Create {
   static H_align = "flex-start";
   static V_align = "flex-start";
   static bg_file = undefined;
+  static bg_image_url="";
   static bg_color = "#fff";
   static edit_id = "";
   static gap = 3;
@@ -86,6 +87,7 @@ class Create {
     renderer.style.gap = this.gap + "vw";
     renderer.style.aspectRatio = this.aspect_ratio;
     renderer.style.padding = `${this.V_padding}vw ${this.H_padding}vw`;
+    renderer.style.backgroundImage = `url(${this.bg_image_url})`
     renderer.innerHTML = "";
     for (let el of this.artboard) {
       renderer.innerHTML += el.render();
@@ -115,11 +117,10 @@ class Create {
   }
 
   static set_bg_image(e) {
-    let renderer = document.querySelector("#renderer");
     if (e.target.files.length == 0) return;
     this.bg_file = e.target.files[0];
-    let url = URL.createObjectURL(e.target.files[0]);
-    renderer.style.backgroundImage = `url(${url})`;
+    this.bg_image_url = URL.createObjectURL(e.target.files[0]);
+    this.render();
   }
 
   // Alignement horizontale
