@@ -16,6 +16,7 @@ class Conteneur {
     this.width = 100;
     this.vertAlign = "center";
     this.bg_file = undefined;
+    this.opacity=1;
     // Marges
     this.margin_top = 0;
     this.margin_bottom = 0;
@@ -31,6 +32,7 @@ class Conteneur {
     return `
         <div onclick="Edit.edit_conteneur('${this.id}')" class="conteneur" style="
         display:flex;
+        opacity:${this.opacity};
         gap:${this.gap}vw;
         background-color:${this.background_color};
         background-image:${this.background_image};

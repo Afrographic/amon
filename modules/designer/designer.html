@@ -110,6 +110,58 @@
         max="100"
         oninput="Edit.change_image_size(this)"
       />
+      <div>
+        <div>Opacite</div>
+        <input
+          type="range"
+          value="100"
+          min="0"
+          max="100"
+          oninput="ImageEdit.set_opacity(this)"
+        />
+      </div>
+      <!-- Marges -->
+      <hr />
+      <div>
+        <div>Marge du haut</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="50"
+          oninput="ImageEdit.set_margin_top(this)"
+        />
+      </div>
+      <div>
+        <div>Marge du bas</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="50"
+          oninput="ImageEdit.set_margin_bottom(this)"
+        />
+      </div>
+      <div>
+        <div>Marge de gauche</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="50"
+          oninput="ImageEdit.set_margin_left(this)"
+        />
+      </div>
+      <div>
+        <div>Marge de droite</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="50"
+          oninput="ImageEdit.set_margin_right(this)"
+        />
+      </div>
       <!-- Arrondis -->
       <hr />
       <div>Arrondis haut gauche</div>
@@ -179,6 +231,17 @@
           </div>
         </div>
       </div>
+      <hr>
+      <div>
+        <div>Opacite</div>
+        <input
+          type="range"
+          value="100"
+          min="0"
+          max="100"
+          oninput="ConteneurEdit.set_opacity(this)"
+        />
+      </div>
       <hr />
       <div>
         <div>Espacement entre les elements</div>
@@ -201,6 +264,47 @@
         oninput="ConteneurEdit.set_width(this)"
       />
       <hr />
+      <div>
+        <div>Marge du haut</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="50"
+          oninput="ConteneurEdit.set_margin_top(this)"
+        />
+      </div>
+      <div>
+        <div>Marge du bas</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="50"
+          oninput="ConteneurEdit.set_margin_bottom(this)"
+        />
+      </div>
+      <div>
+        <div>Marge de gauche</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="50"
+          oninput="ConteneurEdit.set_margin_left(this)"
+        />
+      </div>
+      <div>
+        <div>Marge de droite</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="50"
+          oninput="ConteneurEdit.set_margin_right(this)"
+        />
+      </div>
+      <hr>
       <p>Image de fond</p>
       <input
         type="file"
@@ -326,10 +430,23 @@
 
     <div id="renderer"></div>
 
-    <p>Cliquez sur un element graphique pour editer ses proprietes</p>
+    <p class="tac" style="font-size: 3vw;color: grey;">Cliquez sur un element  pour editer ses proprietes</p>
 
     <!-- Editer l'espace de travail -->
     <div class="artboard_options hidden edit" id="artboard_options">
+      <div>
+        <div>Taille du document</div>
+        <div class="secondary" onclick="Create.set_automatic_height()">
+          Hauteur automatique
+        </div>
+        <div class="secondary" onclick="Create.set_taille_carre()">
+         Taille carre
+        </div>
+        <div class="secondary" onclick="Create.set_taille_cinematique()">
+         Taille cinematique
+        </div>
+      </div>
+      <hr>
       <div>
         <div>Espacement entre les elements</div>
         <input
@@ -451,6 +568,7 @@
       <img src="assets/images/export.svg" alt="" onclick="Create.export()">
       <img src="assets/images/settings.svg" alt="" onclick="UI.show_artboard_options()">
       <img src="assets/images/add.svg" alt="" onclick="UI.show_add_graphix()">
+      <img src="assets/images/save.svg" alt="" onclick="Create.save()">
     </div>
     <!-- Scripts -->
     <!-- Utils -->

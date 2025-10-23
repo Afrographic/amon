@@ -37,6 +37,8 @@ body{
     display: flex;
     flex-direction: column;
     gap:8px;
+    background-image: url(assets/images/pattern.svg);
+    background-size: 2vw;
 }
 
 input,textarea{
@@ -46,13 +48,16 @@ input,textarea{
     width: 100%;
 }
 
+.tac{
+    text-align: center;
+}
+
 hr{
     width: 100%;
 }
 
 #renderer{
     width: 100%;
-    aspect-ratio: 1/1;
     background-color: #fff;
     display: flex;
     flex-direction: column;

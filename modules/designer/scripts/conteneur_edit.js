@@ -234,4 +234,47 @@ class ConteneurEdit {
       }
     }
   }
+ 
+  // Margins
+  static set_margin_top(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].margin_top = el.value;
+      }
+    }
+    Create.render();
+  }
+  static set_margin_left(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].margin_left = el.value;
+      }
+    }
+    Create.render();
+  }
+  static set_margin_bottom(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].margin_bottom = el.value;
+      }
+    }
+    Create.render();
+  }
+  static set_margin_right(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].margin_right = el.value;
+      }
+    }
+    Create.render();
+  }
+  // Opacite
+  static set_opacity(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].opacity = parseInt(el.value)/100;
+      }
+    }
+    Create.render();
+  }
 }

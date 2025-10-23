@@ -1,5 +1,6 @@
 class Create {
   static renderer =  document.querySelector("#renderer");
+  // Project settings
   static H_align = "flex-start";
   static V_align = "flex-start";
   static bg_file = undefined;
@@ -7,6 +8,8 @@ class Create {
   static gap = 3;
   static V_padding = 5;
   static H_padding = 5;
+  static aspect_ratio="1/1";
+  // End project settings
   static artboard = [];
   static add_titre() {
     let titre = prompt("Inserez le titre");
@@ -76,6 +79,7 @@ class Create {
     renderer.style.alignItems = this.H_align;
     renderer.style.justifyContent = this.V_align;
     renderer.style.gap = this.gap+"vw";
+    renderer.style.aspectRatio = this.aspect_ratio;
     renderer.style.padding = `${this.V_padding}vw ${this.H_padding}vw`;
     renderer.innerHTML = "";
     for (let el of this.artboard) {
@@ -178,4 +182,19 @@ class Create {
       renderer.style.backgroundImage = `url(${darken_image_url})`;
     };
   }
+
+  static set_automatic_height(){
+    this.aspect_ratio="";
+    this.render();
+  }
+  static set_taille_carre(){
+    this.aspect_ratio="1/1";
+    this.render();
+  }
+  static set_taille_cinematique(){
+    this.aspect_ratio="16/9";
+    this.render();
+  }
 }
+
+Create.render();
