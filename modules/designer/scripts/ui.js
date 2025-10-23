@@ -6,7 +6,7 @@ class UI{
     static hide_artboard_options(){
         let artboard_options = document.querySelector("#artboard_options");
         artboard_options.classList.add("hidden");
-    }
+    } 
     static show_add_graphix(){
         let add_graphix  = document.querySelector("#add_graphix");
         add_graphix.classList.remove("hidden");
@@ -14,5 +14,13 @@ class UI{
     static hide_add_graphix(){
         let add_graphix  = document.querySelector("#add_graphix");
         add_graphix.classList.add("hidden");
+    }
+    static show_projects(){
+        let projects  = document.querySelector("#projects");
+        projects.classList.remove("hidden");
+    }
+    static hide_projects(){
+        let projects  = document.querySelector("#projects");
+        projects.classList.add("hidden");
     }
 }

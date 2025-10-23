@@ -19,6 +19,27 @@
       <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
       <h3>Djehouty Designer</h3>
     </div>
+    <!-- Saved projects -->
+    <div class="b1 p16 edit hidden" id="projects">
+      <h2>Projets</h2>
+      <div class="small">Cliquez sur un projet pour le charger</div>
+      <div id="project_renderer">
+        <div class="project_item">
+          <img src="assets/images/djehouty_icon.svg" alt="" />
+          <div>Pharaon mikerinos</div>
+        </div>
+        <div class="project_item">
+          <img src="assets/images/djehouty_icon.svg" alt="" />
+          <div>Pharaon mikerinos</div>
+        </div>
+        <div class="project_item">
+          <img src="assets/images/djehouty_icon.svg" alt="" />
+          <div>Pharaon mikerinos</div>
+        </div>
+      </div>
+      <hr />
+      <div class="secondary" onclick="UI.hide_projects()">Fermer</div>
+    </div>
 
     <!-- Edit text -->
     <div class="b1 p16 hidden edit" id="text_color_editor">
@@ -231,7 +252,7 @@
           </div>
         </div>
       </div>
-      <hr>
+      <hr />
       <div>
         <div>Opacite</div>
         <input
@@ -304,7 +325,7 @@
           oninput="ConteneurEdit.set_margin_right(this)"
         />
       </div>
-      <hr>
+      <hr />
       <p>Image de fond</p>
       <input
         type="file"
@@ -430,7 +451,9 @@
 
     <div id="renderer"></div>
 
-    <p class="tac" style="font-size: 3vw;color: grey;">Cliquez sur un element  pour editer ses proprietes</p>
+    <p class="tac" style="font-size: 3vw; color: grey">
+      Cliquez sur un element pour editer ses proprietes
+    </p>
 
     <!-- Editer l'espace de travail -->
     <div class="artboard_options hidden edit" id="artboard_options">
@@ -440,13 +463,13 @@
           Hauteur automatique
         </div>
         <div class="secondary" onclick="Create.set_taille_carre()">
-         Taille carre
+          Taille carre
         </div>
         <div class="secondary" onclick="Create.set_taille_cinematique()">
-         Taille cinematique
+          Taille cinematique
         </div>
       </div>
-      <hr>
+      <hr />
       <div>
         <div>Espacement entre les elements</div>
         <input
@@ -534,6 +557,7 @@
       <div class="secondary" onclick="UI.hide_artboard_options()">Fermer</div>
     </div>
 
+    <!-- Ajouter les elements -->
     <div class="options hidden edit" id="add_graphix">
       <div class="secondary" onclick="Create.add_conteneur()">
         Ajouter un conteneur
@@ -560,17 +584,30 @@
         Ajouter un mini texte
       </div>
       <hr />
+      <div class="secondary" onclick="UI.show_projects();UI.hide_add_graphix()">
+        Charger un projet
+      </div>
+      <hr />
       <div class="secondary" onclick="UI.hide_add_graphix()">Fermer</div>
     </div>
 
     <!-- Options -->
     <div class="options_btn">
-      <img src="assets/images/export.svg" alt="" onclick="Create.export()">
-      <img src="assets/images/settings.svg" alt="" onclick="UI.show_artboard_options()">
-      <img src="assets/images/add.svg" alt="" onclick="UI.show_add_graphix()">
-      <img src="assets/images/save.svg" alt="" onclick="Create.save()">
+      <img src="assets/images/export.svg" alt="" onclick="Create.export()" />
+      <img
+        src="assets/images/settings.svg"
+        alt=""
+        onclick="UI.show_artboard_options()"
+      />
+      <img src="assets/images/add.svg" alt="" onclick="UI.show_add_graphix()" />
+      <img
+        src="assets/images/save.svg"
+        alt=""
+        onclick="Project.save_project()"
+      />
     </div>
     <!-- Scripts -->
+
     <!-- Utils -->
     <script src="libs/utils.js"></script>
     <!-- Models -->
@@ -585,6 +622,9 @@
     <script src="scripts/edit.js"></script>
     <script src="scripts/conteneur_edit.js"></script>
     <script src="scripts/ui.js"></script>
-    <script src="scripts/image.edit.js"></script>
+    <script src="scripts/image_edit.js"></script>
+    <script src="scripts/project.js"></script>
+    <!-- DB -->
+    <script src="scripts/db.js"></script>
   </body>
 </html>

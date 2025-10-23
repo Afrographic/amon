@@ -1,16 +1,20 @@
 class Create {
-  static renderer =  document.querySelector("#renderer");
+  static renderer = document.querySelector("#renderer");
   // Project settings
+  static name_project = "New";
+  static db_index = -1; 
   static H_align = "flex-start";
   static V_align = "flex-start";
   static bg_file = undefined;
+  static bg_color = "#fff";
   static edit_id = "";
   static gap = 3;
   static V_padding = 5;
   static H_padding = 5;
-  static aspect_ratio="1/1";
-  // End project settings
+  static aspect_ratio = "1/1";
   static artboard = [];
+  // End project settings
+  
   static add_titre() {
     let titre = prompt("Inserez le titre");
     if (titre == null) return;
@@ -78,7 +82,8 @@ class Create {
     let renderer = document.querySelector("#renderer");
     renderer.style.alignItems = this.H_align;
     renderer.style.justifyContent = this.V_align;
-    renderer.style.gap = this.gap+"vw";
+    renderer.style.backgroundColor = this.bg_color;
+    renderer.style.gap = this.gap + "vw";
     renderer.style.aspectRatio = this.aspect_ratio;
     renderer.style.padding = `${this.V_padding}vw ${this.H_padding}vw`;
     renderer.innerHTML = "";
@@ -87,25 +92,26 @@ class Create {
     }
   }
 
-  static set_gap(el){
+  static set_gap(el) {
     this.gap = el.value;
     this.render();
   }
 
-  static setVPadding(el){
+  static setVPadding(el) {
     this.V_padding = el.value;
     this.render();
   }
 
-  static setHPadding(el){
+  static setHPadding(el) {
     this.H_padding = el.value;
     this.render();
   }
 
   static set_bg(el) {
     let renderer = document.querySelector("#renderer");
-    renderer.style.backgroundColor = el.value;
+    this.bg_color = el.value;
     renderer.style.backgroundImage = "";
+    this.render();
   }
 
   static set_bg_image(e) {
@@ -157,8 +163,7 @@ class Create {
 
   static export() {
     let renderer = document.querySelector("#renderer");
-    let nom_flyer = prompt("Inserez le nom du projet");
-    Utils.exportImage(renderer, `Flyer_${nom_flyer}`);
+    Utils.exportImage(renderer, `Flyer_${this.name_project}`);
   }
 
   static reset() {
@@ -183,16 +188,16 @@ class Create {
     };
   }
 
-  static set_automatic_height(){
-    this.aspect_ratio="";
+  static set_automatic_height() {
+    this.aspect_ratio = "";
     this.render();
   }
-  static set_taille_carre(){
-    this.aspect_ratio="1/1";
+  static set_taille_carre() {
+    this.aspect_ratio = "1/1";
     this.render();
   }
-  static set_taille_cinematique(){
-    this.aspect_ratio="16/9";
+  static set_taille_cinematique() {
+    this.aspect_ratio = "16/9";
     this.render();
   }
 }
