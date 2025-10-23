@@ -93,7 +93,7 @@
           oninput="Edit.set_margin_right(this)"
         />
       </div>
-      <hr>
+      <hr />
       <div class="secondary" onclick="Edit.delete_text()">
         Supprimer du design
       </div>
@@ -327,17 +327,7 @@
     <div id="renderer"></div>
 
     <p>Cliquez sur un element graphique pour editer ses proprietes</p>
-    <div class="secondary" onclick="Create.export()" style="margin-top: 16px">
-      Exporter le visuel
-    </div>
-    <div class="secondary" onclick="Create.reset()">Tous effacer</div>
-    <hr />
-    <div class="secondary" onclick="UI.show_artboard_options()">
-      Options de l'espace de travail
-    </div>
-    <div class="secondary" onclick="UI.show_add_graphix()">
-      Ajouter un element graphique
-    </div>
+
     <!-- Editer l'espace de travail -->
     <div class="artboard_options hidden edit" id="artboard_options">
       <div>
@@ -456,6 +446,12 @@
       <div class="secondary" onclick="UI.hide_add_graphix()">Fermer</div>
     </div>
 
+    <!-- Options -->
+    <div class="options_btn">
+      <img src="assets/images/export.svg" alt="" onclick="Create.export()">
+      <img src="assets/images/settings.svg" alt="" onclick="UI.show_artboard_options()">
+      <img src="assets/images/add.svg" alt="" onclick="UI.show_add_graphix()">
+    </div>
     <!-- Scripts -->
     <!-- Utils -->
     <script src="libs/utils.js"></script>
