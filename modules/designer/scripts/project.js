@@ -18,14 +18,26 @@ class Project {
     if (this.saved) {
       //Just update project in DB
       DB.update_project(project);
+      alert("Enregistrer avec succes!");
     } else {
       //Create a new instance of saving
-      let name_project = prompt("Enregistrer le projet, Inserez le nom");
+      let name_project;
+      if(Create.name_project == "New"){
+        name_project = prompt("Enregistrer le projet, Inserez le nom");
+        Create.name_project = name_project;
+      }else{
+        name_project = Create.name_project;
+      }
+      
       if (name_project == null) return;
       if (name_project.trim().length == 0) return;
       project.name_project = name_project;
       await DB.save_project(project);
       Project.saved = true;
+      // Set project name
+      let nom_project = document.querySelector("#nom_project");
+      nom_project.innerHTML = Create.name_project;
+      alert("Enregistrer avec succes!");
     }
   }
 
@@ -92,6 +104,29 @@ class Project {
     Create.aspect_ratio = project.aspect_ratio;
     Create.render();
     UI.hide_projects();
+    // Set project name
+    let nom_project = document.querySelector("#nom_project");
+    nom_project.innerHTML = project.name_project;
     this.saved = true;
+  }
+
+  static create_new() {
+    this.saved = false;
+    let name_projet = prompt("Nom du projet");
+    if (name_projet == null) return;
+    if (name_projet.trim().length == 0) return;
+    Create.name_project = name_projet;
+    Create.artboard = [];
+    Create.H_align = "flex-start";
+    Create.V_align = "flex-start";
+    Create.bg_file = undefined;
+    Create.bg_image_url = "";
+    Create.bg_color = "#fff";
+    Create.edit_id = "";
+    Create.gap = 3;
+    Create.V_padding = 5;
+    Create.H_padding = 5;
+    Create.aspect_ratio = "1/1";
+    Create.render();
   }
 }

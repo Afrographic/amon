@@ -63,7 +63,9 @@ class Conteneur {
     this.align = json.align;
     this.background_color = json.background_color;
     this.background_image =
-      json.bg_file != undefined ? URL.createObjectURL(json.bg_file) : "";
+      json.bg_file != undefined
+        ? URL.createObjectURL(json.bg_file)
+        : json.background_image;
     this.padding_top_bottom = json.padding_top_bottom;
     this.padding_left_right = json.padding_left_right;
     this.border_top_left_radius = json.border_top_left_radius;
@@ -110,5 +112,41 @@ class Conteneur {
       children.push(item_to_add);
     }
     return children;
+  }
+
+  clone(){
+    let new_conteneur = new Conteneur();
+    new_conteneur.id = Utils.generate_unique_id_from_time();
+    new_conteneur.children = this.clone_children(this.children);
+    new_conteneur.gap = this.gap;
+    new_conteneur.align = this.align;
+    new_conteneur.background_color = this.background_color;
+    new_conteneur.background_image = this.background_image;
+    new_conteneur.padding_top_bottom = this.padding_top_bottom;
+    new_conteneur.padding_left_right = this.padding_left_right;
+    new_conteneur.border_top_left_radius = this.border_top_left_radius;
+    new_conteneur.border_top_right_radius = this.border_top_right_radius;
+    new_conteneur.border_bottom_left_radius = this.border_bottom_left_radius;
+    new_conteneur.border_bottom_right_radius = this.border_bottom_right_radius;
+    new_conteneur.direction = this.direction;
+    new_conteneur.width = this.width;
+    new_conteneur.vertAlign = this.vertAlign;
+    new_conteneur.bg_file = this.bg_file;
+    new_conteneur.opacity = this.opacity;
+    new_conteneur.type = this.type;
+    // Marges
+    new_conteneur.margin_top = this.margin_top;
+    new_conteneur.margin_bottom = this.margin_bottom;
+    new_conteneur.margin_left = this.margin_left;
+    new_conteneur.margin_right = this.margin_right;
+    return new_conteneur;
+  }
+
+  clone_children(children){
+    let cloned = [];
+    for(let i = 0 ; i<= children.length-1;i++){
+      cloned.push(children[i].clone());
+    }
+    return cloned;
   }
 }

@@ -17,8 +17,9 @@
   <body>
     <div class="logo">
       <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
-      <h3>Djehouty Designer</h3>
+      <h3 style="margin:0;">Djehouty Designer</h3>
     </div>
+    <div class="small tac" id="nom_project">Projet Sans titre</div>
     <!-- Saved projects -->
     <div class="b1 p16 edit hidden" id="projects">
       <h2>Projets</h2>
@@ -52,6 +53,17 @@
           id="text_edit_input"
           oninput="Edit.edit_text_value(this)"
         ></textarea>
+      </div>
+      <hr>
+      <div>
+        <p>Largeur</p>
+        <input
+          type="range"
+          value="50"
+          min="0"
+          max="100"
+          oninput="ImageEdit.setPosX(this)"
+        />
       </div>
       <hr />
       <div>
@@ -122,6 +134,40 @@
     </div>
     <!-- Edit image -->
     <div class="b1 p16 hidden edit" id="image_edit">
+      <!-- Positionnement -->
+      <div class="b1 br8 p16">
+        <div>Positionnement</div>
+        <div class="row g16">
+          <div class="secondary" onclick="ImageEdit.set_position_relative()">
+            Relatif
+          </div>
+          <div class="secondary" onclick="ImageEdit.set_position_absolute()">
+            Absolue
+          </div>
+        </div>
+        <hr />
+        <div>
+          <p>Position verticale</p>
+          <input
+            type="range"
+            value="0"
+            min="0"
+            max="100"
+            oninput="ImageEdit.setPosY(this)"
+          />
+        </div>
+        <hr />
+        <div>
+          <p>Position horizontale</p>
+          <input
+            type="range"
+            value="0"
+            min="0"
+            max="100"
+            oninput="ImageEdit.setPosX(this)"
+          />
+        </div>
+      </div>
       <!-- Size -->
       <p>Editer la taille de l'image</p>
       <input
@@ -232,6 +278,7 @@
       <div class="secondary" onclick="ImageEdit.crop_to_16_9()">
         Recadrer en taille film
       </div>
+      
       <hr />
       <div class="secondary" onclick="Edit.delete_image()">
         Supprimer du design
@@ -242,8 +289,14 @@
     <!-- Edit conteneur -->
     <div class="b1 p16 hidden edit" id="conteneur_edit">
       <div>
+        <div class="secondary f1" onclick="ConteneurEdit.duplicate()">
+          Dupliquer le conteneur
+        </div>
+      </div>
+      <hr>
+      <div>
         <div>Direction</div>
-        <div class="row">
+        <div class="row g16">
           <div class="secondary f1" onclick="ConteneurEdit.set_vertical()">
             Verticale
           </div>
@@ -465,6 +518,9 @@
         <div class="secondary" onclick="Create.set_taille_carre()">
           Taille carre
         </div>
+        <div class="secondary" onclick="Create.set_taille_A4()">
+          Taille format A4
+        </div>
         <div class="secondary" onclick="Create.set_taille_cinematique()">
           Taille cinematique
         </div>
@@ -588,11 +644,21 @@
         Charger un projet
       </div>
       <hr />
+      <div class="secondary" onclick="Project.create_new()">
+        Creer un nouveau projet
+      </div>
+      <hr />
       <div class="secondary" onclick="UI.hide_add_graphix()">Fermer</div>
     </div>
 
     <!-- Options -->
     <div class="options_btn">
+      <img
+        src="assets/images/info.svg"
+        onclick="BtnExplains.show()"
+        alt=""
+        style="opacity: 0.5; transform: scale(0.5)"
+      />
       <img src="assets/images/export.svg" alt="" onclick="Create.export()" />
       <img
         src="assets/images/settings.svg"
@@ -606,8 +672,36 @@
         onclick="Project.save_project()"
       />
     </div>
-    <!-- Scripts -->
 
+    <div id="options_btn_explainer" onclick="BtnExplains.hide()">
+      <img
+        src="assets/images/info.svg"
+        alt=""
+        class="info"
+        style="margin-bottom: 5vw"
+      />
+      <div class="explain_item">
+        <img src="assets/images/export.svg" alt="" />
+        <div>Exporter le projet en image</div>
+      </div>
+      <div class="explain_item">
+        <img src="assets/images/settings.svg" alt="" />
+        <div>Options de l'espace de travail</div>
+      </div>
+      <div class="explain_item">
+        <img src="assets/images/add.svg" alt="" />
+        <div>Ajouter un element graphique</div>
+      </div>
+      <div class="explain_item">
+        <img src="assets/images/save.svg" alt="" />
+        <div>Enregistrer le projet</div>
+      </div>
+      <div class="small" style="color: white; margin-top: 2vw">
+        Cliquez pour fermer
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <!-- Utils -->
     <script src="libs/utils.js"></script>
     <!-- Models -->
@@ -624,6 +718,7 @@
     <script src="scripts/ui.js"></script>
     <script src="scripts/image_edit.js"></script>
     <script src="scripts/project.js"></script>
+    <script src="scripts/hide_btn_explains.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
   </body>

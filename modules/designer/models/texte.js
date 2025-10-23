@@ -8,7 +8,7 @@ class Text {
     this.text_align = "left";
     this.opacity = 1;
     this.line_height = "4.3vw";
-    this.width = "70vw";
+    this.width = "50%";
     // Marges
     this.margin_top = 0;
     this.margin_bottom = 0;
@@ -57,5 +57,24 @@ class Text {
     this.margin_left = json.margin_left;
     this.margin_right = json.margin_right;
     this.type = json.type;
+  }
+
+  clone() {
+    let clone = new Text();
+    clone.id = `${this.id}_${Utils.generate_unique_id_from_time()}`;
+    clone.value = this.value;
+    clone.font_size = this.font_size;
+    clone.color = this.color;
+    clone.font = this.font;
+    clone.width = this.width;
+    clone.text_align = this.text_align;
+    clone.opacity = this.opacity;
+    clone.line_height = this.line_height;
+    clone.margin_top = this.margin_top;
+    clone.margin_bottom = this.margin_bottom;
+    clone.margin_left = this.margin_left;
+    clone.margin_right = this.margin_right;
+    clone.type = this.type;
+    return clone;
   }
 }

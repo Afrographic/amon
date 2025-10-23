@@ -5,7 +5,7 @@ class Create {
   static db_index = -1; 
   static H_align = "flex-start";
   static V_align = "flex-start";
-  static bg_file = undefined;
+  static bg_file = undefined; 
   static bg_image_url="";
   static bg_color = "#fff";
   static edit_id = "";
@@ -184,8 +184,8 @@ class Create {
     img.src = URL.createObjectURL(this.bg_file);
     img.onload = () => {
       let darken_image_url = Utils.darken_image(img);
-      let renderer = document.querySelector("#renderer");
-      renderer.style.backgroundImage = `url(${darken_image_url})`;
+      this.bg_image_url = darken_image_url;
+      Create.render();
     };
   }
 
@@ -195,6 +195,10 @@ class Create {
   }
   static set_taille_carre() {
     this.aspect_ratio = "1/1";
+    this.render();
+  }
+  static set_taille_A4() {
+    this.aspect_ratio = "210/297";
     this.render();
   }
   static set_taille_cinematique() {

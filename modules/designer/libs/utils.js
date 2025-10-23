@@ -142,4 +142,9 @@ class Utils {
     return arr;
   }
 
+
+  static sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
 }

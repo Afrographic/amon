@@ -277,4 +277,15 @@ class ConteneurEdit {
     }
     Create.render();
   }
+
+  //Duplicate
+  static duplicate(){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard.push(Create.artboard[i].clone())
+      }
+    }
+    Create.render();
+    Edit.close_conteneur_edit();
+  }
 }

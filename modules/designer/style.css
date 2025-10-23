@@ -64,6 +64,8 @@ hr{
     flex-direction: column;
     background-size: cover;
     background-position: center;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .logo{
@@ -161,14 +163,23 @@ button{
     border-top-right-radius: 16px;
 }
 
+.g16{
+    gap:16px;
+}
+
 .secondary{
-    padding: 3vw;
-    font-size: 3vw;
+    padding: 4vw;
+    font-size: 3.5vw;
     text-align: left;
     border-radius: 2vw;
     display: flex;
     gap: 2vw;
+    flex:1;
     background-color: #f6f6f6;
+}
+
+.br8{
+    border-radius: 8px;
 }
 
 .conteneur{
@@ -191,7 +202,7 @@ button{
 }
 
 .options_btn img{
-    width: 13vw;
+    width: 10vw;
 }
 
 .project_item{
@@ -211,4 +222,46 @@ button{
 h2{
     font-size: 4.5vw;
     margin: 0;
+}
+
+#options_btn_explainer{
+    position: fixed;
+    background-color: #00661f77;
+    display: flex;
+    flex-direction: column;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    padding:4vw;
+    align-items: center;
+    justify-content: center;
+    gap:2vw;
+    transform-origin: bottom right;
+    transition: 0.5s;
+    opacity: 1;
+}
+
+#options_btn_explainer.inactive{
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+} 
+
+.explain_item{
+    display: flex;
+    align-items: center;
+    gap:5vw;
+    padding:4vw;
+    background-color: #fff;
+    border-radius: 2vw;
+    width: 100%;
+}
+
+.explain_item img{
+    width: 11vw;
+}
+
+.info{
+    width: 8vw;
 }

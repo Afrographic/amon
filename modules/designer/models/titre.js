@@ -5,7 +5,7 @@ class Titre {
     this.font_size = "5vw";
     this.color = "#000";
     this.font = "ralewayBlack";
-    this.width = "60vw";
+    this.width = "50%";
     this.text_align = "left";
     this.opacity = 1;
     this.line_height = "5vw";
@@ -15,7 +15,7 @@ class Titre {
     this.margin_left = 0;
     this.margin_right = 0;
     this.type = "titre";
-  } 
+  }
 
   render() {
     return `
@@ -53,5 +53,24 @@ class Titre {
     this.margin_left = json.margin_left;
     this.margin_right = json.margin_right;
     this.type = json.type;
+  }
+
+  clone() {
+    let clone = new Titre();
+    clone.id = `${this.id}_${Utils.generate_unique_id_from_time()}`;
+    clone.value = this.value;
+    clone.font_size = this.font_size;
+    clone.color = this.color;
+    clone.font = this.font;
+    clone.width = this.width;
+    clone.text_align = this.text_align;
+    clone.opacity = this.opacity;
+    clone.line_height = this.line_height;
+    clone.margin_top = this.margin_top;
+    clone.margin_bottom = this.margin_bottom;
+    clone.margin_left = this.margin_left;
+    clone.margin_right = this.margin_right;
+    clone.type = this.type;
+    return clone;
   }
 }
