@@ -41,7 +41,7 @@ class Image_D {
         "/>
         `;
   }
-
+ 
   from_json(json) {
     this.id = json.id;
     this.url = URL.createObjectURL(json.file);

@@ -245,4 +245,19 @@ class ImageEdit {
       }
     }
   }
+
+  static remove_uni_bg() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        // Crop image
+        let img = new Image();
+        img.src = URL.createObjectURL(Create.artboard[i].file);
+        img.onload = () => {
+          let transparent_img = Utils.remove_white_background(img);
+          Create.artboard[i].url = transparent_img;
+          Create.render();
+        };
+      }
+    }
+  }
 }

@@ -18,7 +18,7 @@ class Utils {
       allowTaint: false,
       scale: 8,
       width: canvas.offsetWidth,
-      height: canvas.scrollHeight-1,
+      height: canvas.scrollHeight - 1,
       windowWidth: document.documentElement.scrollWidth,
       windowHeight: canvas.scrollHeight,
     }).then((canvas) => {
@@ -133,18 +133,37 @@ class Utils {
     return canvas.toDataURL("image/jpeg");
   }
 
-  static reverse_array(arr){
-    for(let i = 0 ; i<=(arr.length-1)/2;i++){
-      let temp = arr[arr.length-1-i];
-      arr[arr.length-1-i] = arr[i];
+  static reverse_array(arr) {
+    for (let i = 0; i <= (arr.length - 1) / 2; i++) {
+      let temp = arr[arr.length - 1 - i];
+      arr[arr.length - 1 - i] = arr[i];
       arr[i] = temp;
     }
     return arr;
   }
 
-
   static sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  static remove_white_background(img) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0); 
+
+    const imageData = ctx.getImageData(0, 0, img.width, img.height);
+    const data = imageData.data;
+
+    // Remove white background (example)
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] > 240) {
+        data[i + 3] = 0; // Make transparent
+      }
+    }
+    ctx.putImageData(imageData, 0, 0);
+    return canvas.toDataURL("image/png");
+  }
 }

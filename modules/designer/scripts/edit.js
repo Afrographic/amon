@@ -358,6 +358,16 @@ class Edit {
     Create.render();
   }
 
+  static set_bg_transparent() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].background_color = "transparent";
+        Create.artboard[i].background_image = "";
+      }
+    }
+    Create.render();
+  }
+
   static add_conteneur_text() {
     let text = prompt("Inserez le texte");
     if (text == null) return;

@@ -136,6 +136,10 @@
     <div class="b1 p16 hidden edit" id="image_edit">
       <!-- Positionnement -->
       <div class="b1 br8 p16">
+        <div class="secondary" onclick="ImageEdit.remove_uni_bg()">
+          Supprimer le fond blanc
+        </div>
+        <hr>
         <div>Positionnement</div>
         <div class="row g16">
           <div class="secondary" onclick="ImageEdit.set_position_relative()">
@@ -452,6 +456,10 @@
         onclick="this.blur()"
         onchange="Edit.set_conteneur_bg(this)"
       />
+      <hr>
+      <div class="secondary" onclick="Edit.set_bg_transparent()">
+        Rendrer le fond transparent
+      </div>
       <hr />
       <p>Alignement horizonale</p>
       <div class="row aic">
