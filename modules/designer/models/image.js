@@ -65,6 +65,7 @@ class Image_D {
 
   clone() {
     let clone = new Image_D();
+    clone.id = `${this.id}_${Math.random()*100}`;
     clone.url = this.url ;
     clone.file = this.file; 
     clone.width = this.width;

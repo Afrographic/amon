@@ -17,7 +17,7 @@
   <body>
     <div class="logo">
       <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
-      <h3 style="margin:0;">Djehouty Designer</h3>
+      <h3 style="margin: 0">Djehouty Designer</h3>
     </div>
     <div class="small tac" id="nom_project">Projet Sans titre</div>
     <!-- Saved projects -->
@@ -54,7 +54,7 @@
           oninput="Edit.edit_text_value(this)"
         ></textarea>
       </div>
-      <hr>
+      <hr />
       <div>
         <p>Largeur du texte</p>
         <input
@@ -134,12 +134,16 @@
     </div>
     <!-- Edit image -->
     <div class="b1 p16 hidden edit" id="image_edit">
+      <div class="secondary" onclick="ImageEdit.duplicate()">
+        Dupliquer l'image
+      </div>
+      <hr>
+      <div class="secondary" onclick="ImageEdit.remove_uni_bg()">
+        Supprimer le fond blanc
+      </div>
+      <hr />
       <!-- Positionnement -->
       <div class="b1 br8 p16">
-        <div class="secondary" onclick="ImageEdit.remove_uni_bg()">
-          Supprimer le fond blanc
-        </div>
-        <hr>
         <div>Positionnement</div>
         <div class="row g16">
           <div class="secondary" onclick="ImageEdit.set_position_relative()">
@@ -282,7 +286,7 @@
       <div class="secondary" onclick="ImageEdit.crop_to_16_9()">
         Recadrer en taille film
       </div>
-      
+
       <hr />
       <div class="secondary" onclick="Edit.delete_image()">
         Supprimer du design
@@ -297,7 +301,7 @@
           Dupliquer le conteneur
         </div>
       </div>
-      <hr>
+      <hr />
       <div>
         <div>Direction</div>
         <div class="row g16">
@@ -309,15 +313,21 @@
           </div>
         </div>
       </div>
-      <hr>
-       <!-- Positionnement -->
-       <div class="b1 br8 p16">
+      <hr />
+      <!-- Positionnement -->
+      <div class="b1 br8 p16">
         <div>Positionnement</div>
         <div class="row g16">
-          <div class="secondary" onclick="ConteneurEdit.set_position_relative()">
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_position_relative()"
+          >
             Relatif
           </div>
-          <div class="secondary" onclick="ConteneurEdit.set_position_absolute()">
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_position_absolute()"
+          >
             Absolue
           </div>
         </div>
@@ -456,7 +466,7 @@
         onclick="this.blur()"
         onchange="Edit.set_conteneur_bg(this)"
       />
-      <hr>
+      <hr />
       <div class="secondary" onclick="Edit.set_bg_transparent()">
         Rendrer le fond transparent
       </div>
@@ -616,7 +626,7 @@
       <hr />
       <div class="item">
         <div>Alignement verticale</div>
-        <div class="row aic" style="gap:8px;flex-wrap: wrap;">
+        <div class="row aic" style="gap: 8px; flex-wrap: wrap">
           <div class="secondary" onclick="Create.setVertAlignTop()">
             en haut
           </div>

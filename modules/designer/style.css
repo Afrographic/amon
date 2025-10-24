@@ -64,7 +64,7 @@ hr{
     flex-direction: column;
     background-size: cover;
     background-position: center;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     position: relative;
 }
 

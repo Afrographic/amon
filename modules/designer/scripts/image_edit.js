@@ -106,7 +106,7 @@ class ImageEdit {
     }
   }
 
-  // MArges 
+  // MArges
   static set_margin_top(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
@@ -249,7 +249,7 @@ class ImageEdit {
   static remove_uni_bg() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
-        // Crop image
+        // Remove white BG
         let img = new Image();
         img.src = URL.createObjectURL(Create.artboard[i].file);
         img.onload = () => {
@@ -257,6 +257,43 @@ class ImageEdit {
           Create.artboard[i].url = transparent_img;
           Create.render();
         };
+      }
+
+      //Remove BG in Children
+      // Clone  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            let img = new Image();
+            img.src = URL.createObjectURL(Create.artboard[i].children[j].file);
+            img.onload = () => {
+              let transparent_img = Utils.remove_white_background(img);
+              Create.artboard[i].children[j].url = transparent_img;
+              Create.render();
+            };
+          }
+        }
+      }
+    }
+  }
+
+  static duplicate() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard.push(Create.artboard[i].clone());
+        Create.render();
+      }
+
+      // Clone  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children.push(
+              Create.artboard[i].children[j].clone()
+            );
+            Create.render();
+          }
+        }
       }
     }
   }
