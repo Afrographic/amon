@@ -129,6 +129,7 @@ button {
 
 .float_close {
     position: fixed;
+    padding:3vw;
     right: 4vw;
     bottom: 30vh;
     background-color: #000000 !important;

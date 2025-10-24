@@ -158,6 +158,24 @@ class Edit {
     Create.render();
   }
 
+  // Taille de la police
+  static edit_text_size(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].font_size = el.value+"vw";
+      }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].font_size = el.value+"vw";
+          }
+        }
+      } 
+    }
+    Create.render();
+  }
+
   static close_text_edit() {
     let text_color_editor = document.querySelector("#text_color_editor");
     text_color_editor.classList.add("hidden");

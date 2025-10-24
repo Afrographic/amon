@@ -39,7 +39,7 @@
         </div>
       </div>
       <hr />
-      <div class="secondary float_close" onclick="UI.hide_projects()">
+      <div class=" float_close" onclick="UI.hide_projects()">
         Fermer
       </div>
     </div>
@@ -55,6 +55,17 @@
           id="text_edit_input"
           oninput="Edit.edit_text_value(this)"
         ></textarea>
+      </div>
+      <hr>
+      <div>
+        <p>Taille de la police</p>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="32"
+          oninput="Edit.edit_text_size(this)"
+        />
       </div>
       <hr />
       <div>
@@ -132,7 +143,7 @@
       <div class="secondary" onclick="Edit.delete_text()">
         Supprimer du design
       </div>
-      <div class="secondary float_close" onclick="Edit.close_text_edit()">
+      <div class=" float_close" onclick="Edit.close_text_edit()">
         Fermer
       </div>
     </div>
@@ -295,7 +306,7 @@
       <div class="secondary" onclick="Edit.delete_image()">
         Supprimer du design
       </div>
-      <div class="secondary float_close" onclick="Edit.close_image_edit()">
+      <div class=" float_close" onclick="Edit.close_image_edit()">
         Fermer
       </div>
     </div>
@@ -710,7 +721,7 @@
       <div class="secondary" onclick="Edit.delete_conteneur()">
         Supprimer du design
       </div>
-      <div class="secondary float_close" onclick="Edit.close_conteneur_edit()">
+      <div class=" float_close" onclick="Edit.close_conteneur_edit()">
         Fermer
       </div>
     </div>
@@ -826,7 +837,7 @@
         Assombrir l'image de fond
       </div>
       <hr />
-      <div class="secondary float_close" onclick="UI.hide_artboard_options()">
+      <div class=" float_close" onclick="UI.hide_artboard_options()">
         Fermer
       </div>
     </div>
@@ -866,7 +877,7 @@
         Creer un nouveau projet
       </div>
       <hr />
-      <div class="secondary float_close" onclick="UI.hide_add_graphix()">
+      <div class=" float_close" onclick="UI.hide_add_graphix()">
         Fermer
       </div>
     </div>

@@ -28,7 +28,6 @@ class Text {
     font-size:${this.font_size};
     font-family:${this.font};
     color:${this.color};
-    line-height: ${this.line_height};
     text-align:${this.text_align};
     width: ${this.width};
     margin-top:${this.margin_top}vw;
