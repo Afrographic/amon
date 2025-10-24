@@ -7,7 +7,7 @@
     font-family: "ralewayBlack";
     src: url(assets/fonts/Raleway-Black.ttf)
 }
- 
+
 @font-face {
     font-family: "ralewayBold";
     src: url(assets/fonts/Raleway-Bold.ttf)
@@ -17,7 +17,7 @@ h1 {
     font-family: "ralewayBlack";
 }
 
-h2{
+h2 {
     font-family: "ralewayBold";
 }
 
@@ -26,38 +26,39 @@ h2{
     font-family: "ralewayRegular";
 }
 
-.f1{
-    flex:1;
+.f1 {
+    flex: 1;
 }
 
-body{
-    margin:0;
+body {
+    margin: 0;
     padding: 16px;
     background-color: #f8f8f8;
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
     background-image: url(assets/images/pattern.svg);
     background-size: 2vw;
 }
 
-input,textarea{
+input,
+textarea {
     font-size: 16px;
     border: none;
     outline: none;
     width: 100%;
 }
 
-.tac{
+.tac {
     text-align: center;
 }
 
-hr{
+hr {
     width: 100%;
     opacity: 0.2;
 }
 
-#renderer{
+#renderer {
     width: 100%;
     background-color: #fff;
     display: flex;
@@ -68,89 +69,102 @@ hr{
     position: relative;
 }
 
-.conteneur{
+.conteneur {
     overflow-x: hidden;
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
-    gap:16px;
+    gap: 16px;
     justify-content: center;
 }
 
-.options{
+.options {
     display: flex;
     flex-direction: column;
-    gap:2px;
+    gap: 2px;
 }
-button{
+
+button {
     padding: 16px;
     width: 100%;
     text-align: left;
 }
 
-#project_renderer{
+#project_renderer {
     display: flex;
     flex-direction: column;
-    gap:1.5vw;
+    gap: 1.5vw;
 }
 
-.b1{
-    border:1px solid #aaa;
+.b1 {
+    border: 1px solid #aaa;
 }
 
-.p16{
-    padding:16px;
+.p16 {
+    padding: 16px;
 }
 
-.row{
+.row {
     display: flex;
 }
 
-.aic{
+.aic {
     align-items: center;
 }
 
-.column{
+.column {
     display: flex;
     flex-direction: column;
 }
 
-.g4{
-    gap:4px;
+.g4 {
+    gap: 2vw;
 }
 
-.g8{
-    gap:8px;
+.g8 {
+    gap: 4vw;
 }
 
-.artboard_options{
+.float_close {
+    position: fixed;
+    right: 4vw;
+    bottom: 30vh;
+    background-color: #000000 !important;
+    color: white;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    padding-top: 2vw !important;
+    padding-bottom: 9px !important;
+}
+
+.artboard_options {
     display: flex;
     flex-direction: column;
-    gap:16px;
-    padding:16px;
-    border:1px solid #aaa;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid #aaa;
 }
 
-.artboard_options .item{
+.artboard_options .item {
     display: flex;
     flex-direction: column;
-    gap:4px;
+    gap: 4px;
 }
 
-.hidden{
+.hidden {
     display: none !important;
 }
 
-.edit input{
+.edit input {
     width: 100%;
 }
 
 .edit {
     display: flex;
     flex-direction: column;
-    gap:4px;
+    gap: 4px;
     position: fixed;
     width: 100vw;
     bottom: 0;
@@ -158,7 +172,7 @@ button{
     background-color: #ffffff;
     max-height: 30vh;
     overflow: auto;
-    padding:16px;
+    padding: 16px;
     overflow-x: hidden;
     z-index: 3;
     box-shadow: -1px -3px 12px #0000002e;
@@ -167,105 +181,106 @@ button{
     border-top-right-radius: 16px;
 }
 
-.g16{
-    gap:16px;
+.g16 {
+    gap: 16px;
 }
 
-.secondary{
+.secondary {
     padding: 4vw;
     font-size: 3.5vw;
     text-align: left;
     border-radius: 2vw;
     display: flex;
     gap: 2vw;
-    flex:1;
+    flex: 1;
     background-color: #f6f6f6;
 }
 
-.br8{
+.br8 {
     border-radius: 8px;
 }
 
-.conteneur{
+.conteneur {
     background-size: cover;
     background-position: center;
 }
-.small{
+
+.small {
     opacity: 0.7;
     font-size: 2.5vw;
     margin-bottom: 2vw;
 }
 
-.options_btn{
+.options_btn {
     position: fixed;
-    bottom:4vw;
+    bottom: 4vw;
     right: 4vw;
     display: flex;
     flex-direction: column;
-    gap:2vw;
+    gap: 2vw;
 }
 
-.options_btn img{
+.options_btn img {
     width: 10vw;
 }
 
-.project_item{
+.project_item {
     display: flex;
     align-items: center;
-    gap:4vw;
+    gap: 4vw;
     font-size: 3vw;
-    border:1px solid #d5d5d5;
+    border: 1px solid #d5d5d5;
     border-radius: 8px;
-    padding:3vw;
+    padding: 3vw;
 }
 
-.project_item img{
+.project_item img {
     width: 3vw;
 }
 
-h2{
+h2 {
     font-size: 4.5vw;
     margin: 0;
 }
 
-#options_btn_explainer{
+#options_btn_explainer {
     position: fixed;
     background-color: #00661f77;
     display: flex;
     flex-direction: column;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    padding:4vw;
+    padding: 4vw;
     align-items: center;
     justify-content: center;
-    gap:2vw;
+    gap: 2vw;
     transform-origin: bottom right;
     transition: 0.5s;
     opacity: 1;
 }
 
-#options_btn_explainer.inactive{
+#options_btn_explainer.inactive {
     opacity: 0;
     pointer-events: none;
     transform: scale(0);
-} 
+}
 
-.explain_item{
+.explain_item {
     display: flex;
     align-items: center;
-    gap:5vw;
-    padding:4vw;
+    gap: 5vw;
+    padding: 4vw;
     background-color: #fff;
     border-radius: 2vw;
     width: 100%;
 }
 
-.explain_item img{
+.explain_item img {
     width: 11vw;
 }
 
-.info{
+.info {
     width: 8vw;
 }

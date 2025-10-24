@@ -25,7 +25,6 @@ class Titre {
         font-family:${this.font};
         color:${this.color};
         width:${this.width};
-        line-height:${this.line_height};
         text-align:${this.text_align};
         margin-top:${this.margin_top}vw;
         margin-bottom:${this.margin_bottom}vw;

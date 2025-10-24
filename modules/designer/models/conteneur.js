@@ -1,8 +1,8 @@
 class Conteneur {
   constructor() {
     this.id = Utils.generate_unique_id_from_time();
-    this.display="flex";
-    this.colonnes_pour_grille=3;
+    this.display = "flex";
+    this.colonnes_pour_grille = 2;
     this.children = [];
     this.gap = 4;
     this.align = "flex-start";
@@ -25,10 +25,26 @@ class Conteneur {
     this.margin_bottom = 0;
     this.margin_left = 0;
     this.margin_right = 0;
-     // Positionning
-     this.position = "relative";
-     this.posY= "0";
-     this.posX= "0";
+    // Positionning
+    this.position = "relative";
+    this.posY = "0";
+    this.posX = "0";
+    // Bordure bottom
+    this.border_bottom_size = 0;
+    this.border_bottom_color = "#000";
+    this.border_bottom_type = "solid";
+    // Bordure Top
+    this.border_top_size = 0;
+    this.border_top_color = "#000";
+    this.border_top_type = "solid";
+    // Bordure left
+    this.border_left_size = 0;
+    this.border_left_color = "#000";
+    this.border_left_type = "solid";
+    // Bordure right
+    this.border_right_size = 0;
+    this.border_right_color = "#000";
+    this.border_right_type = "solid";
   }
 
   render() {
@@ -60,6 +76,10 @@ class Conteneur {
         margin-bottom:${this.margin_bottom}vw;
         margin-left:${this.margin_left}vw;
         margin-right:${this.margin_right}vw;
+        border-top:${this.border_top_size}px ${this.border_top_type} ${this.border_top_color};
+        border-bottom:${this.border_bottom_size}px ${this.border_bottom_type} ${this.border_bottom_color};
+        border-left:${this.border_left_size}px ${this.border_left_type} ${this.border_left_color};
+        border-right:${this.border_right_size}px ${this.border_right_type} ${this.border_right_color};
         ">
           ${children_template}
         </div>
@@ -70,6 +90,23 @@ class Conteneur {
     this.id = json.id;
     this.children = this.children_from_json(json.children);
     this.gap = json.gap;
+
+    this.border_top_size = json.border_top_size;
+    this.border_top_type = json.border_top_type;
+    this.border_top_color = json.border_top_color;
+
+    this.border_bottom_size = json.border_bottom_size;
+    this.border_bottom_type = json.border_bottom_type;
+    this.border_bottom_color = json.border_bottom_color;
+
+    this.border_left_size = json.border_left_size;
+    this.border_left_type = json.border_left_type;
+    this.border_left_color = json.border_left_color;
+
+    this.border_right_size = json.border_right_size;
+    this.border_right_type = json.border_right_type;
+    this.border_right_color = json.border_right_color;
+
     this.align = json.align;
     this.background_color = json.background_color;
     this.background_image =
@@ -130,7 +167,7 @@ class Conteneur {
     return children;
   }
 
-  clone(){
+  clone() {
     let new_conteneur = new Conteneur();
     new_conteneur.id = Utils.generate_unique_id_from_time();
     new_conteneur.children = this.clone_children(this.children);
@@ -157,12 +194,29 @@ class Conteneur {
     new_conteneur.margin_right = this.margin_right;
     new_conteneur.display = this.display;
     new_conteneur.colonnes_pour_grille = this.colonnes_pour_grille;
+    //Borders
+    new_conteneur.border_top_size = this.border_top_size;
+    new_conteneur.border_top_type = this.border_top_type;
+    new_conteneur.border_top_color = this.border_top_color;
+
+    new_conteneur.border_bottom_size = this.border_bottom_size;
+    new_conteneur.border_bottom_type = this.border_bottom_type;
+    new_conteneur.border_bottom_color = this.border_bottom_color;
+
+    new_conteneur.border_right_size = this.border_right_size;
+    new_conteneur.border_right_size = this.border_right_size;
+    new_conteneur.border_right_size = this.border_right_size;
+
+    new_conteneur.border_left_size = this.border_left_size;
+    new_conteneur.border_left_size = this.border_left_size;
+    new_conteneur.border_left_size = this.border_left_size;
+
     return new_conteneur;
   }
 
-  clone_children(children){
+  clone_children(children) {
     let cloned = [];
-    for(let i = 0 ; i<= children.length-1;i++){
+    for (let i = 0; i <= children.length - 1; i++) {
       cloned.push(children[i].clone());
     }
     return cloned;

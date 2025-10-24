@@ -234,7 +234,7 @@ class ConteneurEdit {
       }
     }
   }
- 
+
   // Margins
   static set_margin_top(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -272,17 +272,47 @@ class ConteneurEdit {
   static set_opacity(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
-        Create.artboard[i].opacity = parseInt(el.value)/100;
+        Create.artboard[i].opacity = parseInt(el.value) / 100;
+      }
+    }
+    Create.render();
+  }
+
+  // Set Grid
+  static setGrid() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].display = "Grid";
+      }
+    }
+    Create.render();
+  }
+
+  //set Flex
+  static setFlex() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].display = "flex";
+      }
+    }
+    Create.render();
+  }
+
+  //Set column count
+  static setColumn(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].colonnes_pour_grille = el.value;
       }
     }
     Create.render();
   }
 
   //Duplicate
-  static duplicate(){
+  static duplicate() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
-        Create.artboard.push(Create.artboard[i].clone())
+        Create.artboard.push(Create.artboard[i].clone());
       }
     }
     Create.render();
@@ -296,15 +326,6 @@ class ConteneurEdit {
         Create.artboard[i].position = "relative";
         Create.render();
       }
-      // Edit  in conteneur children
-      if (Create.artboard[i].children != undefined) {
-        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
-          if (Create.artboard[i].children[j].id == Create.edit_id) {
-            Create.artboard[i].children[j].position = "relative";
-            Create.render();
-          }
-        }
-      }
     }
   }
   static set_position_absolute() {
@@ -312,15 +333,6 @@ class ConteneurEdit {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].position = "absolute";
         Create.render();
-      }
-      // Edit  in conteneur children
-      if (Create.artboard[i].children != undefined) {
-        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
-          if (Create.artboard[i].children[j].id == Create.edit_id) {
-            Create.artboard[i].children[j].position = "absolute";
-            Create.render();
-          }
-        }
       }
     }
   }
@@ -330,15 +342,6 @@ class ConteneurEdit {
         Create.artboard[i].posY = el.value;
         Create.render();
       }
-      // Edit  in conteneur children
-      if (Create.artboard[i].children != undefined) {
-        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
-          if (Create.artboard[i].children[j].id == Create.edit_id) {
-            Create.artboard[i].children[j].posY = el.value;
-            Create.render();
-          }
-        }
-      }
     }
   }
   static setPosX(el) {
@@ -347,14 +350,138 @@ class ConteneurEdit {
         Create.artboard[i].posX = el.value;
         Create.render();
       }
-      // Edit  in conteneur children
-      if (Create.artboard[i].children != undefined) {
-        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
-          if (Create.artboard[i].children[j].id == Create.edit_id) {
-            Create.artboard[i].children[j].posX = el.value;
-            Create.render();
-          }
-        }
+    }
+  }
+
+  //Border Top
+  static set_size_border_top(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_top_size = el.value;
+        Create.render();
+      }
+    }
+  }
+  static set_color_border_top(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_top_color = el.value;
+        Create.render();
+      }
+    }
+  }
+  static set_ligne_border_top() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_top_type = "solid";
+        Create.render();
+      }
+    }
+  }
+  static set_pointilles_border_top() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_top_type = "dashed";
+        Create.render();
+      }
+    }
+  }
+  //Border bottom
+  static set_size_border_bottom(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_bottom_size = el.value;
+        Create.render();
+      }
+    }
+  }
+  static set_color_border_bottom(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_bottom_color = el.value;
+        Create.render();
+      }
+    }
+  }
+  static set_ligne_border_bottom() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_bottom_type = "solid";
+        Create.render();
+      }
+    }
+  }
+  static set_pointilles_border_bottom() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_bottom_type = "dashed";
+        Create.render();
+      }
+    }
+  }
+  //Border Left
+  static set_size_border_left(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_left_size = el.value;
+        Create.render();
+      }
+    }
+  }
+  static set_color_border_left(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_left_color = el.value;
+        Create.render();
+      }
+    }
+  }
+  static set_ligne_border_left() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_left_type = "solid";
+        Create.render();
+      }
+    }
+  }
+  static set_pointilles_border_left() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_left_type = "dashed";
+        Create.render();
+      }
+    }
+  }
+  //Border Right
+  static set_size_border_right(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_right_size = el.value;
+        Create.render();
+      }
+    }
+  }
+  static set_color_border_right(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_right_color = el.value;
+        Create.render();
+      }
+    }
+  }
+  static set_ligne_border_right() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_right_type = "solid";
+        Create.render();
+      }
+    }
+  }
+  static set_pointilles_border_right() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_right_type = "dashed";
+        Create.render();
       }
     }
   }

@@ -21,7 +21,7 @@
     </div>
     <div class="small tac" id="nom_project">Projet Sans titre</div>
     <!-- Saved projects -->
-    <div class="b1 p16 edit hidden" id="projects">
+    <div class="p16 edit hidden" id="projects">
       <h2>Projets</h2>
       <div class="small">Cliquez sur un projet pour le charger</div>
       <div id="project_renderer">
@@ -39,11 +39,13 @@
         </div>
       </div>
       <hr />
-      <div class="secondary" onclick="UI.hide_projects()">Fermer</div>
+      <div class="secondary float_close" onclick="UI.hide_projects()">
+        Fermer
+      </div>
     </div>
 
     <!-- Edit text -->
-    <div class="b1 p16 hidden edit" id="text_color_editor">
+    <div class="p16 hidden edit" id="text_color_editor">
       <p>Editer le texte</p>
       <hr />
       <div>
@@ -56,7 +58,7 @@
       </div>
       <hr />
       <div>
-        <p>Largeur du texte</p>
+        <p>Largeur de l'espace occupe par le texte</p>
         <input
           type="range"
           value="50"
@@ -130,14 +132,16 @@
       <div class="secondary" onclick="Edit.delete_text()">
         Supprimer du design
       </div>
-      <div class="secondary" onclick="Edit.close_text_edit()">Fermer</div>
+      <div class="secondary float_close" onclick="Edit.close_text_edit()">
+        Fermer
+      </div>
     </div>
     <!-- Edit image -->
-    <div class="b1 p16 hidden edit" id="image_edit">
+    <div class="p16 hidden edit" id="image_edit">
       <div class="secondary" onclick="ImageEdit.duplicate()">
         Dupliquer l'image
       </div>
-      <hr>
+      <hr />
       <div class="secondary" onclick="ImageEdit.remove_uni_bg()">
         Supprimer le fond blanc
       </div>
@@ -291,15 +295,72 @@
       <div class="secondary" onclick="Edit.delete_image()">
         Supprimer du design
       </div>
-      <div class="secondary" onclick="Edit.close_image_edit()">Fermer</div>
+      <div class="secondary float_close" onclick="Edit.close_image_edit()">
+        Fermer
+      </div>
     </div>
 
     <!-- Edit conteneur -->
-    <div class="b1 p16 hidden edit" id="conteneur_edit">
+    <div class="p16 hidden edit" id="conteneur_edit">
       <div>
         <div class="secondary f1" onclick="ConteneurEdit.duplicate()">
           Dupliquer le conteneur
         </div>
+      </div>
+      <hr />
+      <!-- Ajouter des elements -->
+      <div class="b1 p16 br8">
+        <div class="secondary" onclick="ConteneurEdit.add_title()">
+          Ajouter un Titre
+        </div>
+        <div class="secondary" onclick="ConteneurEdit.add_sub_title()">
+          Ajouter un sous titre
+        </div>
+        <div class="secondary" onclick="Edit.add_conteneur_text()">
+          Ajouter une description
+        </div>
+        <div class="secondary" onclick="ConteneurEdit.add_mini_text()">
+          Ajouter un mini texte
+        </div>
+        <div class="secondary">
+          <p>Ajouter une image</p>
+          <input
+            type="file"
+            onchange="Edit.add_conteneur_image(event)"
+            accept="image/*"
+          />
+        </div>
+      </div>
+      <hr />
+      <div class="b1 p16 br8 column g4">
+        <div>Disposition en grille</div>
+        <div class="secondary f1" onclick="ConteneurEdit.setGrid()">
+          Activer la grille
+        </div>
+        <div class="secondary f1" onclick="ConteneurEdit.setFlex()">
+          Desactiver la grille
+        </div>
+        <div>
+          <div>Nombre de colonnes</div>
+          <input
+            type="range"
+            value="2"
+            min="1"
+            max="5"
+            oninput="ConteneurEdit.setColumn(this)"
+          />
+        </div>
+      </div>
+      <hr />
+      <div>
+        <div>Espacement entre les elements</div>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="8"
+          oninput="ConteneurEdit.set_gap(this)"
+        />
       </div>
       <hr />
       <div>
@@ -365,17 +426,6 @@
           oninput="ConteneurEdit.set_opacity(this)"
         />
       </div>
-      <hr />
-      <div>
-        <div>Espacement entre les elements</div>
-        <input
-          type="range"
-          value="4"
-          min="0"
-          max="8"
-          oninput="ConteneurEdit.set_gap(this)"
-        />
-      </div>
 
       <hr />
       <div>Largeur</div>
@@ -438,26 +488,7 @@
         Assombrir l'image de fond
       </div>
       <hr />
-      <div class="secondary" onclick="ConteneurEdit.add_title()">
-        Ajouter un Titre
-      </div>
-      <div class="secondary" onclick="ConteneurEdit.add_sub_title()">
-        Ajouter un sous titre
-      </div>
-      <div class="secondary" onclick="Edit.add_conteneur_text()">
-        Ajouter une description
-      </div>
-      <div class="secondary" onclick="ConteneurEdit.add_mini_text()">
-        Ajouter un mini texte
-      </div>
-      <hr />
-      <p>Ajouter une image</p>
-      <input
-        type="file"
-        onchange="Edit.add_conteneur_image(event)"
-        accept="image/*"
-      />
-      <hr />
+
       <p>Couleur de fond</p>
       <input
         class="jscolor"
@@ -548,11 +579,140 @@
         max="128"
         oninput="ConteneurEdit.edit_radius_bottom_right(this)"
       />
+      <!-- Bordures -->
+      <div class="b1 p16 br8 column g4">
+        <div class="b1 br8 p16 column g4">
+          <div>Bordure du haut</div>
+          <hr />
+          <div>
+            <div>Epaisseur</div>
+            <input
+              type="range"
+              value="0"
+              min="0"
+              max="32"
+              oninput="ConteneurEdit.set_size_border_top(this)"
+            />
+          </div>
+          <div>
+            <div>couleur</div>
+            <input
+              class="jscolor"
+              value="#fff"
+              id="primaryPicker"
+              onclick="this.blur()"
+              onchange="ConteneurEdit.set_color_border_top(this)"
+            />
+          </div>
+          <div>
+            <div>Type</div>
+            <div class="row g16">
+              <div class="secondary" onclick="ConteneurEdit.set_ligne_border_top()">Ligne</div>
+              <div class="secondary" onclick="ConteneurEdit.set_pointilles_border_top()">Pointillees</div>
+            </div>
+          </div>
+        </div>
+        <div class="b1 br8 p16 column g4">
+          <div>Bordure du bas</div>
+          <hr />
+          <div>
+            <div>Epaisseur</div>
+            <input
+              type="range"
+              value="0"
+              min="0"
+              max="32"
+              oninput="ConteneurEdit.set_size_border_bottom(this)"
+            />
+          </div>
+          <div>
+            <div>couleur</div>
+            <input
+              class="jscolor"
+              value="#fff"
+              id="primaryPicker"
+              onclick="this.blur()"
+              onchange="ConteneurEdit.set_color_border_bottom(this)"
+            />
+          </div>
+          <div>
+            <div>Type</div>
+            <div class="row g16">
+              <div class="secondary" onclick="ConteneurEdit.set_ligne_border_bottom()">Ligne</div>
+              <div class="secondary" onclick="ConteneurEdit.set_pointilles_border_bottom()">Pointillees</div>
+            </div>
+          </div>
+        </div>
+        <div class="b1 br8 p16 column g4">
+          <div>Bordure de gauche</div>
+          <hr />
+          <div>
+            <div>Epaisseur</div>
+            <input
+              type="range"
+              value="0"
+              min="0"
+              max="32"
+              oninput="ConteneurEdit.set_size_border_left(this)"
+            />
+          </div>
+          <div>
+            <div>couleur</div>
+            <input
+              class="jscolor"
+              value="#fff"
+              id="primaryPicker"
+              onclick="this.blur()"
+              onchange="ConteneurEdit.set_color_border_left(this)"
+            />
+          </div>
+          <div>
+            <div>Type</div>
+            <div class="row g16">
+              <div class="secondary" onclick="ConteneurEdit.set_ligne_border_left()">Ligne</div>
+              <div class="secondary" onclick="ConteneurEdit.set_pointilles_border_left()">Pointillees</div>
+            </div>
+          </div>
+        </div>
+        <div class="b1 br8 p16 column g4">
+          <div>Bordure de droite</div>
+          <hr />
+          <div>
+            <div>Epaisseur</div>
+            <input
+              type="range"
+              value="0"
+              min="0"
+              max="32"
+              oninput="ConteneurEdit.set_size_border_right(this)"
+            />
+          </div>
+          <div>
+            <div>couleur</div>
+            <input
+              class="jscolor"
+              value="#fff"
+              id="primaryPicker"
+              onclick="this.blur()"
+              onchange="ConteneurEdit.set_color_border_right(this)"
+            />
+          </div>
+          <div>
+            <div>Type</div>
+            <div class="row g16">
+              <div class="secondary" onclick="ConteneurEdit.set_ligne_border_right()">Ligne</div>
+              <div class="secondary" onclick="ConteneurEdit.set_pointilles_border_right()">Pointillees</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <hr />
       <div class="secondary" onclick="Edit.delete_conteneur()">
         Supprimer du design
       </div>
-      <div class="secondary" onclick="Edit.close_conteneur_edit()">Fermer</div>
+      <div class="secondary float_close" onclick="Edit.close_conteneur_edit()">
+        Fermer
+      </div>
     </div>
 
     <div id="renderer"></div>
@@ -666,7 +826,9 @@
         Assombrir l'image de fond
       </div>
       <hr />
-      <div class="secondary" onclick="UI.hide_artboard_options()">Fermer</div>
+      <div class="secondary float_close" onclick="UI.hide_artboard_options()">
+        Fermer
+      </div>
     </div>
 
     <!-- Ajouter les elements -->
@@ -704,7 +866,9 @@
         Creer un nouveau projet
       </div>
       <hr />
-      <div class="secondary" onclick="UI.hide_add_graphix()">Fermer</div>
+      <div class="secondary float_close" onclick="UI.hide_add_graphix()">
+        Fermer
+      </div>
     </div>
 
     <!-- Options -->
