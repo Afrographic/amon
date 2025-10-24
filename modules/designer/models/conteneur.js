@@ -45,6 +45,10 @@ class Conteneur {
     this.border_right_size = 0;
     this.border_right_color = "#000";
     this.border_right_type = "solid";
+    // Degrade
+    this.deg_rotate = "0";
+    this.deg_first_color = "rgba(0,0,0,0)";
+    this.deg_second_color = "rgba(0,0,0,0)";
   }
 
   render() {
@@ -62,7 +66,12 @@ class Conteneur {
         opacity:${this.opacity};
         gap:${this.gap}vw;
         background-color:${this.background_color};
-        background-image:${this.background_image};
+        background:linear-gradient(
+          ${this.deg_rotate}deg,
+            ${this.deg_first_color},
+            ${this.deg_second_color}
+          ), ${this.background_image};
+
         width:${this.width}%;
         padding:${this.padding_top_bottom} ${this.padding_left_right};
         align-items:${this.vertAlign};
@@ -90,6 +99,10 @@ class Conteneur {
     this.id = json.id;
     this.children = this.children_from_json(json.children);
     this.gap = json.gap;
+
+    this.deg_rotate = json.deg_rotate;
+    this.deg_first_color = json.deg_first_color;
+    this.deg_second_color = json.deg_second_color;
 
     this.border_top_size = json.border_top_size;
     this.border_top_type = json.border_top_type;
@@ -210,6 +223,11 @@ class Conteneur {
     new_conteneur.border_left_size = this.border_left_size;
     new_conteneur.border_left_size = this.border_left_size;
     new_conteneur.border_left_size = this.border_left_size;
+
+    //Degrade
+    new_conteneur.deg_rotate = this.deg_rotate;
+    new_conteneur.deg_first_color = this.deg_first_color;
+    new_conteneur.deg_second_color = this.deg_second_color;
 
     return new_conteneur;
   }

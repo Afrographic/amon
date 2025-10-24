@@ -313,8 +313,20 @@
         </div>
       </div>
       <hr />
+      <!-- Ordre  -->
+      <div class="b1 p16 br8 column g4">
+        <div>L'ordre dans le plan de travail</div>
+        <div class="row g16">
+          <div class="secondary f1" onclick="ConteneurEdit.forward()">
+            Avancer
+          </div>
+          <div class="secondary f1" onclick="ConteneurEdit.backward()">
+            Reculer
+          </div>
+        </div>
+      </div>
       <!-- Ajouter des elements -->
-      <div class="b1 p16 br8">
+      <div class="b1 p16 br8 column g4">
         <div class="secondary" onclick="ConteneurEdit.add_title()">
           Ajouter un Titre
         </div>
@@ -502,6 +514,39 @@
         onclick="this.blur()"
         onchange="Edit.set_conteneur_bg(this)"
       />
+      <hr>
+      <div class="b1 br8 p16 column g4">
+        <div>Fond en degrade</div>
+        <hr />
+        <div>Permiere couleur</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ConteneurEdit.set_degrade_first_color(this)"
+        />
+
+        <hr />
+        <div>Deuxieme couleur</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ConteneurEdit.set_degrade_second_color(this)"
+        />
+
+        <hr />
+        <div>Rotation du degrade</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="ConteneurEdit.set_degrade_rotate(this)"
+        />
+      </div>
       <hr />
       <div class="secondary" onclick="Edit.set_bg_transparent()">
         Rendrer le fond transparent

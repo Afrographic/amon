@@ -485,4 +485,59 @@ class ConteneurEdit {
       }
     }
   }
+
+  // Configuration du degrade
+  static set_degrade_first_color(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].deg_first_color = el.value;
+        Create.artboard[i].background_image = `url()`;
+        Create.render();
+      }
+    }
+  }
+  static set_degrade_second_color(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].deg_second_color = el.value;
+        Create.artboard[i].background_image = `url()`;
+        Create.render();
+      }
+    }
+  }
+  static set_degrade_rotate(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].deg_rotate = el.value;
+
+        Create.render();
+      }
+    }
+  }
+
+  static forward() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        if (i < Create.artboard.length - 1) {
+          let temp = Create.artboard[i];
+          Create.artboard[i] = Create.artboard[i+1];
+          Create.artboard[i+1] = temp;
+        }
+        Create.render();
+        break;
+      }
+    }
+  }
+  static backward() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        if (i > 0) {
+          let temp = Create.artboard[i];
+          Create.artboard[i] = Create.artboard[i-1];
+          Create.artboard[i-1] = temp;
+        }
+        Create.render();
+      }
+    }
+  }
 }
