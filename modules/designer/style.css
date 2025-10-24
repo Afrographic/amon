@@ -68,6 +68,10 @@ hr{
     position: relative;
 }
 
+.conteneur{
+    overflow-x: hidden;
+}
+
 .logo{
     display: flex;
     align-items: center;

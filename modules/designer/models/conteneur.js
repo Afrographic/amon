@@ -1,6 +1,8 @@
 class Conteneur {
   constructor() {
     this.id = Utils.generate_unique_id_from_time();
+    this.display="flex";
+    this.colonnes_pour_grille=3;
     this.children = [];
     this.gap = 4;
     this.align = "flex-start";
@@ -36,7 +38,8 @@ class Conteneur {
     }
     return `
         <div onclick="Edit.edit_conteneur('${this.id}')" class="conteneur" style="
-        display:flex;
+        display:${this.display};
+        grid-template-columns:repeat(${this.colonnes_pour_grille},1fr);
         position:${this.position};
         top:${this.posY}%;
         left:${this.posX}%;
@@ -94,6 +97,8 @@ class Conteneur {
     this.position = json.position;
     this.posY = json.posY;
     this.posX = json.posX;
+    this.display = json.display;
+    this.colonnes_pour_grille = json.colonnes_pour_grille;
   }
 
   children_from_json(children_json) {
@@ -150,6 +155,8 @@ class Conteneur {
     new_conteneur.margin_bottom = this.margin_bottom;
     new_conteneur.margin_left = this.margin_left;
     new_conteneur.margin_right = this.margin_right;
+    new_conteneur.display = this.display;
+    new_conteneur.colonnes_pour_grille = this.colonnes_pour_grille;
     return new_conteneur;
   }
 
