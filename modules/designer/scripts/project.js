@@ -13,6 +13,10 @@ class Project {
       V_padding: Create.V_padding,
       H_padding: Create.H_padding,
       aspect_ratio: Create.aspect_ratio,
+      // Degrade configuration
+      deg_rotate: Create.deg_rotate,
+      deg_first_color: Create.deg_first_color,
+      deg_second_color: Create.deg_second_color,
       artboard: Create.artboard,
     };
     if (this.saved) {
@@ -22,13 +26,13 @@ class Project {
     } else {
       //Create a new instance of saving
       let name_project;
-      if(Create.name_project == "New"){
+      if (Create.name_project == "New") {
         name_project = prompt("Enregistrer le projet, Inserez le nom");
         Create.name_project = name_project;
-      }else{
+      } else {
         name_project = Create.name_project;
       }
-      
+
       if (name_project == null) return;
       if (name_project.trim().length == 0) return;
       project.name_project = name_project;
@@ -102,6 +106,12 @@ class Project {
     Create.V_padding = project.V_padding;
     Create.H_padding = project.H_padding;
     Create.aspect_ratio = project.aspect_ratio;
+    // Degrade configuration
+    Create.deg_rotate = project.deg_rotate;
+    Create.deg_first_color = project.deg_first_color;
+    Create.deg_second_color = project.deg_second_color;
+
+
     Create.render();
     UI.hide_projects();
     // Set project name

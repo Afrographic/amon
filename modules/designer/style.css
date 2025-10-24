@@ -128,16 +128,11 @@ button {
 }
 
 .float_close {
-    position: fixed;
-    padding:3vw;
-    right: 4vw;
-    bottom: 30vh;
+    padding: 4vw;
     background-color: #000000 !important;
     color: white;
-    border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-    padding-top: 2vw !important;
-    padding-bottom: 9px !important;
+    text-align: center;
+    border-radius: 8px;
 }
 
 .artboard_options {

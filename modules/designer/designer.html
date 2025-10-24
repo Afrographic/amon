@@ -39,9 +39,7 @@
         </div>
       </div>
       <hr />
-      <div class=" float_close" onclick="UI.hide_projects()">
-        Fermer
-      </div>
+      <div class="float_close" onclick="UI.hide_projects()">Fermer</div>
     </div>
 
     <!-- Edit text -->
@@ -56,7 +54,7 @@
           oninput="Edit.edit_text_value(this)"
         ></textarea>
       </div>
-      <hr>
+      <hr />
       <div>
         <p>Taille de la police</p>
         <input
@@ -143,9 +141,7 @@
       <div class="secondary" onclick="Edit.delete_text()">
         Supprimer du design
       </div>
-      <div class=" float_close" onclick="Edit.close_text_edit()">
-        Fermer
-      </div>
+      <div class="float_close" onclick="Edit.close_text_edit()">Fermer</div>
     </div>
     <!-- Edit image -->
     <div class="p16 hidden edit" id="image_edit">
@@ -306,9 +302,7 @@
       <div class="secondary" onclick="Edit.delete_image()">
         Supprimer du design
       </div>
-      <div class=" float_close" onclick="Edit.close_image_edit()">
-        Fermer
-      </div>
+      <div class="float_close" onclick="Edit.close_image_edit()">Fermer</div>
     </div>
 
     <!-- Edit conteneur -->
@@ -503,7 +497,7 @@
       <p>Couleur de fond</p>
       <input
         class="jscolor"
-        value="#fff"
+        value="rgba(0,0,0,1)"
         id="primaryPicker"
         onclick="this.blur()"
         onchange="Edit.set_conteneur_bg(this)"
@@ -618,8 +612,18 @@
           <div>
             <div>Type</div>
             <div class="row g16">
-              <div class="secondary" onclick="ConteneurEdit.set_ligne_border_top()">Ligne</div>
-              <div class="secondary" onclick="ConteneurEdit.set_pointilles_border_top()">Pointillees</div>
+              <div
+                class="secondary"
+                onclick="ConteneurEdit.set_ligne_border_top()"
+              >
+                Ligne
+              </div>
+              <div
+                class="secondary"
+                onclick="ConteneurEdit.set_pointilles_border_top()"
+              >
+                Pointillees
+              </div>
             </div>
           </div>
         </div>
@@ -649,8 +653,18 @@
           <div>
             <div>Type</div>
             <div class="row g16">
-              <div class="secondary" onclick="ConteneurEdit.set_ligne_border_bottom()">Ligne</div>
-              <div class="secondary" onclick="ConteneurEdit.set_pointilles_border_bottom()">Pointillees</div>
+              <div
+                class="secondary"
+                onclick="ConteneurEdit.set_ligne_border_bottom()"
+              >
+                Ligne
+              </div>
+              <div
+                class="secondary"
+                onclick="ConteneurEdit.set_pointilles_border_bottom()"
+              >
+                Pointillees
+              </div>
             </div>
           </div>
         </div>
@@ -680,8 +694,18 @@
           <div>
             <div>Type</div>
             <div class="row g16">
-              <div class="secondary" onclick="ConteneurEdit.set_ligne_border_left()">Ligne</div>
-              <div class="secondary" onclick="ConteneurEdit.set_pointilles_border_left()">Pointillees</div>
+              <div
+                class="secondary"
+                onclick="ConteneurEdit.set_ligne_border_left()"
+              >
+                Ligne
+              </div>
+              <div
+                class="secondary"
+                onclick="ConteneurEdit.set_pointilles_border_left()"
+              >
+                Pointillees
+              </div>
             </div>
           </div>
         </div>
@@ -711,8 +735,18 @@
           <div>
             <div>Type</div>
             <div class="row g16">
-              <div class="secondary" onclick="ConteneurEdit.set_ligne_border_right()">Ligne</div>
-              <div class="secondary" onclick="ConteneurEdit.set_pointilles_border_right()">Pointillees</div>
+              <div
+                class="secondary"
+                onclick="ConteneurEdit.set_ligne_border_right()"
+              >
+                Ligne
+              </div>
+              <div
+                class="secondary"
+                onclick="ConteneurEdit.set_pointilles_border_right()"
+              >
+                Pointillees
+              </div>
             </div>
           </div>
         </div>
@@ -721,7 +755,7 @@
       <div class="secondary" onclick="Edit.delete_conteneur()">
         Supprimer du design
       </div>
-      <div class=" float_close" onclick="Edit.close_conteneur_edit()">
+      <div class="float_close" onclick="Edit.close_conteneur_edit()">
         Fermer
       </div>
     </div>
@@ -734,7 +768,7 @@
 
     <!-- Editer l'espace de travail -->
     <div class="artboard_options hidden edit" id="artboard_options">
-      <div>
+      <div class="b1 column g4 p16 br8">
         <div>Taille du document</div>
         <div class="secondary" onclick="Create.set_automatic_height()">
           Hauteur automatique
@@ -833,13 +867,44 @@
         />
       </div>
       <hr />
+      <div class="b1 br8 p16 column g4">
+        <div>Fond en degrade</div>
+        <hr />
+        <div>Permiere couleur</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Create.set_bg(this)"
+        />
+
+        <hr />
+        <div>Deuxieme couleur</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Create.set_bg(this)"
+        />
+
+        <hr />
+        <div>Rotation du degrade</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="Create.setHPadding(this)"
+        />
+      </div>
+      <hr />
       <div class="secondary" onclick="Create.darken_bg()">
         Assombrir l'image de fond
       </div>
       <hr />
-      <div class=" float_close" onclick="UI.hide_artboard_options()">
-        Fermer
-      </div>
+      <div class="float_close" onclick="UI.hide_artboard_options()">Fermer</div>
     </div>
 
     <!-- Ajouter les elements -->
@@ -877,9 +942,7 @@
         Creer un nouveau projet
       </div>
       <hr />
-      <div class=" float_close" onclick="UI.hide_add_graphix()">
-        Fermer
-      </div>
+      <div class="float_close" onclick="UI.hide_add_graphix()">Fermer</div>
     </div>
 
     <!-- Options -->

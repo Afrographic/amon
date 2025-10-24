@@ -13,6 +13,11 @@ class Create {
   static V_padding = 5;
   static H_padding = 5;
   static aspect_ratio = "1/1";
+
+  static deg_rotate="0"
+  static deg_first_color="";
+  static deg_second_color="";
+
   static artboard = [];
   // End project settings
   
@@ -209,6 +214,8 @@ class Create {
     this.aspect_ratio = "16/9";
     this.render();
   }
+
+  // Configuration du degrade
 }
 
 Create.render();
