@@ -2,11 +2,11 @@ class Create {
   static renderer = document.querySelector("#renderer");
   // Project settings
   static name_project = "New";
-  static db_index = -1; 
+  static db_index = -1;
   static H_align = "flex-start";
   static V_align = "flex-start";
-  static bg_file = undefined; 
-  static bg_image_url="";
+  static bg_file = undefined;
+  static bg_image_url = "";
   static bg_color = "#fff";
   static edit_id = "";
   static gap = 3;
@@ -14,13 +14,13 @@ class Create {
   static H_padding = 5;
   static aspect_ratio = "1/1";
 
-  static deg_rotate="0"
-  static deg_first_color="";
-  static deg_second_color="";
+  static deg_rotate = "0";
+  static deg_first_color = "";
+  static deg_second_color = "";
 
   static artboard = [];
   // End project settings
-  
+
   static add_titre() {
     let titre = prompt("Inserez le titre");
     if (titre == null) return;
@@ -92,7 +92,21 @@ class Create {
     renderer.style.gap = this.gap + "vw";
     renderer.style.aspectRatio = this.aspect_ratio;
     renderer.style.padding = `${this.V_padding}vw ${this.H_padding}vw`;
-    renderer.style.backgroundImage = `url(${this.bg_image_url})`
+    if (this.bg_image_url.trim().length > 0) {
+      renderer.style.backgroundImage = `url(${this.bg_image_url})`;
+    }
+
+    if (
+      this.deg_first_color.trim().length > 0 &&
+      this.deg_second_color.trim().length > 0
+    ) {
+      renderer.style.backgroundImage = `linear-gradient(
+        ${this.deg_rotate}deg,
+          ${this.deg_first_color},
+          ${this.deg_second_color}
+        )`;
+    }
+
     renderer.innerHTML = "";
     for (let el of this.artboard) {
       renderer.innerHTML += el.render();
@@ -125,6 +139,8 @@ class Create {
     if (e.target.files.length == 0) return;
     this.bg_file = e.target.files[0];
     this.bg_image_url = URL.createObjectURL(e.target.files[0]);
+    this.deg_first_color ="";
+    this.deg_second_color ="";
     this.render();
   }
 
@@ -216,6 +232,18 @@ class Create {
   }
 
   // Configuration du degrade
+  static set_degrade_first_color(el){
+    this.deg_first_color = el.value;
+    this.render();
+  }
+  static set_degrade_second_color(el){
+    this.deg_second_color = el.value;
+    this.render();
+  }
+  static set_degrade_rotate(el){
+    this.deg_rotate = el.value;
+    this.render();
+  }
 }
 
 Create.render();
