@@ -145,7 +145,6 @@ button {
     flex-direction: column;
     gap: 16px;
     padding: 16px;
-    border: 1px solid #aaa;
 }
 
 .artboard_options .item {
