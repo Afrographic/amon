@@ -305,6 +305,41 @@
           </div>
         </div>
       </div>
+      <hr>
+       <!-- Positionnement -->
+       <div class="b1 br8 p16">
+        <div>Positionnement</div>
+        <div class="row g16">
+          <div class="secondary" onclick="ConteneurEdit.set_position_relative()">
+            Relatif
+          </div>
+          <div class="secondary" onclick="ConteneurEdit.set_position_absolute()">
+            Absolue
+          </div>
+        </div>
+        <hr />
+        <div>
+          <p>Position verticale</p>
+          <input
+            type="range"
+            value="0"
+            min="0"
+            max="100"
+            oninput="ConteneurEdit.setPosY(this)"
+          />
+        </div>
+        <hr />
+        <div>
+          <p>Position horizontale</p>
+          <input
+            type="range"
+            value="0"
+            min="0"
+            max="100"
+            oninput="ConteneurEdit.setPosX(this)"
+          />
+        </div>
+      </div>
       <hr />
       <div>
         <div>Opacite</div>

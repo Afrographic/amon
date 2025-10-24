@@ -176,7 +176,7 @@ class ImageEdit {
     }
   }
 
-  // Set Position value
+  // Set Positions
   static set_position_relative() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {

@@ -12,7 +12,7 @@ class Image_D {
     // Marges
     this.margin_top = 0;
     this.margin_bottom = 0;
-    this.margin_left = 0;
+    this.margin_left = 0; 
     this.margin_right = 0;
     // Positionning
     this.position = "relative";

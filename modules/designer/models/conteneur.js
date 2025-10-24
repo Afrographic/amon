@@ -23,6 +23,10 @@ class Conteneur {
     this.margin_bottom = 0;
     this.margin_left = 0;
     this.margin_right = 0;
+     // Positionning
+     this.position = "relative";
+     this.posY= "0";
+     this.posX= "0";
   }
 
   render() {
@@ -33,6 +37,9 @@ class Conteneur {
     return `
         <div onclick="Edit.edit_conteneur('${this.id}')" class="conteneur" style="
         display:flex;
+        position:${this.position};
+        top:${this.posY}%;
+        left:${this.posX}%;
         opacity:${this.opacity};
         gap:${this.gap}vw;
         background-color:${this.background_color};
@@ -83,6 +90,10 @@ class Conteneur {
     this.margin_bottom = json.margin_bottom;
     this.margin_left = json.margin_left;
     this.margin_right = json.margin_right;
+    // Positionning
+    this.position = json.position;
+    this.posY = json.posY;
+    this.posX = json.posX;
   }
 
   children_from_json(children_json) {

@@ -288,4 +288,74 @@ class ConteneurEdit {
     Create.render();
     Edit.close_conteneur_edit();
   }
+
+  // Set Positions
+  static set_position_relative() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].position = "relative";
+        Create.render();
+      }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].position = "relative";
+            Create.render();
+          }
+        }
+      }
+    }
+  }
+  static set_position_absolute() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].position = "absolute";
+        Create.render();
+      }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].position = "absolute";
+            Create.render();
+          }
+        }
+      }
+    }
+  }
+  static setPosY(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].posY = el.value;
+        Create.render();
+      }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].posY = el.value;
+            Create.render();
+          }
+        }
+      }
+    }
+  }
+  static setPosX(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].posX = el.value;
+        Create.render();
+      }
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].posX = el.value;
+            Create.render();
+          }
+        }
+      }
+    }
+  }
 }
