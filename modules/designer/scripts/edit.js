@@ -21,6 +21,52 @@ class Edit {
       }
     }
   }
+  // Align text
+  static text_to_left(){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].text_align = "left";
+      }
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].text_align = "left";
+          }
+        }
+      }
+    }
+    Create.render();
+  }
+  static text_to_center(){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].text_align = "center";
+      }
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].text_align = "center";
+          }
+        }
+      }
+    }
+    Create.render();
+  }
+  static text_to_right(){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].text_align = "right";
+      }
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].text_align = "right";
+          }
+        }
+      }
+    }
+    Create.render();
+  }
 
   static change_text_color(el) {
     let color = el.value;
