@@ -19,10 +19,10 @@ class TableauEdit {
     }
   }
 
-  static change_tableau_value(el, k, l) {
+  static change_tableau_value(el, tableau_id, k, l) {
     // Render edit value of table
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
-      if (Create.artboard[i].id == Create.edit_id) {
+      if (Create.artboard[i].id == tableau_id) {
         Create.artboard[i].data[k][l] = el.value;
         Create.render();
       }

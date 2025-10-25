@@ -4,11 +4,11 @@ class Tableau {
     this.width = 100;
     this.border_color = "#aaa";
     this.text_color = "#000";
-    this.font_size = 3;
     this.data = [
       ["", ""],
       ["", ""],
     ];
+    this.type = "tableau"
   }
 
   render() {
@@ -16,7 +16,7 @@ class Tableau {
     for (let i = 0; i <= this.data.length - 1; i++) {
       res += "<tr>";
       for (let j = 0; j <= this.data[i].length - 1; j++) {
-        res += `<td style="font-size: 3vw;padding:3vw;border:1px solid ${this.border_color};color:${this.text_color};">${this.data[i][j]}</td>`;
+        res += `<td style="font-size: 3vw;padding:2vw 3vw;border:1px solid ${this.border_color};color:${this.text_color};">${this.data[i][j]}</td>`;
       }
       res += "</tr>";
     }
@@ -30,7 +30,7 @@ class Tableau {
       res += "<tr>";
       for (let j = 0; j <= this.data[i].length - 1; j++) {
         res += `<td style="font-size: 3vw;padding:3vw;border:1px solid ${this.border_color};">
-          <input type="text" value="${this.data[i][j]}" placeholder="Ecrire..." oninput="TableauEdit.change_tableau_value(this,${i},${j})"/>
+          <input type="text" value="${this.data[i][j]}" placeholder="Ecrire..." oninput="TableauEdit.change_tableau_value(this,'${this.id}',${i},${j})">
         </td>`;
       }
       res += "</tr>";
@@ -54,5 +54,25 @@ class Tableau {
     for (let i = 0; i <= total_cols - 1; i++) {
       this.data[this.data.length - 1].push("");
     }
+  }
+
+  from_json(json) {
+    this.id = json.id;
+    this.width = json.width;
+    this.border_color = json.border_color;
+    this.text_color = json.text_color;
+    this.data = json.data;
+    this.type = json.type;
+  }
+
+  clone() {
+    let clone = new Tableau();
+    clone.id = `id_${Math.random()*100000}`;
+    clone.width = this.width;
+    clone.border_color = this.border_color;
+    clone.text_color = this.text_color;
+    clone.data = this.data;
+    clone.type = this.type;
+    return clone;
   }
 }

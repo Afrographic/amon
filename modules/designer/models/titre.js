@@ -35,7 +35,7 @@ class Titre {
         </div>
         `;
   }
-
+ 
   from_json(json) {
     this.id = json.id;
     this.value = json.value;

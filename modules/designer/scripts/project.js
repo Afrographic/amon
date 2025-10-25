@@ -99,6 +99,10 @@ class Project {
         item = new Conteneur();
         item.from_json(project.artboard[i]);
       }
+      if (project.artboard[i].type == "tableau") {
+        item = new Tableau();
+        item.from_json(project.artboard[i]);
+      }
       artBoard.push(item);
     }
     Create.artboard = artBoard;
