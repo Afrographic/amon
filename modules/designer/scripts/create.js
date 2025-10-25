@@ -93,6 +93,9 @@ class Create {
     renderer.style.aspectRatio = this.aspect_ratio;
     renderer.style.padding = `${this.V_padding}vw ${this.H_padding}vw`;
 
+    if(this.bg_color == undefined){
+      this.bg_color = "#fff";
+    }
     if (this.bg_color.trim().length == 0) {
       renderer.style.background = `linear-gradient(
         ${this.deg_rotate}deg,

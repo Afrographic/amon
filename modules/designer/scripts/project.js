@@ -50,11 +50,18 @@ class Project {
     project_renderer.innerHTML = "";
     for (let item of DB.projects) {
       project_renderer.innerHTML += `
-      <div class="project_item" onclick="Project.load_project(${DB.projects.indexOf(
-        item
-      )})">
+      <div class="project_item" >
         <img src="assets/images/djehouty_icon.svg" alt="" />
-        <div>${item.project.name_project}</div>
+        <div onclick="Project.load_project(${DB.projects.indexOf(
+          item
+        )})">${item.project.name_project}</div>
+        <div class="f1" onclick="Project.load_project(${DB.projects.indexOf(
+          item
+        )})"></div>
+        <img src="assets/images/edit.svg" alt="" style="width:4.5vw;" />
+        <img src="assets/images/delete.svg" alt="" onclick="Project.delete_project(${DB.projects.indexOf(
+          item
+        )})" />
        </div>
       `;
     }
@@ -138,5 +145,13 @@ class Project {
     Create.H_padding = 5;
     Create.aspect_ratio = "1/1";
     Create.render();
+  }
+
+  static async delete_project(index){
+    if(confirm("Voulez vous vraiment supprimer le projet")){
+      await DB.delete_project( DB.projects[index].id);
+      DB.projects.splice(index,1);
+      Project.render_projects();
+    }
   }
 }
