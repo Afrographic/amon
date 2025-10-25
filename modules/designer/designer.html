@@ -65,6 +65,15 @@
           oninput="Edit.edit_text_size(this)"
         />
       </div>
+      <!-- L'ordre dans le plan de travail -->
+      <hr />
+      <div class="b1 p16 br8 column g4">
+        <div>L'ordre dans le plan de travail</div>
+        <div class="row g16">
+          <div class="secondary f1" onclick="ImageEdit.forward()">Avancer</div>
+          <div class="secondary f1" onclick="ImageEdit.backward()">Reculer</div>
+        </div>
+      </div>
       <hr />
       <div>
         <p>Largeur de l'espace occupe par le texte</p>
@@ -147,6 +156,15 @@
     <div class="p16 hidden edit" id="image_edit">
       <div class="secondary" onclick="ImageEdit.duplicate()">
         Dupliquer l'image
+      </div>
+      <!-- L'ordre dans le plan de travail -->
+      <hr />
+      <div class="b1 p16 br8 column g4">
+        <div>L'ordre dans le plan de travail</div>
+        <div class="row g16">
+          <div class="secondary f1" onclick="ImageEdit.forward()">Avancer</div>
+          <div class="secondary f1" onclick="ImageEdit.backward()">Reculer</div>
+        </div>
       </div>
       <hr />
       <div class="secondary" onclick="ImageEdit.remove_uni_bg()">
@@ -310,6 +328,42 @@
       <div>
         <div class="secondary f1" onclick="ConteneurEdit.duplicate()">
           Dupliquer le conteneur
+        </div>
+      </div>
+      <hr />
+      <div class="b1 p16 br8 column g4">
+        <p>Alignement horizonale</p>
+        <div class="row g16 aic">
+          <div class="secondary" onclick="ConteneurEdit.set_left()">Gauche</div>
+          <div class="secondary" onclick="ConteneurEdit.set_center()">
+            Centre
+          </div>
+        </div>
+        <div class="row g16 aic">
+          <div class="secondary" onclick="ConteneurEdit.set_right()">
+            Droite
+          </div>
+          <div class="secondary" onclick="ConteneurEdit.set_space_between()">
+            De part et d'autre
+          </div>
+        </div>
+      </div>
+
+      <hr />
+      <div class="b1 p16 br8 column g4">
+        <div>Alignement verticale</div>
+        <div class="row aic g16">
+          <div class="secondary" onclick="ConteneurEdit.set_ver_left()">
+            En haut
+          </div>
+        </div>
+        <div class="row aic g16">
+          <div class="secondary" onclick="ConteneurEdit.set_ver_center()">
+            Centre
+          </div>
+          <div class="secondary" onclick="ConteneurEdit.set_ver_right()">
+            En bas
+          </div>
         </div>
       </div>
       <hr />
@@ -514,7 +568,7 @@
         onclick="this.blur()"
         onchange="Edit.set_conteneur_bg(this)"
       />
-      <hr>
+      <hr />
       <div class="b1 br8 p16 column g4">
         <div>Fond en degrade</div>
         <hr />
@@ -550,29 +604,6 @@
       <hr />
       <div class="secondary" onclick="Edit.set_bg_transparent()">
         Rendrer le fond transparent
-      </div>
-      <hr />
-      <p>Alignement horizonale</p>
-      <div class="row aic">
-        <div class="secondary" onclick="ConteneurEdit.set_left()">Gauche</div>
-        <div class="secondary" onclick="ConteneurEdit.set_center()">Centre</div>
-        <div class="secondary" onclick="ConteneurEdit.set_right()">Droite</div>
-        <div class="secondary" onclick="ConteneurEdit.set_space_between()">
-          De part et d'autre
-        </div>
-      </div>
-      <hr />
-      <div>Alignement verticale</div>
-      <div class="row aic">
-        <div class="secondary" onclick="ConteneurEdit.set_ver_left()">
-          En haut
-        </div>
-        <div class="secondary" onclick="ConteneurEdit.set_ver_center()">
-          Centre
-        </div>
-        <div class="secondary" onclick="ConteneurEdit.set_ver_right()">
-          En bas
-        </div>
       </div>
       <hr />
 
@@ -636,6 +667,7 @@
           <hr />
           <div>
             <div>Epaisseur</div>
+
             <input
               type="range"
               value="0"
@@ -644,6 +676,7 @@
               oninput="ConteneurEdit.set_size_border_top(this)"
             />
           </div>
+          <hr />
           <div>
             <div>couleur</div>
             <input
@@ -654,6 +687,7 @@
               onchange="ConteneurEdit.set_color_border_top(this)"
             />
           </div>
+          <hr />
           <div>
             <div>Type</div>
             <div class="row g16">
@@ -685,6 +719,7 @@
               oninput="ConteneurEdit.set_size_border_bottom(this)"
             />
           </div>
+          <hr />
           <div>
             <div>couleur</div>
             <input
@@ -695,6 +730,7 @@
               onchange="ConteneurEdit.set_color_border_bottom(this)"
             />
           </div>
+          <hr />
           <div>
             <div>Type</div>
             <div class="row g16">
@@ -726,6 +762,7 @@
               oninput="ConteneurEdit.set_size_border_left(this)"
             />
           </div>
+          <hr />
           <div>
             <div>couleur</div>
             <input
@@ -736,6 +773,7 @@
               onchange="ConteneurEdit.set_color_border_left(this)"
             />
           </div>
+          <hr />
           <div>
             <div>Type</div>
             <div class="row g16">
@@ -767,6 +805,7 @@
               oninput="ConteneurEdit.set_size_border_right(this)"
             />
           </div>
+          <hr />
           <div>
             <div>couleur</div>
             <input
@@ -777,6 +816,7 @@
               onchange="ConteneurEdit.set_color_border_right(this)"
             />
           </div>
+          <hr />
           <div>
             <div>Type</div>
             <div class="row g16">
@@ -859,12 +899,14 @@
         oninput="Create.setHPadding(this)"
       />
       <hr />
-      <div class="item">
+      <div class="b1 p16 br8 column g4">
         <div>Alignement horizontale</div>
-        <div class="row aic">
+        <div class="row aic g16">
           <div class="secondary" onclick="Create.setHoriAlignLeft()">
             Gauche
           </div>
+        </div>
+        <div class="row aic g16">
           <div class="secondary" onclick="Create.setHoriAlignCenter()">
             Centre
           </div>
@@ -874,15 +916,17 @@
         </div>
       </div>
       <hr />
-      <div class="item">
+      <div class="b1 p16 br8 column g4">
         <div>Alignement verticale</div>
-        <div class="row aic" style="gap: 8px; flex-wrap: wrap">
+        <div class="row aic g16">
           <div class="secondary" onclick="Create.setVertAlignTop()">
             en haut
           </div>
           <div class="secondary" onclick="Create.setVertAlignCenter()">
             Centre
           </div>
+        </div>
+        <div class="row aic g16">
           <div class="secondary" onclick="Create.setVertAlignBottom()">
             en bas
           </div>

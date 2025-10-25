@@ -99,7 +99,7 @@ button {
 }
 
 .b1 {
-    border: 1px solid #aaa;
+    border: 1px solid #aaaaaa75;
 }
 
 .p16 {
@@ -165,7 +165,7 @@ button {
     bottom: 0;
     left: 0;
     background-color: #ffffff;
-    max-height: 30vh;
+    max-height: 50vh;
     overflow: auto;
     padding: 16px;
     overflow-x: hidden;

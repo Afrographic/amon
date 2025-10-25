@@ -15,8 +15,8 @@ class Create {
   static aspect_ratio = "1/1";
 
   static deg_rotate = "0";
-  static deg_first_color = "";
-  static deg_second_color = "";
+  static deg_first_color = "rgba(0,0,0,0)";
+  static deg_second_color = "rgba(0,0,0,0)";
 
   static artboard = [];
   // End project settings
@@ -92,19 +92,13 @@ class Create {
     renderer.style.gap = this.gap + "vw";
     renderer.style.aspectRatio = this.aspect_ratio;
     renderer.style.padding = `${this.V_padding}vw ${this.H_padding}vw`;
-    if (this.bg_image_url.trim().length > 0) {
-      renderer.style.backgroundImage = `url(${this.bg_image_url})`;
-    }
 
-    if (
-      this.deg_first_color.trim().length > 0 &&
-      this.deg_second_color.trim().length > 0
-    ) {
-      renderer.style.backgroundImage = `linear-gradient(
+    if (this.bg_color.trim().length == 0) {
+      renderer.style.background = `linear-gradient(
         ${this.deg_rotate}deg,
           ${this.deg_first_color},
           ${this.deg_second_color}
-        )`;
+        ), url(${this.bg_image_url})`;
     }
 
     renderer.innerHTML = "";
@@ -139,8 +133,6 @@ class Create {
     if (e.target.files.length == 0) return;
     this.bg_file = e.target.files[0];
     this.bg_image_url = URL.createObjectURL(e.target.files[0]);
-    this.deg_first_color ="";
-    this.deg_second_color ="";
     this.render();
   }
 
@@ -232,16 +224,19 @@ class Create {
   }
 
   // Configuration du degrade
-  static set_degrade_first_color(el){
+  static set_degrade_first_color(el) {
     this.deg_first_color = el.value;
+    this.bg_color="";
     this.render();
   }
-  static set_degrade_second_color(el){
+  static set_degrade_second_color(el) {
     this.deg_second_color = el.value;
+    this.bg_color="";
     this.render();
   }
-  static set_degrade_rotate(el){
+  static set_degrade_rotate(el) {
     this.deg_rotate = el.value;
+    this.bg_color="";
     this.render();
   }
 }

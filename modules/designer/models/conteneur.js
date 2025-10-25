@@ -124,7 +124,7 @@ class Conteneur {
     this.background_color = json.background_color;
     this.background_image =
       json.bg_file != undefined
-        ? URL.createObjectURL(json.bg_file)
+        ? `url(${URL.createObjectURL(json.bg_file)})`
         : json.background_image;
     this.padding_top_bottom = json.padding_top_bottom;
     this.padding_left_right = json.padding_left_right;

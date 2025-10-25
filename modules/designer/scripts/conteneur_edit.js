@@ -283,6 +283,14 @@ class ConteneurEdit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].display = "Grid";
+        // Set children width to 100%
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].type == "image") {
+            Create.artboard[i].children[j].width = 100;
+          } else {
+            Create.artboard[i].children[j].width = "100%";
+          }
+        }
       }
     }
     Create.render();
@@ -293,6 +301,14 @@ class ConteneurEdit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].display = "flex";
+        // Set children width to 100%
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].type == "image") {
+            Create.artboard[i].children[j].width = 50;
+          } else {
+            Create.artboard[i].children[j].width = "50%";
+          }
+        }
       }
     }
     Create.render();
@@ -491,7 +507,9 @@ class ConteneurEdit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].deg_first_color = el.value;
-        Create.artboard[i].background_image = `url()`;
+        if (Create.artboard[i].background_image.trim().length == 0) {
+          Create.artboard[i].background_image = `url()`;
+        }
         Create.render();
       }
     }
@@ -500,7 +518,10 @@ class ConteneurEdit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].deg_second_color = el.value;
-        Create.artboard[i].background_image = `url()`;
+        if (Create.artboard[i].background_image.trim().length == 0) {
+          Create.artboard[i].background_image = `url()`;
+        }
+
         Create.render();
       }
     }
@@ -520,8 +541,8 @@ class ConteneurEdit {
       if (Create.artboard[i].id == Create.edit_id) {
         if (i < Create.artboard.length - 1) {
           let temp = Create.artboard[i];
-          Create.artboard[i] = Create.artboard[i+1];
-          Create.artboard[i+1] = temp;
+          Create.artboard[i] = Create.artboard[i + 1];
+          Create.artboard[i + 1] = temp;
         }
         Create.render();
         break;
@@ -533,8 +554,8 @@ class ConteneurEdit {
       if (Create.artboard[i].id == Create.edit_id) {
         if (i > 0) {
           let temp = Create.artboard[i];
-          Create.artboard[i] = Create.artboard[i-1];
-          Create.artboard[i-1] = temp;
+          Create.artboard[i] = Create.artboard[i - 1];
+          Create.artboard[i - 1] = temp;
         }
         Create.render();
       }
