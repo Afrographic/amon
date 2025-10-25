@@ -136,6 +136,9 @@ class Create {
     if (e.target.files.length == 0) return;
     this.bg_file = e.target.files[0];
     this.bg_image_url = URL.createObjectURL(e.target.files[0]);
+    this.deg_first_color="rgba(0,0,0,0)";
+    this.deg_second_color="rgba(0,0,0,0)";
+    this.bg_color ="";
     this.render();
   }
 

@@ -52,13 +52,15 @@ class Project {
       project_renderer.innerHTML += `
       <div class="project_item" >
         <img src="assets/images/djehouty_icon.svg" alt="" />
-        <div onclick="Project.load_project(${DB.projects.indexOf(
-          item
-        )})">${item.project.name_project}</div>
+        <div onclick="Project.load_project(${DB.projects.indexOf(item)})">${
+        item.project.name_project
+      }</div>
         <div class="f1" onclick="Project.load_project(${DB.projects.indexOf(
           item
         )})"></div>
-        <img src="assets/images/edit.svg" alt="" style="width:4.5vw;" />
+        <img src="assets/images/edit.svg" alt="" style="width:4.5vw;" onclick="Project.update_project_name(${DB.projects.indexOf(
+          item
+        )})" />
         <img src="assets/images/delete.svg" alt="" onclick="Project.delete_project(${DB.projects.indexOf(
           item
         )})" />
@@ -118,7 +120,6 @@ class Project {
     Create.deg_first_color = project.deg_first_color;
     Create.deg_second_color = project.deg_second_color;
 
-
     Create.render();
     UI.hide_projects();
     // Set project name
@@ -147,11 +148,24 @@ class Project {
     Create.render();
   }
 
-  static async delete_project(index){
-    if(confirm("Voulez vous vraiment supprimer le projet")){
-      await DB.delete_project( DB.projects[index].id);
-      DB.projects.splice(index,1);
+  static async delete_project(index) {
+    if (confirm("Voulez vous vraiment supprimer le projet")) {
+      await DB.delete_project(DB.projects[index].id);
+      DB.projects.splice(index, 1);
       Project.render_projects();
     }
+  }
+
+  static async update_project_name(index) {
+    let name_projet = prompt(
+      "Editer le nom du projet",
+      DB.projects[index].project.name_project
+    );
+    if (name_projet == null) return;
+    if (name_projet.trim().length == 0) return;
+    DB.projects[index].project.name_project = name_projet;
+    DB.projects[index].project.db_index = DB.projects[index].id;
+    await DB.update_project(DB.projects[index].project);
+    Project.render_projects();
   }
 }

@@ -62,13 +62,12 @@ class DB {
   }
 
   static async delete_project(id) {
-    let res = await this.con.remove({
+    await this.con.remove({
       from: "projects",
       where: {
         id: id,
       },
     });
-    console.log(res);
   }
 }
 

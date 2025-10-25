@@ -1,6 +1,7 @@
 class ImageEdit {
   static crop_to_square() {
     Edit.close_image_edit();
+    
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         // Crop image
@@ -278,6 +279,7 @@ class ImageEdit {
   }
 
   static duplicate() {
+    UI.hide_all();
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard.push(Create.artboard[i].clone());

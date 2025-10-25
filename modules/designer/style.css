@@ -63,8 +63,8 @@ hr {
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    background-size: cover;
-    background-position: center;
+    background-size: cover !important;
+    background-position: center !important;
     /* overflow-x: hidden; */
     position: relative;
 }
