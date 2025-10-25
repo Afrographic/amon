@@ -159,7 +159,7 @@ button {
 .edit {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 1.5vw;
     position: fixed;
     width: 100vw;
     bottom: 0;
@@ -280,6 +280,6 @@ h2 {
     width: 8vw;
 }
 
-#tableau_renderer_edit{
-    overflow-x: auto;
+.base{
+    font-size: 3.5vw;
 }

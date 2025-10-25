@@ -43,7 +43,8 @@
     </div>
  
     <!-- Edit tableau -->
-    <div class="p16 hidden edit" id="tableau_editor">
+    <div class="p16 hidden edit column g4" id="tableau_editor">
+      <div class="base">Editer le contenu du tableau tableau</div>
       <div id="tableau_renderer_edit"></div>
       <div class="b1 br8 p16 column g4">
         <div class="secondary" onclick="TableauEdit.add_ligne()">
@@ -58,10 +59,20 @@
         <div>Couleur des bordures</div>
         <input
           class="jscolor"
-          value="#fff"
+          value="rgba(0,0,0,1)"
           id="primaryPicker"
           onclick="this.blur()"
-          onchange="Edit.change_text_color(this)"
+          onchange="TableauEdit.edit_border_color(this)"
+        />
+      </div>
+      <div class="b1 p16 br8 column g4">
+        <div>Couleur texte</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="TableauEdit.edit_text_color(this)"
         />
       </div>
       <hr />

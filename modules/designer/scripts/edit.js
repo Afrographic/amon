@@ -384,7 +384,7 @@ class Edit {
     }
     Create.render();
   }
-
+ 
   // Edit Conteneur
   static close_conteneur_edit() {
     let image_edit = document.querySelector("#conteneur_edit");

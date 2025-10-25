@@ -3,7 +3,7 @@ class Tableau {
     this.id = Utils.generate_unique_id_from_time();
     this.width = 100;
     this.border_color = "#aaa";
-    this.text_color="#000"
+    this.text_color = "#000";
     this.font_size = 3;
     this.data = [
       ["", ""],
@@ -16,7 +16,7 @@ class Tableau {
     for (let i = 0; i <= this.data.length - 1; i++) {
       res += "<tr>";
       for (let j = 0; j <= this.data[i].length - 1; j++) {
-        res += `<td style="font-size: 3vw;padding:3vw;border:1px solid ${this.border_color};">${this.data[i][j]}</td>`;
+        res += `<td style="font-size: 3vw;padding:3vw;border:1px solid ${this.border_color};color:${this.text_color};">${this.data[i][j]}</td>`;
       }
       res += "</tr>";
     }
@@ -24,7 +24,7 @@ class Tableau {
     return res;
   }
 
-  render_editable_table(){
+  render_editable_table() {
     let res = `<table id="${this.id}"  style="width:${this.width}%;border-collapse:collapse;table-layout: fixed;">`;
     for (let i = 0; i <= this.data.length - 1; i++) {
       res += "<tr>";
@@ -36,7 +36,9 @@ class Tableau {
       res += "</tr>";
     }
     res += "</table>";
-    let tableau_renderer_edit = document.querySelector("#tableau_renderer_edit");
+    let tableau_renderer_edit = document.querySelector(
+      "#tableau_renderer_edit"
+    );
     tableau_renderer_edit.innerHTML = res;
   }
 
@@ -53,6 +55,4 @@ class Tableau {
       this.data[this.data.length - 1].push("");
     }
   }
-
-  de
 }

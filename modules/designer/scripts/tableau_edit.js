@@ -9,7 +9,7 @@ class TableauEdit {
     }
   }
 
-  static add_ligne() {
+  static async add_ligne() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].add_ligne();
@@ -37,6 +37,40 @@ class TableauEdit {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].render_editable_table();
+      }
+    }
+  }
+
+  static edit_border_color(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].border_color = el.value;
+        Create.render();
+      }
+    }
+  }
+
+  static edit_text_color(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].text_color = el.value;
+        Create.render();
+      }
+    }
+  }
+
+  static delete() {
+    if (confirm("Voulez vous vraiment supprimer le tableau?")) {
+      let index = -1;
+      for (let i = 0; i <= Create.artboard.length - 1; i++) {
+        if (Create.artboard[i].id == Create.edit_id) {
+          index = i;
+        }
+      }
+      if (index != -1) {
+        Create.artboard.splice(index, 1);
+        Create.render();
+        UI.hide_edit_tableau();
       }
     }
   }
