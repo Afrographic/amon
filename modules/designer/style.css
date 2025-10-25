@@ -279,3 +279,7 @@ h2 {
 .info {
     width: 8vw;
 }
+
+#tableau_renderer_edit{
+    overflow-x: auto;
+}

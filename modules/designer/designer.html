@@ -41,6 +41,32 @@
       <hr />
       <div class="float_close" onclick="UI.hide_projects()">Fermer</div>
     </div>
+ 
+    <!-- Edit tableau -->
+    <div class="p16 hidden edit" id="tableau_editor">
+      <div id="tableau_renderer_edit"></div>
+      <div class="b1 br8 p16 column g4">
+        <div class="secondary" onclick="TableauEdit.add_ligne()">
+          Ajouter une ligne
+        </div>
+        <div class="secondary" onclick="TableauEdit.add_colonne()">
+          Ajouter une colonne
+        </div>
+      </div>
+      <hr />
+      <div class="b1 p16 br8 column g4">
+        <div>Couleur des bordures</div>
+        <input
+          class="jscolor"
+          value="#fff"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Edit.change_text_color(this)"
+        />
+      </div>
+      <hr />
+      <div class="float_close" onclick="UI.hide_edit_tableau()">Fermer</div>
+    </div>
 
     <!-- Edit text -->
     <div class="p16 hidden edit" id="text_color_editor">
@@ -67,7 +93,7 @@
           oninput="Edit.edit_text_size(this)"
         />
       </div>
-      <hr>
+      <hr />
       <div class="b1 p16 br8 column g4">
         <div>Alignement</div>
         <div class="row g16">
@@ -108,14 +134,17 @@
         />
       </div>
       <hr />
-      <div>Couleur</div>
-      <input
-        class="jscolor"
-        value="#fff"
-        id="primaryPicker"
-        onclick="this.blur()"
-        onchange="Edit.change_text_color(this)"
-      />
+      <div class="b1 p16 br8 column g4">
+        <div>Couleur</div>
+        <input
+          class="jscolor"
+          value="#fff"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Edit.change_text_color(this)"
+        />
+      </div>
+
       <hr />
       <div>
         <div>Marge du haut</div>
@@ -880,7 +909,7 @@
         </div>
       </div>
       <hr />
-      <div>
+      <div class="b1 p16 b48 column g4 br8">
         <div>Espacement entre les elements</div>
         <input
           type="range"
@@ -890,26 +919,26 @@
           oninput="Create.set_gap(this)"
         />
       </div>
-      <hr />
+      <div class="b1 p16 br9 column g4 br8">
+        <div>Marge interne verticale</div>
+        <input
+          type="range"
+          value="5"
+          min="0"
+          max="64"
+          oninput="Create.setVPadding(this)"
+        />
+        <hr />
+        <div>Marge interne horizontale</div>
+        <input
+          type="range"
+          value="5"
+          min="0"
+          max="64"
+          oninput="Create.setHPadding(this)"
+        />
+      </div>
 
-      <div>Marge interne verticale</div>
-      <input
-        type="range"
-        value="5"
-        min="0"
-        max="64"
-        oninput="Create.setVPadding(this)"
-      />
-      <hr />
-      <div>Marge interne horizontale</div>
-      <input
-        type="range"
-        value="5"
-        min="0"
-        max="64"
-        oninput="Create.setHPadding(this)"
-      />
-      <hr />
       <div class="b1 p16 br8 column g4">
         <div>Alignement horizontale</div>
         <div class="row aic g16">
@@ -946,27 +975,28 @@
           </div>
         </div>
       </div>
-      <hr />
-      <div class="item">
-        <div>Couleur de fond</div>
-        <input
-          class="jscolor"
-          value="#fff"
-          id="primaryPicker"
-          onclick="this.blur()"
-          onchange="Create.set_bg(this)"
-        />
+      <div class="b1 p16 br8 column g4">
+        <div class="item">
+          <div>Couleur de fond</div>
+          <input
+            class="jscolor"
+            value="#fff"
+            id="primaryPicker"
+            onclick="this.blur()"
+            onchange="Create.set_bg(this)"
+          />
+        </div>
+        <hr />
+        <div class="item">
+          <div>Image de fond</div>
+          <input
+            type="file"
+            accept="image/*"
+            onchange="Create.set_bg_image(event)"
+          />
+        </div>
       </div>
-      <hr />
-      <div class="item">
-        <div>Image de fond</div>
-        <input
-          type="file"
-          accept="image/*"
-          onchange="Create.set_bg_image(event)"
-        />
-      </div>
-      <hr />
+
       <div class="b1 br8 p16 column g4">
         <div>Fond en degrade</div>
         <hr />
@@ -1023,6 +1053,8 @@
         />
         Ajouter une image
       </div>
+      <hr />
+
       <div class="secondary" onclick="Create.add_titre()">Ajouter un titre</div>
       <div class="secondary" onclick="Create.add_sous_titre()">
         Ajouter sous titre titre
@@ -1032,6 +1064,10 @@
       </div>
       <div class="secondary" onclick="Create.add_mini_text()">
         Ajouter un mini texte
+      </div>
+      <hr />
+      <div class="secondary" onclick="Create.add_table()">
+        Ajouter un tableau
       </div>
       <hr />
       <div class="secondary" onclick="UI.show_projects();UI.hide_add_graphix()">
@@ -1105,6 +1141,7 @@
     <script src="models/titre.js"></script>
     <script src="models/image.js"></script>
     <script src="models/conteneur.js"></script>
+    <script src="models/tableau.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
@@ -1113,6 +1150,7 @@
     <script src="scripts/image_edit.js"></script>
     <script src="scripts/project.js"></script>
     <script src="scripts/hide_btn_explains.js"></script>
+    <script src="scripts/tableau_edit.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
   </body>

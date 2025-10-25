@@ -61,6 +61,13 @@ class Create {
     UI.hide_add_graphix();
   }
 
+  static add_table(){
+    let table = new Tableau();
+    this.artboard.push(table);
+    this.render();
+    UI.hide_add_graphix();
+  }
+
   static add_image() {
     let image_input = document.querySelector("#image_input");
     image_input.click();
@@ -141,7 +148,7 @@ class Create {
     this.bg_color ="";
     this.render();
   }
-
+ 
   // Alignement horizontale
   static setHoriAlignLeft() {
     this.H_align = "flex-start";

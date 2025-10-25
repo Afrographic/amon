@@ -24,6 +24,12 @@ class UI{
         projects.classList.add("hidden");
     }
 
+    
+    static hide_edit_tableau(){
+        let tableau_editor = document.querySelector("#tableau_editor");
+        tableau_editor.classList.add("hidden");
+    }
+
     static hide_all(){
         this.hide_projects()
         this.hide_add_graphix()
