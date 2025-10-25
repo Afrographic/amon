@@ -111,8 +111,14 @@ class Project {
     Create.H_align = project.H_align;
     Create.V_align = project.V_align;
     Create.bg_file = project.bg_file;
-    Create.bg_image_url =
-      project.bg_file != undefined ? URL.createObjectURL(project.bg_file) : "";
+    if (project.bg_color.trim().length == 0) {
+      Create.bg_image_url =
+        project.bg_file != undefined
+          ? URL.createObjectURL(project.bg_file)
+          : "";
+    }else{
+      Create.bg_image_url ="";
+    }
     Create.bg_color = project.bg_color;
     Create.edit_id = project.edit_id;
     Create.gap = project.gap;
@@ -134,10 +140,8 @@ class Project {
 
   static create_new() {
     this.saved = false;
-    let name_projet = prompt("Nom du projet");
-    if (name_projet == null) return;
-    if (name_projet.trim().length == 0) return;
-    Create.name_project = name_projet;
+    Create.name_project = "New";
+    Create.db_index = -1;
     Create.artboard = [];
     Create.H_align = "flex-start";
     Create.V_align = "flex-start";
@@ -149,7 +153,9 @@ class Project {
     Create.V_padding = 5;
     Create.H_padding = 5;
     Create.aspect_ratio = "1/1";
+    //Create new project
     Create.render();
+    this.save_project();
   }
 
   static async delete_project(index) {
