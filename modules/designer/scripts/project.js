@@ -103,6 +103,10 @@ class Project {
         item = new Tableau();
         item.from_json(project.artboard[i]);
       }
+      if (project.artboard[i].type == "latex") {
+        item = new Latex();
+        item.from_json(project.artboard[i]);
+      }
       artBoard.push(item);
     }
     Create.artboard = artBoard;

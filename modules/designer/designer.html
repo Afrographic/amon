@@ -24,6 +24,7 @@
       <h3 style="margin: 0">Djehouty Designer</h3>
     </div>
     <div class="small tac" id="nom_project">Projet Sans titre</div>
+    <div id="renderer"></div>
     <!-- Saved projects -->
     <div class="p16 edit hidden" id="projects">
       <h2>Projets</h2>
@@ -44,6 +45,14 @@
       </div>
       <hr />
       <div class="float_close" onclick="UI.hide_projects()">Fermer</div>
+    </div>
+
+    <!-- Edit Latex -->
+    <div class="p16 hidden edit column g4" id="latex_editor">
+      <div class="base">Latex</div>
+      <textarea name="" id="latex_input_for_edit" oninput="LatextEdit.edit_value(this)" placeholder="Inserez la formule Latex"></textarea>
+      <hr>
+      <div class="float_close" onclick="UI.hide_latex_edit()">Fermer</div>
     </div>
 
     <!-- Edit tableau -->
@@ -914,11 +923,6 @@
       </div>
     </div>
 
-    <textarea id="latexInput" placeholder="Example: \int_0^1 x^2 dx"></textarea>
-    <div id="output"></div>
-
-    <div id="renderer"></div>
-
     <p class="tac" style="font-size: 3vw; color: grey">
       Cliquez sur un element pour editer ses proprietes
     </p>
@@ -1107,7 +1111,7 @@
         <img src="assets/images/tab.svg" alt="" />
         <div>Ajouter un tableau</div>
       </div>
-      <div class="secondary" onclick="Create.add_table()">
+      <div class="secondary" onclick="LatextEdit.add_new()">
         <img src="assets/images/latex.svg" alt="" />
         <div>Ajouter une formule Mathematique en Latex</div>
       </div>
@@ -1196,27 +1200,8 @@
     <script src="scripts/project.js"></script>
     <script src="scripts/hide_btn_explains.js"></script>
     <script src="scripts/tableau_edit.js"></script>
+    <script src="scripts/latex_edit.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
-
-    <script>
-      const input = document.getElementById("latexInput");
-      const output = document.getElementById("output");
-
-      input.addEventListener("input", () => {
-        try {
-          katex.render(input.value, output, {
-            throwOnError: false,
-            displayMode: true,
-          });
-        } catch (err) {
-          output.innerHTML = `<span class="error">Invalid LaTeX</span>`;
-        }
-      });
-
-      // Optional: Render default input on load
-      input.value = "\\int_0^1 x^2 dx";
-      input.dispatchEvent(new Event("input"));
-    </script>
   </body>
 </html>

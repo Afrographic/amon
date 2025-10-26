@@ -5,7 +5,18 @@ class Latex {
     this.type = "latex";
   }
 
-  render() {}
+  render() {
+    let render_view = document.createElement("div");
+    katex.render(this.text, render_view, {
+      throwOnError: false,
+      displayMode: true,
+    });
+    return `
+    <div class="b1 br8 p16 bg_grey" style="width:100%" onclick="LatextEdit.init_latex_edit('${this.id}')">
+     ${render_view.innerHTML}
+    </div>
+    `;
+  }
 
   from_json(json) {
     this.id = json.id;
@@ -14,10 +25,10 @@ class Latex {
   }
 
   clone() {
-    let clone = new Text();
+    let clone = new Latex();
     clone.id = `id_${Math.random() * 20000}`;
-    clone.value = this.value;
-    clone.font_size = this.font_size;
+    clone.text = this.text;
+    clone.type = this.type;
     return clone;
   }
 }

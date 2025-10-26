@@ -191,4 +191,21 @@ class Utils {
     const a = Math.max(0, Math.min(1, Number(alpha)));
     return `rgba(${r}, ${g}, ${b}, ${a})`;
   }
+
+
+  static  set_text_area_auto_grow(el) {
+    el.addEventListener("input", () => {
+      el.style.height = "auto";
+      el.style.height = el.scrollHeight + "px";
+    });
+  }
+
+  static set_text_area_autoGrow(){
+    let textareas = document.querySelectorAll("textarea");
+    for(let item of textareas){
+      Utils.set_text_area_auto_grow(item);
+    }
+  }
 }
+
+Utils.set_text_area_autoGrow();
