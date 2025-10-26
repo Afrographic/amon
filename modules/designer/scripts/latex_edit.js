@@ -9,7 +9,6 @@ class LatextEdit {
   }
 
   static edit_value(el) {
-    console.log(Create.edit_id);
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].text = el.value;

@@ -167,6 +167,33 @@ class Utils {
     return canvas.toDataURL("image/png");
   }
 
+  static convert_to_grayscale(img) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+
+    // Loop through every pixel (RGBA)
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+
+      // Calculate grayscale value (weighted average)
+      const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+
+      data[i] = data[i + 1] = data[i + 2] = gray;
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    return canvas.toDataURL("image/png");
+  }
+
   // Expand shorthand (#abc) to full (#aabbcc)
   static expandHex(hex) {
     hex = hex.replace(/^#/, "");
@@ -192,20 +219,117 @@ class Utils {
     return `rgba(${r}, ${g}, ${b}, ${a})`;
   }
 
-
-  static  set_text_area_auto_grow(el) {
+  static set_text_area_auto_grow(el) {
     el.addEventListener("input", () => {
       el.style.height = "auto";
       el.style.height = el.scrollHeight + "px";
     });
   }
 
-  static set_text_area_autoGrow(){
+  static set_text_area_autoGrow() {
     let textareas = document.querySelectorAll("textarea");
-    for(let item of textareas){
+    for (let item of textareas) {
       Utils.set_text_area_auto_grow(item);
     }
   }
+
+  static generateChart(render, data, x_values, title) {
+    return new Chart(render, {
+      type: "line",
+      data: {
+        labels: x_values,
+        datasets: [
+          {
+            label: title,
+            data: data,
+            backgroundColor: ["#F95E4330"],
+            borderColor: ["#F95F43"],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        legend: {
+          display: false,
+        },
+      },
+    });
+  }
+
+  static generate_pie(render, data, x_values,title) {
+    return new Chart(render, {
+      type: "pie",
+      data: {
+        labels: x_values,
+        datasets: [
+          {
+            label: title,
+            data: data,
+            backgroundColor: [
+              "#8ecae6",
+              "#219ebc",
+              "#023047",
+              "#ffb703",
+              "#fb8500",
+              "#606c38",
+              "#283618",
+              "#fefae0",
+              "#dda15e",
+              "#bc6c25",
+              "#cdb4db",
+              "#ffc8dd",
+              "#ffafcc",
+              "#bde0fe",
+              "#a2d2ff",
+              "#14213d",
+              "#fca311",
+              "#e5e5e5",
+              "#780000",
+              "#c1121f",
+              "#fdf0d5",
+              "#003049",
+              "#669bbc",
+              "#264653",
+              "#2a9d8f",
+              "#e9c46a",
+              "#f4a261",
+              "#e76f51",
+              "#ccd5ae",
+              "#e9edc9",
+              "#fefae0",
+              "#faedcd",
+              "#d4a373",
+              "#03045e",
+              "#023e8a",
+              "#0077b6",
+              "#0096c7",
+              "#00b4d8",
+              "#48cae4",
+              "#90e0ef",
+              "#ade8f4",
+              "#a3b18a",
+              "#588157",
+              "#3a5a40",
+              "#344e41",
+              "#4cc9f0",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        legend: {
+          display: x_values.length < 10,
+        },
+      },
+    });
+  }
+
+  /* 
+  let chart_container: any = document.querySelector('#ca_users_r'){this is a canvas};
+      let chart_render_context: any = chart_container.getContext('2d');
+      this.generate_pie(chart_render_context, data, x_values);
+  */
 }
 
 Utils.set_text_area_autoGrow();

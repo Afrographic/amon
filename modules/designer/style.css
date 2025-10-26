@@ -120,7 +120,7 @@ button {
 }
 
 .g4 {
-    gap: 4vw;
+    gap: 2vw;
 }
 
 .g8 {
@@ -345,5 +345,5 @@ h2 {
 }
 
 .bg_grey{
-    background-color: #dedede;
+    background-color: #f7f7f7;
 }

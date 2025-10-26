@@ -1,7 +1,7 @@
 class ImageEdit {
   static crop_to_square() {
     Edit.close_image_edit();
-    
+
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         // Crop image
@@ -323,7 +323,7 @@ class ImageEdit {
                 Create.artboard[i].children[j + 1];
               Create.artboard[i].children[j + 1] = temp;
             }
-           
+
             Create.render();
             break;
           }
@@ -354,6 +354,37 @@ class ImageEdit {
               Create.artboard[i].children[j - 1] = temp;
             }
             Create.render();
+          }
+        }
+      }
+    }
+  }
+
+  static convert_to_grayscale() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        // Remove white BG
+        let img = new Image();
+        img.src = URL.createObjectURL(Create.artboard[i].file);
+        img.onload = () => {
+          let transparent_img = Utils.convert_to_grayscale(img);
+          Create.artboard[i].url = transparent_img;
+          Create.render();
+        };
+      }
+
+      //Remove BG in Children
+      // Clone  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            let img = new Image();
+            img.src = URL.createObjectURL(Create.artboard[i].children[j].file);
+            img.onload = () => {
+              let transparent_img = Utils.convert_to_grayscale(img);
+              Create.artboard[i].children[j].url = transparent_img;
+              Create.render();
+            };
           }
         }
       }
