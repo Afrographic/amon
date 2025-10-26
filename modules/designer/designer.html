@@ -28,10 +28,10 @@
     <div id="renderer"></div>
     <!-- Donation -->
     <div class="donation">
-      <img src="assets/images/love.svg"  alt="" />
+      <img src="assets/images/love.svg" alt="" />
       <div>
-        Participer au developpement en fesant un don au numero Orange Money
-        +237 697 830 071 (Tesse Brunel)
+        Participer au developpement en fesant un don au numero Orange Money +237
+        697 830 071 (Tesse Brunel)
       </div>
     </div>
     <!-- Saved projects -->
@@ -60,18 +60,31 @@
 
     <!-- Edit chart -->
     <div class="p16 hidden edit column g4" id="graph_editor">
-      <div class="base" >Editer les informations du graphique</div>
-      <hr>
+      <div class="base">Editer les informations du graphique</div>
+      <hr />
       <div id="graph_tab_editor"></div>
       <div class="secondary" onclick="ChartEdit.add_colonne()">
         Ajouter une colonne
       </div>
+      <hr />
       <div class="config_item">
         <div>Type de Graphe</div>
         <div class="row g4">
           <div class="secondary f1" onclick="ChartEdit.set_curve()">Courbe</div>
-          <div class="secondary f1" onclick="ChartEdit.set_circle()">Circulaire</div>
+          <div class="secondary f1" onclick="ChartEdit.set_circle()">
+            Circulaire
+          </div>
         </div>
+      </div>
+      <div class="config_item">
+        <div>Courleur de la courbe</div>
+        <input
+          class="jscolor"
+          value="#000"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ChartEdit.set_color(this)"
+        />
       </div>
       <div class="float_close" onclick="UI.hide_graph_editor()">Fermer</div>
     </div>
@@ -90,9 +103,11 @@
 
     <!-- Edit tableau -->
     <div class="p16 hidden edit column g4" id="tableau_editor">
-      <div class="base" style="margin-bottom:3vw;">Editer le contenu du tableau</div>
-      <div id="tableau_renderer_edit" style="margin-bottom:3vw;"></div>
-      <div class=" column g4">
+      <div class="base" style="margin-bottom: 3vw">
+        Editer le contenu du tableau
+      </div>
+      <div id="tableau_renderer_edit" style="margin-bottom: 3vw"></div>
+      <div class="column g4">
         <div class="secondary" onclick="TableauEdit.add_ligne()">
           Ajouter une ligne
         </div>

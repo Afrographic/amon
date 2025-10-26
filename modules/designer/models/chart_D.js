@@ -4,6 +4,7 @@ class ChartD {
     this.data = [12, 15, 8];
     this.x_values = ["Lun", "Mar", "Mer"];
     this.title = "circle";
+    this.color="#0039B3";
     this.mode = "line";
     this.type = "chart";
   }
@@ -18,7 +19,7 @@ class ChartD {
     let context = canvas.getContext("2d");
     context.clearRect(0,0,canvas.clientWidth,canvas.clientHeight)
     if (this.mode == "line") {
-      Utils.generate_line_chart(context, this.data, this.x_values, this.title);
+      Utils.generate_line_chart(context, this.data, this.x_values, this.title,this.color);
     }
     if (this.mode == "circle") {
       Utils.generate_pie_chart(context, this.data, this.x_values, this.title);
@@ -60,6 +61,7 @@ class ChartD {
     this.x_values = json.x_values;
     this.title = json.title;
     this.mode = json.mode;
+    this.color = json.color;
     this.type = json.type;
   }
 
@@ -69,7 +71,7 @@ class ChartD {
     clone.data = this.data;
     clone.x_values = this.x_values;
     clone.title = this.title;
-    clone.mode = this.mode;
+    clone.color = this.color;
     clone.type = this.type;
     return clone;
   }

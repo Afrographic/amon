@@ -233,7 +233,7 @@ class Utils {
     }
   }
 
-  static generate_line_chart(render, data, x_values, title) {
+  static generate_line_chart(render, data, x_values, title,color) {
     return new Chart(render, {
       type: "line",
       data: {
@@ -242,14 +242,14 @@ class Utils {
           {
             label: title,
             data: data,
-            backgroundColor: ["#F95E4330"],
-            borderColor: ["#F95F43"],
+            backgroundColor: [Utils.hexToRgba(color,0.2)],
+            borderColor: [color],
             borderWidth: 1,
           },
         ],
       },
       options: {
-        animation:false,
+        animation: false,
         legend: {
           display: false,
         },
@@ -257,7 +257,7 @@ class Utils {
     });
   }
 
-  static generate_pie_chart(render, data, x_values,title) {
+  static generate_pie_chart(render, data, x_values, title) {
     return new Chart(render, {
       type: "pie",
       data: {
@@ -267,14 +267,14 @@ class Utils {
             label: title,
             data: data,
             backgroundColor: [
-              "#8ecae6",
-              "#219ebc",
-              "#023047",
+              "#B40000",
+              "#8DA800",
+              "#009728",
               "#ffb703",
-              "#fb8500",
+              "#007897",
               "#606c38",
-              "#283618",
-              "#fefae0",
+              "#000597",
+              "#790097",
               "#dda15e",
               "#bc6c25",
               "#cdb4db",
@@ -304,14 +304,14 @@ class Utils {
               "#023e8a",
               "#0077b6",
               "#0096c7",
-              "#00b4d8",
+             
               "#48cae4",
               "#90e0ef",
-              "#ade8f4",
+             
               "#a3b18a",
               "#588157",
               "#3a5a40",
-              "#344e41",
+             
               "#4cc9f0",
             ],
             borderWidth: 1,
@@ -319,9 +319,9 @@ class Utils {
         ],
       },
       options: {
-        animation:false,
+        animation: false,
         legend: {
-          display: x_values.length < 10,
+          display: true,
         },
       },
     });
@@ -336,6 +336,31 @@ class Utils {
       let chart_render_context: any = chart_container.getContext('2d');
       this.generate_pie(chart_render_context, data, x_values);
   */
+
+  // Expand shorthand (#abc) to full (#aabbcc)
+  static expandHex(hex) {
+    hex = hex.replace(/^#/, "");
+    if (hex.length === 3) {
+      return hex
+        .split("")
+        .map((ch) => ch + ch)
+        .join("");
+    }
+    return hex;
+  }
+
+  // 1) hex -> "rgba(r,g,b,a)"
+  static hexToRgba(hex, alpha = 0.05) {
+    if (typeof hex !== "string") throw new TypeError("hex must be a string");
+    const h = this.expandHex(hex.replace(/\s+/g, ""));
+    if (!/^[0-9a-fA-F]{6}$/.test(h)) throw new Error("Invalid hex color");
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    // clamp alpha between 0 and 1
+    const a = Math.max(0, Math.min(1, Number(alpha)));
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+  }
 }
 
 Utils.set_text_area_autoGrow();
