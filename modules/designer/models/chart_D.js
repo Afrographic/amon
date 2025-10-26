@@ -14,6 +14,11 @@ class ChartD {
     this.x_values.push("");
   }
 
+  remove_colonne() {
+    this.data.pop();
+    this.x_values.pop();
+  }
+
   render() {
     let canvas = document.querySelector("#chart_renderer");
     let context = canvas.getContext("2d");

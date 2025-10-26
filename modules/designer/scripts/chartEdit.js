@@ -28,6 +28,16 @@ class ChartEdit {
     }
   }
 
+  static delete_colonne(){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].remove_colonne();
+        Create.artboard[i].render_editable_chart();
+        Create.render();
+      }
+    }
+  }
+
   static set_curve() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
