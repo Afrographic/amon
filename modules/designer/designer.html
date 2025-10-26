@@ -64,9 +64,11 @@
       <hr />
       <div id="graph_tab_editor"></div>
       <div class="secondary" onclick="ChartEdit.add_colonne()">
+        <img src="assets/images/add_colone.svg" alt="">
         Ajouter une colonne
       </div>
       <div class="secondary" onclick="ChartEdit.delete_colonne()">
+        <img src="assets/images/delete_col.svg" alt="">
         Supprimer la derniere colonne
       </div>
       <hr />
@@ -89,6 +91,11 @@
           onchange="ChartEdit.set_color(this)"
         />
       </div>
+      <hr>
+      <div class="secondary" onclick="TableauEdit.delete()">
+        <img src="assets/images/delete_new.svg" alt="">
+        Supprimer le Graphe
+      </div>
       <div class="float_close" onclick="UI.hide_graph_editor()">Fermer</div>
     </div>
     <!-- Edit Latex -->
@@ -100,7 +107,10 @@
         oninput="LatextEdit.edit_value(this)"
         placeholder="Inserez la formule Latex"
       ></textarea>
-      <hr />
+      <div class="secondary" onclick="TableauEdit.delete()">
+        <img src="assets/images/delete_new.svg" alt="">
+        Supprimer l'element Math
+      </div>
       <div class="float_close" onclick="UI.hide_latex_edit()">Fermer</div>
     </div>
 
@@ -112,9 +122,11 @@
       <div id="tableau_renderer_edit" style="margin-bottom: 3vw"></div>
       <div class="column g4">
         <div class="secondary" onclick="TableauEdit.add_ligne()">
+          <img src="assets/images/add_ligne.svg" alt="">
           Ajouter une ligne
         </div>
         <div class="secondary" onclick="TableauEdit.add_colonne()">
+          <img src="assets/images/add_colone.svg" alt="">
           Ajouter une colonne
         </div>
       </div>
@@ -141,6 +153,7 @@
       </div>
       <hr />
       <div class="secondary" onclick="TableauEdit.delete()">
+        <img src="assets/images/delete_new.svg" alt="">
         Supprimer le tableau
       </div>
       <div class="float_close" onclick="UI.hide_edit_tableau()">Fermer</div>
@@ -274,6 +287,7 @@
     <!-- Edit image -->
     <div class="p16 hidden edit" id="image_edit">
       <div class="secondary" onclick="ImageEdit.duplicate()">
+        <img src="assets/images/duplicate.svg" alt="">
         Dupliquer l'image
       </div>
       <!-- L'ordre dans le plan de travail -->
@@ -432,25 +446,31 @@
 
       <hr />
       <div class="secondary" onclick="this.lastElementChild.click()">
+        <img src="assets/images/image.svg" alt="">
         Remplacer l'image
         <input type="file" hidden onchange="ImageEdit.replaceImage(event)" />
       </div>
-      <hr />
+
       <div class="secondary" onclick="ImageEdit.crop_to_square()">
+        <img src="assets/images/crop_1_1.svg" alt="">
         Recadrer en taille carre
       </div>
       <div class="secondary" onclick="ImageEdit.crop_to_16_9()">
+        <img src="assets/images/crop_16_9.svg" alt="">
         Recadrer en taille film
       </div>
       <div class="secondary" onclick="ImageEdit.convert_to_grayscale()">
+        <img src="assets/images/bw.svg" alt="">
         Convertir en noir sur blanc
       </div>
       <div class="secondary" onclick="ImageEdit.remove_uni_bg()">
+        <img src="assets/images/remove_white_bg.svg" alt="">
         Supprimer le fond blanc
       </div>
 
       <hr />
       <div class="secondary" onclick="Edit.delete_image()">
+        <img src="assets/images/delete_new.svg" alt="">
         Supprimer du design
       </div>
       <div class="float_close" onclick="Edit.close_image_edit()">Fermer</div>
@@ -464,7 +484,17 @@
           Dupliquer le conteneur
         </div>
       </div>
-      <hr />
+    
+      <div class="config_item">
+        <div>Largeur</div>
+        <input
+          type="range"
+          value="100"
+          min="0"
+          max="100"
+          oninput="ConteneurEdit.set_width(this)"
+        />
+      </div>
       <div class="b1 p16 br8 column g4">
         <div class="base">Alignement horizonale</div>
         <div class="row g4 aic">
@@ -543,26 +573,24 @@
         </div>
       </div>
       <hr />
-      <div class="b1 p16 br8 column g4">
-        <div>Disposition en grille</div>
-        <div class="secondary f1" onclick="ConteneurEdit.setGrid()">
-          <img src="assets/images/grid.svg" alt="">
-          Activer la grille
-        </div>
-        <div class="secondary f1" onclick="ConteneurEdit.setFlex()">
-          <img src="assets/images/flex.svg" alt="">
-          Desactiver la grille
-        </div>
-        <div>
-          <div>Nombre de colonnes</div>
-          <input
-            type="range"
-            value="2"
-            min="1"
-            max="5"
-            oninput="ConteneurEdit.setColumn(this)"
-          />
-        </div>
+
+      <div class="secondary f1" onclick="ConteneurEdit.setGrid()">
+        <img src="assets/images/grid.svg" alt="" />
+        Activer la grille
+      </div>
+      <div class="secondary f1" onclick="ConteneurEdit.setFlex()">
+        <img src="assets/images/flex.svg" alt="" />
+        Desactiver la grille
+      </div>
+      <div class="config_item">
+        <div>Nombre de colonnes</div>
+        <input
+          type="range"
+          value="2"
+          min="1"
+          max="5"
+          oninput="ConteneurEdit.setColumn(this)"
+        />
       </div>
       <hr />
       <div class="config_item">
@@ -575,9 +603,8 @@
           oninput="ConteneurEdit.set_gap(this)"
         />
       </div>
-      <hr />
       <div class="config_item">
-        <div>Direction</div>
+        <div>Direction des enfants</div>
         <div class="row g4">
           <div class="secondary f1" onclick="ConteneurEdit.set_vertical()">
             Verticale
@@ -589,7 +616,7 @@
       </div>
       <hr />
       <!-- Positionnement -->
-      <div class="b1 br8 p16">
+      <div class="config_item">
         <div>Positionnement</div>
         <div class="row g4">
           <div
@@ -605,31 +632,30 @@
             Absolue
           </div>
         </div>
-        <hr />
-        <div>
-          <p>Position verticale</p>
-          <input
-            type="range"
-            value="0"
-            min="0"
-            max="100"
-            oninput="ConteneurEdit.setPosY(this)"
-          />
-        </div>
-        <hr />
-        <div>
-          <p>Position horizontale</p>
-          <input
-            type="range"
-            value="0"
-            min="0"
-            max="100"
-            oninput="ConteneurEdit.setPosX(this)"
-          />
-        </div>
+      </div>
+      <div class="config_item">
+        <div>Position verticale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="ConteneurEdit.setPosY(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Position horizontale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="ConteneurEdit.setPosX(this)"
+        />
       </div>
       <hr />
-      <div>
+      <div class="config_item">
         <div>Opacite</div>
         <input
           type="range"
@@ -640,17 +666,10 @@
         />
       </div>
 
+      
+
       <hr />
-      <div>Largeur</div>
-      <input
-        type="range"
-        value="100"
-        min="0"
-        max="100"
-        oninput="ConteneurEdit.set_width(this)"
-      />
-      <hr />
-      <div>
+      <div class="config_item">
         <div>Marge du haut</div>
         <input
           type="range"
@@ -660,7 +679,7 @@
           oninput="ConteneurEdit.set_margin_top(this)"
         />
       </div>
-      <div>
+      <div class="config_item">
         <div>Marge du bas</div>
         <input
           type="range"
@@ -670,7 +689,7 @@
           oninput="ConteneurEdit.set_margin_bottom(this)"
         />
       </div>
-      <div>
+      <div class="config_item">
         <div>Marge de gauche</div>
         <input
           type="range"
@@ -680,7 +699,7 @@
           oninput="ConteneurEdit.set_margin_left(this)"
         />
       </div>
-      <div>
+      <div class="config_item">
         <div>Marge de droite</div>
         <input
           type="range"
@@ -691,29 +710,35 @@
         />
       </div>
       <hr />
-      <p>Image de fond</p>
-      <input
-        type="file"
-        onchange="ConteneurEdit.set_bg_image(event)"
-        accept="image/*"
-      />
+      <div class="secondary" onclick="this.firstElementChild.click()">
+        <input
+          type="file"
+          hidden
+          onchange="ConteneurEdit.set_bg_image(event)"
+          accept="image/*"
+        />
+        <img src="assets/images/image.svg" alt="" />
+        <div>Image de fond</div>
+      </div>
+
       <div class="secondary" onclick="ConteneurEdit.darken_bg()">
+        <img src="assets/images/darken.svg" alt="" />
         Assombrir l'image de fond
       </div>
+      <div class="config_item">
+        <div>Couleur de fond</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Edit.set_conteneur_bg(this)"
+        />
+      </div>
       <hr />
+      <div>Fond en degrade</div>
 
-      <p>Couleur de fond</p>
-      <input
-        class="jscolor"
-        value="rgba(0,0,0,1)"
-        id="primaryPicker"
-        onclick="this.blur()"
-        onchange="Edit.set_conteneur_bg(this)"
-      />
-      <hr />
-      <div class="b1 br8 p16 column g4">
-        <div>Fond en degrade</div>
-        <hr />
+      <div class="config_item">
         <div>Permiere couleur</div>
         <input
           class="jscolor"
@@ -722,8 +747,8 @@
           onclick="this.blur()"
           onchange="ConteneurEdit.set_degrade_first_color(this)"
         />
-
-        <hr />
+      </div>
+      <div class="config_item">
         <div>Deuxieme couleur</div>
         <input
           class="jscolor"
@@ -732,8 +757,8 @@
           onclick="this.blur()"
           onchange="ConteneurEdit.set_degrade_second_color(this)"
         />
-
-        <hr />
+      </div>
+      <div class="config_item">
         <div>Rotation du degrade</div>
         <input
           type="range"
@@ -743,241 +768,243 @@
           oninput="ConteneurEdit.set_degrade_rotate(this)"
         />
       </div>
+
       <hr />
-      <div class="secondary" onclick="Edit.set_bg_transparent()">
-        Rendrer le fond transparent
+      <div class="config_item">
+        <div>Marge interne verticale</div>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="64"
+          oninput="ConteneurEdit.edit_margin_top_bottom(this)"
+        />
       </div>
+      <div class="config_item">
+        <div>Marge interne horizontale</div>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="64"
+          oninput="ConteneurEdit.edit_margin_left_right(this)"
+        />
+      </div>
+
+      <hr />
+      <div class="config_item">
+        <div>Arrondis haut gauche</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="128"
+          oninput="ConteneurEdit.edit_radius_top_left(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Arrondis haut droite</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="128"
+          oninput="ConteneurEdit.edit_radius_top_right(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Arrondis bas gauche</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="128"
+          oninput="ConteneurEdit.edit_radius_bottom_left(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Arrondis bas droite</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="128"
+          oninput="ConteneurEdit.edit_radius_bottom_right(this)"
+        />
+      </div>
+
       <hr />
 
-      <div>Marge interne verticale</div>
-      <input
-        type="range"
-        value="4"
-        min="0"
-        max="64"
-        oninput="ConteneurEdit.edit_margin_top_bottom(this)"
-      />
-      <div>Marge interne horizontale</div>
-      <input
-        type="range"
-        value="4"
-        min="0"
-        max="64"
-        oninput="ConteneurEdit.edit_margin_left_right(this)"
-      />
-      <hr />
-
-      <div>Arrondis haut gauche</div>
-      <input
-        type="range"
-        value="0"
-        min="0"
-        max="128"
-        oninput="ConteneurEdit.edit_radius_top_left(this)"
-      />
-      <hr />
-      <div>Arrondis haut droite</div>
-      <input
-        type="range"
-        value="0"
-        min="0"
-        max="128"
-        oninput="ConteneurEdit.edit_radius_top_right(this)"
-      />
-      <hr />
-      <div>Arrondis bas gauche</div>
-      <input
-        type="range"
-        value="0"
-        min="0"
-        max="128"
-        oninput="ConteneurEdit.edit_radius_bottom_left(this)"
-      />
-      <hr />
-      <div>Arrondis bas droite</div>
-      <input
-        type="range"
-        value="0"
-        min="0"
-        max="128"
-        oninput="ConteneurEdit.edit_radius_bottom_right(this)"
-      />
       <!-- Bordures -->
-      <div class="b1 p16 br8 column g4">
-        <div class="b1 br8 p16 column g4">
-          <div>Bordure du haut</div>
-          <hr />
-          <div>
-            <div>Epaisseur</div>
+      <div>Bordure du haut</div>
+      <div class="config_item">
+        <div>Epaisseur</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="32"
+          oninput="ConteneurEdit.set_size_border_top(this)"
+        />
+      </div>
 
-            <input
-              type="range"
-              value="0"
-              min="0"
-              max="32"
-              oninput="ConteneurEdit.set_size_border_top(this)"
-            />
+      <div class="config_item">
+        <div>couleur</div>
+        <input
+          class="jscolor"
+          value="#fff"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ConteneurEdit.set_color_border_top(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Type</div>
+        <div class="row g4">
+          <div class="secondary" onclick="ConteneurEdit.set_ligne_border_top()">
+            Ligne
           </div>
-          <hr />
-          <div>
-            <div>couleur</div>
-            <input
-              class="jscolor"
-              value="#fff"
-              id="primaryPicker"
-              onclick="this.blur()"
-              onchange="ConteneurEdit.set_color_border_top(this)"
-            />
-          </div>
-          <hr />
-          <div>
-            <div>Type</div>
-            <div class="row g4">
-              <div
-                class="secondary"
-                onclick="ConteneurEdit.set_ligne_border_top()"
-              >
-                Ligne
-              </div>
-              <div
-                class="secondary"
-                onclick="ConteneurEdit.set_pointilles_border_top()"
-              >
-                Pointillees
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="b1 br8 p16 column g4">
-          <div>Bordure du bas</div>
-          <hr />
-          <div>
-            <div>Epaisseur</div>
-            <input
-              type="range"
-              value="0"
-              min="0"
-              max="32"
-              oninput="ConteneurEdit.set_size_border_bottom(this)"
-            />
-          </div>
-          <hr />
-          <div>
-            <div>couleur</div>
-            <input
-              class="jscolor"
-              value="#fff"
-              id="primaryPicker"
-              onclick="this.blur()"
-              onchange="ConteneurEdit.set_color_border_bottom(this)"
-            />
-          </div>
-          <hr />
-          <div>
-            <div>Type</div>
-            <div class="row g4">
-              <div
-                class="secondary"
-                onclick="ConteneurEdit.set_ligne_border_bottom()"
-              >
-                Ligne
-              </div>
-              <div
-                class="secondary"
-                onclick="ConteneurEdit.set_pointilles_border_bottom()"
-              >
-                Pointillees
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="b1 br8 p16 column g4">
-          <div>Bordure de gauche</div>
-          <hr />
-          <div>
-            <div>Epaisseur</div>
-            <input
-              type="range"
-              value="0"
-              min="0"
-              max="32"
-              oninput="ConteneurEdit.set_size_border_left(this)"
-            />
-          </div>
-          <hr />
-          <div>
-            <div>couleur</div>
-            <input
-              class="jscolor"
-              value="#fff"
-              id="primaryPicker"
-              onclick="this.blur()"
-              onchange="ConteneurEdit.set_color_border_left(this)"
-            />
-          </div>
-          <hr />
-          <div>
-            <div>Type</div>
-            <div class="row g4">
-              <div
-                class="secondary"
-                onclick="ConteneurEdit.set_ligne_border_left()"
-              >
-                Ligne
-              </div>
-              <div
-                class="secondary"
-                onclick="ConteneurEdit.set_pointilles_border_left()"
-              >
-                Pointillees
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="b1 br8 p16 column g4">
-          <div>Bordure de droite</div>
-          <hr />
-          <div>
-            <div>Epaisseur</div>
-            <input
-              type="range"
-              value="0"
-              min="0"
-              max="32"
-              oninput="ConteneurEdit.set_size_border_right(this)"
-            />
-          </div>
-          <hr />
-          <div>
-            <div>couleur</div>
-            <input
-              class="jscolor"
-              value="#fff"
-              id="primaryPicker"
-              onclick="this.blur()"
-              onchange="ConteneurEdit.set_color_border_right(this)"
-            />
-          </div>
-          <hr />
-          <div>
-            <div>Type</div>
-            <div class="row g4">
-              <div
-                class="secondary"
-                onclick="ConteneurEdit.set_ligne_border_right()"
-              >
-                Ligne
-              </div>
-              <div
-                class="secondary"
-                onclick="ConteneurEdit.set_pointilles_border_right()"
-              >
-                Pointillees
-              </div>
-            </div>
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_pointilles_border_top()"
+          >
+            Pointillees
           </div>
         </div>
       </div>
+      <hr />
+
+      <div>Bordure du bas</div>
+
+      <div class="config_item">
+        <div>Epaisseur</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="32"
+          oninput="ConteneurEdit.set_size_border_bottom(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>couleur</div>
+        <input
+          class="jscolor"
+          value="#fff"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ConteneurEdit.set_color_border_bottom(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Type</div>
+        <div class="row g4">
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_ligne_border_bottom()"
+          >
+            Ligne
+          </div>
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_pointilles_border_bottom()"
+          >
+            Pointillees
+          </div>
+        </div>
+      </div>
+
+      <hr />
+      <div>Bordure de gauche</div>
+
+      <div class="config_item">
+        <div>Epaisseur</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="32"
+          oninput="ConteneurEdit.set_size_border_left(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>couleur</div>
+        <input
+          class="jscolor"
+          value="#fff"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ConteneurEdit.set_color_border_left(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Type</div>
+        <div class="row g4">
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_ligne_border_left()"
+          >
+            Ligne
+          </div>
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_pointilles_border_left()"
+          >
+            Pointillees
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <div>Bordure de droite</div>
+
+      <div class="config_item">
+        <div>Epaisseur</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="32"
+          oninput="ConteneurEdit.set_size_border_right(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>couleur</div>
+        <input
+          class="jscolor"
+          value="#fff"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ConteneurEdit.set_color_border_right(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Type</div>
+        <div class="row g4">
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_ligne_border_right()"
+          >
+            Ligne
+          </div>
+          <div
+            class="secondary"
+            onclick="ConteneurEdit.set_pointilles_border_right()"
+          >
+            Pointillees
+          </div>
+        </div>
+      </div>
+
       <hr />
       <div class="secondary" onclick="Edit.delete_conteneur()">
         <img src="assets/images/delete_new.svg" alt="" />

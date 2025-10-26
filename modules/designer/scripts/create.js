@@ -65,6 +65,7 @@ class Create {
     let table = new Tableau();
     this.artboard.push(table);
     this.render();
+    TableauEdit.show_edit_tableau(table.id)
     UI.hide_add_graphix();
   }
 

@@ -51,6 +51,9 @@ class UI {
     this.hide_projects();
     this.hide_add_graphix();
     this.hide_artboard_options();
+    this.hide_edit_tableau();
+    this.hide_graph_editor();
+    this.hide_latex_edit();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();

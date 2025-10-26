@@ -60,7 +60,7 @@ class TableauEdit {
   }
 
   static delete() {
-    if (confirm("Voulez vous vraiment supprimer le tableau?")) {
+    if (confirm("Voulez vous vraiment supprimer?")) {
       let index = -1;
       for (let i = 0; i <= Create.artboard.length - 1; i++) {
         if (Create.artboard[i].id == Create.edit_id) {
@@ -70,7 +70,7 @@ class TableauEdit {
       if (index != -1) {
         Create.artboard.splice(index, 1);
         Create.render();
-        UI.hide_edit_tableau();
+        UI.hide_all();
       }
     }
   }
