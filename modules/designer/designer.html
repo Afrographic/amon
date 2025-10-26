@@ -18,6 +18,13 @@
     <script src="libs/katex/katex.css"></script>
     <!-- disables automatic phone/email/address detection on iOS Safari -->
     <meta name="format-detection" content="telephone=no,email=no,address=no" />
+
+    <!-- PWA tags -->
+    <link rel="icon" href="icons/icon-512.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
   </head>
   <body>
     <div class="logo">
@@ -35,8 +42,8 @@
       </div>
     </div>
 
-     <!-- Splash Screen -->
-     <div class="splash" id="splash">
+    <!-- Splash Screen -->
+    <div class="splash" id="splash">
       <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
       <div>Djehouty</div>
       <img
@@ -82,11 +89,11 @@
       <hr />
       <div id="graph_tab_editor"></div>
       <div class="secondary" onclick="ChartEdit.add_colonne()">
-        <img src="assets/images/add_colone.svg" alt="">
+        <img src="assets/images/add_colone.svg" alt="" />
         Ajouter une colonne
       </div>
       <div class="secondary" onclick="ChartEdit.delete_colonne()">
-        <img src="assets/images/delete_col.svg" alt="">
+        <img src="assets/images/delete_col.svg" alt="" />
         Supprimer la derniere colonne
       </div>
       <hr />
@@ -109,9 +116,9 @@
           onchange="ChartEdit.set_color(this)"
         />
       </div>
-      <hr>
+      <hr />
       <div class="secondary" onclick="TableauEdit.delete()">
-        <img src="assets/images/delete_new.svg" alt="">
+        <img src="assets/images/delete_new.svg" alt="" />
         Supprimer le Graphe
       </div>
       <div class="float_close" onclick="UI.hide_graph_editor()">Fermer</div>
@@ -126,7 +133,7 @@
         placeholder="Inserez la formule Latex"
       ></textarea>
       <div class="secondary" onclick="TableauEdit.delete()">
-        <img src="assets/images/delete_new.svg" alt="">
+        <img src="assets/images/delete_new.svg" alt="" />
         Supprimer l'element Math
       </div>
       <div class="float_close" onclick="UI.hide_latex_edit()">Fermer</div>
@@ -140,11 +147,11 @@
       <div id="tableau_renderer_edit" style="margin-bottom: 3vw"></div>
       <div class="column g4">
         <div class="secondary" onclick="TableauEdit.add_ligne()">
-          <img src="assets/images/add_ligne.svg" alt="">
+          <img src="assets/images/add_ligne.svg" alt="" />
           Ajouter une ligne
         </div>
         <div class="secondary" onclick="TableauEdit.add_colonne()">
-          <img src="assets/images/add_colone.svg" alt="">
+          <img src="assets/images/add_colone.svg" alt="" />
           Ajouter une colonne
         </div>
       </div>
@@ -171,7 +178,7 @@
       </div>
       <hr />
       <div class="secondary" onclick="TableauEdit.delete()">
-        <img src="assets/images/delete_new.svg" alt="">
+        <img src="assets/images/delete_new.svg" alt="" />
         Supprimer le tableau
       </div>
       <div class="float_close" onclick="UI.hide_edit_tableau()">Fermer</div>
@@ -305,7 +312,7 @@
     <!-- Edit image -->
     <div class="p16 hidden edit" id="image_edit">
       <div class="secondary" onclick="ImageEdit.duplicate()">
-        <img src="assets/images/duplicate.svg" alt="">
+        <img src="assets/images/duplicate.svg" alt="" />
         Dupliquer l'image
       </div>
       <!-- L'ordre dans le plan de travail -->
@@ -464,31 +471,31 @@
 
       <hr />
       <div class="secondary" onclick="this.lastElementChild.click()">
-        <img src="assets/images/image.svg" alt="">
+        <img src="assets/images/image.svg" alt="" />
         Remplacer l'image
         <input type="file" hidden onchange="ImageEdit.replaceImage(event)" />
       </div>
 
       <div class="secondary" onclick="ImageEdit.crop_to_square()">
-        <img src="assets/images/crop_1_1.svg" alt="">
+        <img src="assets/images/crop_1_1.svg" alt="" />
         Recadrer en taille carre
       </div>
       <div class="secondary" onclick="ImageEdit.crop_to_16_9()">
-        <img src="assets/images/crop_16_9.svg" alt="">
+        <img src="assets/images/crop_16_9.svg" alt="" />
         Recadrer en taille film
       </div>
       <div class="secondary" onclick="ImageEdit.convert_to_grayscale()">
-        <img src="assets/images/bw.svg" alt="">
+        <img src="assets/images/bw.svg" alt="" />
         Convertir en noir sur blanc
       </div>
       <div class="secondary" onclick="ImageEdit.remove_uni_bg()">
-        <img src="assets/images/remove_white_bg.svg" alt="">
+        <img src="assets/images/remove_white_bg.svg" alt="" />
         Supprimer le fond blanc
       </div>
 
       <hr />
       <div class="secondary" onclick="Edit.delete_image()">
-        <img src="assets/images/delete_new.svg" alt="">
+        <img src="assets/images/delete_new.svg" alt="" />
         Supprimer du design
       </div>
       <div class="float_close" onclick="Edit.close_image_edit()">Fermer</div>
@@ -502,7 +509,7 @@
           Dupliquer le conteneur
         </div>
       </div>
-    
+
       <div class="config_item">
         <div>Largeur</div>
         <input
@@ -683,8 +690,6 @@
           oninput="ConteneurEdit.set_opacity(this)"
         />
       </div>
-
-      
 
       <hr />
       <div class="config_item">
@@ -1322,5 +1327,14 @@
     <script src="scripts/splash.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
+    <!-- Register Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .then(() => console.log("Service Worker Registered"))
+          .catch((err) => console.error("SW registration failed", err));
+      }
+    </script>
   </body>
 </html>
