@@ -89,6 +89,7 @@ class Create {
     let conteneur = new Conteneur();
     this.artboard.push(conteneur);
     this.render();
+    Edit.edit_conteneur(conteneur.id);
   }
 
   static render() {
