@@ -66,7 +66,13 @@
       <div class="secondary" onclick="ChartEdit.add_colonne()">
         Ajouter une colonne
       </div>
-      <hr />
+      <div class="config_item">
+        <div>Type de Graphe</div>
+        <div class="row g4">
+          <div class="secondary f1" onclick="ChartEdit.set_curve()">Courbe</div>
+          <div class="secondary f1" onclick="ChartEdit.set_circle()">Circulaire</div>
+        </div>
+      </div>
       <div class="float_close" onclick="UI.hide_graph_editor()">Fermer</div>
     </div>
     <!-- Edit Latex -->

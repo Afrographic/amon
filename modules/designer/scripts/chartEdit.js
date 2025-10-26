@@ -28,6 +28,23 @@ class ChartEdit {
     }
   }
 
+  static set_curve(){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].mode = "line";
+        Create.render();
+      }
+    }
+  }
+  static set_circle(){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].mode="circle"
+        Create.render();
+      }
+    }
+  }
+
   static edit_data(el,index){ 
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
@@ -45,4 +62,6 @@ class ChartEdit {
       }
     }
   }
+
+
 }
