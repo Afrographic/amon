@@ -1044,21 +1044,20 @@
 
     <!-- Editer l'espace de travail -->
     <div class="artboard_options hidden edit" id="artboard_options">
-      <div class="b1 column g4 p16 br8">
-        <div class="base">Taille du document</div>
-        <div class="secondary" onclick="Create.set_automatic_height()">
-          Hauteur automatique
-        </div>
-        <div class="secondary" onclick="Create.set_taille_carre()">
-          Taille carre
-        </div>
-        <div class="secondary" onclick="Create.set_taille_A4()">
-          Taille format A4
-        </div>
-        <div class="secondary" onclick="Create.set_taille_cinematique()">
-          Taille cinematique
-        </div>
+      <div class="base">Taille du document</div>
+      <div class="secondary" onclick="Create.set_automatic_height()">
+        Hauteur automatique
       </div>
+      <div class="secondary" onclick="Create.set_taille_carre()">
+        Taille carre
+      </div>
+      <div class="secondary" onclick="Create.set_taille_A4()">
+        Taille format A4
+      </div>
+      <div class="secondary" onclick="Create.set_taille_cinematique()">
+        Taille cinematique
+      </div>
+
       <hr />
       <div class="b1 p16 b48 column g4 br8">
         <div>Espacement entre les elements</div>
@@ -1182,6 +1181,7 @@
       </div>
       <hr />
       <div class="secondary" onclick="Create.darken_bg()">
+        <img src="assets/images/darken.svg" alt="">
         Assombrir l'image de fond
       </div>
       <hr />
@@ -1331,7 +1331,7 @@
     <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
-          .register("/sw.js")
+          .register("/service-worker.js")
           .then(() => console.log("Service Worker Registered"))
           .catch((err) => console.error("SW registration failed", err));
       }
