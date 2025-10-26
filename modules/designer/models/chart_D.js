@@ -38,8 +38,7 @@ class ChartD {
     // Load X-Values
     res += "<tr> <td >x</td>";
     for (let i = 0; i <= this.x_values.length - 1; i++) {
-      res += `<td><input type="text" value="${this.x_values[i]}" inputmode="numeric"
-      pattern="[0-9]*" oninput="ChartEdit.edit_x_value(this,${i})" placeholder="Ecrire..."/></td>`;
+      res += `<td><input type="text" value="${this.x_values[i]}"  oninput="ChartEdit.edit_x_value(this,${i})" placeholder="Ecrire..."/></td>`;
     }
     res += "</tr>";
     // Load Data
