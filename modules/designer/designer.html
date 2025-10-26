@@ -1044,17 +1044,21 @@
 
     <!-- Editer l'espace de travail -->
     <div class="artboard_options hidden edit" id="artboard_options">
-      <div class="base">Taille du document</div>
-      <div class="secondary" onclick="Create.set_automatic_height()">
-        Hauteur automatique
+
+      <div class="secondary" onclick="Create.set_automatic_height();UI.hide_artboard_options();">
+        <img src="assets/images/hauteur_auto.svg" alt="">
+        Taille automatique
       </div>
-      <div class="secondary" onclick="Create.set_taille_carre()">
+      <div class="secondary" onclick="Create.set_taille_carre();UI.hide_artboard_options();">
+        <img src="assets/images/crop_1_1.svg" alt="">
         Taille carre
       </div>
-      <div class="secondary" onclick="Create.set_taille_A4()">
+      <div class="secondary" onclick="Create.set_taille_A4();UI.hide_artboard_options();">
+        <img src="assets/images/a_4.svg" alt="">
         Taille format A4
       </div>
-      <div class="secondary" onclick="Create.set_taille_cinematique()">
+      <div class="secondary" onclick="Create.set_taille_cinematique();UI.hide_artboard_options();">
+        <img src="assets/images/crop_16_9.svg" alt="">
         Taille cinematique
       </div>
 

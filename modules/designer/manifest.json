@@ -3,8 +3,8 @@
     "short_name":"Djehouty",
     "start_url":"/",
     "display":"standalone",
-    "background_color":"#fff",
-    "theme_color":"#fff",
+    "background_color":"#ffffff",
+    "theme_color":"#ffffff",
     "description":"Realisez des visuels PRO depuis votre telephone",
     "icons":[
         {
