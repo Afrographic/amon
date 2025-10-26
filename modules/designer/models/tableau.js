@@ -23,7 +23,7 @@ class Tableau {
     res += "</table>";
     return res;
   }
-
+ 
   render_editable_table() {
     let res = `<table id="${this.id}"  style="width:${this.width}%;border-collapse:collapse;table-layout: fixed;">`;
     for (let i = 0; i <= this.data.length - 1; i++) {

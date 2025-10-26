@@ -107,6 +107,10 @@ class Project {
         item = new Latex();
         item.from_json(project.artboard[i]);
       }
+      if (project.artboard[i].type == "chart") {
+        item = new ChartD();
+        item.from_json(project.artboard[i]);
+      }
       artBoard.push(item);
     }
     Create.artboard = artBoard;

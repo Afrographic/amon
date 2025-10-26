@@ -10,6 +10,7 @@
     <script src="libs/html2canvas.min.js"></script>
     <script src="libs/jscolor.js"></script>
     <script src="libs/jsstore.js"></script>
+    <script src="libs/chart.js"></script>
     <script src="libs/jsstore.worker.js"></script>
 
     <script src="libs/katex/katex.min.js"></script>
@@ -27,7 +28,7 @@
     <div id="renderer"></div>
     <!-- Donation -->
     <div class="donation">
-      <img src="assets/images/love.svg" width="20px" alt="" />
+      <img src="assets/images/love.svg"  alt="" />
       <div>
         Participer au developpement en fesant un don au numero Orange Money
         +237 697 830 071 (Tesse Brunel)
@@ -55,6 +56,19 @@
       <div class="float_close" onclick="UI.hide_projects()">Fermer</div>
     </div>
 
+    <canvas id="chart_renderer"></canvas>
+
+    <!-- Edit chart -->
+    <div class="p16 hidden edit column g4" id="graph_editor">
+      <div class="base" >Editer les informations du graphique</div>
+      <hr>
+      <div id="graph_tab_editor"></div>
+      <div class="secondary" onclick="ChartEdit.add_colonne()">
+        Ajouter une colonne
+      </div>
+      <hr />
+      <div class="float_close" onclick="UI.hide_graph_editor()">Fermer</div>
+    </div>
     <!-- Edit Latex -->
     <div class="p16 hidden edit column g4" id="latex_editor">
       <div class="base">Latex</div>
@@ -114,7 +128,7 @@
         Dupliquer le texte
       </div>
       <hr />
-      <div>
+      <div class="config_item">
         <div>Contenu</div>
         <textarea
           name=""
@@ -122,8 +136,7 @@
           oninput="Edit.edit_text_value(this)"
         ></textarea>
       </div>
-      <hr />
-      <div>
+      <div class="config_item">
         <p>Taille de la police</p>
         <input
           type="range"
@@ -151,9 +164,9 @@
           <div class="secondary f1" onclick="ImageEdit.backward()">Reculer</div>
         </div>
       </div>
-      <hr />
-      <div>
-        <p>Largeur de l'espace occupe par le texte</p>
+
+      <div class="config_item">
+        <div>Largeur de l'espace occupe par le texte</div>
         <input
           type="range"
           value="50"
@@ -162,8 +175,8 @@
           oninput="Edit.edit_text_width(this)"
         />
       </div>
-      <hr />
-      <div>
+
+      <div class="config_item">
         <div>Opacite</div>
         <input
           type="range"
@@ -174,7 +187,7 @@
         />
       </div>
       <hr />
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div>Couleur</div>
         <input
           class="jscolor"
@@ -186,7 +199,7 @@
       </div>
 
       <hr />
-      <div>
+      <div class="config_item">
         <div>Marge du haut</div>
         <input
           type="range"
@@ -196,7 +209,7 @@
           oninput="Edit.set_margin_top(this)"
         />
       </div>
-      <div>
+      <div class="config_item">
         <div>Marge du bas</div>
         <input
           type="range"
@@ -206,7 +219,7 @@
           oninput="Edit.set_margin_bottom(this)"
         />
       </div>
-      <div>
+      <div class="config_item">
         <div>Marge de gauche</div>
         <input
           type="range"
@@ -216,7 +229,7 @@
           oninput="Edit.set_margin_left(this)"
         />
       </div>
-      <div>
+      <div class="config_item">
         <div>Marge de droite</div>
         <input
           type="range"
@@ -1131,6 +1144,10 @@
         <img src="assets/images/latex.svg" alt="" />
         <div>Ajouter une formule Mathematique en Latex</div>
       </div>
+      <div class="secondary" onclick="ChartEdit.add_new()">
+        <img src="assets/images/graph.svg" alt="" />
+        <div>Ajouter un graphique</div>
+      </div>
       <hr />
       <div class="secondary" onclick="UI.show_projects();UI.hide_add_graphix()">
         Charger un projet
@@ -1207,6 +1224,7 @@
     <script src="models/conteneur.js"></script>
     <script src="models/tableau.js"></script>
     <script src="models/latex.js"></script>
+    <script src="models/chart_D.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
@@ -1217,6 +1235,7 @@
     <script src="scripts/hide_btn_explains.js"></script>
     <script src="scripts/tableau_edit.js"></script>
     <script src="scripts/latex_edit.js"></script>
+    <script src="scripts/chartEdit.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
   </body>

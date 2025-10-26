@@ -32,6 +32,16 @@ class UI {
     latex_editor.classList.add("hidden");
   }
 
+  static show_graph_editor(){
+    let graph_editor = document.querySelector("#graph_editor");
+    graph_editor.classList.remove("hidden");
+  }
+
+  static hide_graph_editor(){
+    let graph_editor = document.querySelector("#graph_editor");
+    graph_editor.classList.add("hidden");
+  }
+
   static hide_edit_tableau() {
     let tableau_editor = document.querySelector("#tableau_editor");
     tableau_editor.classList.add("hidden");

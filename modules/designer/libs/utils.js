@@ -233,7 +233,7 @@ class Utils {
     }
   }
 
-  static generateChart(render, data, x_values, title) {
+  static generate_line_chart(render, data, x_values, title) {
     return new Chart(render, {
       type: "line",
       data: {
@@ -249,6 +249,7 @@ class Utils {
         ],
       },
       options: {
+        animation:false,
         legend: {
           display: false,
         },
@@ -256,7 +257,7 @@ class Utils {
     });
   }
 
-  static generate_pie(render, data, x_values,title) {
+  static generate_pie_chart(render, data, x_values,title) {
     return new Chart(render, {
       type: "pie",
       data: {
@@ -318,11 +319,16 @@ class Utils {
         ],
       },
       options: {
+        animation:false,
         legend: {
           display: x_values.length < 10,
         },
       },
     });
+  }
+
+  static Ucase(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   /* 
