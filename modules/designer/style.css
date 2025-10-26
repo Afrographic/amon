@@ -347,3 +347,13 @@ h2 {
 .bg_grey{
     background-color: #f7f7f7;
 }
+
+.donation {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    font-size: 12px;
+}
