@@ -12,9 +12,9 @@
     <script src="libs/jsstore.js"></script>
     <script src="libs/jsstore.worker.js"></script>
 
-    <script src="libs/katex.min.js"></script>
-    <script src="libs/katex_auto_render.js"></script>
-    <script src="libs/katex.css"></script>
+    <script src="libs/katex/katex.min.js"></script>
+    <script src="libs/katex/katex_auto_render.js"></script>
+    <script src="libs/katex/katex.css"></script>
     <!-- disables automatic phone/email/address detection on iOS Safari -->
     <meta name="format-detection" content="telephone=no,email=no,address=no" />
   </head>
@@ -218,7 +218,7 @@
       <!-- L'ordre dans le plan de travail -->
       <hr />
       <div class="b1 p16 br8 column g4">
-        <div>L'ordre dans le plan de travail</div>
+        <div class="base">L'ordre dans le plan de travail</div>
         <div class="row g16">
           <div class="secondary f1" onclick="ImageEdit.forward()">Avancer</div>
           <div class="secondary f1" onclick="ImageEdit.backward()">Reculer</div>
@@ -230,8 +230,8 @@
       </div>
       <hr />
       <!-- Positionnement -->
-      <div class="b1 br8 p16">
-        <div>Positionnement</div>
+      <div class="b1 br8 p16 column g4">
+        <div class="base">Positionnement</div>
         <div class="row g16">
           <div class="secondary" onclick="ImageEdit.set_position_relative()">
             Relatif
@@ -242,7 +242,7 @@
         </div>
         <hr />
         <div>
-          <p>Position verticale</p>
+          <div class="base">Position verticale</div>
           <input
             type="range"
             value="0"
@@ -253,7 +253,7 @@
         </div>
         <hr />
         <div>
-          <p>Position horizontale</p>
+          <div class="base">Position horizontale</div>
           <input
             type="range"
             value="0"
@@ -264,15 +264,18 @@
         </div>
       </div>
       <!-- Size -->
-      <p>Editer la taille de l'image</p>
-      <input
-        type="range"
-        value="60"
-        min="0"
-        max="100"
-        oninput="Edit.change_image_size(this)"
-      />
-      <div>
+      <div class="config_item">
+        <div class="base">Editer la taille de l'image</div>
+        <input
+          type="range"
+          value="60"
+          min="0"
+          max="100"
+          oninput="Edit.change_image_size(this)"
+        />
+      </div>
+
+      <div class="config_item">
         <div>Opacite</div>
         <input
           type="range"
@@ -284,8 +287,8 @@
       </div>
       <!-- Marges -->
       <hr />
-      <div>
-        <div>Marge du haut</div>
+      <div class="config_item">
+        <div class="base">Marge du haut</div>
         <input
           type="range"
           value="0"
@@ -294,8 +297,8 @@
           oninput="ImageEdit.set_margin_top(this)"
         />
       </div>
-      <div>
-        <div>Marge du bas</div>
+      <div class="config_item">
+        <div class="base">Marge du bas</div>
         <input
           type="range"
           value="0"
@@ -304,8 +307,8 @@
           oninput="ImageEdit.set_margin_bottom(this)"
         />
       </div>
-      <div>
-        <div>Marge de gauche</div>
+      <div class="config_item">
+        <div class="base">Marge de gauche</div>
         <input
           type="range"
           value="0"
@@ -314,8 +317,8 @@
           oninput="ImageEdit.set_margin_left(this)"
         />
       </div>
-      <div>
-        <div>Marge de droite</div>
+      <div class="config_item">
+        <div class="base">Marge de droite</div>
         <input
           type="range"
           value="0"
@@ -326,45 +329,53 @@
       </div>
       <!-- Arrondis -->
       <hr />
-      <div>Arrondis haut gauche</div>
-      <input
-        type="range"
-        value="4"
-        min="0"
-        max="128"
-        oninput="Edit.edit_radius_top_left(this)"
-      />
+      <div class="config_item">
+        <div class="base">Arrondis haut gauche</div>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="128"
+          oninput="Edit.edit_radius_top_left(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Arrondis haut droite</div>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="128"
+          oninput="Edit.edit_radius_top_right(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Arrondis bas gauche</div>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="128"
+          oninput="Edit.edit_radius_bottom_left(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Arrondis bas droite</div>
+        <input
+          type="range"
+          value="4"
+          min="0"
+          max="128"
+          oninput="Edit.edit_radius_bottom_right(this)"
+        />
+      </div>
+
       <hr />
-      <div>Arrondis haut droite</div>
-      <input
-        type="range"
-        value="4"
-        min="0"
-        max="128"
-        oninput="Edit.edit_radius_top_right(this)"
-      />
-      <hr />
-      <div>Arrondis bas gauche</div>
-      <input
-        type="range"
-        value="4"
-        min="0"
-        max="128"
-        oninput="Edit.edit_radius_bottom_left(this)"
-      />
-      <hr />
-      <div>Arrondis bas droite</div>
-      <input
-        type="range"
-        value="4"
-        min="0"
-        max="128"
-        oninput="Edit.edit_radius_bottom_right(this)"
-      />
-      <hr />
-      <div class="secondary">
+      <div class="secondary" onclick="this.lastElementChild.click()">
         Remplacer l'image
-        <input type="file" onchange="ImageEdit.replaceImage(event)" />
+        <input type="file" hidden onchange="ImageEdit.replaceImage(event)" />
       </div>
       <hr />
       <div class="secondary" onclick="ImageEdit.crop_to_square()">
@@ -390,7 +401,7 @@
       </div>
       <hr />
       <div class="b1 p16 br8 column g4">
-        <p>Alignement horizonale</p>
+        <div class="base">Alignement horizonale</div>
         <div class="row g16 aic">
           <div class="secondary" onclick="ConteneurEdit.set_left()">Gauche</div>
           <div class="secondary" onclick="ConteneurEdit.set_center()">
@@ -409,7 +420,7 @@
 
       <hr />
       <div class="b1 p16 br8 column g4">
-        <div>Alignement verticale</div>
+        <div class="base">Alignement verticale</div>
         <div class="row aic g16">
           <div class="secondary" onclick="ConteneurEdit.set_ver_left()">
             En haut
@@ -427,7 +438,7 @@
       <hr />
       <!-- Ordre  -->
       <div class="b1 p16 br8 column g4">
-        <div>L'ordre dans le plan de travail</div>
+        <div class="base">L'ordre dans le plan de travail</div>
         <div class="row g16">
           <div class="secondary f1" onclick="ConteneurEdit.forward()">
             Avancer
@@ -903,6 +914,9 @@
       </div>
     </div>
 
+    <textarea id="latexInput" placeholder="Example: \int_0^1 x^2 dx"></textarea>
+    <div id="output"></div>
+
     <div id="renderer"></div>
 
     <p class="tac" style="font-size: 3vw; color: grey">
@@ -912,7 +926,7 @@
     <!-- Editer l'espace de travail -->
     <div class="artboard_options hidden edit" id="artboard_options">
       <div class="b1 column g4 p16 br8">
-        <div>Taille du document</div>
+        <div class="base">Taille du document</div>
         <div class="secondary" onclick="Create.set_automatic_height()">
           Hauteur automatique
         </div>
@@ -1057,10 +1071,27 @@
 
     <!-- Ajouter les elements -->
     <div class="options hidden edit" id="add_graphix">
-      <div class="secondary" onclick="Create.add_conteneur()">
-        Ajouter un conteneur
+      <div class="secondary" onclick="Create.add_titre()">
+        <img src="assets/images/text.svg" alt="" />
+        Ajouter un titre
+      </div>
+      <div class="secondary" onclick="Create.add_sous_titre()">
+        <img src="assets/images/text.svg" alt="" />
+        Ajouter sous titre titre
+      </div>
+      <div class="secondary" onclick="Create.add_text()">
+        <img src="assets/images/text.svg" alt="" />
+        Ajouter une description
+      </div>
+      <div class="secondary" onclick="Create.add_mini_text()">
+        <img src="assets/images/text.svg" alt="" />
+        Ajouter un mini texte
       </div>
       <hr />
+      <div class="secondary" onclick="Create.add_conteneur()">
+        <img src="assets/images/conteneur.svg" alt="" />
+        <div>Ajouter un conteneur</div>
+      </div>
       <div class="secondary" onclick="Create.add_image()">
         <input
           type="file"
@@ -1069,29 +1100,21 @@
           accept="image/*"
           onchange="Create.get_image(event)"
         />
-        Ajouter une image
+        <img src="assets/images/image.svg" alt="" />
+        <div>Ajouter une image</div>
       </div>
-      <hr />
-
-      <div class="secondary" onclick="Create.add_titre()">Ajouter un titre</div>
-      <div class="secondary" onclick="Create.add_sous_titre()">
-        Ajouter sous titre titre
-      </div>
-      <div class="secondary" onclick="Create.add_text()">
-        Ajouter une description
-      </div>
-      <div class="secondary" onclick="Create.add_mini_text()">
-        Ajouter un mini texte
-      </div>
-      <hr />
       <div class="secondary" onclick="Create.add_table()">
-        Ajouter un tableau
+        <img src="assets/images/tab.svg" alt="" />
+        <div>Ajouter un tableau</div>
+      </div>
+      <div class="secondary" onclick="Create.add_table()">
+        <img src="assets/images/latex.svg" alt="" />
+        <div>Ajouter une formule Mathematique en Latex</div>
       </div>
       <hr />
       <div class="secondary" onclick="UI.show_projects();UI.hide_add_graphix()">
         Charger un projet
       </div>
-      <hr />
       <div class="secondary" onclick="Project.create_new()">
         Creer un nouveau projet
       </div>
@@ -1128,24 +1151,27 @@
         class="info"
         style="margin-bottom: 5vw"
       />
+      <div class="indication_label">Indications</div>
       <div class="explain_item">
         <img src="assets/images/export.svg" alt="" />
-        <div>Exporter le projet en image</div>
+        <div class="base">Exporter le projet en image</div>
       </div>
       <div class="explain_item">
         <img src="assets/images/settings.svg" alt="" />
-        <div>Options de l'espace de travail</div>
+        <div class="base">Options de l'espace de travail</div>
       </div>
       <div class="explain_item">
         <img src="assets/images/add.svg" alt="" />
-        <div>Ajouter un element graphique</div>
+        <div class="base">Ajouter un element graphique</div>
       </div>
       <div class="explain_item">
         <img src="assets/images/save.svg" alt="" />
-        <div>Enregistrer le projet</div>
+        <div class="base">Enregistrer le projet</div>
       </div>
-      <div class="small" style="color: white; margin-top: 2vw">
-        Cliquez pour fermer
+      <div class="close">Cliquez pour fermer</div>
+      <div class="signature">
+        <img src="assets/images/ag white.png" alt="" />
+        <div class="name_company">AFROGRAPHIX STUDIO</div>
       </div>
     </div>
 
@@ -1160,6 +1186,7 @@
     <script src="models/image.js"></script>
     <script src="models/conteneur.js"></script>
     <script src="models/tableau.js"></script>
+    <script src="models/latex.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
@@ -1171,5 +1198,25 @@
     <script src="scripts/tableau_edit.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
+
+    <script>
+      const input = document.getElementById("latexInput");
+      const output = document.getElementById("output");
+
+      input.addEventListener("input", () => {
+        try {
+          katex.render(input.value, output, {
+            throwOnError: false,
+            displayMode: true,
+          });
+        } catch (err) {
+          output.innerHTML = `<span class="error">Invalid LaTeX</span>`;
+        }
+      });
+
+      // Optional: Render default input on load
+      input.value = "\\int_0^1 x^2 dx";
+      input.dispatchEvent(new Event("input"));
+    </script>
   </body>
 </html>

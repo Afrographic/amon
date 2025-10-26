@@ -120,7 +120,7 @@ button {
 }
 
 .g4 {
-    gap: 2vw;
+    gap: 4vw;
 }
 
 .g8 {
@@ -180,15 +180,29 @@ button {
     gap: 16px;
 }
 
+.config_item {
+    border: 1px solid #aaaaaa75;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
 .secondary {
-    padding: 4vw;
-    font-size: 3.5vw;
+    padding: 3vw 4vw;
+    font-size: 3.8vw;
     text-align: left;
     border-radius: 2vw;
     display: flex;
     gap: 2vw;
     flex: 1;
     background-color: #f6f6f6;
+    align-items: center;
+}
+
+.secondary img{
+    width: 8vw;
 }
 
 .br8 {
@@ -240,7 +254,7 @@ h2 {
 
 #options_btn_explainer {
     position: fixed;
-    background-color: #00661f77;
+    background-color: #00661fe8;
     display: flex;
     flex-direction: column;
     top: 0;
@@ -280,6 +294,52 @@ h2 {
     width: 8vw;
 }
 
-.base{
+.base {
     font-size: 3.5vw;
+}
+
+.katex-html {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.signature {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.signature .name_company {
+    font-size: 2vw;
+    color: white;
+}
+
+.indication_label {
+    font-size: 4vw;
+    color: white;
+}
+
+.signature img {
+    width: 4vw;
+}
+
+.close{
+    background-color: #000000;
+    padding:4vw;
+    text-align: center;
+    width: 100%;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 8vw;
+}
+
+.logo img{
+    width: 5vw;
+}
+
+.logo h3{
+    font-size: 4vw;
 }
