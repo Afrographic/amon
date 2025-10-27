@@ -64,7 +64,6 @@ h1 {
     background-image: url(images/pharaon.png);
     background-size: cover;
     background-position: center;
-    min-height: 58vh;
 }
 
 #m1_overlay {

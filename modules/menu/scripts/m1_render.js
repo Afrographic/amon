@@ -28,9 +28,11 @@ class Visuel1 {
     let menu_container = document.querySelector("#menu_container");
     menu_container.innerHTML = "";
     for (let i = 0; i <= visuel.menu.length - 1; i++) {
+      if(visuel.menu[i].jour.trim().length == 0) continue;
       // Build menu items
       let menu_items = "<table>";
       for (let j = 0; j <= visuel.menu[i].plats.length - 1; j++) {
+        if(visuel.menu[i].plats[j].name.trim().length== 0) continue;
         menu_items += `
         <tr>
           <td>${visuel.menu[i].plats[j].name}</td>
