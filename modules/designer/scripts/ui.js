@@ -47,6 +47,15 @@ class UI {
     tableau_editor.classList.add("hidden");
   }
 
+  static show_menu_services(){
+    let services_supplementaire = document.querySelector("#services_supplementaire");
+    services_supplementaire.classList.remove("hidden");
+  }
+  static hide_menu_services(){
+    let services_supplementaire = document.querySelector("#services_supplementaire");
+    services_supplementaire.classList.add("hidden");
+  }
+
   static hide_all() {
     this.hide_projects();
     this.hide_add_graphix();

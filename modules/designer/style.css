@@ -399,3 +399,14 @@ h2 {
     border: 1px solid #dfdfdf;
 }
 
+.menu_services{
+    position: absolute;
+    top:4vw;
+    left:4vw;
+    width: 8vw;
+}
+
+
+#services_supplementaire img{
+    width: 5vw;
+}

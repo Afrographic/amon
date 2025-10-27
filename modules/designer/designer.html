@@ -42,6 +42,40 @@
       </div>
     </div>
 
+    <!-- Menu des services Connexes -->
+    <img src="assets/images/menu.svg" class="menu_services" alt="" onclick="UI.show_menu_services()">
+    <div class="options hidden edit" id="services_supplementaire">
+      <div>Services Djehouty</div>
+      <div class="small">Cliquez pour lancer le service</div>
+      <hr>
+      <div class="secondary" onclick="Services.cv()">
+        <img src="assets/images/djehouty_icon.svg" alt="" />
+        Generation de CV
+      </div>
+      <div class="secondary" onclick="Services.menu()">
+        <img src="assets/images/djehouty_icon.svg" alt="" />
+       Generation de menu pour restaurant
+      </div>
+      <div class="secondary" onclick="Services.qr_code()">
+        <img src="assets/images/djehouty_icon.svg" alt="" />
+        <div>Generation de QR Codes</div>
+      </div>
+      <div class="secondary" onclick="Services.meet()">
+        <img src="assets/images/djehouty_icon.svg" alt="" />
+        <div>Generation de visuel de meet</div>
+      </div>
+      <div class="secondary" onclick="Services.soutenance()">
+        <img src="assets/images/djehouty_icon.svg" alt="" />
+        <div>Generation des visuels de Soutenance</div>
+      </div>
+      <div class="secondary" onclick="Services.produits()">
+        <img src="assets/images/djehouty_icon.svg" alt="" />
+        <div>Generation des flyers pour produits</div>
+      </div>
+      <div class="float_close" onclick="UI.hide_menu_services()">Fermer</div>
+    </div>
+
+
     <!-- Splash Screen -->
     <div class="splash" id="splash">
       <img src="assets/images/djehouty_icon.svg" alt="" width="24px" />
@@ -1329,6 +1363,7 @@
     <script src="scripts/latex_edit.js"></script>
     <script src="scripts/chartEdit.js"></script>
     <script src="scripts/splash.js"></script>
+    <script src="scripts/services.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
     <!-- Register Service Worker -->

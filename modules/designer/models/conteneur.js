@@ -229,6 +229,11 @@ class Conteneur {
     new_conteneur.deg_first_color = this.deg_first_color;
     new_conteneur.deg_second_color = this.deg_second_color;
 
+    //Positionning
+    new_conteneur.position = this.position;
+    new_conteneur.posY = this.posY;
+    new_conteneur.posX = this.posX;
+
     return new_conteneur;
   }
 

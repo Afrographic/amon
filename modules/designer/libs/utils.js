@@ -361,6 +361,17 @@ class Utils {
     const a = Math.max(0, Math.min(1, Number(alpha)));
     return `rgba(${r}, ${g}, ${b}, ${a})`;
   }
+
+  static open_external_link(url) {
+    var a_tag = document.createElement('a');
+    a_tag.className = 'ghost';
+    a_tag.setAttribute("href", url);
+   // a_tag.setAttribute("target", "_blank");
+ 
+    document.body.appendChild(a_tag); // required for firefox
+    a_tag.click();
+    a_tag.remove();
+}
 }
 
 Utils.set_text_area_autoGrow();
