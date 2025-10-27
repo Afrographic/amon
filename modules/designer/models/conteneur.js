@@ -49,6 +49,7 @@ class Conteneur {
     this.deg_rotate = "0";
     this.deg_first_color = "rgba(0,0,0,0)";
     this.deg_second_color = "rgba(0,0,0,0)";
+    this.rotate = "0";
   }
 
   render() {
@@ -62,6 +63,7 @@ class Conteneur {
         grid-template-columns:repeat(${this.colonnes_pour_grille},1fr);
         position:${this.position};
         top:${this.posY}%;
+        transform:rotate(${this.rotate}deg);
         left:${this.posX}%;
         opacity:${this.opacity};
         gap:${this.gap}vw;
@@ -101,6 +103,7 @@ class Conteneur {
     this.gap = json.gap;
 
     this.deg_rotate = json.deg_rotate;
+    this.rotate = json.rotate;
     this.deg_first_color = json.deg_first_color;
     this.deg_second_color = json.deg_second_color;
 
@@ -199,6 +202,7 @@ class Conteneur {
     new_conteneur.vertAlign = this.vertAlign;
     new_conteneur.bg_file = this.bg_file;
     new_conteneur.opacity = this.opacity;
+    new_conteneur.rotate = this.rotate;
     new_conteneur.type = this.type;
     // Marges
     new_conteneur.margin_top = this.margin_top;

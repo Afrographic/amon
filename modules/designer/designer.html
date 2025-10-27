@@ -349,6 +349,27 @@
         <img src="assets/images/duplicate.svg" alt="" />
         Dupliquer l'image
       </div>
+       <!-- Size -->
+       <div class="config_item">
+        <div class="base">Editer la taille de l'image</div>
+        <input
+          type="range"
+          value="60"
+          min="0"
+          max="100"
+          oninput="Edit.change_image_size(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Rotation de l'image</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="ImageEdit.set_transform_rotate(this)"
+        />
+      </div>
       <!-- L'ordre dans le plan de travail -->
       <hr />
       <div class="b1 p16 br8 column g4">
@@ -394,17 +415,7 @@
           />
         </div>
       </div>
-      <!-- Size -->
-      <div class="config_item">
-        <div class="base">Editer la taille de l'image</div>
-        <input
-          type="range"
-          value="60"
-          min="0"
-          max="100"
-          oninput="Edit.change_image_size(this)"
-        />
-      </div>
+     
 
       <div class="config_item">
         <div>Opacite</div>
@@ -542,6 +553,17 @@
           <img src="assets/images/duplicate.svg" alt="" />
           Dupliquer le conteneur
         </div>
+      </div>
+
+      <div class="config_item">
+        <div>Rotation du conteneur</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="ConteneurEdit.set_transform_rotate(this)"
+        />
       </div>
 
       <div class="config_item">

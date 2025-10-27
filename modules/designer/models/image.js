@@ -18,6 +18,7 @@ class Image_D {
     this.position = "relative";
     this.posY= "0";
     this.posX= "0";
+    this.rotate="0";
     // Type
     this.type = "image";
   }
@@ -28,6 +29,7 @@ class Image_D {
         width:${this.width}%;
         position:${this.position};
         top:${this.posY}%;
+        transform:rotate(${this.rotate}deg);
         left:${this.posX}%;
         opacity:${this.opacity};
         border-top-left-radius:${this.border_top_left_radius}px;
@@ -60,6 +62,7 @@ class Image_D {
     this.position = json.position;
     this.posY = json.posY;
     this.posX = json.posX;
+    this.rotate = json.rotate;
     this.type = json.type;
   }
 
@@ -81,6 +84,7 @@ class Image_D {
     clone.position = this.position;
     clone.posY = this.posY;
     clone.posX = this.posX;
+    clone.rotate = this.rotate;
     clone.type = this.type;
     return clone;
   }
