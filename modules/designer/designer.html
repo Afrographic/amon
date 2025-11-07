@@ -850,6 +850,17 @@
           oninput="ConteneurEdit.set_degrade_rotate(this)"
         />
       </div>
+      <div class="config_item">
+        <div>Type de degrade</div>
+        <div class="row g16">
+          <div class="secondary" onclick="ConteneurEdit.set_degrade_lineaire()">
+            Lineaire
+          </div>
+          <div class="secondary" onclick="ConteneurEdit.set_degrade_radiale()">
+            Radiale
+          </div>
+        </div>
+      </div>
 
       <hr />
       <div class="config_item">
@@ -1220,10 +1231,9 @@
           />
         </div>
       </div>
-
-      <div class="b1 br8 p16 column g4">
-        <div>Fond en degrade</div>
-        <hr />
+<hr>
+      <div>Fond en degrade</div>
+      <div class="config_item">
         <div>Permiere couleur</div>
         <input
           class="jscolor"
@@ -1232,8 +1242,9 @@
           onclick="this.blur()"
           onchange="Create.set_degrade_first_color(this)"
         />
+      </div>
 
-        <hr />
+      <div class="config_item">
         <div>Deuxieme couleur</div>
         <input
           class="jscolor"
@@ -1242,8 +1253,9 @@
           onclick="this.blur()"
           onchange="Create.set_degrade_second_color(this)"
         />
+      </div>
 
-        <hr />
+      <div class="config_item">
         <div>Rotation du degrade</div>
         <input
           type="range"
@@ -1253,6 +1265,15 @@
           oninput="Create.set_degrade_rotate(this)"
         />
       </div>
+
+      <div class="config_item">
+        <div>Type de degrade</div>
+        <div class="row g16">
+          <div class="secondary" onclick="Create.set_degrade_lineaire()">Lineaire</div>
+          <div class="secondary" onclick="Create.set_degrade_radial()">Radial</div>
+        </div>
+      </div>
+
       <hr />
       <div class="secondary" onclick="Create.darken_bg()">
         <img src="assets/images/darken.svg" alt="" />
@@ -1318,11 +1339,17 @@
         Creer un nouveau projet
       </div>
       <hr />
-      <div class="secondary" onclick="Project.export_project();UI.hide_add_graphix()">
+      <div
+        class="secondary"
+        onclick="Project.export_project();UI.hide_add_graphix()"
+      >
         <img src="assets/images/export_project.svg" alt="" />
         Exporter le projet
       </div>
-      <div class="secondary" onclick="Project.import_project();UI.hide_add_graphix()">
+      <div
+        class="secondary"
+        onclick="Project.import_project();UI.hide_add_graphix()"
+      >
         <img src="assets/images/import_project.svg" alt="" />
         Importer un projet
       </div>

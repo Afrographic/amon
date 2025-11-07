@@ -555,6 +555,24 @@ class ConteneurEdit {
     }
   }
 
+  static set_degrade_lineaire() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].deg_type = "linear";
+        Create.render();
+      }
+    }
+  }
+
+  static set_degrade_radiale() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].deg_type = "radial";
+        Create.render();
+      }
+    }
+  }
+
   static forward() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {

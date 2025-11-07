@@ -46,6 +46,7 @@ class Conteneur {
     this.border_right_color = "#000";
     this.border_right_type = "solid";
     // Degrade
+    this.deg_type = "linear";
     this.deg_rotate = "0";
     this.deg_first_color = "rgba(0,0,0,0)";
     this.deg_second_color = "rgba(0,0,0,0)";
@@ -56,6 +57,20 @@ class Conteneur {
     let children_template = "";
     for (let item of this.children) {
       children_template += item.render();
+    }
+    // Compute gradient
+    let degrade = "";
+    if ((this.deg_type == "linear")) {
+      degrade = `linear-gradient(
+        ${this.deg_rotate}deg,
+          ${this.deg_first_color},
+          ${this.deg_second_color}
+        )`;
+    } else {
+      degrade = `radial-gradient(
+          ${this.deg_first_color},
+          ${this.deg_second_color}
+        )`;
     }
     return `
         <div onclick="Edit.edit_conteneur('${this.id}')" class="conteneur" style="
@@ -68,11 +83,7 @@ class Conteneur {
         opacity:${this.opacity};
         gap:${this.gap}vw;
         background-color:${this.background_color};
-        background:linear-gradient(
-          ${this.deg_rotate}deg,
-            ${this.deg_first_color},
-            ${this.deg_second_color}
-          ), ${this.background_image};
+        background:${degrade}, ${this.background_image};
 
         width:${this.width}%;
         padding:${this.padding_top_bottom} ${this.padding_left_right};
@@ -106,6 +117,7 @@ class Conteneur {
     this.rotate = json.rotate;
     this.deg_first_color = json.deg_first_color;
     this.deg_second_color = json.deg_second_color;
+    this.deg_type = json.deg_type??"linear";
 
     this.border_top_size = json.border_top_size;
     this.border_top_type = json.border_top_type;
@@ -232,6 +244,7 @@ class Conteneur {
     new_conteneur.deg_rotate = this.deg_rotate;
     new_conteneur.deg_first_color = this.deg_first_color;
     new_conteneur.deg_second_color = this.deg_second_color;
+    new_conteneur.deg_type = this.deg_type;
 
     //Positionning
     new_conteneur.position = this.position;
@@ -316,6 +329,7 @@ class Conteneur {
       deg_first_color: this.deg_first_color,
       deg_second_color: this.deg_second_color,
       rotate: this.rotate,
+      deg_type: this.deg_type,
     };
   }
 }

@@ -15,6 +15,7 @@ class Project {
       aspect_ratio: Create.aspect_ratio,
       // Degrade configuration
       deg_rotate: Create.deg_rotate,
+      deg_type: Create.deg_type,
       deg_first_color: Create.deg_first_color,
       deg_second_color: Create.deg_second_color,
       artboard: Create.artboard,
@@ -66,6 +67,7 @@ class Project {
       aspect_ratio: Create.aspect_ratio,
       // Degrade configuration
       deg_rotate: Create.deg_rotate,
+      deg_type: Create.deg_type,
       deg_first_color: Create.deg_first_color,
       deg_second_color: Create.deg_second_color,
       artboard: json_artboard,
@@ -186,6 +188,7 @@ class Project {
     Create.aspect_ratio = project.aspect_ratio;
     // Degrade configuration
     Create.deg_rotate = project.deg_rotate;
+    Create.deg_type = project.deg_type;
     Create.deg_first_color = project.deg_first_color;
     Create.deg_second_color = project.deg_second_color;
 
