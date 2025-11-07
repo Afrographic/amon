@@ -397,6 +397,54 @@ class Utils {
     aNode.remove();
   }
 
+  static show_notif(msg) {
+    //16 + 50 + 8
+    let notifs = document.querySelectorAll(".notif_d");
+    let div_content = `
+    
+    <div onclick="this.classList.add('notif_d_inactive')"  class="notif_d notif_d_inactive" style="position:fixed;top:${
+      16 + (50 + 8) * notifs.length
+    }px;right:16px;font-size:3vw;background-color:darkblue;color:white;padding:16px;border-radius:16px;">
+        ${msg}
+
+        <style>
+            .notif_d {
+                transition: 0.5s;
+                z-index:40;
+            }
+            .notif_d_inactive {
+                opacity: 0;
+                transform: scale(0);
+            }
+            .notif_d_inactive {
+                opacity: 1;
+                transform: scale(1);
+            }
+        </style>
+    </div>
+    `;
+    // let notif_bloc = document.querySelector("#notif_bloc")
+    // notif_bloc.innerHTML = div_content;
+
+    document.body.innerHTML = div_content;
+
+    window.setTimeout(() => {
+      let notifs = document.querySelectorAll(".notif_d");
+      notifs[notifs.length - 1].classList.remove("notif_d_inactive");
+    }, 300);
+
+    window.setTimeout(() => {
+      let notifs = document.querySelectorAll(".notif_d");
+      notifs[notifs.length - 1].classList.add("notif_d_inactive");
+    }, 10000);
+
+    window.setTimeout(() => {
+      let notifs = document.querySelectorAll(".notif_d");
+      let notif = notifs[notifs.length - 1];
+      notif.parentNode.removeChild(notif);
+    }, 10200);
+  }
+
 }
 
 Utils.set_text_area_autoGrow();

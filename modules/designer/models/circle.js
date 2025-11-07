@@ -14,20 +14,22 @@ class Circle {
     let canvas = document.querySelector("#shape_renderer");
     let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-    
+
     ctx.beginPath();
-    ctx.arc(150,150,120,0,Math.PI*2);
+    ctx.arc(150, 150, 130, 0, Math.PI * 2);
     ctx.closePath();
     ctx.fillStyle = this.fill_color;
     ctx.fill();
-    ctx.lineWidth = this.strokeWidth;
-    ctx.strokeStyle = this.stroke_color;
-    ctx.stroke();
+    if (this.strokeWidth != 0) {
+      ctx.lineWidth = this.strokeWidth;
+      ctx.strokeStyle = this.stroke_color;
+      ctx.stroke();
+    }
 
     let rendered_img = canvas.toDataURL("image/png");
 
     return `
-          <img src="${rendered_img}" id=/>
+          <img onclick="Circle_edit.edit('${this.id}')" src="${rendered_img}" style="transform-origin:top left;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale})"/>
         `;
   }
 
@@ -57,7 +59,7 @@ class Circle {
 
   clone() {
     let clone = new Circle();
-    clone.id = this.id;
+    clone.id = `id_${Math.random() * 100000}`;
     clone.fill_color = this.fill_color;
     clone.posX = this.posX;
     clone.posY = this.posY;

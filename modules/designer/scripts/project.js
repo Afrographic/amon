@@ -164,6 +164,10 @@ class Project {
         item = new ChartD();
         item.from_json(project.artboard[i]);
       }
+      if (project.artboard[i].type == "circle") {
+        item = new Circle();
+        item.from_json(project.artboard[i]);
+      }
       artBoard.push(item);
     }
     Create.artboard = artBoard;

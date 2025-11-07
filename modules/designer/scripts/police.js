@@ -37,7 +37,7 @@ class Police{
     static init(){
         let police_list = document.querySelector("#police_list");
         police_list.innerHTML ="";
-        for(let i = 0 ; i <=this.police.length;i++){
+        for(let i = 0 ; i <=this.police.length-1;i++){
             police_list.innerHTML += `
             <div class="policeItem" onclick="Edit.change_font('${this.police[i]}')">
                 <div class="police_name">${this.police[i]}</div>

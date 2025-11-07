@@ -66,6 +66,16 @@ class UI {
     change_font.classList.add("hidden");
   }
 
+  static show_circle_edit(){
+    let circle_editor = document.querySelector("#circle_editor");
+    circle_editor.classList.remove("hidden");
+  }
+
+  static hide_circle_edit(){
+    let circle_editor = document.querySelector("#circle_editor");
+    circle_editor.classList.add("hidden");
+  }
+
 
 
   static hide_all() {
@@ -76,6 +86,7 @@ class UI {
     this.hide_graph_editor();
     this.hide_latex_edit();
     this.hide_font_view();
+    this.hide_circle_edit();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();
