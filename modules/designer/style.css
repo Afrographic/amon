@@ -465,7 +465,7 @@ h2 {
     width: 8vw;
 }
 
-#chart_renderer{
+#chart_renderer,#shape_renderer{
     opacity: 0;
     pointer-events: none;
     position: fixed;

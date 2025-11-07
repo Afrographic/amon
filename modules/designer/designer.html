@@ -97,6 +97,40 @@
       />
     </div>
 
+    <!-- Shape drawing -->
+    <canvas id="shape_renderer"  width="300" height="300" ></canvas>
+   
+    <script>
+      // let canvas_test = document.querySelector("#draw_circle");
+      // const ctx = canvas_test.getContext("2d");
+      // Dessin du cercle ou demi cercle
+      // ctx.beginPath();
+      // ctx.arc(150,150,100,0,Math.PI*2);
+      // ctx.closePath();
+      // ctx.fillStyle = "#ffcc00";
+      // ctx.fill();
+      // ctx.lineWidth = 10;
+      // ctx.strokeStyle = "red";
+      // ctx.stroke();
+
+      // Dessin du rectangle
+      // ctx.fillStyle = "red";
+      // ctx.fillRect(30,30,250,100);
+      // ctx.lineWidth = 10;
+      // ctx.strokeStyle = "yellow";
+      // ctx.strokeRect(30,30,250,100);
+
+      //Dessin triangle
+      // ctx.beginPath();
+      // ctx.moveTo(10,270);
+      // ctx.lineTo(290,270);
+      // ctx.lineTo(150,80);
+      // ctx.fillStyle = "red";
+      // ctx.fill()
+
+     
+    </script>
+
     <!-- Saved projects -->
     <div class="p16 edit hidden" id="projects">
       <h2>Projets</h2>
@@ -224,18 +258,18 @@
 
     <!-- Editer la police -->
     <div class="p16 hidden edit" id="change_font">
-        <h2 class="tac" style="margin-bottom: 2vw;">Changer la police</h2>
-        <div class="police_list" id="police_list">
-          <div class="policeItem">
-            <div class="police_name">Algerian</div>
-            <div class="police_preview_text">Rendu</div>
-          </div>
-          <div class="policeItem">
-            <div class="police_name">Algerian</div>
-            <div class="police_preview_text">Rendu</div>
-          </div>
+      <h2 class="tac" style="margin-bottom: 2vw">Changer la police</h2>
+      <div class="police_list" id="police_list">
+        <div class="policeItem">
+          <div class="police_name">Algerian</div>
+          <div class="police_preview_text">Rendu</div>
         </div>
-        <div class="float_close" onclick="UI.hide_font_view()">Fermer</div>
+        <div class="policeItem">
+          <div class="police_name">Algerian</div>
+          <div class="police_preview_text">Rendu</div>
+        </div>
+      </div>
+      <div class="float_close" onclick="UI.hide_font_view()">Fermer</div>
     </div>
 
     <!-- Edit text -->
@@ -244,9 +278,12 @@
         <img src="assets/images/duplicate.svg" alt="" />
         Dupliquer le texte
       </div>
-      <div class="secondary" onclick="Edit.close_text_edit(); UI.show_font_view()">
+      <div
+        class="secondary"
+        onclick="Edit.close_text_edit(); UI.show_font_view()"
+      >
         <img src="assets/images/text.svg" alt="" />
-       Changer la police d'ecriture
+        Changer la police d'ecriture
       </div>
       <hr />
       <div class="config_item">
@@ -1251,7 +1288,7 @@
           />
         </div>
       </div>
-<hr>
+      <hr />
       <div>Fond en degrade</div>
       <div class="config_item">
         <div>Permiere couleur</div>
@@ -1289,8 +1326,12 @@
       <div class="config_item">
         <div>Type de degrade</div>
         <div class="row g16">
-          <div class="secondary" onclick="Create.set_degrade_lineaire()">Lineaire</div>
-          <div class="secondary" onclick="Create.set_degrade_radial()">Radial</div>
+          <div class="secondary" onclick="Create.set_degrade_lineaire()">
+            Lineaire
+          </div>
+          <div class="secondary" onclick="Create.set_degrade_radial()">
+            Radial
+          </div>
         </div>
       </div>
 
@@ -1348,6 +1389,22 @@
       <div class="secondary" onclick="ChartEdit.add_new()">
         <img src="assets/images/graph.svg" alt="" />
         <div>Ajouter un graphique</div>
+      </div>
+      <div class="secondary" onclick="ChartEdit.add_new()">
+        <img src="assets/images/graph.svg" alt="" />
+        <div>Ajouter un cercle</div>
+      </div>
+      <div class="secondary" onclick="ChartEdit.add_new()">
+        <img src="assets/images/graph.svg" alt="" />
+        <div>Ajouter un demi cercle</div>
+      </div>
+      <div class="secondary" onclick="ChartEdit.add_new()">
+        <img src="assets/images/graph.svg" alt="" />
+        <div>Ajouter un rectangle</div>
+      </div>
+      <div class="secondary" onclick="ChartEdit.add_new()">
+        <img src="assets/images/graph.svg" alt="" />
+        <div>Ajouter un triangle</div>
       </div>
       <hr />
       <div class="secondary" onclick="UI.show_projects();UI.hide_add_graphix()">
