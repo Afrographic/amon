@@ -222,11 +222,31 @@
       <div class="float_close" onclick="UI.hide_edit_tableau()">Fermer</div>
     </div>
 
+    <!-- Editer la police -->
+    <div class="p16 hidden edit" id="change_font">
+        <h2 class="tac" style="margin-bottom: 2vw;">Changer la police</h2>
+        <div class="police_list" id="police_list">
+          <div class="policeItem">
+            <div class="police_name">Algerian</div>
+            <div class="police_preview_text">Rendu</div>
+          </div>
+          <div class="policeItem">
+            <div class="police_name">Algerian</div>
+            <div class="police_preview_text">Rendu</div>
+          </div>
+        </div>
+        <div class="float_close" onclick="UI.hide_font_view()">Fermer</div>
+    </div>
+
     <!-- Edit text -->
     <div class="p16 hidden edit" id="text_color_editor">
       <div class="secondary" onclick="ImageEdit.duplicate()">
         <img src="assets/images/duplicate.svg" alt="" />
         Dupliquer le texte
+      </div>
+      <div class="secondary" onclick="Edit.close_text_edit(); UI.show_font_view()">
+        <img src="assets/images/text.svg" alt="" />
+       Changer la police d'ecriture
       </div>
       <hr />
       <div class="config_item">
@@ -1435,6 +1455,7 @@
     <script src="scripts/chartEdit.js"></script>
     <script src="scripts/splash.js"></script>
     <script src="scripts/services.js"></script>
+    <script src="scripts/police.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
     <!-- Register Service Worker -->

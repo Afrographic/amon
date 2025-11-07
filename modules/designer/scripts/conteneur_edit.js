@@ -103,11 +103,8 @@ class ConteneurEdit {
   }
 
   static add_conteneur_text() {
-    let text = prompt("Inserez le texte");
-    if (text == null) return;
-    if (text.trim().length == 0) return;
+   
     let new_text = new Text();
-    new_text.value = text;
     new_text.width = "auto";
     //Append text to conteur
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -116,15 +113,17 @@ class ConteneurEdit {
       }
     }
     Create.render();
+
+    Edit.edit_text({},new_text.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static add_title() {
-    let text = prompt("Inserez le texte");
-    if (text == null) return;
-    if (text.trim().length == 0) return;
+   
     let new_text = new Titre();
-    new_text.value = text;
-    new_text.width = "auto";
+    new_text.width = "auto"; 
     //Append text to conteur
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
@@ -132,14 +131,16 @@ class ConteneurEdit {
       }
     }
     Create.render();
+
+    Edit.edit_text({},new_text.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static add_sub_title() {
-    let text = prompt("Inserez le texte");
-    if (text == null) return;
-    if (text.trim().length == 0) return;
+   
     let new_text = new SousTitre();
-    new_text.value = text;
     new_text.width = "auto";
     //Append text to conteur
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -148,14 +149,16 @@ class ConteneurEdit {
       }
     }
     Create.render();
+
+    Edit.edit_text({},new_text.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static add_mini_text() {
-    let text = prompt("Inserez le texte");
-    if (text == null) return;
-    if (text.trim().length == 0) return;
+    
     let new_text = new MiniTexte();
-    new_text.value = text;
     new_text.width = "auto";
     //Append text to conteur
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -164,6 +167,11 @@ class ConteneurEdit {
       }
     }
     Create.render();
+
+    Edit.edit_text({},new_text.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static set_width(el) {

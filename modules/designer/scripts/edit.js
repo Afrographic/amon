@@ -1,6 +1,9 @@
 class Edit {
   static edit_text(event, text_id) {
-    event.stopPropagation();
+    if(event.stopPropagation){
+      event.stopPropagation();
+    }
+   
     UI.hide_all();
     Create.edit_id = text_id;
     let text_color_editor = document.querySelector("#text_color_editor");
@@ -21,6 +24,25 @@ class Edit {
       }
     }
   }
+
+  //Change font
+  static change_font(font){
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].font = font;
+      }
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].font = font;
+          }
+        }
+      }
+    }
+    Create.render();
+  }
+
+
   // Align text
   static text_to_left(){
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -37,6 +59,8 @@ class Edit {
     }
     Create.render();
   }
+
+
   static text_to_center(){
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
@@ -433,10 +457,8 @@ class Edit {
   }
 
   static add_conteneur_text() {
-    let text = prompt("Inserez le texte");
-    if (text == null) return;
-    if (text.trim().length == 0) return;
     let new_text = new Text();
+    Create.edit_id = new_text.id;
     new_text.value = text;
     new_text.width = "auto";
     //Append text to conteur
@@ -446,6 +468,10 @@ class Edit {
       }
     }
     Create.render();
+    Edit.edit_text({},new_text.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static add_conteneur_image(e) {

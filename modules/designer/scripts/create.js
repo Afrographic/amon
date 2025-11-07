@@ -23,43 +23,55 @@ class Create {
   // End project settings
 
   static add_titre() {
-    let titre = prompt("Inserez le titre");
-    if (titre == null) return;
+    
     let new_titre = new Titre();
-    new_titre.value = titre;
     this.artboard.push(new_titre);
     this.render();
     UI.hide_add_graphix();
+
+    Edit.edit_text({},new_titre.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static add_sous_titre() {
-    let sous_titre = prompt("Inserez le sous titre titre");
-    if (sous_titre == null) return;
+
     let new_sous_titre = new SousTitre();
-    new_sous_titre.value = sous_titre;
     this.artboard.push(new_sous_titre);
     this.render();
     UI.hide_add_graphix();
+
+    Edit.edit_text({},new_sous_titre.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static add_text() {
-    let texte = prompt("Inserez le texte");
-    if (texte == null) return;
+
     let new_texte = new Text();
-    new_texte.value = texte;
     this.artboard.push(new_texte);
     this.render();
     UI.hide_add_graphix();
+
+    Edit.edit_text({},new_texte.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static add_mini_text() {
-    let mini_texte = prompt("Inserez le mini texte");
-    if (mini_texte == null) return;
+   
     let new_mini_texte = new MiniTexte();
-    new_mini_texte.value = mini_texte;
     this.artboard.push(new_mini_texte);
     this.render();
     UI.hide_add_graphix();
+
+    Edit.edit_text({},new_mini_texte.id);
+    // Focus text edit area
+    let text_edit_input = document.querySelector("#text_edit_input");
+    text_edit_input.focus();
   }
 
   static add_table() {

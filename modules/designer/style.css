@@ -13,6 +13,155 @@
     src: url(assets/fonts/Raleway-Bold.ttf)
 }
 
+/* Load Clemente font  */
+@font-face {
+    font-family: "Clemente-regular";
+    src: url(assets/fonts/clemente/ClementePDai-Regular.ttf)
+}
+@font-face {
+    font-family: "Clemente-bold";
+    src: url(assets/fonts/clemente/ClementePDam-Bold.ttf)
+}
+@font-face {
+    font-family: "Clemente-ultra-bold";
+    src: url(assets/fonts/clemente/ClementePDaq-UltraBold.ttf)
+}
+
+/* Load comforta font */
+@font-face {
+    font-family: "comforta-regular";
+    src: url(assets/fonts/comforta/Comfortaa-Regular.ttf)
+}
+@font-face {
+    font-family: "comforta-bold";
+    src: url(assets/fonts/comforta/Comfortaa-Bold.ttf)
+}
+
+/* Load google sans */
+@font-face {
+    font-family: "google-sans-regular";
+    src: url(assets/fonts/google_sans/GoogleSans-Regular.ttf)
+}
+@font-face {
+    font-family: "google-sans-bold";
+    src: url(assets/fonts/google_sans/GoogleSans-Bold.ttf)
+}
+
+/* Load open sans font */
+@font-face {
+    font-family: "open-sans-regular";
+    src: url(assets/fonts/open_sans/OpenSans-Regular.ttf)
+}
+@font-face {
+    font-family: "open-sans-bold";
+    src: url(assets/fonts/open_sans/OpenSans-Bold.ttf)
+}
+@font-face {
+    font-family: "open-sans-extra-bold";
+    src: url(assets/fonts/open_sans/OpenSans-ExtraBold.ttf)
+}
+
+/* Load poppins fonts */
+@font-face {
+    font-family: "poppins-regular";
+    src: url(assets/fonts/poppins/Poppins-Regular.otf)
+}
+@font-face {
+    font-family: "poppins-bold";
+    src: url(assets/fonts/poppins/Poppins-Bold.otf)
+}
+@font-face {
+    font-family: "poppins-black";
+    src: url(assets/fonts/poppins/Poppins-Black.otf)
+}
+/* Load Schwab font */
+@font-face {
+    font-family: "schwab";
+    src: url(assets/fonts/schwab/Schwaben.ttf)
+}
+
+/* Load Vignette font */
+@font-face {
+    font-family: "vignette";
+    src: url(assets/fonts/vignette/Vignette.ttf)
+}
+/* Load general font */
+@font-face {
+    font-family: "advert";
+    src: url(assets/fonts/advert.ttf)
+}
+@font-face {
+    font-family: "barbarian";
+    src: url(assets/fonts/Barbarian.ttf)
+}
+@font-face {
+    font-family: "butterCup";
+    src: url(assets/fonts/butterCup.ttf)
+}
+@font-face {
+    font-family: "lovely";
+    src: url(assets/fonts/lovely.ttf)
+}
+@font-face {
+    font-family: "filxgirl";
+    src: url(assets/fonts/Filxgirl.TTF)
+}
+@font-face {
+    font-family: "hello";
+    src: url(assets/fonts/hello.ttf)
+}
+@font-face {
+    font-family: "krinkes";
+    src: url(assets/fonts/krinkes.ttf)
+}
+@font-face {
+    font-family: "lazy";
+    src: url(assets/fonts/lazy.otf)
+}
+@font-face {
+    font-family: "lova";
+    src: url(assets/fonts/lova.otf)
+}
+@font-face {
+    font-family: "love";
+    src: url(assets/fonts/love.ttf)
+}
+@font-face {
+    font-family: "manbow";
+    src: url(assets/fonts/manbow-spots.ttf)
+}
+@font-face {
+    font-family: "smith";
+    src: url(assets/fonts/smith.otf)
+}
+@font-face {
+    font-family: "weather";
+    src: url(assets/fonts/weather.otf)
+}
+
+.policeItem{
+    padding:2vw;
+    border:1px solid #e3e3e3;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap:1vw;
+}
+ 
+.police_list{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:2vw;
+}
+
+.police_name{
+    color:grey;
+    font-size: 3vw;
+}
+.police_preview_text{
+    font-size: 4vw;
+}
+
 h1 {
     font-family: "ralewayBlack";
 }

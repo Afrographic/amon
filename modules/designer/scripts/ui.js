@@ -56,6 +56,18 @@ class UI {
     services_supplementaire.classList.add("hidden");
   }
 
+  static show_font_view(){
+    let change_font = document.querySelector("#change_font");
+    change_font.classList.remove("hidden");
+  }
+
+  static hide_font_view(){
+    let change_font = document.querySelector("#change_font");
+    change_font.classList.add("hidden");
+  }
+
+
+
   static hide_all() {
     this.hide_projects();
     this.hide_add_graphix();
@@ -63,6 +75,7 @@ class UI {
     this.hide_edit_tableau();
     this.hide_graph_editor();
     this.hide_latex_edit();
+    this.hide_font_view();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();

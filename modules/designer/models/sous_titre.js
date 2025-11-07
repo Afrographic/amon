@@ -1,7 +1,7 @@
 class SousTitre {
   constructor() {
     this.id = Utils.generate_unique_id_from_time();
-    this.value = "";
+    this.value = "Ecrire...";
     this.font_size = "4vw";
     this.color = "#000";
     this.font = "ralewayBold";
