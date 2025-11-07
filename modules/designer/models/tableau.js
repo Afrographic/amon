@@ -8,7 +8,7 @@ class Tableau {
       ["", ""],
       ["", ""],
     ];
-    this.type = "tableau"
+    this.type = "tableau";
   }
 
   render() {
@@ -23,7 +23,7 @@ class Tableau {
     res += "</table>";
     return res;
   }
- 
+
   render_editable_table() {
     let res = `<table id="${this.id}"  style="width:${this.width}%;border-collapse:collapse;table-layout: fixed;">`;
     for (let i = 0; i <= this.data.length - 1; i++) {
@@ -65,9 +65,20 @@ class Tableau {
     this.type = json.type;
   }
 
+  to_json() {
+    return {
+      id: this.id,
+      width: this.width,
+      border_color: this.border_color,
+      text_color: this.text_color,
+      data: this.data,
+      type: this.type,
+    };
+  }
+
   clone() {
     let clone = new Tableau();
-    clone.id = `id_${Math.random()*100000}`;
+    clone.id = `id_${Math.random() * 100000}`;
     clone.width = this.width;
     clone.border_color = this.border_color;
     clone.text_color = this.text_color;

@@ -248,4 +248,74 @@ class Conteneur {
     }
     return cloned;
   }
+
+  async children_to_json(children) {
+    let jsons = [];
+    for (let i = 0; i <= children.length - 1; i++) {
+      let json = await children[i].to_json();
+      jsons.push(json);
+    }
+    return jsons;
+  }
+
+  async to_json() {
+    let bg_image = "";
+    //`url(${url})`;
+    if (this.bg_file != undefined) {
+      bg_image = await Utils.image_to_base_64(this.bg_file);
+      bg_image = `url(${bg_image})`;
+    }
+    return {
+      id: this.id,
+      display: this.display,
+      colonnes_pour_grille: this.colonnes_pour_grille,
+      children: await this.children_to_json(this.children),
+      gap: this.gap,
+      align: this.align,
+      background_color: this.background_color,
+      background_image: bg_image,
+      padding_top_bottom: this.padding_top_bottom,
+      padding_left_right: this.padding_left_right,
+      border_top_left_radius: this.border_top_left_radius,
+      border_top_right_radius: this.border_top_right_radius,
+      border_bottom_left_radius: this.border_bottom_left_radius,
+      border_bottom_right_radius: this.border_bottom_right_radius,
+      direction: this.direction,
+      width: this.width,
+      vertAlign: this.vertAlign,
+      bg_file: undefined,
+      opacity: this.opacity,
+      type: this.type,
+      // Marges
+      margin_top: this.margin_top,
+      margin_bottom: this.margin_bottom,
+      margin_left: this.margin_left,
+      margin_right: this.margin_right,
+      // Positionning
+      position: this.position,
+      posY: this.posY,
+      posX: this.posX,
+      // Bordure bottom
+      border_bottom_size: this.border_bottom_size,
+      border_bottom_color: this.border_bottom_color,
+      border_bottom_type: this.border_bottom_type,
+      // Bordure Top
+      border_top_size: this.border_top_size,
+      border_top_color: this.border_top_color,
+      border_top_type: this.border_top_type,
+      // Bordure left
+      border_left_size: this.border_left_size,
+      border_left_color: this.border_left_color,
+      border_left_type: this.border_left_type,
+      // Bordure right
+      border_right_size: this.border_right_size,
+      border_right_color: this.border_right_color,
+      border_right_type: this.border_right_type,
+      // Degrade
+      deg_rotate: this.deg_rotate,
+      deg_first_color: this.deg_first_color,
+      deg_second_color: this.deg_second_color,
+      rotate: this.rotate,
+    };
+  }
 }

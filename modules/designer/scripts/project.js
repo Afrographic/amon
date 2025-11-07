@@ -40,9 +40,55 @@ class Project {
       Project.saved = true;
       // Set project name
       let nom_project = document.querySelector("#nom_project");
-      nom_project.innerHTML = Create.name_project;
+      nom_project.innerHTML = Utils.Ucase(Create.name_project);
       alert("Enregistrer avec succes!");
     }
+  }
+
+  static async export_project() {
+    // Building json artboard
+    let json_artboard = [];
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      let json_data = await Create.artboard[i].to_json();
+      json_artboard.push(json_data);
+    }
+    Utils.exportAsJSON(Create.name_project, {
+      name_project: Create.name_project,
+      db_index: Create.db_index,
+      H_align: Create.H_align,
+      V_align: Create.V_align,
+      bg_file: Create.bg_file,
+      edit_id: Create.edit_id,
+      bg_color: Create.bg_color,
+      gap: Create.gap,
+      V_padding: Create.V_padding,
+      H_padding: Create.H_padding,
+      aspect_ratio: Create.aspect_ratio,
+      // Degrade configuration
+      deg_rotate: Create.deg_rotate,
+      deg_first_color: Create.deg_first_color,
+      deg_second_color: Create.deg_second_color,
+      artboard: json_artboard,
+    });
+  }
+
+  static import_project() {
+    let input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".json";
+    input.classList.add("hidden");
+    document.body.appendChild(input);
+    input.click();
+    input.addEventListener("change", (e) => {
+      let file = e.target.files[0];
+      let url = URL.createObjectURL(file);
+      fetch(url)
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          Project.execute_load_project(json);
+        });
+    });
   }
 
   static render_projects() {
@@ -71,6 +117,11 @@ class Project {
 
   static load_project(index) {
     let project = DB.projects[index].project;
+    project.id = DB.projects[index].id;
+    this.execute_load_project(project);
+  }
+
+  static execute_load_project(project) {
     // parse artboard
     let artBoard = [];
     for (let i = 0; i <= project.artboard.length - 1; i++) {
@@ -115,7 +166,7 @@ class Project {
     }
     Create.artboard = artBoard;
     Create.name_project = project.name_project;
-    Create.db_index = DB.projects[index].id;
+    Create.db_index = project.id;
     Create.H_align = project.H_align;
     Create.V_align = project.V_align;
     Create.bg_file = project.bg_file;
@@ -124,8 +175,8 @@ class Project {
         project.bg_file != undefined
           ? URL.createObjectURL(project.bg_file)
           : "";
-    }else{
-      Create.bg_image_url ="";
+    } else {
+      Create.bg_image_url = "";
     }
     Create.bg_color = project.bg_color;
     Create.edit_id = project.edit_id;
@@ -142,7 +193,7 @@ class Project {
     UI.hide_projects();
     // Set project name
     let nom_project = document.querySelector("#nom_project");
-    nom_project.innerHTML = project.name_project;
+    nom_project.innerHTML = Utils.Ucase(project.name_project);
     this.saved = true;
   }
 

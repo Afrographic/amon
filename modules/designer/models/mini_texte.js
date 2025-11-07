@@ -57,6 +57,26 @@ class MiniTexte {
     this.type = json.type;
   }
 
+  to_json(){
+    return{
+      id:this.id,
+      value:this.value,
+      font_size:this.font_size,
+      color:this.color,
+      font:this.font,
+      width:this.width,
+      text_align:this.text_align,
+      opacity:this.opacity,
+      line_height:this.line_height,
+      // Marges
+      margin_top:this.margin_top,
+      margin_bottom:this.margin_bottom,
+      margin_left:this.margin_left,
+      margin_right:this.margin_right,
+      type:this.type,
+    }
+  }
+
   clone() {
     let clone = new MiniTexte();
     clone.id = `${this.id}_${Utils.generate_unique_id_from_time()}`;

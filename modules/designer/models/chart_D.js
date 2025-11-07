@@ -4,7 +4,7 @@ class ChartD {
     this.data = [12, 15, 8];
     this.x_values = ["Lun", "Mar", "Mer"];
     this.title = "circle";
-    this.color="#0039B3";
+    this.color = "#0039B3";
     this.mode = "line";
     this.type = "chart";
   }
@@ -22,14 +22,20 @@ class ChartD {
   render() {
     let canvas = document.querySelector("#chart_renderer");
     let context = canvas.getContext("2d");
-    context.clearRect(0,0,canvas.clientWidth,canvas.clientHeight)
+    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
     if (this.mode == "line") {
-      Utils.generate_line_chart(context, this.data, this.x_values, this.title,this.color);
+      Utils.generate_line_chart(
+        context,
+        this.data,
+        this.x_values,
+        this.title,
+        this.color
+      );
     }
     if (this.mode == "circle") {
       Utils.generate_pie_chart(context, this.data, this.x_values, this.title);
     }
-    
+
     let rendered_img = canvas.toDataURL("image/png");
     return `
     <div class="b1 br8 p16 bg_grey" style="width:100%" onclick="ChartEdit.init_edit('${this.id}')">
@@ -67,6 +73,18 @@ class ChartD {
     this.mode = json.mode;
     this.color = json.color;
     this.type = json.type;
+  }
+
+  to_json() {
+    return {
+      id: this.id,
+      data: this.data,
+      x_values: this.x_values,
+      title: this.title,
+      mode: this.mode,
+      color: this.color,
+      type: this.type,
+    };
   }
 
   clone() {

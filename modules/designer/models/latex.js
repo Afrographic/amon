@@ -23,6 +23,14 @@ class Latex {
     this.text = json.text;
     this.type = json.type;
   }
+  
+  to_json(){
+    return {
+      id:this.id,
+      text:this.text,
+      type:this.type
+    }
+  }
 
   clone() {
     let clone = new Latex();

@@ -133,6 +133,19 @@ class Utils {
     return canvas.toDataURL("image/jpeg");
   }
 
+  static async image_to_base_64(file) {
+    let img = new Image();
+    img.src = URL.createObjectURL(file);
+    await img.decode();
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    // draw the original image
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL("image/png");
+  }
+
   static reverse_array(arr) {
     for (let i = 0; i <= (arr.length - 1) / 2; i++) {
       let temp = arr[arr.length - 1 - i];
@@ -233,7 +246,7 @@ class Utils {
     }
   }
 
-  static generate_line_chart(render, data, x_values, title,color) {
+  static generate_line_chart(render, data, x_values, title, color) {
     return new Chart(render, {
       type: "line",
       data: {
@@ -242,7 +255,7 @@ class Utils {
           {
             label: title,
             data: data,
-            backgroundColor: [Utils.hexToRgba(color,0.2)],
+            backgroundColor: [Utils.hexToRgba(color, 0.2)],
             borderColor: [color],
             borderWidth: 1,
           },
@@ -304,14 +317,14 @@ class Utils {
               "#023e8a",
               "#0077b6",
               "#0096c7",
-             
+
               "#48cae4",
               "#90e0ef",
-             
+
               "#a3b18a",
               "#588157",
               "#3a5a40",
-             
+
               "#4cc9f0",
             ],
             borderWidth: 1,
@@ -363,15 +376,27 @@ class Utils {
   }
 
   static open_external_link(url) {
-    var a_tag = document.createElement('a');
-    a_tag.className = 'ghost';
+    var a_tag = document.createElement("a");
+    a_tag.className = "ghost";
     a_tag.setAttribute("href", url);
-   // a_tag.setAttribute("target", "_blank");
- 
+    // a_tag.setAttribute("target", "_blank");
+
     document.body.appendChild(a_tag); // required for firefox
     a_tag.click();
     a_tag.remove();
-}
+  }
+
+  static exportAsJSON(name,json) {
+    var dataStr =
+      "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(json));
+    var aNode = document.createElement("a");
+    aNode.setAttribute("href", dataStr);
+    aNode.setAttribute("download", name+".djehouty." + ".json");
+    document.body.appendChild(aNode);
+    aNode.click();
+    aNode.remove();
+  }
+
 }
 
 Utils.set_text_area_autoGrow();
