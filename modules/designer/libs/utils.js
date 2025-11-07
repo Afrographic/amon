@@ -386,12 +386,13 @@ class Utils {
     a_tag.remove();
   }
 
-  static exportAsJSON(name,json) {
+  static exportAsJSON(name, json) {
     var dataStr =
-      "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(json));
+      "data:text/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(json));
     var aNode = document.createElement("a");
     aNode.setAttribute("href", dataStr);
-    aNode.setAttribute("download", name+".djehouty." + ".json");
+    aNode.setAttribute("download", name + ".djehouty." + ".json");
     document.body.appendChild(aNode);
     aNode.click();
     aNode.remove();
@@ -399,52 +400,49 @@ class Utils {
 
   static show_notif(msg) {
     //16 + 50 + 8
-    let notifs = document.querySelectorAll(".notif_d");
+    let notifs = document.querySelectorAll(".notif");
     let div_content = `
     
-    <div onclick="this.classList.add('notif_d_inactive')"  class="notif_d notif_d_inactive" style="position:fixed;top:${
+    <div onclick="this.classList.add('notif_inactive')"  class="notif notif_inactive" style="font-size:3vw;position:fixed;top:${
       16 + (50 + 8) * notifs.length
-    }px;right:16px;font-size:3vw;background-color:darkblue;color:white;padding:16px;border-radius:16px;">
+    }px;right:16px;background-color:darkblue;color:white;padding:2vw 2.5vw;border-radius:8px;">
         ${msg}
 
         <style>
-            .notif_d {
+            .notif {
                 transition: 0.5s;
-                z-index:40;
             }
-            .notif_d_inactive {
+            .notif_inactive {
                 opacity: 0;
                 transform: scale(0);
             }
-            .notif_d_inactive {
+            .notif_active {
                 opacity: 1;
                 transform: scale(1);
             }
         </style>
     </div>
     `;
-    // let notif_bloc = document.querySelector("#notif_bloc")
-    // notif_bloc.innerHTML = div_content;
 
-    document.body.innerHTML = div_content;
-
-    window.setTimeout(() => {
-      let notifs = document.querySelectorAll(".notif_d");
-      notifs[notifs.length - 1].classList.remove("notif_d_inactive");
-    }, 300);
+    let notif_bloc = document.querySelector("#notif_bloc")
+    notif_bloc.innerHTML += div_content;
 
     window.setTimeout(() => {
-      let notifs = document.querySelectorAll(".notif_d");
-      notifs[notifs.length - 1].classList.add("notif_d_inactive");
-    }, 10000);
+      let notifs = document.querySelectorAll(".notif");
+      notifs[notifs.length - 1].classList.remove("notif_inactive");
+    }, 10);
 
     window.setTimeout(() => {
-      let notifs = document.querySelectorAll(".notif_d");
+      let notifs = document.querySelectorAll(".notif");
+      notifs[notifs.length - 1].classList.add("notif_inactive");
+    }, 3000);
+
+    window.setTimeout(() => {
+      let notifs = document.querySelectorAll(".notif");
       let notif = notifs[notifs.length - 1];
       notif.parentNode.removeChild(notif);
-    }, 10200);
+    }, 3200);
   }
-
 }
 
 Utils.set_text_area_autoGrow();
