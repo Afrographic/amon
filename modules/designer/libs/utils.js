@@ -405,7 +405,8 @@ class Utils {
     
     <div onclick="this.classList.add('notif_inactive')"  class="notif notif_inactive" style="font-size:3vw;position:fixed;top:${
       16 + (50 + 8) * notifs.length
-    }px;right:16px;background-color:darkblue;color:white;padding:2vw 2.5vw;border-radius:8px;">
+    }px;right:16px;background-color:#006838;color:white;padding:2vw 3vw;border-radius:8px;display:flex;align-items:center;gap:2vw;">
+       <img src="assets/images/notif_icon.svg" width="12vw"/>
         ${msg}
 
         <style>

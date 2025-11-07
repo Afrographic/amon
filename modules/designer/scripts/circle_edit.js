@@ -73,7 +73,7 @@ class Circle_edit {
         let new_circle = Create.artboard[i].clone();
         Create.artboard.push(new_circle);
         Create.render();
-        Utils.show_notif("Dupliquer avec succes!")
+        Utils.show_notif("Dupliquer avec succes!");
       }
     }
   }
@@ -89,6 +89,28 @@ class Circle_edit {
       Create.artboard.splice(index, 1);
       Create.render();
       UI.hide_circle_edit();
+    }
+  }
+
+  static toggle_half() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        if (Create.artboard[i].demi == 0) {
+          Create.artboard[i].demi = 1;
+        } else {
+          Create.artboard[i].demi = 0;
+        }
+        Create.render();
+      }
+    }
+  }
+
+  static rotate(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].rotate = el.value;
+        Create.render();
+      }
     }
   }
 }

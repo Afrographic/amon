@@ -8,6 +8,8 @@ class Circle {
     this.stroke_color = "red";
     this.scale = 1;
     this.type = "circle";
+    this.demi = 0;
+    this.rotate = 0;
   }
 
   render() {
@@ -16,7 +18,12 @@ class Circle {
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
     ctx.beginPath();
-    ctx.arc(150, 150, 130, 0, Math.PI * 2);
+    if(this.demi == 0){
+      ctx.arc(150, 150, 130, 0, Math.PI * 2);
+    }else{
+      ctx.arc(150, 150, 130, 0, Math.PI);
+    }
+   
     ctx.closePath();
     ctx.fillStyle = this.fill_color;
     ctx.fill();
@@ -29,7 +36,7 @@ class Circle {
     let rendered_img = canvas.toDataURL("image/png");
 
     return `
-          <img onclick="Circle_edit.edit('${this.id}')" src="${rendered_img}" style="transform-origin:top left;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale})"/>
+          <img onclick="Circle_edit.edit('${this.id}')" src="${rendered_img}" style="transform-origin:top left;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
         `;
   }
 
@@ -42,8 +49,10 @@ class Circle {
     this.stroke_color = json.stroke_color;
     this.scale = json.scale;
     this.type = json.type;
+    this.demi = json.demi;
+    this.rotate = json.rotate;
   }
-
+ 
   to_json() {
     return {
       id: this.id,
@@ -53,6 +62,8 @@ class Circle {
       strokeWidth: this.strokeWidth,
       stroke_color: this.stroke_color,
       scale: this.scale,
+      demi: this.demi,
+      rotate: this.rotate,
       type: this.type,
     };
   }
@@ -66,7 +77,10 @@ class Circle {
     clone.strokeWidth = this.strokeWidth;
     clone.stroke_color = this.stroke_color;
     clone.scale = this.scale;
+    clone.demi = this.demi;
+    clone.rotate = this.rotate;
     clone.type = this.type;
     return clone;
   }
 }
+

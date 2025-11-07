@@ -23,7 +23,7 @@ class Project {
     if (this.saved) {
       //Just update project in DB
       DB.update_project(project);
-      alert("Enregistrer avec succes!");
+      Utils.show_notif("Enregistrer avec succes!")
     } else {
       //Create a new instance of saving
       let name_project;
@@ -42,7 +42,8 @@ class Project {
       // Set project name
       let nom_project = document.querySelector("#nom_project");
       nom_project.innerHTML = Utils.Ucase(Create.name_project);
-      alert("Enregistrer avec succes!");
+      Utils.show_notif("Enregistrer avec succes!")
+
     }
   }
 

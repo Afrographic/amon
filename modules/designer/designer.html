@@ -224,6 +224,20 @@
         />
       </div>
       <hr>
+      <div class="secondary" onclick="Circle_edit.toggle_half()">
+        <img src="assets/images/add_demi_cercle.svg" alt="" />
+        <div>Activer/Annuler le demie cercle</div>
+      </div>
+      <div class="config_item">
+        <div>Rotation</div>
+        <input
+        type="range"
+        value="0"
+        min="0"
+        max="360"
+        oninput="Circle_edit.rotate(this)"
+      />
+      </div>
       <div class="secondary" onclick="Circle_edit.delete()">
         <img src="assets/images/delete_new.svg" alt="" />
         <div>Supprimer</div>
@@ -1468,15 +1482,7 @@
       </div>
       <div class="secondary" onclick="Circle_edit.add()">
         <img src="assets/images/add_cercle.svg" alt="" />
-        <div>Ajouter un cercle</div>
-      </div>
-      <div class="secondary" onclick="ChartEdit.add_new()">
-        <img src="assets/images/add_demi_cercle.svg" alt="" />
-        <div>Ajouter un demi cercle</div>
-      </div>
-      <div class="secondary" onclick="ChartEdit.add_new()">
-        <img src="assets/images/add_rectangle.svg" alt="" />
-        <div>Ajouter un rectangle</div>
+        <div>Ajouter un cercle/Demi cercle</div>
       </div>
       <div class="secondary" onclick="ChartEdit.add_new()">
         <img src="assets/images/add_triangle.svg" alt="" />
@@ -1576,6 +1582,7 @@
     <script src="models/latex.js"></script>
     <script src="models/chart_D.js"></script>
     <script src="models/circle.js"></script>
+    <script src="models/triangle.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
