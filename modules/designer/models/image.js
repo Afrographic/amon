@@ -99,7 +99,13 @@ class Image_D {
   }
 
   async to_json() {
-    let new_url = await Utils.image_to_base_64(this.file);
+    let new_url;
+    if(this.file.size != undefined){
+      new_url = await Utils.image_to_base_64(this.file);
+    }else{
+      new_url = this.url;
+    }
+   
     return {
       id: this.id,
       url: new_url,

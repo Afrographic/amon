@@ -273,12 +273,13 @@ class Conteneur {
   }
 
   async to_json() {
-    let bg_image = "";
+    let bg_image = this.background_image;
     //`url(${url})`;
     if (this.bg_file != undefined) {
       bg_image = await Utils.image_to_base_64(this.bg_file);
       bg_image = `url(${bg_image})`;
     }
+
     return {
       id: this.id,
       display: this.display,
