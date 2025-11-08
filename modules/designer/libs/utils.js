@@ -180,6 +180,8 @@ class Utils {
     return canvas.toDataURL("image/png");
   }
 
+
+
   static convert_to_grayscale(img) {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");

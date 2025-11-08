@@ -187,10 +187,10 @@ class Create {
     this.render();
   }
 
-  static set_bg_image(e) {
+  static async set_bg_image(e) {
     if (e.target.files.length == 0) return;
     this.bg_file = e.target.files[0];
-    this.bg_image_url = URL.createObjectURL(e.target.files[0]);
+    this.bg_image_url = await Utils.image_to_base_64(this.bg_file);
     this.deg_first_color = "rgba(0,0,0,0)";
     this.deg_second_color = "rgba(0,0,0,0)";
     this.bg_color = "";
@@ -254,7 +254,7 @@ class Create {
       renderer.style.backgroundColor = "#fff";
     }
   }
-
+ 
   static darken_bg() {
     if (this.bg_file == undefined) return;
     // Crop image

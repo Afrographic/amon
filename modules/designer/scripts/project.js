@@ -60,6 +60,7 @@ class Project {
       H_align: Create.H_align,
       V_align: Create.V_align,
       bg_file: Create.bg_file,
+      bg_image_url:Create.bg_image_url,
       edit_id: Create.edit_id,
       bg_color: Create.bg_color,
       gap: Create.gap,
@@ -88,7 +89,6 @@ class Project {
       fetch(url)
         .then((response) => response.json())
         .then((json) => {
-          console.log(json);
           Project.execute_load_project(json);
         });
     });
@@ -182,10 +182,7 @@ class Project {
     Create.V_align = project.V_align;
     Create.bg_file = project.bg_file;
     if (project.bg_color.trim().length == 0) {
-      Create.bg_image_url =
-        project.bg_file != undefined
-          ? URL.createObjectURL(project.bg_file)
-          : "";
+      Create.bg_image_url = project.bg_image_url;
     } else {
       Create.bg_image_url = "";
     }

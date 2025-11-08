@@ -183,9 +183,9 @@ class ConteneurEdit {
     Create.render();
   }
 
-  static set_bg_image(e) {
+  static async set_bg_image(e) {
     if (e.target.files.length == 0) return;
-    let url = URL.createObjectURL(e.target.files[0]);
+    let url = await Utils.image_to_base_64(e.target.files[0])
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].background_image = `url(${url})`;
