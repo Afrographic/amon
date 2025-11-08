@@ -85,6 +85,17 @@ class UI {
     let triangle_editor = document.querySelector("#triangle_editor");
     triangle_editor.classList.add("hidden");
   }
+  
+
+  static show_add_icon(){
+    let add_icon = document.querySelector("#add_icon");
+    add_icon.classList.remove("hidden");
+  }
+
+  static hide_add_icon(){
+    let add_icon = document.querySelector("#add_icon");
+    add_icon.classList.add("hidden");
+  }
 
 
 
@@ -97,6 +108,7 @@ class UI {
     this.hide_latex_edit();
     this.hide_font_view();
     this.hide_circle_edit();
+    this.hide_add_icon();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();

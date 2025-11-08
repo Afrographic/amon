@@ -1,0 +1,172 @@
+@media screen and (min-width:1200px) {
+    .menu_services {
+        width: 64px !important;
+    }
+
+    .logo h3 {
+        font-size: 28px;
+    }
+
+    .logo img {
+        width: 34px;
+    }
+
+    .small {
+        font-size: 12px;
+        margin-bottom: 16px;
+    }
+
+    .options_btn {
+        gap: 16px;
+    }
+
+    .options_btn img {
+        width: 46px;
+    }
+
+    .base {
+        font-size: 16px;
+    }
+
+    #options_btn_explainer {
+        gap: 8px;
+    }
+
+    .info {
+        width: 32px;
+        margin-bottom: 0px;
+        filter: invert(1);
+    }
+
+    .explain_item {
+        gap: 16px;
+        width: 450px;
+        padding: 16px;
+    }
+
+    .explain_item img {
+        width: 32px;
+    }
+
+    .indication_label {
+        font-size: 14px;
+    }
+
+    .signature img {
+        width: 64px !important;
+    }
+
+    .name_company {
+        font-size: 16px !important;
+    }
+
+    .close {
+        padding: 16px;
+        font-size: 16px;
+        width: auto;
+    }
+
+    #renderer {
+        width: 976px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 4px 4px 16px 10px #00000017;
+        border-radius: 16px;
+    }
+
+    .donation {
+        gap: 16px;
+        font-size: 12px;
+        padding: 16px;
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16px;
+    }
+
+    .donation img {
+        width: 20px;
+    }
+
+    .indication_user {
+        display: none;
+    }
+
+    .edit {
+        width: 400px;
+        right: 0px !important;
+        left: auto;
+        gap: 8px;
+        padding-top: 16px;
+        max-height: 90vh !important;
+    }
+
+    .secondary,
+    .float_close {
+        padding: 16px;
+        font-size: 16px;
+        gap: 16px;
+        border-radius: 10px;
+    }
+
+    .secondary img {
+        width: 24px;
+    }
+
+    #tableau_renderer_edit {
+        margin-bottom: 8px !important;
+    }
+
+    #tableau_renderer_edit td {
+        padding: 8px !important;
+        font-size: 16px !important;
+    }
+
+    #graph_tab_editor td {
+        padding: 8px !important;
+        font-size: 16px !important;
+    }
+
+    #renderer td {
+        font-size: 16px !important;
+        padding: 16px !important;
+    }
+
+    .config_item {
+        font-size: 16px;
+        gap: 8px;
+    }
+
+    .g4 {
+        gap: 8px !important
+    }
+
+    .edit_label_tableau {
+        margin-bottom: 8px !important;
+    }
+
+    .icons_list {
+        gap: 4px;
+    }
+
+    #add_icon h2{
+        font-size: 16px;
+        margin-bottom: 12px !important;
+    }
+
+    #projects h2{
+        font-size: 24px;
+    }
+
+    .project_item{
+        padding:16px;
+        gap:16px;
+        font-size: 15px;
+    }
+    .project_item img{
+        width: 18px !important;
+    }
+    #project_renderer{
+        gap:8px !important;
+    }
+}

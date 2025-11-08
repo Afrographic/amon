@@ -207,6 +207,23 @@ class Utils {
     return canvas.toDataURL("image/png");
   }
 
+  static change_color(img, color) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+
+    ctx.globalCompositeOperation = "source-in";
+    ctx.fillStyle = color; // dodgerblue
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.globalCompositeOperation = 'source-over';
+
+    return canvas.toDataURL("image/png");
+  }
+
   // Expand shorthand (#abc) to full (#aabbcc)
   static expandHex(hex) {
     hex = hex.replace(/^#/, "");
@@ -247,7 +264,6 @@ class Utils {
   }
 
   static generate_bar_chart(render, data, x_values, title, color) {
-
     return new Chart(render, {
       type: "bar",
       data: {
@@ -256,11 +272,12 @@ class Utils {
           {
             label: title,
             data: data,
-            backgroundColor: '#000',
+            backgroundColor: "#444",
           },
         ],
       },
       options: {
+
         animation: false,
         legend: {
           display: false,
@@ -285,6 +302,7 @@ class Utils {
         ],
       },
       options: {
+
         animation: false,
         legend: {
           display: false,
@@ -448,7 +466,7 @@ class Utils {
     </div>
     `;
 
-    let notif_bloc = document.querySelector("#notif_bloc")
+    let notif_bloc = document.querySelector("#notif_bloc");
     notif_bloc.innerHTML += div_content;
 
     window.setTimeout(() => {

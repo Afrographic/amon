@@ -90,6 +90,7 @@ class Conteneur {
         align-items:${this.vertAlign};
         flex-direction:${this.direction};
         justify-content:${this.align};
+        z-index:2;
         border-top-left-radius:${this.border_top_left_radius}px;
         border-top-right-radius:${this.border_top_right_radius}px;
         border-bottom-left-radius:${this.border_bottom_left_radius}px;

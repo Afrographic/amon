@@ -3,7 +3,7 @@ class Image_D {
     this.id = Utils.generate_unique_id_from_time();
     this.url = "";
     this.file = undefined;
-    this.width = 60;
+    this.width = 40;
     this.border_top_left_radius = 4;
     this.border_top_right_radius = 4;
     this.border_bottom_left_radius = 4;
@@ -24,11 +24,16 @@ class Image_D {
   }
 
   render() {
+    let z_index = 1;
+    if(this.position == "relative"){
+      z_index = 2;
+    }
     return `
         <img src="${this.url}" onclick="Edit.edit_image(event,'${this.id}')" style="
         width:${this.width}%;
         position:${this.position};
         top:${this.posY}%;
+        z-index:${z_index};
         transform:rotate(${this.rotate}deg);
         left:${this.posX}%;
         opacity:${this.opacity};

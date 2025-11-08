@@ -30,6 +30,7 @@ class Text {
     color:${this.color};
     text-align:${this.text_align};
     width: ${this.width};
+    z-index:2;
     margin-top:${this.margin_top}vw;
     margin-bottom:${this.margin_bottom}vw;
     margin-left:${this.margin_left}vw;

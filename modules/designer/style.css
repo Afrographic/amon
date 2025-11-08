@@ -122,7 +122,7 @@
     font-family: "lova";
     src: url(assets/fonts/lova.otf)
 }
-@font-face {
+@font-face { 
     font-family: "love";
     src: url(assets/fonts/love.ttf)
 }
@@ -152,6 +152,27 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap:2vw;
+}
+
+.icons_list{
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    gap:2vw;
+}
+
+.iconItem{
+    border-radius: 6px;
+    border:1px solid #e5e5e5;
+    padding:6px;
+    width: 95%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconItem img{
+    width: 60%;
 }
 
 .police_name{
@@ -358,6 +379,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 2vw;
+    font-size: 3.5vw;
 }
 
 .secondary {
@@ -439,6 +461,7 @@ h2 {
     transform-origin: bottom right;
     transition: 0.5s;
     opacity: 1;
+    z-index: 4;
 }
 
 #options_btn_explainer.inactive {

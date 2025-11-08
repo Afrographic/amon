@@ -409,4 +409,35 @@ class ImageEdit {
       }
     }
   }
+
+  static change_color(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        // Remove white BG
+        let img = new Image();
+        img.src = Create.artboard[i].url;
+        img.onload = () => {
+          let colored_image = Utils.change_color(img,el.value);
+          Create.artboard[i].url = colored_image;
+          Create.render();
+        };
+      }
+
+      //Remove BG in Children
+      // Clone  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            let img = new Image();
+            img.src = Create.artboard[i].children[j].url;
+            img.onload = () => {
+              let colored_image = Utils.change_color(img);
+              Create.artboard[i].children[j].url = colored_image;
+              Create.render();
+            };
+          }
+        }
+      }
+    }
+  }
 }

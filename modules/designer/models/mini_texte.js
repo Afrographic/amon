@@ -28,6 +28,7 @@ class MiniTexte {
         font-family:${this.font};
         color:${this.color};
         width:${this.width};
+        z-index:2;
         text-align:${this.text_align};
         margin-top:${this.margin_top}vw;
         margin-bottom:${this.margin_bottom}vw;

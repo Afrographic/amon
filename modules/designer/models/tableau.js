@@ -1,7 +1,7 @@
 class Tableau {
   constructor() {
     this.id = Utils.generate_unique_id_from_time();
-    this.width = 100;
+    this.width = 75;
     this.border_color = "#aaa";
     this.text_color = "#000";
     this.data = [
@@ -12,7 +12,7 @@ class Tableau {
   }
 
   render() {
-    let res = `<table id="${this.id}" onclick="TableauEdit.show_edit_tableau('${this.id}')" style="width:${this.width}%;border-collapse:collapse;table-layout: fixed;">`;
+    let res = `<table id="${this.id}" onclick="TableauEdit.show_edit_tableau('${this.id}')" style="z-index:2;width:${this.width}%;border-collapse:collapse;table-layout: fixed;">`;
     for (let i = 0; i <= this.data.length - 1; i++) {
       res += "<tr>";
       for (let j = 0; j <= this.data[i].length - 1; j++) {
@@ -25,7 +25,7 @@ class Tableau {
   }
 
   render_editable_table() {
-    let res = `<table id="${this.id}"  style="width:${this.width}%;border-collapse:collapse;table-layout: fixed;">`;
+    let res = `<table id="${this.id}"  style="z-index:2;width:${this.width}%;border-collapse:collapse;table-layout: fixed;">`;
     for (let i = 0; i <= this.data.length - 1; i++) {
       res += "<tr>";
       for (let j = 0; j <= this.data[i].length - 1; j++) {

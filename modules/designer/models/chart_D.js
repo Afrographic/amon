@@ -42,7 +42,7 @@ class ChartD {
 
     let rendered_img = canvas.toDataURL("image/png");
     return `
-    <div class="b1 br8 p16 bg_grey" style="width:100%" onclick="ChartEdit.init_edit('${this.id}')">
+    <div class="b1 br8 p16 bg_grey" style="width:100%; z-index:2;" onclick="ChartEdit.init_edit('${this.id}')">
       <img src="${rendered_img}" width="100%"/>
     </div>
     `;

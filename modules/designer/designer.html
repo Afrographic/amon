@@ -6,6 +6,7 @@
     <title>Djehouty</title>
     <link rel="icon" href="assets/images/djehouty_icon.svg" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="desktop.css" />
     <!-- Libs -->
     <script src="libs/html2canvas.min.js"></script>
     <script src="libs/jscolor.js"></script>
@@ -54,27 +55,27 @@
       <div>Services Djehouty</div>
       <div class="small">Cliquez pour lancer le service</div>
       <hr />
-      <div class="secondary" onclick="Services.cv()">
+      <div class="project_item" onclick="Services.cv()">
         <img src="assets/images/djehouty_icon.svg" alt="" />
         Generation de CV
       </div>
-      <div class="secondary" onclick="Services.menu()">
+      <div class="project_item" onclick="Services.menu()">
         <img src="assets/images/djehouty_icon.svg" alt="" />
         Generation de menu pour restaurant
       </div>
-      <div class="secondary" onclick="Services.qr_code()">
+      <div class="project_item" onclick="Services.qr_code()">
         <img src="assets/images/djehouty_icon.svg" alt="" />
         <div>Generation de QR Codes</div>
       </div>
-      <div class="secondary" onclick="Services.meet()">
+      <div class="project_item" onclick="Services.meet()">
         <img src="assets/images/djehouty_icon.svg" alt="" />
         <div>Generation de visuel de meet</div>
       </div>
-      <div class="secondary" onclick="Services.soutenance()">
+      <div class="project_item" onclick="Services.soutenance()">
         <img src="assets/images/djehouty_icon.svg" alt="" />
         <div>Generation des visuels de Soutenance</div>
       </div>
-      <div class="secondary" onclick="Services.produits()">
+      <div class="project_item" onclick="Services.produits()">
         <img src="assets/images/djehouty_icon.svg" alt="" />
         <div>Generation des flyers pour produits</div>
       </div>
@@ -314,7 +315,7 @@
 
     <!-- Edit chart -->
     <div class="p16 hidden edit column g4" id="graph_editor">
-      <div class="base">Editer les informations du graphique</div>
+    
       <hr />
       <div id="graph_tab_editor"></div>
       <div class="secondary" onclick="ChartEdit.add_colonne()">
@@ -373,9 +374,7 @@
 
     <!-- Edit tableau -->
     <div class="p16 hidden edit column g4" id="tableau_editor">
-      <div class="base" style="margin-bottom: 3vw">
-        Editer le contenu du tableau
-      </div>
+<hr>
       <div id="tableau_renderer_edit" style="margin-bottom: 3vw"></div>
       <div class="column g4">
         <div class="secondary" onclick="TableauEdit.add_ligne()">
@@ -388,7 +387,7 @@
         </div>
       </div>
       <hr />
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div>Couleur des bordures</div>
         <input
           class="jscolor"
@@ -398,7 +397,7 @@
           onchange="TableauEdit.edit_border_color(this)"
         />
       </div>
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div>Couleur texte</div>
         <input
           class="jscolor"
@@ -430,6 +429,26 @@
         </div>
       </div>
       <div class="float_close" onclick="UI.hide_font_view()">Fermer</div>
+    </div>
+
+    <!-- Ajouter les icones -->
+    <div class="p16 hidden  edit" id="add_icon">
+      <h2 class="tac" style="margin-bottom: 2vw">Librairie d'icones</h2>
+      <div class="icons_list" id="icons_list">
+       <div class="iconItem">
+        <img src="assets/icons/Asset 100.png" alt="">
+       </div>
+       <div class="iconItem">
+        <img src="assets/icons/Asset 100.png" alt="">
+       </div>
+       <div class="iconItem">
+        <img src="assets/icons/Asset 100.png" alt="">
+       </div>
+       <div class="iconItem">
+        <img src="assets/icons/Asset 100.png" alt="">
+       </div>
+      </div>
+      <div class="float_close"  onclick="UI.hide_add_icon()">Fermer</div>
     </div>
 
     <!-- Edit text -->
@@ -465,7 +484,7 @@
         />
       </div>
       <hr />
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div>Alignement</div>
         <div class="row g4">
           <div class="secondary f1" onclick="Edit.text_to_left()">Gauche</div>
@@ -475,7 +494,7 @@
       </div>
       <!-- L'ordre dans le plan de travail -->
       <hr />
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div>L'ordre dans le plan de travail</div>
         <div class="row g4">
           <div class="secondary f1" onclick="ImageEdit.forward()">Avancer</div>
@@ -572,13 +591,23 @@
       </div>
       <!-- Size -->
       <div class="config_item">
-        <div class="base">Editer la taille de l'image</div>
+        <div >Taille de l'image</div>
         <input
           type="range"
-          value="60"
+          value="40"
           min="0"
           max="100"
           oninput="Edit.change_image_size(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Couleur de l'image</div>
+        <input
+          class="jscolor"
+          value="#000"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ImageEdit.change_color(this)"
         />
       </div>
       <div class="config_item">
@@ -593,8 +622,8 @@
       </div>
       <!-- L'ordre dans le plan de travail -->
       <hr />
-      <div class="b1 p16 br8 column g4">
-        <div class="base">L'ordre dans le plan de travail</div>
+      <div class="config_item">
+        <div>L'ordre dans le plan de travail</div>
         <div class="row g4">
           <div class="secondary f1" onclick="ImageEdit.forward()">Avancer</div>
           <div class="secondary f1" onclick="ImageEdit.backward()">Reculer</div>
@@ -603,8 +632,8 @@
       <hr />
 
       <!-- Positionnement -->
-      <div class="b1 br8 p16 column g4">
-        <div class="base">Positionnement</div>
+      <div class="config_item">
+        <div >Positionnement</div>
         <div class="row g4">
           <div class="secondary" onclick="ImageEdit.set_position_relative()">
             Relatif
@@ -613,9 +642,9 @@
             Absolue
           </div>
         </div>
-        <hr />
-        <div>
-          <div class="base">Position verticale</div>
+
+        <div class="config_item">
+          <div>Position verticale</div>
           <input
             type="range"
             value="0"
@@ -624,9 +653,9 @@
             oninput="ImageEdit.setPosY(this)"
           />
         </div>
-        <hr />
-        <div>
-          <div class="base">Position horizontale</div>
+
+        <div class="config_item">
+          <div >Position horizontale</div>
           <input
             type="range"
             value="0"
@@ -650,7 +679,7 @@
       <!-- Marges -->
       <hr />
       <div class="config_item">
-        <div class="base">Marge du haut</div>
+        <div >Marge du haut</div>
         <input
           type="range"
           value="0"
@@ -660,7 +689,7 @@
         />
       </div>
       <div class="config_item">
-        <div class="base">Marge du bas</div>
+        <div>Marge du bas</div>
         <input
           type="range"
           value="0"
@@ -670,7 +699,7 @@
         />
       </div>
       <div class="config_item">
-        <div class="base">Marge de gauche</div>
+        <div >Marge de gauche</div>
         <input
           type="range"
           value="0"
@@ -680,7 +709,7 @@
         />
       </div>
       <div class="config_item">
-        <div class="base">Marge de droite</div>
+        <div >Marge de droite</div>
         <input
           type="range"
           value="0"
@@ -692,7 +721,7 @@
       <!-- Arrondis -->
       <hr />
       <div class="config_item">
-        <div class="base">Arrondis haut gauche</div>
+        <div >Arrondis haut gauche</div>
         <input
           type="range"
           value="4"
@@ -806,7 +835,7 @@
           oninput="ConteneurEdit.set_width(this)"
         />
       </div>
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div class="base">Alignement horizonale</div>
         <div class="row g4 aic">
           <div class="secondary" onclick="ConteneurEdit.set_left()">Gauche</div>
@@ -825,7 +854,7 @@
       </div>
 
       <hr />
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div class="base">Alignement verticale</div>
         <div class="row aic">
           <div class="secondary" onclick="ConteneurEdit.set_ver_left()">
@@ -843,8 +872,8 @@
       </div>
       <hr />
       <!-- Ordre  -->
-      <div class="b1 p16 br8 column g4">
-        <div class="base">L'ordre dans le plan de travail</div>
+      <div class="config_item">
+        <div >L'ordre dans le plan de travail</div>
         <div class="row g4">
           <div class="secondary f1" onclick="ConteneurEdit.forward()">
             Avancer
@@ -1326,7 +1355,7 @@
       </div>
     </div>
 
-    <p class="tac" style="font-size: 3vw; color: grey">
+    <p class="tac indication_user" style="font-size: 3vw; color: grey">
       Cliquez sur un element pour editer ses proprietes
     </p>
 
@@ -1362,7 +1391,7 @@
       </div>
 
       <hr />
-      <div class="b1 p16 b48 column g4 br8">
+      <div class="config_item">
         <div>Espacement entre les elements</div>
         <input
           type="range"
@@ -1372,7 +1401,7 @@
           oninput="Create.set_gap(this)"
         />
       </div>
-      <div class="b1 p16 br9 column g4 br8">
+      <div class="config_item">
         <div>Marge interne verticale</div>
         <input
           type="range"
@@ -1392,7 +1421,7 @@
         />
       </div>
 
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div>Alignement horizontale</div>
         <div class="row aic">
           <div class="secondary" onclick="Create.setHoriAlignLeft()">
@@ -1409,7 +1438,7 @@
         </div>
       </div>
       <hr />
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div>Alignement verticale</div>
         <div class="row aic g4">
           <div class="secondary" onclick="Create.setVertAlignTop()">
@@ -1428,7 +1457,7 @@
           </div>
         </div>
       </div>
-      <div class="b1 p16 br8 column g4">
+      <div class="config_item">
         <div class="item">
           <div>Couleur de fond</div>
           <input
@@ -1538,6 +1567,10 @@
         />
         <img src="assets/images/image.svg" alt="" />
         <div>Ajouter une image</div>
+      </div>
+      <div class="secondary" onclick="UI.show_add_icon();UI.hide_add_graphix()">
+        <img src="assets/images/add_icon.svg" alt="" />
+        <div>Ajouter une icone</div>
       </div>
       <div class="secondary" onclick="Create.add_table()">
         <img src="assets/images/tab.svg" alt="" />
@@ -1676,6 +1709,7 @@
     <script src="scripts/splash.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/police.js"></script>
+    <script src="scripts/icones.js"></script>
     <script src="scripts/circle_edit.js"></script>
     <script src="scripts/triangle_edit.js"></script>
     <!-- DB -->

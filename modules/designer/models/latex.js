@@ -12,7 +12,7 @@ class Latex {
       displayMode: true,
     });
     return `
-    <div class="b1 br8 p16 bg_grey" style="width:100%" onclick="LatextEdit.init_latex_edit('${this.id}')">
+    <div class="b1 br8 p16 bg_grey" style="width:70%; z-index:2;" onclick="LatextEdit.init_latex_edit('${this.id}')">
      ${render_view.innerHTML}
     </div>
     `;

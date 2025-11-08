@@ -98,6 +98,18 @@ class Create {
     UI.hide_add_graphix();
   }
 
+  static async add_icon(number){
+    let image = new Image();
+    image.src = `assets/icons/Asset ${number}.png`;
+    await image.decode();
+    let url = Utils.change_color(image,"#000");
+    let image_to_add = new Image_D();
+    image_to_add.url = url;
+    this.artboard.push(image_to_add);
+    this.render();
+    UI.hide_add_icon();
+  }
+
   static add_conteneur() {
     UI.hide_add_graphix();
     let conteneur = new Conteneur();
@@ -283,6 +295,8 @@ class Create {
     this.deg_type = "linear";
     this.render();
   }
+
+  
 }
 
 Create.render();
