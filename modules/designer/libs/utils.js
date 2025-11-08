@@ -444,15 +444,16 @@ class Utils {
     let notifs = document.querySelectorAll(".notif");
     let div_content = `
     
-    <div onclick="this.classList.add('notif_inactive')"  class="notif notif_inactive" style="font-size:3vw;position:fixed;top:${
+    <div onclick="this.classList.add('notif_inactive')"  class="notif notif_inactive" style="font-size:12px;position:fixed;top:${
       16 + (50 + 8) * notifs.length
-    }px;right:16px;background-color:#006838;color:white;padding:2vw 3vw;border-radius:8px;display:flex;align-items:center;gap:2vw;">
-       <img src="assets/images/notif_icon.svg" width="12vw"/>
+    }px;right:16px;background-color:#006838;color:white;padding:16px;border-radius:8px;display:flex;align-items:center;gap:8px;">
+       <img src="assets/images/notif_icon.svg" width="16px"/>
         ${msg}
 
         <style>
             .notif {
                 transition: 0.5s;
+                z-index:30000;
             }
             .notif_inactive {
                 opacity: 0;

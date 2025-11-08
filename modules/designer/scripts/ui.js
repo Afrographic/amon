@@ -85,7 +85,7 @@ class UI {
     let triangle_editor = document.querySelector("#triangle_editor");
     triangle_editor.classList.add("hidden");
   }
-  
+   
 
   static show_add_icon(){
     let add_icon = document.querySelector("#add_icon");

@@ -606,4 +606,9 @@ class ConteneurEdit {
       }
     }
   }
+  static add_icon(){
+    Icones.in_conteneur = true;
+    UI.show_add_icon();
+    Edit.close_conteneur_edit()
+  }
 }

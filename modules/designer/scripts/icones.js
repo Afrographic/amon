@@ -1,4 +1,5 @@
 class Icones{
+    static in_conteneur = false;
     static init(){
         let icons_list = document.querySelector("#icons_list");
         icons_list.innerHTML ="";

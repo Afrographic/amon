@@ -431,7 +431,7 @@ class ImageEdit {
             let img = new Image();
             img.src = Create.artboard[i].children[j].url;
             img.onload = () => {
-              let colored_image = Utils.change_color(img);
+              let colored_image = Utils.change_color(img,el.value);
               Create.artboard[i].children[j].url = colored_image;
               Create.render();
             };

@@ -169,4 +169,22 @@
     #project_renderer{
         gap:8px !important;
     }
+
+    #change_font h2{
+        font-size: 24px;
+        margin-bottom: 8px !important;
+    }
+    .policeItem{
+        padding:16px;
+        gap:4px;
+    }
+    .police_name{
+        font-size: 12px;
+    }
+    .police_preview_text{
+        font-size: 16px;
+    }
+    .police_list{
+        gap:4px;
+    }
 }

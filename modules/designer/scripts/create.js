@@ -104,8 +104,22 @@ class Create {
     await image.decode();
     let url = Utils.change_color(image,"#000");
     let image_to_add = new Image_D();
+    image_to_add.width = 8;
     image_to_add.url = url;
-    this.artboard.push(image_to_add);
+
+    if(Icones.in_conteneur == false){
+      this.artboard.push(image_to_add);
+    }else{
+      // Add in conteneur
+      for (let i = 0; i <= Create.artboard.length - 1; i++) {
+        if (Create.artboard[i].id == Create.edit_id) {
+          Create.artboard[i].children.push(image_to_add);
+        }
+      }
+      Icones.in_conteneur = false;
+    }
+   
+
     this.render();
     UI.hide_add_icon();
   }

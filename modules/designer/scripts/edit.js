@@ -459,7 +459,7 @@ class Edit {
   static add_conteneur_text() {
     let new_text = new Text();
     Create.edit_id = new_text.id;
-    new_text.value = text;
+
     new_text.width = "auto";
     //Append text to conteur
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
