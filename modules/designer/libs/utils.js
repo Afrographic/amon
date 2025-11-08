@@ -246,6 +246,29 @@ class Utils {
     }
   }
 
+  static generate_bar_chart(render, data, x_values, title, color) {
+
+    return new Chart(render, {
+      type: "bar",
+      data: {
+        labels: x_values,
+        datasets: [
+          {
+            label: title,
+            data: data,
+            backgroundColor: '#000',
+          },
+        ],
+      },
+      options: {
+        animation: false,
+        legend: {
+          display: false,
+        },
+      },
+    });
+  }
+
   static generate_line_chart(render, data, x_values, title, color) {
     return new Chart(render, {
       type: "line",
@@ -392,7 +415,7 @@ class Utils {
       encodeURIComponent(JSON.stringify(json));
     var aNode = document.createElement("a");
     aNode.setAttribute("href", dataStr);
-    aNode.setAttribute("download", name + ".djehouty." + ".json");
+    aNode.setAttribute("download", name + ".djehouty" + ".json");
     document.body.appendChild(aNode);
     aNode.click();
     aNode.remove();

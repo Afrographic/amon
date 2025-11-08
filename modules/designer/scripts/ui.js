@@ -76,6 +76,16 @@ class UI {
     circle_editor.classList.add("hidden");
   }
 
+  static show_triangle_edit(){
+    let triangle_editor = document.querySelector("#triangle_editor");
+    triangle_editor.classList.remove("hidden");
+  }
+
+  static hide_triangle_edit(){
+    let triangle_editor = document.querySelector("#triangle_editor");
+    triangle_editor.classList.add("hidden");
+  }
+
 
 
   static hide_all() {

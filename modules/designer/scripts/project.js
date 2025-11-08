@@ -169,6 +169,10 @@ class Project {
         item = new Circle();
         item.from_json(project.artboard[i]);
       }
+      if (project.artboard[i].type == "triangle") {
+        item = new Triangle();
+        item.from_json(project.artboard[i]);
+      }
       artBoard.push(item);
     }
     Create.artboard = artBoard;

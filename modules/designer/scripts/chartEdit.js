@@ -54,6 +54,14 @@ class ChartEdit {
       }
     }
   }
+  static set_bar() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].mode = "bar";
+        Create.render();
+      }
+    }
+  }
 
   static set_color(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {

@@ -154,6 +154,73 @@
 
     <canvas id="chart_renderer"></canvas>
 
+      <!-- Edit Triangle -->
+      <div class="p16 hidden edit column g4" id="triangle_editor">
+     
+        <hr>
+        <div class="config_item">
+          <div>Couleur de remplissage</div>
+          <input
+          data-jscolor=""
+            value="rgba(0,0,0,1)"
+            id="primaryPicker"
+            onclick="this.blur()"
+            onchange="Triangle_edit.color(this)"
+          />
+        </div>
+        <div class="config_item">
+          <div>Taille</div>
+          <input
+            type="range"
+            value="20"
+            min="0"
+            max="40"
+            oninput="Triangle_edit.size(this)"
+          />
+        </div>
+        <div class="secondary" onclick="Triangle_edit.duplicate()">
+          <img src="assets/images/duplicate.svg" alt="">
+          <div>Dupliquer le triangle</div>
+        </div>
+        <div class="config_item">
+          <div>Position verticale</div>
+          <input
+            type="range"
+            value="0"
+            min="0"
+            max="100"
+            oninput="Triangle_edit.posY(this)"
+          />
+        </div>
+        <div class="config_item">
+          <div>Position horizontale</div>
+          <input
+            type="range"
+            value="0"
+            min="0"
+            max="100"
+            oninput="Triangle_edit.posX(this)"
+          />
+        </div>
+       
+        <div class="config_item">
+          <div>Rotation</div>
+          <input
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="Triangle_edit.rotate(this)"
+        />
+        </div>
+        <div class="secondary" onclick="Triangle_edit.delete()">
+          <img src="assets/images/delete_new.svg" alt="" />
+          <div>Supprimer</div>
+        </div>
+        <div class="float_close" onclick="UI.hide_triangle_edit()">Fermer</div>
+      </div>
+  
+
     <!-- Edit cercle -->
     <div class="p16 hidden edit column g4" id="circle_editor">
      
@@ -265,6 +332,9 @@
           <div class="secondary f1" onclick="ChartEdit.set_curve()">Courbe</div>
           <div class="secondary f1" onclick="ChartEdit.set_circle()">
             Circulaire
+          </div>
+          <div class="secondary f1" onclick="ChartEdit.set_bar()">
+            Barre
           </div>
         </div>
       </div>
@@ -704,6 +774,16 @@
           Dupliquer le conteneur
         </div>
       </div>
+      <div class="config_item">
+        <div>Couleur de fond</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Edit.set_conteneur_bg(this)"
+        />
+      </div>
 
       <div class="config_item">
         <div>Rotation du conteneur</div>
@@ -954,16 +1034,7 @@
         <img src="assets/images/darken.svg" alt="" />
         Assombrir l'image de fond
       </div>
-      <div class="config_item">
-        <div>Couleur de fond</div>
-        <input
-          class="jscolor"
-          value="rgba(0,0,0,1)"
-          id="primaryPicker"
-          onclick="this.blur()"
-          onchange="Edit.set_conteneur_bg(this)"
-        />
-      </div>
+     
       <hr />
       <div>Fond en degrade</div>
 
@@ -1484,9 +1555,17 @@
         <img src="assets/images/add_cercle.svg" alt="" />
         <div>Ajouter un cercle/Demi cercle</div>
       </div>
-      <div class="secondary" onclick="ChartEdit.add_new()">
+      <div class="secondary" onclick="Triangle_edit.add()">
         <img src="assets/images/add_triangle.svg" alt="" />
         <div>Ajouter un triangle</div>
+      </div>
+      <div class="secondary" >
+        <img src="assets/images/add_poly.svg" alt="" />
+        <div>Ajouter un polygone</div>
+      </div>
+      <div class="secondary" >
+        <img src="assets/images/add_star.svg" alt="" />
+        <div>Ajouter une etoile</div>
       </div>
       <hr />
       <div class="secondary" onclick="UI.show_projects();UI.hide_add_graphix()">
@@ -1598,6 +1677,7 @@
     <script src="scripts/services.js"></script>
     <script src="scripts/police.js"></script>
     <script src="scripts/circle_edit.js"></script>
+    <script src="scripts/triangle_edit.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
     <!-- Register Service Worker -->

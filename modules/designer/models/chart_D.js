@@ -36,6 +36,10 @@ class ChartD {
       Utils.generate_pie_chart(context, this.data, this.x_values, this.title);
     }
 
+    if (this.mode == "bar") {
+      Utils.generate_bar_chart(context, this.data, this.x_values, this.title);
+    }
+
     let rendered_img = canvas.toDataURL("image/png");
     return `
     <div class="b1 br8 p16 bg_grey" style="width:100%" onclick="ChartEdit.init_edit('${this.id}')">
