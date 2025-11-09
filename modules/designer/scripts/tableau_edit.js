@@ -9,10 +9,30 @@ class TableauEdit {
     }
   }
 
-  static async add_ligne() {
+  static remove_colonne() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].remove_colonne();
+        Create.artboard[i].render_editable_table();
+        Create.render();
+      }
+    }
+  }
+
+  static add_ligne() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].add_ligne();
+        Create.artboard[i].render_editable_table();
+        Create.render();
+      }
+    }
+  }
+
+  static remove_ligne() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].remove_ligne();
         Create.artboard[i].render_editable_table();
         Create.render();
       }
@@ -71,6 +91,46 @@ class TableauEdit {
         Create.artboard.splice(index, 1);
         Create.render();
         UI.hide_all();
+      }
+    }
+  }
+
+  static largeur(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].width = el.value;
+        Create.render();
+      }
+    }
+  }
+
+  static margin_left(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].margin_left = el.value;
+        Create.render();
+      }
+    }
+  }
+
+  static margin_top(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].margin_top = el.value;
+        Create.render();
+      }
+    }
+  }
+
+  static center() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        if (Create.artboard[i].margin_auto == 1) {
+          Create.artboard[i].margin_auto = 0;
+        } else {
+          Create.artboard[i].margin_auto = 1;
+        }
+        Create.render();
       }
     }
   }

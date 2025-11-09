@@ -1,6 +1,25 @@
 @media screen and (min-width:1200px) {
     .menu_services {
         width: 64px !important;
+        top: 32px;
+        left: 32px;
+    }
+
+    .tools_web{
+        position: fixed;  
+        bottom: 4vw;
+        left:32px;
+        background-color: #fff;
+        border-radius: 8px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap:8px;
+        padding:8px;
+    }
+
+    .tools_web img{
+        width: 36px;
+        cursor: pointer;
     }
 
     .logo h3 {
@@ -186,5 +205,11 @@
     }
     .police_list{
         gap:4px;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .tools_mobile{
+        display: none ;
     }
 }

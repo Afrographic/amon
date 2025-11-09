@@ -305,6 +305,14 @@ class Create {
     this.deg_type = "radial";
     this.render();
   }
+
+  static invert_degrade() {
+    let temp  =  this.deg_first_color;
+    this.deg_first_color =  this.deg_second_color;
+    this.deg_second_color = temp;
+    this.render();
+  }
+
   static set_degrade_lineaire() {
     this.deg_type = "linear";
     this.render();

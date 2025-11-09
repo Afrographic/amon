@@ -581,6 +581,17 @@ class ConteneurEdit {
     }
   }
 
+  static invert_degrade() {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        let temp =  Create.artboard[i].deg_first_color;
+        Create.artboard[i].deg_first_color = Create.artboard[i].deg_second_color;
+        Create.artboard[i].deg_second_color = temp;
+        Create.render();
+      }
+    }
+  }
+
   static forward() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {

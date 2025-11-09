@@ -29,12 +29,29 @@
   </head>
   <body>
     <div id="notif_bloc"></div>
-    <div class="logo">
+    <!-- Tools -->
+    <div class="tools_web tools_mobile">
+      <img src="assets/images/titre.svg" alt="" title="Ajouter un Titre" onclick="UI.hide_all();Create.add_titre()">
+      <img src="assets/images/sous_titre.svg" alt="" title="Ajouter un sous titre" onclick="UI.hide_all();Create.add_sous_titre()">
+      <img src="assets/images/desc.svg" alt="" title="Ajouter une description" onclick="UI.hide_all();Create.add_text()">
+      <img src="assets/images/mini_texte.svg" alt="" title="Ajouter un mini texte" onclick="UI.hide_all();Create.add_mini_text()">
+      <img src="assets/images/tab.svg" alt="" title="Ajouter un tableau" onclick="UI.hide_all();Create.add_table()">
+      <img src="assets/images/latex.svg" alt="" title="Ajouter du Latex" onclick="UI.hide_all();LatextEdit.add_new()">
+      <img src="assets/images/add_icon.svg" alt="" title="Ajouter une icone" onclick="UI.hide_all();UI.show_add_icon();UI.hide_add_graphix()">
+      <img src="assets/images/image.svg" alt="" title="Ajouter une image" onclick="UI.hide_all();Create.add_image()">
+      <img src="assets/images/graph.svg" alt="" title="Ajouter un Graphique" onclick="UI.hide_all();ChartEdit.add_new()">
+      <img src="assets/images/conteneur.svg" alt="" title="Ajouter un conteneur" onclick="UI.hide_all();Create.add_conteneur()">
+      <img src="assets/images/add_cercle.svg" alt="" title="Ajouter un cercle" onclick="UI.hide_all();Circle_edit.add()">
+      <img src="assets/images/add_triangle.svg" alt="" title="Ajouter un triangle" onclick="UI.hide_all();Triangle_edit.add()">
+      <img src="assets/images/add_poly.svg" alt="" title="Ajouter un polygone">
+      <img src="assets/images/add_star.svg" alt="" title="Ajouter une etoile">
+    </div>
+    <div class="logo" onclick="UI.hide_all()">
       <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
       <h3 style="margin: 0">Djehouty Designer</h3>
     </div>
     <div class="small tac" id="nom_project">Projet Sans titre</div>
-    <div id="renderer"></div>
+    <div id="renderer" ></div>
     <!-- Donation -->
     <div class="donation">
       <img src="assets/images/love.svg" alt="" />
@@ -66,7 +83,7 @@
       <div class="project_item" onclick="Services.qr_code()">
         <img src="assets/images/djehouty_icon.svg" alt="" />
         <div>Generation de QR Codes</div>
-      </div> 
+      </div>
       <div class="project_item" onclick="Services.meet()">
         <img src="assets/images/djehouty_icon.svg" alt="" />
         <div>Generation de visuel de meet</div>
@@ -155,81 +172,78 @@
 
     <canvas id="chart_renderer"></canvas>
 
-      <!-- Edit Triangle -->
-      <div class="p16 hidden edit column g4" id="triangle_editor">
-     
-        <hr>
-        <div class="config_item">
-          <div>Couleur de remplissage</div>
-          <input
+    <!-- Edit Triangle -->
+    <div class="p16 hidden edit column g4" id="triangle_editor">
+      <hr />
+      <div class="config_item">
+        <div>Couleur de remplissage</div>
+        <input
           data-jscolor=""
-            value="rgba(0,0,0,1)"
-            id="primaryPicker"
-            onclick="this.blur()"
-            onchange="Triangle_edit.color(this)"
-          />
-        </div>
-        <div class="config_item">
-          <div>Taille</div>
-          <input
-            type="range"
-            value="20"
-            min="0"
-            max="40"
-            oninput="Triangle_edit.size(this)"
-          />
-        </div>
-        <div class="secondary" onclick="Triangle_edit.duplicate()">
-          <img src="assets/images/duplicate.svg" alt="">
-          <div>Dupliquer le triangle</div>
-        </div>
-        <div class="config_item">
-          <div>Position verticale</div>
-          <input
-            type="range"
-            value="0"
-            min="0"
-            max="100"
-            oninput="Triangle_edit.posY(this)"
-          />
-        </div>
-        <div class="config_item">
-          <div>Position horizontale</div>
-          <input
-            type="range"
-            value="0"
-            min="0"
-            max="100"
-            oninput="Triangle_edit.posX(this)"
-          />
-        </div>
-       
-        <div class="config_item">
-          <div>Rotation</div>
-          <input
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Triangle_edit.color(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Taille</div>
+        <input
+          type="range"
+          value="20"
+          min="0"
+          max="40"
+          oninput="Triangle_edit.size(this)"
+        />
+      </div>
+      <div class="secondary" onclick="Triangle_edit.duplicate()">
+        <img src="assets/images/duplicate.svg" alt="" />
+        <div>Dupliquer le triangle</div>
+      </div>
+      <div class="config_item">
+        <div>Position verticale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="Triangle_edit.posY(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Position horizontale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="Triangle_edit.posX(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Rotation</div>
+        <input
           type="range"
           value="0"
           min="0"
           max="360"
           oninput="Triangle_edit.rotate(this)"
         />
-        </div>
-        <div class="secondary" onclick="Triangle_edit.delete()">
-          <img src="assets/images/delete_new.svg" alt="" />
-          <div>Supprimer</div>
-        </div>
-        <div class="float_close" onclick="UI.hide_triangle_edit()">Fermer</div>
       </div>
-  
+      <div class="secondary" onclick="Triangle_edit.delete()">
+        <img src="assets/images/delete_new.svg" alt="" />
+        <div>Supprimer</div>
+      </div>
+      <div class="float_close" onclick="UI.hide_triangle_edit()">Fermer</div>
+    </div>
 
     <!-- Edit cercle -->
     <div class="p16 hidden edit column g4" id="circle_editor">
-     
-      <hr>
+      <hr />
       <div class="config_item">
         <div>Couleur de remplissage</div>
         <input
-        data-jscolor=""
+          data-jscolor=""
           value="rgba(0,0,0,1)"
           id="primaryPicker"
           onclick="this.blur()"
@@ -247,7 +261,7 @@
         />
       </div>
       <div class="secondary" onclick="Circle_edit.duplicate()">
-        <img src="assets/images/duplicate.svg" alt="">
+        <img src="assets/images/duplicate.svg" alt="" />
         <div>Dupliquer le cercle</div>
       </div>
       <div class="config_item">
@@ -270,7 +284,7 @@
           oninput="Circle_edit.posX(this)"
         />
       </div>
-      <hr>
+      <hr />
       <div class="config_item">
         <div>Epaisseur de la bordure</div>
         <input
@@ -284,14 +298,14 @@
       <div class="config_item">
         <div>Couleur de la bordure</div>
         <input
-        data-jscolor=""
+          data-jscolor=""
           value="rgba(0,0,0,1)"
           id="primaryPicker"
           onclick="this.blur()"
           onchange="Circle_edit.set_border_color(this)"
         />
       </div>
-      <hr>
+      <hr />
       <div class="secondary" onclick="Circle_edit.toggle_half()">
         <img src="assets/images/add_demi_cercle.svg" alt="" />
         <div>Activer/Annuler le demie cercle</div>
@@ -299,12 +313,12 @@
       <div class="config_item">
         <div>Rotation</div>
         <input
-        type="range"
-        value="0"
-        min="0"
-        max="360"
-        oninput="Circle_edit.rotate(this)"
-      />
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="Circle_edit.rotate(this)"
+        />
       </div>
       <div class="secondary" onclick="Circle_edit.delete()">
         <img src="assets/images/delete_new.svg" alt="" />
@@ -315,7 +329,6 @@
 
     <!-- Edit chart -->
     <div class="p16 hidden edit column g4" id="graph_editor">
-    
       <hr />
       <div id="graph_tab_editor"></div>
       <div class="secondary" onclick="ChartEdit.add_colonne()">
@@ -334,9 +347,7 @@
           <div class="secondary f1" onclick="ChartEdit.set_circle()">
             Circulaire
           </div>
-          <div class="secondary f1" onclick="ChartEdit.set_bar()">
-            Barre
-          </div>
+          <div class="secondary f1" onclick="ChartEdit.set_bar()">Barre</div>
         </div>
       </div>
       <div class="config_item">
@@ -374,7 +385,7 @@
 
     <!-- Edit tableau -->
     <div class="p16 hidden edit column g4" id="tableau_editor">
-<hr>
+      <hr />
       <div id="tableau_renderer_edit" style="margin-bottom: 3vw"></div>
       <div class="column g4">
         <div class="secondary" onclick="TableauEdit.add_ligne()">
@@ -385,6 +396,49 @@
           <img src="assets/images/add_colone.svg" alt="" />
           Ajouter une colonne
         </div>
+        <div class="secondary" onclick="TableauEdit.remove_ligne()">
+          <img src="assets/images/delete_cel.svg" alt="" />
+          Supprimer la derniere ligne
+        </div>
+        <div class="secondary" onclick="TableauEdit.remove_colonne()">
+          <img src="assets/images/delete_ligne.svg" alt="" />
+          Supprimer la derniere colonne
+        </div>
+      </div>
+      <hr>
+      <div class="secondary" onclick="TableauEdit.center()">
+        <img src="assets/images/tab.svg" alt="" />
+        Centrer / Decentrer le tableau
+      </div>
+      <div class="config_item">
+        <div>Largeur du tableau</div>
+        <input
+          type="range"
+          value="75"
+          min="0"
+          max="100"
+          oninput="TableauEdit.largeur(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Marge de gauche</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="TableauEdit.margin_left(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Marge du haut</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="TableauEdit.margin_top(this)"
+        />
       </div>
       <hr />
       <div class="config_item">
@@ -432,23 +486,23 @@
     </div>
 
     <!-- Ajouter les icones -->
-    <div class="p16 hidden  edit" id="add_icon">
+    <div class="p16 hidden edit" id="add_icon">
       <h2 class="tac" style="margin-bottom: 2vw">Librairie d'icones</h2>
       <div class="icons_list" id="icons_list">
-       <div class="iconItem">
-        <img src="assets/icons/Asset 100.png" alt="">
-       </div>
-       <div class="iconItem">
-        <img src="assets/icons/Asset 100.png" alt="">
-       </div>
-       <div class="iconItem">
-        <img src="assets/icons/Asset 100.png" alt="">
-       </div>
-       <div class="iconItem">
-        <img src="assets/icons/Asset 100.png" alt="">
-       </div>
+        <div class="iconItem">
+          <img src="assets/icons/Asset 100.png" alt="" />
+        </div>
+        <div class="iconItem">
+          <img src="assets/icons/Asset 100.png" alt="" />
+        </div>
+        <div class="iconItem">
+          <img src="assets/icons/Asset 100.png" alt="" />
+        </div>
+        <div class="iconItem">
+          <img src="assets/icons/Asset 100.png" alt="" />
+        </div>
       </div>
-      <div class="float_close"  onclick="UI.hide_add_icon()">Fermer</div>
+      <div class="float_close" onclick="UI.hide_add_icon()">Fermer</div>
     </div>
 
     <!-- Edit text -->
@@ -591,7 +645,7 @@
       </div>
       <!-- Size -->
       <div class="config_item">
-        <div >Taille de l'image</div>
+        <div>Taille de l'image</div>
         <input
           type="range"
           value="40"
@@ -633,7 +687,7 @@
 
       <!-- Positionnement -->
       <div class="config_item">
-        <div >Positionnement</div>
+        <div>Positionnement</div>
         <div class="row g4">
           <div class="secondary" onclick="ImageEdit.set_position_relative()">
             Relatif
@@ -655,7 +709,7 @@
         </div>
 
         <div class="config_item">
-          <div >Position horizontale</div>
+          <div>Position horizontale</div>
           <input
             type="range"
             value="0"
@@ -679,7 +733,7 @@
       <!-- Marges -->
       <hr />
       <div class="config_item">
-        <div >Marge du haut</div>
+        <div>Marge du haut</div>
         <input
           type="range"
           value="0"
@@ -699,7 +753,7 @@
         />
       </div>
       <div class="config_item">
-        <div >Marge de gauche</div>
+        <div>Marge de gauche</div>
         <input
           type="range"
           value="0"
@@ -709,7 +763,7 @@
         />
       </div>
       <div class="config_item">
-        <div >Marge de droite</div>
+        <div>Marge de droite</div>
         <input
           type="range"
           value="0"
@@ -721,7 +775,7 @@
       <!-- Arrondis -->
       <hr />
       <div class="config_item">
-        <div >Arrondis haut gauche</div>
+        <div>Arrondis haut gauche</div>
         <input
           type="range"
           value="4"
@@ -873,7 +927,7 @@
       <hr />
       <!-- Ordre  -->
       <div class="config_item">
-        <div >L'ordre dans le plan de travail</div>
+        <div>L'ordre dans le plan de travail</div>
         <div class="row g4">
           <div class="secondary f1" onclick="ConteneurEdit.forward()">
             Avancer
@@ -1066,7 +1120,7 @@
         <img src="assets/images/darken.svg" alt="" />
         Assombrir l'image de fond
       </div>
-     
+
       <hr />
       <div>Fond en degrade</div>
 
@@ -1108,6 +1162,9 @@
           </div>
           <div class="secondary" onclick="ConteneurEdit.set_degrade_radiale()">
             Radiale
+          </div>
+          <div class="secondary" onclick="ConteneurEdit.invert_degrade()">
+            Inverser
           </div>
         </div>
       </div>
@@ -1523,7 +1580,10 @@
             Lineaire
           </div>
           <div class="secondary" onclick="Create.set_degrade_radial()">
-            Radial
+            Radiale
+          </div>
+          <div class="secondary" onclick="Create.invert_degrade()">
+            Inverser
           </div>
         </div>
       </div>
@@ -1581,7 +1641,7 @@
       </div>
       <div class="secondary" onclick="LatextEdit.add_new()">
         <img src="assets/images/latex.svg" alt="" />
-        <div>Ajouter une formule  Latex</div>
+        <div>Ajouter une formule Latex</div>
       </div>
       <div class="secondary" onclick="ChartEdit.add_new()">
         <img src="assets/images/graph.svg" alt="" />
@@ -1595,11 +1655,11 @@
         <img src="assets/images/add_triangle.svg" alt="" />
         <div>Ajouter un triangle</div>
       </div>
-      <div class="secondary" >
+      <div class="secondary">
         <img src="assets/images/add_poly.svg" alt="" />
         <div>Ajouter un polygone</div>
       </div>
-      <div class="secondary" >
+      <div class="secondary">
         <img src="assets/images/add_star.svg" alt="" />
         <div>Ajouter une etoile</div>
       </div>

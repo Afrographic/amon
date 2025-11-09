@@ -324,6 +324,10 @@ button {
     transition: 0.5s;
 }
 
+#renderer *{
+    cursor: pointer;
+}
+
 .artboard_options {
     display: flex;
     flex-direction: column;
@@ -582,5 +586,7 @@ h2 {
 #services_supplementaire img{
     width: 5vw;
 }
+
+
 
 

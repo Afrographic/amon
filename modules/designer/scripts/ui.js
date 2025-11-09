@@ -109,6 +109,7 @@ class UI {
     this.hide_font_view();
     this.hide_circle_edit();
     this.hide_add_icon();
+    this.hide_triangle_edit();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();
