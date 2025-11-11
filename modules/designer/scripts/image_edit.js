@@ -440,4 +440,36 @@ class ImageEdit {
       }
     }
   }
+
+  static delete_image() {
+    if (
+      confirm("Voulez vous vraiment supprimer?")
+    ) {
+      Edit.close_image_edit();
+      let index = -1;
+      for (let i = 0; i <= Create.artboard.length - 1; i++) {
+        if (Create.artboard[i].id == Create.edit_id) {
+          index = i;
+        }
+
+        let index2 = -1;
+        if (Create.artboard[i].children != undefined) {
+          for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+            if (Create.artboard[i].children[j].id == Create.edit_id) {
+              index2 = j;
+            }
+          }
+        }
+        if (index2 != -1) {
+          Create.artboard[i].children.splice(index2, 1);
+          Create.render();
+        }
+      }
+      if (index != -1) {
+        Create.artboard.splice(index, 1);
+        Create.render();
+      }
+    }
+  }
+
 }

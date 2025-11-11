@@ -173,6 +173,10 @@ class Project {
         item = new Triangle();
         item.from_json(project.artboard[i]);
       }
+      if (project.artboard[i].type == "espaceDynamique") {
+        item = new EspaceDynamique();
+        item.from_json(project.artboard[i]);
+      }
       artBoard.push(item);
     }
     Create.artboard = artBoard;

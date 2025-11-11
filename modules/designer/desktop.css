@@ -17,6 +17,11 @@
         padding:8px;
     }
 
+    .chart_container{
+        width:500px;
+        overflow:hidden;
+    }
+
     .tools_web img{
         width: 36px;
         cursor: pointer;

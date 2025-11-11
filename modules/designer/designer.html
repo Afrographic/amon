@@ -35,6 +35,8 @@
       <img src="assets/images/sous_titre.svg" alt="" title="Ajouter un sous titre" onclick="UI.hide_all();Create.add_sous_titre()">
       <img src="assets/images/desc.svg" alt="" title="Ajouter une description" onclick="UI.hide_all();Create.add_text()">
       <img src="assets/images/mini_texte.svg" alt="" title="Ajouter un mini texte" onclick="UI.hide_all();Create.add_mini_text()">
+
+      <img src="assets/images/add_espace.svg" alt="" onclick="EspaceDynamiqueEdit.add('artboard')" title="Ajouter un espace dynamique"/>
       <img src="assets/images/tab.svg" alt="" title="Ajouter un tableau" onclick="UI.hide_all();Create.add_table()">
       <img src="assets/images/latex.svg" alt="" title="Ajouter du Latex" onclick="UI.hide_all();LatextEdit.add_new()">
       <img src="assets/images/add_icon.svg" alt="" title="Ajouter une icone" onclick="UI.hide_all();UI.show_add_icon();UI.hide_add_graphix()">
@@ -170,7 +172,10 @@
       <div class="float_close" onclick="UI.hide_projects()">Fermer</div>
     </div>
 
-    <canvas id="chart_renderer"></canvas>
+    <div class="chart_container">
+      <canvas id="chart_renderer" ></canvas>
+    </div>
+   
 
     <!-- Edit Triangle -->
     <div class="p16 hidden edit column g4" id="triangle_editor">
@@ -367,6 +372,28 @@
       </div>
       <div class="float_close" onclick="UI.hide_graph_editor()">Fermer</div>
     </div>
+    <!-- Edit espace dynamique -->
+    <div class="p16 hidden edit column g4" id="espace_dynamique_editor">
+      <div class="base">Options d'espace dynamique</div>
+      <hr>
+      <div class="config_item">
+        <div>L'ordre dans le plan de travail</div>
+        <div class="row g4">
+          <div class="secondary f1" onclick="ImageEdit.forward()">
+            Avancer
+          </div>
+          <div class="secondary f1" onclick="ImageEdit.backward()">
+            Reculer
+          </div>
+        </div>
+      </div>
+      <div class="secondary" onclick="ImageEdit.delete_image()">
+        <img src="assets/images/delete_new.svg" alt="" />
+        Supprimer l'espace dynamique
+      </div>
+      <div class="float_close" onclick="UI.hide_espace_dynamique_editor()">Fermer</div>
+    </div>
+   
     <!-- Edit Latex -->
     <div class="p16 hidden edit column g4" id="latex_editor">
       <div class="base">Latex</div>
@@ -842,7 +869,7 @@
       </div>
 
       <hr />
-      <div class="secondary" onclick="Edit.delete_image()">
+      <div class="secondary" onclick="ImageEdit.delete_image()">
         <img src="assets/images/delete_new.svg" alt="" />
         Supprimer du design
       </div>
@@ -855,6 +882,43 @@
         <div class="secondary f1" onclick="ConteneurEdit.duplicate()">
           <img src="assets/images/duplicate.svg" alt="" />
           Dupliquer le conteneur
+        </div>
+      </div>
+       <!-- Ajouter des elements -->
+       <div class="column g4">
+        <div class="secondary" onclick="ConteneurEdit.add_title()">
+          <img src="assets/images/titre.svg" alt="" />
+          Ajouter un Titre
+        </div>
+        <div class="secondary" onclick="ConteneurEdit.add_sub_title()">
+          <img src="assets/images/sous_titre.svg" alt="" />
+          Ajouter un sous titre
+        </div>
+        <div class="secondary" onclick="ConteneurEdit.add_conteneur_text()">
+          <img src="assets/images/desc.svg" alt="" />
+          Ajouter une description
+        </div>
+        <div class="secondary" onclick="ConteneurEdit.add_mini_text()">
+          <img src="assets/images/mini_texte.svg" alt="" />
+          Ajouter un mini texte
+        </div>
+        <div class="secondary" onclick="this.firstElementChild.click()">
+          <input
+            type="file"
+            hidden
+            onchange="Edit.add_conteneur_image(event)"
+            accept="image/*"
+          />
+          <img src="assets/images/image.svg" alt="" />
+          <div>Ajouter une image</div>
+        </div>
+        <div class="secondary" onclick="ConteneurEdit.add_icon()">
+          <img src="assets/images/add_icon.svg" alt="" />
+          <div>Ajouter une icone</div>
+        </div>
+        <div class="secondary" onclick="EspaceDynamiqueEdit.add('conteneur')">
+          <img src="assets/images/add_espace.svg" alt="" />
+          Ajouter un espace dynamique
         </div>
       </div>
       <div class="config_item">
@@ -937,39 +1001,7 @@
           </div>
         </div>
       </div>
-      <!-- Ajouter des elements -->
-      <div class="column g4">
-        <div class="secondary" onclick="ConteneurEdit.add_title()">
-          <img src="assets/images/titre.svg" alt="" />
-          Ajouter un Titre
-        </div>
-        <div class="secondary" onclick="ConteneurEdit.add_sub_title()">
-          <img src="assets/images/sous_titre.svg" alt="" />
-          Ajouter un sous titre
-        </div>
-        <div class="secondary" onclick="ConteneurEdit.add_conteneur_text()">
-          <img src="assets/images/desc.svg" alt="" />
-          Ajouter une description
-        </div>
-        <div class="secondary" onclick="ConteneurEdit.add_mini_text()">
-          <img src="assets/images/mini_texte.svg" alt="" />
-          Ajouter un mini texte
-        </div>
-        <div class="secondary" onclick="this.firstElementChild.click()">
-          <input
-            type="file"
-            hidden
-            onchange="Edit.add_conteneur_image(event)"
-            accept="image/*"
-          />
-          <img src="assets/images/image.svg" alt="" />
-          <div>Ajouter une image</div>
-        </div>
-        <div class="secondary" onclick="ConteneurEdit.add_icon()">
-          <img src="assets/images/add_icon.svg" alt="" />
-          <div>Ajouter une icone</div>
-        </div>
-      </div>
+     
       <hr />
       <div class="secondary f1" onclick="ConteneurEdit.setGrid()">
         <img src="assets/images/grid.svg" alt="" />
@@ -1615,6 +1647,10 @@
         <img src="assets/images/mini_texte.svg" alt="" />
         Ajouter un mini texte
       </div>
+      <div class="secondary" onclick="EspaceDynamiqueEdit.add('artboard')">
+        <img src="assets/images/add_espace.svg" alt="" />
+        Ajouter un espace dynamique
+      </div>
       <hr />
       <div class="secondary" onclick="Create.add_conteneur()">
         <img src="assets/images/conteneur.svg" alt="" />
@@ -1758,6 +1794,7 @@
     <script src="models/chart_D.js"></script>
     <script src="models/circle.js"></script>
     <script src="models/triangle.js"></script>
+    <script src="models/espaceDynamique.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
@@ -1775,6 +1812,7 @@
     <script src="scripts/icones.js"></script>
     <script src="scripts/circle_edit.js"></script>
     <script src="scripts/triangle_edit.js"></script>
+    <script src="scripts/espaceDynamiqueEdit.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
     <!-- Register Service Worker -->

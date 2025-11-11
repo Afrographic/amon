@@ -97,6 +97,16 @@ class UI {
     add_icon.classList.add("hidden");
   }
 
+  static show_espace_dynamique_editor(){
+    let espace_dynamique_editor = document.querySelector("#espace_dynamique_editor");
+    espace_dynamique_editor.classList.remove("hidden");
+  }
+  
+  static hide_espace_dynamique_editor(){
+    let espace_dynamique_editor = document.querySelector("#espace_dynamique_editor");
+    espace_dynamique_editor.classList.add("hidden");
+  }
+
 
 
   static hide_all() {
@@ -110,6 +120,7 @@ class UI {
     this.hide_circle_edit();
     this.hide_add_icon();
     this.hide_triangle_edit();
+    this.hide_espace_dynamique_editor();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();
