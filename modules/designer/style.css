@@ -193,8 +193,10 @@ h2 {
 
 * {
     box-sizing: border-box;
-    font-family: "ralewayRegular";
+    /* font-family: "ralewayRegular"; */
 }
+
+
 
 .f1 {
     flex: 1;
@@ -209,6 +211,7 @@ body {
     gap: 8px;
     background-image: url(assets/images/pattern.svg);
     background-size: 2vw;
+    font-family: "ralewayRegular";
 }
 
 input,
@@ -216,6 +219,7 @@ textarea {
     font-size: 16px;
     border: none;
     outline: none;
+    font-family: "ralewayRegular";
     width: 100%;
 }
 
