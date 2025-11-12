@@ -457,5 +457,7 @@ class Edit {
       }
     }
     Create.render();
+    Create.edit_id = image.id;
+    UI.show_image_edit();
   }
 }

@@ -64,6 +64,58 @@ class ImageEdit {
     }
   }
 
+  static crop_left(input){
+      this.crop(0,0,0,input.value);
+  }
+  static crop_top(input){
+    this.crop(input.value,0,0,0);
+  }
+  static crop_right(input){
+    this.crop(0,input.value,0,0);
+  }
+  static crop_bottom(input){
+    this.crop(0,0,input.value,0);
+  }
+
+  // Crop image
+  static async crop(top, right, bottom, left) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        // Crop image
+        let img = new Image();
+        img.src = URL.createObjectURL(Create.artboard[i].file);
+        await img.decode();
+        Create.artboard[i].url = Utils.cropImage(
+          img,
+          parseInt(top),
+          parseInt(right),
+          parseInt(bottom),
+          parseInt(left)
+        );
+        Create.render();
+      }
+
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            let img = new Image();
+            img.src = URL.createObjectURL(Create.artboard[i].children[j].url);;
+            await img.decode();
+            Create.artboard[i].children[j].url = Utils.cropImage(
+              img,
+              parseInt(top),
+              parseInt(right),
+              parseInt(bottom),
+              parseInt(left)
+            );
+            Create.render();
+          }
+        }
+      }
+    }
+  }
+
   static replaceImage(e) {
     if (e.target.files.length == 0) return;
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -159,6 +211,7 @@ class ImageEdit {
       }
     }
   }
+
   static set_margin_right(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
@@ -417,7 +470,7 @@ class ImageEdit {
         let img = new Image();
         img.src = Create.artboard[i].url;
         img.onload = () => {
-          let colored_image = Utils.change_color(img,el.value);
+          let colored_image = Utils.change_color(img, el.value);
           Create.artboard[i].url = colored_image;
           Create.render();
         };
@@ -431,7 +484,7 @@ class ImageEdit {
             let img = new Image();
             img.src = Create.artboard[i].children[j].url;
             img.onload = () => {
-              let colored_image = Utils.change_color(img,el.value);
+              let colored_image = Utils.change_color(img, el.value);
               Create.artboard[i].children[j].url = colored_image;
               Create.render();
             };
@@ -442,9 +495,7 @@ class ImageEdit {
   }
 
   static delete_image() {
-    if (
-      confirm("Voulez vous vraiment supprimer?")
-    ) {
+    if (confirm("Voulez vous vraiment supprimer?")) {
       Edit.close_image_edit();
       let index = -1;
       for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -471,5 +522,4 @@ class ImageEdit {
       }
     }
   }
-
 }

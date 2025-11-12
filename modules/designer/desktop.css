@@ -131,6 +131,10 @@
         font-size: 16px;
         gap: 16px;
         border-radius: 10px;
+    
+    }
+    .float_close{
+        margin-top:4px !important;
     }
 
     .secondary img {

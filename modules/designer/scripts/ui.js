@@ -32,12 +32,12 @@ class UI {
     latex_editor.classList.add("hidden");
   }
 
-  static show_graph_editor(){
+  static show_graph_editor() {
     let graph_editor = document.querySelector("#graph_editor");
     graph_editor.classList.remove("hidden");
   }
 
-  static hide_graph_editor(){
+  static hide_graph_editor() {
     let graph_editor = document.querySelector("#graph_editor");
     graph_editor.classList.add("hidden");
   }
@@ -47,67 +47,101 @@ class UI {
     tableau_editor.classList.add("hidden");
   }
 
-  static show_menu_services(){
-    let services_supplementaire = document.querySelector("#services_supplementaire");
+  static show_menu_services() {
+    let services_supplementaire = document.querySelector(
+      "#services_supplementaire"
+    );
     services_supplementaire.classList.remove("hidden");
   }
-  static hide_menu_services(){
-    let services_supplementaire = document.querySelector("#services_supplementaire");
+  static hide_menu_services() {
+    let services_supplementaire = document.querySelector(
+      "#services_supplementaire"
+    );
     services_supplementaire.classList.add("hidden");
   }
 
-  static show_font_view(){
+  static show_font_view() {
     let change_font = document.querySelector("#change_font");
     change_font.classList.remove("hidden");
   }
 
-  static hide_font_view(){
+  static hide_font_view() {
     let change_font = document.querySelector("#change_font");
     change_font.classList.add("hidden");
   }
 
-  static show_circle_edit(){
+  static show_circle_edit() {
     let circle_editor = document.querySelector("#circle_editor");
     circle_editor.classList.remove("hidden");
   }
 
-  static hide_circle_edit(){
+  static hide_circle_edit() {
     let circle_editor = document.querySelector("#circle_editor");
     circle_editor.classList.add("hidden");
   }
 
-  static show_triangle_edit(){
+  static show_triangle_edit() {
     let triangle_editor = document.querySelector("#triangle_editor");
     triangle_editor.classList.remove("hidden");
   }
 
-  static hide_triangle_edit(){
+  static hide_triangle_edit() {
     let triangle_editor = document.querySelector("#triangle_editor");
     triangle_editor.classList.add("hidden");
   }
-   
 
-  static show_add_icon(){
+  static show_add_icon() {
     let add_icon = document.querySelector("#add_icon");
     add_icon.classList.remove("hidden");
   }
 
-  static hide_add_icon(){
+  static hide_add_icon() {
     let add_icon = document.querySelector("#add_icon");
     add_icon.classList.add("hidden");
   }
 
-  static show_espace_dynamique_editor(){
-    let espace_dynamique_editor = document.querySelector("#espace_dynamique_editor");
+  static show_espace_dynamique_editor() {
+    let espace_dynamique_editor = document.querySelector(
+      "#espace_dynamique_editor"
+    );
     espace_dynamique_editor.classList.remove("hidden");
   }
-  
-  static hide_espace_dynamique_editor(){
-    let espace_dynamique_editor = document.querySelector("#espace_dynamique_editor");
+
+  static hide_espace_dynamique_editor() {
+    let espace_dynamique_editor = document.querySelector(
+      "#espace_dynamique_editor"
+    );
     espace_dynamique_editor.classList.add("hidden");
   }
 
+  static show_image_edit() {
+    let image_edit = document.querySelector("#image_edit");
+    image_edit.classList.remove("hidden");
+  }
 
+  static hide_image_edit() {
+    let image_edit = document.querySelector("#image_edit");
+    image_edit.classList.add("hidden");
+  }
+
+  static show_crop_image(){
+    let crop_image = document.querySelector("#crop_image");
+    crop_image.classList.remove("hidden");
+  }
+
+  static hide_crop_image(){
+    let crop_image = document.querySelector("#crop_image");
+    crop_image.classList.add("hidden");
+  }
+
+  static hide_polygone_edit(){
+    let polygone_editor = document.querySelector("#polygone_editor");
+    polygone_editor.classList.add("hidden");
+  }
+  static show_polygone_edit(){
+    let polygone_editor = document.querySelector("#polygone_editor");
+    polygone_editor.classList.remove("hidden");
+  }
 
   static hide_all() {
     this.hide_projects();
@@ -121,6 +155,8 @@ class UI {
     this.hide_add_icon();
     this.hide_triangle_edit();
     this.hide_espace_dynamique_editor();
+    this.hide_image_edit();
+    this.hide_polygone_edit();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();

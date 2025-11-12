@@ -31,29 +31,99 @@
     <div id="notif_bloc"></div>
     <!-- Tools -->
     <div class="tools_web tools_mobile">
-      <img src="assets/images/titre.svg" alt="" title="Ajouter un Titre" onclick="UI.hide_all();Create.add_titre()">
-      <img src="assets/images/sous_titre.svg" alt="" title="Ajouter un sous titre" onclick="UI.hide_all();Create.add_sous_titre()">
-      <img src="assets/images/desc.svg" alt="" title="Ajouter une description" onclick="UI.hide_all();Create.add_text()">
-      <img src="assets/images/mini_texte.svg" alt="" title="Ajouter un mini texte" onclick="UI.hide_all();Create.add_mini_text()">
+      <img
+        src="assets/images/titre.svg"
+        alt=""
+        title="Ajouter un Titre"
+        onclick="UI.hide_all();Create.add_titre()"
+      />
+      <img
+        src="assets/images/sous_titre.svg"
+        alt=""
+        title="Ajouter un sous titre"
+        onclick="UI.hide_all();Create.add_sous_titre()"
+      />
+      <img
+        src="assets/images/desc.svg"
+        alt=""
+        title="Ajouter une description"
+        onclick="UI.hide_all();Create.add_text()"
+      />
+      <img
+        src="assets/images/mini_texte.svg"
+        alt=""
+        title="Ajouter un mini texte"
+        onclick="UI.hide_all();Create.add_mini_text()"
+      />
 
-      <img src="assets/images/add_espace.svg" alt="" onclick="EspaceDynamiqueEdit.add('artboard')" title="Ajouter un espace dynamique"/>
-      <img src="assets/images/tab.svg" alt="" title="Ajouter un tableau" onclick="UI.hide_all();Create.add_table()">
-      <img src="assets/images/latex.svg" alt="" title="Ajouter du Latex" onclick="UI.hide_all();LatextEdit.add_new()">
-      <img src="assets/images/add_icon.svg" alt="" title="Ajouter une icone" onclick="UI.hide_all();UI.show_add_icon();UI.hide_add_graphix()">
-      <img src="assets/images/image.svg" alt="" title="Ajouter une image" onclick="UI.hide_all();Create.add_image()">
-      <img src="assets/images/graph.svg" alt="" title="Ajouter un Graphique" onclick="UI.hide_all();ChartEdit.add_new()">
-      <img src="assets/images/conteneur.svg" alt="" title="Ajouter un conteneur" onclick="UI.hide_all();Create.add_conteneur()">
-      <img src="assets/images/add_cercle.svg" alt="" title="Ajouter un cercle" onclick="UI.hide_all();Circle_edit.add()">
-      <img src="assets/images/add_triangle.svg" alt="" title="Ajouter un triangle" onclick="UI.hide_all();Triangle_edit.add()">
-      <img src="assets/images/add_poly.svg" alt="" title="Ajouter un polygone">
-      <img src="assets/images/add_star.svg" alt="" title="Ajouter une etoile">
+      <img
+        src="assets/images/add_espace.svg"
+        alt=""
+        onclick="EspaceDynamiqueEdit.add('artboard')"
+        title="Ajouter un espace dynamique"
+      />
+      <img
+        src="assets/images/tab.svg"
+        alt=""
+        title="Ajouter un tableau"
+        onclick="UI.hide_all();Create.add_table()"
+      />
+      <img
+        src="assets/images/latex.svg"
+        alt=""
+        title="Ajouter du Latex"
+        onclick="UI.hide_all();LatextEdit.add_new()"
+      />
+      <img
+        src="assets/images/add_icon.svg"
+        alt=""
+        title="Ajouter une icone"
+        onclick="UI.hide_all();UI.show_add_icon();UI.hide_add_graphix()"
+      />
+      <img
+        src="assets/images/image.svg"
+        alt=""
+        title="Ajouter une image"
+        onclick="UI.hide_all();Create.add_image()"
+      />
+      <img
+        src="assets/images/graph.svg"
+        alt=""
+        title="Ajouter un Graphique"
+        onclick="UI.hide_all();ChartEdit.add_new()"
+      />
+      <img
+        src="assets/images/conteneur.svg"
+        alt=""
+        title="Ajouter un conteneur"
+        onclick="UI.hide_all();Create.add_conteneur()"
+      />
+      <img
+        src="assets/images/add_cercle.svg"
+        alt=""
+        title="Ajouter un cercle"
+        onclick="UI.hide_all();Circle_edit.add()"
+      />
+      <img
+        src="assets/images/add_triangle.svg"
+        alt=""
+        title="Ajouter un triangle"
+        onclick="UI.hide_all();Triangle_edit.add()"
+      />
+      <img
+        src="assets/images/add_poly.svg"
+        alt=""
+        title="Ajouter un polygone"
+        onclick="UI.hide_all();Polygone_Edit.add()"
+      />
+      <img src="assets/images/add_star.svg" alt="" title="Ajouter une etoile" />
     </div>
     <div class="logo" onclick="UI.hide_all()">
       <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
       <h3 style="margin: 0">Djehouty Designer</h3>
     </div>
     <div class="small tac" id="nom_project">Projet Sans titre</div>
-    <div id="renderer" ></div>
+    <div id="renderer"></div>
     <!-- Donation -->
     <div class="donation">
       <img src="assets/images/love.svg" alt="" />
@@ -173,13 +243,122 @@
     </div>
 
     <div class="chart_container">
-      <canvas id="chart_renderer" ></canvas>
+      <canvas id="chart_renderer"></canvas>
     </div>
-   
+
+    <!-- Edit Polygone -->
+    <div class="p16 hidden edit column g4" id="polygone_editor">
+      <hr />
+      <div class="secondary" onclick="Polygone_Edit.duplicate()">
+        <img src="assets/images/duplicate.svg" alt="" />
+        <div>Dupliquer le polygone</div>
+      </div>
+      <div class="config_item">
+        <div>Couleur de remplissage</div>
+        <input
+          data-jscolor=""
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Polygone_Edit.color(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Nombre de cote</div>
+        <input
+          type="range"
+          value="4"
+          min="4"
+          max="16"
+          oninput="Polygone_Edit.side(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Arrondis des bords</div>
+        <input
+          type="range"
+          value="16"
+          min="0"
+          max="128"
+          oninput="Polygone_Edit.arrondis(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Taille</div>
+        <input
+          type="range"
+          value="20"
+          min="0"
+          max="40"
+          oninput="Polygone_Edit.size(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Position verticale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="Polygone_Edit.posY(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Position horizontale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="Polygone_Edit.posX(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Rotation</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="Polygone_Edit.rotate(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Taille de la bordure</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="32"
+          oninput="Polygone_Edit.side_width(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Couleur de la bordure</div>
+        <input
+          data-jscolor=""
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Polygone_Edit.side_color(this)"
+        />
+      </div>
+      <div class="secondary" onclick="Polygone_Edit.delete()">
+        <img src="assets/images/delete_new.svg" alt="" />
+        <div>Supprimer</div>
+      </div>
+      <div class="float_close" onclick="UI.hide_polygone_edit()">Fermer</div>
+    </div>
 
     <!-- Edit Triangle -->
     <div class="p16 hidden edit column g4" id="triangle_editor">
       <hr />
+      <div class="secondary" onclick="Triangle_edit.duplicate()">
+        <img src="assets/images/duplicate.svg" alt="" />
+        <div>Dupliquer le triangle</div>
+      </div>
       <div class="config_item">
         <div>Couleur de remplissage</div>
         <input
@@ -200,10 +379,7 @@
           oninput="Triangle_edit.size(this)"
         />
       </div>
-      <div class="secondary" onclick="Triangle_edit.duplicate()">
-        <img src="assets/images/duplicate.svg" alt="" />
-        <div>Dupliquer le triangle</div>
-      </div>
+
       <div class="config_item">
         <div>Position verticale</div>
         <input
@@ -245,6 +421,10 @@
     <!-- Edit cercle -->
     <div class="p16 hidden edit column g4" id="circle_editor">
       <hr />
+      <div class="secondary" onclick="Circle_edit.duplicate()">
+        <img src="assets/images/duplicate.svg" alt="" />
+        <div>Dupliquer le cercle</div>
+      </div>
       <div class="config_item">
         <div>Couleur de remplissage</div>
         <input
@@ -265,10 +445,7 @@
           oninput="Circle_edit.size(this)"
         />
       </div>
-      <div class="secondary" onclick="Circle_edit.duplicate()">
-        <img src="assets/images/duplicate.svg" alt="" />
-        <div>Dupliquer le cercle</div>
-      </div>
+
       <div class="config_item">
         <div>Position verticale</div>
         <input
@@ -375,25 +552,23 @@
     <!-- Edit espace dynamique -->
     <div class="p16 hidden edit column g4" id="espace_dynamique_editor">
       <div class="base">Options d'espace dynamique</div>
-      <hr>
+      <hr />
       <div class="config_item">
         <div>L'ordre dans le plan de travail</div>
         <div class="row g4">
-          <div class="secondary f1" onclick="ImageEdit.forward()">
-            Avancer
-          </div>
-          <div class="secondary f1" onclick="ImageEdit.backward()">
-            Reculer
-          </div>
+          <div class="secondary f1" onclick="ImageEdit.forward()">Avancer</div>
+          <div class="secondary f1" onclick="ImageEdit.backward()">Reculer</div>
         </div>
       </div>
       <div class="secondary" onclick="ImageEdit.delete_image()">
         <img src="assets/images/delete_new.svg" alt="" />
         Supprimer l'espace dynamique
       </div>
-      <div class="float_close" onclick="UI.hide_espace_dynamique_editor()">Fermer</div>
+      <div class="float_close" onclick="UI.hide_espace_dynamique_editor()">
+        Fermer
+      </div>
     </div>
-   
+
     <!-- Edit Latex -->
     <div class="p16 hidden edit column g4" id="latex_editor">
       <div class="base">Latex</div>
@@ -432,7 +607,7 @@
           Supprimer la derniere colonne
         </div>
       </div>
-      <hr>
+      <hr />
       <div class="secondary" onclick="TableauEdit.center()">
         <img src="assets/images/tab.svg" alt="" />
         Centrer / Decentrer le tableau
@@ -664,8 +839,62 @@
       </div>
       <div class="float_close" onclick="Edit.close_text_edit()">Fermer</div>
     </div>
+    <!-- Rogner l'image -->
+    <div class="p16 hidden edit" id="crop_image">
+      <div>Rogner l'image</div>
+      <hr />
+      <div class="config_item">
+        <div>Rogner a partir de la gauche</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="500"
+          oninput="ImageEdit.crop_left(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Rogner a partir du haut</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="500"
+          oninput="ImageEdit.crop_top(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Rogner a partir de la droite</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="500"
+          oninput="ImageEdit.crop_right(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Rogner a partir du bas</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="500"
+          oninput="ImageEdit.crop_bottom(this)"
+        />
+      </div>
+      <hr />
+      <div class="float_close" onclick="UI.hide_crop_image()">Fermer</div>
+    </div>
     <!-- Edit image -->
     <div class="p16 hidden edit" id="image_edit">
+      <div
+        class="secondary"
+        onclick="UI.hide_image_edit();UI.show_crop_image()"
+      >
+        <img src="assets/images/crop.svg" alt="" />
+        Rogner l'image
+      </div>
       <div class="secondary" onclick="ImageEdit.duplicate()">
         <img src="assets/images/duplicate.svg" alt="" />
         Dupliquer l'image
@@ -884,8 +1113,8 @@
           Dupliquer le conteneur
         </div>
       </div>
-       <!-- Ajouter des elements -->
-       <div class="column g4">
+      <!-- Ajouter des elements -->
+      <div class="column g4">
         <div class="secondary" onclick="ConteneurEdit.add_title()">
           <img src="assets/images/titre.svg" alt="" />
           Ajouter un Titre
@@ -1001,7 +1230,7 @@
           </div>
         </div>
       </div>
-     
+
       <hr />
       <div class="secondary f1" onclick="ConteneurEdit.setGrid()">
         <img src="assets/images/grid.svg" alt="" />
@@ -1683,15 +1912,15 @@
         <img src="assets/images/graph.svg" alt="" />
         <div>Ajouter un graphique</div>
       </div>
-      <div class="secondary" onclick="Circle_edit.add()">
+      <div class="secondary" onclick="UI.hide_all();Circle_edit.add()">
         <img src="assets/images/add_cercle.svg" alt="" />
         <div>Ajouter un cercle/Demi cercle</div>
       </div>
-      <div class="secondary" onclick="Triangle_edit.add()">
+      <div class="secondary" onclick="UI.hide_all();Triangle_edit.add()">
         <img src="assets/images/add_triangle.svg" alt="" />
         <div>Ajouter un triangle</div>
       </div>
-      <div class="secondary">
+      <div class="secondary" onclick="UI.hide_all();Polygone_Edit.add()">
         <img src="assets/images/add_poly.svg" alt="" />
         <div>Ajouter un polygone</div>
       </div>
@@ -1795,6 +2024,7 @@
     <script src="models/circle.js"></script>
     <script src="models/triangle.js"></script>
     <script src="models/espaceDynamique.js"></script>
+    <script src="models/polygone.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
@@ -1813,6 +2043,7 @@
     <script src="scripts/circle_edit.js"></script>
     <script src="scripts/triangle_edit.js"></script>
     <script src="scripts/espaceDynamiqueEdit.js"></script>
+    <script src="scripts/polygone_edit.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
     <!-- Register Service Worker -->

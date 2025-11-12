@@ -54,8 +54,8 @@ class Triangle {
     let clone = new Triangle();
     clone.id = `id_${Math.random() * 100000}`;
     clone.fill_color = this.fill_color;
-    clone.posX = this.posX;
-    clone.posY = this.posY;
+    clone.posX = this.posX+10;
+    clone.posY = this.posY+10;
     clone.rotate = this.rotate;
     clone.scale = this.scale;
     clone.type = this.type;

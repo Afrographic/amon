@@ -96,6 +96,8 @@ class Create {
     this.artboard.push(image);
     this.render();
     UI.hide_add_graphix();
+    Create.edit_id = image.id;
+    UI.show_image_edit();
   }
 
   static async add_icon(number){

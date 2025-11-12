@@ -61,7 +61,7 @@ class Utils {
     );
 
     // Return cropped image as data URL (or blob)
-    return canvas.toDataURL("image/jpeg");
+    return canvas.toDataURL("image/png");
   }
 
   static crop_16_9(img) {
@@ -180,8 +180,6 @@ class Utils {
     return canvas.toDataURL("image/png");
   }
 
-
-
   static convert_to_grayscale(img) {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
@@ -221,7 +219,7 @@ class Utils {
     ctx.fillStyle = color; // dodgerblue
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalCompositeOperation = "source-over";
 
     return canvas.toDataURL("image/png");
   }
@@ -279,7 +277,6 @@ class Utils {
         ],
       },
       options: {
-
         animation: false,
         legend: {
           display: false,
@@ -304,7 +301,6 @@ class Utils {
         ],
       },
       options: {
-
         animation: false,
         legend: {
           display: false,
@@ -487,6 +483,38 @@ class Utils {
       let notif = notifs[notifs.length - 1];
       notif.parentNode.removeChild(notif);
     }, 3200);
+  }
+
+  static cropImage(img, top, right, bottom, left) {
+    const width = img.width - left - right;
+    const height = img.height - top - bottom;
+
+    if (width <= 0 || height <= 0) {
+      reject("Les valeurs de rognage sont trop grandes.");
+      return;
+    }
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = width;
+    canvas.height = height;
+
+    // Dessiner la partie rognée
+    ctx.drawImage(
+      img,
+      left, // x de départ dans l'image
+      top, // y de départ dans l'image
+      width, // largeur à copier
+      height, // hauteur à copier
+      0, // x sur le canvas
+      0, // y sur le canvas
+      width, // largeur finale
+      height // hauteur finale
+    );
+
+    // Retourner le résultat sous forme de dataURL
+   return canvas.toDataURL("image/png");
   }
 }
 

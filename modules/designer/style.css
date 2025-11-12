@@ -308,6 +308,12 @@ button {
     text-align: center;
     border-radius: 8px;
     margin-top: 2vw;
+    transition:0.25s;
+    cursor: pointer;
+}
+
+.float_close:hover{
+    opacity: 0.8;
 }
 
 
@@ -400,6 +406,12 @@ button {
     flex: 1;
     border: 1px solid #d6d6d6;
     align-items: center;
+    cursor: pointer;
+    transition:0.25s;
+}
+
+.secondary:hover{
+    opacity: 0.9;
 }
 
 .secondary img {
