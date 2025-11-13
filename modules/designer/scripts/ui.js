@@ -152,6 +152,15 @@ class UI {
     etoile_editor.classList.remove("hidden");
   }
 
+  static hide_rectangle_edit(){
+    let rectangle_editor = document.querySelector("#rectangle_editor");
+    rectangle_editor.classList.add("hidden");
+  }
+  static show_rectangle_edit(){
+    let rectangle_editor = document.querySelector("#rectangle_editor");
+    rectangle_editor.classList.remove("hidden");
+  }
+
   static hide_all() {
     this.hide_projects();
     this.hide_add_graphix();
@@ -167,6 +176,7 @@ class UI {
     this.hide_image_edit();
     this.hide_polygone_edit();
     this.hide_etoile_edit();
+    this.hide_rectangle_edit();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();

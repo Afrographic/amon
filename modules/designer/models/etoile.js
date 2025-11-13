@@ -7,7 +7,7 @@ class Etoile {
     this.points = 3;
     this.posX = 0;
     this.posY = 0;
-    this.rotate = 0;
+    this.rotate = 0; 
     this.scale = 1;
     this.cornerRadius = 16;
     this.url="";

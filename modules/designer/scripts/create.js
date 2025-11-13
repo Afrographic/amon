@@ -23,52 +23,48 @@ class Create {
   // End project settings
 
   static add_titre() {
-    
     let new_titre = new Titre();
     this.artboard.push(new_titre);
     this.render();
     UI.hide_add_graphix();
 
-    Edit.edit_text({},new_titre.id);
+    Edit.edit_text({}, new_titre.id);
     // Focus text edit area
     let text_edit_input = document.querySelector("#text_edit_input");
     text_edit_input.focus();
   }
 
   static add_sous_titre() {
-
     let new_sous_titre = new SousTitre();
     this.artboard.push(new_sous_titre);
     this.render();
     UI.hide_add_graphix();
 
-    Edit.edit_text({},new_sous_titre.id);
+    Edit.edit_text({}, new_sous_titre.id);
     // Focus text edit area
     let text_edit_input = document.querySelector("#text_edit_input");
     text_edit_input.focus();
   }
 
   static add_text() {
-
     let new_texte = new Text();
     this.artboard.push(new_texte);
     this.render();
     UI.hide_add_graphix();
 
-    Edit.edit_text({},new_texte.id);
+    Edit.edit_text({}, new_texte.id);
     // Focus text edit area
     let text_edit_input = document.querySelector("#text_edit_input");
     text_edit_input.focus();
   }
 
   static add_mini_text() {
-   
     let new_mini_texte = new MiniTexte();
     this.artboard.push(new_mini_texte);
     this.render();
     UI.hide_add_graphix();
 
-    Edit.edit_text({},new_mini_texte.id);
+    Edit.edit_text({}, new_mini_texte.id);
     // Focus text edit area
     let text_edit_input = document.querySelector("#text_edit_input");
     text_edit_input.focus();
@@ -100,18 +96,18 @@ class Create {
     UI.show_image_edit();
   }
 
-  static async add_icon(number){
+  static async add_icon(number) {
     let image = new Image();
     image.src = `assets/icons/Asset ${number}.png`;
     await image.decode();
-    let url = Utils.change_color(image,"#000");
+    let url = Utils.change_color(image, "#000");
     let image_to_add = new Image_D();
     image_to_add.width = 8;
     image_to_add.url = url;
 
-    if(Icones.in_conteneur == false){
+    if (Icones.in_conteneur == false) {
       this.artboard.push(image_to_add);
-    }else{
+    } else {
       // Add in conteneur
       for (let i = 0; i <= Create.artboard.length - 1; i++) {
         if (Create.artboard[i].id == Create.edit_id) {
@@ -120,7 +116,6 @@ class Create {
       }
       Icones.in_conteneur = false;
     }
-   
 
     this.render();
     UI.hide_add_icon();
@@ -134,7 +129,7 @@ class Create {
     Edit.edit_conteneur(conteneur.id);
   }
 
-  static render() {
+  static async render() {
     let renderer = document.querySelector("#renderer");
     renderer.style.alignItems = this.H_align;
     renderer.style.justifyContent = this.V_align;
@@ -165,6 +160,21 @@ class Create {
     for (let el of this.artboard) {
       renderer.innerHTML += el.render();
     }
+    //Render Free Draw canvas
+    let width = renderer.clientWidth;
+    let height = renderer.clientHeight;
+    renderer.innerHTML += `
+    <canvas id="freeDraw" width="${width}" height="${height}" style="position:absolute;top:0;left:0;"></canvas>
+    `;
+    //Launch Free Draw
+    FreeDraw.launch();
+    // --Keep previous state
+    let canvas = document.querySelector("#freeDraw");
+    let ctx = canvas.getContext("2d");
+    let image_object = new Image();
+    image_object.src = FreeDraw.currentDraw;
+    await image_object.decode();
+    ctx.drawImage(image_object, 0, 0, canvas.width, canvas.height);
   }
 
   static set_gap(el) {
@@ -256,7 +266,7 @@ class Create {
       renderer.style.backgroundColor = "#fff";
     }
   }
- 
+
   static darken_bg() {
     if (this.bg_file == undefined) return;
     // Crop image
@@ -309,8 +319,8 @@ class Create {
   }
 
   static invert_degrade() {
-    let temp  =  this.deg_first_color;
-    this.deg_first_color =  this.deg_second_color;
+    let temp = this.deg_first_color;
+    this.deg_first_color = this.deg_second_color;
     this.deg_second_color = temp;
     this.render();
   }
@@ -319,8 +329,6 @@ class Create {
     this.deg_type = "linear";
     this.render();
   }
-
-  
 }
 
 Create.render();

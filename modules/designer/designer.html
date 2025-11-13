@@ -122,6 +122,12 @@
         alt=""
         title="Ajouter une etoile"
       />
+      <img
+        onclick="UI.hide_all();RectangleEdit.add();"
+        src="assets/images/line.svg"
+        alt=""
+        title="Ajouter un rectangle"
+      />
     </div>
     <div class="logo" onclick="UI.hide_all()">
       <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
@@ -249,6 +255,113 @@
 
     <div class="chart_container">
       <canvas id="chart_renderer"></canvas>
+    </div>
+
+     <!-- Edit Rectangle -->
+     <div class="p16 hidden edit column g4" id="rectangle_editor">
+      <hr />
+      <div class="secondary" onclick="RectangleEdit.duplicate()">
+        <img src="assets/images/duplicate.svg" alt="" />
+        <div>Dupliquer le rectangle</div>
+      </div>
+      <div class="config_item">
+        <div>Couleur de remplissage</div>
+        <input
+          data-jscolor=""
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="RectangleEdit.color(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>hauteur</div>
+        <input
+          type="range"
+          value="20"
+          min="0"
+          max="300"
+          oninput="RectangleEdit.height(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Largeur</div>
+        <input
+          type="range"
+          value="450"
+          min="0"
+          max="450"
+          oninput="RectangleEdit.width(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Taille</div>
+        <input
+          type="range"
+          value="20"
+          min="0"
+          max="40"
+          oninput="RectangleEdit.size(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Position verticale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="RectangleEdit.posY(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Position horizontale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="RectangleEdit.posX(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Rotation</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="RectangleEdit.rotate(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Taille de la bordure</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="32"
+          oninput="RectangleEdit.side_width(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Couleur de la bordure</div>
+        <input
+          data-jscolor=""
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="RectangleEdit.side_color(this)"
+        />
+      </div>
+      <div class="secondary" onclick="RectangleEdit.delete()">
+        <img src="assets/images/delete_new.svg" alt="" />
+        <div>Supprimer</div>
+      </div>
+      <div class="float_close" onclick="UI.hide_rectangle_edit()">Fermer</div>
     </div>
 
     <!-- Edit Etoile -->
@@ -2051,9 +2164,13 @@
         <img src="assets/images/add_poly.svg" alt="" />
         <div>Ajouter un polygone</div>
       </div>
-      <div class="secondary">
+      <div class="secondary" onclick="UI.hide_all();Etoile_Edit.add();">
         <img src="assets/images/add_star.svg" alt="" />
         <div>Ajouter une etoile</div>
+      </div>
+      <div class="secondary" onclick="UI.hide_all();RectangleEdit.add();">
+        <img src="assets/images/line.svg" alt="" />
+        <div>Ajouter un rectangle</div>
       </div>
       <hr />
       <div class="secondary" onclick="UI.show_projects();UI.hide_add_graphix()">
@@ -2153,7 +2270,9 @@
     <script src="models/espaceDynamique.js"></script>
     <script src="models/polygone.js"></script>
     <script src="models/etoile.js"></script>
+    <script src="models/rectangle.js"></script>
     <!-- Engines -->
+    <script src="scripts/freeDraw.js"></script>
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
     <script src="scripts/conteneur_edit.js"></script>
@@ -2173,6 +2292,8 @@
     <script src="scripts/espaceDynamiqueEdit.js"></script>
     <script src="scripts/polygone_edit.js"></script>
     <script src="scripts/etoile_edit.js"></script>
+    <script src="scripts/rectangle_edit.js"></script>
+   
     <!-- DB -->
     <script src="scripts/db.js"></script>
     <!-- Register Service Worker -->

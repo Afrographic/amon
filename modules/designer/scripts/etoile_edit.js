@@ -101,7 +101,7 @@ class Etoile_Edit{
       }
     
       static delete() {
-        if (confirm("Voulez vous vraiment supprimer le polygone?")) {
+        if (confirm("Voulez vous vraiment supprimer l'etoile?")) {
           let index = -1;
           for (let i = 0; i <= Create.artboard.length - 1; i++) {
             if (Create.artboard[i].id == Create.edit_id) {

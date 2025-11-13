@@ -31,6 +31,7 @@ class Utils {
     });
   }
 
+
   static cropImageToSquare(img) {
     // Create a canvas
     const canvas = document.createElement("canvas");

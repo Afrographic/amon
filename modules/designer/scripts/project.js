@@ -181,6 +181,14 @@ class Project {
         item = new Polygone();
         item.from_json(project.artboard[i]);
       }
+      if (project.artboard[i].type == "etoile") {
+        item = new Etoile();
+        item.from_json(project.artboard[i]);
+      }
+      if (project.artboard[i].type == "rectangle") {
+        item = new Rectangle();
+        item.from_json(project.artboard[i]);
+      }
       artBoard.push(item);
     }
     Create.artboard = artBoard;
