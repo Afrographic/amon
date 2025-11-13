@@ -64,21 +64,42 @@ class ImageEdit {
     }
   }
 
-  static crop_left(input){
-      this.crop(0,0,0,input.value);
+  static crop_left(input) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].crop_left = input.value;
+        this.crop();
+      }
+    }
+   
   }
-  static crop_top(input){
-    this.crop(input.value,0,0,0);
+  static crop_top(input) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].crop_top = input.value;
+        this.crop();
+      }
+    }
   }
-  static crop_right(input){
-    this.crop(0,input.value,0,0);
+  static crop_right(input) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].crop_right = input.value;
+        this.crop();
+      }
+    }
   }
-  static crop_bottom(input){
-    this.crop(0,0,input.value,0);
+  static crop_bottom(input) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].crop_bottom = input.value;
+        this.crop();
+      }
+    }
   }
 
   // Crop image
-  static async crop(top, right, bottom, left) {
+  static async crop() {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
       if (Create.artboard[i].id == Create.edit_id) {
         // Crop image
@@ -87,10 +108,10 @@ class ImageEdit {
         await img.decode();
         Create.artboard[i].url = Utils.cropImage(
           img,
-          parseInt(top),
-          parseInt(right),
-          parseInt(bottom),
-          parseInt(left)
+          parseInt(Create.artboard[i].crop_top),
+          parseInt(Create.artboard[i].crop_right),
+          parseInt(Create.artboard[i].crop_bottom),
+          parseInt(Create.artboard[i].crop_left)
         );
         Create.render();
       }
@@ -100,7 +121,7 @@ class ImageEdit {
         for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
           if (Create.artboard[i].children[j].id == Create.edit_id) {
             let img = new Image();
-            img.src = URL.createObjectURL(Create.artboard[i].children[j].url);;
+            img.src = URL.createObjectURL(Create.artboard[i].children[j].url);
             await img.decode();
             Create.artboard[i].children[j].url = Utils.cropImage(
               img,

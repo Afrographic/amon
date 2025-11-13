@@ -19,6 +19,11 @@ class Image_D {
     this.posY = "0";
     this.posX = "0";
     this.rotate = "0";
+    // Crops
+    this.crop_top=0;
+    this.crop_left=0;
+    this.crop_right = 0;
+    this.crop_bottom=0;
     // Type
     this.type = "image";
   }
@@ -72,6 +77,12 @@ class Image_D {
     this.posY = json.posY;
     this.posX = json.posX;
     this.rotate = json.rotate;
+
+    this.crop_left = json.crop_left;
+    this.crop_right = json.crop_right;
+    this.crop_bottom = json.crop_bottom;
+    this.crop_top = json.crop_top;
+
     this.type = json.type;
   }
 
@@ -93,6 +104,12 @@ class Image_D {
     clone.position = this.position;
     clone.posY = this.posY;
     clone.posX = this.posX;
+
+    clone.crop_top = this.crop_top;
+    clone.crop_bottom = this.crop_bottom;
+    clone.crop_left = this.crop_left;
+    clone.crop_right = this.crop_right;
+
     clone.rotate = this.rotate;
     clone.type = this.type;
     return clone;
@@ -126,6 +143,11 @@ class Image_D {
       posY: this.posY,
       posX: this.posX,
       rotate: this.rotate,
+      //Cropping
+      crop_left: this.crop_left,
+      crop_right: this.crop_right,
+      crop_top: this.crop_top,
+      crop_bottom: this.crop_bottom,
       // Type
       type: this.type,
     };
