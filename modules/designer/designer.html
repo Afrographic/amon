@@ -116,7 +116,12 @@
         title="Ajouter un polygone"
         onclick="UI.hide_all();Polygone_Edit.add()"
       />
-      <img src="assets/images/add_star.svg" alt="" title="Ajouter une etoile" />
+      <img
+        onclick="UI.hide_all();Etoile_Edit.add();"
+        src="assets/images/add_star.svg"
+        alt=""
+        title="Ajouter une etoile"
+      />
     </div>
     <div class="logo" onclick="UI.hide_all()">
       <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
@@ -246,12 +251,126 @@
       <canvas id="chart_renderer"></canvas>
     </div>
 
+    <!-- Edit Etoile -->
+    <div class="p16 hidden edit column g4" id="etoile_editor">
+      <hr />
+      <div class="secondary" onclick="Etoile_Edit.duplicate()">
+        <img src="assets/images/duplicate.svg" alt="" />
+        <div>Dupliquer l'etoile</div>
+      </div>
+      <div class="secondary" onclick="Polygone_Edit.image()">
+        <img src="assets/images/image.svg" alt="" />
+        <div>Inserer une image a l'interieure</div>
+      </div>
+      <div class="config_item">
+        <div>Couleur de remplissage</div>
+        <input
+          data-jscolor=""
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Etoile_Edit.color(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Nombre de points</div>
+        <input
+          type="range"
+          value="3"
+          min="3"
+          max="16"
+          oninput="Etoile_Edit.points(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Arrondis des bords</div>
+        <input
+          type="range"
+          value="16"
+          min="0"
+          max="128"
+          oninput="Etoile_Edit.arrondis(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Taille</div>
+        <input
+          type="range"
+          value="20"
+          min="0"
+          max="40"
+          oninput="Etoile_Edit.size(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Position verticale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="Etoile_Edit.posY(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Position horizontale</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          oninput="Etoile_Edit.posX(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Rotation</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="360"
+          oninput="Etoile_Edit.rotate(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Taille de la bordure</div>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="32"
+          oninput="Etoile_Edit.side_width(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Couleur de la bordure</div>
+        <input
+          data-jscolor=""
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="Etoile_Edit.side_color(this)"
+        />
+      </div>
+      <div class="secondary" onclick="Polygone_Edit.delete()">
+        <img src="assets/images/delete_new.svg" alt="" />
+        <div>Supprimer</div>
+      </div>
+      <div class="float_close" onclick="UI.hide_etoile_edit()">Fermer</div>
+    </div>
+
     <!-- Edit Polygone -->
     <div class="p16 hidden edit column g4" id="polygone_editor">
       <hr />
       <div class="secondary" onclick="Polygone_Edit.duplicate()">
         <img src="assets/images/duplicate.svg" alt="" />
         <div>Dupliquer le polygone</div>
+      </div>
+      <div class="secondary" onclick="Polygone_Edit.image()">
+        <img src="assets/images/image.svg" alt="" />
+        <div>Inserer une image a l'interieure</div>
       </div>
       <div class="config_item">
         <div>Couleur de remplissage</div>
@@ -359,6 +478,10 @@
         <img src="assets/images/duplicate.svg" alt="" />
         <div>Dupliquer le triangle</div>
       </div>
+      <div class="secondary" onclick="Polygone_Edit.image()">
+        <img src="assets/images/image.svg" alt="" />
+        <div>Inserer une image a l'interieure</div>
+      </div>
       <div class="config_item">
         <div>Couleur de remplissage</div>
         <input
@@ -424,6 +547,10 @@
       <div class="secondary" onclick="Circle_edit.duplicate()">
         <img src="assets/images/duplicate.svg" alt="" />
         <div>Dupliquer le cercle</div>
+      </div>
+      <div class="secondary" onclick="Polygone_Edit.image()">
+        <img src="assets/images/image.svg" alt="" />
+        <div>Inserer une image a l'interieure</div>
       </div>
       <div class="config_item">
         <div>Couleur de remplissage</div>
@@ -2025,6 +2152,7 @@
     <script src="models/triangle.js"></script>
     <script src="models/espaceDynamique.js"></script>
     <script src="models/polygone.js"></script>
+    <script src="models/etoile.js"></script>
     <!-- Engines -->
     <script src="scripts/create.js"></script>
     <script src="scripts/edit.js"></script>
@@ -2044,6 +2172,7 @@
     <script src="scripts/triangle_edit.js"></script>
     <script src="scripts/espaceDynamiqueEdit.js"></script>
     <script src="scripts/polygone_edit.js"></script>
+    <script src="scripts/etoile_edit.js"></script>
     <!-- DB -->
     <script src="scripts/db.js"></script>
     <!-- Register Service Worker -->

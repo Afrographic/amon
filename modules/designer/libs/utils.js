@@ -514,7 +514,25 @@ class Utils {
     );
 
     // Retourner le résultat sous forme de dataURL
-   return canvas.toDataURL("image/png");
+    return canvas.toDataURL("image/png");
+  }
+
+  static clipping_mask(image, mask) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = mask.width;
+    canvas.height = mask.height;
+    ctx.drawImage(mask, 0, 0, canvas.width, canvas.height);
+
+    // Use the alpha channel of the mask as clipping area
+    ctx.globalCompositeOperation = "source-in";
+
+    // Draw the main image — only the masked part will show
+    ctx.drawImage(image, 0, 0, mask.width, mask.width*image.height/image.width);
+
+    // Reset the composite operation for future drawings
+    ctx.globalCompositeOperation = "source-over";
+    return canvas.toDataURL("image/png");
   }
 }
 

@@ -122,4 +122,41 @@ class Polygone_Edit {
       }
     }
   }
+
+  static image() {
+    // Importing the image
+    let input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.classList.add("hidden");
+    input.click();
+    input.addEventListener("change", async (e) => {
+      let file = e.target.files[0];
+      let image = new Image();
+      image.src = URL.createObjectURL(file);
+      await image.decode();
+
+      for (let i = 0; i <= Create.artboard.length - 1; i++) {
+        if (Create.artboard[i].id == Create.edit_id) {
+          // Turn image to Black
+          Create.artboard[i].fill_color = "#000";
+          Create.artboard[i].stroke_width = 0;
+          Create.artboard[i].render();
+          //Create the clipping mask
+          let mask = new Image();
+          mask.src = Create.artboard[i].url;
+          await mask.decode();
+          let clipping_mask = Utils.clipping_mask(image, mask);
+          //Append the new image
+          let new_image = new Image_D();
+          new_image.url = clipping_mask;
+          Create.artboard[i] = new_image;
+          //Rendering
+          UI.hide_all();
+          Create.render();
+          break;
+        }
+      }
+    });
+  }
 }

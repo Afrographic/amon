@@ -1,17 +1,17 @@
-class Polygone {
+class Etoile {
   constructor() {
     this.id = Utils.generate_unique_id_from_time();
     this.fill_color = "#000";
     this.stroke_color = "red";
     this.stroke_width = 0;
-    this.side = 3;
+    this.points = 3;
     this.posX = 0;
     this.posY = 0;
     this.rotate = 0;
     this.scale = 1;
     this.cornerRadius = 16;
     this.url="";
-    this.type = "polygone";
+    this.type = "etoile";
   }
 
   render() {
@@ -19,100 +19,68 @@ class Polygone {
     canvas.width = 500;
     canvas.height = 500;
     let ctx = canvas.getContext("2d");
-    let outerRadius = 220;
+    let outerRadius = 250;
+    let innerRadius = 100; 
     let cornerRadius = this.cornerRadius;
     let rotation = -Math.PI / 2;
     let cx = canvas.width / 2;
     let cy = canvas.height / 2;
-    let sides = this.side;
+    let points = this.points;
 
-    // calculer sommets du polygone régulier
     const pts = [];
-    for (let i = 0; i < sides; i++) {
-      const angle = rotation + (i / sides) * Math.PI * 2;
-      pts.push({
-        x: cx + Math.cos(angle) * outerRadius,
-        y: cy + Math.sin(angle) * outerRadius,
-      });
+    const step = Math.PI / points;
+    for (let i = 0; i < 2 * points; i++) {
+      const r = i % 2 === 0 ? outerRadius : innerRadius;
+      const angle = rotation + i * step;
+      pts.push({ x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r });
     }
 
-    // helper: vecteur, norme, normalisation
+    // Petite fonction utilitaire
     const sub = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
+    const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
+    const mul = (v, s) => ({ x: v.x * s, y: v.y * s });
     const len = (v) => Math.hypot(v.x, v.y);
     const norm = (v) => {
       const L = len(v) || 1;
       return { x: v.x / L, y: v.y / L };
     };
     const dot = (a, b) => a.x * b.x + a.y * b.y;
-    const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
-    const mul = (v, s) => ({ x: v.x * s, y: v.y * s });
 
     ctx.beginPath();
 
-    for (let i = 0; i < sides; i++) {
-      const prev = pts[(i - 1 + sides) % sides];
+    for (let i = 0; i < pts.length; i++) {
+      const prev = pts[(i - 1 + pts.length) % pts.length];
       const cur = pts[i];
-      const next = pts[(i + 1) % sides];
+      const next = pts[(i + 1) % pts.length];
 
-      // vecteurs depuis curr vers prev et next
       const vPrev = norm(sub(prev, cur));
       const vNext = norm(sub(next, cur));
 
-      // angle interne en curr
       let cosTheta = dot(vPrev, vNext);
       cosTheta = Math.max(-1, Math.min(1, cosTheta));
-      const theta = Math.acos(cosTheta); // angle entre vPrev et vNext
+      const theta = Math.acos(cosTheta);
 
-      // distance tangent le long des bords pour atteindre le point de tangence
       let tangent = cornerRadius / Math.tan(theta / 2);
-
-      // limiter tangent s'il dépasse la moitié des longueurs d'arête adjacentes
       const distPrev = len(sub(prev, cur));
       const distNext = len(sub(next, cur));
-      const maxT = Math.min(distPrev, distNext) / 2 - 1e-6; // marge min
-      if (tangent > maxT) {
-        tangent = maxT;
-        // on ajuste cornerRadius pour rester cohérent
-        cornerRadius = tangent * Math.tan(theta / 2);
-      }
+      const maxT = Math.min(distPrev, distNext) / 2 - 1e-6;
+      if (tangent > maxT) tangent = maxT;
 
-      // points de tangence sur les deux arêtes
-      const p1 = add(cur, mul(vPrev, tangent)); // sur arête (cur->prev)
-      const p2 = add(cur, mul(vNext, tangent)); // sur arête (cur->next)
+      const p1 = add(cur, mul(vPrev, tangent));
+      const p2 = add(cur, mul(vNext, tangent));
 
-      // centre de l'arc (sur la bissectrice)
       const bis = norm(add(vPrev, vNext));
-      // si vPrev ≈ -vNext (angle ≈ 180°) la bis est presque zéro -> cas plat
-      let center;
-      if (Math.abs(bis.x) < 1e-9 && Math.abs(bis.y) < 1e-9) {
-        // coin presque plat; prendre arc de rayon cornerRadius perpendiculaire
-        center = add(cur, {
-          x: -vPrev.y * cornerRadius,
-          y: vPrev.x * cornerRadius,
-        });
-      } else {
-        const distToCenter = cornerRadius / Math.sin(theta / 2);
-        center = add(cur, mul(bis, distToCenter));
-      }
+      const distToCenter = cornerRadius / Math.sin(theta / 2);
+      const center = add(cur, mul(bis, distToCenter));
 
-      // angles pour l'arc
       const startAngle = Math.atan2(p1.y - center.y, p1.x - center.x);
       const endAngle = Math.atan2(p2.y - center.y, p2.x - center.x);
 
-      // pour le premier sommet on moveTo le p1
-      if (i === 0) {
-        ctx.moveTo(p1.x, p1.y);
-      } else {
-        // relier depuis le précédent arc jusqu'à p1 par une ligne (ou déjà relié)
-        ctx.lineTo(p1.x, p1.y);
-      }
+      if (i === 0) ctx.moveTo(p1.x, p1.y);
+      else ctx.lineTo(p1.x, p1.y);
 
-      // détermination du sens de dessin de l'arc : on veut arc "intérieur"
-      // On calcule cross pour savoir si l'orientation est cw/ccw
       const cross = vPrev.x * vNext.y - vPrev.y * vNext.x;
-      const anticlockwise = cross > 0; // si cross >0 => arc sens anti-horaire pour polygone CCW
-
-      // dessiner l'arc du p1 à p2 autour de center
+      const anticlockwise = cross > 0;
       ctx.arc(
         center.x,
         center.y,
@@ -124,7 +92,6 @@ class Polygone {
     }
 
     ctx.closePath();
-    // style par défaut (modifiable)
     ctx.fillStyle = this.fill_color;
     ctx.strokeStyle = this.stroke_color;
     ctx.lineWidth = this.stroke_width;
@@ -137,7 +104,7 @@ class Polygone {
     this.url = url;
 
     return `
-    <img onclick="Polygone_Edit.edit('${this.id}')" src="${url}" style="transform-origin:top left;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
+    <img onclick="Etoile_Edit.edit('${this.id}')" src="${url}" style="transform-origin:top left;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
   `;
   }
 
@@ -172,7 +139,7 @@ class Polygone {
   }
 
   clone() {
-    let clone = new Polygone();
+    let clone = new Etoile();
     clone.id = `id_${Math.random() * 100000}`;
     clone.fill_color = this.fill_color;
     clone.stroke_color = this.stroke_color;

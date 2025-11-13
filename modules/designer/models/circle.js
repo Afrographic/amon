@@ -9,6 +9,7 @@ class Circle {
     this.scale = 1;
     this.type = "circle";
     this.demi = 0;
+    this.url="";
     this.rotate = 0;
   }
 
@@ -34,9 +35,10 @@ class Circle {
     }
 
     let rendered_img = canvas.toDataURL("image/png");
+    this.url = rendered_img;
 
     return `
-          <img onclick="Circle_edit.edit('${this.id}')" src="${rendered_img}" style="transform-origin:center;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
+          <img onclick="Circle_edit.edit('${this.id}')" src="${rendered_img}" style="transform-origin:top left;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
         `;
   }
 
