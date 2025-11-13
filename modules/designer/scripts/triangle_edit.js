@@ -9,6 +9,7 @@ class Triangle_edit {
     }
   
     static edit(id) {
+      UI.hide_all();
       Create.edit_id = id;
       UI.show_triangle_edit();
     }

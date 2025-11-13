@@ -4,7 +4,7 @@ class Polygone {
     this.fill_color = "#000";
     this.stroke_color = "red";
     this.stroke_width = 0;
-    this.side = 4;
+    this.side = 3;
     this.posX = 0;
     this.posY = 0;
     this.rotate = 0;
@@ -135,7 +135,7 @@ class Polygone {
     let url = canvas.toDataURL("image/png");
 
     return `
-    <img onclick="Polygone_Edit.edit('${this.id}')" src="${url}" style="transform-origin:top left;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
+    <img onclick="Polygone_Edit.edit('${this.id}')" src="${url}" style="transform-origin:center;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
   `;
   }
 

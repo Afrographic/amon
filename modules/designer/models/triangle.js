@@ -24,7 +24,7 @@ class Triangle {
     let rendered_img = canvas.toDataURL("image/png");
 
     return `
-              <img onclick="Triangle_edit.edit('${this.id}')" src="${rendered_img}" style="transform-origin:top left;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
+              <img onclick="Triangle_edit.edit('${this.id}')" src="${rendered_img}" style="transform-origin:center;position:absolute;top:${this.posY}vw;left:${this.posX}vw;transform:scale(${this.scale}) rotate(${this.rotate}deg)"/>
             `;
   }
 
