@@ -12,9 +12,9 @@ class FreeDraw {
     let lastX = 0,
       lastY = 0;
     let lastTime = 0;
-    let size = parseInt(this.brush_size);
+    let size = this.brush_size;
     let velocity = 0;
-    let lineWidth = size;
+    let lineWidth = this.brush_size;
 
     // Smooth taper control
     function getTaperedSize(distance, maxSize) {
@@ -39,8 +39,8 @@ class FreeDraw {
     function getPos(e) {
       if (e.touches && e.touches.length)
         return {
-          x: e.touches[0].clientX - canvas.offsetLeft,
-          y: e.touches[0].clientY - canvas.offsetTop,
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY-90,
         };
       return { x: e.offsetX, y: e.offsetY };
     }
@@ -95,5 +95,21 @@ class FreeDraw {
       //Save current state
       FreeDraw.currentDraw = canvas.toDataURL("image/png");
     }
+  }
+
+  static set_brush_color(el){
+    this.brush_color = el.value;
+  }
+  
+  static async set_brush_size(el){
+    this.brush_size = parseInt(el.value);
+    this.launch();
+  }
+
+  static clear(){
+    const canvas = document.getElementById("freeDraw");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    this.currentDraw ="";
   }
 }

@@ -71,7 +71,6 @@ class ImageEdit {
         this.crop();
       }
     }
-   
   }
   static crop_top(input) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
@@ -509,6 +508,26 @@ class ImageEdit {
               Create.artboard[i].children[j].url = colored_image;
               Create.render();
             };
+          }
+        }
+      }
+    }
+  }
+
+  static shadow(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].shadow_color = el.value;
+        Create.render();
+      }
+
+      //Remove BG in Children
+      // Clone  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].shadow_color = el.value;
+            Create.render();
           }
         }
       }

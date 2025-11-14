@@ -55,14 +55,14 @@ class ConteneurEdit {
         Create.artboard[i].rotate = el.value;
         Create.render();
       }
-      // Edit  in conteneur children
-      if (Create.artboard[i].children != undefined) {
-        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
-          if (Create.artboard[i].children[j].id == Create.edit_id) {
-            Create.artboard[i].children[j].rotate = el.value;
-            Create.render();
-          }
-        }
+    }
+  }
+
+  static shadow(el) {
+    for (let i = 0; i <= Create.artboard.length - 1; i++) {
+      if (Create.artboard[i].id == Create.edit_id) {
+        Create.artboard[i].shadow_color = el.value;
+        Create.render();
       }
     }
   }
@@ -340,7 +340,7 @@ class ConteneurEdit {
     }
     Create.render();
   }
-
+ 
   //Set column count
   static setColumn(el) {
     for (let i = 0; i <= Create.artboard.length - 1; i++) {

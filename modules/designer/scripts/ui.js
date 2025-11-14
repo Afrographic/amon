@@ -161,6 +161,15 @@ class UI {
     rectangle_editor.classList.remove("hidden");
   }
 
+  static hide_free_draw_editor(){
+    let free_draw_editor = document.querySelector("#free_draw_editor");
+    free_draw_editor.classList.add("hidden");
+  }
+  static show_free_draw_editor(){
+    let free_draw_editor = document.querySelector("#free_draw_editor");
+    free_draw_editor.classList.remove("hidden");
+  }
+
   static hide_all() {
     this.hide_projects();
     this.hide_add_graphix();
@@ -177,6 +186,7 @@ class UI {
     this.hide_polygone_edit();
     this.hide_etoile_edit();
     this.hide_rectangle_edit();
+    this.hide_free_draw_editor();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();

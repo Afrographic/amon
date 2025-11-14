@@ -51,6 +51,7 @@ class Conteneur {
     this.deg_first_color = "rgba(0,0,0,0)";
     this.deg_second_color = "rgba(0,0,0,0)";
     this.rotate = "0";
+    this.shadow_color = "rgba(0,0,0,0)";
   }
 
   render() {
@@ -84,7 +85,7 @@ class Conteneur {
         gap:${this.gap}vw;
         background-color:${this.background_color};
         background:${degrade}, ${this.background_image};
-
+        box-shadow:0px 7px 12px 0px ${this.shadow_color};
         width:${this.width}%;
         padding:${this.padding_top_bottom} ${this.padding_left_right};
         align-items:${this.vertAlign};
@@ -119,6 +120,8 @@ class Conteneur {
     this.deg_first_color = json.deg_first_color;
     this.deg_second_color = json.deg_second_color;
     this.deg_type = json.deg_type??"linear";
+
+    this.shadow_color = json.shadow_color;
 
     this.border_top_size = json.border_top_size;
     this.border_top_type = json.border_top_type;
@@ -217,6 +220,7 @@ class Conteneur {
     new_conteneur.opacity = this.opacity;
     new_conteneur.rotate = this.rotate;
     new_conteneur.type = this.type;
+    new_conteneur.shadow_color = this.shadow_color;
     // Marges
     new_conteneur.margin_top = this.margin_top;
     new_conteneur.margin_bottom = this.margin_bottom;
@@ -301,6 +305,7 @@ class Conteneur {
       bg_file: undefined,
       opacity: this.opacity,
       type: this.type,
+      shadow_color: this.shadow_color,
       // Marges
       margin_top: this.margin_top,
       margin_bottom: this.margin_bottom,

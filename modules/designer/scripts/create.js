@@ -20,6 +20,7 @@ class Create {
   static deg_second_color = "rgba(0,0,0,0)";
 
   static artboard = [];
+  static history = [];
   // End project settings
 
   static add_titre() {
@@ -129,7 +130,14 @@ class Create {
     Edit.edit_conteneur(conteneur.id);
   }
 
-  static async render() {
+  static revert() {
+    if (this.history.length == 0) return;
+    this.artboard = this.history[this.history.length-1];
+    this.history.pop();
+    Create.render(true);
+  }
+
+  static async render(history = false) {
     let renderer = document.querySelector("#renderer");
     renderer.style.alignItems = this.H_align;
     renderer.style.justifyContent = this.V_align;
@@ -156,19 +164,29 @@ class Create {
       }
     }
 
-    renderer.innerHTML = "";
-    for (let el of this.artboard) {
-      renderer.innerHTML += el.render();
-    }
     //Render Free Draw canvas
     let width = renderer.clientWidth;
     let height = renderer.clientHeight;
-    renderer.innerHTML += `
+    renderer.innerHTML = `
     <canvas id="freeDraw" width="${width}" height="${height}" style="position:absolute;top:0;left:0;"></canvas>
     `;
+
+    for (let el of this.artboard) {
+      renderer.innerHTML += el.render();
+    }
+
+    if (!history) {
+      // Save history
+      let new_history = [];
+      for (let item of this.artboard) {
+        new_history.push(item.clone());
+      }
+      this.history.push(new_history);
+    }
     //Launch Free Draw
     FreeDraw.launch();
     // --Keep previous state
+    if (FreeDraw.currentDraw.trim().length == 0) return;
     let canvas = document.querySelector("#freeDraw");
     let ctx = canvas.getContext("2d");
     let image_object = new Image();

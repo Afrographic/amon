@@ -20,17 +20,19 @@ class Image_D {
     this.posX = "0";
     this.rotate = "0";
     // Crops
-    this.crop_top=0;
-    this.crop_left=0;
+    this.crop_top = 0;
+    this.crop_left = 0;
     this.crop_right = 0;
-    this.crop_bottom=0;
+    this.crop_bottom = 0;
+    //Shadow
+    this.shadow_color = "rgba(0,0,0,0)";
     // Type
     this.type = "image";
   }
 
   render() {
     let z_index = 1;
-    if(this.position == "relative"){
+    if (this.position == "relative") {
       z_index = 2;
     }
     return `
@@ -50,6 +52,7 @@ class Image_D {
         margin-bottom:${this.margin_bottom}vw;
         margin-left:${this.margin_left}vw;
         margin-right:${this.margin_right}vw;
+        box-shadow:0px 7px 12px 0px ${this.shadow_color};
         "/>
         `;
   }
@@ -58,7 +61,7 @@ class Image_D {
     this.id = json.id;
     if (json.file.size != undefined) {
       this.url = URL.createObjectURL(json.file);
-    }else{
+    } else {
       this.url = json.url;
     }
     this.file = json.file;
@@ -77,6 +80,7 @@ class Image_D {
     this.posY = json.posY;
     this.posX = json.posX;
     this.rotate = json.rotate;
+    this.shadow_color = json.shadow_color;
 
     this.crop_left = json.crop_left;
     this.crop_right = json.crop_right;
@@ -104,6 +108,7 @@ class Image_D {
     clone.position = this.position;
     clone.posY = this.posY;
     clone.posX = this.posX;
+    clone.shadow_color = this.shadow_color;
 
     clone.crop_top = this.crop_top;
     clone.crop_bottom = this.crop_bottom;
@@ -117,12 +122,12 @@ class Image_D {
 
   async to_json() {
     let new_url;
-    if(this.file.size != undefined){
+    if (this.file.size != undefined) {
       new_url = await Utils.image_to_base_64(this.file);
-    }else{
+    } else {
       new_url = this.url;
     }
-   
+
     return {
       id: this.id,
       url: new_url,
@@ -143,6 +148,7 @@ class Image_D {
       posY: this.posY,
       posX: this.posX,
       rotate: this.rotate,
+      shadow_color: this.shadow_color,
       //Cropping
       crop_left: this.crop_left,
       crop_right: this.crop_right,

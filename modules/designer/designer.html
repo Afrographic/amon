@@ -128,6 +128,12 @@
         alt=""
         title="Ajouter un rectangle"
       />
+      <img
+        onclick="UI.hide_all();UI.show_free_draw_editor();"
+        src="assets/images/free_draw.svg"
+        alt=""
+        title="Options de dessin libre"
+      />
     </div>
     <div class="logo" onclick="UI.hide_all()">
       <img src="assets/images/djehouty_icon.svg" width="24vw" alt="" />
@@ -257,8 +263,39 @@
       <canvas id="chart_renderer"></canvas>
     </div>
 
-     <!-- Edit Rectangle -->
-     <div class="p16 hidden edit column g4" id="rectangle_editor">
+    <!-- Options de dessin libre -->
+    <div class="p16 hidden edit column g4" id="free_draw_editor">
+      <div>Options de dessin libre</div>
+      <hr />
+      <div class="config_item">
+        <div>Couleur du pinceau</div>
+        <input
+          data-jscolor=""
+          value="rgba(0,0,0,1)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="FreeDraw.set_brush_color(this)"
+        />
+      </div>
+      <div class="config_item">
+        <div>Epaisseur</div>
+        <input
+          type="range"
+          value="10"
+          min="1"
+          max="200"
+          oninput="FreeDraw.set_brush_size(this)"
+        />
+      </div>
+      <div class="secondary" onclick="FreeDraw.clear()">
+        <img src="assets/images/remove_white_bg.svg" alt="" />
+        <div>Tous efface</div>
+      </div>
+      <div class="float_close" onclick="UI.hide_free_draw_editor()">Fermer</div>
+    </div>
+
+    <!-- Edit Rectangle -->
+    <div class="p16 hidden edit column g4" id="rectangle_editor">
       <hr />
       <div class="secondary" onclick="RectangleEdit.duplicate()">
         <img src="assets/images/duplicate.svg" alt="" />
@@ -1161,6 +1198,16 @@
         />
       </div>
       <div class="config_item">
+        <div>Ajouter un ombre portee</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,0.35)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ImageEdit.shadow(this)"
+        />
+      </div>
+      <div class="config_item">
         <div>Rotation de l'image</div>
         <input
           type="range"
@@ -1398,6 +1445,17 @@
           id="primaryPicker"
           onclick="this.blur()"
           onchange="Edit.set_conteneur_bg(this)"
+        />
+      </div>
+
+      <div class="config_item">
+        <div>Ombre portee</div>
+        <input
+          class="jscolor"
+          value="rgba(0,0,0,0.35)"
+          id="primaryPicker"
+          onclick="this.blur()"
+          onchange="ConteneurEdit.shadow(this)"
         />
       </div>
 
@@ -2172,6 +2230,13 @@
         <img src="assets/images/line.svg" alt="" />
         <div>Ajouter un rectangle</div>
       </div>
+      <div
+        class="secondary"
+        onclick="UI.hide_all();UI.show_free_draw_editor();"
+      >
+        <img src="assets/images/free_draw.svg" alt="" />
+        <div>Options de dessin libre</div>
+      </div>
       <hr />
       <div class="secondary" onclick="UI.show_projects();UI.hide_add_graphix()">
         <img src="assets/images/load.svg" alt="" />
@@ -2207,17 +2272,30 @@
         alt=""
         style="opacity: 0.5; transform: scale(0.5)"
       />
-      <img src="assets/images/export.svg" alt="" onclick="Create.export()" />
+      <img
+        src="assets/images/export.svg"
+        alt=""
+        onclick="Create.export()"
+        title="Exporter le projet"
+      />
       <img
         src="assets/images/settings.svg"
         alt=""
         onclick="UI.show_artboard_options()"
+        title="Options de l'espace de travail"
       />
-      <img src="assets/images/add.svg" alt="" onclick="UI.show_add_graphix()" />
+      <img src="assets/images/add.svg" alt="" onclick="UI.show_add_graphix()" title="Ajouter un element" />
       <img
         src="assets/images/save.svg"
         alt=""
         onclick="Project.save_project()"
+        title="Enregistrer le projet"
+      />
+      <img
+        src="assets/images/history.svg"
+        alt=""
+        onclick="Create.revert()"
+        title="Revenir en arriere"
       />
     </div>
 
@@ -2244,6 +2322,10 @@
       <div class="explain_item">
         <img src="assets/images/save.svg" alt="" />
         <div class="base">Enregistrer le projet</div>
+      </div>
+      <div class="explain_item">
+        <img src="assets/images/history.svg" alt="" />
+        <div class="base">Revenir en arriere</div>
       </div>
       <div class="close">Cliquez pour fermer</div>
       <div class="signature">
@@ -2293,7 +2375,7 @@
     <script src="scripts/polygone_edit.js"></script>
     <script src="scripts/etoile_edit.js"></script>
     <script src="scripts/rectangle_edit.js"></script>
-   
+
     <!-- DB -->
     <script src="scripts/db.js"></script>
     <!-- Register Service Worker -->

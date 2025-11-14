@@ -410,6 +410,16 @@ button {
     transition:0.25s;
 }
 
+.options_btn img{
+    cursor: pointer;
+    transition:0.25s;
+}
+
+.options_btn img:hover{
+    transform:scale(1.1);
+    opacity: 0.8;
+}
+
 .secondary:hover{
     opacity: 0.9;
 }
