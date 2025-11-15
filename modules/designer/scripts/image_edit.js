@@ -70,6 +70,16 @@ class ImageEdit {
         Create.artboard[i].crop_left = input.value;
         this.crop();
       }
+
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].crop_left = input.value;
+            this.crop();
+          }
+        }
+      }
     }
   }
   static crop_top(input) {
@@ -77,6 +87,16 @@ class ImageEdit {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].crop_top = input.value;
         this.crop();
+      }
+
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].crop_top = input.value;
+            this.crop();
+          }
+        }
       }
     }
   }
@@ -86,6 +106,16 @@ class ImageEdit {
         Create.artboard[i].crop_right = input.value;
         this.crop();
       }
+
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].crop_right = input.value;
+            this.crop();
+          }
+        }
+      }
     }
   }
   static crop_bottom(input) {
@@ -93,6 +123,16 @@ class ImageEdit {
       if (Create.artboard[i].id == Create.edit_id) {
         Create.artboard[i].crop_bottom = input.value;
         this.crop();
+      }
+
+      // Edit  in conteneur children
+      if (Create.artboard[i].children != undefined) {
+        for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
+          if (Create.artboard[i].children[j].id == Create.edit_id) {
+            Create.artboard[i].children[j].crop_bottom = input.value;
+            this.crop();
+          }
+        }
       }
     }
   }
@@ -124,13 +164,12 @@ class ImageEdit {
             await img.decode();
             Create.artboard[i].children[j].url = Utils.cropImage(
               img,
-              parseInt( Create.artboard[i].children[j].crop_top),
-              parseInt( Create.artboard[i].children[j].crop_right),
-              parseInt( Create.artboard[i].children[j].crop_bottom),
-              parseInt( Create.artboard[i].children[j].crop_left)
+              parseInt(Create.artboard[i].children[j].crop_top),
+              parseInt(Create.artboard[i].children[j].crop_right),
+              parseInt(Create.artboard[i].children[j].crop_bottom),
+              parseInt(Create.artboard[i].children[j].crop_left)
             );
             Create.render();
-           
           }
         }
       }
