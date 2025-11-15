@@ -120,16 +120,17 @@ class ImageEdit {
         for (let j = 0; j <= Create.artboard[i].children.length - 1; j++) {
           if (Create.artboard[i].children[j].id == Create.edit_id) {
             let img = new Image();
-            img.src = URL.createObjectURL(Create.artboard[i].children[j].url);
+            img.src = URL.createObjectURL(Create.artboard[i].children[j].file);
             await img.decode();
             Create.artboard[i].children[j].url = Utils.cropImage(
               img,
-              parseInt(top),
-              parseInt(right),
-              parseInt(bottom),
-              parseInt(left)
+              parseInt( Create.artboard[i].children[j].crop_top),
+              parseInt( Create.artboard[i].children[j].crop_right),
+              parseInt( Create.artboard[i].children[j].crop_bottom),
+              parseInt( Create.artboard[i].children[j].crop_left)
             );
             Create.render();
+           
           }
         }
       }

@@ -458,6 +458,7 @@ class Edit {
     }
     Create.render();
     Create.edit_id = image.id;
+    UI.hide_all();
     UI.show_image_edit();
   }
 }

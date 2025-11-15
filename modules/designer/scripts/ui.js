@@ -187,6 +187,7 @@ class UI {
     this.hide_etoile_edit();
     this.hide_rectangle_edit();
     this.hide_free_draw_editor();
+    this.hide_crop_image();
 
     Edit.close_text_edit();
     Edit.close_conteneur_edit();
