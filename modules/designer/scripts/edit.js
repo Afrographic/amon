@@ -444,11 +444,11 @@ class Edit {
     text_edit_input.focus();
   }
 
-  static add_conteneur_image(e) {
+  static async add_conteneur_image(e) {
     if (e.target.files.length == 0) return; 
     let url = URL.createObjectURL(e.target.files[0]);
     let image = new Image_D();
-    image.url = url;
+    image.url = await Utils.image_to_base_64( e.target.files[0]);
     image.file = e.target.files[0];
     //Append text to conteur
     for (let i = 0; i <= Create.artboard.length - 1; i++) {
