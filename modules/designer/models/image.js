@@ -31,13 +31,20 @@ class Image_D {
   }
 
   render() {
+    //Make it responsive
+    let width = `${this.width}%`;
+    if(window.innerWidth >= 1200){
+        let c_width = this.width * Utils.DesktopRendererWidth/100;
+        width = `${c_width}px`;
+    }
+
     let z_index = 1;
     if (this.position == "relative") {
       z_index = 2;
     }
     return `
         <img src="${this.url}" onclick="Edit.edit_image(event,'${this.id}')" style="
-        width:${this.width}%;
+        width:${width};
         position:${this.position};
         top:${this.posY}%;
         z-index:${z_index};

@@ -18,10 +18,18 @@ class Titre {
   }
 
   render() {
+    //Make it responsive
+    let font_size = this.font_size;
+    if(window.innerWidth >= 1200){
+        let c_font_size = parseInt(this.font_size);
+        c_font_size =  c_font_size *  Utils.DesktopRendererWidth/100;
+        font_size = `${c_font_size}px`;
+    }
+
     return `
         <div id="${this.id}" onclick="Edit.edit_text(event,'${this.id}')" style="
         opacity:${this.opacity};
-        font-size:${this.font_size};
+        font-size:${font_size};
         font-family:${this.font};
         color:${this.color};
         width:${this.width};

@@ -1,4 +1,5 @@
 class Utils {
+  static DesktopRendererWidth = 650;
   static generate_unique_id_from_time() {
     let date = new Date();
     let year = date.getFullYear();
