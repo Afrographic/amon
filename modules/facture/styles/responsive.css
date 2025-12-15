@@ -1,4 +1,13 @@
 /* Mobile responsive */
+@media screen and (min-width:1200px) {
+    td {
+        padding: 8px !important;
+    }
+    .numeroClient{
+        margin-bottom: 8px;
+    }
+}
+
 @media screen and (max-width:1200px) {
 
     /* Config responsive */
@@ -132,7 +141,7 @@
         pointer-events: none;
     }
 
-    .mobileGestionStock{
+    .mobileGestionStock {
         margin-bottom: 8px;
     }
 
@@ -171,7 +180,7 @@
         width: 100%;
     }
 
-    .mobileProductItem td{
+    .mobileProductItem td {
         padding: 8px 12px;
     }
 
@@ -200,53 +209,50 @@
         font-size: 0.5rem;
     }
 
-    #factureNomClient{
-        padding-top:8px;
+    #factureNomClient {
+        padding-top: 8px;
     }
 
-    .veuillez{
-        padding-top:4px !important;
+    .veuillez {
+        padding-top: 4px !important;
     }
-    .factureTable{
+
+    .factureTable {
         margin-top: 12px !important;
         margin-bottom: 0px !important;
     }
 
-    .factureTable td{
+    .factureTable td {
         padding: 4px 8px;
     }
 
-    .totalFacturePrinter{
+    .totalFacturePrinter {
         margin-top: 16px !important;
     }
 
-    .totalFacturePrinter .invoice div:first-child{
+    .totalFacturePrinter .invoice div:first-child {
         opacity: 0.6;
         font-size: 13px;
     }
 
-    .factureNumeroDeSerie{
+    .factureNumeroDeSerie {
         padding-bottom: 4px !important;
     }
 
-    .ceoInvoice{
+    .ceoInvoice {
         margin-top: 14px !important;
     }
 
-    #facturePoseEntreprise{
+    #facturePoseEntreprise {
         margin-top: 4px !important;
     }
 
-    #FactureNote{
-    
-    }
+    #FactureNote {}
 
-    .NoteBLockFacture{
-       
-    }
+    .NoteBLockFacture {}
 
-    .totalFacturePrinter .invoice div:last-child{
-       font-size: 14px;
+    .totalFacturePrinter .invoice div:last-child {
+        font-size: 14px;
     }
 
     .factureModele1 {
@@ -255,7 +261,7 @@
         background-color: white;
     }
 
-    .companyFactureForPrint{
+    .companyFactureForPrint {
         padding: 4px 16px !important;
     }
 
@@ -292,16 +298,17 @@
         padding: 16px 42px !important;
     }
 
-    .contentFacture h2, .contentFacture p{
-        margin:0;
-        padding:0;
+    .contentFacture h2,
+    .contentFacture p {
+        margin: 0;
+        padding: 0;
     }
 
-    .iconsFacture{
+    .iconsFacture {
         gap: 8px !important;
     }
 
-    .stockBtn{
+    .stockBtn {
         margin-bottom: 8px !important;
     }
 
@@ -328,7 +335,7 @@
     }
 
     .printFactureBtns {
-       
+
         top: inherit !important;
         bottom: 0px;
         left: 0px;
@@ -349,26 +356,26 @@
         max-height: auto !important;
     }
 
-    .containerFacture td{
+    .containerFacture td {
         font-size: 7px;
     }
 
 }
 
-@media screen and (min-width:1200px){
-    .exportBLoc{
+@media screen and (min-width:1200px) {
+    .exportBLoc {
         width: 450px;
         margin-left: auto;
         margin-right: auto;
         display: flex;
         flex-direction: column;
-        gap:8px;
+        gap: 8px;
     }
 
-    .exportBLoc .CharteGraphique{
+    .exportBLoc .CharteGraphique {
         display: flex;
         flex-direction: column;
-        gap:16px;
+        gap: 16px;
         margin-bottom: 16px;
     }
 }
