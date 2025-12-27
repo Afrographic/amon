@@ -184,7 +184,10 @@ class Create {
       this.history.push(new_history);
     }
     //Launch Free Draw
-    FreeDraw.launch();
+    if(window.innerWidth >= 800){
+      FreeDraw.launch();
+    }
+   
     // --Keep previous state
     if (FreeDraw.currentDraw.trim().length == 0) return;
     let canvas = document.querySelector("#freeDraw");
