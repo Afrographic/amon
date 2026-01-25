@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fournisseurs</title>
+    <link rel="stylesheet" href="fournisseur.css" />
+    <script src="../../libs/afro.js"></script>
+    <link rel="stylesheet" href="../../styles/ankh_notif.css" />
+  </head>
+  <body class="collections">
+    <!-- Error box -->
+    <div
+      class="info negative"
+      id="negative"
+      style="
+        border-left: 10px solid #f70808;
+        box-shadow: -1px 8px 20px 6px #5252521c;
+        width: 80vw;
+        max-width: 500px;
+      "
+      onclick="this.classList.remove('info_visible')"
+    >
+      <img src="../../images/error_msg.svg" alt="" width="25px" />
+      <div class="column f1">
+        <div class="tal" id="content" style="color: grey; font-size: 12px">
+          Message
+        </div>
+      </div>
+    </div>
+    <!-- End error box -->
+
+    <div class="header">
+      <a href="../../index.html">
+        <img src="../../images/back.svg" alt="" width="24px" />
+      </a>
+      <h3>Fournisseurs</h3>
+    </div>
+    <hr />
+
+    <div class="empty">
+      <img src="../../images/empty.svg" alt="" width="80px" />
+      <div>Aucun fournisseur pour l'instant</div>
+    </div>
+
+    <div class="catitems">
+      <div class="catItem">
+        <div>Electronique</div>
+        <div>
+          <img src="../../images/edit.svg" alt="" width="34px" />
+          <img src="../../images/delete.svg" alt="" width="34px" />
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px">
+      <div class="formItem">
+        <div class="label">Nom du fournisseur</div>
+        <input
+          type="text"
+          placeholder="Nom du fournisseur"
+          id="nomCategorie"
+        />
+      </div>
+      <button class="add" onclick="addCollection()">
+        Ajouter un fournisseur
+      </button>
+    </div>
+
+    <script src="fournisseur.js"></script>
+  </body>
+</html>

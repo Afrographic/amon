@@ -415,6 +415,7 @@ input{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 8px;
 }
 
 .kpi{
@@ -608,4 +609,54 @@ a{
 
 .productInfo h3{
     border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 16px;
+}
+
+.h_filter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:32px
+}
+
+.h_filter img{
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.h_filter .divider{
+    width: 46px;
+}
+
+.h_filter img:hover{
+    opacity: 0.7;
+    transform: scale(1.1);
+}
+
+#venteMoisFilter,#venteAnneeFilter{
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.h_stat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:16px;
+    opacity: 0.7;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.h_stat_benef{
+    color:#00AB62;
+    font-size: 12px;
+}
+
+#monthTotalStock{
+    padding-bottom: 16px;
+    text-align: center;
+    border-bottom: 1px solid #cdcdcd;
 }

@@ -81,6 +81,8 @@
         padding: 32px;
         transition: 0.25s;
         background-color: #fff;
+        overflow: auto;
+        height: 70vh;
       }
 
       .formItem .label {
@@ -509,18 +511,30 @@
           onclick="showMenu()"
           class="mobileMenuIcon"
         />
-        <h1>Amon</h1>
+        
         <div class="f1"></div>
         <div class="mobileIcons">
           <img
             src="images/history_vente.svg"
             alt=""
-            onclick="showHistoryRetrait()"
+            onclick="initHistoryVente()"
           />
         </div>
       </div>
 
       <div class="appContent">
+
+        <div class="totalProductBox">
+          <h2 id="totalProduct">0 produits</h2>
+          <div
+            class="c_main"
+            id="totalMoneyToEarn"
+            style="color: #ffffff95"
+          >
+            1890000
+          </div>
+         
+        </div>
 
         <div class="ruptureBlock">
           <div style="display: flex;align-items: center;gap:16px;">
@@ -588,17 +602,7 @@
         </div>
        
        
-        <div class="totalProductBox">
-          <h2 id="totalProduct">0 produits</h2>
-          <div
-            class="c_main"
-            id="totalMoneyToEarn"
-            style="color: #ffffff95"
-          >
-            1890000
-          </div>
-         
-        </div>
+       
 
         <div class="row aic g16 add_product" onclick="addProduct()">
           <img src="images/add.svg" alt="" width="24px">
@@ -662,7 +666,7 @@
       <!-- Web Menu Options -->
       <div class="addProduitButton">
         <!-- <button onclick="showHistoryAjout()">Historique de stock</button>
-        <button onclick="showHistoryRetrait()">Historique de vente</button>
+        <button onclick="initHistoryVente()">Historique de vente</button>
         <button onclick="showWelcomeScreen()">Configurer</button>
         <button onclick="initResetApp()">Reinitialiser</button> -->
       </div>
@@ -737,18 +741,7 @@
             <input type="number" placeholder="Prix de vente" id="prixVenteInput"  inputmode="numeric"
             pattern="[0-9]*"/>
           </div>
-          <div class="formItem">
-            <div class="label">Fournisseur</div>
-            <input
-              type="text"
-              placeholder="Fournisseur"
-              id="fournisseurInput"
-            />
-          </div>
-          <div class="formItem">
-            <div class="label">Marque</div>
-            <input type="text" placeholder="Marque" id="marqueInput" />
-          </div>
+         
           <div class="formItem">
             <div class="label">Quantite</div>
             <input type="number" placeholder="Quantite" id="quantiteInput"  inputmode="numeric"
@@ -764,8 +757,22 @@
           </div>
           <a href="modules/collection/collection.html">
             <div class="cat">
-              <img src="images/cat.svg" alt="" width="34px">
+              <img src="images/add_cat.svg" alt="" width="24px">
               <div>Ajouter une categorie</div>
+            </div>
+          </a>
+          <div class="formItem">
+            <div class="label">Fournisseur</div>
+            <select name="" id="selectFournisseurs" >
+              <!-- <option value="dsd">Electronique</option>
+              <option value="dsd">Menage</option>
+              <option value="dsd">Plomberie</option> -->
+            </select>
+          </div>
+          <a href="modules/fournisseurs/fournisseur.html">
+            <div class="cat">
+              <img src="images/add_cat.svg" alt="" width="24px">
+              <div>Ajouter un fournisseur</div>
             </div>
           </a>
  
@@ -773,14 +780,14 @@
           <div id="productsCategories">
             <div class="formItem caracItem">
               <div class="label">Caracteristique 1</div>
-              <input type="text" placeholder="Inserez la Propriete" id="marqueInput" />
-              <input type="text" placeholder="Inserez la valeur" id="marqueInput" />
+              <input type="text" placeholder="Inserez la Propriete"  />
+              <input type="text" placeholder="Inserez la valeur"  />
             </div>
           </div>
 
           <div class="addCat" onclick="ProductCaracteristique.addNewCar()">
             <img src="images/add_cat.svg" alt="" width="24px">
-            <div> Ajouter une autre</div>
+            <div> Ajouter une Caracteristique de plus</div>
           </div>
 
         </div>
@@ -839,25 +846,19 @@
             <input type="number" placeholder="Prix de vente" id="prixVenteEditInput"  inputmode="numeric"
             pattern="[0-9]*"/>
           </div>
-          <div class="formItem">
-            <div class="label">Fournisseur</div>
-            <input
-              type="text"
-              placeholder="Fournisseur"
-              id="fournisseurEditInput"
-            />
-          </div>
-          <div class="formItem">
-            <div class="label">Marque</div>
-            <input
-              type="text"
-              placeholder="Fournisseur"
-              id="fournisseurMarqueEdit"
-            />
-          </div>
+  
+          
           <div class="formItem">
             <div class="label">Categorie</div>
             <select name="" id="EditCategories" >
+              <!-- <option value="dsd">Electronique</option>
+              <option value="dsd">Menage</option>
+              <option value="dsd">Plomberie</option> -->
+            </select>
+          </div>
+          <div class="formItem">
+            <div class="label">Fournisseur</div>
+            <select name="" id="EditFournisseurSelect" >
               <!-- <option value="dsd">Electronique</option>
               <option value="dsd">Menage</option>
               <option value="dsd">Plomberie</option> -->
@@ -867,8 +868,8 @@
           <div id="productsCategoriesEdit">
             <div class="formItem caracItem">
               <div class="label">Caracteristique 1</div>
-              <input type="text" placeholder="Inserez la Propriete" id="marqueInput" />
-              <input type="text" placeholder="Inserez la valeur" id="marqueInput" />
+              <input type="text" placeholder="Inserez la Propriete"  />
+              <input type="text" placeholder="Inserez la valeur"  />
             </div>
           </div>
 
@@ -903,9 +904,12 @@
           width="24px"
           onclick="hideMenu()"
         />
-        <img src="images/amon.svg" width="48px" alt="" />
-        <h1>Amon</h1>
-        <h3 id="nameStore2">Kamite Store</h3>
+        <div class="row aic  g16">
+          <img src="images/amon.svg" width="24px" alt="" />
+          <div>Amon</div>
+        </div>
+       
+        <h3 id="nameStore2">Store</h3>
 
         <p>Veuillez profiter des options ci dessous</p>
         <div class="buttons">
@@ -915,14 +919,22 @@
               Creer une facture
             </button>
           </a>
-          <button class="tertiaryBtn2" onclick="showHistoryAjout()">
+          <button class="tertiaryBtn2" onclick="initHistoryAjout()">
             <img src="images/stock.svg" width="15px" alt="" />
             Historique de stock
           </button>
-          <button class="tertiaryBtn2" onclick="showHistoryRetrait()">
+          <button class="tertiaryBtn2" onclick="initHistoryVente()">
             <img src="images/vente.svg" width="15px" alt="" />
             Historique de vente
           </button>
+          <a href="modules/fournisseurs/fournisseur.html">
+            <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+              <img src="images/settings.svg" width="15px" alt="" />
+              Gestion des fournisseurs
+            </button>
+          </a>
+         
+          <hr>
           <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
             <img src="images/settings.svg" width="15px" alt="" />
             Configurer
@@ -947,9 +959,9 @@
             accept=".json"
           />
         </div>
-        <p>
-          Financer le developpement par Orange Money via le numero ci-dessous
-        </p>
+        <div style="margin-top:8px;">
+          Faire un don par OM 
+        </div>
         <div><strong>Tesse Brunel</strong> - 697830071</div>
 
         <p class="copyRight">
@@ -998,6 +1010,18 @@
 
         <hr style="opacity: 0.4" />
 
+        <div class="h_filter">
+          <img src="images/p.svg" alt="" width="20px" onclick="FilterHistoryStock.prevMonth()"> 
+          <div id="stockMoisFilter">Janvier</div>
+          <img src="images/n.svg" alt="" width="20px" onclick="FilterHistoryStock.nextMonth()">
+          <div class="divider"></div>
+          <img src="images/p.svg" alt="" width="20px" onclick="FilterHistoryStock.prevYear()">
+          <div id="stockAnneeFilter">2022</div>
+          <img src="images/n.svg" alt="" width="20px" onclick="FilterHistoryStock.nextYear()">
+        </div>
+
+        <div id="monthTotalStock" >12 Produits</div>
+
         <!-- Day items -->
         <div class="p16_32 content" id="historyAjoutListingView">
           <div>
@@ -1042,6 +1066,21 @@
 
         <hr style="opacity: 0.4" />
 
+        <div class="h_filter">
+          <img src="images/p.svg" alt="" width="20px" onclick="FilterHistoryVente.prevMonth()"> 
+          <div id="venteMoisFilter">Janvier</div>
+          <img src="images/n.svg" alt="" width="20px" onclick="FilterHistoryVente.nextMonth()">
+          <div class="divider"></div>
+          <img src="images/p.svg" alt="" width="20px" onclick="FilterHistoryVente.prevYear()">
+          <div id="venteAnneeFilter">2022</div>
+          <img src="images/n.svg" alt="" width="20px" onclick="FilterHistoryVente.nextYear()">
+        </div>
+
+        <div class="h_stat">
+          <div id="month_sales">12 000 XAF </div>
+          <div class="h_stat_benef" id="month_benef">3 000 XAF</div>
+        </div>
+
         <!-- Day items -->
         <div class="p16_32 content" id="historyRetraitListingView">
           <div>
@@ -1072,6 +1111,8 @@
 
     <script src="scripts/init.js"></script>
     <script src="scripts/history.js"></script>
+    <script src="scripts/filterHistoriqueVente.js"></script>
+    <script src="scripts/filterHistoriqueStock.js"></script>
     <script src="scripts/productStock.js"></script>
     <script src="scripts/productVente.js"></script>
     <script src="scripts/stat.js"></script>
@@ -1080,9 +1121,10 @@
     <script src="scripts/startUp.js"></script>
     <script src="scripts/totalMoneyToEarn.js"></script>
     <script src="scripts/fillCategorieSelect.js"></script>
+    <script src="scripts/fillFournisseurSelect.js"></script>
+    <script src="scripts/productImage.js"></script>
     <script src="scripts/categorieStat.js"></script>  
     <script src="scripts/ruptureStock.js"></script>
-    <script src="scripts/productImage.js"></script>
     <script src="scripts/productProperty.js"></script>
     <script src="scripts/product.js"></script>
     <script src="scripts/productColor.js"></script>

@@ -180,6 +180,12 @@
         height: 80%;
         overflow: auto;
     }
+
+    .productInfo{
+        width: 400px;
+        max-height: 80vh;
+        overflow: auto;
+    }
 }
 
 

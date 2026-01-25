@@ -15,14 +15,28 @@ class Product {
             </tr>
             `;
     }
-    carsTemplate +=  `
+    carsTemplate += `
             </table>
         </div>
     `;
-    if( product.cars.length == 0){
-        carsTemplate = "";
+    if (product.cars.length == 0) {
+      carsTemplate = "";
     }
     //More Information template
+    //Compute fournisseur name
+    let fournisseur = "Non Defini";
+    let collectionsAmon = localStorage.getItem("AmonFournisseurs");
+    if (collectionsAmon != null) {
+      if (collectionsAmon != undefined) {
+        collectionsAmon = JSON.parse(collectionsAmon);
+        for(let i = 0 ; i<=collectionsAmon.length-1;i++){
+            if(collectionsAmon[i].catId == product.fournisseurId){
+                fournisseur = collectionsAmon[i].categoryName;
+            }
+        }
+      }
+    }
+
     let more_info = `
         <table>
             <tr>
@@ -31,11 +45,7 @@ class Product {
             </tr>
             <tr>
                 <td>Fournisseur</td>
-                <td>${Afro.Ucase(product.fournisseur)}</td>
-            </tr>
-            <tr>
-                <td>Marque</td>
-                <td>${Afro.Ucase(product.marque)}</td>
+                <td>${fournisseur}</td>
             </tr>
             <tr>
                 <td>Ajouter le</td>
@@ -64,8 +74,7 @@ class Product {
     return productInfo;
   }
 
-
-  static closeProductInfo(el){
+  static closeProductInfo(el) {
     el.parentNode.classList.add("productInfoInactive");
   }
 }

@@ -1,25 +1,33 @@
-async function showHistoryAjout() {
+
+function initHistoryAjout(){
+  let currentMonth = getCurrentMonth();
+  let currentYear = getCurrentYear();
+  showHistoryAjout(currentMonth,currentYear);
+}
+
+
+async function showHistoryAjout(month,year) {
   var datas = await con.select({
     from: "data",
     where: {
       id: "1",
     },
-  });
+  }); 
 
   let historyAjout = JSON.parse(datas[0].historyAjout);
 
   let listToRender = [];
-  let currentMonth = getCurrentMonth();
-  let currentYear = getCurrentYear();
-  let currenDay = getCurrentDay();
+  let currentMonth = month;
+  let currentYear = year;
+  let currenDay = 31
 
   for (let i = 1; i <= parseInt(currenDay); i++) {
-    let day = `${i} ${currentMonth} ${currentYear}`;
+    let day = `${i} ${Afro.Ucase(currentMonth)} ${currentYear}`;
     let products = [];
 
     //Fetch corresponding products
     for (let i = 0; i <= historyAjout.length - 1; i++) {
-      if (historyAjout[i].at == day) {
+      if (historyAjout[i].at == day.toLowerCase()) {
         products.push(historyAjout[i]);
       }
     }
@@ -63,12 +71,14 @@ async function showHistoryAjout() {
   //render div elements
   let render = document.querySelector("#historyAjoutListingView");
   render.innerHTML = "";
+  let totalProducts = 0;
   for (let i = 0; i <= listToRender.length - 1; i++) {
+    totalProducts += listToRender[i].products.length;
     render.innerHTML += `<div>`;
     render.innerHTML += `
     <div class="historyTitle">
       <div>${listToRender[i].date}</div>
-      <div>${listToRender[i].products.length}</div>
+      <div>${listToRender[i].products.length} Produits</div>
     </div>
     `;
     if (listToRender[i].products.length == 0) {
@@ -97,6 +107,10 @@ async function showHistoryAjout() {
     }
     render.innerHTML += `</div>`;
   }
+  //Render total products
+  let monthTotalStock = document.querySelector("#monthTotalStock");
+  monthTotalStock.innerHTML = `${totalProducts} Produits`;
+  
 }
 
 function closeHistoryAjout() {
@@ -104,7 +118,13 @@ function closeHistoryAjout() {
   historyAjoutView.classList.add("inactive");
 }
 
-async function showHistoryRetrait() {
+function initHistoryVente(){
+  let currentMonth = getCurrentMonth();
+  let currentYear = getCurrentYear();
+  showHistoryRetrait(currentMonth,currentYear);
+}
+
+async function showHistoryRetrait(month,year) {
   var datas = await con.select({
     from: "data",
     where: {
@@ -114,18 +134,18 @@ async function showHistoryRetrait() {
 
   let historyRetrait = JSON.parse(datas[0].historyRetrait);
 
-  let listToRender = [];
-  let currentMonth = getCurrentMonth();
-  let currentYear = getCurrentYear();
-  let currenDay = getCurrentDay();
+  let listToRender = []; 
+  let currentMonth = month;
+  let currentYear = year;
+  let currenDay = 31;
 
   for (let i = 1; i <= parseInt(currenDay); i++) {
-    let day = `${i} ${currentMonth} ${currentYear}`;
+    let day = `${i} ${Afro.Ucase(currentMonth)} ${currentYear}`;
     let products = [];
 
     //Fetch corresponding products
     for (let i = 0; i <= historyRetrait.length - 1; i++) {
-      if (historyRetrait[i].at == day) {
+      if (historyRetrait[i].at == day.toLowerCase()) {
         products.push(historyRetrait[i]);
       }
     }
@@ -169,6 +189,8 @@ async function showHistoryRetrait() {
   //render div elements
   let render = document.querySelector("#historyRetraitListingView");
   render.innerHTML = "";
+  let monthTotal = 0;
+  let monthBenefice = 0;
   for (let i = 0; i <= listToRender.length - 1; i++) {
 
     //Compute total money made
@@ -178,6 +200,10 @@ async function showHistoryRetrait() {
       totalMoney += listToRender[i].products[k].prixVente * listToRender[i].productCount[k].products.length;
       benefice += (listToRender[i].products[k].prixVente - listToRender[i].products[k].prix)* listToRender[i].productCount[k].products.length;
     }
+
+    monthTotal += totalMoney;
+    monthBenefice += benefice;
+
     render.innerHTML += `<div>`;
     render.innerHTML += `
     <div class="historyTitle">
@@ -213,6 +239,11 @@ async function showHistoryRetrait() {
     }
     render.innerHTML += `</div>`;
   }
+  //Render Stats
+  let month_sales = document.querySelector("#month_sales");
+  let month_benef = document.querySelector("#month_benef");
+  month_sales.innerHTML = `${Afro.formatNumWithWhiteSpace(monthTotal)} ${devise}`;
+  month_benef.innerHTML = `${Afro.formatNumWithWhiteSpace(monthBenefice)} ${devise}`;
 }
 
 function closeHistoryRetrait(){
@@ -269,7 +300,6 @@ function getMonth(date) {
     nom: "nom",
     prix: "prix",
     fournisseur: "fournisseur",
-    marque: "Marque",
     quantite: 0,
     addAt: "addAt",
     modifiedAt: "modifiedAt",

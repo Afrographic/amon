@@ -1,4 +1,3 @@
-
 // Register service worker
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
@@ -23,9 +22,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choice) => {
       if (choice.outcome === "accepted") {
-
       } else {
-
       }
       deferredPrompt = null;
     });
@@ -180,7 +177,7 @@ async function saveToDB() {
       products: JSON.stringify(products),
     },
   });
-} 
+}
 
 async function saveHistoryAjoutToDB() {
   await con.update({
@@ -223,7 +220,7 @@ async function getHistory() {
       id: "1",
     },
   });
-  if(datas.length == 0) return;
+  if (datas.length == 0) return;
   historyRetrait = JSON.parse(datas[0].historyRetrait);
   historyAjout = JSON.parse(datas[0].historyAjout);
 }
@@ -368,31 +365,43 @@ async function search() {
   let devise = localStorage.getItem("amonDevise");
   for (let i = 0; i <= searchedProducts.length - 1; i++) {
     // Building image template
-    let imagURl = await ProductImageService.getImageURL(searchedProducts[i].imageId ?? -1);
-    let imageTemplate ="";
-    if(imagURl.length > 0){
+    let imagURl = await ProductImageService.getImageURL(
+      searchedProducts[i].imageId ?? -1
+    );
+    let imageTemplate = "";
+    if (imagURl.length > 0) {
       imageTemplate = `<div class="productImage" style="background-image:url(${imagURl})"></div>`;
     }
 
     //Color template
     let colorTemplate = "";
-    if(searchedProducts[i].color != undefined){
-      colorTemplate = `<div  class="colorItem " style="background-color:${searchedProducts[i].color}"></div>`
+    if (searchedProducts[i].color != undefined) {
+      colorTemplate = `<div  class="colorItem " style="background-color:${searchedProducts[i].color}"></div>`;
     }
 
     //Build More info component
-    let moreInfoTemplate = Product.generateMoreInfoTemplate(searchedProducts[i]);
+    let moreInfoTemplate = Product.generateMoreInfoTemplate(
+      searchedProducts[i]
+    );
 
     renderSearchResult.innerHTML += `
               <div class="productItem">
 
               <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
                           
-                          <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${searchedProducts[i].id}">Nouveau Stock</button>
-                          <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${searchedProducts[i].id}">Nouvelle Vente</button>
+                          <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${
+                            searchedProducts[i].id
+                          }">Nouveau Stock</button>
+                          <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${
+                            searchedProducts[i].id
+                          }">Nouvelle Vente</button>
                     
-                          <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${searchedProducts[i].id}">Editer</button>
-                          <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${searchedProducts[i].id}">Supprimer</button>
+                          <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${
+                            searchedProducts[i].id
+                          }">Editer</button>
+                          <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${
+                            searchedProducts[i].id
+                          }">Supprimer</button>
                 
                   </div>
 
@@ -413,7 +422,9 @@ async function search() {
                   <table>
                       <tr>
                           <td>Prix de vente</td>
-                          <td>${Afro.formatNumWithWhiteSpace(searchedProducts[i].prixVente)} ${devise}</td>
+                          <td>${Afro.formatNumWithWhiteSpace(
+                            searchedProducts[i].prixVente
+                          )} ${devise}</td>
                       </tr>
                       <tr>
                           <td>Quantite</td>
@@ -452,7 +463,7 @@ function addProduct() {
   importImage.innerHTML = `
   <img src="images/addImage.svg" alt="" width="24px">
   <div>Importer une image</div>
-  `
+  `;
 }
 
 function closeAddProduct() {
@@ -491,15 +502,14 @@ function saveLightProductToLocalStorageForFacture() {
 
 async function addProductToDatabase() {
   let createCategories = document.querySelector("#createCategories");
+  let fournisseur = document.querySelector("#selectFournisseurs");
 
   let nomInput = document.getElementById("nomInput");
   let prixInput = document.getElementById("prixInput");
   let prixVenteInput = document.getElementById("prixVenteInput");
-  let fournisseurInput = document.getElementById("fournisseurInput");
-  let marqueInput = document.getElementById("marqueInput");
   let quantiteInput = document.getElementById("quantiteInput");
   let catId = createCategories.value;
-
+  let fournisseurId = fournisseur.value;
 
   let product = {
     nom: "nom",
@@ -510,8 +520,9 @@ async function addProductToDatabase() {
     addAt: "addAt",
     modifiedAt: "modifiedAt",
     id: 1450554555,
-    catId:catId,
-    prixVente:""
+    catId: catId,
+    fournisseurId: fournisseurId,
+    prixVente: "",
   };
 
   let addAt = new Date();
@@ -529,14 +540,7 @@ async function addProductToDatabase() {
     Afro.show_negative_message("Prix de vente invalide");
     return;
   }
-  if (fournisseurInput.value.trim().length == 0) {
-    Afro.show_negative_message("Fournisseur invalide");
-    return;
-  }
-  if (marqueInput.value.trim().length == 0) {
-    Afro.show_negative_message("Marque invalide");
-    return;
-  }
+
   if (quantiteInput.value.trim().length == 0) {
     Afro.show_negative_message("Quantite invalide");
     return;
@@ -546,13 +550,13 @@ async function addProductToDatabase() {
 
   product.nom = Afro.Ucase(nomInput.value.trim());
   product.prix = prixInput.value.trim();
-  product.fournisseur =  Afro.Ucase(fournisseurInput.value.trim());
-  product.marque =  Afro.Ucase(marqueInput.value.trim());
+  product.fournisseur = "";
   product.quantite = quantiteInput.value.trim();
   product.addAt = formatDate(addAt);
   product.modifiedAt = formatDate(modifiedAt);
   product.id = productId;
   product.catId = catId;
+  product.fournisseurId = fournisseurId;
   product.prixVente = prixVenteInput.value.trim();
   product.cars = ProductCaracteristique.carsToSave;
   ProductCaracteristique.cars = [];
@@ -562,19 +566,15 @@ async function addProductToDatabase() {
   let imageId = await ProductImageService.saveProductImage(productId);
   product.imageId = imageId;
 
- 
-
   products.unshift(product);
   renderProduct();
 
   nomInput.value = "";
   prixInput.value = "";
-  prixVenteInput.value ="";
-  fournisseurInput.value = "";
-  marqueInput.value = "";
+  prixVenteInput.value = "";
   quantiteInput.value = "";
   closeAddProduct();
- 
+
   // alert("Produit ajouter avec succes!");
   saveToDB();
   saveLightProductToLocalStorageForFacture();
@@ -641,21 +641,26 @@ function renderProduct() {
   let devise = localStorage.getItem("amonDevise");
 
   for (let i = 0; i <= products.length - 1; i++) {
-
-    if(products[i].catId == undefined){
-     
-    
-    productsContainer.innerHTML += `
+    if (products[i].catId == undefined) {
+      productsContainer.innerHTML += `
     
               <div class="productItem">
 
                 <div class="productItemClass productItemClassInactive" onclick="hideMenu(this)">
                     
-                    <button class="tertiaryBtn" onclick="incrementProduct(event);showNouveauStockView()" id="${products[i].id}">Nouveau stock</button>
-                    <button class="tertiaryBtn" onclick="decrementProduct(event);showNouvelleVenteView()" id="${products[i].id}">Nouvelle vente</button>
+                    <button class="tertiaryBtn" onclick="incrementProduct(event);showNouveauStockView()" id="${
+                      products[i].id
+                    }">Nouveau stock</button>
+                    <button class="tertiaryBtn" onclick="decrementProduct(event);showNouvelleVenteView()" id="${
+                      products[i].id
+                    }">Nouvelle vente</button>
               
-                    <button onclick="editProduct(event)" class="tertiaryBtn" id="${products[i].id}">Editer</button>
-                    <button onclick="deleteProduct(event)" class="tertiaryBtn" id="${products[i].id}">Supprimer</button>
+                    <button onclick="editProduct(event)" class="tertiaryBtn" id="${
+                      products[i].id
+                    }">Editer</button>
+                    <button onclick="deleteProduct(event)" class="tertiaryBtn" id="${
+                      products[i].id
+                    }">Supprimer</button>
         
                  </div>
 
@@ -669,16 +674,15 @@ function renderProduct() {
                   <table>
                       <tr>
                           <td>Prix d'achat</td>
-                          <td>${Afro.formatNumWithWhiteSpace(products[i].prix)} ${devise}</td>
+                          <td>${Afro.formatNumWithWhiteSpace(
+                            products[i].prix
+                          )} ${devise}</td>
                       </tr>
                       <tr>
                           <td>Fournisseur</td>
                           <td>${products[i].fournisseur}</td>
                       </tr>
-                      <tr>
-                          <td>Marque</td>
-                          <td>${products[i].marque}</td>
-                      </tr>
+                     
                       <tr>
                           <td>Quantite</td>
                           <td>${products[i].quantite}</td>
@@ -697,22 +701,21 @@ function renderProduct() {
               </div>
               `;
 
-    exportProducts.innerHTML += `
+      exportProducts.innerHTML += `
               <div class="productItem">
                   <h3>${products[i].nom}</h3>
                   <table>
                       <tr>
                           <td>Prix d'achat</td>
-                          <td>${Afro.formatNumWithWhiteSpace(products[i].prix)} ${devise}</td>
+                          <td>${Afro.formatNumWithWhiteSpace(
+                            products[i].prix
+                          )} ${devise}</td>
                       </tr>
                       <tr>
                           <td>Fournisseur</td>
                           <td>${products[i].fournisseur}</td>
                       </tr>
-                      <tr>
-                          <td>Marque</td>
-                          <td>${products[i].marque}</td>
-                      </tr>
+                    
                       <tr>
                           <td>Quantite</td>
                           <td>${products[i].quantite}</td>
@@ -728,11 +731,8 @@ function renderProduct() {
                   </table>
               </div>
               `;
-
-        }
+    }
   }
-
-  
 }
 
 renderProduct();
@@ -740,12 +740,7 @@ let EditProductElement = document.querySelector("#EditProduct");
 let nomEditInput = document.querySelector("#nomEditInput");
 let prixEditInput = document.querySelector("#prixEditInput");
 let prixVenteEditInput = document.querySelector("#prixVenteEditInput");
-let fournisseurEditInput = document.querySelector(
-  "#fournisseurEditInput"
-);
-let fournisseurMarqueEdit = document.querySelector(
-  "#fournisseurMarqueEdit"
-);
+
 let productIdToEdit = 0;
 
 async function editProduct(event) {
@@ -758,15 +753,17 @@ async function editProduct(event) {
       nomEditInput.value = products[i].nom;
       prixEditInput.value = products[i].prix;
       prixVenteEditInput.value = products[i].prixVente ?? products[i].prix;
-      fournisseurEditInput.value = products[i].fournisseur;
-      fournisseurMarqueEdit.value = products[i].marque;
 
-       //Prefill selected categorie
+      //Prefill selected categorie
       let EditCategories = document.querySelector("#EditCategories");
-      EditCategories.value =  products[i].catId;
+      EditCategories.value = products[i].catId;
+
+      //prefill selected fournisseur
+      let EditFournisseurSelect = document.querySelector("#EditFournisseurSelect");
+      EditFournisseurSelect.value = products[i].fournisseurId;
 
       //Prefill product color
-      if(products[i].color != undefined){
+      if (products[i].color != undefined) {
         let colorEdit = document.querySelector("#colorEdit");
         colorEdit.value = products[i].color;
       }
@@ -778,32 +775,31 @@ async function editProduct(event) {
 
       //Prefill product image
       let importImage = document.querySelector(".importImageEdit");
-      if(products[i].imageId != undefined){
-        let imageFile = await ProductImageService.getImageFile( products[i].imageId);
-        if(imageFile == undefined){
+      if (products[i].imageId != undefined) {
+        let imageFile = await ProductImageService.getImageFile(
+          products[i].imageId
+        );
+        if (imageFile == undefined) {
           importImage.style.backgroundImage = ``;
           importImage.innerHTML = `
           <img src="images/addImage.svg" alt="" width="24px">
           <div>Importer une image</div>
-          `
+          `;
           return;
         }
         let url = URL.createObjectURL(imageFile);
         importImage.style.backgroundImage = `url(${url})`;
         importImage.innerHTML = "";
         imageProductFile = imageFile;
-      }else{
-        
+      } else {
         importImage.style.backgroundImage = ``;
         importImage.innerHTML = `
         <img src="images/addImage.svg" alt="" width="24px">
         <div>Importer une image</div>
-        `
+        `;
       }
-      
     }
   }
-
 
   renderProduct();
 }
@@ -826,11 +822,13 @@ function deleteProduct(event) {
 }
 
 async function editProductSave() {
-
   let id = productIdToEdit;
 
   let EditCategories = document.querySelector("#EditCategories");
-  let catId =   EditCategories.value ;
+  let catId = EditCategories.value;
+
+  let EditFournisseur = document.querySelector("#EditFournisseurSelect");
+  let fournisseurId = EditFournisseur.value;
 
   if (nomEditInput.value.trim().length == 0) {
     Afro.show_negative_message("Nom invalide");
@@ -844,32 +842,31 @@ async function editProductSave() {
     Afro.show_negative_message("Prix de vente invalide!");
     return;
   }
-  if (fournisseurEditInput.value.trim().length == 0) {
-    Afro.show_negative_message("Fournisseur invalide!");
-    return;
-  }
+
   for (let i = 0; i <= products.length - 1; i++) {
     if (products[i].id == id) {
-      let imageId = await ProductImageService.editProductImage(products[i].id ,products[i].imageId);
+      let imageId = await ProductImageService.editProductImage(
+        products[i].id,
+        products[i].imageId
+      );
 
       products[i].nom = nomEditInput.value.trim();
       products[i].prix = prixEditInput.value.trim();
-      products[i].marque = fournisseurMarqueEdit.value.trim();
-      products[i].fournisseur = fournisseurEditInput.value.trim();
+
       let date = new Date();
       products[i].modifiedAt = formatDate(date);
       products[i].catId = catId;
+      products[i].fournisseurId = fournisseurId;
       products[i].prixVente = prixVenteEditInput.value;
       products[i].color = ProductColor.editColor;
       products[i].cars = ProductCaracteristique.carsToSave;
 
-      if(imageId != -1){
+      if (imageId != -1) {
         products[i].imageId = imageId;
       }
-      
     }
   }
- 
+
   renderProduct();
   closeEditProduct();
   saveToDB();

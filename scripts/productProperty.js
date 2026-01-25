@@ -50,10 +50,10 @@ class ProductCaracteristique {
             <div class="label">Caracteristique ${i + 1}</div>
             <input value="${
               this.cars[i].prop
-            }" type="text" placeholder="Inserez la Propriete" id="marqueInput" onkeyup="ProductCaracteristique.addNewProp(${i},this)" />
+            }" type="text" placeholder="Inserez la Propriete"  onkeyup="ProductCaracteristique.addNewProp(${i},this)" />
             <input value="${
               this.cars[i].val
-            }" type="text" placeholder="Inserez la valeur" id="marqueInput" onkeyup="ProductCaracteristique.addNewVal(${i},this)"/>
+            }" type="text" placeholder="Inserez la valeur"  onkeyup="ProductCaracteristique.addNewVal(${i},this)"/>
          </div>
         `;
     }
