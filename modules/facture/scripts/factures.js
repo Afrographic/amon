@@ -91,6 +91,8 @@ function formatHistory() {
       <div class="clientHistory" onclick="previewFacture('${i}-${j}')">
         <img src="assets/images/invoice.svg" alt="" width="15px" />
         <div>${history[i].factures[j].client}</div>
+        <div class="f1"></div>
+        <img src="assets/images/export.svg" alt="" width="24px" onclick="editFacture(event,${i},${j})" />
       </div>
       `;
     }
@@ -105,12 +107,29 @@ function formatHistory() {
   }
 }
 
+function editFacture(e, i, j) {
+  e.stopPropagation();
+  i = parseInt(i);
+  j = parseInt(j);
+  let facture = history[i].factures[j];
+  console.log(facture);
+  // Prefill fields
+  document.querySelector("#nomClient").value = facture.client;
+  document.querySelector("#numeroClient").value = facture.numeroClient;
+  document.querySelector("#delaiLivraison").value = facture.delai;
+  document.querySelector("#fraisLivraisonInput").value = facture.fraisLivraison;
+  document.querySelector("#tvaInput").value = facture.tva;
+  document.querySelector("#note").value = facture.note;
+  produits = facture.produits;
+  renderProduits();
+}
+
 function previewFacture(factureIndex) {
   factureIndex = factureIndex.split("-");
   i = parseInt(factureIndex[0]);
   j = parseInt(factureIndex[1]);
   let facture = history[i].factures[j];
-  if(facture.negociable == undefined){
+  if (facture.negociable == undefined) {
     facture.negociable = false;
   }
   //render facture from history
@@ -154,10 +173,10 @@ function previewFacture(factureIndex) {
   let secteurFacture = document.querySelector("#secteurFacture");
   secteurFacture.innerHTML = `${userInfo.secteur}`;
   //set Nom client
-  if(facture.numeroClient == undefined) {
-    facture.numeroClient = ""
-  }else{
-    facture.numeroClient = " | " +  facture.numeroClient ;
+  if (facture.numeroClient == undefined) {
+    facture.numeroClient = "";
+  } else {
+    facture.numeroClient = " | " + facture.numeroClient;
   }
   let factureNomClient = document.querySelector("#factureNomClient");
   factureNomClient.innerHTML = `Cher ${facture.client}  ${facture.numeroClient}`;
@@ -170,34 +189,36 @@ function previewFacture(factureIndex) {
               <tr>
                    <td>${i + 1}</td>
                    <td>${facture.produits[i].tache}</td>
-                   <td>${HelperFunction.formatNumWithWhiteSpace(facture.produits[i].prix)} ${userInfo.monnaie}</td>
+                   <td>${HelperFunction.formatNumWithWhiteSpace(
+                     facture.produits[i].prix
+                   )} ${userInfo.monnaie}</td>
                    <td>${facture.produits[i].quantite}</td>
-                   <td>${
-                    HelperFunction.formatNumWithWhiteSpace(parseInt(facture.produits[i].prix) *
-                     parseInt(facture.produits[i].quantite))
-                   } ${userInfo.monnaie}</td>
+                   <td>${HelperFunction.formatNumWithWhiteSpace(
+                     parseInt(facture.produits[i].prix) *
+                       parseInt(facture.produits[i].quantite)
+                   )} ${userInfo.monnaie}</td>
               </tr>
           `;
-  } 
+  }
   //Etat de negociation negotiateState
   let negotiateState = document.querySelector("#negotiateState");
-  if(facture.negociable){
-    negotiateState.innerHTML = "Negotiable"
-  }else{
-    negotiateState.innerHTML = "Non negotiable"
+  if (facture.negociable) {
+    negotiateState.innerHTML = "Negotiable";
+  } else {
+    negotiateState.innerHTML = "Non negotiable";
   }
 
   //Set delai de livraison
-  if(facture.delai != undefined){
+  if (facture.delai != undefined) {
     let delai = document.querySelector(".delai");
     delai.style.display = "flex";
     let delaiFactureView = document.querySelector("#factureDelaiLivraison");
     delaiFactureView.innerHTML = facture.delai;
-  }else{
+  } else {
     let delai = document.querySelector(".delai");
     delai.style.display = "none";
   }
-  if(facture.delai.trim().length == 0){
+  if (facture.delai.trim().length == 0) {
     let delai = document.querySelector(".delai");
     delai.style.display = "none";
   }
@@ -205,31 +226,41 @@ function previewFacture(factureIndex) {
   //Set Frais livraison
   console.log(facture.fraisLivraison);
   let fraisLivraisonFacture = document.querySelector("#fraisLivraisonFacture");
-  if(facture.fraisLivraison == undefined){
+  if (facture.fraisLivraison == undefined) {
     fraisLivraisonFacture.parentNode.style.display = "none";
     facture.fraisLivraison = 0;
-  }else{
-    let fraisLivraisonFactureView = document.querySelector("#fraisLivraisonFacture");
-    fraisLivraisonFactureView.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(facture.fraisLivraison)} ${userInfo.monnaie}`
+  } else {
+    let fraisLivraisonFactureView = document.querySelector(
+      "#fraisLivraisonFacture"
+    );
+    fraisLivraisonFactureView.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
+      facture.fraisLivraison
+    )} ${userInfo.monnaie}`;
   }
   //Set TVA
   console.log(facture.tva);
   let tva = document.querySelector("#tva");
-  if(facture.tva == undefined){
+  if (facture.tva == undefined) {
     tva.innerHTML = "0 %";
     facture.tva = 0;
-  }else{
+  } else {
     let tva = document.querySelector("#tva");
-    tva.innerHTML = `${facture.tva} % (${HelperFunction.formatNumWithWhiteSpace(facture.total * facture.tva/100)} ${userInfo.monnaie})`
+    tva.innerHTML = `${facture.tva} % (${HelperFunction.formatNumWithWhiteSpace(
+      (facture.total * facture.tva) / 100
+    )} ${userInfo.monnaie})`;
   }
 
   //Set Total Produit
   let FraisTotal = document.querySelector("#FraisTotal");
-  FraisTotal.innerHTML =  `${HelperFunction.formatNumWithWhiteSpace(facture.total)} ${userInfo.monnaie}`;
+  FraisTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
+    facture.total
+  )} ${userInfo.monnaie}`;
 
   //Set total To pay
   let FactureTotal = document.querySelector("#FactureTotal");
-  FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(facture.total +  facture.fraisLivraison + facture.total * facture.tva/100)} ${userInfo.monnaie}`;
+  FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
+    facture.total + facture.fraisLivraison + (facture.total * facture.tva) / 100
+  )} ${userInfo.monnaie}`;
   //Set proprietaire et poste
   let FactureOwner = document.querySelector("#FactureOwner");
   let facturePoseEntreprise = document.querySelector("#facturePoseEntreprise");
@@ -237,13 +268,13 @@ function previewFacture(factureIndex) {
   facturePoseEntreprise.innerHTML = `${userInfo.votrePoste} ${userInfo.nomEntreprise}`;
   //Set note
   let FactureNote = document.querySelector("#FactureNote");
-  if(facture.note.trim().length == 0){
+  if (facture.note.trim().length == 0) {
     FactureNote.parentNode.parentNode.style.display = "none";
-  }else{
+  } else {
     FactureNote.parentNode.parentNode.style.display = "flex";
     FactureNote.innerText = facture.note;
   }
- 
+
   //Hide useless elements
   let supportDev = document.querySelector(".supportDev");
   let config = document.querySelector(".config");

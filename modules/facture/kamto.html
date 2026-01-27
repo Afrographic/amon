@@ -568,7 +568,7 @@
           <div class="label">Monnaie</div>
           <input type="text" placeholder="Ex:FCFA,$,euro..." id="monnaie" />
         </div>
-        <div style="margin-top: 16px">
+        <div style="margin-top: 16px; margin-bottom: 24px">
           <button
             onclick="saveConfig()"
             class="primary_btn"
@@ -878,7 +878,14 @@
         >
           <div class="label">TVA (Taxe)</div>
           <div class="row g16">
-            <input type="number" value="0" inputmode="numeric" pattern="[0-9]*" placeholder="TVA (Taxe)" id="tvaInput" />
+            <input
+              type="number"
+              value="0"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              placeholder="TVA (Taxe)"
+              id="tvaInput"
+            />
             <div>%</div>
           </div>
         </div>
@@ -1115,7 +1122,7 @@
               </tr>
             </tbody>
           </table>
-          <div style="height:16px;"></div>
+          <div style="height: 16px"></div>
           <table class="moreOptions">
             <tr>
               <td></td>
@@ -1265,7 +1272,7 @@
         }
 
         if (produits.length == 0) {
-          HelperFunction.show_negative_message("Taches invalide!");
+          HelperFunction.show_negative_message("Produits invalide!");
           return;
         }
 
@@ -1291,9 +1298,6 @@
         // factureLogo.appendChild(logo);
 
         //Set Numero client
-
-       
-        
 
         //Set name of company
         let nameCompanyFacture = document.querySelector("#nameCompanyFacture");
@@ -1325,10 +1329,10 @@
         let numeroClient = document.querySelector("#numeroClient");
         let factureNomClient = document.querySelector("#factureNomClient");
         let numClient = numeroClient.value;
-        if(numClient.trim().length == 0){
+        if (numClient.trim().length == 0) {
           numClient = "";
-        }else{
-          numClient = " | "+ numClient;
+        } else {
+          numClient = " | " + numClient;
         }
         factureNomClient.innerHTML = `Cher ${nomClient.value}  ${numClient} `;
         localStorage.setItem("client", nomClient.value);
@@ -1373,40 +1377,46 @@
           delai.style.display = "none";
         }
 
-         //Set Frais livraison
-         let fraisLivraisonFactureInput = document.querySelector("#fraisLivraisonInput");
-        let fraisLivraisonFactureView = document.querySelector("#fraisLivraisonFacture");
+        //Set Frais livraison
+        let fraisLivraisonFactureInput = document.querySelector(
+          "#fraisLivraisonInput"
+        );
+        let fraisLivraisonFactureView = document.querySelector(
+          "#fraisLivraisonFacture"
+        );
         let frais = 0;
-        if(fraisLivraisonFactureInput.value.trim().length == 0){
+        if (fraisLivraisonFactureInput.value.trim().length == 0) {
           frais = 0;
-         
         }
         frais = parseInt(fraisLivraisonFactureInput.value);
-        fraisLivraisonFactureView.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(frais)} ${userInfo.monnaie}`;
-
+        fraisLivraisonFactureView.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
+          frais
+        )} ${userInfo.monnaie}`;
 
         //Set TVA
-       
+
         let tvaInput = document.querySelector("#tvaInput");
         console.log(tvaInput.value);
         let tva = document.querySelector("#tva");
         let tvaValue = 0;
-        if(tvaInput.value.trim().length == 0){
+        if (tvaInput.value.trim().length == 0) {
           tvaValue = 0;
-         
         }
         tvaValue = parseInt(tvaInput.value);
-          tva.innerHTML = `${tvaValue} % (${HelperFunction.formatNumWithWhiteSpace(total * tvaValue/100)} ${userInfo.monnaie})`
-       
+        tva.innerHTML = `${tvaValue} % (${HelperFunction.formatNumWithWhiteSpace(
+          (total * tvaValue) / 100
+        )} ${userInfo.monnaie})`;
 
-         //Set Total Produit
+        //Set Total Produit
         let FraisTotal = document.querySelector("#FraisTotal");
-        FraisTotal.innerHTML =  `${HelperFunction.formatNumWithWhiteSpace(total)} ${userInfo.monnaie}`;
+        FraisTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
+          total
+        )} ${userInfo.monnaie}`;
 
         //Set total TTX
         let FactureTotal = document.querySelector("#FactureTotal");
         FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
-          total + total * tvaValue/100 + frais
+          total + (total * tvaValue) / 100 + frais
         )} ${userInfo.monnaie}`;
 
         //Set proprietaire et poste
@@ -1449,8 +1459,8 @@
           negociable: negociable,
           delai: delaiInput.value,
           numeroClient: numeroClient.value ?? "",
-          tva : tvaValue,
-          fraisLivraison: frais
+          tva: tvaValue,
+          fraisLivraison: frais,
         });
 
         //update note value
@@ -1766,6 +1776,14 @@
 
         let initCompanyName = document.querySelector("#initCompanyName");
         initCompanyName.innerHTML = nomEntreprise.value;
+
+        //init company logo and company name
+        if (userInfo.logo != undefined) {
+          let SupportLogo = document.querySelector("#SupportLogo");
+          SupportLogo.innerHTML ="";
+          let url = URL.createObjectURL(userInfo.logo);
+          SupportLogo.style.backgroundImage = `url(${url})`;
+        }
       }
 
       function showConfig() {
@@ -1840,6 +1858,8 @@
           quantite: quantite.value,
         });
 
+        console.log(produits);
+
         tache.value = "";
         prix.value = "";
         quantite.value = "1";
@@ -1872,7 +1892,8 @@
           ".mobileProductsPreview"
         );
         let renderProducts = document.querySelector("#renderrrrrrr");
-        renderProducts.innerHTML = `<p style="text-align:center">${produits.length} Produits</p>`;
+        renderProducts.innerHTML ="";
+       
         mobileProductsPreview.innerHTML = `<p style="text-align:center">${produits.length} Produits</p>`;
 
         for (let i = 0; i <= produits.length - 1; i++) {

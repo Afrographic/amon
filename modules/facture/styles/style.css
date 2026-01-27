@@ -297,6 +297,10 @@ hr{
     border-bottom: 1px solid #d8d8d8;
 }
 
+.f1{
+    flex: 1;
+}
+
 .historyItem .date{
     opacity: 0.7;
     padding-bottom: 16px;
@@ -326,7 +330,7 @@ hr{
 }
 
 .configKamto .formItem {
-    width: 355px;
+    width: 450px;
 }
 
 .formItem{
