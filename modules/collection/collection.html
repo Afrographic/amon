@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Collection</title>
+    <title>Collections</title>
     <link rel="stylesheet" href="collection.css" />
     <script src="../../libs/afro.js"></script>
     <link rel="stylesheet" href="../../styles/ankh_notif.css" />
+    <link rel="icon" href="images/amon.svg">
   </head>
   <body class="collections">
     <!-- Error box -->
@@ -62,9 +63,15 @@
           id="nomCategorie"
         />
       </div>
-      <button class="add" onclick="addCollection()">
+      <button class=" editButton" onclick="addCollection()" id="actionButton">
         Ajouter une categorie
       </button>
+      <div class="editButton" onclick="editCat()" id="editCatBtn" >
+        Editer la categorie
+      </div>
+      <div class="cancelEditButton" onclick="initView()" id="cancelEditCatBtn" >
+        Annuler l'edition
+      </div>
     </div>
 
     <script src="collection.js"></script>

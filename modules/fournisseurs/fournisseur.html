@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fournisseurs</title>
     <link rel="stylesheet" href="fournisseur.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <link rel="icon" href="images/amon.svg">
     <script src="../../libs/afro.js"></script>
     <link rel="stylesheet" href="../../styles/ankh_notif.css" />
+    <script src="../../libs/jsstore.js"></script>
+    <script src="../../libs/jsstore.worker.js"></script>
   </head>
   <body class="collections">
+    <!-- Add button for mobile -->
+    <img src="images/add.svg" alt=""  id="addButtonMobile" onclick="Controller.showAddViewMobile()">
     <!-- Error box -->
     <div
       class="info negative"
@@ -34,7 +40,7 @@
       <a href="../../index.html">
         <img src="../../images/back.svg" alt="" width="24px" />
       </a>
-      <h3>Fournisseurs</h3>
+      <h1>Fournisseurs</h1>
     </div>
     <hr />
 
@@ -43,7 +49,7 @@
       <div>Aucun fournisseur pour l'instant</div>
     </div>
 
-    <div class="catitems">
+    <div class="catitems" id="fournisseurView">
       <div class="catItem">
         <div>Electronique</div>
         <div>
@@ -53,20 +59,40 @@
       </div>
     </div>
 
-    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px">
+    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px" class="addFournisseur inactive" id="addFournisseurView">
+      <img src="../../images/back.svg" alt="" width="24px" id="closeAddFournisseur" onclick="Controller.hideAddViewMobile()"/>
+      <img src="images/amon.svg" width="48px" alt="">
+      <h2 id="titleAjoutOrEdit">Ajouter un fournisseur</h2>
+      <p>Veuillez remplir le formulaire ci dessous</p>
       <div class="formItem">
         <div class="label">Nom du fournisseur</div>
         <input
           type="text"
           placeholder="Nom du fournisseur"
-          id="nomCategorie"
+          id="fullname"
         />
       </div>
-      <button class="add" onclick="addCollection()">
+      <div class="formItem">
+        <div class="label">Numero de telephone</div>
+        <input
+          type="text"
+          placeholder="Numero de telephone"
+          id="tel"
+        />
+      </div>
+      <button class="add" onclick="Controller.add()" id="addButton">
         Ajouter un fournisseur
       </button>
+      <button class="add" onclick="Controller.edit()" id="editButton">
+        Modifier le fournisseur
+      </button>
+      <div class="outline_button" id="cancelEditButton" onclick="Controller.disableEditingState()">
+        Annuler l'edition
+      </div>
     </div>
 
-    <script src="fournisseur.js"></script>
+    <script src="ca/repo.js"></script>
+    <script src="ca/service.js"></script>
+    <script src="ca/controlleur.js"></script>
   </body>
 </html>

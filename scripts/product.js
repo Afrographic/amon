@@ -25,15 +25,10 @@ class Product {
     //More Information template
     //Compute fournisseur name
     let fournisseur = "Non Defini";
-    let collectionsAmon = localStorage.getItem("AmonFournisseurs");
-    if (collectionsAmon != null) {
-      if (collectionsAmon != undefined) {
-        collectionsAmon = JSON.parse(collectionsAmon);
-        for(let i = 0 ; i<=collectionsAmon.length-1;i++){
-            if(collectionsAmon[i].catId == product.fournisseurId){
-                fournisseur = collectionsAmon[i].categoryName;
-            }
-        }
+
+    for (let i = 0; i <= collectionsAmon.length - 1; i++) {
+      if (collectionsAmon[i].catId == product.fournisseurId) {
+        fournisseur = collectionsAmon[i].categoryName;
       }
     }
 

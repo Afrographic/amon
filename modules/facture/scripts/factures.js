@@ -112,7 +112,7 @@ function editFacture(e, i, j) {
   i = parseInt(i);
   j = parseInt(j);
   let facture = history[i].factures[j];
-  console.log(facture);
+
   // Prefill fields
   document.querySelector("#nomClient").value = facture.client;
   document.querySelector("#numeroClient").value = facture.numeroClient;

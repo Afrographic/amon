@@ -1,6 +1,6 @@
 class ProductImageService {
   static con2 = new JsStore.Connection();
-
+ 
   static async init() {
     var data = {
       name: "AmonProductImages",
@@ -45,8 +45,7 @@ class ProductImageService {
   }
 
   static async editProductImage(productId,imageId) {
-    console.log(productId);
-    console.log(imageId);
+
     imageId = imageId ?? -1;
     let imageItem = {
       productId: productId,

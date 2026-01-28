@@ -111,7 +111,7 @@ async function init_DB() {
 }
 
 function get_db_schema() {
-  var data = {
+  var data = { 
     name: "data",
     columns: {
       id: {

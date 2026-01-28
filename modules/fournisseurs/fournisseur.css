@@ -1,84 +1,158 @@
-@font-face{
-    font-family: "ralewayRegular";
-    src :url(../../fonts/Raleway-Regular.ttf)
+@font-face {
+  font-family: "ralewayRegular";
+  src: url(../../fonts/Raleway-Regular.ttf)
 }
 
-@font-face{
-    font-family: "ralewayBlack";
-    src :url(../../fonts/Raleway-Black.ttf)
+@font-face {
+  font-family: "ralewayBlack";
+  src: url(../../fonts/Raleway-Black.ttf)
 }
 
-h2,h3,h1{
-    font-family: "ralewayBlack";
+h2,
+h3,
+h1 {
+  font-family: "ralewayBlack";
 }
 
-.header{
-    padding:0px 16px;
-    padding-top: 16px;
+.header {
+  padding: 0px 16px;
+  padding-top: 16px;
 }
 
-body{
-    margin: auto;
-    padding:0;
-    max-width: 600px;
+body {
+  margin: auto;
+  padding: 0;
+  max-width: 600px;
 }
 
-*{
-    box-sizing: border-box;
-    font-family: "ralewayRegular";
+* {
+  box-sizing: border-box;
+  font-family: "ralewayRegular";
 }
 
-.empty{
-    display: flex;
-    flex-direction: column;
-    gap:32px;
-    align-items: center;
-    padding:32px;
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  padding: 32px;
 }
 
-.add{
-    padding:16px;
-    width: 100%;
-    background-color: #151515;
-    color: #fff;
-    border-radius: 8px;
+.add {
+  padding: 16px;
+  width: 100%;
+  background-color: #151515;
+  color: #fff;
+  border-radius: 8px;
 }
 
-input{
-    border:none;
-    outline: none;
+input {
+  border: none;
+  outline: none;
 }
 
 .formItem .label {
-    font-size: 12px;
-  }
+  font-size: 12px;
+}
 
-  .formItem {
-    border: 1px solid #d1d1d1;
-    border-radius: 4px;
-    padding: 8px;
-  }
+.formItem {
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  padding: 8px;
+}
 
-  .formItem input {
-    outline: none;
-    border: none;
-    width: 100%;
-    font-size: 16px;
-    margin-top:8px;
-  }
+.formItem input {
+  outline: none;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 8px;
+}
 
-  .catItem{
-    background-color: #efefef;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:16px;
-    border-radius: 8px;
-  }
+.catItem {
+  background-color: #efefef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+}
 
-  .catitems{
-    display: flex;
-    flex-direction: column;
-    gap:8px;
-    padding:32px;
-  }
+.catitems {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.addFournisseur {
+  position: fixed;
+  top: 32px;
+  left: 32px;
+  width: 400px;
+  background-color: #fff;
+  padding: 16px;
+  transition:0.25s;
+}
+
+
+
+button:hover {
+  background-color: #1CB060;
+}
+
+button {
+  border: none;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.c_main {
+  color: #1CB060;
+}
+
+.button {
+  border: none;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.outline_button {
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.outline_button:hover {
+  background-color: #171717;
+  color: white;
+}
+
+.outline_button:active {
+  transform: scale(1.1);
+}
+
+#closeAddFournisseur {
+  margin-bottom: 8px;
+  cursor: pointer;
+  width: 24px;
+}
+
+#addButtonMobile{
+  position: fixed;
+  right:32px;
+  top:32px;
+  width: 40px;
+}
+
+#closeAddFournisseur,#addButtonMobile{
+  display: none;
+}

@@ -1,84 +1,130 @@
-@font-face{
+@font-face {
     font-family: "ralewayRegular";
-    src :url(../../fonts/Raleway-Regular.ttf)
+    src: url(../../fonts/Raleway-Regular.ttf)
 }
 
-@font-face{
+@font-face {
     font-family: "ralewayBlack";
-    src :url(../../fonts/Raleway-Black.ttf)
+    src: url(../../fonts/Raleway-Black.ttf)
 }
 
-h2,h3,h1{
+h2,
+h3,
+h1 {
     font-family: "ralewayBlack";
 }
 
-.header{
-    padding:0px 16px;
+.header {
+    padding: 0px 16px;
     padding-top: 16px;
 }
 
-body{
+body {
     margin: auto;
-    padding:0;
+    padding: 0;
     max-width: 600px;
 }
 
-*{
+* {
     box-sizing: border-box;
     font-family: "ralewayRegular";
 }
 
-.empty{
+.empty {
     display: flex;
     flex-direction: column;
-    gap:32px;
+    gap: 32px;
     align-items: center;
-    padding:32px;
+    padding: 32px;
 }
 
-.add{
-    padding:16px;
+.add {
+    padding: 16px;
     width: 100%;
     background-color: #151515;
     color: #fff;
     border-radius: 8px;
 }
 
-input{
-    border:none;
+input {
+    border: none;
     outline: none;
 }
 
 .formItem .label {
     font-size: 12px;
-  }
+}
 
-  .formItem {
+.formItem {
     border: 1px solid #d1d1d1;
     border-radius: 4px;
     padding: 8px;
-  }
+}
 
-  .formItem input {
+.formItem input {
     outline: none;
     border: none;
     width: 100%;
     font-size: 16px;
-    margin-top:8px;
-  }
+    margin-top: 8px;
+}
 
-  .catItem{
+.catItem {
     background-color: #efefef;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:16px;
+    padding: 16px;
     border-radius: 8px;
-  }
+}
 
-  .catitems{
+.catitems {
     display: flex;
     flex-direction: column;
-    gap:8px;
-    padding:32px;
-  }
+    gap: 8px;
+    padding: 32px;
+}
+
+.cancelEditButton {
+    padding: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #dadada;
+    transition: 0.5s;
+}
+
+.cancelEditButton:hover {
+    opacity: 0.5;
+    border: 1px solid #1CB060;
+    color: #1CB060;
+}
+
+.editButton {
+    padding: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.5s;
+    background-color: #1CB060;
+    color: white;
+}
+
+.editButton:hover {
+    color: #fff;
+    background-color: #444444;
+}
+
+.button{
+    transition: 0.25s;
+    cursor: pointer;
+}
+.button:hover{
+    opacity: 0.8;
+    transform:scale(1.1);
+}
+
+button{
+    border:none;
+    outline:none;
+}

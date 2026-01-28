@@ -561,12 +561,12 @@
           <img src="images/search.svg" alt="" width="18px" onclick="search()" />
         </div>
 
-        <div class="export" style="margin-top:16px;">
+        <!-- <div class="export" style="margin-top:16px;">
           <div>Parcourer la liste de vos produits</div>
           <button onclick="launchExport()" class="secondary_btn">
             Exporter en PDF
           </button>
-        </div>
+        </div> -->
 
 
         <a href="modules/nouvelleVente/vente.html">
@@ -601,19 +601,11 @@
           </div>
         </div>
        
-       
-       
-
         <div class="row aic g16 add_product" onclick="addProduct()">
           <img src="images/add.svg" alt="" width="24px">
           <div>Ajouter un produit</div>
         </div>
-        <a href="modules/collection/collection.html">
-          <div class="row aic g16 add_product" >
-            <img src="images/cat.svg" alt="" width="30px">
-            <div>Gerer les categories</div>
-          </div>
-        </a>
+       
         <a href="modules/flyer/flyer.html">
           <div class="row aic g16 add_product" >
             <img src="images/djehouty_icon.svg" alt="" width="20px">
@@ -927,10 +919,22 @@
             <img src="images/vente.svg" width="15px" alt="" />
             Historique de vente
           </button>
+          <a href="modules/collection/collection.html">
+            <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+              <img src="images/settings.svg" width="15px" alt="" />
+              Gestion des categories
+            </button>
+          </a>
           <a href="modules/fournisseurs/fournisseur.html">
             <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
               <img src="images/settings.svg" width="15px" alt="" />
               Gestion des fournisseurs
+            </button>
+          </a>
+          <a href="modules/commandes/comande.html">
+            <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+              <img src="images/settings.svg" width="15px" alt="" />
+              Gestion des Commandes clients
             </button>
           </a>
          
@@ -1123,11 +1127,11 @@
     <script src="scripts/fillCategorieSelect.js"></script>
     <script src="scripts/fillFournisseurSelect.js"></script>
     <script src="scripts/productImage.js"></script>
-    <script src="scripts/categorieStat.js"></script>  
     <script src="scripts/ruptureStock.js"></script>
     <script src="scripts/productProperty.js"></script>
     <script src="scripts/product.js"></script>
     <script src="scripts/productColor.js"></script>
+    <script src="scripts/categorieStat.js"></script>
   </body>
 </html>
 

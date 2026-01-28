@@ -25,8 +25,8 @@ function renderView(){
         <div class="catItem">
             <div> ${collectionsAmon[i].categoryName}</div>
             <div>
-                <img src="../../images/edit.svg" alt="" width="34px" onclick="editCat(${collectionsAmon[i].catId})">
-                <img src="../../images/delete.svg" alt="" width="34px" onclick="deleteCat(${collectionsAmon[i].catId})">
+                <img src="../../images/edit.svg" alt="" width="34px" class="button" onclick="editInit(${collectionsAmon[i].catId})">
+                <img src="../../images/delete.svg" alt="" width="34px" class="button" onclick="deleteCat(${collectionsAmon[i].catId})">
             </div>
         </div>
         `
@@ -54,13 +54,22 @@ function addCollection(){
     nomCategorieInput.value = "";
 }
 
-function editCat(catId){
-    let catData = getCatNameAndIndex(catId);
-    let name = prompt("Nouveau nom",catData.categoryName);
-    if(name == null){
-        Afro.show_negative_message("Nom invalide!");
-        return;
-    }
+let catEditId = 0;
+function editInit(catId){
+    catEditId = catId;
+    let catData = getCatNameAndIndex(catEditId);
+    document.querySelector("#nomCategorie").value = catData.categoryName;
+    let editCatBtn = document.querySelector("#editCatBtn");
+    let cancelEditCatBtn = document.querySelector("#cancelEditCatBtn");
+    let actionButton = document.querySelector("#actionButton");
+    editCatBtn.style.display = "block";
+    cancelEditCatBtn.style.display = "block";
+    actionButton.style.display = "none";
+}
+
+function editCat(){
+    let catData = getCatNameAndIndex(catEditId);
+    let name = document.querySelector("#nomCategorie").value;
     if(name.trim().length == 0){
         Afro.show_negative_message("Nom invalide!");
         return;
@@ -68,6 +77,7 @@ function editCat(catId){
     collectionsAmon[catData.index].categoryName = name;
     localStorage.setItem("AmonCategories",JSON.stringify(collectionsAmon)); 
     renderCollection();
+    initView();
 }
 
 function deleteCat(catId){
@@ -89,3 +99,14 @@ function getCatNameAndIndex(catId){
         }
     }
 }
+
+function initView(){
+    let editCatBtn = document.querySelector("#editCatBtn");
+    let cancelEditCatBtn = document.querySelector("#cancelEditCatBtn");
+    let actionButton = document.querySelector("#actionButton");
+    editCatBtn.style.display = "none";
+    cancelEditCatBtn.style.display = "none";
+    actionButton.style.display = "block";
+    document.querySelector("#nomCategorie").value = "";
+}
+initView();

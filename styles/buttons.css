@@ -94,6 +94,7 @@
     align-items: center;
     gap:16px;
     transition: 0.25s;
+    text-align: left;
 }
 
 .tertiaryBtn2:hover{
