@@ -3,6 +3,28 @@
         box-sizing: border-box;
     }
 
+    .container{
+        margin-left: auto !important;
+    }
+
+    .statsHome{
+        display: flex;
+        flex-direction: column;
+        gap:16px;
+    }
+
+    .homeButton{
+        display: flex;
+        flex-direction: column;
+        gap:4px;
+    }
+
+    .productsLists{
+        display: flex !important;
+        flex-direction: column;
+        gap:4px;
+    }
+
     h2{
         font-size: 18px;
     }

@@ -154,6 +154,11 @@ select{
     gap:8px;
 }
 
+#home{
+    opacity: 0;
+    position: fixed;
+}
+
 .formItem {
     border:1px solid #aaa;
     padding:16px;
@@ -172,6 +177,7 @@ select{
     padding:16px;
     border-radius: 8px;
     border:1px solid #dddddd;
+    background-color: #fff;
 }
 
 .searchBox{

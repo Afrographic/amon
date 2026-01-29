@@ -41,6 +41,24 @@ class Controller {
     this.renderClientsList();
     this.hideTotalCommandes();
     this.renderCommandesUI(this.commandes[index]);
+    let titleCommande = document.querySelector("#titleCommande");
+      titleCommande.innerHTML = this.commandes[index].fullname;
+    if (window.innerWidth <= 1200) {
+      
+      let clientListView = document.querySelector("#clientListView");
+      clientListView.style.display = "none";
+      let commandesViewUI = document.querySelector("#commandesViewUI");
+      commandesViewUI.classList.remove("commandesInactiveMobile");
+    }
+  }
+
+  static showClientList() {
+    let clientListView = document.querySelector("#clientListView");
+    clientListView.style.display = "flex";
+    let commandesViewUI = document.querySelector("#commandesViewUI");
+    commandesViewUI.classList.add("commandesInactiveMobile");
+    let titleCommande = document.querySelector("#titleCommande");
+    titleCommande.innerHTML = "Commandes clients";
   }
 
   static renderCommandesUI(commande) {
@@ -52,10 +70,10 @@ class Controller {
     }
     commandesView.innerHTML = "";
     for (let item of commande.commandes) {
-        let index = commande.commandes.indexOf(item);
-        let totalMoney = this.computeTotalMoney(item.commande);
-        let monnaie = localStorage.getItem("amonDevise");
-        let productsString = this.mergeProductAsString(item.commande);
+      let index = commande.commandes.indexOf(item);
+      let totalMoney = this.computeTotalMoney(item.commande);
+      let monnaie = localStorage.getItem("amonDevise");
+      let productsString = this.mergeProductAsString(item.commande);
       commandesView.innerHTML += `
         <div class="commandeItem">
             <div>${item.fullDate}</div>
@@ -67,7 +85,7 @@ class Controller {
     }
   }
 
-  static genererFacture(index){
+  static genererFacture(index) {
     let clientInfo = this.commandes[this.clientIndex];
     let commande = this.commandes[this.clientIndex].commandes[index];
     localStorage.setItem("currentVente", JSON.stringify(commande.commande));
@@ -76,24 +94,24 @@ class Controller {
     window.location.href = "../facture/kamto.html";
   }
 
-  static computeTotalMoney(commande){
+  static computeTotalMoney(commande) {
     let total = 0;
-    for(let item of commande){
-        total += parseInt(item.prix) * item.qte
+    for (let item of commande) {
+      total += parseInt(item.prix) * item.qte;
     }
     return total;
   }
 
-  static mergeProductAsString(commande){
-    let str="";
-    for(let item of commande){
-        let index = commande.indexOf(item);
-        let dot = "•"
-        if(index ==0){
-            dot="";
-        }
-        
-        str += ` ${dot} ${item.qte} ${item.nom}`
+  static mergeProductAsString(commande) {
+    let str = "";
+    for (let item of commande) {
+      let index = commande.indexOf(item);
+      let dot = "•";
+      if (index == 0) {
+        dot = "";
+      }
+
+      str += ` ${dot} ${item.qte} ${item.nom}`;
     }
     return str;
   }

@@ -76,6 +76,19 @@ body {
   gap:8px;
 }
 
+#clientListBtn{
+  border:1px solid #aaa;
+  border-radius: 8px;
+  display: none ;
+  align-items: center;
+  justify-content: center;
+  padding:16px;
+  gap:16px;
+}
+
+#clientListBtn img{
+  width: 24px;
+}
 
 
 .clientItem.active {

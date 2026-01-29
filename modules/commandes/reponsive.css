@@ -1,0 +1,15 @@
+@media screen and (max-width:1000px) {
+    .clientList{
+        width: 100vw;
+        border-right: 1px solid transparent;
+    }
+    .commandesInactiveMobile{
+        display: none;
+    }
+    .header{
+        padding:16px;
+    }
+    .clientListBtn{
+        display: flex !important;
+    }
+}

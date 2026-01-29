@@ -87,15 +87,17 @@
     </div>
 
     <div class="nextBTN">
-      <div class="primary"  onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture()">
+      <div class="primary"  onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture(false)">
         <img src="../../images/cart_white.svg" alt="" width="24px">
         Valider la commande
       </div>
-      <div  class="secondary" onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture()">
+      <div  class="secondary" onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture(true)">
         <img src="../../images/facture_black.svg" alt="" width="24px">
         Generer la facture
       </div>
     </div>
+
+    <a href="../../index.html" id="home">Home</a>
 
 
     <script src="commandesRepo.js"></script>

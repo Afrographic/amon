@@ -14,19 +14,19 @@ window.addEventListener("beforeinstallprompt", (e) => {
   deferredPrompt = e;
 
   // Show your custom install UI (button, modal, banner)
-  const installBtn = document.getElementById("installBtn");
-  installBtn.style.display = "flex";
+  // const installBtn = document.getElementById("installBtn");
+  // installBtn.style.display = "flex";
 
-  installBtn.addEventListener("click", () => {
-    installBtn.style.display = "none";
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choice) => {
-      if (choice.outcome === "accepted") {
-      } else {
-      }
-      deferredPrompt = null;
-    });
-  });
+  // installBtn.addEventListener("click", () => {
+  //   installBtn.style.display = "none";
+  //   deferredPrompt.prompt();
+  //   deferredPrompt.userChoice.then((choice) => {
+  //     if (choice.outcome === "accepted") {
+  //     } else {
+  //     }
+  //     deferredPrompt = null;
+  //   });
+  // });
 });
 
 //End Detect
@@ -406,7 +406,7 @@ async function search() {
                   ${imageTemplate}
           
                   <div class="productItemTitle">
-                      <h3>${Afro.Ucase(searchedProducts[i].nom)}</h3>
+                      <h3 class="f1">${Afro.Ucase(searchedProducts[i].nom)}</h3>
                       <div class="row aic g16">
                           ${colorTemplate}
                           <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>
@@ -662,7 +662,7 @@ function renderProduct() {
 
 
                    <div class="productItemTitle">
-                      <h3>${products[i].nom}</h3>
+                      <h3 class="f1">${products[i].nom}</h3>
                       <div class="clickArea">
                         <img src="images/option.svg" />
                       </div>    

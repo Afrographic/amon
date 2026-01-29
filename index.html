@@ -7,6 +7,7 @@
     <script src="libs/jsstore.js"></script>
     <script src="libs/jsstore.worker.js"></script>
     <script src="libs/afro.js"></script>
+    <script src="libs/chart.js"></script>
     <script src="modules/facture/assets/libs/jscolor.js"></script>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/responsive.css" />
@@ -27,12 +28,7 @@
         scrollbar-width: 1px;
       }
 
-      .container {
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 64px;
-      }
+   
 
       .addProduct.inactive {
         opacity: 0;
@@ -573,45 +569,60 @@
           <img src="images/cart.png" width="50px" alt=""   class="mobileAddProduct">
         </a>
        
+        <div class="statsHome">
+          <div class="f1">
+            <div class="kpi">Ventes <span id="totalVente" style="color:grey;font-size: 14px;">0 XAF</span></div>
+            <div class="kycBloc">
+              <div class="kycItem">
+                <div class="title">Aujourdhui</div>
+                <div class="amount" id="TodayMoney">0 F</div>
+                <div class="totalSellStat" id="todayTotalProduct">0 Produits</div>
+              </div>
+            
+              <div class="kycItem">
+                <div class="title">Ce mois</div>
+                <div class="amount" id="monthMoney">0 F</div>
+                <div class="totalSellStat" id="totalMonthProduct">0 Produits</div>
+              </div>
+            </div>
+          </div>
+         
+         <div class="f1">
+          <div class="kpi">Benefices  <span id="totalBenef"  style="color:grey; font-size: 14px;">0 XAF</div>
+            <div class="kycBloc">
+              <div class="kycItem">
+                <div class="title">Aujourdhui</div>
+                <div class="amount" id="benefTodayMoney">0 F</div>   
+                <div class="totalSellStat">.</div>
+              </div>
+              <div class="kycItem">
+                <div class="title">Ce mois</div>
+                <div class="amount" id="benefMonthMoney">0 F</div>
+                <div class="totalSellStat" >.</div>
+              </div>
+            </div>
+         </div>
+         
+        </div>
 
-        <div class="kpi">Ventes <span id="totalVente" style="color:grey;font-size: 12px;">0 XAF</span></div>
-        <div class="kycBloc">
-          <div class="kycItem">
-            <div class="title">Aujourdhui</div>
-            <div class="amount" id="TodayMoney">0 F</div>
-            <div class="totalSellStat" id="todayTotalProduct">0 Produits</div>
+      
+
+
+        <div class="homeButton">
+          <div class="row aic g16 add_product f1" onclick="addProduct()">
+            <img src="images/add.svg" alt="" width="24px">
+            <div>Ajouter un produit</div>
           </div>
+         
+          <a href="modules/flyer/flyer.html" class="f1">
+            <div class="row aic g16 add_product" >
+              <img src="images/djehouty_icon.svg" alt="" width="20px">
+              <div>Creer un visuel de communication</div>
+            </div>
+          </a>
+        </div>
+       
         
-          <div class="kycItem">
-            <div class="title">Ce mois</div>
-            <div class="amount" id="monthMoney">0 F</div>
-            <div class="totalSellStat" id="totalMonthProduct">0 Produits</div>
-          </div>
-        </div>
-       
-        <div class="kpi">Benefices  <span id="totalBenef"  style="color:grey; font-size: 12px;">0 XAF</div>
-        <div class="kycBloc">
-          <div class="kycItem">
-            <div class="title">Aujourdhui</div>
-            <div class="amount" id="benefTodayMoney">0 F</div>   
-          </div>
-          <div class="kycItem">
-            <div class="title">Ce mois</div>
-            <div class="amount" id="benefMonthMoney">0 F</div>
-          </div>
-        </div>
-       
-        <div class="row aic g16 add_product" onclick="addProduct()">
-          <img src="images/add.svg" alt="" width="24px">
-          <div>Ajouter un produit</div>
-        </div>
-       
-        <a href="modules/flyer/flyer.html">
-          <div class="row aic g16 add_product" >
-            <img src="images/djehouty_icon.svg" alt="" width="20px">
-            <div>Creer un visuel de communication</div>
-          </div>
-        </a>
        
 
         <div class="cats">
@@ -642,7 +653,7 @@
         <div class="products" id="productsContainer"></div>
 
         <!-- Install Button -->
-        <div style="display: flex">
+        <!-- <div style="display: flex">
           <button
             id="installBtn"
             class="primary_btn"
@@ -650,7 +661,7 @@
           >
             Installer l'application
           </button>
-        </div>
+        </div> -->
 
         <div style="height: 200px;"></div>
       </div>
@@ -922,7 +933,7 @@
           </button>
           <button class="tertiaryBtn2" onclick="initHistoryVente()">
             <img src="images/vente.svg" width="15px" alt="" />
-            Historique de vente
+            Statistique de vente
           </button>
           <a href="modules/collection/collection.html">
             <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
@@ -1058,7 +1069,7 @@
       <!-- Historique de retrait -->
       <div class="historyRetrait inactive history">
         <div class="row aic jcsb p16_32 title">
-          <h2>Historique de vente</h2>
+          <h2>Statistique de vente</h2>
           <img
             src="images/close.svg"
             width="20px"
@@ -1085,6 +1096,8 @@
           <div id="month_sales">12 000 XAF </div>
           <div class="h_stat_benef" id="month_benef">3 000 XAF</div>
         </div>
+        
+        <canvas id="chart"></canvas>
 
         <!-- Day items -->
         <div class="p16_32 content" id="historyRetraitListingView">
@@ -1118,6 +1131,7 @@
     <script>
      Repo_Commande.init();
     </script>
+    <script src="scripts/venteChart.js"></script>
     <script src="scripts/init.js"></script>
     <script src="scripts/history.js"></script>
     <script src="scripts/filterHistoriqueVente.js"></script>

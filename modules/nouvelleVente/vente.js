@@ -206,7 +206,7 @@ class NouvelleVente {
     this.renderProduct();
   }
 
-  static async saveCurrentVenteAndRedirectToFacture() {
+  static async saveCurrentVenteAndRedirectToFacture(facture) {
     let commandes = [];
     for (let i = 0; i <= this.products.length - 1; i++) {
       if (this.products[i].selected) {
@@ -226,8 +226,14 @@ class NouvelleVente {
     localStorage.setItem("currentVente", JSON.stringify(commandes));
     localStorage.setItem("currentClientName", this.getClientName());
     localStorage.setItem("currentClientPhone", this.getClientPhone());
-    window.location.href = "../facture/kamto.html";
-  }
+    if(facture){
+      window.location.href = "../facture/kamto.html";
+    }else{
+      let a = document.querySelector("#home");
+      a.click();
+    }
+    
+  }  
 
   static getClientName(){
     let clientId = parseInt(document.querySelector("#clientsListUI").value);

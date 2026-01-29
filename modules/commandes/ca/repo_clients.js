@@ -11,6 +11,10 @@ class RepoClient {
     await this.init();
     let clients = await this.con.select({
       from: "clients",
+      order:{
+        by:'fullname',
+        type:'asc'
+      }
     });
     return clients;
   }

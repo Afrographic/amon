@@ -71,7 +71,7 @@ async function computeCategorieStat() {
           ${imageTemplate}
           
           <div class="productItemTitle">
-              <h3>${Afro.Ucase(products[j].nom)}</h3>
+              <h3 class="f1">${Afro.Ucase(products[j].nom)}</h3>
               <div class="row aic g16">
                   ${colorTemplate}
                   <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>

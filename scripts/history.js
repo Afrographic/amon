@@ -63,6 +63,7 @@ async function showHistoryAjout(month,year) {
 
   }
 
+  
 
   //show history ajout full view
   let historyAjoutView = document.querySelector(".historyAjout");
@@ -112,6 +113,7 @@ async function showHistoryAjout(month,year) {
   monthTotalStock.innerHTML = `${totalProducts} Produits`;
   
 }
+
 
 function closeHistoryAjout() {
   let historyAjoutView = document.querySelector(".historyAjout");
@@ -180,6 +182,8 @@ async function showHistoryRetrait(month,year) {
     });
   }
 
+  let chartData = [];
+
   //show history ajout full view
   let historyAjoutView = document.querySelector(".historyRetrait");
   historyAjoutView.classList.remove("inactive");
@@ -196,10 +200,17 @@ async function showHistoryRetrait(month,year) {
     //Compute total money made
     let totalMoney = 0;
     let benefice = 0;
+   
     for(k = 0 ; k<=listToRender[i].productCount.length - 1;k++){
       totalMoney += listToRender[i].products[k].prixVente * listToRender[i].productCount[k].products.length;
       benefice += (listToRender[i].products[k].prixVente - listToRender[i].products[k].prix)* listToRender[i].productCount[k].products.length;
     }
+
+    chartData.push({
+      day:31-i,
+      totalMoney :totalMoney,
+      benefice:benefice
+    })
 
     monthTotal += totalMoney;
     monthBenefice += benefice;
@@ -239,6 +250,7 @@ async function showHistoryRetrait(month,year) {
     }
     render.innerHTML += `</div>`;
   }
+  VenteChart.render(chartData);
   //Render Stats
   let month_sales = document.querySelector("#month_sales");
   let month_benef = document.querySelector("#month_benef");

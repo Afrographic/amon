@@ -17,16 +17,17 @@
       <a href="../../index.html">
         <img src="../../images/back.svg" alt="" width="24px" />
       </a>
-      <h2>Commandes clients</h2>
+      <h2 id="titleCommande">Commandes clients</h2>
     </div>
     <div class="clientsListCommande">
-      <div class="clientList">
+      <div class="clientList" id="clientListView">
         <a href="../clients/client.html">
           <div class="add_client">
             <img src="../../images/add.svg" alt="" width="24px" />
             Ajouter un client
           </div>
         </a>
+       
         <div id="clientsRenderer">
           <div class="clientItem">
             <div>Donfack Dilane</div>
@@ -46,7 +47,11 @@
           </div>
         </div>
       </div>
-      <div class="commandes">
+      <div class="commandes commandesInactiveMobile" id="commandesViewUI">
+        <div id="clientListBtn" class="clientListBtn" onclick="Controller.showClientList()">
+          <img src="../../images/client.svg" alt="">
+          <div>Retourner sur les clients</div>
+        </div>
         <div class="empty" id="emptyView">
           <img src="../../images/empty.svg" alt="" width="80px" />
           <div>Aucune Commande pour ce client</div>

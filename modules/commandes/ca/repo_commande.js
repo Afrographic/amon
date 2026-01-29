@@ -34,6 +34,10 @@ class Repo_Commande {
     await this.init();
     let commandes = await this.con.select({
       from: "commandes",
+      order:{
+        by:'id',
+        type:'desc'
+      }
     });
     return commandes;
   }
