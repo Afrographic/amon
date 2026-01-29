@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 56.03 56.03">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-5 {
+        fill: none;
+        stroke: url(#linear-gradient-5);
+        stroke-miterlimit: 10;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="15.98" y1="28.02" x2="40.05" y2="28.02" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#97cb58"/>
+      <stop offset="1" stop-color="#00ab62"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="28.54" y1="19.23" x2="39.29" y2="19.23" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="20.34" y1="32.54" x2="34.99" y2="32.54" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="20.34" y1="37.56" x2="34.99" y2="37.56" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="0" x2="56.03" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <g>
+      <g>
+        <g id="Layer_1-2">
+          <g>
+            <path class="cls-4" d="M35.36,43.2h-14.7c-2.59,0-4.69-2.1-4.69-4.69v-20.99c0-2.59,2.1-4.69,4.69-4.69h6.04c.42,0,.75.34.75.75v9.18c0,1.47,1.19,2.66,2.66,2.66h9.18c.42,0,.75.34.75.75v12.33c0,2.59-2.1,4.69-4.69,4.69ZM20.67,13.81c-2.04,0-3.71,1.66-3.71,3.71v20.99c0,2.04,1.66,3.71,3.71,3.71h14.7c2.04,0,3.71-1.66,3.71-3.71v-12.1h-8.96c-2.01,0-3.64-1.63-3.64-3.64v-8.96h-5.81Z"/>
+            <path class="cls-3" d="M39.25,24.86l-.53-.52s-.06,0-.09,0h-8.52c-.87,0-1.57-.71-1.57-1.57v-8.52c0-.17.07-.34.19-.46.26-.26.67-.25.93,0l8.54,8.54h0s.9.9.9.9c.12.12.19.29.19.46,0,.08-.01.15-.04.22v.95ZM29.59,15.2v7.56c0,.29.24.52.52.52h7.56l-8.09-8.09Z"/>
+          </g>
+        </g>
+        <rect class="cls-2" x="20.34" y="31.47" width="14.65" height="2.13" rx="1.07" ry="1.07"/>
+        <rect class="cls-1" x="20.34" y="36.5" width="14.65" height="2.13" rx="1.07" ry="1.07"/>
+      </g>
+      <circle class="cls-5" cx="28.02" cy="28.02" r="27.52"/>
+    </g>
+  </g>
+</svg>

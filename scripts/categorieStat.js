@@ -61,7 +61,7 @@ async function computeCategorieStat() {
               <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
                   
                   <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${products[j].id}">Nouveau Stock</button>
-                  <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${products[j].id}">Nouvelle Vente</button>
+                 
             
                   <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${products[j].id}">Editer</button>
                   <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${products[j].id}">Supprimer</button>

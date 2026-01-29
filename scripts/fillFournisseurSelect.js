@@ -2,7 +2,6 @@ let collectionsAmon = [];
 function fillFournisseurSelect() {
   getFournisseurDB().then((data) => {
     
-    console.log(data);
     for(let item of data){
         collectionsAmon.push({
             catId:item.id,

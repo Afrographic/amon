@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/amon.svg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/amon.svg" />
+    <script src="../../libs/jsstore.js"></script>
+    <script src="../../libs/jsstore.worker.js"></script>
+    <script src="../../libs/afro.js"></script>
+    <link rel="stylesheet" href="comande.css" />
+    <link rel="stylesheet" href="reponsive.css" />
     <title>Commandes</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <img src="images/amon.svg" alt="" class="logo" />
+    <div class="header">
+      <a href="../../index.html">
+        <img src="../../images/back.svg" alt="" width="24px" />
+      </a>
+      <h2>Commandes clients</h2>
+    </div>
+    <div class="clientsListCommande">
+      <div class="clientList">
+        <a href="../clients/client.html">
+          <div class="add_client">
+            <img src="../../images/add.svg" alt="" width="24px" />
+            Ajouter un client
+          </div>
+        </a>
+        <div id="clientsRenderer">
+          <div class="clientItem">
+            <div>Donfack Dilane</div>
+            <div>33 Commandes</div>
+          </div>
+          <div class="clientItem">
+            <div>Donfack Dilane</div>
+            <div>33 Commandes</div>
+          </div>
+          <div class="clientItem active">
+            <div>Donfack Dilane</div>
+            <div>33 Commandes</div>
+          </div>
+          <div class="clientItem">
+            <div>Donfack Dilane</div>
+            <div>33 Commandes</div>
+          </div>
+        </div>
+      </div>
+      <div class="commandes">
+        <div class="empty" id="emptyView">
+          <img src="../../images/empty.svg" alt="" width="80px" />
+          <div>Aucune Commande pour ce client</div>
+        </div>
+        <div class="empty" id="initialView">
+          <img src="../../images/cart_1.svg" alt="" width="80px" />
+          <h3 id="totalCommandes">45 Commandes</h3>
+          <div>Cliquez sur un client pour consulter ses commandes</div>
+        </div>
+        <div id="commandesView">
+          <div class="commandeItem">
+            <div>12 Janvier 2026 a 17h45</div>
+            <div>1 Iphone XR + 2 Pantalons Super Cent + une ceinture</div>
+            <div>38 000 XAF</div>
+            <img src="images/facture.svg" alt="" title="Generer la facture" />
+          </div>
+          <div class="commandeItem">
+            <div>12 Janvier 2026 a 17h45</div>
+            <div>1 Iphone XR + 2 Pantalons Super Cent + une ceinture</div>
+            <div>38 000 XAF</div>
+            <img src="images/facture.svg" alt="" title="Generer la facture" />
+          </div>
+          <div class="commandeItem">
+            <div>12 Janvier 2026 a 17h45</div>
+            <div>1 Iphone XR + 2 Pantalons Super Cent + une ceinture</div>
+            <div>38 000 XAF</div>
+            <img src="images/facture.svg" alt="" title="Generer la facture" />
+          </div>
+          <div class="commandeItem">
+            <div>12 Janvier 2026 a 17h45</div>
+            <div>1 Iphone XR + 2 Pantalons Super Cent + une ceinture</div>
+            <div>38 000 XAF</div>
+            <img src="images/facture.svg" alt="" title="Generer la facture" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="ca/repo_commande.js"></script>
+    <script src="ca/repo_clients.js"></script>
+    <script src="ca/service.js"></script>
+    <script src="ca/controller.js"></script>
+  </body>
 </html>

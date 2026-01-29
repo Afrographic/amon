@@ -40,6 +40,16 @@
     </div>
 
     <div class="body">
+      <div class="formItem">
+        <div class="label">
+          <img src="../../images/client.svg" width="20px" alt="">
+          Nom du client</div>
+        <select name="" id="clientsListUI" >
+          <option value="dsd">Nanfack jean</option>
+          <option value="dsd">Nguemo Dorcas</option>
+          <option value="dsd">Djoumessi</option>
+        </select>
+      </div>
       <div>Veuillez selectionner les produits</div>
 
       <div class="searchBox">
@@ -76,11 +86,24 @@
       <div style="height:100px;"></div>
     </div>
 
-    <div class="nextBTN" onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture()">
-      <img src="../../images/facture_2.svg" alt="" width="24px">
-      Valider et generer la facture
+    <div class="nextBTN">
+      <div class="primary"  onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture()">
+        <img src="../../images/cart_white.svg" alt="" width="24px">
+        Valider la commande
+      </div>
+      <div  class="secondary" onclick="NouvelleVente.saveCurrentVenteAndRedirectToFacture()">
+        <img src="../../images/facture_black.svg" alt="" width="24px">
+        Generer la facture
+      </div>
     </div>
 
+
+    <script src="commandesRepo.js"></script>
+    <script src="clientsRepo.js"></script>
+    <script src="clientsService.js"></script>
+    <script src="commandesService.js"></script>
+    <script src="clientsController.js"></script>
+    <script src="commandesController.js"></script>
     <script src="vente.js"></script>
   </body>
 </html>

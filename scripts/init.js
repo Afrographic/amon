@@ -392,9 +392,7 @@ async function search() {
                           <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${
                             searchedProducts[i].id
                           }">Nouveau Stock</button>
-                          <button class="tertiaryBtn" onclick="closeSearch();decrementProduct(event);showNouvelleVenteView()" id="${
-                            searchedProducts[i].id
-                          }">Nouvelle Vente</button>
+                          
                     
                           <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${
                             searchedProducts[i].id
@@ -651,9 +649,7 @@ function renderProduct() {
                     <button class="tertiaryBtn" onclick="incrementProduct(event);showNouveauStockView()" id="${
                       products[i].id
                     }">Nouveau stock</button>
-                    <button class="tertiaryBtn" onclick="decrementProduct(event);showNouvelleVenteView()" id="${
-                      products[i].id
-                    }">Nouvelle vente</button>
+                   
               
                     <button onclick="editProduct(event)" class="tertiaryBtn" id="${
                       products[i].id

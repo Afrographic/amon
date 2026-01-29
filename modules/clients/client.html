@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fournisseurs</title>
+    <link rel="stylesheet" href="client.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <link rel="icon" href="images/amon.svg">
+    <script src="../../libs/afro.js"></script>
+    <link rel="stylesheet" href="../../styles/ankh_notif.css" />
+    <script src="../../libs/jsstore.js"></script>
+    <script src="../../libs/jsstore.worker.js"></script>
+  </head>
+  <body class="collections">
+    <!-- Add button for mobile -->
+    <img src="images/add.svg" alt=""  id="addButtonMobile" onclick="Controller.showAddViewMobile()">
+    <!-- Error box -->
+    <div
+      class="info negative"
+      id="negative"
+      style="
+        border-left: 10px solid #f70808;
+        box-shadow: -1px 8px 20px 6px #5252521c;
+        width: 80vw;
+        max-width: 500px;
+      "
+      onclick="this.classList.remove('info_visible')"
+    >
+      <img src="../../images/error_msg.svg" alt="" width="25px" />
+      <div class="column f1">
+        <div class="tal" id="content" style="color: grey; font-size: 12px">
+          Message
+        </div>
+      </div>
+    </div>
+    <!-- End error box -->
+
+    <div class="header">
+      <a href="../../index.html">
+        <img src="../../images/back.svg" alt="" width="24px" />
+      </a>
+      <h1 id="totalClient"> Clients</h1>
+    </div>
+    <hr />
+
+    <div class="empty">
+      <img src="../../images/empty.svg" alt="" width="80px" />
+      <div>Aucun client enregistre pour l'instant</div>
+    </div>
+
+    <div class="catitems" id="fournisseurView">
+      <div class="catItem">
+        <div>Electronique</div>
+        <div>
+          <img src="../../images/edit.svg" alt="" width="34px" />
+          <img src="../../images/delete.svg" alt="" width="34px" />
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px" class="addFournisseur inactive" id="addFournisseurView">
+      <img src="../../images/back.svg" alt="" width="24px" id="closeAddFournisseur" onclick="Controller.hideAddViewMobile()"/>
+      <img src="images/amon.svg" width="48px" alt="">
+      <h2 id="titleAjoutOrEdit">Ajouter un client</h2>
+      <p>Veuillez remplir le formulaire ci dessous</p>
+      <div class="formItem">
+        <div class="label">Nom du client</div>
+        <input
+          type="text"
+          placeholder="Nom du client"
+          id="fullname"
+        />
+      </div>
+      <div class="formItem">
+        <div class="label">Numero de telephone</div>
+        <input
+          type="text"
+          placeholder="Numero de telephone"
+          id="tel"
+        />
+      </div>
+      <button class="add" onclick="Controller.add()" id="addButton">
+        Ajouter un client
+      </button>
+      <button class="add" onclick="Controller.edit()" id="editButton">
+        Modifier le client
+      </button>
+      <div class="outline_button" id="cancelEditButton" onclick="Controller.disableEditingState()">
+        Annuler l'edition
+      </div>
+    </div>
+
+    <script src="ca/repo.js"></script>
+    <script src="ca/service.js"></script>
+    <script src="ca/controlleur.js"></script>
+  </body>
+</html>

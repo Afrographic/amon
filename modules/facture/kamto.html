@@ -1875,14 +1875,25 @@
         for (let i = 0; i <= commandes.length - 1; i++) {
           produits.push({
             tache: commandes[i].nom,
-            prix: commandes[i].prixVente,
-            quantite: commandes[i].qteToBuy,
+            prix: commandes[i].prixVente ?? commandes[i].prix ,
+            quantite: commandes[i].qteToBuy ?? commandes[i].qte,
           });
         }
         renderProduits();
         localStorage.removeItem("currentVente");
         let registerData = document.querySelector(".registerData");
         registerData.style.display = "none";
+
+        //Autoload client name
+        let name = localStorage.getItem("currentClientName");
+        let nomClient = document.querySelector("#nomClient");
+        nomClient.value = name;
+        localStorage.removeItem("currentClientName");
+
+        let tel = localStorage.getItem("currentClientPhone");
+        let numeroClient = document.querySelector("#numeroClient");
+        numeroClient.value = tel;
+        localStorage.removeItem("currentClientPhone");
       }
       autoLoadProducts();
 

@@ -3,7 +3,7 @@ class Repo {
 
   static async init() {
     var data = {
-      name: "fournisseurs",
+      name: "clients",
       columns: {
         id: {
           notNull: true,
@@ -22,7 +22,7 @@ class Repo {
     };
 
     var db = {
-      name: "fournisseursDB",
+      name: "clientsDB",
       tables: [data],
     };
 
@@ -31,14 +31,14 @@ class Repo {
 
   static async get_all() {
     let fournisseurs = await this.con.select({
-      from: "fournisseurs",
+      from: "clients",
     });
     return fournisseurs;
   }
 
   static async add(fournisseur){
     let added = await this.con.insert({
-      into: "fournisseurs",
+      into: "clients",
       values: [
         {
           fullname: fournisseur.fullname,
@@ -52,7 +52,7 @@ class Repo {
 
   static async edit(fournisseur){
     await this.con.update({
-      in: "fournisseurs",
+      in: "clients",
       set: {
         fullname: fournisseur.fullname,
         tel: fournisseur.tel,
@@ -65,7 +65,7 @@ class Repo {
 
   static async delete(id){
     await this.con.remove({
-      from: "fournisseurs",
+      from: "clients",
       where: {
         id: id,
       },

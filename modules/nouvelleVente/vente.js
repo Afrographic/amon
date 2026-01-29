@@ -65,7 +65,6 @@ class NouvelleVente {
     }
     NouvelleVente.products = products;
     NouvelleVente.renderProduct();
-    console.log(NouvelleVente.products);
   }
 
   static renderProduct() {
@@ -74,6 +73,7 @@ class NouvelleVente {
       (a, b) => (b.selected ? 1 : 0) - (a.selected ? 1 : 0)
     );
     for (let i = 0; i <= NouvelleVente.products.length - 1; i++) {
+      if(NouvelleVente.products[i].quantite == 0) continue;
       this.productsList.innerHTML += NouvelleVente.buildTemplate(
         NouvelleVente.products[i]
       );
@@ -218,15 +218,37 @@ class NouvelleVente {
       return;
     }
 
-    await  NouvelleVente.updateProductStockAndHistoryVente(commandes);
+    await NouvelleVente.updateProductStockAndHistoryVente(commandes);
+    await CommandesController.save(
+      commandes,
+      NouvelleVente.formatDate(new Date())
+    );
     localStorage.setItem("currentVente", JSON.stringify(commandes));
+    localStorage.setItem("currentClientName", this.getClientName());
+    localStorage.setItem("currentClientPhone", this.getClientPhone());
     window.location.href = "../facture/kamto.html";
-
   }
 
-  static getCommandeIndex(product){
-    for(let i = 0 ; i<=this.products.length-1;i++){
-      if(this.products[i].id == product.id){
+  static getClientName(){
+    let clientId = parseInt(document.querySelector("#clientsListUI").value);
+    for(let item of ClientsController.clients){
+      if(item.id == clientId){
+        return item.fullname
+      }
+    }
+  }
+  static getClientPhone(){
+    let clientId = parseInt(document.querySelector("#clientsListUI").value);
+    for(let item of ClientsController.clients){
+      if(item.id == clientId){
+        return item.tel
+      }
+    }
+  }
+
+  static getCommandeIndex(product) {
+    for (let i = 0; i <= this.products.length - 1; i++) {
+      if (this.products[i].id == product.id) {
         return i;
       }
     }
@@ -283,7 +305,7 @@ class NouvelleVente {
     }
   }
 
-  static  getToday() {
+  static getToday() {
     let date = new Date();
     let render = date.toLocaleString("fr-FR", {
       day: "numeric",
@@ -293,7 +315,7 @@ class NouvelleVente {
     return render;
   }
 
-  static  formatDate(date) {
+  static formatDate(date) {
     let render = date.toLocaleString("fr-FR", {
       day: "numeric",
       month: "long",

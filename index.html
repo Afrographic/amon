@@ -903,8 +903,13 @@
        
         <h3 id="nameStore2">Store</h3>
 
-        <p>Veuillez profiter des options ci dessous</p>
         <div class="buttons">
+          <a href="modules/clients/client.html">
+            <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+              <img src="images/client.svg" width="15px" alt="" />
+              Gestion des clients
+            </button>
+          </a>
           <a href="modules/facture/kamto.html">
             <button class="tertiaryBtn2">
               <img src="images/facture.svg" width="15px" alt="" />
@@ -921,22 +926,23 @@
           </button>
           <a href="modules/collection/collection.html">
             <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
-              <img src="images/settings.svg" width="15px" alt="" />
+              <img src="images/cat_menu.svg" width="15px" alt="" />
               Gestion des categories
             </button>
           </a>
           <a href="modules/fournisseurs/fournisseur.html">
             <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
-              <img src="images/settings.svg" width="15px" alt="" />
+              <img src="images/fournisseur.svg" width="15px" alt="" />
               Gestion des fournisseurs
             </button>
           </a>
           <a href="modules/commandes/comande.html">
             <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
-              <img src="images/settings.svg" width="15px" alt="" />
-              Gestion des Commandes clients
+              <img src="images/cart_1.svg" width="15px" alt="" />
+              Gestion des Commandes 
             </button>
           </a>
+         
          
           <hr>
           <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
@@ -963,14 +969,9 @@
             accept=".json"
           />
         </div>
-        <div style="margin-top:8px;">
-          Faire un don par OM 
-        </div>
-        <div><strong>Tesse Brunel</strong> - 697830071</div>
 
         <p class="copyRight">
-          Designed and Developed by <br />
-          Afrographix Studio 2025 &copy;
+          Afrographix Studio
         </p>
         <img src="images/afro_svg.svg" width="20px" alt="" />
       </div>
@@ -1113,6 +1114,10 @@
       </div>
     </div>
 
+    <script src="modules/commandes/ca/repo_commande.js"></script>
+    <script>
+     Repo_Commande.init();
+    </script>
     <script src="scripts/init.js"></script>
     <script src="scripts/history.js"></script>
     <script src="scripts/filterHistoriqueVente.js"></script>
