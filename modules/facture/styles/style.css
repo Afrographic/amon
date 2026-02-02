@@ -673,3 +673,7 @@ textarea{
 .moreOptions td{
     padding:4px 8px;
 }
+
+.factureTable td,#renderProducts td {
+    max-width: 24vw;
+}

@@ -92,7 +92,7 @@ function formatHistory() {
         <img src="assets/images/invoice.svg" alt="" width="15px" />
         <div>${history[i].factures[j].client}</div>
         <div class="f1"></div>
-        <img src="assets/images/export.svg" alt="" width="24px" onclick="editFacture(event,${i},${j})" />
+        <img src="assets/images/export.svg" alt="" width="24px" onclick="editFacture(event,${i},${j});hideHistory();" />
       </div>
       `;
     }
