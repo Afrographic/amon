@@ -50,7 +50,7 @@ class CV1_renderer{
 
         //Render competences
         this.cv1_competences.innerHTML = `
-        <div class="cv1_contact_label bold">COMPETENCES</div>
+        <div class="cv1_contact_label bold cv1_title">COMPETENCES</div>
         `;
         for(let i = 0 ; i <=info.logiciels.length-1;i++){
             if(info.logiciels[i].nom.trim().length == 0) continue;
@@ -69,7 +69,7 @@ class CV1_renderer{
 
         //Render Langues
         this.cv1_langue.innerHTML = `
-        <div class="cv1_contact_label bold">LANGUES</div>
+        <div class="cv1_contact_label bold cv1_title">LANGUES</div>
         `
         for(let i = 0 ; i <=info.langues.length-1;i++){
             if(info.langues[i].langue.trim().length ==0) continue;
