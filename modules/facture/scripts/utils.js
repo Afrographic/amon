@@ -10,7 +10,7 @@ class HelperFunction {
     let milliseconds = date.getMilliseconds();
     return `${year}${month}${day}${hours}${minutes}${seconds}${milliseconds}`;
   }
- 
+
   static Ucase(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -95,6 +95,7 @@ class HelperFunction {
     }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
+
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
 
@@ -140,7 +141,7 @@ class HelperFunction {
       // link.click();
 
       let fileName = `#${numeroSerie} - Facture - ${client}`;
-      this.dataURLToPDF(imgData,fileName);
+      this.dataURLToPDF(imgData, fileName, facture.offsetHeight);
 
       //JSPDF test
       // const {jsPDF} = window.jspdf;
@@ -154,11 +155,19 @@ class HelperFunction {
     });
   }
 
-  static async dataURLToPDF(dataURL,fileName) {
+  static async dataURLToPDF(dataURL, fileName, imageHeight) {
     const { jsPDF } = window.jspdf;
 
     // Create PDF (A4 portrait, mm units)
-    const pdf = new jsPDF("p", "mm", "a4");
+    //const pdf = new jsPDF("p", "mm", "a4");
+    let pdfHeight =  parseInt(imageHeight) * (25.9 / 96) - 40;
+
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "px",
+      format: [210,pdfHeight],
+    });
+
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
 
@@ -196,16 +205,14 @@ class HelperFunction {
         undefined,
         "FAST",
         0,
-        positionY // crop Y offset (from full image)
+        positionY, // crop Y offset (from full image)
       );
 
       remainingHeight -= pageHeight;
       positionY += pageHeight;
-
-      
     }
 
-    pdf.save(fileName+".pdf");
+    pdf.save(fileName + ".pdf");
   }
 
   static sleep(ms) {
