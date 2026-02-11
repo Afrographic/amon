@@ -161,6 +161,9 @@ class HelperFunction {
     // Create PDF (A4 portrait, mm units)
     //const pdf = new jsPDF("p", "mm", "a4");
     let pdfHeight =  parseInt(imageHeight) * (25.9 / 96) -40;
+    if(window.innerWidth <= 1000){
+      pdfHeight+=170;
+    }
 
     const pdf = new jsPDF({
       orientation: "portrait",
