@@ -162,7 +162,7 @@ class HelperFunction {
     //const pdf = new jsPDF("p", "mm", "a4");
     let pdfHeight =  parseInt(imageHeight) * (25.9 / 96) -40;
     if(window.innerWidth <= 1000){
-      pdfHeight+=window.innerHeight/6;
+      pdfHeight+=window.innerHeight/4;
     }
 
     const pdf = new jsPDF({
