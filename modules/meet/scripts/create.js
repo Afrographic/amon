@@ -34,7 +34,7 @@ class Create {
     this.visuel.image_fond = e.target.files[0];
     let temp_url = URL.createObjectURL(this.visuel.image_fond);
     let image_fond_placeholder = document.querySelector(
-      "#image_fond_placeholder"
+      "#image_fond_placeholder",
     );
     image_fond_placeholder.style.backgroundImage = `url(${temp_url})`;
   }
@@ -42,7 +42,7 @@ class Create {
   static trigger_photo_intervenant(el) {
     el.innerHTML = "";
     let photo_intervenant_input = document.querySelector(
-      "#photo_intervenant_input"
+      "#photo_intervenant_input",
     );
     photo_intervenant_input.click();
   }
@@ -52,7 +52,7 @@ class Create {
     this.visuel.photo_intervenant = e.target.files[0];
     let temp_url = URL.createObjectURL(this.visuel.photo_intervenant);
     let photo_intervenant_placeholder = document.querySelector(
-      "#photo_intervenant_placeholder"
+      "#photo_intervenant_placeholder",
     );
     photo_intervenant_placeholder.style.backgroundImage = `url(${temp_url})`;
   }
@@ -71,15 +71,20 @@ class Create {
   static get_plateforme(el) {
     this.visuel.plateforme = Tools.Ucase(el.value);
   }
+
+  static get_link(el) {
+    this.visuel.link = el.value;
+  }
+
   static get_lien_code(el) {
     this.visuel.lien = Tools.Ucase(el.value);
   }
 
-  static get_heure_debut(el){
+  static get_heure_debut(el) {
     this.visuel.heure_debut = el.value;
   }
 
-  static get_heure_fin(el){
+  static get_heure_fin(el) {
     this.visuel.heure_fin = el.value;
   }
 
@@ -116,11 +121,11 @@ class Create {
       alert("Date invalide!");
       return;
     }
-    if(this.visuel.heure_debut.trim().length == 0){
+    if (this.visuel.heure_debut.trim().length == 0) {
       alert("Heure de debut invalide!");
       return;
     }
-    if(this.visuel.heure_fin.trim().length == 0){
+    if (this.visuel.heure_fin.trim().length == 0) {
       alert("Heure de debut invalide!");
       return;
     }

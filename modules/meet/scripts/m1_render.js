@@ -32,6 +32,10 @@ class Visuel1 {
       "images/pharaon.png",
       "modeles/m1/images/pharaon.png"
     );
+    raw_template = raw_template.replace(
+      "images/link.png",
+      "modeles/m1/images/link.png"
+    );
     v1_render.innerHTML = raw_template;
     
     //Init coloring
@@ -67,6 +71,9 @@ class Visuel1 {
     //Time
     let m1_heure_value = document.querySelector("#m1_heure_value");
     m1_heure_value.innerHTML = `${visuel.heure_debut} - ${visuel.heure_fin}`;
+    //Link du meet
+    let link_value = document.querySelector("#link_value");
+    link_value.innerHTML = visuel.link;
     //Lieu du meet
     let m1_lieu_value = document.querySelector("#m1_lieu_value");
     m1_lieu_value.innerHTML = visuel.plateforme;

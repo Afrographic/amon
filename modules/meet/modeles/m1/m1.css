@@ -41,10 +41,10 @@ h1 {
     position: relative;
 }
 
-#m1_background_image{
+#m1_background_image {
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     background-image: url(images/pharaon.png);
     width: 100%;
     height: 100%;
@@ -54,14 +54,14 @@ h1 {
     z-index: 1;
 }
 
-#m1_color_overlay{
-     background-color: #000000bb;
-     position: absolute;
-     top:0;
-     left:0;
-     width: 100%;
-     height: 100%;
-     z-index: 2;
+#m1_color_overlay {
+    background-color: #000000bb;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
 }
 
 #m1_logo_name {
@@ -118,15 +118,16 @@ h1 {
     font-size: 4.5vw;
 }
 
-#m1_poste{
+#m1_poste {
     opacity: 0.6;
 }
 
-#m1_date_heure img,#m1_lieu img{
+#m1_date_heure img,
+#m1_lieu img {
     width: 4vw;
 }
 
-#m1_date_heure{
+#m1_date_heure {
     background-color: yellow;
     color: #090909;
     padding: 8px 16px;
@@ -139,17 +140,33 @@ h1 {
     justify-content: center;
 }
 
-#m1_date,#m1_heure,#m1_lieu{
-    display: flex;
-    align-items: center;
-    gap:2vw;
+.m1_link_container {
+    width: 100%;
+    border-bottom: 1px solid #aaa;
+    justify-content: center;
+    padding-bottom: 4px;
 }
 
-#m1_lieu_value{
+
+
+#m1_date,
+#m1_heure,
+#m1_lieu {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+#m1_lieu_value {
     font-size: 4vw;
 }
 
-.relative{
+#link_value {
+    font-size: 3vw;
+}
+
+
+.relative {
     position: relative;
     z-index: 3;
 }

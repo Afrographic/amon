@@ -12,5 +12,6 @@ class Visuel{
         this.heure_debut="";
         this.heure_fin="";
         this.plateforme="";
+        this.link="";
     }
 }
