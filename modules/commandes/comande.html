@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,9 +14,7 @@
   <body>
     <img src="images/amon.svg" alt="" class="logo" />
     <div class="header">
-      <a href="../../index.html">
-        <img src="../../images/back.svg" alt="" width="24px" />
-      </a>
+      <img src="../../images/back.svg" alt="" width="24px" onclick="Controller.back()"/>
       <h2 id="titleCommande">Commandes clients</h2>
     </div>
     <div class="clientsListCommande">
@@ -27,7 +25,7 @@
             Ajouter un client
           </div>
         </a>
-       
+
         <div id="clientsRenderer">
           <div class="clientItem">
             <div>Donfack Dilane</div>
@@ -48,10 +46,10 @@
         </div>
       </div>
       <div class="commandes commandesInactiveMobile" id="commandesViewUI">
-        <div id="clientListBtn" class="clientListBtn" onclick="Controller.showClientList()">
+        <!-- <div id="clientListBtn" class="clientListBtn" onclick="Controller.showClientList()">
           <img src="../../images/client.svg" alt="">
           <div>Retourner sur les clients</div>
-        </div>
+        </div> -->
         <div class="empty" id="emptyView">
           <img src="../../images/empty.svg" alt="" width="80px" />
           <div>Aucune Commande pour ce client</div>
@@ -94,5 +92,21 @@
     <script src="ca/repo_clients.js"></script>
     <script src="ca/service.js"></script>
     <script src="ca/controller.js"></script>
+
+    <script>
+      /*
+      if (window.innerWidth <= 1000) {
+        history.pushState({ page: "commande-client" }, "", "/commande-client");
+        localStorage.setItem("current-page", "commande-client");
+      }
+      */
+      // handle Back button
+
+      window.onpopstate = function (event) {
+        if (localStorage.getItem("current-page") == "commande-client") {
+          Controller.showClientList();
+        }
+      };
+    </script>
   </body>
 </html>

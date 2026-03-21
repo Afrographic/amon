@@ -94,5 +94,21 @@
     <script src="ca/repo.js"></script>
     <script src="ca/service.js"></script>
     <script src="ca/controlleur.js"></script>
+
+     <script>
+      /*
+      if (window.innerWidth <= 1000) {
+        history.pushState({ page: "reset" }, "", "/reset");
+        localStorage.setItem("current-page", "reset");
+      }
+      */
+      // handle Back button
+
+      window.onpopstate = function (event) {
+        if (localStorage.getItem("current-page") == "add-fournisseur") {
+          Controller.hideAddViewMobile();
+        }
+      };
+    </script>
   </body>
-</html>
+</html> 

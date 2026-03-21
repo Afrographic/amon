@@ -34,6 +34,10 @@ window.addEventListener("beforeinstallprompt", (e) => {
 function initResetApp() {
   let resetAppView = document.querySelector(".resetApp");
   resetAppView.classList.remove("inactive");
+  if (window.innerWidth <= 1000) {
+    history.pushState({ page: "reset" }, "", "/reset");
+    localStorage.setItem("current-page", "reset");
+  }
 }
 function resetApp() {
   //Delete DB
@@ -91,6 +95,15 @@ function hideWelcomeScreen() {
 function showWelcomeScreen() {
   let welcome = document.querySelector(".welcome");
   welcome.classList.remove("inactive");
+  if (window.innerWidth <= 1000) {
+    history.pushState({ page: "config" }, "", "/config");
+    localStorage.setItem("current-page", "config");
+  }
+}
+
+function hideWelcomeScreen(){
+  let welcome = document.querySelector(".welcome");
+  welcome.classList.add("inactive");
 }
 
 function resetHistory() {

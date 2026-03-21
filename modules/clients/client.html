@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
     <title>Fournisseurs</title>
     <link rel="stylesheet" href="client.css" />
     <link rel="stylesheet" href="responsive.css" />
-    <link rel="icon" href="images/amon.svg">
+    <link rel="icon" href="images/amon.svg" />
     <script src="../../libs/afro.js"></script>
     <link rel="stylesheet" href="../../styles/ankh_notif.css" />
     <script src="../../libs/jsstore.js"></script>
@@ -14,7 +14,12 @@
   </head>
   <body class="collections">
     <!-- Add button for mobile -->
-    <img src="images/add.svg" alt=""  id="addButtonMobile" onclick="Controller.showAddViewMobile()">
+    <img
+      src="images/add.svg"
+      alt=""
+      id="addButtonMobile"
+      onclick="Controller.showAddViewMobile()"
+    />
     <!-- Error box -->
     <div
       class="info negative"
@@ -40,7 +45,7 @@
       <a href="../../index.html">
         <img src="../../images/back.svg" alt="" width="24px" />
       </a>
-      <h1 id="totalClient"> Clients</h1>
+      <h1 id="totalClient">Clients</h1>
     </div>
     <hr />
 
@@ -59,26 +64,28 @@
       </div>
     </div>
 
-    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px" class="addFournisseur inactive" id="addFournisseurView">
-      <img src="../../images/back.svg" alt="" width="24px" id="closeAddFournisseur" onclick="Controller.hideAddViewMobile()"/>
-      <img src="images/amon.svg" width="48px" alt="">
+    <div
+      style="padding: 16px; display: flex; flex-direction: column; gap: 8px"
+      class="addFournisseur inactive"
+      id="addFournisseurView"
+    >
+      <img
+        src="../../images/back.svg"
+        alt=""
+        width="24px"
+        id="closeAddFournisseur"
+        onclick="Controller.hideAddViewMobile()"
+      />
+      <img src="images/amon.svg" width="48px" alt="" />
       <h2 id="titleAjoutOrEdit">Ajouter un client</h2>
       <p>Veuillez remplir le formulaire ci dessous</p>
       <div class="formItem">
         <div class="label">Nom du client</div>
-        <input
-          type="text"
-          placeholder="Nom du client"
-          id="fullname"
-        />
+        <input type="text" placeholder="Nom du client" id="fullname" />
       </div>
       <div class="formItem">
         <div class="label">Numero de telephone</div>
-        <input
-          type="text"
-          placeholder="Numero de telephone"
-          id="tel"
-        />
+        <input type="text" placeholder="Numero de telephone" id="tel" />
       </div>
       <button class="add" onclick="Controller.add()" id="addButton">
         Ajouter un client
@@ -86,7 +93,11 @@
       <button class="add" onclick="Controller.edit()" id="editButton">
         Modifier le client
       </button>
-      <div class="outline_button" id="cancelEditButton" onclick="Controller.disableEditingState()">
+      <div
+        class="outline_button"
+        id="cancelEditButton"
+        onclick="Controller.disableEditingState()"
+      >
         Annuler l'edition
       </div>
     </div>
@@ -94,5 +105,21 @@
     <script src="ca/repo.js"></script>
     <script src="ca/service.js"></script>
     <script src="ca/controlleur.js"></script>
+
+    <script>
+      /*
+      if (window.innerWidth <= 1000) {
+        history.pushState({ page: "reset" }, "", "/reset");
+        localStorage.setItem("current-page", "reset");
+      }
+      */
+      // handle Back button
+
+      window.onpopstate = function (event) {
+        if (localStorage.getItem("current-page") == "add-client") {
+          Controller.hideAddViewMobile();
+        }
+      };
+    </script>
   </body>
 </html>

@@ -3,6 +3,10 @@ function initHistoryAjout(){
   let currentMonth = getCurrentMonth();
   let currentYear = getCurrentYear();
   showHistoryAjout(currentMonth,currentYear);
+   if (window.innerWidth <= 1000) {
+    history.pushState({ page: "historique-stock" }, "", "/historique-stock");
+    localStorage.setItem("current-page", "historique-stock");
+  }
 }
 
 
@@ -124,6 +128,16 @@ function initHistoryVente(){
    if (window.innerWidth <= 1000) {
     history.pushState({ page: "stat-vente" }, "", "/stat-vente");
     localStorage.setItem("current-page", "stat-vente");
+  }
+  let currentMonth = getCurrentMonth();
+  let currentYear = getCurrentYear();
+  showHistoryRetrait(currentMonth,currentYear);
+}
+
+function goToHistoriqueDeVente(){
+   if (window.innerWidth <= 1000) {
+    history.pushState({ page: "historique-vente" }, "", "/historique-vente");
+    localStorage.setItem("current-page", "historique-vente");
   }
   let currentMonth = getCurrentMonth();
   let currentYear = getCurrentYear();

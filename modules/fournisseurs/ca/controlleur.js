@@ -101,7 +101,7 @@ class Controller {
     titleAjoutOrEdit.innerHTML ="Modifier un fournisseur";
     this.showAddViewMobile();
   }
-
+ 
   static async  delete(index){
     let fournisseurName =  this.fournisseurs[index].fullname;
     if(confirm("Voulez vous vraiment supprimer le fournisseur "+fournisseurName)){
@@ -113,6 +113,10 @@ class Controller {
   static showAddViewMobile(){
     let addFournisseurView = document.querySelector("#addFournisseurView");
     addFournisseurView.classList.remove("inactive");
+     if (window.innerWidth <= 1000) {
+      history.pushState({ page: "add-fournisseur" }, "", "/add-fournisseur");
+      localStorage.setItem("current-page", "add-fournisseur");
+    }
   }
 
   static hideAddViewMobile(){

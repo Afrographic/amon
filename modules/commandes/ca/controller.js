@@ -42,13 +42,17 @@ class Controller {
     this.hideTotalCommandes();
     this.renderCommandesUI(this.commandes[index]);
     let titleCommande = document.querySelector("#titleCommande");
-      titleCommande.innerHTML = this.commandes[index].fullname;
+    titleCommande.innerHTML = this.commandes[index].fullname;
     if (window.innerWidth <= 1200) {
-      
       let clientListView = document.querySelector("#clientListView");
       clientListView.style.display = "none";
       let commandesViewUI = document.querySelector("#commandesViewUI");
       commandesViewUI.classList.remove("commandesInactiveMobile");
+    }
+
+    if (window.innerWidth <= 1000) {
+      history.pushState({ page: "commande-client" }, "", "/commande-client");
+      localStorage.setItem("current-page", "commande-client");
     }
   }
 
@@ -114,6 +118,10 @@ class Controller {
       str += ` ${dot} ${item.qte} ${item.nom}`;
     }
     return str;
+  }
+
+  static back(){
+    history.back();
   }
 
   static hideTotalCommandes() {

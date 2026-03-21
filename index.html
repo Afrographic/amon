@@ -936,7 +936,7 @@
             <img src="images/stock.svg" width="15px" alt="" />
             Historique de stock
           </button>
-          <button class="tertiaryBtn2" onclick="initHistoryVente()">
+          <button class="tertiaryBtn2" onclick="goToHistoriqueDeVente()">
             <img src="images/vente.svg" width="15px" alt="" />
             Statistique de vente
           </button>
@@ -961,7 +961,7 @@
          
          
           <hr>
-          <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+          <button class="tertiaryBtn2" onclick="showWelcomeScreen();">
             <img src="images/settings.svg" width="15px" alt="" />
             Configurer
           </button>
@@ -986,10 +986,15 @@
           />
         </div>
 
-        <p class="copyRight">
-          Afrographix Studio
-        </p>
-        <img src="images/afro_svg.svg" width="20px" alt="" />
+        <div class="afroSign">
+          
+           <img src="images/afro_svg.svg" width="20px" alt="" />
+            <div class="copyRight">
+              Afrographix Studio
+            </div>
+        </div>
+
+       
       </div>
 
       <!-- Resultat de recherche -->
@@ -1174,6 +1179,22 @@
         }
         if(localStorage.getItem("current-page") =="stat-vente"){
           closeHistoryRetrait();
+        }
+        if(localStorage.getItem("current-page") =="config"){
+          hideWelcomeScreen();
+          localStorage.setItem("current-page", "menu");
+        }
+        if(localStorage.getItem("current-page") =="reset"){
+          cancelResetApp();
+          localStorage.setItem("current-page", "menu");
+        }
+        if(localStorage.getItem("current-page") =="historique-stock"){
+          closeHistoryAjout();
+          localStorage.setItem("current-page", "menu");
+        }
+        if(localStorage.getItem("current-page") =="historique-vente"){
+          closeHistoryRetrait();
+          localStorage.setItem("current-page", "menu");
         }
       }
     </script>
