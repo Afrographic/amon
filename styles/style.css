@@ -28,7 +28,7 @@ h3{
 .mobileAddProduct {
     position: fixed;
     bottom: 32px;
-    right: 32px;
+    right: 22px;
     z-index: 1;
 }
 

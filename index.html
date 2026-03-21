@@ -508,7 +508,12 @@
           class="mobileMenuIcon"
         />
         
-        <div class="f1"></div>
+        <img
+          src="images/amon.svg"
+          width="22px"
+          alt=""
+          class="mobileMenuIcon"
+        />
         <div class="mobileIcons">
           <img
             src="images/history_vente.svg"
@@ -915,13 +920,13 @@
         <h3 id="nameStore2">Store</h3>
 
         <div class="buttons">
-          <a href="modules/clients/client.html">
-            <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+          <a href="modules/clients/client.html" onclick="resetHistory()">
+            <button class="tertiaryBtn2" >
               <img src="images/client.svg" width="15px" alt="" />
               Gestion des clients
             </button>
           </a>
-          <a href="modules/facture/kamto.html">
+          <a href="modules/facture/kamto.html" onclick="resetHistory()">
             <button class="tertiaryBtn2">
               <img src="images/facture.svg" width="15px" alt="" />
               Creer une facture
@@ -935,20 +940,20 @@
             <img src="images/vente.svg" width="15px" alt="" />
             Statistique de vente
           </button>
-          <a href="modules/collection/collection.html">
-            <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+          <a href="modules/collection/collection.html" onclick="resetHistory()">
+            <button class="tertiaryBtn2" >
               <img src="images/cat_menu.svg" width="15px" alt="" />
               Gestion des categories
             </button>
           </a>
-          <a href="modules/fournisseurs/fournisseur.html">
-            <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+          <a href="modules/fournisseurs/fournisseur.html" onclick="resetHistory()">
+            <button class="tertiaryBtn2" >
               <img src="images/fournisseur.svg" width="15px" alt="" />
               Gestion des fournisseurs
             </button>
           </a>
-          <a href="modules/commandes/comande.html">
-            <button class="tertiaryBtn2" onclick="showWelcomeScreen()">
+          <a href="modules/commandes/comande.html" onclick="resetHistory()">
+            <button class="tertiaryBtn2" >
               <img src="images/cart_1.svg" width="15px" alt="" />
               Gestion des Commandes 
             </button>
@@ -1151,6 +1156,27 @@
     <script src="scripts/product.js"></script>
     <script src="scripts/productColor.js"></script>
     <script src="scripts/categorieStat.js"></script>
+
+    <script>
+      // handle Back button
+      window.onpopstate = function(event){
+        if(localStorage.getItem("current-page") =="creer-produit"){
+          closeAddProduct();
+        }
+        if(localStorage.getItem("current-page") =="edit-produit"){
+          closeEditProduct();
+        }
+        if(localStorage.getItem("current-page") =="nouveau-stock"){
+          hideNouveauStockView();
+        }
+        if(localStorage.getItem("current-page") =="menu"){
+          hideMenu();
+        }
+        if(localStorage.getItem("current-page") =="stat-vente"){
+          closeHistoryRetrait();
+        }
+      }
+    </script>
   </body>
 </html>
 

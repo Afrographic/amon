@@ -121,6 +121,10 @@ function closeHistoryAjout() {
 }
 
 function initHistoryVente(){
+   if (window.innerWidth <= 1000) {
+    history.pushState({ page: "stat-vente" }, "", "/stat-vente");
+    localStorage.setItem("current-page", "stat-vente");
+  }
   let currentMonth = getCurrentMonth();
   let currentYear = getCurrentYear();
   showHistoryRetrait(currentMonth,currentYear);

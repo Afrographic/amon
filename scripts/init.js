@@ -93,6 +93,12 @@ function showWelcomeScreen() {
   welcome.classList.remove("inactive");
 }
 
+function resetHistory() {
+  if (window.innerWidth <= 1000) {
+    history.replaceState({ page: "home" }, "", "/");
+  }
+}
+
 function setNameStore() {
   let nomBoutiqueLocale = localStorage.getItem("nomBoutique");
   let nameStore = document.querySelector("#nameStore");
@@ -111,7 +117,7 @@ async function init_DB() {
 }
 
 function get_db_schema() {
-  var data = { 
+  var data = {
     name: "data",
     columns: {
       id: {
@@ -366,7 +372,7 @@ async function search() {
   for (let i = 0; i <= searchedProducts.length - 1; i++) {
     // Building image template
     let imagURl = await ProductImageService.getImageURL(
-      searchedProducts[i].imageId ?? -1
+      searchedProducts[i].imageId ?? -1,
     );
     let imageTemplate = "";
     if (imagURl.length > 0) {
@@ -381,7 +387,7 @@ async function search() {
 
     //Build More info component
     let moreInfoTemplate = Product.generateMoreInfoTemplate(
-      searchedProducts[i]
+      searchedProducts[i],
     );
 
     renderSearchResult.innerHTML += `
@@ -421,7 +427,7 @@ async function search() {
                       <tr>
                           <td>Prix de vente</td>
                           <td>${Afro.formatNumWithWhiteSpace(
-                            searchedProducts[i].prixVente
+                            searchedProducts[i].prixVente,
                           )} ${devise}</td>
                       </tr>
                       <tr>
@@ -454,6 +460,11 @@ function addProduct() {
   addProductElement.classList.remove("inactive");
   addProductElement.classList.add("active");
   addProduitButton.classList.add("inactive");
+
+  if (window.innerWidth <= 1000) {
+    history.pushState({ page: "creer-produit" }, "", "/creer-produit");
+    localStorage.setItem("current-page", "creer-produit");
+  }
 
   //Empty adding image block
   let importImage = document.querySelector(".importImage");
@@ -671,7 +682,7 @@ function renderProduct() {
                       <tr>
                           <td>Prix d'achat</td>
                           <td>${Afro.formatNumWithWhiteSpace(
-                            products[i].prix
+                            products[i].prix,
                           )} ${devise}</td>
                       </tr>
                       <tr>
@@ -704,7 +715,7 @@ function renderProduct() {
                       <tr>
                           <td>Prix d'achat</td>
                           <td>${Afro.formatNumWithWhiteSpace(
-                            products[i].prix
+                            products[i].prix,
                           )} ${devise}</td>
                       </tr>
                       <tr>
@@ -740,6 +751,11 @@ let prixVenteEditInput = document.querySelector("#prixVenteEditInput");
 let productIdToEdit = 0;
 
 async function editProduct(event) {
+  if (window.innerWidth <= 1000) {
+    history.pushState({ page: "edit-produit" }, "", "/edit-produit");
+    localStorage.setItem("current-page", "edit-produit");
+  }
+
   let id = event.target.id;
   productIdToEdit = id;
   EditProductElement.classList.remove("inactive");
@@ -755,7 +771,9 @@ async function editProduct(event) {
       EditCategories.value = products[i].catId;
 
       //prefill selected fournisseur
-      let EditFournisseurSelect = document.querySelector("#EditFournisseurSelect");
+      let EditFournisseurSelect = document.querySelector(
+        "#EditFournisseurSelect",
+      );
       EditFournisseurSelect.value = products[i].fournisseurId;
 
       //Prefill product color
@@ -773,7 +791,7 @@ async function editProduct(event) {
       let importImage = document.querySelector(".importImageEdit");
       if (products[i].imageId != undefined) {
         let imageFile = await ProductImageService.getImageFile(
-          products[i].imageId
+          products[i].imageId,
         );
         if (imageFile == undefined) {
           importImage.style.backgroundImage = ``;
@@ -843,7 +861,7 @@ async function editProductSave() {
     if (products[i].id == id) {
       let imageId = await ProductImageService.editProductImage(
         products[i].id,
-        products[i].imageId
+        products[i].imageId,
       );
 
       products[i].nom = nomEditInput.value.trim();

@@ -9,6 +9,12 @@ async function showNouveauStockView() {
   let title = `Veuillez renseigner le nombre de pieces pour ${product.nom} que vous venez de recevoir`;
   let titleNouveauStock = document.querySelector("#titleNouveauStock");
   titleNouveauStock.innerHTML = `${title}`;
+
+
+  if (window.innerWidth <= 1000) {
+    history.pushState({ page: "nouveau-stock" }, "", "/nouveau-stock");
+    localStorage.setItem("current-page", "nouveau-stock");
+  }
 }
 
 function hideNouveauStockView() {
