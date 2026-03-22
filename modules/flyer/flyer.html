@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -700,5 +700,18 @@
     <script src="scripts/splash.js"></script>
     <script src="scripts/charte.js"></script>
     <script src="scripts/qr_code_generator.js"></script>
+
+    <script>
+      window.onpopstate = function (event) {
+        if (localStorage.getItem("current-page") == "/#/config") {
+          UI.hide_config_screen();
+          UI.show_create_flyer_screen();
+        }
+        if (localStorage.getItem("current-page") == "/#/render-flyer") {
+          UI.hide_rendered_flyer_screen();
+          UI.show_create_flyer_screen();
+        }
+      };
+    </script>
   </body>
 </html>

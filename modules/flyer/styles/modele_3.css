@@ -111,11 +111,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
+    padding:6px 12px;
     background-color: #fff;
     gap:4px;
     border-radius: 8px;
-    width: 39vw;
 }
 
 .m3_address img{
