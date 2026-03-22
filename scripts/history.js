@@ -126,7 +126,7 @@ function closeHistoryAjout() {
 
 function initHistoryVente(){
    if (window.innerWidth <= 1000) {
-    history.pushState({ page: "stat-vente" }, "", "/stat-vente");
+    history.pushState({ page: "stat-vente" }, "", "/#/stat-vente");
     localStorage.setItem("current-page", "stat-vente");
   }
   let currentMonth = getCurrentMonth();
@@ -136,7 +136,7 @@ function initHistoryVente(){
 
 function goToHistoriqueDeVente(){
    if (window.innerWidth <= 1000) {
-    history.pushState({ page: "historique-vente" }, "", "/historique-vente");
+    history.pushState({ page: "historique-vente" }, "", "/#/historique-vente");
     localStorage.setItem("current-page", "historique-vente");
   }
   let currentMonth = getCurrentMonth();

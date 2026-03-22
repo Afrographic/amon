@@ -119,7 +119,7 @@ class Controller {
     let addFournisseurView = document.querySelector("#addFournisseurView");
     addFournisseurView.classList.remove("inactive");
     if (window.innerWidth <= 1000) {
-      history.pushState({ page: "add-client" }, "", "/add-client");
+      history.pushState({ page: "add-client" }, "", "/#/add-client");
       localStorage.setItem("current-page", "add-client");
     }
   }

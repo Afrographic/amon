@@ -51,7 +51,7 @@ class Controller {
     }
 
     if (window.innerWidth <= 1000) {
-      history.pushState({ page: "commande-client" }, "", "/commande-client");
+      history.pushState({ page: "commande-client" }, "", "/#/commande-client");
       localStorage.setItem("current-page", "commande-client");
     }
   }

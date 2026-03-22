@@ -12,7 +12,7 @@ async function showNouveauStockView() {
 
 
   if (window.innerWidth <= 1000) {
-    history.pushState({ page: "nouveau-stock" }, "", "/nouveau-stock");
+    history.pushState({ page: "nouveau-stock" }, "", "/#/nouveau-stock");
     localStorage.setItem("current-page", "nouveau-stock");
   }
 }

@@ -114,7 +114,7 @@ class Controller {
     let addFournisseurView = document.querySelector("#addFournisseurView");
     addFournisseurView.classList.remove("inactive");
      if (window.innerWidth <= 1000) {
-      history.pushState({ page: "add-fournisseur" }, "", "/add-fournisseur");
+      history.pushState({ page: "add-fournisseur" }, "", "/#/add-fournisseur");
       localStorage.setItem("current-page", "add-fournisseur");
     }
   }
