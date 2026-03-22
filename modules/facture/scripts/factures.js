@@ -125,6 +125,11 @@ function editFacture(e, i, j) {
 }
 
 function previewFacture(factureIndex) {
+   if (window.innerWidth <= 1000) {
+          window.history.pushState({ page: "facture" }, "", "/#/facture");
+          localStorage.setItem("current-page", "/#/facture");
+        }
+        
   factureIndex = factureIndex.split("-");
   i = parseInt(factureIndex[0]);
   j = parseInt(factureIndex[1]);
@@ -224,7 +229,7 @@ function previewFacture(factureIndex) {
   }
 
   //Set Frais livraison
-  console.log(facture.fraisLivraison);
+
   let fraisLivraisonFacture = document.querySelector("#fraisLivraisonFacture");
   if (facture.fraisLivraison == undefined) {
     fraisLivraisonFacture.parentNode.style.display = "none";
@@ -238,7 +243,7 @@ function previewFacture(factureIndex) {
     )} ${userInfo.monnaie}`;
   }
   //Set TVA
-  console.log(facture.tva);
+
   let tva = document.querySelector("#tva");
   if (facture.tva == undefined) {
     tva.innerHTML = "0 %";
@@ -302,8 +307,13 @@ function alreadySavedInDate(date, dates) {
 let historiqueView = document.querySelector(".historiqueView");
 function showHistory() {
   historiqueView.classList.remove("historiqueViewInactive");
+  if (window.innerWidth <= 1000) {
+    window.history.pushState({ page: "history" }, "", "/#/history");
+    localStorage.setItem("current-page", "/#/history");
+  }
 }
 
 function hideHistory() {
   historiqueView.classList.add("historiqueViewInactive");
 }
+ 

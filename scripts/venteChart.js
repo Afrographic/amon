@@ -1,6 +1,6 @@
 class VenteChart {
   static render(data) {
-    console.log(data);
+
     let benefice = [];
     let days = [];
     let vente = [];

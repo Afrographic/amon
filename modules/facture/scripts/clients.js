@@ -5,6 +5,10 @@ let mesClientsView = document.querySelector(".mesClientsView");
 let nomsClientsEasyPick = document.querySelector(".nomsClients");
 
 function showClientView() {
+  if (window.innerWidth <= 1000) {
+    window.history.pushState({ page: "clients" }, "", "/#/clients");
+    localStorage.setItem("current-page", "/#/clients");
+  }
   mesClientsView.classList.remove("mesClientsViewInactive");
 }
 
@@ -19,7 +23,7 @@ async function getClients() {
       id: "1",
     },
   });
-  if(datas[0] == undefined) return;
+  if (datas[0] == undefined) return;
   clients = JSON.parse(datas[0].clients);
   renderClients();
   nomClientListeInput.focus();
@@ -104,21 +108,21 @@ async function updateClientDB() {
 
 let nomClientsList = document.querySelector(".nomClientsList");
 
-function searchClients(event){
+function searchClients(event) {
   let searched = [];
   let token = event.target.value;
-  if(token.trim().length == 0) {
+  if (token.trim().length == 0) {
     renderClients();
     return;
   }
   nomClientsList.innerHTML = ``;
 
-  for(let i = 0 ; i<=clients.length-1;i++){
-    if(clients[i].toLowerCase().includes(token.toLowerCase())){
-      searched.unshift(clients[i])
+  for (let i = 0; i <= clients.length - 1; i++) {
+    if (clients[i].toLowerCase().includes(token.toLowerCase())) {
+      searched.unshift(clients[i]);
     }
   }
-  
+
   for (let i = 0; i <= searched.length - 1; i++) {
     nomClientsList.innerHTML += `
          <div class="name" onclick="easySelectClient('${searched[i]}');hideEasyClientPicker();">${searched[i]}</div>

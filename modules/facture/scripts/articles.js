@@ -8,6 +8,11 @@ let mesArticlesView = document.querySelector(".mesArticlesView");
 
 function showArticleView() {
   mesArticlesView.classList.remove("mesArticlesViewInactive");
+
+  if (window.innerWidth <= 1000) {
+    window.history.pushState({ page: "articles" }, "", "/#/articles");
+    localStorage.setItem("current-page", "/#/articles");
+  }
 }
 
 function hideArticleView() {
@@ -43,10 +48,9 @@ function getDataFromAmonDB() {
 async function getArticles() {
   getDataFromAmonDB()
     .then(async (records) => {
-      
       await initUserInfo();
-      let productsFromAmon = JSON.parse(records[0].products)
-      for(let i = 0 ; i<=productsFromAmon.length - 1; i++){
+      let productsFromAmon = JSON.parse(records[0].products);
+      for (let i = 0; i <= productsFromAmon.length - 1; i++) {
         productsFromAmon[i].article = productsFromAmon[i].nom;
         productsFromAmon[i].prix = productsFromAmon[i].prix;
         productsFromAmon[i].quantite = productsFromAmon[i].quantite;

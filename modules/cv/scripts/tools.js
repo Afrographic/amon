@@ -259,7 +259,7 @@ class Tools {
   }
 
   static format_cv_date(date){
-    console.log(date);
+
     return date;
   }
 

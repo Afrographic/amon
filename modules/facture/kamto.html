@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -613,31 +613,49 @@
 
         <div class="MobileMenu">
           <button
-            onclick="showArticleView();hideMobileMenu()"
+            onclick="
+              showArticleView();
+              hideMobileMenu();
+            "
             class="tertiaryBtn"
           >
             <img src="assets/images/articles.svg" alt="" width="15px" />
             Mes articles
           </button>
           <button
-            onclick="showClientView();hideMobileMenu()"
+            onclick="
+              showClientView();
+              hideMobileMenu();
+            "
             class="tertiaryBtn"
           >
             <img src="assets/images/clients.svg" alt="" width="15px" />
             Mes clients
           </button>
-          <button onclick="showHistory();hideMobileMenu()" class="tertiaryBtn">
+          <button
+            onclick="
+              showHistory();
+              hideMobileMenu();
+            "
+            class="tertiaryBtn"
+          >
             <img src="assets/images/history.svg" alt="" width="15px" />
             Historique
           </button>
-          <button onclick="showConfig();hideMobileMenu()" class="tertiaryBtn">
+          <button
+            onclick="
+              showConfig();
+              hideMobileMenu();
+            "
+            class="tertiaryBtn"
+          >
             <img src="assets/images/settings.svg" alt="" width="15px" />
             Configuration
           </button>
-          <button class="tertiaryBtn" onclick="hideMobileMenu()">
+          <!-- <button class="tertiaryBtn" onclick="hideMobileMenu()">
             <img src="assets/images/close.svg" alt="" width="15px" />
             Fermer
-          </button>
+          </button> -->
         </div>
         <p class="tac">
           Supporte le develloppement par Orange money -
@@ -652,21 +670,24 @@
       <!-- App Config -->
       <div class="config">
         <button
-          onclick="showArticleView();hideMobileMenu()"
+          onclick="
+            showArticleView();
+            hideMobileMenu();
+          "
           class="tertiaryBtn"
         >
           <img src="assets/images/articles.svg" alt="" width="15px" />
           Mes articles
         </button>
-        <button onclick="showClientView();" class="tertiaryBtn">
+        <button onclick="showClientView()" class="tertiaryBtn">
           <img src="assets/images/clients.svg" alt="" width="15px" />
           Mes clients
         </button>
-        <button onclick="showHistory();" class="tertiaryBtn">
+        <button onclick="showHistory()" class="tertiaryBtn">
           <img src="assets/images/history.svg" alt="" width="15px" />
           Historique
         </button>
-        <button onclick="showConfig();" class="tertiaryBtn">
+        <button onclick="showConfig()" class="tertiaryBtn">
           <img src="assets/images/settings.svg" alt="" width="15px" />
           Configuration
         </button>
@@ -1214,9 +1235,9 @@
         <!-- Print facture -->
         <div class="printFactureBtns inactive">
           <button onclick="printFacture()" class="primary_btn">Exporter</button>
-          <button onclick="closePreviewFacture()" class="secondary_btn">
+          <!-- <button onclick="closePreviewFacture()" class="secondary_btn">
             Fermer
-          </button>
+          </button> -->
         </div>
         <!-- End print facture -->
 
@@ -1257,11 +1278,16 @@
       }
       //Generer la facture
       function genererFacture() {
+        if (window.innerWidth <= 1000) {
+          window.history.pushState({ page: "facture" }, "", "/#/facture");
+          localStorage.setItem("current-page", "/#/facture");
+        }
+
         let nomClient = document.querySelector("#nomClient");
         let NoteForClient = document.querySelector("#NoteForClient");
         //Show numero de serie
         let factureNumeroDeSerie = document.querySelector(
-          ".factureNumeroDeSerie"
+          ".factureNumeroDeSerie",
         );
         factureNumeroDeSerie.innerHTML = `# ${factures.length + 1}`;
         localStorage.setItem("numeroSerie", `${factures.length + 1}`);
@@ -1339,7 +1365,7 @@
 
         //Set tableau des factures
         let factureTableauRender = document.querySelector(
-          "#factureTableauRender"
+          "#factureTableauRender",
         );
         factureTableauRender.innerHTML = "";
         let total = 0;
@@ -1349,11 +1375,11 @@
                          <td>${i + 1}</td>
                          <td>${produits[i].tache}</td>
                          <td>${HelperFunction.formatNumWithWhiteSpace(
-                           produits[i].prix
+                           produits[i].prix,
                          )} ${userInfo.monnaie}</td>
                          <td>${produits[i].quantite}</td>
                          <td>${HelperFunction.formatNumWithWhiteSpace(
-                           produits[i].prix * produits[i].quantite
+                           produits[i].prix * produits[i].quantite,
                          )} ${userInfo.monnaie}</td>
                     </tr>
                 `;
@@ -1379,10 +1405,10 @@
 
         //Set Frais livraison
         let fraisLivraisonFactureInput = document.querySelector(
-          "#fraisLivraisonInput"
+          "#fraisLivraisonInput",
         );
         let fraisLivraisonFactureView = document.querySelector(
-          "#fraisLivraisonFacture"
+          "#fraisLivraisonFacture",
         );
         let frais = 0;
         if (fraisLivraisonFactureInput.value.trim().length == 0) {
@@ -1390,13 +1416,13 @@
         }
         frais = parseInt(fraisLivraisonFactureInput.value);
         fraisLivraisonFactureView.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
-          frais
+          frais,
         )} ${userInfo.monnaie}`;
 
         //Set TVA
 
         let tvaInput = document.querySelector("#tvaInput");
-        console.log(tvaInput.value);
+    
         let tva = document.querySelector("#tva");
         let tvaValue = 0;
         if (tvaInput.value.trim().length == 0) {
@@ -1404,25 +1430,25 @@
         }
         tvaValue = parseInt(tvaInput.value);
         tva.innerHTML = `${tvaValue} % (${HelperFunction.formatNumWithWhiteSpace(
-          (total * tvaValue) / 100
+          (total * tvaValue) / 100,
         )} ${userInfo.monnaie})`;
 
         //Set Total Produit
         let FraisTotal = document.querySelector("#FraisTotal");
         FraisTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
-          total
+          total,
         )} ${userInfo.monnaie}`;
 
         //Set total TTX
         let FactureTotal = document.querySelector("#FactureTotal");
         FactureTotal.innerHTML = `${HelperFunction.formatNumWithWhiteSpace(
-          total + (total * tvaValue) / 100 + frais
+          total + (total * tvaValue) / 100 + frais,
         )} ${userInfo.monnaie}`;
 
         //Set proprietaire et poste
         let FactureOwner = document.querySelector("#FactureOwner");
         let facturePoseEntreprise = document.querySelector(
-          "#facturePoseEntreprise"
+          "#facturePoseEntreprise",
         );
         FactureOwner.innerHTML = `${userInfo.nomComplet}`;
         facturePoseEntreprise.innerHTML = `${userInfo.votrePoste} ${userInfo.nomEntreprise}`;
@@ -1468,7 +1494,7 @@
 
         // Reset fields
         let mobileProductsPreview = document.querySelector(
-          ".mobileProductsPreview"
+          ".mobileProductsPreview",
         );
         let renderProducts = document.querySelector("#renderrrrrrr");
         nomClient.value = "";
@@ -1627,7 +1653,7 @@
               //Hide oll temp logos
               const images = document.querySelectorAll("img");
               const tempLogoImages = Array.from(images).filter((img) =>
-                img.src.includes("tempLogo")
+                img.src.includes("tempLogo"),
               );
               for (const item of tempLogoImages) {
                 item.style.display = "none";
@@ -1658,7 +1684,7 @@
             id: "1",
           },
         });
-        console.log(datas);
+     
       }
 
       async function initAllData() {
@@ -1718,7 +1744,7 @@
 
         if (secteur.value.trim().length == 0) {
           HelperFunction.show_negative_message(
-            "Secteur d'activite invalide invalide!"
+            "Secteur d'activite invalide invalide!",
           );
           return;
         }
@@ -1750,7 +1776,7 @@
 
         if (monnaie.value.trim().length == 0) {
           HelperFunction.show_negative_message(
-            "Monnaie invalide, Ex:FCFA,euro,$"
+            "Monnaie invalide, Ex:FCFA,euro,$",
           );
           return;
         }
@@ -1780,13 +1806,18 @@
         //init company logo and company name
         if (userInfo.logo != undefined) {
           let SupportLogo = document.querySelector("#SupportLogo");
-          SupportLogo.innerHTML ="";
+          SupportLogo.innerHTML = "";
           let url = URL.createObjectURL(userInfo.logo);
           SupportLogo.style.backgroundImage = `url(${url})`;
         }
       }
 
       function showConfig() {
+        if (window.innerWidth <= 1000) {
+          window.history.pushState({ page: "config" }, "", "/#/config");
+          localStorage.setItem("current-page", "/#/config");
+        }
+
         if (userInfo.logo != undefined) {
           // Load logo
           let actualLogo = document.querySelector("#actualLogo");
@@ -1821,6 +1852,13 @@
         let addNewInvoice = document.querySelector("#addNewInvoice");
         addUserValues.classList.remove("configKamtoInactive");
         addNewInvoice.classList.add("inactive");
+      }
+
+      function hideConfig() {
+        let addUserValues = document.querySelector("#addUserValues");
+        addUserValues.classList.add("configKamtoInactive");
+        let addNewInvoice = document.querySelector("#addNewInvoice");
+         addNewInvoice.classList.remove("inactive");
       }
 
       //Produits a utiliser pour generer la facture
@@ -1858,7 +1896,7 @@
           quantite: quantite.value,
         });
 
-        console.log(produits);
+      
 
         tache.value = "";
         prix.value = "";
@@ -1867,7 +1905,7 @@
 
         renderProduits();
       }
- 
+
       function autoLoadProducts() {
         let commandes = localStorage.getItem("currentVente");
         if (commandes == null) return;
@@ -1875,7 +1913,7 @@
         for (let i = 0; i <= commandes.length - 1; i++) {
           produits.push({
             tache: commandes[i].nom,
-            prix: commandes[i].prixVente ?? commandes[i].prix ,
+            prix: commandes[i].prixVente ?? commandes[i].prix,
             quantite: commandes[i].qteToBuy ?? commandes[i].qte,
           });
         }
@@ -1900,11 +1938,11 @@
       function renderProduits() {
         let devise = localStorage.getItem("amonDevise");
         let mobileProductsPreview = document.querySelector(
-          ".mobileProductsPreview"
+          ".mobileProductsPreview",
         );
         let renderProducts = document.querySelector("#renderrrrrrr");
-        renderProducts.innerHTML ="";
-       
+        renderProducts.innerHTML = "";
+
         mobileProductsPreview.innerHTML = `<p style="text-align:center">${produits.length} Produits</p>`;
 
         for (let i = 0; i <= produits.length - 1; i++) {
@@ -1914,11 +1952,11 @@
                          <td>${i + 1}</td>
                          <td>${produits[i].tache}</td>
                          <td>${HelperFunction.formatNumWithWhiteSpace(
-                           produits[i].prix
+                           produits[i].prix,
                          )} ${devise}</td>
                          <td>${produits[i].quantite}</td>
                          <td>${HelperFunction.formatNumWithWhiteSpace(
-                           produits[i].prix * produits[i].quantite
+                           produits[i].prix * produits[i].quantite,
                          )} ${devise}</td>
                          <td>
                             <img src="assets/images/edit.svg" width="25px" class="button" onclick="editProductOnAdd(${i})">
@@ -1940,7 +1978,7 @@
                   <tr>
                     <td>Prix</td>
                     <td>${HelperFunction.formatNumWithWhiteSpace(
-                      produits[i].prix
+                      produits[i].prix,
                     )} ${devise}</td>
                   </tr>
                   <tr>
@@ -1950,7 +1988,7 @@
                   <tr>
                     <td>Total</td>
                     <td>${HelperFunction.formatNumWithWhiteSpace(
-                      produits[i].prix * produits[i].quantite
+                      produits[i].prix * produits[i].quantite,
                     )} ${devise}</td>
                   </tr>
                 </table>
@@ -1988,5 +2026,6 @@
     <script src="scripts/startUp.js"></script>
     <script src="scripts/articles.js"></script>
     <script src="scripts/negociability.js"></script>
+    <script src="scripts/navigation.js"></script>
   </body>
 </html>
