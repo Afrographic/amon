@@ -18,7 +18,7 @@
       src="images/add.svg"
       alt=""
       id="addButtonMobile"
-      onclick="Controller.showAddViewMobile()"
+      onclick="Controller.showAddViewMobile();Controller.disableEdit()"
     />
     <!-- Error box -->
     <div
@@ -101,6 +101,8 @@
         Annuler l'edition
       </div>
     </div>
+
+    <div id="notif_bloc"></div>
 
     <script src="ca/repo.js"></script>
     <script src="ca/service.js"></script>

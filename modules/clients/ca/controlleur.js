@@ -65,8 +65,10 @@ class Controller {
     };
     if (this.editing) {
       await Service.edit(fournisseur);
+      Afro.show_notif("Client editer avec succes!");
     } else {
       await Service.add(fournisseur);
+      Afro.show_notif("Client Ajouter avec succes!");
     }
     this.show_fournisseur();
     //Reset State
@@ -74,6 +76,11 @@ class Controller {
   }
 
   static disableEditingState() {
+    this.disableEdit();
+    this.hideAddViewMobile();
+  }
+
+  static disableEdit() {
     this.editing = false;
     this.editing_id = 0;
     let addButton = document.querySelector("#addButton");
@@ -86,7 +93,6 @@ class Controller {
     titleAjoutOrEdit.innerHTML = "Ajouter un client";
     document.querySelector("#fullname").value = "";
     document.querySelector("#tel").value = "";
-    this.hideAddViewMobile();
   }
 
   static init_edit(index) {
@@ -112,6 +118,7 @@ class Controller {
     ) {
       await Service.delete(this.fournisseurs[index].id);
       this.show_fournisseur();
+      Afro.show_notif("Client supprime avec succes!");
     }
   }
 

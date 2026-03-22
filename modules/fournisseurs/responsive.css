@@ -12,7 +12,17 @@
         opacity: 0;
     }
 
-    #closeAddFournisseur,#addButtonMobile {
+    #closeAddFournisseur,
+    #addButtonMobile {
         display: block;
+    }
+
+    .catItem {
+        padding: 8px 16px;
+        font-size: 3.5vw;
+    }
+
+    h1 {
+        font-size: 6vw;
     }
 }

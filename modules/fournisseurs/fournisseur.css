@@ -92,7 +92,7 @@ input {
   width: 400px;
   background-color: #fff;
   padding: 16px;
-  transition:0.25s;
+  transition: 0.25s;
 }
 
 
@@ -115,6 +115,15 @@ button {
   border: none;
   transition: 0.5s;
   cursor: pointer;
+}
+
+h2 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 16px;
 }
 
 .button:hover {
@@ -146,13 +155,14 @@ button {
   width: 24px;
 }
 
-#addButtonMobile{
+#addButtonMobile {
   position: fixed;
-  right:32px;
-  top:32px;
+  right: 32px;
+  top: 32px;
   width: 40px;
 }
 
-#closeAddFournisseur,#addButtonMobile{
+#closeAddFournisseur,
+#addButtonMobile {
   display: none;
 }

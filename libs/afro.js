@@ -161,12 +161,63 @@ class Afro {
     await this.sleep(4000);
     info.classList.remove("info_visible");
   }
-
+ 
   static  formatNumWithWhiteSpace(n){
     const s = String(n);
     const [intPart,fracPart] = s.split(".");
     const intWithSpace = intPart.replace(/\B(?=(\d{3})+(?!\d))/g,' ');
     return fracPart ? `${intWithSpace}.${fracPart}` : intWithSpace;
+  }
+
+  static show_notif(msg, error = false) {
+    //16 + 50 + 8
+    let notifs = document.querySelectorAll(".notif");
+    let color = "#46BA5E";
+    if (error) {
+      color = "#F20505";
+    }
+
+    let div_content = `
+    
+    <div onclick="this.classList.add('notif_inactive')"  class="notif notif_inactive" style="font-size:12px;position:fixed;top:32px;right:50%;transform:translate(-50%,-50%);left:50%;width:220px;background-color:${color};color:white;padding:8px 16px;border-radius:8px;display:flex;align-items:center;gap:8px;">
+       <img src="images/notif_icon.svg" width="16px"/>
+        ${msg}
+
+        <style>
+            .notif {
+                transition: 0.5s;
+                z-index:30000;
+            }
+            .notif_inactive {
+                opacity: 0;
+                transform: scale(0);
+            }
+            .notif_active {
+                opacity: 1;
+                transform: scale(1);
+            }
+        </style>
+    </div>
+    `;
+
+    let notif_bloc = document.querySelector("#notif_bloc");
+    notif_bloc.innerHTML += div_content;
+
+    window.setTimeout(() => {
+      let notifs = document.querySelectorAll(".notif");
+      notifs[notifs.length - 1].classList.remove("notif_inactive");
+    }, 10);
+
+    window.setTimeout(() => {
+      let notifs = document.querySelectorAll(".notif");
+      notifs[notifs.length - 1].classList.add("notif_inactive");
+    }, 3000);
+
+    window.setTimeout(() => {
+      let notifs = document.querySelectorAll(".notif");
+      let notif = notifs[notifs.length - 1];
+      notif.parentNode.removeChild(notif);
+    }, 3200);
   }
 
 }

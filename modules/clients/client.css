@@ -14,6 +14,15 @@ h1 {
   font-family: "ralewayBlack";
 }
 
+h2 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
 .header {
   padding: 0px 16px;
   padding-top: 16px;

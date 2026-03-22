@@ -101,7 +101,7 @@ function showWelcomeScreen() {
   }
 }
 
-function hideWelcomeScreen(){
+function hideWelcomeScreen() {
   let welcome = document.querySelector(".welcome");
   welcome.classList.add("inactive");
 }
@@ -634,6 +634,7 @@ async function addProductToDatabase() {
 
   computeTotalMoney();
   computeCategorieStat();
+  Afro.show_notif("Produit cree avec succes!");
 }
 
 function renderProduct() {
@@ -899,6 +900,7 @@ async function editProductSave() {
   saveToDB();
   computeTotalMoney();
   computeCategorieStat();
+  Afro.show_notif("Produit edite avec succes!");
 }
 
 function closeEditProduct() {
