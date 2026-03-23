@@ -22,7 +22,7 @@ class Repo {
     };
 
     var db = {
-      name: "fournisseursDB",
+      name: "fournisseursDBNew",
       tables: [data],
     };
 

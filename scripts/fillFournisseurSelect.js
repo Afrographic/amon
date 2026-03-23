@@ -28,7 +28,7 @@ function fillFournisseurSelect() {
 
 function getFournisseurDB() {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open("fournisseursDB", 1);
+    const request = indexedDB.open("fournisseursDBNew", 1);
 
     request.onsuccess = (event) => {
       const db = event.target.result;
