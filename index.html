@@ -332,6 +332,7 @@
     <script>
       let imageProductFile;
     </script>
+    <script src="modules/fournisseurs/ca/repo.js"></script>
   </head>
 
   <body>
@@ -725,26 +726,27 @@
             <div class="label">Nom</div>
             <input type="text" placeholder="Nom du produit" id="nomInput" />
           </div>
+
            <!-- Selectionner la categorie -->
-    
-        <div class="select-item" onclick="CategorieSelect.showCategorieList()">
-          <div class="select-item-elements">
-            <div class="small">Categorie</div>
-            <div id="selectedCategorie">Selectionner la categorie</div>
+          <div class="select-item" onclick="CategorieSelect.showCategorieList()">
+            <div class="select-item-elements">
+              <div class="small">Categorie</div>
+              <div id="selectedCategorie">Selectionner la categorie</div>
+            </div>
+            <img
+              src="images/chevron.svg"
+              alt=""
+              width="24px"
+              class="cp"
+              class="rotate_90"
+            />
           </div>
-          <img
-            src="images/chevron.svg"
-            alt=""
-            width="24px"
-            class="cp"
-            class="rotate_90"
-          />
-        </div>
 
          <!-- categories items -->
         <div class="items items-inactive" id="items-cat-holder"  >
           <div class="f1" onclick="CategorieSelect.hideCategorieList()"></div>
           <div class="itemsContainer">
+            <img src="images/cat.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
             <div class="tac">Categorie</div>
             <div class="small tac">Cliquez sur un element pour le selectionner</div>
 
@@ -754,7 +756,7 @@
               <img src="images/close.svg" width="20px"   alt="" id="closeCategorieSearch" onclick="CategorieSelect.closeSearch()" >
             </div>
            
-            <div id="items-renderer-bloc">
+            <div class="items-renderer-bloc">
                <!-- No elements -->
               <div class="empty-area" id="empty-area-cats">
                 <img src="images/empty.svg" alt="">
@@ -790,12 +792,97 @@
               <input
                 type="text"
                 placeholder="Nom de la categorie"
-                id="nomCategorieInput"
+                id="nomCategorieInputCreate"
               />
             </div>
             <div class="primary_btn" onclick="CategorieAdd.addCategorie()">Ajouter la categorie</div>
           </div>
         </div>
+
+
+          <!-- Selectionner le fournisseur -->
+
+          <div class="select-item" onclick="FournisseurSelect.showList()">
+            <div class="select-item-elements">
+              <div class="small">Fournisseur</div>
+              <div id="selectedFournisseur">Selectionner le fournisseur</div>
+            </div>
+            <img
+              src="images/chevron.svg"
+              alt=""
+              width="24px"
+              class="cp"
+              class="rotate_90"
+            />
+          </div>
+
+         <!-- Fournisseur items -->
+        <div class="items items-inactive" id="items-fournisseur-holder"  >
+          <div class="f1" onclick="FournisseurSelect.hideList()"></div>
+          <div class="itemsContainer">
+            <img src="images/fournisseur.svg" alt="" class="selectFournisseurIcon">
+            <div class="tac">Fournisseurs</div>
+            <div class="small tac">Cliquez sur un fournisseur pour le selectionner</div>
+
+             <div class="select-search-box">
+              <input type="text" id="fournisseurListSearchInput" placeholder="Recherche..." class="f1"  onkeyup="FournisseurSelect.search(this)" >
+              <img src="images/search_dd.svg" width="24px"  alt="" id="searchFournisseurIcon">
+              <img src="images/close.svg" width="20px"   alt="" id="closeFournisseurSearch" onclick="FournisseurSelect.closeSearch()" >
+            </div>
+           
+            <div class="items-renderer-bloc">
+               <!-- No elements -->
+              <div class="empty-area" id="empty-area-fournisseur">
+                <img src="images/empty.svg" alt="">
+                <div>Aucun element</div>
+              </div>
+              
+              <div id="fournisseur-items-container">
+                  <div class="select-item-element" >
+                    <img src="images/circle.svg" alt="" width="20px">
+                    <div>fournisseur</div>
+                  </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+
+        <div class="cat" onclick="FournisseurAdd.show()">
+          <img src="images/add_cat.svg" alt="" width="24px">
+          <div>Ajouter un fournisseur</div>
+        </div>
+
+        <!-- Ajouter un fournisseur -->
+        <div class="items items-inactive" id="items-fournisseur-add-holder"  >
+          <div class="f1" onclick="FournisseurAdd.hide()"></div>
+          <div class="itemsContainer">
+            <img src="images/fournisseur.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
+            <div class="tac">Ajouter un fournisseur</div>
+            <div class="small tac">Veuillez inserez les informations  ci-dessous</div>
+
+             <div class="formItem">
+              <div class="label">Nom du fournisseur</div>
+              <input
+                type="text"
+                placeholder="Nom de la categorie"
+                id="nomFournisseurCreateInput"
+              />
+            </div>
+             <div class="formItem">
+              <div class="label">Numero du fournisseur</div>
+              <input
+                type="text"
+                placeholder="Numero de la categorie"
+               id="numeroFournisseurCreateInput"
+              />
+            </div>
+            <div class="primary_btn" onclick="FournisseurAdd.add()">Ajouter le fournisseur</div>
+          </div>
+        </div>
+
+
+
+
         
 
           <div class="formItem">
@@ -833,32 +920,15 @@
             pattern="[0-9]*"/>
           </div>
 
-          <!-- <div class="formItem">
-            <div class="label">Categorie</div>
-            <select name="" id="createCategories" > -->
-              <!-- <option value="dsd">Electronique</option>
-              <option value="dsd">Menage</option>
-              <option value="dsd">Plomberie</option> -->
-            <!-- </select>
-          </div> -->
+
+         
           
        
 
        
-          <div class="formItem">
-            <div class="label">Fournisseur</div>
-            <select name="" id="selectFournisseurs" >
-              <!-- <option value="dsd">Electronique</option>
-              <option value="dsd">Menage</option>
-              <option value="dsd">Plomberie</option> -->
-            </select>
-          </div>
-          <a href="modules/fournisseurs/fournisseur.html">
-            <div class="cat">
-              <img src="images/add_cat.svg" alt="" width="24px">
-              <div>Ajouter un fournisseur</div>
-            </div>
-          </a>
+       
+        
+        
  
           <p>Caracteristiques</p>
           <div id="productsCategories">
@@ -1241,6 +1311,8 @@
     <script src="scripts/categorieStat.js"></script>
     <script src="scripts/categorieSelect.js"></script>
     <script src="scripts/CategorieAdd.js"></script>
+    <script src="scripts/fournisseur/FournisseurSelect.js"></script>
+    <script src="scripts/fournisseur/FournisseurAdd.js"></script>
 
     <script>
       // handle Back button

@@ -768,7 +768,7 @@ a {
     transition: 0.5s;
 }
 
-#cat-items-container {
+#cat-items-container ,#fournisseur-items-container{
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -780,10 +780,16 @@ a {
     pointer-events: none;
 }
 
-#items-renderer-bloc {
+.items-renderer-bloc {
     height: 250px;
     overflow: auto;
    
+}
+
+.selectFournisseurIcon{
+    width: 24px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .itemsContainer {

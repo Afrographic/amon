@@ -30,6 +30,7 @@ class Repo {
   }
 
   static async get_all() {
+    await this.init();
     let fournisseurs = await this.con.select({
       from: "fournisseurs",
     });
@@ -37,6 +38,7 @@ class Repo {
   }
 
   static async add(fournisseur){
+    await this.init();
     let added = await this.con.insert({
       into: "fournisseurs",
       values: [

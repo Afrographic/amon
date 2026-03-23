@@ -6,7 +6,7 @@ class CategorieAdd {
 
     let addCategorieHolder = document.querySelector("#items-cat-add-holder");
     addCategorieHolder.classList.remove("items-inactive");
-    let nomCategorieInput = document.querySelector("#nomCategorieInput");
+    let nomCategorieInput = document.querySelector("#nomCategorieInputCreate");
     await Afro.sleep(1500);
     nomCategorieInput.focus();
   }
@@ -19,7 +19,7 @@ class CategorieAdd {
   }
 
   static addCategorie() {
-    let nomCategorieInput = document.querySelector("#nomCategorieInput");
+    let nomCategorieInput = document.querySelector("#nomCategorieInputCreate");
     if (nomCategorieInput.value.trim().length == 0) return;
     let catName = Afro.Ucase(nomCategorieInput.value.trim());
     let catId = Afro.generate_unique_id_from_time();

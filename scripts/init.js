@@ -524,14 +524,16 @@ function saveLightProductToLocalStorageForFacture() {
 
 async function addProductToDatabase() {
   // let createCategories = document.querySelector("#createCategories");
-  let fournisseur = document.querySelector("#selectFournisseurs");
+  // let fournisseur = document.querySelector("#selectFournisseurs");
 
   let nomInput = document.getElementById("nomInput");
   let prixInput = document.getElementById("prixInput");
   let prixVenteInput = document.getElementById("prixVenteInput");
   let quantiteInput = document.getElementById("quantiteInput");
   let catId = CategorieSelect.selectedCatId;
-  let fournisseurId = fournisseur.value;
+  let fournisseurId = FournisseurSelect.selectedFournisseurId;
+
+
 
   let product = {
     nom: "nom",

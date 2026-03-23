@@ -24,7 +24,7 @@ function fillFournisseurSelect() {
   });
 }
 
-fillFournisseurSelect();
+//fillFournisseurSelect();
 
 function getFournisseurDB() {
   return new Promise((resolve, reject) => {

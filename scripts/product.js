@@ -26,11 +26,11 @@ class Product {
     //Compute fournisseur name
     let fournisseur = "Non Defini";
 
-    for (let i = 0; i <= collectionsAmon.length - 1; i++) {
-      if (collectionsAmon[i].catId == product.fournisseurId) {
-        fournisseur = collectionsAmon[i].categoryName;
+    for (let i = 0; i <= FournisseurSelect.fournisseurs.length - 1; i++) {
+      if (FournisseurSelect.fournisseurs[i].id == product.fournisseurId) {
+        fournisseur =FournisseurSelect.fournisseurs[i].fullname;
       }
-    }
+    } 
 
     let more_info = `
         <table>

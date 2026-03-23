@@ -11,6 +11,7 @@ class CategorieSelect {
     let collectionsAmon = localStorage.getItem("AmonCategories");
     if (collectionsAmon == null) {
       catItemsContainer.style.display = "none";
+      return;
     }
     collectionsAmon = JSON.parse(collectionsAmon);
     if (collectionsAmon.length == 0) {
@@ -50,6 +51,7 @@ class CategorieSelect {
     let itemsHolder = document.querySelector("#items-cat-holder");
     itemsHolder.classList.add("items-inactive");
     let addProduct = document.querySelector("#addProduct");
+     addProduct.scrollTop = 0;
     addProduct.style.overflow = "auto";
   }
 
