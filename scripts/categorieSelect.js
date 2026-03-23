@@ -44,11 +44,12 @@ class CategorieSelect {
     addProduct.style.overflow = "hidden";
   }
 
+
+
   static hideCategorieList() {
     let itemsHolder = document.querySelector("#items-cat-holder");
     itemsHolder.classList.add("items-inactive");
     let addProduct = document.querySelector("#addProduct");
-
     addProduct.style.overflow = "auto";
   }
 

@@ -747,32 +747,56 @@
           <div class="itemsContainer">
             <div class="tac">Categorie</div>
             <div class="small tac">Cliquez sur un element pour le selectionner</div>
-            <div class="select-search-box">
+
+             <div class="select-search-box">
               <input type="text" id="categorieListSearchInput" placeholder="Recherche..." class="f1"  onkeyup="CategorieSelect.search(this)" >
               <img src="images/search_dd.svg" width="24px"  alt="" id="searchCategorieIcon">
               <img src="images/close.svg" width="20px"   alt="" id="closeCategorieSearch" onclick="CategorieSelect.closeSearch()" >
             </div>
-            <!-- No elements -->
-             <div class="empty-area" id="empty-area-cats">
-              <img src="images/empty.svg" alt="">
-              <div>Aucun element</div>
-             </div>
-            
-            <div id="cat-items-container">
-                <div class="select-item-element" (click)="select(item)">
-                  <img src="images/circle.svg" alt="" width="20px">
-                  <div>{{item.label}}</div>
-                </div>
-            </div>
+           
+            <div id="items-renderer-bloc">
+               <!-- No elements -->
+              <div class="empty-area" id="empty-area-cats">
+                <img src="images/empty.svg" alt="">
+                <div>Aucun element</div>
+              </div>
+              
+              <div id="cat-items-container">
+                  <div class="select-item-element" (click)="select(item)">
+                    <img src="images/circle.svg" alt="" width="20px">
+                    <div>{{item.label}}</div>
+                  </div>
+              </div>
+            </div> 
           </div>
         </div>
      
-          <a href="modules/collection/collection.html">
-            <div class="cat">
-              <img src="images/add_cat.svg" alt="" width="24px">
-              <div>Ajouter une categorie</div>
+         
+        <div class="cat" onclick="CategorieAdd.showCategorieAddScreen()">
+          <img src="images/add_cat.svg" alt="" width="24px">
+          <div>Ajouter une categorie</div>
+        </div>
+
+        <!-- Ajouter la categorie -->
+        <div class="items items-inactive" id="items-cat-add-holder"  >
+          <div class="f1" onclick="CategorieAdd.hideCategorieAddScreen()"></div>
+          <div class="itemsContainer">
+            <img src="images/cat.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
+            <div class="tac">Ajouter une Categorie</div>
+            <div class="small tac">Veuillez inserez le nom de la categorie ci-dessous</div>
+
+             <div class="formItem">
+              <div class="label">Nom de la categorie</div>
+              <input
+                type="text"
+                placeholder="Nom de la categorie"
+                id="nomCategorieInput"
+              />
             </div>
-          </a>
+            <div class="primary_btn" onclick="CategorieAdd.addCategorie()">Ajouter la categorie</div>
+          </div>
+        </div>
+        
 
           <div class="formItem">
             <div class="label">Chosisir la couleur</div>
@@ -1216,6 +1240,7 @@
     <script src="scripts/productColor.js"></script>
     <script src="scripts/categorieStat.js"></script>
     <script src="scripts/categorieSelect.js"></script>
+    <script src="scripts/CategorieAdd.js"></script>
 
     <script>
       // handle Back button

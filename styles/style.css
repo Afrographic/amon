@@ -768,11 +768,10 @@ a {
     transition: 0.5s;
 }
 
-#cat-items-container{
+#cat-items-container {
     display: flex;
     flex-direction: column;
-    gap:4px;
-    padding-bottom: 70px;
+    gap: 4px;
 }
 
 .items-inactive {
@@ -781,16 +780,21 @@ a {
     pointer-events: none;
 }
 
+#items-renderer-bloc {
+    height: 250px;
+    overflow: auto;
+   
+}
+
 .itemsContainer {
     background-color: #fff;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     padding: 16px;
-    max-height: 80vh;
-    overflow: auto;
     display: flex;
     flex-direction: column;
     gap: 8px;
+     padding-bottom: 70px;
 }
 
 .empty-area {

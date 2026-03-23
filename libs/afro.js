@@ -179,7 +179,7 @@ class Afro {
 
     let div_content = `
     
-    <div onclick="this.classList.add('notif_inactive')"  class="notif notif_inactive" style="font-size:12px;position:fixed;top:32px;right:50%;transform:translate(-50%,-50%);left:50%;width:220px;background-color:${color};color:white;padding:8px 16px;border-radius:8px;display:flex;align-items:center;gap:8px;">
+    <div onclick="this.classList.add('notif_inactive')"  class="notif notif_inactive" style="font-size:12px;position:fixed;top:64px;right:50%;transform:translate(-50%,-50%);left:50%;width:220px;background-color:${color};color:white;padding:8px 16px;border-radius:8px;display:flex;align-items:center;gap:8px;">
        <img src="images/notif_icon.svg" width="16px"/>
         ${msg}
 
