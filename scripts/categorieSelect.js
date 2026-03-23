@@ -18,6 +18,7 @@ class CategorieSelect {
       catItemsContainer.style.display = "none";
     } else {
       emptyCatArea.style.display = "none";
+     
     }
 
     this.cats = collectionsAmon;
@@ -27,6 +28,7 @@ class CategorieSelect {
 
   static #renderCats(cats) {
     let catItemsContainer = document.querySelector("#cat-items-container");
+     catItemsContainer.style.display = "flex";
     
     catItemsContainer.innerHTML = "";
     for (const item of cats) {
