@@ -466,6 +466,10 @@ let addProduitButton = document.querySelector(".addProduitButton");
 let empty = document.querySelector(".empty");
 
 function addProduct() {
+
+   let addProduct = document.querySelector("#addProduct");
+    addProduct.scrollTop = 0;
+    
   ProductCaracteristique.initCreateCars();
 
   let nomInput = document.getElementById("nomInput");
