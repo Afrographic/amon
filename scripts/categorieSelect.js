@@ -57,9 +57,6 @@ class CategorieSelect {
     this.hideCategorieList();
     let selectedCategorie = document.querySelector("#selectedCategorie");
     selectedCategorie.innerHTML = catName;
-
-    console.log(catId);
-    console.log(catName);
   }
 
   static search(input) {
