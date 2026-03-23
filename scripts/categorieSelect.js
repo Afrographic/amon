@@ -21,13 +21,16 @@ class CategorieSelect {
     }
 
     this.cats = collectionsAmon;
+   
     this.#renderCats(collectionsAmon);
   }
 
   static #renderCats(cats) {
     let catItemsContainer = document.querySelector("#cat-items-container");
+    
     catItemsContainer.innerHTML = "";
     for (const item of cats) {
+     
       catItemsContainer.innerHTML += `
        <div class="select-item-element" onclick="CategorieSelect.selectItem(${item.catId},'${item.categoryName}')">
             <img src="images/circle.svg" alt="" width="20px">

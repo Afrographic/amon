@@ -60,9 +60,6 @@ class FournisseurSelect {
     this.hideList();
     let selectedFournisseur = document.querySelector("#selectedFournisseur");
     selectedFournisseur.innerHTML = name;
-
-    console.log(id);
-    console.log(name);
   }
 
   static search(input) {
