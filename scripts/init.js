@@ -852,8 +852,8 @@ function deleteProduct(event) {
 async function editProductSave() {
   let id = productIdToEdit;
 
-  let EditCategories = document.querySelector("#EditCategories");
-  let catId = EditCategories.value;
+
+  let catId = CategorieSelect.selectedCatId;
 
   let EditFournisseur = document.querySelector("#EditFournisseurSelect");
   let fournisseurId = EditFournisseur.value;

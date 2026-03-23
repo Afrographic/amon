@@ -356,6 +356,9 @@
       </div>
     </div>
     <!-- End error box -->
+
+
+
     <!-- StartUp -->
     <div class="startUp">
       <div class="startUpAfro">
@@ -722,6 +725,55 @@
             <div class="label">Nom</div>
             <input type="text" placeholder="Nom du produit" id="nomInput" />
           </div>
+           <!-- Selectionner la categorie -->
+    
+        <div class="select-item" onclick="CategorieSelect.showCategorieList()">
+          <div class="select-item-elements">
+            <div class="small">Categorie</div>
+            <div id="selectedCategorie">Selectionner la categorie</div>
+          </div>
+          <img
+            src="images/chevron.svg"
+            alt=""
+            width="24px"
+            class="cp"
+            class="rotate_90"
+          />
+        </div>
+
+         <!-- categories items -->
+        <div class="items items-inactive" id="items-cat-holder"  >
+          <div class="f1" onclick="CategorieSelect.hideCategorieList()"></div>
+          <div class="itemsContainer">
+            <div class="tac">Categorie</div>
+            <div class="small tac">Cliquez sur un element pour le selectionner</div>
+            <div class="select-search-box">
+              <input type="text" id="categorieListSearchInput" placeholder="Recherche..." class="f1"  onkeyup="CategorieSelect.search(this)" >
+              <img src="images/search_dd.svg" width="24px"  alt="" id="searchCategorieIcon">
+              <img src="images/close.svg" width="20px"   alt="" id="closeCategorieSearch" onclick="CategorieSelect.closeSearch()" >
+            </div>
+            <!-- No elements -->
+             <div class="empty-area" id="empty-area-cats">
+              <img src="images/empty.svg" alt="">
+              <div>Aucun element</div>
+             </div>
+            
+            <div id="cat-items-container">
+                <div class="select-item-element" (click)="select(item)">
+                  <img src="images/circle.svg" alt="" width="20px">
+                  <div>{{item.label}}</div>
+                </div>
+            </div>
+          </div>
+        </div>
+     
+          <a href="modules/collection/collection.html">
+            <div class="cat">
+              <img src="images/add_cat.svg" alt="" width="24px">
+              <div>Ajouter une categorie</div>
+            </div>
+          </a>
+
           <div class="formItem">
             <div class="label">Chosisir la couleur</div>
             <div class="colorsView">
@@ -756,20 +808,19 @@
             <input type="number" placeholder="Quantite" id="quantiteInput"  inputmode="numeric"
             pattern="[0-9]*"/>
           </div>
-          <div class="formItem">
+
+          <!-- <div class="formItem">
             <div class="label">Categorie</div>
-            <select name="" id="createCategories" >
+            <select name="" id="createCategories" > -->
               <!-- <option value="dsd">Electronique</option>
               <option value="dsd">Menage</option>
               <option value="dsd">Plomberie</option> -->
-            </select>
-          </div>
-          <a href="modules/collection/collection.html">
-            <div class="cat">
-              <img src="images/add_cat.svg" alt="" width="24px">
-              <div>Ajouter une categorie</div>
-            </div>
-          </a>
+            <!-- </select>
+          </div> -->
+          
+       
+
+       
           <div class="formItem">
             <div class="label">Fournisseur</div>
             <select name="" id="selectFournisseurs" >
@@ -1164,6 +1215,7 @@
     <script src="scripts/product.js"></script>
     <script src="scripts/productColor.js"></script>
     <script src="scripts/categorieStat.js"></script>
+    <script src="scripts/categorieSelect.js"></script>
 
     <script>
       // handle Back button

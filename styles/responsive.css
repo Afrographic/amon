@@ -82,6 +82,10 @@
         justify-content: space-between;
     }
 
+    .addProduct {
+        border-radius: 0px !important;
+    }
+
    
 
     .mobileMenuIcon {
