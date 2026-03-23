@@ -1,5 +1,5 @@
 class CategorieAdd {
-  static showCategorieAddScreen() {
+  static async showCategorieAddScreen() {
     let addProduct = document.querySelector("#addProduct");
     addProduct.scrollTop = 0;
     addProduct.style.overflow = "hidden";
@@ -7,6 +7,7 @@ class CategorieAdd {
     let addCategorieHolder = document.querySelector("#items-cat-add-holder");
     addCategorieHolder.classList.remove("items-inactive");
     let nomCategorieInput = document.querySelector("#nomCategorieInput");
+    await Afro.sleep(1500);
     nomCategorieInput.focus();
   }
 
