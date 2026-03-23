@@ -56,6 +56,8 @@ class FournisseurAdd {
     });
     this.hide();
     FournisseurSelect.renderSelect();
-    Afro.show_notif("Fournisseur ajoute!");
+    Afro.show_notif(`Fournisseur ${Afro.Ucase(nom.toLowerCase())} ajoute!`);
+    nomFournisseurCreateInput.value="";
+    numeroFournisseurCreateInput.value="";
   }
 }

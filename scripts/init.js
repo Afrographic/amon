@@ -156,7 +156,7 @@ function get_db_schema() {
     },
   };
   var db = {
-    name: "amonDB",
+    name: "amonDBNew",
     tables: [data],
   };
   return db;
@@ -469,7 +469,7 @@ function addProduct() {
 
    let addProduct = document.querySelector("#addProduct");
     addProduct.scrollTop = 0;
-    
+
   ProductCaracteristique.initCreateCars();
 
   let nomInput = document.getElementById("nomInput");
