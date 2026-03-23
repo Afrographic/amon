@@ -1,5 +1,11 @@
 class FournisseurAdd {
   static async show() {
+
+    if (window.innerWidth <= 1000) {
+      history.pushState({ page: "creer-fournisseur" }, "", "/#/creer-fournisseur");
+      localStorage.setItem("current-page", "creer-fournisseur");
+    }
+
     let addProduct = document.querySelector("#addProduct");
     addProduct.scrollTop = 0;
     addProduct.style.overflow = "hidden";

@@ -38,11 +38,17 @@ class CategorieSelect {
   }
 
   static showCategorieList() {
+     if (window.innerWidth <= 1000) {
+      history.pushState({ page: "select-categorie" }, "", "/#/select-categorie");
+      localStorage.setItem("current-page", "select-categorie");
+    }
     let itemsHolder = document.querySelector("#items-cat-holder");
     itemsHolder.classList.remove("items-inactive");
     let addProduct = document.querySelector("#addProduct");
     addProduct.scrollTop = 0;
     addProduct.style.overflow = "hidden";
+
+    
   }
 
 

@@ -1,5 +1,9 @@
 class CategorieAdd {
   static async showCategorieAddScreen() {
+     if (window.innerWidth <= 1000) {
+      history.pushState({ page: "creer-categorie" }, "", "/#/creer-categorie");
+      localStorage.setItem("current-page", "creer-categorie");
+    }
     let addProduct = document.querySelector("#addProduct");
     addProduct.scrollTop = 0;
     addProduct.style.overflow = "hidden";
@@ -9,6 +13,8 @@ class CategorieAdd {
     let nomCategorieInput = document.querySelector("#nomCategorieInputCreate");
     await Afro.sleep(1500);
     nomCategorieInput.focus();
+
+    
   }
 
   static hideCategorieAddScreen() {

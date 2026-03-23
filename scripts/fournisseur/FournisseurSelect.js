@@ -36,6 +36,11 @@ class FournisseurSelect {
   }
 
   static showList() {
+     if (window.innerWidth <= 1000) {
+      history.pushState({ page: "select-fournisseur" }, "", "/#/select-fournisseur");
+      localStorage.setItem("current-page", "select-fournisseur");
+    }
+
     let itemsHolder = document.querySelector("#items-fournisseur-holder");
     itemsHolder.classList.remove("items-inactive");
     let addProduct = document.querySelector("#addProduct");

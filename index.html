@@ -1317,36 +1317,69 @@
     <script>
       // handle Back button
       window.onpopstate = function(event){
+
+         if(localStorage.getItem("current-page") =="select-categorie"){
+          CategorieSelect.hideCategorieList();
+          localStorage.setItem("current-page", "creer-produit");
+          return;
+        }
+         if(localStorage.getItem("current-page") =="creer-categorie"){
+          CategorieAdd.hideCategorieAddScreen();
+          localStorage.setItem("current-page", "creer-produit");
+           return;
+        }
+         if(localStorage.getItem("current-page") =="select-fournisseur"){
+          FournisseurSelect.hideList();
+          localStorage.setItem("current-page", "creer-produit");
+           return;
+        }
+         if(localStorage.getItem("current-page") =="creer-fournisseur"){
+          FournisseurAdd.hide();
+          localStorage.setItem("current-page", "creer-produit");
+           return;
+        }
+
+
         if(localStorage.getItem("current-page") =="creer-produit"){
           closeAddProduct();
+           return;
         }
         if(localStorage.getItem("current-page") =="edit-produit"){
           closeEditProduct();
+           return;
         }
         if(localStorage.getItem("current-page") =="nouveau-stock"){
           hideNouveauStockView();
+           return;
         }
         if(localStorage.getItem("current-page") =="menu"){
           hideMenu();
+           return;
         }
+
         if(localStorage.getItem("current-page") =="stat-vente"){
           closeHistoryRetrait();
+           return;
         }
         if(localStorage.getItem("current-page") =="config"){
           hideWelcomeScreen();
           localStorage.setItem("current-page", "menu");
+           return;
         }
         if(localStorage.getItem("current-page") =="reset"){
           cancelResetApp();
           localStorage.setItem("current-page", "menu");
+           return;
         }
         if(localStorage.getItem("current-page") =="historique-stock"){
           closeHistoryAjout();
           localStorage.setItem("current-page", "menu");
+           return;
         }
         if(localStorage.getItem("current-page") =="historique-vente"){
           closeHistoryRetrait();
           localStorage.setItem("current-page", "menu");
+           return;
         }
       }
     </script>
