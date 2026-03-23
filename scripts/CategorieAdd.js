@@ -1,12 +1,13 @@
 class CategorieAdd {
   static showCategorieAddScreen() {
+    let addProduct = document.querySelector("#addProduct");
+    addProduct.scrollTop = 0;
+    addProduct.style.overflow = "hidden";
+
     let addCategorieHolder = document.querySelector("#items-cat-add-holder");
     addCategorieHolder.classList.remove("items-inactive");
     let nomCategorieInput = document.querySelector("#nomCategorieInput");
     nomCategorieInput.focus();
-    let addProduct = document.querySelector("#addProduct");
-    addProduct.scrollTop = 0;
-    addProduct.style.overflow = "hidden";
   }
 
   static hideCategorieAddScreen() {
