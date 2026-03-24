@@ -2,8 +2,27 @@ class RepoClient {
   static con = new JsStore.Connection();
   static async init() {
     await this.con.initDb({
-      name: "clientsDB",
-      tables: [],
+      name: "clientsDB2",
+       tables: [
+        {
+          name: "clients",
+          columns: {
+            id: {
+              notNull: true,
+              primaryKey: true,
+              autoIncrement: true,
+            },
+            fullname: {
+              notNull: true,
+              dataType: "string",
+            },
+            tel: {
+              notNull: true,
+              dataType: "string",
+            },
+          },
+        },
+      ],
     });
   }
 

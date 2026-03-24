@@ -22,7 +22,7 @@ class Repo {
     };
 
     var db = {
-      name: "clientsDB",
+      name: "clientsDB2",
       tables: [data],
     };
 
@@ -30,6 +30,7 @@ class Repo {
   }
 
   static async get_all() {
+    this.init();
     let fournisseurs = await this.con.select({
       from: "clients",
     });

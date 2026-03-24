@@ -154,6 +154,12 @@
         gap: 8px;
       }
 
+      .configKamto {
+        padding: 32px;
+        padding-top: 64px;
+        padding-bottom: 100px;
+      }
+
       .config button {
         width: 100%;
       }
@@ -1422,7 +1428,7 @@
         //Set TVA
 
         let tvaInput = document.querySelector("#tvaInput");
-    
+
         let tva = document.querySelector("#tva");
         let tvaValue = 0;
         if (tvaInput.value.trim().length == 0) {
@@ -1684,7 +1690,6 @@
             id: "1",
           },
         });
-     
       }
 
       async function initAllData() {
@@ -1858,7 +1863,7 @@
         let addUserValues = document.querySelector("#addUserValues");
         addUserValues.classList.add("configKamtoInactive");
         let addNewInvoice = document.querySelector("#addNewInvoice");
-         addNewInvoice.classList.remove("inactive");
+        addNewInvoice.classList.remove("inactive");
       }
 
       //Produits a utiliser pour generer la facture
@@ -1895,8 +1900,6 @@
           prix: prix.value,
           quantite: quantite.value,
         });
-
-      
 
         tache.value = "";
         prix.value = "";

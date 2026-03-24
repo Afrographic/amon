@@ -70,12 +70,12 @@ class NouvelleVente {
   static renderProduct() {
     this.productsList.innerHTML = "";
     NouvelleVente.products.sort(
-      (a, b) => (b.selected ? 1 : 0) - (a.selected ? 1 : 0)
+      (a, b) => (b.selected ? 1 : 0) - (a.selected ? 1 : 0),
     );
     for (let i = 0; i <= NouvelleVente.products.length - 1; i++) {
-      if(NouvelleVente.products[i].quantite == 0) continue;
+      if (NouvelleVente.products[i].quantite == 0) continue;
       this.productsList.innerHTML += NouvelleVente.buildTemplate(
-        NouvelleVente.products[i]
+        NouvelleVente.products[i],
       );
     }
   }
@@ -89,8 +89,8 @@ class NouvelleVente {
             <div class="productName" onclick="NouvelleVente.selectProduct('${id}')">
                 <div class="selector ${selected}"></div>
                 <div>${product.nom} (${Afro.formatNumWithWhiteSpace(
-      product.prixVente
-    )} ${this.devise})</div>
+                  product.prixVente,
+                )} ${this.devise})</div>
             </div>
             <div class="quantity ${inactive}">
                 <button onclick="NouvelleVente.decrease('${id}')">-</button>
@@ -194,7 +194,7 @@ class NouvelleVente {
     this.productsList.innerHTML = `<p>${NouvelleVente.searchedProducts.length} Resultat(s)</p>`;
     for (let i = 0; i <= NouvelleVente.searchedProducts.length - 1; i++) {
       this.productsList.innerHTML += NouvelleVente.buildTemplate(
-        NouvelleVente.searchedProducts[i]
+        NouvelleVente.searchedProducts[i],
       );
     }
   }
@@ -221,33 +221,40 @@ class NouvelleVente {
     await NouvelleVente.updateProductStockAndHistoryVente(commandes);
     await CommandesController.save(
       commandes,
-      NouvelleVente.formatDate(new Date())
+      NouvelleVente.formatDate(new Date()),
     );
     localStorage.setItem("currentVente", JSON.stringify(commandes));
     localStorage.setItem("currentClientName", this.getClientName());
     localStorage.setItem("currentClientPhone", this.getClientPhone());
-    if(facture){
-      window.location.href = "../facture/kamto.html";
-    }else{
+
+    Afro.show_notif("Commande enregistre");
+    await Afro.sleep(1000);
+
+    if (facture) {
+      let a = document.createElement("a");
+      a.href = "../facture/kamto.html";
+      document.body.appendChild(a);
+
+      a.click();
+    } else {
       let a = document.querySelector("#home");
       a.click();
     }
-    
-  }  
+  }
 
-  static getClientName(){
+  static getClientName() {
     let clientId = parseInt(document.querySelector("#clientsListUI").value);
-    for(let item of ClientsController.clients){
-      if(item.id == clientId){
-        return item.fullname
+    for (let item of ClientsController.clients) {
+      if (item.id == clientId) {
+        return item.fullname;
       }
     }
   }
-  static getClientPhone(){
+  static getClientPhone() {
     let clientId = parseInt(document.querySelector("#clientsListUI").value);
-    for(let item of ClientsController.clients){
-      if(item.id == clientId){
-        return item.tel
+    for (let item of ClientsController.clients) {
+      if (item.id == clientId) {
+        return item.tel;
       }
     }
   }
