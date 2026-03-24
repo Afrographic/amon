@@ -27,6 +27,7 @@ class ClientRepo {
   }
 
   static async get_all() {
+    await this.init();
     let clients = await this.con.select({
       from: "clients",
       order: {
@@ -35,5 +36,20 @@ class ClientRepo {
       },
     });
     return clients;
+  }
+
+  static async add(client) {
+    await this.init();
+    let added = await this.con.insert({
+      into: "clients",
+      values: [
+        {
+          fullname: client.fullname,
+          tel: client.tel,
+        },
+      ],
+      return: true,
+    });
+    return added[0].id;
   }
 }

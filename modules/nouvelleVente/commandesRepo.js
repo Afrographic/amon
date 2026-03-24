@@ -14,7 +14,7 @@ class CommandeRepo {
       into: "commandes",
       values: [
         {
-          clientId: parseInt(commande.clientId),
+          clientId: ClientSelect.selectedClientsId,
           commande: commande.commandes,
           fullDate: commande.fullDate,
         },

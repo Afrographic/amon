@@ -493,6 +493,7 @@ select {
 }
 
 
+
 a {
     color: black;
 }
@@ -715,6 +716,10 @@ a {
     padding: 8px 16px;
 }
 
+.small {
+    font-size: 12px;
+}
+
 .select-search-box {
     border: 1px solid #dfdfdf;
     border-radius: 8px;
@@ -722,9 +727,7 @@ a {
     display: flex;
 }
 
-.small {
-    font-size: 12px;
-}
+
 
 .select-item-element {
     border: 1px solid #dfdfdf;
@@ -735,7 +738,7 @@ a {
     border-radius: 8px;
 }
 
-.tac {
+.tac { 
     text-align: center;
 }
 
@@ -773,7 +776,7 @@ a {
     flex-direction: column;
     gap: 4px;
 }
-
+ 
 .items-inactive {
     opacity: 0;
     transform: translateY(300px);

@@ -1,8 +1,7 @@
 class CommandesController{
     static async save(commandesFull,fullDate){
         let commandes = [];
-        let clientId = document.querySelector("#clientsListUI").value;
-        console.log(clientId);
+        let clientId = ClientSelect.selectedClientsId;
         for(let item of commandesFull){
             commandes.push({
                 nom:item.nom,

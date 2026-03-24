@@ -24,6 +24,7 @@ class FournisseurSelect {
 
   static #render(fournisseurs) {
     let catItemsContainer = document.querySelector("#fournisseur-items-container");
+    catItemsContainer.style.display = "flex";
     catItemsContainer.innerHTML = "";
     for (const item of fournisseurs) {
       catItemsContainer.innerHTML += `

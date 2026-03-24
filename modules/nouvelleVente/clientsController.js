@@ -12,4 +12,4 @@ class ClientsController{
     }
 }
 
-ClientsController.renderClients();
+//ClientsController.renderClients();

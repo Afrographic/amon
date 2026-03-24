@@ -191,7 +191,7 @@ class NouvelleVente {
   }
 
   static renderSearchTemplate() {
-    this.productsList.innerHTML = `<p>${NouvelleVente.searchedProducts.length} Resultat(s)</p>`;
+    this.productsList.innerHTML = `<p class="tac">${NouvelleVente.searchedProducts.length} Resultat(s)</p>`;
     for (let i = 0; i <= NouvelleVente.searchedProducts.length - 1; i++) {
       this.productsList.innerHTML += NouvelleVente.buildTemplate(
         NouvelleVente.searchedProducts[i],
@@ -243,7 +243,7 @@ class NouvelleVente {
   }
 
   static getClientName() {
-    let clientId = parseInt(document.querySelector("#clientsListUI").value);
+    let clientId = ClientSelect.selectedClientsId;
     for (let item of ClientsController.clients) {
       if (item.id == clientId) {
         return item.fullname;
@@ -251,7 +251,7 @@ class NouvelleVente {
     }
   }
   static getClientPhone() {
-    let clientId = parseInt(document.querySelector("#clientsListUI").value);
+    let clientId = ClientSelect.selectedClientsId;
     for (let item of ClientsController.clients) {
       if (item.id == clientId) {
         return item.tel;

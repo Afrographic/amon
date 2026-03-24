@@ -56,8 +56,6 @@ class CategorieSelect {
     
   }
 
-
-
   static hideCategorieList() {
     let itemsHolder = document.querySelector("#items-cat-holder");
     itemsHolder.classList.add("items-inactive");

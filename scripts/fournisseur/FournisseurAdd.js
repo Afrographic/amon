@@ -35,7 +35,7 @@ class FournisseurAdd {
       return;
     }
     if (tel.length == 0) {
-      Afro.show_negative_message("Numero invalide invalide");
+      Afro.show_negative_message("Numero  invalide");
       return;
     }
 
