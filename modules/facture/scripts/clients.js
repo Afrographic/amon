@@ -6,7 +6,7 @@ let nomsClientsEasyPick = document.querySelector(".nomsClients");
 
 function showClientView() {
   if (window.innerWidth <= 1000) {
-    window.history.pushState({ page: "clients" }, "", "/#/clients");
+    window.history.pushState({ page: "clients" }, "", "?clients");
     localStorage.setItem("current-page", "/#/clients");
   }
   mesClientsView.classList.remove("mesClientsViewInactive");

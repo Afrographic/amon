@@ -10,7 +10,7 @@ function showArticleView() {
   mesArticlesView.classList.remove("mesArticlesViewInactive");
 
   if (window.innerWidth <= 1000) {
-    window.history.pushState({ page: "articles" }, "", "/#/articles");
+    window.history.pushState({ page: "articles" }, "", "?articles");
     localStorage.setItem("current-page", "/#/articles");
   }
 }

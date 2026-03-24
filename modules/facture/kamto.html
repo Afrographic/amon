@@ -1279,7 +1279,7 @@
       //Generer la facture
       function genererFacture() {
         if (window.innerWidth <= 1000) {
-          window.history.pushState({ page: "facture" }, "", "/#/facture");
+          window.history.pushState({ page: "facture" }, "", "?facture");
           localStorage.setItem("current-page", "/#/facture");
         }
 
@@ -1814,7 +1814,7 @@
 
       function showConfig() {
         if (window.innerWidth <= 1000) {
-          window.history.pushState({ page: "config" }, "", "/#/config");
+          window.history.pushState({ page: "config" }, "", "?config");
           localStorage.setItem("current-page", "/#/config");
         }
 

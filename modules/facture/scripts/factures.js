@@ -126,7 +126,7 @@ function editFacture(e, i, j) {
 
 function previewFacture(factureIndex) {
    if (window.innerWidth <= 1000) {
-          window.history.pushState({ page: "facture" }, "", "/#/facture");
+          window.history.pushState({ page: "facture" }, "", "?facture");
           localStorage.setItem("current-page", "/#/facture");
         }
         
@@ -308,7 +308,7 @@ let historiqueView = document.querySelector(".historiqueView");
 function showHistory() {
   historiqueView.classList.remove("historiqueViewInactive");
   if (window.innerWidth <= 1000) {
-    window.history.pushState({ page: "history" }, "", "/#/history");
+    window.history.pushState({ page: "history" }, "", "?history");
     localStorage.setItem("current-page", "/#/history");
   }
 }
