@@ -28,9 +28,9 @@ class Product {
 
     for (let i = 0; i <= FournisseurSelect.fournisseurs.length - 1; i++) {
       if (FournisseurSelect.fournisseurs[i].id == product.fournisseurId) {
-        fournisseur =FournisseurSelect.fournisseurs[i].fullname;
+        fournisseur = FournisseurSelect.fournisseurs[i].fullname;
       }
-    } 
+    }
 
     let more_info = `
         <table>
@@ -67,6 +67,67 @@ class Product {
         `;
 
     return productInfo;
+  }
+
+  static async generateProductItemTemplate(product) {
+    let moreInfoTemplate = Product.generateMoreInfoTemplate(product);
+
+    // Building image template
+    let imagURl = await ProductImageService.getImageURL(product.imageId ?? -1);
+    let imageTemplate = "";
+    if (imagURl.length > 0) {
+      imageTemplate = `<div class="productImage" style="background-image:url(${imagURl})"></div>`;
+    }
+
+    //Color template
+    let colorTemplate = "";
+    if (product.color != undefined) {
+      colorTemplate = `<div  class="colorItem " style="background-color:${product.color}"></div>`;
+    }
+
+    let template = `<div class="productItem">
+        
+              <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
+                  
+                  <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${product.id}">Nouveau Stock</button>
+                 
+            
+                  <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${product.id}">Editer</button>
+                  <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${product.id}">Supprimer</button>
+        
+              </div>
+
+          ${imageTemplate}
+          
+          <div class="productItemTitle">
+              <h3 class="f1">${Afro.Ucase(product.nom)}</h3>
+              <div class="row aic g16">
+                  ${colorTemplate}
+                  <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>
+                  <div class="clickArea" onclick="showMenuProduct(this)">
+                     <img src="images/option.svg" />
+                  </div>  
+              </div>
+                
+           </div>
+          
+          <table>
+              <tr>
+                  <td>Prix de vente</td>
+                  <td>${Afro.formatNumWithWhiteSpace(product.prixVente)} ${devise}</td>
+              </tr>
+              <tr>
+                  <td>Quantite</td>
+                  <td>${product.quantite}</td>
+              </tr>
+          </table>
+
+          ${moreInfoTemplate}
+
+          
+      </div>
+        `;
+    return template;
   }
 
   static closeProductInfo(el) {

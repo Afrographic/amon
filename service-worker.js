@@ -1,136 +1,136 @@
-const CACHE_NAME = "amon";
-const FILES_TO_CACHE  = [
-    "/",
-    '/index.html',
-    '/manifest.json',
-    "/icons/icon-192.png",
-    "/icons/icon-512.png",
-    "/images/add.svg",
-    "/images/afro_svg.svg",
-    "/images/amon.svg",
-    "/images/close.svg",
-    "/images/edit.svg",
-    "/images/empty.svg",
-    "/images/error_msg.svg",
-    "/images/export.svg",
-    "/images/facture.svg",
-    "/images/history_vente.svg",
-    "/images/import.svg",
-    "/images/menu.svg",
-    "/images/option.svg",
-    "/images/reset.svg",
-    "/images/search.svg",
-    "/images/settings.svg",
-    "/images/startup.svg",
-    "/images/stock.svg",
-    "/images/vente.svg",
+// const CACHE_NAME = "amon";
+// const FILES_TO_CACHE  = [
+//     "/",
+//     '/index.html',
+//     '/manifest.json',
+//     "/icons/icon-192.png",
+//     "/icons/icon-512.png",
+//     "/images/add.svg",
+//     "/images/afro_svg.svg",
+//     "/images/amon.svg",
+//     "/images/close.svg",
+//     "/images/edit.svg",
+//     "/images/empty.svg",
+//     "/images/error_msg.svg",
+//     "/images/export.svg",
+//     "/images/facture.svg",
+//     "/images/history_vente.svg",
+//     "/images/import.svg",
+//     "/images/menu.svg",
+//     "/images/option.svg",
+//     "/images/reset.svg",
+//     "/images/search.svg",
+//     "/images/settings.svg",
+//     "/images/startup.svg",
+//     "/images/stock.svg",
+//     "/images/vente.svg",
 
-    "/libs/afro.js",
-    "/libs/chart.js",
-    "/libs/jsstore.js",
-    "/libs/jsstore.worker.js",
+//     "/libs/afro.js",
+//     "/libs/chart.js",
+//     "/libs/jsstore.js",
+//     "/libs/jsstore.worker.js",
 
-    "/scripts/bienvenue.js",
-    "/scripts/history.js",
-    "/scripts/mobileMenu.js",
-    "/scripts/productStock.js",
-    "/scripts/productVente.js",
-    "/scripts/startUp.js",
-    "/scripts/stat.js",
-    "/scripts/totalMoneyToEarn.js",
+//     "/scripts/bienvenue.js",
+//     "/scripts/history.js",
+//     "/scripts/mobileMenu.js",
+//     "/scripts/productStock.js",
+//     "/scripts/productVente.js",
+//     "/scripts/startUp.js",
+//     "/scripts/stat.js",
+//     "/scripts/totalMoneyToEarn.js",
 
-    "/styles/ankh_notif.css",
-    "/styles/buttons.css",
-    "/styles/responsive.css",
-    "/styles/style.css",
+//     "/styles/ankh_notif.css",
+//     "/styles/buttons.css",
+//     "/styles/responsive.css",
+//     "/styles/style.css",
 
-    // Kamto Assets
+//     // Kamto Assets
 
-    "/modules/facture/kamto.html",
-    "/modules/facture/assets/images/add_1.svg",
-    "/modules/facture/assets/images/add.svg",
-    "/modules/facture/assets/images/articles.svg",
-    "/modules/facture/assets/images/clients.svg",
-    "/modules/facture/assets/images/close.svg",
-    "/modules/facture/assets/images/delete.svg",
-    "/modules/facture/assets/images/edit.svg",
-    "/modules/facture/assets/images/email.svg",
-    "/modules/facture/assets/images/empty.svg",
-    "/modules/facture/assets/images/error_msg.svg",
-    "/modules/facture/assets/images/history.svg",
-    "/modules/facture/assets/images/img.svg",
-    "/modules/facture/assets/images/invoice_white.svg",
-    "/modules/facture/assets/images/invoice.svg",
-    "/modules/facture/assets/images/kamto.svg",
-    "/modules/facture/assets/images/kamto.png",
-    "/modules/facture/assets/images/location.svg",
-    "/modules/facture/assets/images/logo_symbol.svg",
-    "/modules/facture/assets/images/logo.svg",
-    "/modules/facture/assets/images/menu.svg",
-    "/modules/facture/assets/images/phone.svg",
-    "/modules/facture/assets/images/settings.svg",
-    "/modules/facture/assets/images/tempLogo.svg",
+//     "/modules/facture/kamto.html",
+//     "/modules/facture/assets/images/add_1.svg",
+//     "/modules/facture/assets/images/add.svg",
+//     "/modules/facture/assets/images/articles.svg",
+//     "/modules/facture/assets/images/clients.svg",
+//     "/modules/facture/assets/images/close.svg",
+//     "/modules/facture/assets/images/delete.svg",
+//     "/modules/facture/assets/images/edit.svg",
+//     "/modules/facture/assets/images/email.svg",
+//     "/modules/facture/assets/images/empty.svg",
+//     "/modules/facture/assets/images/error_msg.svg",
+//     "/modules/facture/assets/images/history.svg",
+//     "/modules/facture/assets/images/img.svg",
+//     "/modules/facture/assets/images/invoice_white.svg",
+//     "/modules/facture/assets/images/invoice.svg",
+//     "/modules/facture/assets/images/kamto.svg",
+//     "/modules/facture/assets/images/kamto.png",
+//     "/modules/facture/assets/images/location.svg",
+//     "/modules/facture/assets/images/logo_symbol.svg",
+//     "/modules/facture/assets/images/logo.svg",
+//     "/modules/facture/assets/images/menu.svg",
+//     "/modules/facture/assets/images/phone.svg",
+//     "/modules/facture/assets/images/settings.svg",
+//     "/modules/facture/assets/images/tempLogo.svg",
 
-    "/modules/facture/assets/libs/chart.js",
-    "/modules/facture/assets/libs/jscolor.js",
-    "/modules/facture/assets/libs/html2canvas.min.js",
-    "/modules/facture/assets/libs/jspdf.umd.min.js",
-    "/modules/facture/assets/libs/jsstore.js",
-    "/modules/facture/assets/libs/jsstore.worker.js",
+//     "/modules/facture/assets/libs/chart.js",
+//     "/modules/facture/assets/libs/jscolor.js",
+//     "/modules/facture/assets/libs/html2canvas.min.js",
+//     "/modules/facture/assets/libs/jspdf.umd.min.js",
+//     "/modules/facture/assets/libs/jsstore.js",
+//     "/modules/facture/assets/libs/jsstore.worker.js",
 
-    "/modules/facture/scripts/articles.js",
-    "/modules/facture/scripts/clients.js",
-    "/modules/facture/scripts/color.js",
-    "/modules/facture/scripts/factures.js",
-    "/modules/facture/scripts/mobile.js",
-    "/modules/facture/scripts/negociability.js",
-    "/modules/facture/scripts/note.js",
-    "/modules/facture/scripts/startUp.js",
-    "/modules/facture/scripts/utils.js",
+//     "/modules/facture/scripts/articles.js",
+//     "/modules/facture/scripts/clients.js",
+//     "/modules/facture/scripts/color.js",
+//     "/modules/facture/scripts/factures.js",
+//     "/modules/facture/scripts/mobile.js",
+//     "/modules/facture/scripts/negociability.js",
+//     "/modules/facture/scripts/note.js",
+//     "/modules/facture/scripts/startUp.js",
+//     "/modules/facture/scripts/utils.js",
 
-    "/modules/facture/styles/ankh_notif.css",
-    "/modules/facture/styles/buttons.css",
-    "/modules/facture/styles/responsive.css",
-    "/modules/facture/styles/style.css",
+//     "/modules/facture/styles/ankh_notif.css",
+//     "/modules/facture/styles/buttons.css",
+//     "/modules/facture/styles/responsive.css",
+//     "/modules/facture/styles/style.css",
 
-]
+// ]
 
-// sw.js
+// // sw.js
 
 
-// Install event: cache all files initially
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
-  );
-  self.skipWaiting(); // activate new service worker immediately
-});
+// // Install event: cache all files initially
+// self.addEventListener('install', event => {
+//   event.waitUntil(
+//     caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
+//   );
+//   self.skipWaiting(); // activate new service worker immediately
+// });
 
-// Activate event: clean up old caches
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      )
-    )
-  );
-  self.clients.claim(); // take control of all pages immediately
-});
+// // Activate event: clean up old caches
+// self.addEventListener('activate', event => {
+//   event.waitUntil(
+//     caches.keys().then(keys =>
+//       Promise.all(
+//         keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+//       )
+//     )
+//   );
+//   self.clients.claim(); // take control of all pages immediately
+// });
 
-// Fetch event: network-first strategy
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        // Successful response – update cache
-        const responseClone = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
-        return response;
-      })
-      .catch(() => {
-        // If network fails, try cache
-        return caches.match(event.request);
-      })
-  );
-});
+// // Fetch event: network-first strategy
+// self.addEventListener('fetch', event => {
+//   event.respondWith(
+//     fetch(event.request)
+//       .then(response => {
+//         // Successful response – update cache
+//         const responseClone = response.clone();
+//         caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+//         return response;
+//       })
+//       .catch(() => {
+//         // If network fails, try cache
+//         return caches.match(event.request);
+//       })
+//   );
+// });

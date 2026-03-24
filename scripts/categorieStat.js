@@ -1,18 +1,16 @@
-
 async function computeCategorieStat() {
-
   //Get Categories
   let categoriesAmon = localStorage.getItem("AmonCategories");
-  if(categoriesAmon != null) {
+  if (categoriesAmon != null) {
     categoriesAmon = JSON.parse(categoriesAmon);
-  }else{
-    categoriesAmon =[];
+  } else {
+    categoriesAmon = [];
   }
-  
+
   categoriesAmon.push({
-    catId:"",
-    categoryName : "Non Classe"
-  })
+    catId: "",
+    categoryName: "Non Classe",
+  });
 
   //Get products
   var datas = await con.select({
@@ -21,8 +19,9 @@ async function computeCategorieStat() {
       id: "1",
     },
   });
-  if(datas.length == 0) return;
+  if (datas.length == 0) return;
   let products = JSON.parse(datas[0].products);
+
 
   //Get sell history
   let sellHistory = JSON.parse(datas[0].historyRetrait);
@@ -32,77 +31,44 @@ async function computeCategorieStat() {
   for (let i = 0; i <= categoriesAmon.length - 1; i++) {
     let products_add = [];
     let productsTemplate = "";
+
     for (let j = 0; j <= products.length - 1; j++) {
-      
       // Caracteristiques des produits
-      if(products[j].cars == undefined){
+      if (products[j].cars == undefined) {
         products[j].cars = [];
       }
       if (products[j].catId == categoriesAmon[i].catId) {
         products_add.push(products[j]);
-        // Building image template
-        let imagURl = await ProductImageService.getImageURL(products[j].imageId ?? -1);
-        let imageTemplate ="";
-        if(imagURl.length > 0){
-          imageTemplate = `<div class="productImage" style="background-image:url(${imagURl})"></div>`;
-        }
 
-        //Color template
-        let colorTemplate = "";
-        if(products[j].color != undefined){
-          colorTemplate = `<div  class="colorItem " style="background-color:${products[j].color}"></div>`
-        }
-
-        //Build More info component
-        let moreInfoTemplate = Product.generateMoreInfoTemplate(products[j]);
-        productsTemplate += `
-        <div class="productItem">
-        
-              <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
-                  
-                  <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${products[j].id}">Nouveau Stock</button>
-                 
-            
-                  <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${products[j].id}">Editer</button>
-                  <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${products[j].id}">Supprimer</button>
-        
-              </div>
-
-          ${imageTemplate}
-          
-          <div class="productItemTitle">
-              <h3 class="f1">${Afro.Ucase(products[j].nom)}</h3>
-              <div class="row aic g16">
-                  ${colorTemplate}
-                  <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>
-                  <div class="clickArea" onclick="showMenuProduct(this)">
-                     <img src="images/option.svg" />
-                  </div>  
-              </div>
-                
-           </div>
-          
-          <table>
-              <tr>
-                  <td>Prix de vente</td>
-                  <td>${Afro.formatNumWithWhiteSpace(products[j].prixVente)} ${devise}</td>
-              </tr>
-              <tr>
-                  <td>Quantite</td>
-                  <td>${products[j].quantite}</td>
-              </tr>
-          </table>
-
-          ${moreInfoTemplate}
-
-          
-      </div>
-        `
+        let template = await Product.generateProductItemTemplate(products[j])
+        productsTemplate += template;
       }
     }
     categoriesAmon[i].products = products_add;
     categoriesAmon[i].productsTemplate = productsTemplate;
   }
+
+  //Compute produits non classe
+  let produitNonClasse = [];
+  let productsTemplate = "";
+  for (let i = 0; i <= products.length - 1; i++) {
+    let catFound = false;
+    let catId = products[i].catId;
+    for (let j = 0; j <= categoriesAmon.length - 1; j++) {
+      if (catId == categoriesAmon[j].catId) {
+        catFound = true;
+        break;
+      }
+    }
+    if (!catFound) {
+      produitNonClasse.push(products[i]);
+      let template = await Product.generateProductItemTemplate(products[i]);
+      productsTemplate += template;
+    }
+  }
+
+  categoriesAmon[categoriesAmon.length - 1].products = produitNonClasse;
+  categoriesAmon[categoriesAmon.length - 1].productsTemplate = productsTemplate;
 
   //Compute vente per categories
   for (let i = 0; i <= categoriesAmon.length - 1; i++) {
@@ -118,15 +84,16 @@ async function computeCategorieStat() {
     categoriesAmon[i].benefice = benefice;
 
     //Calcul du benefice
-    for(let k = 0 ; k<= products_add.length-1;k++){
-      categoriesAmon[i].benefice += parseInt(products_add[k].prixVente) - parseInt(products_add[k].prix);
+    for (let k = 0; k <= products_add.length - 1; k++) {
+      categoriesAmon[i].benefice +=
+        parseInt(products_add[k].prixVente) - parseInt(products_add[k].prix);
     }
   }
 
   //render view
 
   //Get devise
-  
+
   let cats = document.querySelector(".cats");
   cats.innerHTML = "";
   if (categoriesAmon.length == 0) {
@@ -134,7 +101,7 @@ async function computeCategorieStat() {
   } else {
     cats.computedStyleMap.display = "flex";
     for (let i = 0; i <= categoriesAmon.length - 1; i++) {
-        cats.innerHTML += `
+      cats.innerHTML += `
         <div class="catItem">
             <div class="header">
               <div>
@@ -150,25 +117,27 @@ async function computeCategorieStat() {
               ${categoriesAmon[i].productsTemplate}
             </div>
         </div>
-        `
+        `;
     }
   }
 
   computeRuptureStock();
- 
 }
 
-
-function showMenuProduct(el){
-  el.parentNode.parentNode.parentNode.firstElementChild.classList.remove("productItemClassInactive")
+function showMenuProduct(el) {
+  el.parentNode.parentNode.parentNode.firstElementChild.classList.remove(
+    "productItemClassInactive",
+  );
 }
 
-function showMoreInfo(el){
-  el.parentNode.parentNode.parentNode.lastElementChild.classList.remove("productInfoInactive")
+function showMoreInfo(el) {
+  el.parentNode.parentNode.parentNode.lastElementChild.classList.remove(
+    "productInfoInactive",
+  );
 }
 
-function hideMenuProduct(el){
-  el.classList.add("productItemClassInactive")
+function hideMenuProduct(el) {
+  el.classList.add("productItemClassInactive");
 }
 
 computeCategorieStat();
