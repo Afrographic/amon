@@ -41,7 +41,7 @@ function initResetApp() {
 }
 function resetApp() {
   //Delete DB
-  indexedDB.deleteDatabase("amonDBNew");
+  indexedDB.deleteDatabase("amonDB");
   window.location.reload();
 }
 function cancelResetApp() {
@@ -156,7 +156,7 @@ function get_db_schema() {
     },
   };
   var db = {
-    name: "amonDBNew",
+    name: "amonDB",
     tables: [data],
   };
   return db;

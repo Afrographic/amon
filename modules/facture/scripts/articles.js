@@ -21,7 +21,7 @@ function hideArticleView() {
 
 function getDataFromAmonDB() {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open("amonDBNew", 1);
+    const request = indexedDB.open("amonDB", 1);
 
     request.onsuccess = (event) => {
       const db = event.target.result;
