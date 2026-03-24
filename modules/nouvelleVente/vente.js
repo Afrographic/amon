@@ -244,7 +244,7 @@ class NouvelleVente {
 
   static getClientName() {
     let clientId = ClientSelect.selectedClientsId;
-    for (let item of ClientsController.clients) {
+    for (let item of ClientSelect.clients) {
       if (item.id == clientId) {
         return item.fullname;
       }
@@ -252,7 +252,7 @@ class NouvelleVente {
   }
   static getClientPhone() {
     let clientId = ClientSelect.selectedClientsId;
-    for (let item of ClientsController.clients) {
+    for (let item of ClientSelect.clients) {
       if (item.id == clientId) {
         return item.tel;
       }
