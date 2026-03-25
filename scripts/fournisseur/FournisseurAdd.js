@@ -2,7 +2,7 @@ class FournisseurAdd {
   static async show() {
 
     if (window.innerWidth <= 1000) {
-      history.pushState({ page: "creer-fournisseur" }, "", "/#/creer-fournisseur");
+      history.pushState({ page: "creer-fournisseur" }, "", "?creer-fournisseur");
       localStorage.setItem("current-page", "creer-fournisseur");
     }
 

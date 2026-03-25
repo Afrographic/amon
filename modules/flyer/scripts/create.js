@@ -25,7 +25,7 @@ class Create {
     UI.show_config_screen();
     UI.hide_create_flyer_screen();
     if (window.innerWidth <= 1000) {
-      history.pushState({ page: "config" }, "", "/#/config");
+      history.pushState({ page: "config" }, "", "?config");
       localStorage.setItem("current-page", "/#/config");
     }
   }
@@ -63,7 +63,7 @@ class Create {
 
   static generateFlyer() {
     if (window.innerWidth <= 1000) {
-      history.pushState({ page: "generate-flyer" }, "", "/#/render-flyer");
+      history.pushState({ page: "generate-flyer" }, "", "?render-flyer");
       localStorage.setItem("current-page", "/#/render-flyer");
     }
 

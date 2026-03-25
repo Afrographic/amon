@@ -38,7 +38,7 @@ class FournisseurSelect {
 
   static showList() {
      if (window.innerWidth <= 1000) {
-      history.pushState({ page: "select-fournisseur" }, "", "/#/select-fournisseur");
+      history.pushState({ page: "select-fournisseur" }, "", "?select-fournisseur");
       localStorage.setItem("current-page", "select-fournisseur");
     }
 

@@ -35,7 +35,7 @@ function initResetApp() {
   let resetAppView = document.querySelector(".resetApp");
   resetAppView.classList.remove("inactive");
   if (window.innerWidth <= 1000) {
-    history.pushState({ page: "reset" }, "", "/#/reset");
+    history.pushState({ page: "reset" }, "", "?reset");
     localStorage.setItem("current-page", "reset");
   }
 }
@@ -96,7 +96,7 @@ function showWelcomeScreen() {
   let welcome = document.querySelector(".welcome");
   welcome.classList.remove("inactive");
   if (window.innerWidth <= 1000) {
-    history.pushState({ page: "config" }, "", "/#/config");
+    history.pushState({ page: "config" }, "", "?config");
     localStorage.setItem("current-page", "config");
   }
 }
@@ -479,7 +479,7 @@ function addProduct() {
   addProduitButton.classList.add("inactive");
 
   if (window.innerWidth <= 1000) {
-    history.pushState({ page: "creer-produit" }, "", "/#/creer-produit");
+    history.pushState({ page: "creer-produit" }, "", "?creer-produit");
     localStorage.setItem("current-page", "creer-produit");
   }
 
@@ -772,7 +772,7 @@ let productIdToEdit = 0;
 
 async function editProduct(event) {
   if (window.innerWidth <= 1000) {
-    history.pushState({ page: "edit-produit" }, "", "/#/edit-produit");
+    history.pushState({ page: "edit-produit" }, "", "?edit-produit");
     localStorage.setItem("current-page", "edit-produit");
   }
 
