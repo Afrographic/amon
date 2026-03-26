@@ -8,6 +8,19 @@
     src: url(../../fonts/Raleway-Black.ttf)
 }
 
+@media screen and (min-width:1000px) {
+
+
+    .itemsContainer {
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 128px;
+        border-radius: 16px;
+    }
+
+}
+
 h2,
 h3,
 h1 {
@@ -173,10 +186,10 @@ select {
     margin-bottom: 8px;
 }
 
-#clients-items-container{
+#clients-items-container {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
 
@@ -333,13 +346,13 @@ input {
 }
 
 
-.form{
+.form {
     display: flex;
     flex-direction: column;
-    gap:8px;
+    gap: 8px;
 }
 
-.form .formItem{
+.form .formItem {
     margin-bottom: 0px !important;
 }
 
