@@ -1,6 +1,7 @@
 class FournisseurSelect {
   static fournisseurs = [];
   static selectedFournisseurId = -1;
+  static editId = -1;
   static async renderSelect() {
     let emptyFournisseur = document.querySelector("#empty-area-fournisseur");
     let catItemsContainer = document.querySelector("#cat-items-container");
@@ -23,7 +24,9 @@ class FournisseurSelect {
   }
 
   static #render(fournisseurs) {
-    let catItemsContainer = document.querySelector("#fournisseur-items-container");
+    let catItemsContainer = document.querySelector(
+      "#fournisseur-items-container",
+    );
     catItemsContainer.style.display = "flex";
     catItemsContainer.innerHTML = "";
     for (const item of fournisseurs) {
@@ -37,13 +40,19 @@ class FournisseurSelect {
   }
 
   static showList() {
-     if (window.innerWidth <= 1000) {
-      history.pushState({ page: "select-fournisseur" }, "", "?select-fournisseur");
+   
+    if (window.innerWidth <= 1000) {
+      history.pushState(
+        { page: "select-fournisseur" },
+        "",
+        "?select-fournisseur",
+      );
       localStorage.setItem("current-page", "select-fournisseur");
     }
 
     let itemsHolder = document.querySelector("#items-fournisseur-holder");
     itemsHolder.classList.remove("items-inactive");
+ 
     let addProduct = document.querySelector("#addProduct");
     addProduct.scrollTop = 0;
     addProduct.style.overflow = "hidden";
@@ -58,14 +67,25 @@ class FournisseurSelect {
 
   static selectItem(id, name) {
     this.selectedFournisseurId = id;
+    this.editId = id;
     this.hideList();
     let selectedFournisseur = document.querySelector("#selectedFournisseur");
     selectedFournisseur.innerHTML = name;
+
+    //Prefill edit fournisseur
+    let selectedFournisseurEdit = document.querySelector(
+      "#selectedFournisseurEdit",
+    );
+    if (selectedFournisseurEdit) selectedFournisseurEdit.innerHTML = name;
   }
 
   static search(input) {
-    let searchFournisseurIcon = document.querySelector("#searchFournisseurIcon");
-    let closeFournisseurSearch = document.querySelector("#closeFournisseurSearch");
+    let searchFournisseurIcon = document.querySelector(
+      "#searchFournisseurIcon",
+    );
+    let closeFournisseurSearch = document.querySelector(
+      "#closeFournisseurSearch",
+    );
     if (input.value.trim().length == 0) {
       closeFournisseurSearch.style.display = "none";
       searchFournisseurIcon.style.display = "block";
@@ -92,8 +112,12 @@ class FournisseurSelect {
   }
 
   static closeSearch() {
-    let searchFournisseurIcon = document.querySelector("#searchFournisseurIcon");
-    let closeFournisseurSearch = document.querySelector("#closeFournisseurSearch");
+    let searchFournisseurIcon = document.querySelector(
+      "#searchFournisseurIcon",
+    );
+    let closeFournisseurSearch = document.querySelector(
+      "#closeFournisseurSearch",
+    );
     let fournisseurListSearchInput = document.querySelector(
       "#fournisseurListSearchInput",
     );

@@ -20,7 +20,7 @@ class Product {
             </table>
         </div>
     `;
-    console.log(product.cars.length);
+
     if (product.cars.length == 0) {
       carsTemplate = "";
     }

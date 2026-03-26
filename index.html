@@ -336,6 +336,68 @@
   </head>
 
   <body>
+
+       <!-- Fournisseur items -->
+        <div class="items items-inactive" id="items-fournisseur-holder"  >
+          <div class="f1" onclick="FournisseurSelect.hideList()"></div>
+          <div class="itemsContainer">
+            <img src="images/fournisseur.svg" alt="" class="selectFournisseurIcon">
+            <div class="tac">Fournisseurs</div>
+            <div class="small tac">Cliquez sur un fournisseur pour le selectionner</div>
+
+             <div class="select-search-box">
+              <input type="text" id="fournisseurListSearchInput" placeholder="Recherche..." class="f1"  onkeyup="FournisseurSelect.search(this)" >
+              <img src="images/search_dd.svg" width="20px"  alt="" id="searchFournisseurIcon">
+              <img src="images/close.svg" width="20px"   alt="" id="closeFournisseurSearch" onclick="FournisseurSelect.closeSearch()" >
+            </div>
+           
+            <div class="items-renderer-bloc">
+               <!-- No elements -->
+              <div class="empty-area" id="empty-area-fournisseur">
+                <img src="images/empty.svg" alt="">
+                <div>Aucun element</div>
+              </div>
+              
+              <div id="fournisseur-items-container">
+                  <div class="select-item-element" >
+                    <img src="images/circle.svg" alt="" width="20px">
+                    <div>fournisseur</div>
+                  </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+
+      <!-- categories items -->
+        <div class="items items-inactive" id="items-cat-holder"  >
+          <div class="f1" onclick="CategorieSelect.hideCategorieList()"></div>
+          <div class="itemsContainer">
+            <img src="images/cat.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
+            <div class="tac">Categorie</div>
+            <div class="small tac">Cliquez sur un element pour le selectionner</div>
+
+             <div class="select-search-box">
+              <input type="text" id="categorieListSearchInput" placeholder="Recherche..." class="f1"  onkeyup="CategorieSelect.search(this)" >
+              <img src="images/search_dd.svg" width="20px"  alt="" id="searchCategorieIcon">
+              <img src="images/close.svg" width="20px"   alt="" id="closeCategorieSearch" onclick="CategorieSelect.closeSearch()" >
+            </div>
+           
+            <div class="items-renderer-bloc">
+               <!-- No elements -->
+              <div class="empty-area" id="empty-area-cats">
+                <img src="images/empty.svg" alt="">
+                <div>Aucun element</div>
+              </div>
+              
+              <div id="cat-items-container">
+                  <div class="select-item-element" (click)="select(item)">
+                    <img src="images/circle.svg" alt="" width="20px">
+                    <div>{{item.label}}</div>
+                  </div>
+              </div>
+            </div> 
+          </div>
+        </div>
    
     <!-- Error box -->
     <div
@@ -742,36 +804,7 @@
             />
           </div> 
 
-         <!-- categories items -->
-        <div class="items items-inactive" id="items-cat-holder"  >
-          <div class="f1" onclick="CategorieSelect.hideCategorieList()"></div>
-          <div class="itemsContainer">
-            <img src="images/cat.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
-            <div class="tac">Categorie</div>
-            <div class="small tac">Cliquez sur un element pour le selectionner</div>
-
-             <div class="select-search-box">
-              <input type="text" id="categorieListSearchInput" placeholder="Recherche..." class="f1"  onkeyup="CategorieSelect.search(this)" >
-              <img src="images/search_dd.svg" width="20px"  alt="" id="searchCategorieIcon">
-              <img src="images/close.svg" width="20px"   alt="" id="closeCategorieSearch" onclick="CategorieSelect.closeSearch()" >
-            </div>
-           
-            <div class="items-renderer-bloc">
-               <!-- No elements -->
-              <div class="empty-area" id="empty-area-cats">
-                <img src="images/empty.svg" alt="">
-                <div>Aucun element</div>
-              </div>
-              
-              <div id="cat-items-container">
-                  <div class="select-item-element" (click)="select(item)">
-                    <img src="images/circle.svg" alt="" width="20px">
-                    <div>{{item.label}}</div>
-                  </div>
-              </div>
-            </div> 
-          </div>
-        </div>
+       
      
          
         <div class="cat" onclick="CategorieAdd.showCategorieAddScreen()">
@@ -816,36 +849,7 @@
             />
           </div>
 
-         <!-- Fournisseur items -->
-        <div class="items items-inactive" id="items-fournisseur-holder"  >
-          <div class="f1" onclick="FournisseurSelect.hideList()"></div>
-          <div class="itemsContainer">
-            <img src="images/fournisseur.svg" alt="" class="selectFournisseurIcon">
-            <div class="tac">Fournisseurs</div>
-            <div class="small tac">Cliquez sur un fournisseur pour le selectionner</div>
-
-             <div class="select-search-box">
-              <input type="text" id="fournisseurListSearchInput" placeholder="Recherche..." class="f1"  onkeyup="FournisseurSelect.search(this)" >
-              <img src="images/search_dd.svg" width="20px"  alt="" id="searchFournisseurIcon">
-              <img src="images/close.svg" width="20px"   alt="" id="closeFournisseurSearch" onclick="FournisseurSelect.closeSearch()" >
-            </div>
-           
-            <div class="items-renderer-bloc">
-               <!-- No elements -->
-              <div class="empty-area" id="empty-area-fournisseur">
-                <img src="images/empty.svg" alt="">
-                <div>Aucun element</div>
-              </div>
-              
-              <div id="fournisseur-items-container">
-                  <div class="select-item-element" >
-                    <img src="images/circle.svg" alt="" width="20px">
-                    <div>fournisseur</div>
-                  </div>
-              </div>
-            </div> 
-          </div>
-        </div>
+      
 
         <div class="cat" onclick="FournisseurAdd.show()">
           <img src="images/add_cat.svg" alt="" width="24px">
@@ -1000,24 +1004,44 @@
             <input type="number" placeholder="Prix de vente" id="prixVenteEditInput"  inputmode="numeric"
             pattern="[0-9]*"/>
           </div>
-  
-          
-          <div class="formItem">
-            <div class="label">Categorie</div>
-            <select name="" id="EditCategories" >
-              <!-- <option value="dsd">Electronique</option>
-              <option value="dsd">Menage</option>
-              <option value="dsd">Plomberie</option> -->
-            </select>
+
+           <!-- Selectionner la categorie -->
+
+          <div class="select-item" onclick="CategorieSelect.showCategorieList()">
+            <img src="images/cat.svg" alt="" width="24px">
+            <div class="select-item-elements">
+              <div class="small">Categorie</div>
+              <div id="selectedCategorieEdit">Selectionner la categorie</div>
+            </div>
+            <img
+              src="images/chevron.svg"
+              alt=""
+              width="24px"
+              class="cp"
+              class="rotate_90"
+            />
           </div>
-          <div class="formItem">
-            <div class="label">Fournisseur</div>
-            <select name="" id="EditFournisseurSelect" >
-              <!-- <option value="dsd">Electronique</option>
-              <option value="dsd">Menage</option>
-              <option value="dsd">Plomberie</option> -->
-            </select>
+
+
+          <!-- Selectionner le fournisseur -->
+
+          <div class="select-item" onclick="FournisseurSelect.showList()">
+            <img src="images/fournisseur.svg" alt="" width="24px">
+            <div class="select-item-elements">
+              <div class="small">Fournisseur</div>
+              <div id="selectedFournisseurEdit">Selectionner le fournisseur</div>
+            </div>
+            <img
+              src="images/chevron.svg"
+              alt=""
+              width="24px"
+              class="cp"
+              class="rotate_90"
+            />
           </div>
+
+
+
           <p>Caracteristiques</p>
           <div id="productsCategoriesEdit">
             <div class="formItem caracItem">
@@ -1383,6 +1407,7 @@
           localStorage.setItem("current-page", "menu");
            return;
         }
+        
         if(localStorage.getItem("current-page") =="more-info"){
           let moreInfoItem = document.querySelector(`#product-info${Product.currentProductId}`);
             moreInfoItem.classList.add("productInfoInactive");

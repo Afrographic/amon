@@ -472,9 +472,8 @@ let addProduitButton = document.querySelector(".addProduitButton");
 let empty = document.querySelector(".empty");
 
 function addProduct() {
-
-   let addProduct = document.querySelector("#addProduct");
-    addProduct.scrollTop = 0;
+  let addProduct = document.querySelector("#addProduct");
+  addProduct.scrollTop = 0;
 
   ProductCaracteristique.initCreateCars();
 
@@ -542,8 +541,6 @@ async function addProductToDatabase() {
   let quantiteInput = document.getElementById("quantiteInput");
   let catId = CategorieSelect.selectedCatId;
   let fournisseurId = FournisseurSelect.selectedFournisseurId;
-
-
 
   let product = {
     nom: "nom",
@@ -799,14 +796,36 @@ async function editProduct(event) {
       prixVenteEditInput.value = products[i].prixVente ?? products[i].prix;
 
       //Prefill selected categorie
-      let EditCategories = document.querySelector("#EditCategories");
-      EditCategories.value = products[i].catId;
+      CategorieSelect.editId = products[i].catId;
+      let catName = "";
+      for (const item of CategorieSelect.cats) {
+        if (item.catId == products[i].catId) {
+          catName = item.categoryName;
+        }
+      }
+      if (!catName) {
+        catName = "Selectionner la categorie";
+      }
+      let selectedCategorieEdit = document.querySelector(
+        "#selectedCategorieEdit",
+      );
+      selectedCategorieEdit.innerHTML = catName;
 
       //prefill selected fournisseur
-      let EditFournisseurSelect = document.querySelector(
-        "#EditFournisseurSelect",
+      FournisseurSelect.editId = products[i].fournisseurId;
+      let fournisseurName = "";
+      for (const item of FournisseurSelect.fournisseurs) {
+        if (item.id == products[i].fournisseurId) {
+          fournisseurName = item.fullname;
+        }
+      }
+      if (!fournisseurName) {
+        fournisseurName = "Selectionner le fournisseur";
+      }
+      let selectedFournisseurEdit = document.querySelector(
+        "#selectedFournisseurEdit",
       );
-      EditFournisseurSelect.value = products[i].fournisseurId;
+      selectedFournisseurEdit.innerHTML = fournisseurName;
 
       //Prefill product color
       if (products[i].color != undefined) {
@@ -870,11 +889,8 @@ function deleteProduct(event) {
 async function editProductSave() {
   let id = productIdToEdit;
 
-
-  let catId = CategorieSelect.selectedCatId;
-
-  let EditFournisseur = document.querySelector("#EditFournisseurSelect");
-  let fournisseurId = EditFournisseur.value;
+  let catId = CategorieSelect.editId;
+  let fournisseurId = FournisseurSelect.editId;
 
   if (nomEditInput.value.trim().length == 0) {
     Afro.show_negative_message("Nom invalide");

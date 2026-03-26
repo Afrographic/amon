@@ -1,6 +1,7 @@
 class CategorieSelect {
   static cats = [];
   static selectedCatId = -1;
+  static editId = -1;
   static renderCategorieItems() {
     let emptyCatArea = document.querySelector("#empty-area-cats");
     let catItemsContainer = document.querySelector("#cat-items-container");
@@ -18,21 +19,19 @@ class CategorieSelect {
       catItemsContainer.style.display = "none";
     } else {
       emptyCatArea.style.display = "none";
-     
     }
 
     this.cats = collectionsAmon;
-   
+
     this.#renderCats(collectionsAmon);
   }
 
   static #renderCats(cats) {
     let catItemsContainer = document.querySelector("#cat-items-container");
-     catItemsContainer.style.display = "flex";
-    
+    catItemsContainer.style.display = "flex";
+
     catItemsContainer.innerHTML = "";
     for (const item of cats) {
-     
       catItemsContainer.innerHTML += `
        <div class="select-item-element" onclick="CategorieSelect.selectItem(${item.catId},'${item.categoryName}')">
             <img src="images/circle.svg" alt="" width="20px">
@@ -43,8 +42,12 @@ class CategorieSelect {
   }
 
   static showCategorieList() {
-     if (window.innerWidth <= 1000) {
-      history.pushState({ page: "select-categorie" }, "", "/#/select-categorie");
+    if (window.innerWidth <= 1000) {
+      history.pushState(
+        { page: "select-categorie" },
+        "",
+        "?select-categorie",
+      );
       localStorage.setItem("current-page", "select-categorie");
     }
     let itemsHolder = document.querySelector("#items-cat-holder");
@@ -52,23 +55,28 @@ class CategorieSelect {
     let addProduct = document.querySelector("#addProduct");
     addProduct.scrollTop = 0;
     addProduct.style.overflow = "hidden";
-
-    
   }
 
   static hideCategorieList() {
     let itemsHolder = document.querySelector("#items-cat-holder");
     itemsHolder.classList.add("items-inactive");
     let addProduct = document.querySelector("#addProduct");
-     addProduct.scrollTop = 0;
+    addProduct.scrollTop = 0;
     addProduct.style.overflow = "auto";
   }
 
   static selectItem(catId, catName) {
     this.selectedCatId = catId;
+    this.editId = catId;
     this.hideCategorieList();
     let selectedCategorie = document.querySelector("#selectedCategorie");
     selectedCategorie.innerHTML = catName;
+
+    //Prefill edit categorie
+    let selectedCategorieEdit = document.querySelector(
+      "#selectedCategorieEdit",
+    );
+    if (selectedCategorieEdit) selectedCategorieEdit.innerHTML = catName;
   }
 
   static search(input) {
