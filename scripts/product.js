@@ -89,11 +89,21 @@ class Product {
         
               <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
                   
-                  <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${product.id}">Nouveau Stock ${Afro.Ucase(product.nom)}</button>
+                  <div class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${product.id}">
+                    <img src="images/stock.svg" width="20px"/>
+                    <div>  Nouveau Stock ${Afro.Ucase(product.nom)}</div>
+                
+                  </div>
                  
             
-                  <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${product.id}">Editer ${Afro.Ucase(product.nom)}</button>
-                  <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${product.id}">Supprimer ${Afro.Ucase(product.nom)}</button>
+                  <div class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${product.id}">
+                   <img src="images/edit.svg" width="24px"/>
+                    Editer ${Afro.Ucase(product.nom)}
+                  </div>
+                  <div  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${product.id}">
+                   <img src="images/delete.svg" width="24px"/>
+                  Supprimer ${Afro.Ucase(product.nom)}
+                  </div>
         
               </div>
 

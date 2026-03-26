@@ -408,17 +408,23 @@ async function search() {
 
               <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
                           
-                          <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${
+                          <div class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${
                             searchedProducts[i].id
-                          }">Nouveau Stock ${Afro.Ucase(searchedProducts[i].nom)}</button>
+                          }">
+                            <img src="images/stock.svg" width="20px"/>
+                          Nouveau Stock ${Afro.Ucase(searchedProducts[i].nom)}</div>
                           
                     
-                          <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${
+                          <div class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${
                             searchedProducts[i].id
-                          }">Editer ${Afro.Ucase(searchedProducts[i].nom)}</button>
-                          <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${
+                          }">
+                            <img src="images/edit.svg" width="24px"/>
+                          Editer ${Afro.Ucase(searchedProducts[i].nom)}</div>
+                          <div  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${
                             searchedProducts[i].id
-                          }">Supprimer ${Afro.Ucase(searchedProducts[i].nom)}</button>
+                          }">
+                            <img src="images/delete.svg" width="24px"/>
+                          Supprimer ${Afro.Ucase(searchedProducts[i].nom)}</div>
                 
                   </div>
 
@@ -677,17 +683,23 @@ function renderProduct() {
 
                 <div class="productItemClass productItemClassInactive" onclick="hideMenu(this)">
                     
-                    <button class="tertiaryBtn" onclick="incrementProduct(event);showNouveauStockView()" id="${
+                    <div class="tertiaryBtn" onclick="incrementProduct(event);showNouveauStockView()" id="${
                       products[i].id
-                    }">Nouveau stock ${Afro.Ucase(products[i].nom)}</button>
+                    }">
+                     <img src="images/stock.svg" width="20px"/>
+                    Nouveau stock ${Afro.Ucase(products[i].nom)}</div>
                    
               
-                    <button onclick="editProduct(event)" class="tertiaryBtn" id="${
+                    <div onclick="editProduct(event)" class="tertiaryBtn" id="${
                       products[i].id
-                    }">Editer ${Afro.Ucase(products[i].nom)}</button>
-                    <button onclick="deleteProduct(event)" class="tertiaryBtn" id="${
+                    }">
+                     <img src="images/edit.svg" width="24px"/>
+                    Editer ${Afro.Ucase(products[i].nom)}</div>
+                    <div onclick="deleteProduct(event)" class="tertiaryBtn" id="${
                       products[i].id
-                    }">Supprimer ${Afro.Ucase(products[i].nom)}</button>
+                    }">
+                      <img src="images/delete.svg" width="24px"/>
+                    Supprimer ${Afro.Ucase(products[i].nom)}</div>
         
                  </div>
 
