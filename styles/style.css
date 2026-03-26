@@ -633,6 +633,8 @@ a {
     gap: 4px;
 }
 
+
+
 .productInfo {
     padding: 16px;
     background-color: #fff;
@@ -643,11 +645,12 @@ a {
     bottom: 0;
     right: 0;
     width: 100vw;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
+    /* border-top-left-radius: 16px; */
+    /* border-top-right-radius: 16px; */
     z-index: 2;
     box-shadow: 1px -3px 12px #00000038;
     transition: 0.25s;
+    height: 100vh;
 }
 
 .productInfoInactive {

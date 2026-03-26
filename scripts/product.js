@@ -1,4 +1,5 @@
 class Product {
+  static currentProductId;
   static generateMoreInfoTemplate(product) {
     let devise = localStorage.getItem("amonDevise");
     // Caracteristiques Template
@@ -19,6 +20,7 @@ class Product {
             </table>
         </div>
     `;
+    console.log(product.cars.length);
     if (product.cars.length == 0) {
       carsTemplate = "";
     }
@@ -55,14 +57,14 @@ class Product {
 
     // Product Info template
     let productInfo = `
-         <div class="productInfo productInfoInactive">  
-            <h3>${product.nom}</h3>
+         <div class="productInfo productInfoInactive" id="product-info${product.id}">  
+            <img src="images/back.svg" width="24px" onclick="Product.closeProductInfo(this)"/>
+            <h2>${product.nom}</h2>
                 ${carsTemplate}
             <div>
                 <p>Plus d'informations </p>
                 ${more_info}
             </div>
-            <div class="primary_btn" onclick="Product.closeProductInfo(this)">OK</div>
          </div>
         `;
 
@@ -113,7 +115,7 @@ class Product {
               <h3 class="f1">${Afro.Ucase(product.nom)}</h3>
               <div class="row aic g16">
                   ${colorTemplate}
-                  <img src="images/info.svg" width="24px" onclick="showMoreInfo(this)"/>
+                  <img src="images/info.svg" width="24px" onclick="showMoreInfo(this,'${product.id}')"/>
                   <div class="clickArea" onclick="showMenuProduct(this)">
                      <img src="images/option.svg" />
                   </div>  

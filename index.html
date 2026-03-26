@@ -1383,6 +1383,13 @@
           localStorage.setItem("current-page", "menu");
            return;
         }
+        if(localStorage.getItem("current-page") =="more-info"){
+          let moreInfoItem = document.querySelector(`#product-info${Product.currentProductId}`);
+            moreInfoItem.classList.add("productInfoInactive");
+           return;
+        }
+
+       
       }
     </script>
   </body>

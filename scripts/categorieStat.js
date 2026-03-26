@@ -22,7 +22,6 @@ async function computeCategorieStat() {
   if (datas.length == 0) return;
   let products = JSON.parse(datas[0].products);
 
-
   //Get sell history
   let sellHistory = JSON.parse(datas[0].historyRetrait);
   let devise = localStorage.getItem("amonDevise");
@@ -40,7 +39,7 @@ async function computeCategorieStat() {
       if (products[j].catId == categoriesAmon[i].catId) {
         products_add.push(products[j]);
 
-        let template = await Product.generateProductItemTemplate(products[j])
+        let template = await Product.generateProductItemTemplate(products[j]);
         productsTemplate += template;
       }
     }
@@ -130,7 +129,12 @@ function showMenuProduct(el) {
   );
 }
 
-function showMoreInfo(el) {
+function showMoreInfo(el, id) {
+  Product.currentProductId = id;
+  if (window.innerWidth <= 1000) {
+    history.pushState({ page: "more-info" }, "", "?more-info");
+    localStorage.setItem("current-page", "more-info");
+  }
   el.parentNode.parentNode.parentNode.lastElementChild.classList.remove(
     "productInfoInactive",
   );
