@@ -1,3 +1,11 @@
+@media screen and (min-width:1200px) {
+    .productItem {
+        position: relative;
+    }
+
+    
+}
+
 @media screen and (max-width:1200px) {
     * {
         box-sizing: border-box;
@@ -5,6 +13,17 @@
 
     .editProduct {
         height: 100vh !important;
+    }
+
+    .tertiaryBtn{
+        font-size: 16px;
+    }
+
+    .productItemClass {
+        padding-bottom: 85px;
+        justify-content: flex-end;
+        z-index: 500;
+        font-size: 16px;
     }
 
     .container {
@@ -86,7 +105,7 @@
         border-radius: 0px !important;
     }
 
-   
+
 
     .mobileMenuIcon {
         display: block !important;
@@ -185,7 +204,7 @@
         padding: 16px;
     }
 
-    .tertiaryBtn2{
+    .tertiaryBtn2 {
         font-size: 16px;
     }
 
