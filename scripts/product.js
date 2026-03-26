@@ -89,11 +89,11 @@ class Product {
         
               <div class="productItemClass productItemClassInactive" onclick="hideMenuProduct(this)">
                   
-                  <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${product.id}">Nouveau Stock</button>
+                  <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${product.id}">Nouveau Stock ${Afro.Ucase(product.nom)}</button>
                  
             
-                  <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${product.id}">Editer</button>
-                  <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${product.id}">Supprimer</button>
+                  <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${product.id}">Editer ${Afro.Ucase(product.nom)}</button>
+                  <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${product.id}">Supprimer ${Afro.Ucase(product.nom)}</button>
         
               </div>
 

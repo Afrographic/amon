@@ -410,15 +410,15 @@ async function search() {
                           
                           <button class="tertiaryBtn" onclick="closeSearch();incrementProduct(event);showNouveauStockView();" id="${
                             searchedProducts[i].id
-                          }">Nouveau Stock</button>
+                          }">Nouveau Stock ${Afro.Ucase(searchedProducts[i].nom)}</button>
                           
                     
                           <button class="tertiaryBtn" onclick="closeSearch();editProduct(event)" id="${
                             searchedProducts[i].id
-                          }">Editer</button>
+                          }">Editer ${Afro.Ucase(searchedProducts[i].nom)}</button>
                           <button  class="tertiaryBtn" onclick="closeSearch();deleteProduct(event)" id="${
                             searchedProducts[i].id
-                          }">Supprimer</button>
+                          }">Supprimer ${Afro.Ucase(searchedProducts[i].nom)}</button>
                 
                   </div>
 
@@ -679,15 +679,15 @@ function renderProduct() {
                     
                     <button class="tertiaryBtn" onclick="incrementProduct(event);showNouveauStockView()" id="${
                       products[i].id
-                    }">Nouveau stock</button>
+                    }">Nouveau stock ${Afro.Ucase(products[i].nom)}</button>
                    
               
                     <button onclick="editProduct(event)" class="tertiaryBtn" id="${
                       products[i].id
-                    }">Editer</button>
+                    }">Editer ${Afro.Ucase(products[i].nom)}</button>
                     <button onclick="deleteProduct(event)" class="tertiaryBtn" id="${
                       products[i].id
-                    }">Supprimer</button>
+                    }">Supprimer ${Afro.Ucase(products[i].nom)}</button>
         
                  </div>
 
