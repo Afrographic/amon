@@ -3,7 +3,7 @@
 }
 
 .m3_container{
-    background-image: url(../images/bg_m3.png);
+    background: linear-gradient(#ffffff91, #ffffff), url(../images/bg_m3.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80%;

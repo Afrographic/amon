@@ -224,9 +224,12 @@
     <script>
       // handle Back button
       window.onpopstate = function (event) {
-        if (localStorage.getItem("current-page") == "select-categorie") {
-          CategorieSelect.hideCategorieList();
-          localStorage.setItem("current-page", "creer-produit");
+        if (localStorage.getItem("current-page") == "creer-client") {
+          ClientAdd.hide();
+          return;
+        }
+        if (localStorage.getItem("current-page") == "select-client") {
+          ClientSelect.hideList();
           return;
         }
       };
