@@ -337,6 +337,54 @@
 
   <body>
 
+       <!-- Ajouter un fournisseur -->
+        <div class="items items-inactive" id="items-fournisseur-add-holder"  >
+          <div class="f1" onclick="FournisseurAdd.hide()"></div>
+          <div class="itemsContainer">
+            <img src="images/fournisseur.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
+            <div class="tac">Ajouter un fournisseur</div>
+            <div class="small tac">Veuillez inserez les informations  ci-dessous</div>
+
+             <div class="formItem">
+              <div class="label">Nom du fournisseur</div>
+              <input
+                type="text"
+                placeholder="Nom du fournisseur"
+                id="nomFournisseurCreateInput"
+              />
+            </div>
+             <div class="formItem">
+              <div class="label">Numero du fournisseur</div>
+              <input
+                type="text"
+                placeholder="Numero du fournisseur"
+               id="numeroFournisseurCreateInput"
+              />
+            </div>
+            <div class="primary_btn" onclick="FournisseurAdd.add()">Ajouter le fournisseur</div>
+          </div>
+        </div>
+
+     <!-- Ajouter la categorie -->
+        <div class="items items-inactive" id="items-cat-add-holder"  >
+          <div class="f1" onclick="CategorieAdd.hideCategorieAddScreen()"></div>
+          <div class="itemsContainer">
+            <img src="images/cat.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
+            <div class="tac">Ajouter une Categorie</div>
+            <div class="small tac">Veuillez inserez le nom de la categorie ci-dessous</div>
+
+             <div class="formItem">
+              <div class="label">Nom de la categorie</div>
+              <input
+                type="text"
+                placeholder="Nom de la categorie"
+                id="nomCategorieInputCreate"
+              />
+            </div>
+            <div class="primary_btn" onclick="CategorieAdd.addCategorie()">Ajouter la categorie</div>
+          </div>
+        </div>
+
        <!-- Fournisseur items -->
         <div class="items items-inactive" id="items-fournisseur-holder"  >
           <div class="f1" onclick="FournisseurSelect.hideList()"></div>
@@ -812,25 +860,7 @@
           <div>Ajouter une categorie</div>
         </div>
 
-        <!-- Ajouter la categorie -->
-        <div class="items items-inactive" id="items-cat-add-holder"  >
-          <div class="f1" onclick="CategorieAdd.hideCategorieAddScreen()"></div>
-          <div class="itemsContainer">
-            <img src="images/cat.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
-            <div class="tac">Ajouter une Categorie</div>
-            <div class="small tac">Veuillez inserez le nom de la categorie ci-dessous</div>
-
-             <div class="formItem">
-              <div class="label">Nom de la categorie</div>
-              <input
-                type="text"
-                placeholder="Nom de la categorie"
-                id="nomCategorieInputCreate"
-              />
-            </div>
-            <div class="primary_btn" onclick="CategorieAdd.addCategorie()">Ajouter la categorie</div>
-          </div>
-        </div>
+       
 
 
           <!-- Selectionner le fournisseur -->
@@ -856,33 +886,7 @@
           <div>Ajouter un fournisseur</div>
         </div>
 
-        <!-- Ajouter un fournisseur -->
-        <div class="items items-inactive" id="items-fournisseur-add-holder"  >
-          <div class="f1" onclick="FournisseurAdd.hide()"></div>
-          <div class="itemsContainer">
-            <img src="images/fournisseur.svg" alt="" width="32px" style="margin-left:auto;margin-right:auto;">
-            <div class="tac">Ajouter un fournisseur</div>
-            <div class="small tac">Veuillez inserez les informations  ci-dessous</div>
-
-             <div class="formItem">
-              <div class="label">Nom du fournisseur</div>
-              <input
-                type="text"
-                placeholder="Nom du fournisseur"
-                id="nomFournisseurCreateInput"
-              />
-            </div>
-             <div class="formItem">
-              <div class="label">Numero du fournisseur</div>
-              <input
-                type="text"
-                placeholder="Numero du fournisseur"
-               id="numeroFournisseurCreateInput"
-              />
-            </div>
-            <div class="primary_btn" onclick="FournisseurAdd.add()">Ajouter le fournisseur</div>
-          </div>
-        </div>
+     
 
 
 
