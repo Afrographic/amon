@@ -3,12 +3,26 @@
     td {
         padding: 8px !important;
     }
-    .numeroClient{
+
+    .numeroClient {
         margin-bottom: 8px;
+    }
+
+    .close-facture-render {
+        display: flex !important;
+        position: fixed;
+        top: 32px;
+        right: 32px;
     }
 }
 
+
+
 @media screen and (max-width:1200px) {
+
+    .close-facture-render {
+        display: none !important;
+    }
 
     /* Config responsive */
     .configKamto {
