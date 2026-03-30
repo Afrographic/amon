@@ -11,8 +11,28 @@
         margin-right: auto;
         margin-bottom: 128px;
         border-radius: 16px;
-        padding:32px;
+        padding: 32px;
     }
+
+    #flyer-produit {
+        display: none !important;
+    }
+
+    #addProduct2 {
+        width: 300px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    #addProduct2:hover {
+        color: #fff;
+        background-color: #000;
+    }
+
+    .homeButton {
+        justify-content: flex-end;
+    }
+
 
 }
 
@@ -20,6 +40,13 @@
     * {
         box-sizing: border-box;
     }
+
+    #addProduct2 {
+        flex: 1;
+    }
+
+
+
 
     .productInfo h2 {
         margin: 0;
