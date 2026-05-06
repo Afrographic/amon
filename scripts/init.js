@@ -475,6 +475,9 @@ function addProduct() {
   let addProduct = document.querySelector("#addProduct");
   addProduct.scrollTop = 0;
 
+  let addAndEditOverlay = document.querySelector(".add-and-edit-overlay");
+  addAndEditOverlay.classList.remove("inactive");
+
   ProductCaracteristique.initCreateCars();
 
   let nomInput = document.getElementById("nomInput");
@@ -501,6 +504,9 @@ function closeAddProduct() {
   addProductElement.classList.add("inactive");
   addProductElement.classList.remove("active");
   addProduitButton.classList.remove("inactive");
+
+  let addAndEditOverlay = document.querySelector(".add-and-edit-overlay");
+  addAndEditOverlay.classList.add("inactive");
 }
 
 let exportWrapperDate = document.getElementById("exportWrapperDate");
