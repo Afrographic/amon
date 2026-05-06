@@ -509,6 +509,11 @@ function closeAddProduct() {
   addAndEditOverlay.classList.add("inactive");
 }
 
+function hideMoreInfo() {
+  let productInfo = document.querySelector(".productInfo");
+  productInfo.classList.add("productInfoInactive");
+}
+
 let exportWrapperDate = document.getElementById("exportWrapperDate");
 let exportDate = new Date();
 let dateString = formatDate(exportDate);

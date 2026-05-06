@@ -49,10 +49,40 @@
         margin-top: 16px;
     }
 
+    .close-more-info-product {
+        display: none !important;
+    }
+
+    .productInfo {
+        border-radius: 16px;
+    }
+
+    .close-more-info-product-close-icon {
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+    }
+
 
 }
 
+.productInfo h2 {
+    margin: 0;
+}
+
 @media screen and (max-width:1000px) {
+
+    .close-more-info-product-close-icon {
+        display: none !important;
+    }
+
+    .close-more-info-product {
+        display: block !important;
+
+    }
+
     * {
         box-sizing: border-box;
     }
@@ -319,6 +349,8 @@
         width: 400px;
         max-height: 80vh;
         overflow: auto;
+        margin-right: 36px;
+        margin-bottom: 36px;
     }
 }
 

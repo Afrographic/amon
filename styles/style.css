@@ -65,6 +65,7 @@ h3 {
 
 }
 
+
 .history h2 {
     margin: 0;
 }
@@ -647,7 +648,7 @@ a {
     width: 100vw;
     /* border-top-left-radius: 16px; */
     /* border-top-right-radius: 16px; */
-    z-index: 2;
+    z-index: 30;
     box-shadow: 1px -3px 12px #00000038;
     transition: 0.25s;
     height: 100vh;
@@ -833,7 +834,7 @@ a {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.312);
+    background-color: #006c1b6b;
     z-index: 20;
     cursor: pointer;
     transition: 0.25s;

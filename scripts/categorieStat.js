@@ -131,6 +131,9 @@ function showMenuProduct(el) {
 
 function showMoreInfo(el, id) {
   Product.currentProductId = id;
+  let addAndEditOverlay = document.querySelector(".add-and-edit-overlay");
+  addAndEditOverlay.classList.remove("inactive");
+
   if (window.innerWidth <= 1000) {
     history.pushState({ page: "more-info" }, "", "?more-info");
     localStorage.setItem("current-page", "more-info");

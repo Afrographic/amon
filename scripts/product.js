@@ -58,7 +58,10 @@ class Product {
     // Product Info template
     let productInfo = `
          <div class="productInfo productInfoInactive" id="product-info${product.id}">  
-            <img src="images/back.svg" width="24px" onclick="Product.closeProductInfo(this)"/>
+            <img src="images/back.svg" class="close-more-info-product" width="24px" onclick="Product.closeProductInfo(this)"/>
+
+            <img src="images/close_add.svg" class="close-more-info-product-close-icon" width="36px" onclick="Product.closeProductInfo(this)"/>
+
             <h2>${product.nom}</h2>
                 ${carsTemplate}
             <div>
@@ -144,5 +147,8 @@ class Product {
 
   static closeProductInfo(el) {
     el.parentNode.classList.add("productInfoInactive");
+
+    let addAndEditOverlay = document.querySelector(".add-and-edit-overlay");
+    addAndEditOverlay.classList.add("inactive");
   }
 }
