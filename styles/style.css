@@ -62,7 +62,7 @@ h3 {
 
 #chart {
     width: 100%;
-    aspect-ratio: 1/1;
+
 }
 
 .history h2 {
@@ -843,4 +843,3 @@ a {
     opacity: 0;
     pointer-events: none;
 }
-
