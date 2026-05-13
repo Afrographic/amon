@@ -12,6 +12,7 @@ class EspaceDynamique {
     this.id = json.id;
     this.type = json.type;
   }
+  
   to_json() {
     return {
       id: this.id,

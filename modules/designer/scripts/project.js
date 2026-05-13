@@ -125,6 +125,7 @@ class Project {
   }
 
   static execute_load_project(project) {
+    console.log(project);
     // parse artboard
     let artBoard = [];
     for (let i = 0; i <= project.artboard.length - 1; i++) {

@@ -57,13 +57,12 @@ class Conteneur {
   render() {
     let children_template = "";
     for (let item of this.children) {
-      console.log(item);
-      if(item== undefined) continue;
+      if (item == undefined) continue;
       children_template += item.render();
     }
     // Compute gradient
     let degrade = "";
-    if ((this.deg_type == "linear")) {
+    if (this.deg_type == "linear") {
       degrade = `linear-gradient(
         ${this.deg_rotate}deg,
           ${this.deg_first_color},
@@ -121,7 +120,7 @@ class Conteneur {
     this.rotate = json.rotate;
     this.deg_first_color = json.deg_first_color;
     this.deg_second_color = json.deg_second_color;
-    this.deg_type = json.deg_type??"linear";
+    this.deg_type = json.deg_type ?? "linear";
 
     this.shadow_color = json.shadow_color;
 
@@ -194,6 +193,10 @@ class Conteneur {
       }
       if (item.type == "image") {
         item_to_add = new Image_D();
+        item_to_add.from_json(item);
+      }
+      if (item.type == "espaceDynamique") {
+        item_to_add = new EspaceDynamique();
         item_to_add.from_json(item);
       }
       children.push(item_to_add);
