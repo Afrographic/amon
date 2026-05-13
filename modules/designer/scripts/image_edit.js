@@ -498,9 +498,10 @@ class ImageEdit {
         // Remove white BG
         let img = new Image();
         img.src = URL.createObjectURL(Create.artboard[i].file);
-        img.onload = () => {
+        img.onload =  () => {
           let transparent_img = Utils.convert_to_grayscale(img);
           Create.artboard[i].url = transparent_img;
+          Create.artboard[i].file =  Utils.dataURLToFile(transparent_img);
           Create.render();
         };
       }
@@ -512,9 +513,10 @@ class ImageEdit {
           if (Create.artboard[i].children[j].id == Create.edit_id) {
             let img = new Image();
             img.src = URL.createObjectURL(Create.artboard[i].children[j].file);
-            img.onload = () => {
+            img.onload =  () => {
               let transparent_img = Utils.convert_to_grayscale(img);
               Create.artboard[i].children[j].url = transparent_img;
+              Create.artboard[i].children[j].file =  Utils.dataURLToFile(transparent_img);
               Create.render();
             };
           }
@@ -529,9 +531,10 @@ class ImageEdit {
         // Remove white BG
         let img = new Image();
         img.src = Create.artboard[i].url;
-        img.onload = () => {
+        img.onload =  () => {
           let colored_image = Utils.change_color(img, el.value);
           Create.artboard[i].url = colored_image;
+          Create.artboard[i].file =  Utils.dataURLToFile(colored_image);
           Create.render();
         };
       }
@@ -543,9 +546,10 @@ class ImageEdit {
           if (Create.artboard[i].children[j].id == Create.edit_id) {
             let img = new Image();
             img.src = Create.artboard[i].children[j].url;
-            img.onload = () => {
+            img.onload =  () => {
               let colored_image = Utils.change_color(img, el.value);
               Create.artboard[i].children[j].url = colored_image;
+              Create.artboard[i].children[j].file =  Utils.dataURLToFile(colored_image);
               Create.render();
             };
           }

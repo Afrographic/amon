@@ -23,7 +23,7 @@ class Project {
     if (this.saved) {
       //Just update project in DB
       DB.update_project(project);
-      Utils.show_notif("Enregistrer avec succes!")
+      Utils.show_notif("Enregistrer avec succes!");
     } else {
       //Create a new instance of saving
       let name_project;
@@ -42,8 +42,7 @@ class Project {
       // Set project name
       let nom_project = document.querySelector("#nom_project");
       nom_project.innerHTML = Utils.Ucase(Create.name_project);
-      Utils.show_notif("Enregistrer avec succes!")
-
+      Utils.show_notif("Enregistrer avec succes!");
     }
   }
 
@@ -60,7 +59,7 @@ class Project {
       H_align: Create.H_align,
       V_align: Create.V_align,
       bg_file: Create.bg_file,
-      bg_image_url:Create.bg_image_url,
+      bg_image_url: Create.bg_image_url,
       edit_id: Create.edit_id,
       bg_color: Create.bg_color,
       gap: Create.gap,
@@ -102,16 +101,16 @@ class Project {
       <div class="project_item" >
         <img src="assets/images/djehouty_icon.svg" alt="" />
         <div onclick="Project.load_project(${DB.projects.indexOf(item)})">${
-        item.project.name_project
-      }</div>
+          item.project.name_project
+        }</div>
         <div class="f1" onclick="Project.load_project(${DB.projects.indexOf(
-          item
+          item,
         )})"></div>
         <img src="assets/images/edit.svg" alt="" style="width:4.5vw;" onclick="Project.update_project_name(${DB.projects.indexOf(
-          item
+          item,
         )})" />
         <img src="assets/images/delete.svg" alt="" onclick="Project.delete_project(${DB.projects.indexOf(
-          item
+          item,
         )})" />
        </div>
       `;
@@ -125,7 +124,6 @@ class Project {
   }
 
   static execute_load_project(project) {
-    console.log(project);
     // parse artboard
     let artBoard = [];
     for (let i = 0; i <= project.artboard.length - 1; i++) {
@@ -254,7 +252,7 @@ class Project {
   static async update_project_name(index) {
     let name_projet = prompt(
       "Editer le nom du projet",
-      DB.projects[index].project.name_project
+      DB.projects[index].project.name_project,
     );
     if (name_projet == null) return;
     if (name_projet.trim().length == 0) return;

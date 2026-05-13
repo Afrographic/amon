@@ -225,6 +225,26 @@ class Utils {
     return canvas.toDataURL("image/png");
   }
 
+  static dataURLToFile(dataUrl) {
+    const arr = dataUrl.split(",");
+    const fileName = `image_${Math.random()}.png`;
+
+    // Extract mime type
+    const mime = arr[0].match(/:(.*?);/)[1];
+
+    // Decode base64
+    const bstr = atob(arr[1]);
+
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], fileName, { type: mime });
+  }
+
   // Expand shorthand (#abc) to full (#aabbcc)
   static expandHex(hex) {
     hex = hex.replace(/^#/, "");
@@ -542,7 +562,7 @@ class Utils {
     return canvas.toDataURL("image/png");
   }
 
-  static imageToFile(image, fileName = Math.random()+"image.png") {
+  static imageToFile(image, fileName = Math.random() + "image.png") {
     return new Promise((resolve) => {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
