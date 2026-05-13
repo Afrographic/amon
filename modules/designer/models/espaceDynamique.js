@@ -18,4 +18,11 @@ class EspaceDynamique {
       type: this.type,
     };
   }
+
+  clone() {
+    let clone = new EspaceDynamique();
+    clone.id = `id_${Math.random() * 100000}`;
+    clone.type = this.type;
+    return clone;
+  }
 }
