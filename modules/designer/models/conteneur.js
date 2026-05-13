@@ -57,6 +57,8 @@ class Conteneur {
   render() {
     let children_template = "";
     for (let item of this.children) {
+      console.log(item);
+      if(item== undefined) continue;
       children_template += item.render();
     }
     // Compute gradient
