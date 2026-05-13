@@ -128,6 +128,7 @@ class Image_D {
   }
 
   async to_json() {
+    console.log(this.file);
     let new_url;
     if (this.file.size != undefined) {
       new_url = await Utils.image_to_base_64(this.file);

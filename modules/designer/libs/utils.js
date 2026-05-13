@@ -32,7 +32,6 @@ class Utils {
     });
   }
 
-
   static cropImageToSquare(img) {
     // Create a canvas
     const canvas = document.createElement("canvas");
@@ -59,7 +58,7 @@ class Utils {
       0,
       0,
       size,
-      size // destination rectangle
+      size, // destination rectangle
     );
 
     // Return cropped image as data URL (or blob)
@@ -112,7 +111,7 @@ class Utils {
       0,
       0,
       outW,
-      outH // destination rect (canvas)
+      outH, // destination rect (canvas)
     );
 
     return canvas.toDataURL("image/jpeg");
@@ -512,7 +511,7 @@ class Utils {
       0, // x sur le canvas
       0, // y sur le canvas
       width, // largeur finale
-      height // hauteur finale
+      height, // hauteur finale
     );
 
     // Retourner le résultat sous forme de dataURL
@@ -530,11 +529,37 @@ class Utils {
     ctx.globalCompositeOperation = "source-in";
 
     // Draw the main image — only the masked part will show
-    ctx.drawImage(image, 0, 0, mask.width, mask.width*image.height/image.width);
+    ctx.drawImage(
+      image,
+      0,
+      0,
+      mask.width,
+      (mask.width * image.height) / image.width,
+    );
 
     // Reset the composite operation for future drawings
     ctx.globalCompositeOperation = "source-over";
     return canvas.toDataURL("image/png");
+  }
+
+  static imageToFile(image, fileName = Math.random()+"image.png") {
+    return new Promise((resolve) => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      ctx.drawImage(image, 0, 0);
+
+      canvas.toBlob((blob) => {
+        const file = new File([blob], fileName, {
+          type: blob.type,
+        });
+
+        resolve(file);
+      });
+    });
   }
 }
 

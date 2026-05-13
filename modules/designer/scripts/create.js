@@ -101,10 +101,12 @@ class Create {
     let image = new Image();
     image.src = `assets/icons/Asset ${number}.png`;
     await image.decode();
+  
     let url = Utils.change_color(image, "#000");
     let image_to_add = new Image_D();
     image_to_add.width = 8;
     image_to_add.url = url;
+    image_to_add.file = await Utils.imageToFile(image);
 
     if (Icones.in_conteneur == false) {
       this.artboard.push(image_to_add);
