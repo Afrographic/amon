@@ -1,0 +1,48 @@
+@media only screen and (max-width: 1354px) {
+    .download_btn,.clip_btn{
+       display: none;
+    }
+    .download_btn_menu,.clip_btn_menu{
+        display: flex !important;
+    }
+}
+
+@media only screen and (max-width: 1111px) {
+    .container{
+        flex-direction: column;
+    }
+    .video_container{
+        width: 100%;
+    }
+    .header_input{
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 615px) {
+    .bottom_video_items{
+        flex-direction: column;
+        align-items: flex-start;
+        gap:8px
+    }
+    .download_btn{
+        display: flex;
+     }
+    .download_btn_menu{
+        display: none !important;
+    }
+    .notification_wrapper{
+        width: 380px !important;
+    }
+    .web_search{
+        display: none ;
+    }
+    .mobile_search_triger{
+        display: flex !important;
+    }
+}
+
+
+.download_btn_menu,.clip_btn_menu{
+    display: none;
+}
