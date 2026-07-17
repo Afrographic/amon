@@ -497,6 +497,7 @@ class CompiledApp {
       _1422: (module,f) => finalizeWrapper(f, function(x0,x1,x2) { return module.exports._1422(f,arguments.length,x0,x1,x2) }),
       _1423: (module,f) => finalizeWrapper(f, function(x0,x1,x2) { return module.exports._1423(f,arguments.length,x0,x1,x2) }),
       _1424: (x0,x1) => x0.getItem(x1),
+      _1425: (x0,x1) => x0.removeItem(x1),
       _1426: (x0,x1,x2) => x0.setItem(x1,x2),
       _1429: x0 => ({audio: x0}),
       _1430: (x0,x1) => x0.getUserMedia(x1),
