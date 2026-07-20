@@ -1,6 +1,6 @@
 {
-    "name": "lidav_2",
-    "short_name": "lidav_2",
+    "name": "lidav",
+    "short_name": "lidav",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
