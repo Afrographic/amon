@@ -25,19 +25,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="Lidav" />
     <link rel="apple-touch-icon" href="icons/Icon-192.png" />
-    <meta name="theme-color" content="#FFFFFF" />
-
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: light)"
-      content="#FFFFFF"
-    />
-
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: dark)"
-      content="#000000"
-    />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -56,18 +43,5 @@
   -->
     <script src="flutter_bootstrap.js" async></script>
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-
-      import { getMessaging } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
-
-      const firebaseConfig = {
-        // your firebase config
-      };
-
-      const app = initializeApp(firebaseConfig);
-
-      const messaging = getMessaging(app);
-    </script>
   </body>
 </html>
