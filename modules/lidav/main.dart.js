@@ -146733,7 +146733,7 @@ A.ayc.prototype={
 N(){var s,r
 this.P()
 s=this.a.c
-if(s.length!==0)try{this.r=J.ml(J.a6c(B.ar.lE(s,null),new A.bMe()))}catch(r){}},
+if(s!=null)if(s.length!==0)try{this.r=J.ml(J.a6c(B.ar.lE(s,null),new A.bMe()))}catch(r){}},
 xV(){var s=0,r=A.l(t.H),q=this,p,o,n
 var $async$xV=A.h(function(a,b){if(a===1)return A.i(b,r)
 for(;;)switch(s){case 0:n=B.bm.hK()
